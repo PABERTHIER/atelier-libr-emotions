@@ -25,11 +25,7 @@ export default defineNuxtConfig({
   typescript: {
     strict: true,
   },
-  modules: [
-    '@nuxt/image',
-    '@nuxt/devtools',
-    '@nuxtjs/i18n',
-  ],
+  modules: ['@nuxt/image', '@nuxt/devtools', '@nuxtjs/i18n'],
   imports: {
     dirs: [],
   },
@@ -42,11 +38,10 @@ export default defineNuxtConfig({
     defaultLocale: 'fr',
     langDir: 'lang',
     lazy: true,
+    strategy: 'prefix',
     locales: [
-      {
-        code: 'fr',
-        file: 'fr.json',
-      },
+      { code: 'en', language: 'en-US', name: 'English', file: 'en-US.json' },
+      { code: 'fr', language: 'fr-FR', name: 'Français', file: 'fr-FR.json' },
     ],
   },
   vite: {

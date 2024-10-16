@@ -1,6 +1,9 @@
-# AtelierLibrEmotions
+# atelier-libr-emotions
 
 A static website to present an artist and what she does.
+Here it is: [atelier-libr-emotions](https://atelierlibremotions.vercel.app/)
+
+It uses Vercel for deployment and hosting.
 
 **Nuxt 3 Minimal Starter**
 

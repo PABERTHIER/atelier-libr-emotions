@@ -1,0 +1,25 @@
+{
+  "app": {
+    "name": "Atelier Libr'Émotions",
+    "meta": {
+      "description": "My painting and me...letting go, feeling, emotions, expression: therapy."
+    }
+  },
+  "links": {},
+  "components": {},
+  "pages": {
+    "main": {
+      "tab_name": "Home page",
+      "meta": {
+        "content": "Home page"
+      },
+      "welcoming_painting": {
+        "description": "Abstract art painting with a vibrant autumn-inspired color palette. Featuring rich, textured layers of warm oranges, yellows, and earthy browns, this expressive artwork evokes feelings of nature, change, and depth. Perfect for art lovers and collectors seeking unique, emotion-driven compositions.",
+        "title": "Vibrant autumn-inspired abstract art with textured layers.",
+        "alt": "Abstract art with vibrant autumn colors and textured layers.",
+        "meta": "Explore an abstract art painting featuring vibrant autumn colors and textured layers, evoking feelings of nature and change."
+      }
+    }
+  },
+  "miscellaneous": {}
+}
