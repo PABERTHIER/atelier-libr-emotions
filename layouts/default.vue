@@ -9,7 +9,7 @@
 </template>
 
 <style lang="scss">
-@import '~/styles/default.scss';
+@use '~/styles/default.scss' as *;
 
 html {
   font-family: Arial, sans-serif;
