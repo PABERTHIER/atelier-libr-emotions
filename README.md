@@ -1,15 +1,16 @@
 # atelier-libr-emotions
 
 A static website to present an artist and what she does.
-Here it is: [atelier-libr-emotions](https://atelierlibremotions.vercel.app/)
+
+Here it is: [atelierlibremotions](https://atelierlibremotions.vercel.app/)
 
 It uses Vercel for deployment and hosting.
 
-**Nuxt 3 Minimal Starter**
+## Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-**Setup**
+### Setup
 
 Try to use the latest version of Node.js (using the 20.18.0 for Nuxt 3.13.0 for example).
 
@@ -22,9 +23,9 @@ Make sure to install the dependencies:
 yarn install
 ```
 
-**Development Server**
+### Development Server
 
-Start the development server on http://localhost:3000
+Start the development server on <http://localhost:3000>
 
 ```bash
 
@@ -36,7 +37,7 @@ yarn dev -o
 yarn lint --fix
 ```
 
-**Production**
+### Production
 
 Build the application for production:
 
