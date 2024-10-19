@@ -28,7 +28,7 @@ export default defineNuxtConfig({
   typescript: {
     strict: true,
   },
-  modules: ['@nuxt/image', '@nuxt/devtools', '@nuxtjs/i18n'],
+  modules: ['@nuxt/image', '@nuxtjs/i18n'],
   imports: {
     dirs: [],
   },
@@ -60,6 +60,6 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-10-05',
   devtools: {
-    enabled: false,
+    enabled: true,
   },
 })
