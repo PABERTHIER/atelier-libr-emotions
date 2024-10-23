@@ -36,9 +36,9 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
   ],
-  image: {
-    format: ['webp', 'jpg', 'jpeg', 'png'],
-  },
+  // image: {
+  //   format: ['webp', 'jpg', 'jpeg', 'png'],
+  // },
   plugins: [],
   build: {
     transpile: [],

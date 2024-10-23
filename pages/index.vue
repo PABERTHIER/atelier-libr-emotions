@@ -1,8 +1,7 @@
 <template>
   <div class="homepage">
     <div class="abstract-autumn-container">
-      <Image sizes="sm:200px, md:350px, lg:500px" src="/paintings/abstract-autumn.jpg" :alt="abstractAutumnPaintingAlt"
-        :title="abstractAutumnPaintingTitle" />
+      <Image sizes="sm:200px, md:350px, lg:500px" src="/paintings/abstract-autumn.jpg" :alt="abstractAutumnPaintingAlt" :title="abstractAutumnPaintingTitle" />
       <div class="description" v-t="'pages.main.abstract_autumn_painting.description'" />
       <div v-t="'pages.main.abstract_autumn_painting.meta'" />
     </div>
