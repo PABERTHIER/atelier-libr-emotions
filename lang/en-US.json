@@ -21,5 +21,17 @@
       }
     }
   },
-  "miscellaneous": {}
+  "about": {
+    "author": "Véronique Berthier",
+    "first_name": "Véronique",
+    "last_name": "Berthier",
+    "username": "oreV"
+  },
+  "miscellaneous": {
+    "art": "Art",
+    "painting": "Painting",
+    "ceramic": "Ceramic",
+    "pottery": "Pottery",
+    "emotions": "Emotions"
+  }
 }

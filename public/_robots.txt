@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://atelierlibremotions.vercel.app/sitemap.xml
