@@ -1,7 +1,7 @@
 <template>
   <div class="image">
     <NuxtLink :to="link">
-      <NuxtImg :src="src" :title="title" :alt="alt" :sizes="sizes" densities="x1 x2" placeholder />
+      <NuxtImg :src="src" :title="title" :alt="alt" :sizes="sizes" densities="x1 x2" loading="lazy" placeholder />
     </NuxtLink>
   </div>
 </template>
