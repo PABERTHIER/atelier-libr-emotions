@@ -2,6 +2,7 @@
   <div id="layoutContainer">
     <div class="page-container">
       <!-- <Header /> -->
+      <LangSwitcher />
       <slot />
       <!-- <Footer /> -->
     </div>
@@ -40,7 +41,8 @@ body {
 
 #layoutContainer {
   height: 100%;
-  background-color: $primary-color;
+  background: $background;
+  background-color: $background-color;
   overflow-y: auto;
   .page-container {
     padding: 20px;

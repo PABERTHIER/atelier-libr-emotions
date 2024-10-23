@@ -9,11 +9,11 @@
   "components": {},
   "pages": {
     "main": {
-      "tab_name": "Home page",
+      "tab_name": "Homepage",
       "meta": {
-        "content": "Home page"
+        "content": "Homepage"
       },
-      "welcoming_painting": {
+      "abstract_autumn_painting": {
         "description": "Abstract art painting with a vibrant autumn-inspired color palette. Featuring rich, textured layers of warm oranges, yellows, and earthy browns, this expressive artwork evokes feelings of nature, change, and depth. Perfect for art lovers and collectors seeking unique, emotion-driven compositions.",
         "title": "Vibrant autumn-inspired abstract art with textured layers.",
         "alt": "Abstract art with vibrant autumn colors and textured layers.",
@@ -21,5 +21,17 @@
       }
     }
   },
-  "miscellaneous": {}
+  "about": {
+    "author": "Véronique Berthier",
+    "first_name": "Véronique",
+    "last_name": "Berthier",
+    "username": "oreV"
+  },
+  "miscellaneous": {
+    "art": "Art",
+    "painting": "Painting",
+    "ceramic": "Ceramic",
+    "pottery": "Pottery",
+    "emotions": "Emotions"
+  }
 }
