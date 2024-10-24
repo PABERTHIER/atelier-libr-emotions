@@ -42,7 +42,7 @@ useSeoMeta({
   msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`
 })
 
-defineOgImageComponent('NuxtSeo', { theme: '#ff0000', colorMode: 'dark' })
+// defineOgImageComponent('NuxtSeo', { theme: '#ff0000', colorMode: 'dark' })
 
 const abstractAutumnPaintingTitle = t('pages.main.abstract_autumn_painting.title')
 const abstractAutumnPaintingAlt = t('pages.main.abstract_autumn_painting.alt')
