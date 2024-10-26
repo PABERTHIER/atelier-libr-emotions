@@ -13,15 +13,15 @@
 </template>
 
 <script setup lang="ts">
-import { useTimeoutFn } from '@vueuse/core'
-
 const { t } = useI18n()
 const appName = t('app.name')
 
 const show = ref(true)
-const { start } = useTimeoutFn(() => {
-  show.value = false
-}, 2000)
+function start() : void {
+  setTimeout(() => {
+    show.value = false
+  }, 2000)
+}
 
 onMounted(() => {
   start()
