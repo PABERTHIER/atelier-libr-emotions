@@ -1,5 +1,6 @@
 <template>
   <div id="layoutContainer">
+    <Welcome />
     <div class="page-container">
       <!-- <Header /> -->
       <LangSwitcher />
