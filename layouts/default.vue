@@ -1,11 +1,14 @@
 <template>
   <div id="layoutContainer">
     <Welcome />
-    <div class="page-container">
-      <!-- <Header /> -->
-      <LangSwitcher />
+    <div id="header-container">
+      <Header />
+    </div>
+    <div id="page-container">
       <slot />
-      <!-- <Footer /> -->
+    </div>
+    <div id="footer-container">
+      <Footer />
     </div>
   </div>
 </template>
@@ -37,16 +40,48 @@ body {
   #__layout {
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
   }
 }
 
 #layoutContainer {
-  height: 100%;
-  background: $background;
+  height: 100vh;
   background-color: $background-color;
-  overflow-y: auto;
-  .page-container {
-    padding: 20px;
+
+  #header-container {
+    top: 0;
+    padding: 20px 20px 0px 20px;
   }
+
+  #page-container {
+    height: calc(100vh - 15%);
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+  }
+
+  #footer-container {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+  }
+}
+
+#page-container::-webkit-scrollbar {
+  width: 7px;
+  border-radius: 10px;
+}
+
+#page-container::-webkit-scrollbar-track {
+  border-radius: 10px;
+  border: 1px solid #caca;
+  background-color: #f1f1f1;
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+}
+
+#page-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, $grey-blue-color, $dark-red-color);
+  border-radius: 10px;
 }
 </style>

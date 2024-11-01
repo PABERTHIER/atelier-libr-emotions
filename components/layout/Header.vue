@@ -25,7 +25,6 @@ const logoContainerClass = computed(() => {
 <style lang="scss" scoped>
 .header-container {
   width: 100%;
-  margin-bottom: 20px;
   background-color: $background-color;
   box-shadow: 0 2px 8px $box-shadow-color;
 
@@ -33,10 +32,9 @@ const logoContainerClass = computed(() => {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px 14px;
 
     .logo-container {
-      padding: 15px;
       order: 0;
     }
 

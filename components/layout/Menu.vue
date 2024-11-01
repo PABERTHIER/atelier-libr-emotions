@@ -196,8 +196,8 @@ const toggleSection = (index: number) => {
     position: relative;
 
     .menu-section {
-      padding: 12px 0;
-  
+      padding: 10px 0;
+
       .menu-title {
         font-size: 20px;
         color: $grey-color;
@@ -221,6 +221,9 @@ const toggleSection = (index: number) => {
         top: 100%;
         left: 3%;
         width: 95%;
+        max-height: 550px;
+        z-index: $menu-z-index;
+        overflow-y: auto;
         background-color: $background-color;
         padding: 20px 0;
         padding-left: 50px;
@@ -261,7 +264,7 @@ const toggleSection = (index: number) => {
     }
 
     .specific-section {
-      padding: 12px 0;
+      padding: 10px 0;
       font-size: 20px;
       color: $grey-color;
       transition: color 0.3s ease, transform 0.2s ease;
@@ -286,7 +289,7 @@ const toggleSection = (index: number) => {
     }
 
     .menu-container {
-      z-index: $mobile-menu-z-index;
+      z-index: $menu-z-index;
       position: fixed;
       top: 0;
       right: 0;
