@@ -1,14 +1,29 @@
 // background-color
-$background: linear-gradient(45deg, #7a9ff0 0%, #a00000 50%, #7a9ff0 100%);
-$background-color: #53647a;
+$background: linear-gradient(45deg, #7A9FF0 0%, #A00000 50%, #7A9FF0 100%);
+$background-color: #FFFFFF;
+$animation-background-color: #53647A;
+$mobile-menu-background-color: #2D3748;
 $primary-color: rgb(245, 245, 247);
 $secondary-color: rgb(1, 42, 53);
 
 
 // colors
-$primary-text-color: black;
-$white-text-color: white;
-$red-text-color: red;
-$dark-red-text-color: darkred;
-$green-text-color: green;
-$grey-text-color: grey;
+$primary-text-color: #000000;
+$white-color: #FFFFFF;
+$red-color: #FF0000;
+$dark-red-color: #8B0000;
+$green-color: #008000;
+$light-grey-color: #CBD5E0;
+$grey-color: #808080;
+$dark-grey-color: #4A5568;
+$light-blue-color: #63B3ED;
+
+
+// border-color
+$mobile-menu-border-color: $dark-grey-color;
+
+
+// z-index
+$welcome-animation-z-index: 9999;
+$mobile-menu-z-index: 50;
+

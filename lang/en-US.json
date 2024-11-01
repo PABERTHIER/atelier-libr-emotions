@@ -20,6 +20,12 @@
         "alt": "Abstract art with vibrant autumn colors and textured layers.",
         "meta": "Explore an abstract art painting featuring vibrant autumn colors and textured layers, evoking feelings of nature and change."
       }
+    },
+    "about": {
+      "tab_name": "About",
+      "meta": {
+        "content": "About"
+      }
     }
   },
   "about": {
@@ -33,6 +39,25 @@
     "painting": "Painting",
     "ceramic": "Ceramic",
     "pottery": "Pottery",
-    "emotions": "Emotions"
+    "emotions": "Emotions",
+    "miscellaneous": "Miscellaneous",
+    "acrylics": "Acrylics",
+    "glazing": "Glazing",
+    "inks": "Inks",
+    "charcoals": "Charcoals",
+    "pastels": "Pastels",
+    "electric_kiln_firing": "Electric kiln firing",
+    "Raku_and_smouldering": "Raku and smouldering",
+    "abstracts": "Abstracts",
+    "faces": "Faces",
+    "nature": "Nature",
+    "nudes": "Nudes",
+    "animals": "Animals",
+    "letting_go": "Letting go",
+    "various_objects": "Various objects",
+    "person": "Person",
+    "vases_and_pots": "Vases and pots",
+    "christmas": "Christmas",
+    "easter": "Easter"
   }
 }

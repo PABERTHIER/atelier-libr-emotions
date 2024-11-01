@@ -20,6 +20,12 @@
         "alt": "Art abstrait avec des couleurs automnales vibrantes et des couches texturées.",
         "meta": "Explorez une peinture d'art abstrait présentant des couleurs automnales vibrantes et des couches texturées, évoquant des sentiments de nature et de changement."
       }
+    },
+    "about": {
+      "tab_name": "À Propos",
+      "meta": {
+        "content": "À propos"
+      }
     }
   },
   "about": {
@@ -33,6 +39,25 @@
     "painting": "Peinture",
     "ceramic": "Céramique",
     "pottery": "Poterie",
-    "emotions": "Émotions"
+    "emotions": "Émotions",
+    "miscellaneous": "Divers",
+    "acrylics": "Acryliques",
+    "glazing": "Glacis",
+    "inks": "Encres",
+    "charcoals": "Fusains",
+    "pastels": "Pastels",
+    "electric_kiln_firing": "Cuisson four électrique",
+    "Raku_and_smouldering": "Raku et enfumage",
+    "abstracts": "Abstraits",
+    "faces": "Visages",
+    "nature": "Nature",
+    "nudes": "Nus",
+    "animals": "Animaux",
+    "letting_go": "Lâcher prise",
+    "various_objects": "Objets divers",
+    "person": "Personnages",
+    "vases_and_pots": "Vases et pots",
+    "christmas": "Noël",
+    "easter": "Pâques"
   }
 }

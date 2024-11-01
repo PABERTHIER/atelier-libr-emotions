@@ -36,8 +36,8 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
-  background-color: $background-color;
+  z-index: $welcome-animation-z-index;
+  background-color: $animation-background-color;
   color: $primary-color;
 
   .welcome {
