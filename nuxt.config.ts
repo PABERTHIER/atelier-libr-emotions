@@ -63,6 +63,14 @@ export default defineNuxtConfig({
   ui: {
     global: true,
   },
+  icon: {
+    customCollections: [
+      {
+        prefix: 'ale-icon',
+        dir: './assets/svg',
+      },
+    ],
+  },
   i18n: {
     defaultLocale: 'fr',
     langDir: 'lang',
