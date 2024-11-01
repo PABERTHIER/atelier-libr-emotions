@@ -224,7 +224,7 @@ const toggleSection = (index: number) => {
         background-color: $background-color;
         padding: 20px 0;
         padding-left: 50px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 8px 16px $box-shadow-color;
         border-top: 2px solid $primary-text-color;
         gap: 40px;
   
