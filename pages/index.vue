@@ -53,7 +53,7 @@ const abstractAutumnPaintingAlt = t('pages.main.abstract_autumn_painting.alt')
     flex-direction: column;
     align-items: center;
     text-align: center;
-    color: $white-text-color;
+    color: $primary-text-color;
 
     .description {
       margin: 10px 0px;
