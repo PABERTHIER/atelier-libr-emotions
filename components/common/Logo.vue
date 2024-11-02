@@ -8,8 +8,8 @@
 <script setup lang="ts">
 const { t } = useI18n()
 
-const logoTitle = t('pages.main.tab_name')
-const logoAlt = t('app.logo_alt')
+const logoTitle = computed(() => t('pages.main.tab_name'))
+const logoAlt = computed(() => t('app.logo_alt'))
 </script>
 
 <style lang="scss" scoped></style>

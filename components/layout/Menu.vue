@@ -58,7 +58,7 @@ import { useScreenSize } from '~/composables/screen-size'
 
 const { t } = useI18n()
 const localePath = useLocalePath()
-const aboutTitle = t('pages.about.tab_name')
+const aboutTitle = computed(() => t('pages.about.tab_name'))
 
 const device = useScreenSize()
 const isMenuOpen = ref(false)
@@ -66,89 +66,89 @@ const isMenuOpen = ref(false)
 // TODO: Finalize the content + update links
 const sections = ref([
   {
-    title: t('miscellaneous.painting'),
+    title: computed(() => t('miscellaneous.painting')),
     showContent: false,
     subSections: [
       {
-        title: t('miscellaneous.acrylics'),
+        title: computed(() => t('miscellaneous.acrylics')),
         links: [
-          { text: t('miscellaneous.abstracts'), url: '/wip' },
-          { text: t('miscellaneous.faces'), url: '/wip' },
-          { text: t('miscellaneous.miscellaneous'), url: '/wip' },
-          { text: t('miscellaneous.nature'), url: '/wip' },
+          { text: computed(() => t('miscellaneous.abstracts')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.faces')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.miscellaneous')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.nature')), url: '/wip' },
         ],
       },
       {
-        title: t('miscellaneous.glazing'),
+        title: computed(() => t('miscellaneous.glazing')),
         links: [
-          { text: t('miscellaneous.abstracts'), url: '/wip' },
-          { text: t('miscellaneous.faces'), url: '/wip' },
-          { text: t('miscellaneous.nudes'), url: '/wip' },
-          { text: t('miscellaneous.nature'), url: '/wip' },
+          { text: computed(() => t('miscellaneous.abstracts')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.faces')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.nudes')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.nature')), url: '/wip' },
         ],
       },
       {
-        title: t('miscellaneous.inks'),
+        title: computed(() => t('miscellaneous.inks')),
         links: [
-          { text: t('miscellaneous.abstracts'), url: '/wip' },
-          { text: t('miscellaneous.faces'), url: '/wip' },
-          { text: t('miscellaneous.nudes'), url: '/wip' },
-          { text: t('miscellaneous.nature'), url: '/wip' },
-          { text: t('miscellaneous.miscellaneous'), url: '/wip' },
+          { text: computed(() => t('miscellaneous.abstracts')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.faces')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.nudes')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.nature')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.miscellaneous')), url: '/wip' },
         ],
       },
       {
-        title: t('miscellaneous.charcoals'),
+        title: computed(() => t('miscellaneous.charcoals')),
         links: [
-          { text: t('miscellaneous.faces'), url: '/wip' },
-          { text: t('miscellaneous.nudes'), url: '/wip' },
+          { text: computed(() => t('miscellaneous.faces')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.nudes')), url: '/wip' },
         ],
       },
       {
-        title: t('miscellaneous.pastels'),
+        title: computed(() => t('miscellaneous.pastels')),
         links: [
-          { text: t('miscellaneous.abstracts'), url: '/wip' },
-          { text: t('miscellaneous.faces'), url: '/wip' },
-          { text: t('miscellaneous.nudes'), url: '/wip' },
-          { text: t('miscellaneous.nature'), url: '/wip' },
+          { text: computed(() => t('miscellaneous.abstracts')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.faces')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.nudes')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.nature')), url: '/wip' },
         ],
       },
     ],
   },
   {
-    title: t('miscellaneous.ceramic'),
+    title: computed(() => t('miscellaneous.ceramic')),
     showContent: false,
     subSections: [
       {
-        title: t('miscellaneous.electric_kiln_firing'),
+        title: computed(() => t('miscellaneous.electric_kiln_firing')),
         links: [
-          { text: t('miscellaneous.animals'), url: '/wip' },
-          { text: t('miscellaneous.letting_go'), url: '/wip' },
-          { text: t('miscellaneous.various_objects'), url: '/wip' },
-          { text: t('miscellaneous.person'), url: '/wip' },
-          { text: t('miscellaneous.vases_and_pots'), url: '/wip' },
-          { text: t('miscellaneous.christmas'), url: '/wip' },
-          { text: t('miscellaneous.easter'), url: '/wip' },
-          { text: t('miscellaneous.nature'), url: '/wip' },
+          { text: computed(() => t('miscellaneous.animals')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.letting_go')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.various_objects')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.person')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.vases_and_pots')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.christmas')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.easter')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.nature')), url: '/wip' },
         ],
       },
       {
-        title: t('miscellaneous.Raku_and_smouldering'),
+        title: computed(() => t('miscellaneous.Raku_and_smouldering')),
         links: [
-          { text: t('miscellaneous.animals'), url: '/wip' },
-          { text: t('miscellaneous.letting_go'), url: '/wip' },
-          { text: t('miscellaneous.various_objects'), url: '/wip' },
-          { text: t('miscellaneous.person'), url: '/wip' },
-          { text: t('miscellaneous.vases_and_pots'), url: '/wip' },
-          { text: t('miscellaneous.christmas'), url: '/wip' },
-          { text: t('miscellaneous.easter'), url: '/wip' },
-          { text: t('miscellaneous.nature'), url: '/wip' },
+          { text: computed(() => t('miscellaneous.animals')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.letting_go')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.various_objects')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.person')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.vases_and_pots')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.christmas')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.easter')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.nature')), url: '/wip' },
         ],
       },
     ],
   },
   {
-    title: t('miscellaneous.miscellaneous'),
+    title: computed(() => t('miscellaneous.miscellaneous')),
     showContent: false,
     subSections: [
       {

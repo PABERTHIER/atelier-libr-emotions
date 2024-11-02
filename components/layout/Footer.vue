@@ -10,7 +10,7 @@
 <script setup lang="ts">
 const { t } = useI18n()
 
-const authorName = t('about.author')
+const authorName = computed(() => t('about.author'))
 
 </script>
 
