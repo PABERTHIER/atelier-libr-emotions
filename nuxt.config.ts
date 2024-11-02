@@ -36,7 +36,7 @@ export default defineNuxtConfig({
     },
   ],
   image: {
-    format: ['webp', 'jpg', 'jpeg', 'png'],
+    format: ['webp', 'jpg', 'jpeg', 'png']
   },
   plugins: [],
   build: {
@@ -45,7 +45,7 @@ export default defineNuxtConfig({
   typescript: {
     strict: true,
   },
-  modules: ['@nuxt/image', '@nuxtjs/i18n', '@nuxtjs/seo', '@nuxt/ui'],
+  modules: ['@nuxt/image', '@nuxt/image-edge', '@nuxtjs/i18n', '@nuxtjs/seo', '@nuxt/ui'],
   imports: {
     dirs: [],
   },
