@@ -45,7 +45,7 @@ export default defineNuxtConfig({
   typescript: {
     strict: true,
   },
-  modules: ['@nuxt/image', '@nuxt/image-edge', '@nuxtjs/i18n', '@nuxtjs/seo', '@nuxt/ui'],
+  modules: ['@nuxt/image', '@nuxtjs/i18n', '@nuxtjs/seo', '@nuxt/ui'],
   imports: {
     dirs: [],
   },
