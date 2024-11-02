@@ -1,8 +1,8 @@
 <template>
   <div class="logo">
     <!-- TODO: Replace by the logo  -->
-    <!-- <NuxtImg src="paintings/celestial-collision.jpg" :title="logoTitle" :alt="logoAlt" sizes="sm:20px, md:30px, lg:40px" densities="x1 x2" /> -->
-    <Image src="/paintings/celestial-collision.jpg" :title="logoTitle" :alt="logoAlt" sizes="sm:20px, md:30px, lg:40px" />
+    <NuxtImg src="paintings/celestial-collision.jpg" :title="logoTitle" :alt="logoAlt" sizes="sm:20px, md:30px, lg:40px" />
+    <!-- <Image src="/paintings/celestial-collision.jpg" :title="logoTitle" :alt="logoAlt" sizes="sm:20px, md:30px, lg:40px" /> -->
   </div>
 </template>
 
