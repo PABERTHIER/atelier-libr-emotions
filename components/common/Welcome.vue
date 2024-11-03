@@ -3,7 +3,7 @@
     <div class="welcome">
       <div class="logo">
         <!-- TODO: Replace by the logo  -->
-        <NuxtImg src="paintings/celestial-collision.jpg" :alt="appName" sizes="sm:20px, md:30px, lg:40px" />
+        <NuxtImg src="paintings/celestial-collision.jpg" :alt="appName" sizes="25" />
       </div>
       <div class="text">
         <TextTyping :text="appName" />
