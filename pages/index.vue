@@ -1,7 +1,7 @@
 <template>
   <div class="homepage">
     <div class="abstract-autumn-container">
-      <Image  src="/paintings/abstract-autumn.jpg" :title="abstractAutumnPaintingTitle" :alt="abstractAutumnPaintingAlt" sizes="sm:200px, md:350px, lg:500px" />
+      <Image src="/paintings/abstract-autumn.jpg" sizes="sm:200px, md:350px, lg:500px" maxHeight="500px" :title="abstractAutumnPaintingTitle" :alt="abstractAutumnPaintingAlt" />
       <div class="description" v-t="'pages.main.abstract_autumn_painting.description'" />
       <div v-t="'pages.main.abstract_autumn_painting.meta'" />
     </div>
@@ -15,26 +15,26 @@ const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
 const ogImageEndPath = 'paintings/celestial-collision.jpg'
 
 useHead({
-  title: t('pages.main.tab_name'),
+  title: computed(() => t('pages.main.tab_name')),
   meta: [
-    { name: 'description', content: t('app.meta.description') },
+    { name: 'description', content: computed(() => t('app.meta.description')) },
   ],
 })
 
 useSeoMeta({
   ogTitle: '%s %separator %siteName',
-  description: t('app.meta.description'),
-  ogDescription: t('app.meta.description'),
+  description: computed(() => t('app.meta.description')),
+  ogDescription: computed(() => t('app.meta.description')),
   ogImage: `${baseUrl.value}/${ogImageEndPath}`,
   ogImageSecureUrl: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageAlt: t('app.meta.description'),
+  ogImageAlt: computed(() => t('app.meta.description')),
   ogImageType: 'image/jpeg',
   ogImageWidth: '1200',
   ogImageHeight: '600',
   twitterTitle: '%s %separator %siteName',
-  twitterDescription: t('app.meta.description'),
+  twitterDescription: computed(() => t('app.meta.description')),
   twitterImage: `${baseUrl.value}/${ogImageEndPath}`,
-  twitterImageAlt: t('app.meta.description'),
+  twitterImageAlt: computed(() => t('app.meta.description')),
   twitterImageType: 'image/jpeg',
   appleMobileWebAppTitle: '%s %separator %siteName',
   msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`
@@ -42,8 +42,8 @@ useSeoMeta({
 
 defineOgImageComponent('NuxtSeo', { theme: '#ff0000', colorMode: 'dark' })
 
-const abstractAutumnPaintingTitle = t('pages.main.abstract_autumn_painting.title')
-const abstractAutumnPaintingAlt = t('pages.main.abstract_autumn_painting.alt')
+const abstractAutumnPaintingTitle = computed(() => t('pages.main.abstract_autumn_painting.title'))
+const abstractAutumnPaintingAlt = computed(() => t('pages.main.abstract_autumn_painting.alt'))
 </script>
 
 <style lang="scss" scoped>
@@ -53,7 +53,7 @@ const abstractAutumnPaintingAlt = t('pages.main.abstract_autumn_painting.alt')
     flex-direction: column;
     align-items: center;
     text-align: center;
-    color: $white-text-color;
+    color: $primary-text-color;
 
     .description {
       margin: 10px 0px;

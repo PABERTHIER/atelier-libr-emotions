@@ -19,7 +19,7 @@ const availableLocaleAlternates = computed(() => {
 useHead({
   titleTemplate: '%s %separator %siteName',
   meta: [
-    { name: 'description', content: t('app.meta.description') }
+    { name: 'description', content: computed(() => t('app.meta.description')) }
   ],
   link: [
     { rel: 'canonical', href: `${baseUrl.value}/${locale.value}` },
@@ -37,15 +37,15 @@ useHead({
 })
 
 useSeoMeta({
-  title: t('app.name'),
-  ogTitle: t('app.name'),
-  ogSiteName: t('app.name'),
-  applicationName: t('app.name'),
-  description: t('app.meta.description'),
-  ogDescription: t('app.meta.description'),
+  title: computed(() => t('app.name')),
+  ogTitle: computed(() => t('app.name')),
+  ogSiteName: computed(() => t('app.name')),
+  applicationName: computed(() => t('app.name')),
+  description: computed(() => t('app.meta.description')),
+  ogDescription: computed(() => t('app.meta.description')),
   ogImage: `${baseUrl.value}/${ogImageEndPath}`,
   ogImageSecureUrl: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageAlt: t('app.meta.description'),
+  ogImageAlt: computed(() => t('app.meta.description')),
   ogImageType: 'image/jpeg',
   ogImageWidth: '1200',
   ogImageHeight: '600',
@@ -54,26 +54,34 @@ useSeoMeta({
   ogLocale: locale.value,
   ogLocaleAlternate: availableLocaleAlternates.value,
   twitterCard: 'summary_large_image',
-  twitterTitle: t('app.name'),
-  twitterDescription: t('app.meta.description'),
+  twitterTitle: computed(() => t('app.name')),
+  twitterDescription: computed(() => t('app.meta.description')),
   twitterImage: `${baseUrl.value}/${ogImageEndPath}`,
-  twitterImageAlt: t('app.meta.description'),
+  twitterImageAlt: computed(() => t('app.meta.description')),
   twitterImageType: 'image/jpeg',
-  author: t('about.author'),
-  creator: t('about.author'),
-  articleAuthor: [t('about.author')],
-  articleSection: t('miscellaneous.art'),
-  articleTag: [t('miscellaneous.art'), t('miscellaneous.painting'), t('miscellaneous.ceramic'), t('miscellaneous.pottery'), t('miscellaneous.emotions'), t('about.author'), t('app.name'),],
-  profileFirstName: t('about.first_name'),
-  profileLastName: t('about.last_name'),
-  profileUsername: t('about.username'),
+  author: computed(() => t('about.author')),
+  creator: computed(() => t('about.author')),
+  articleAuthor: computed(() => [computed(() => t('about.author')).value]),
+  articleSection: computed(() => t('miscellaneous.art')),
+  articleTag: computed(() => [
+    computed(() => t('miscellaneous.art')).value,
+    computed(() => t('miscellaneous.painting')).value,
+    computed(() => t('miscellaneous.ceramic')).value,
+    computed(() => t('miscellaneous.pottery')).value,
+    computed(() => t('miscellaneous.emotions')).value,
+    computed(() => t('about.author')).value,
+    computed(() => t('app.name')).value
+  ]),
+  profileFirstName: computed(() => t('about.first_name')),
+  profileLastName: computed(() => t('about.last_name')),
+  profileUsername: computed(() => t('about.username')),
   profileGender: 'female',
   publisher: 'https://vercel.com/',
   generator: 'https://nuxt.com/',
   mobileWebAppCapable: 'yes',
   appleMobileWebAppCapable: 'yes',
   appleMobileWebAppStatusBarStyle: 'default',
-  appleMobileWebAppTitle: t('app.name'),
+  appleMobileWebAppTitle: computed(() => t('app.name')),
   msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
   msapplicationTileColor: '#ff0000'
 })
