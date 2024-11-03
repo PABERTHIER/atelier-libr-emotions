@@ -36,7 +36,8 @@ export default defineNuxtConfig({
     },
   ],
   image: {
-    format: ['webp', 'jpg', 'jpeg', 'png']
+    format: ['webp', 'jpg', 'jpeg', 'png'],
+    provider: 'ipx'
   },
   plugins: [],
   build: {
