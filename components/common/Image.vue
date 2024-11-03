@@ -1,7 +1,7 @@
 <template>
   <div class="image">
     <NuxtLink :to="link">
-      <NuxtImg :src="src" :title="title" :alt="alt" :sizes="sizes" densities="x1 x2" loading="lazy" placeholder />
+      <NuxtImg :src="src" :sizes="sizes" :title="title" :alt="alt" densities="x1 x2" loading="lazy" placeholder :style="{ maxHeight: maxHeight }" />
     </NuxtLink>
   </div>
 </template>
@@ -12,6 +12,15 @@ const props = defineProps({
     type: String,
     required: true
   },
+  sizes: {
+    type: String,
+    required: true
+  },
+  maxHeight: {
+    type: String,
+    required: false,
+    default: '200px'
+  },
   title: {
     type: String,
     required: false,
@@ -21,10 +30,6 @@ const props = defineProps({
     type: String,
     required: false,
     default: ''
-  },
-  sizes: {
-    type: String,
-    required: true
   }
 })
 

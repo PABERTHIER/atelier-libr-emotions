@@ -36,5 +36,12 @@ $footer-z-index: 30;
 
 
 // height
-$header-height: 60px;
+$header-height-desktop: 70px;
+$header-height-mobile: 45px;
 $footer-height: 44px;
+
+
+// breakpoints
+$sm: 640px;
+$md: 768px;
+$lg: 1024px;

@@ -297,7 +297,7 @@ const toggleSection = (index: number) => {
       left: 0;
       padding: 15px;
       background-color: $mobile-menu-background-color;
-      overflow-y: scroll;
+      overflow-y: auto;
 
       .close-icon-container {
         position: absolute;

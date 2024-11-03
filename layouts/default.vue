@@ -50,12 +50,13 @@ body {
   background-color: $background-color;
 
   #header-container {
+    max-height: calc($header-height-desktop + 20px);
     top: 0;
     padding: 20px 20px 0px 20px;
   }
 
   #page-container {
-    height: calc(100vh - 15%);
+    height: calc(100vh - $header-height-desktop - $footer-height - 20px);
     flex: 1;
     padding: 20px;
     overflow-y: auto;
@@ -63,8 +64,19 @@ body {
 
   #footer-container {
     width: 100%;
+    height: $footer-height;
     position: fixed;
     bottom: 0;
+  }
+
+  @media (max-width: $sm) {
+    #header-container {
+      max-height: calc($header-height-mobile + 20px);
+    }
+  
+    #page-container {
+      height: calc(100vh - $header-height-mobile - $footer-height - 20px);
+    }
   }
 }
 

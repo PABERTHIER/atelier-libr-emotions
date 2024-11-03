@@ -12,4 +12,8 @@ const logoTitle = computed(() => t('pages.main.tab_name'))
 const logoAlt = computed(() => t('app.logo_alt'))
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.logo img {
+  max-height: 50px;
+}
+</style>

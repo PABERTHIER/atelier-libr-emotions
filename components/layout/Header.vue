@@ -1,12 +1,14 @@
 <template>
   <div class="header-container">
     <div class="header">
-      <div :class="logoContainerClass">
-        <NuxtLink :to="localePath('/')">
-          <Logo />
-        </NuxtLink>
-      </div>
-      <Menu />
+      <ClientOnly>
+        <div :class="logoContainerClass">
+          <NuxtLink :to="localePath('/')">
+            <Logo />
+          </NuxtLink>
+        </div>
+        <Menu />
+      </ClientOnly>
     </div>
   </div>
 </template>

@@ -1,9 +1,8 @@
 <template>
   <div class="welcome-container" :class="{'hidden': !show}">
     <div class="welcome">
-      <div class="logo">
-        <!-- TODO: Replace by the logo  -->
-        <NuxtImg src="paintings/celestial-collision.jpg" :alt="appName" sizes="25" />
+      <div class="logo-container">
+        <Logo />
       </div>
       <div class="text">
         <TextTyping :text="appName" />
@@ -45,7 +44,7 @@ onMounted(() => {
     justify-content: center;
     align-items: center;
 
-    .logo {
+    .logo-container {
       margin-right: 15px;
     }
   
