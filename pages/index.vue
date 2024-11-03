@@ -1,7 +1,9 @@
 <template>
   <div class="homepage">
     <div class="abstract-autumn-container">
-      <Image  src="/paintings/abstract-autumn.jpg" :title="abstractAutumnPaintingTitle" :alt="abstractAutumnPaintingAlt" sizes="sm:200px, md:350px, lg:500px" />
+      <!-- <Image src="/paintings/abstract-autumn.jpg" :title="abstractAutumnPaintingTitle" :alt="abstractAutumnPaintingAlt" sizes="sm:200px, md:350px, lg:500px" /> -->
+      <Image src="/paintings/abstract-autumn.jpg" :title="abstractAutumnPaintingTitle" :alt="abstractAutumnPaintingAlt" sizes="sm:20px, md:35px, lg:50px" />
+      <NuxtImg src="paintings/celestial-collision.jpg" :title="'logo'" :alt="'logo'" sizes="sm:20px, md:30px, lg:40px" />
       <div class="description" v-t="'pages.main.abstract_autumn_painting.description'" />
       <div v-t="'pages.main.abstract_autumn_painting.meta'" />
     </div>
