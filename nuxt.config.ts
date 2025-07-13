@@ -61,9 +61,7 @@ export default defineNuxtConfig({
       },
     },
   },
-  ui: {
-    global: true,
-  },
+  ui: {},
   icon: {
     customCollections: [
       {
@@ -74,13 +72,16 @@ export default defineNuxtConfig({
   },
   i18n: {
     defaultLocale: 'fr',
-    langDir: 'lang',
+    langDir: 'locales',
     lazy: true,
     strategy: 'prefix',
     locales: [
       { code: 'en', language: 'en-US', name: 'English', file: 'en-US.json' },
       { code: 'fr', language: 'fr-FR', name: 'Français', file: 'fr-FR.json' },
     ],
+    bundle: {
+      optimizeTranslationDirective: false,
+    }
   },
   vite: {
     css: {
