@@ -2,12 +2,14 @@
   <div class="header-container">
     <div class="header">
       <ClientOnly>
-        <div :class="logoContainerClass">
-          <NuxtLink :to="localePath('/')">
-            <Logo />
-          </NuxtLink>
+        <div class="menu-container">
+          <div :class="logoContainerClass">
+            <NuxtLink :to="localePath('/')">
+              <Logo />
+            </NuxtLink>
+          </div>
+          <Menu />
         </div>
-        <Menu />
       </ClientOnly>
     </div>
   </div>
@@ -31,17 +33,20 @@ const logoContainerClass = computed(() => {
   box-shadow: 0 2px 8px $box-shadow-color;
 
   .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 10px 14px;
 
-    .logo-container {
-      order: 0;
-    }
+    .menu-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
-    .logo-container-mobile {
-      order: 2;
+      .logo-container {
+        order: 0;
+      }
+  
+      .logo-container-mobile {
+        order: 2;
+      }
     }
   }
 }
