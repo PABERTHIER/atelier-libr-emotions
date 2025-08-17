@@ -17,7 +17,8 @@
 @use '~/styles/default.scss' as *;
 
 html {
-  font-family: 'Nunito', 'Inter', 'Manrope', 'Poppins', 'Sora', Arial, sans-serif;
+  font-family:
+    'Nunito', 'Inter', 'Manrope', 'Poppins', 'Sora', Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -72,7 +73,7 @@ body {
     #header-container {
       max-height: $header-height-mobile;
     }
-  
+
     #page-container {
       height: calc(100vh - $header-height-mobile - $footer-height - 20px);
     }

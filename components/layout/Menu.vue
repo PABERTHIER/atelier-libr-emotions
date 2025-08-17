@@ -1,50 +1,95 @@
 <template>
   <div class="menu">
     <div v-show="!device.isMobile.value" class="menu-desktop">
-      <div v-for="(section, index) in sections" :key="index" @mouseover="showContent(index)" @mouseleave="hideContent(index)" class="menu-section">
-        <div class="menu-title" :class="{ 'menu-selected': section.showContent }">
+      <div
+        v-for="(section, index) in sections"
+        :key="index"
+        class="menu-section"
+        @mouseover="showContent(index)"
+        @mouseleave="hideContent(index)">
+        <div
+          class="menu-title"
+          :class="{ 'menu-selected': section.showContent }">
           {{ section.title }}
         </div>
         <div v-if="section.showContent" class="menu-content">
-          <div v-for="(subSection, subIndex) in section.subSections" :key="subIndex" class="menu-column">
+          <div
+            v-for="(subSection, subIndex) in section.subSections"
+            :key="subIndex"
+            class="menu-column">
             <div class="sub-section-title">{{ subSection.title }}</div>
             <ul class="links-container">
-              <li v-for="(link, linkIndex) in subSection.links" :key="linkIndex" class="links">
-                <NuxtLink :to="localePath(link.url)" @click="hideContent(index)" class="link">{{ link.text }}</NuxtLink>
+              <li
+                v-for="(link, linkIndex) in subSection.links"
+                :key="linkIndex"
+                class="links">
+                <NuxtLink
+                  :to="localePath(link.url)"
+                  class="link"
+                  @click="hideContent(index)">
+                  {{ link.text }}
+                </NuxtLink>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <NuxtLink :to="localePath('about')" class="specific-section">{{ aboutTitle }}</NuxtLink>
+      <NuxtLink :to="localePath('about')" class="specific-section">
+        {{ aboutTitle }}
+      </NuxtLink>
     </div>
     <div v-show="device.isMobile.value" class="menu-mobile">
       <div class="menu-icon-container">
-        <Icon name="ale-icon:menu-icon" color="black" size="25px" mode="svg" @click="toggleMobileMenu" class="menu-icon" />
+        <Icon
+          name="ale-icon:menu-icon"
+          color="black"
+          size="25px"
+          mode="svg"
+          class="menu-icon"
+          @click="toggleMobileMenu" />
       </div>
       <Transition name="menu-opening-mobile">
         <div v-if="isMenuOpen" class="menu-container">
-          <div @click="toggleMobileMenu" class="close-icon-container">
+          <div class="close-icon-container" @click="toggleMobileMenu">
             <Icon name="ale-icon:close" color="white" size="25px" mode="svg" />
           </div>
           <div class="sections-container">
-            <div v-for="(section, index) in sections" :key="index" class="sections">
-              <div @click="toggleSection(index)" class="section-title" :class="{ 'menu-selected': section.showContent }">
+            <div
+              v-for="(section, index) in sections"
+              :key="index"
+              class="sections">
+              <div
+                class="section-title"
+                :class="{ 'menu-selected': section.showContent }"
+                @click="toggleSection(index)">
                 {{ section.title }}
               </div>
               <div v-if="section.showContent" class="sub-section-container">
-                <div v-for="(subSection, subIndex) in section.subSections" :key="subIndex" class="sub-sections">
+                <div
+                  v-for="(subSection, subIndex) in section.subSections"
+                  :key="subIndex"
+                  class="sub-sections">
                   <div class="sub-section-title">{{ subSection.title }}</div>
                   <ul class="links-container">
-                    <li v-for="(link, linkIndex) in subSection.links" :key="linkIndex" class="links">
-                      <NuxtLink :to="localePath(link.url)" @click="toggleMobileMenu" class="link">{{ link.text }}</NuxtLink>
+                    <li
+                      v-for="(link, linkIndex) in subSection.links"
+                      :key="linkIndex"
+                      class="links">
+                      <NuxtLink
+                        :to="localePath(link.url)"
+                        class="link"
+                        @click="toggleMobileMenu">
+                        {{ link.text }}
+                      </NuxtLink>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
             <div class="specific-section">
-              <NuxtLink :to="localePath('about')" @click="toggleMobileMenu">{{ aboutTitle }}</NuxtLink>
+              <NuxtLink :to="localePath('about')" @click="toggleMobileMenu">
+                {{ aboutTitle }}
+              </NuxtLink>
             </div>
           </div>
         </div>
@@ -74,7 +119,10 @@ const sections = ref([
         links: [
           { text: computed(() => t('miscellaneous.abstracts')), url: '/wip' },
           { text: computed(() => t('miscellaneous.faces')), url: '/wip' },
-          { text: computed(() => t('miscellaneous.miscellaneous')), url: '/wip' },
+          {
+            text: computed(() => t('miscellaneous.miscellaneous')),
+            url: '/wip',
+          },
           { text: computed(() => t('miscellaneous.nature')), url: '/wip' },
         ],
       },
@@ -94,7 +142,10 @@ const sections = ref([
           { text: computed(() => t('miscellaneous.faces')), url: '/wip' },
           { text: computed(() => t('miscellaneous.nudes')), url: '/wip' },
           { text: computed(() => t('miscellaneous.nature')), url: '/wip' },
-          { text: computed(() => t('miscellaneous.miscellaneous')), url: '/wip' },
+          {
+            text: computed(() => t('miscellaneous.miscellaneous')),
+            url: '/wip',
+          },
         ],
       },
       {
@@ -124,9 +175,15 @@ const sections = ref([
         links: [
           { text: computed(() => t('miscellaneous.animals')), url: '/wip' },
           { text: computed(() => t('miscellaneous.letting_go')), url: '/wip' },
-          { text: computed(() => t('miscellaneous.various_objects')), url: '/wip' },
+          {
+            text: computed(() => t('miscellaneous.various_objects')),
+            url: '/wip',
+          },
           { text: computed(() => t('miscellaneous.person')), url: '/wip' },
-          { text: computed(() => t('miscellaneous.vases_and_pots')), url: '/wip' },
+          {
+            text: computed(() => t('miscellaneous.vases_and_pots')),
+            url: '/wip',
+          },
           { text: computed(() => t('miscellaneous.christmas')), url: '/wip' },
           { text: computed(() => t('miscellaneous.easter')), url: '/wip' },
           { text: computed(() => t('miscellaneous.nature')), url: '/wip' },
@@ -137,9 +194,15 @@ const sections = ref([
         links: [
           { text: computed(() => t('miscellaneous.animals')), url: '/wip' },
           { text: computed(() => t('miscellaneous.letting_go')), url: '/wip' },
-          { text: computed(() => t('miscellaneous.various_objects')), url: '/wip' },
+          {
+            text: computed(() => t('miscellaneous.various_objects')),
+            url: '/wip',
+          },
           { text: computed(() => t('miscellaneous.person')), url: '/wip' },
-          { text: computed(() => t('miscellaneous.vases_and_pots')), url: '/wip' },
+          {
+            text: computed(() => t('miscellaneous.vases_and_pots')),
+            url: '/wip',
+          },
           { text: computed(() => t('miscellaneous.christmas')), url: '/wip' },
           { text: computed(() => t('miscellaneous.easter')), url: '/wip' },
           { text: computed(() => t('miscellaneous.nature')), url: '/wip' },
@@ -155,7 +218,7 @@ const sections = ref([
         title: 'TBD 1',
         links: [
           { text: 'WIP', url: '/wip' },
-          { text: 'WIP', url: '/wip' }
+          { text: 'WIP', url: '/wip' },
         ],
       },
       {
@@ -166,7 +229,7 @@ const sections = ref([
         ],
       },
     ],
-  }
+  },
 ])
 
 const showContent = (index: number) => {
@@ -201,19 +264,21 @@ const toggleSection = (index: number) => {
       .menu-title {
         font-size: 20px;
         color: $grey-color;
-        transition: color 0.3s ease, transform 0.2s ease;
-  
+        transition:
+          color 0.3s ease,
+          transform 0.2s ease;
+
         &:hover {
           color: $primary-text-color;
           transform: scale(1.05);
         }
       }
-  
+
       .menu-selected {
         color: $primary-text-color;
         font-weight: bold;
       }
-  
+
       .menu-content {
         display: flex;
         flex-wrap: wrap;
@@ -230,12 +295,12 @@ const toggleSection = (index: number) => {
         box-shadow: 0 8px 16px $box-shadow-color;
         border-top: 2px solid $primary-text-color;
         gap: 40px;
-  
+
         .menu-column {
           min-width: 250px;
           max-width: 300px;
           padding-top: 15px;
-  
+
           .sub-section-title {
             margin-bottom: 12px;
             font-weight: bold;
@@ -243,16 +308,16 @@ const toggleSection = (index: number) => {
             text-transform: uppercase;
             letter-spacing: 1px;
           }
-  
+
           .links-container {
             .links {
               color: $grey-color;
-  
+
               .link {
                 display: block;
                 margin-bottom: 8px;
                 transition: color 0.3s ease;
-  
+
                 &:hover {
                   color: $primary-text-color;
                 }
@@ -267,7 +332,9 @@ const toggleSection = (index: number) => {
       padding: 10px 0;
       font-size: 20px;
       color: $grey-color;
-      transition: color 0.3s ease, transform 0.2s ease;
+      transition:
+        color 0.3s ease,
+        transform 0.2s ease;
       cursor: pointer;
 
       &:hover {
@@ -353,7 +420,9 @@ const toggleSection = (index: number) => {
                     border-radius: 4px;
                     color: $light-grey-color;
                     font-size: 15px;
-                    transition: background-color 0.3s ease, color 0.3s ease;
+                    transition:
+                      background-color 0.3s ease,
+                      color 0.3s ease;
 
                     &:hover {
                       background-color: $dark-grey-color;
@@ -388,11 +457,15 @@ const toggleSection = (index: number) => {
     }
 
     .menu-opening-mobile-enter-active {
-      transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+      transition:
+        transform 0.3s ease-out,
+        opacity 0.3s ease-out;
     }
 
     .menu-opening-mobile-leave-active {
-      transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+      transition:
+        transform 0.3s ease-in,
+        opacity 0.3s ease-in;
     }
 
     .menu-opening-mobile-enter-from,

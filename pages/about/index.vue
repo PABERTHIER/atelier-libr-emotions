@@ -1,6 +1,9 @@
 <template>
   <div class="about">
-    <NuxtLink to="https://www.facebook.com/people/Atelier-LibrEmotions/100063484446329/">{{ 'Facebook' }}</NuxtLink>
+    <NuxtLink
+      to="https://www.facebook.com/people/Atelier-LibrEmotions/100063484446329/">
+      {{ 'Facebook' }}
+    </NuxtLink>
   </div>
 </template>
 
@@ -8,9 +11,8 @@
 const { t } = useI18n()
 
 useHead({
-  title: computed(() => t('pages.about.tab_name'))
+  title: computed(() => t('pages.about.tab_name')),
 })
-
 </script>
 
 <style lang="scss" scoped>

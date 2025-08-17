@@ -1,7 +1,12 @@
 <template>
   <div class="logo">
     <!-- TODO: Replace by the logo  -->
-    <NuxtImg src="paintings/celestial-collision.jpg" :title="logoTitle" :alt="logoAlt" sizes="xs:20px, sm:30px, md:35px, lg:40px" densities="x1 x2" />
+    <NuxtImg
+      src="paintings/celestial-collision.jpg"
+      :title="logoTitle"
+      :alt="logoAlt"
+      sizes="xs:20px, sm:30px, md:35px, lg:40px"
+      densities="x1 x2" />
   </div>
 </template>
 
@@ -13,7 +18,6 @@ const logoAlt = computed(() => t('app.logo_alt'))
 </script>
 
 <style lang="scss" scoped>
-
 .logo {
   max-height: 47px;
 }
@@ -44,11 +48,11 @@ const logoAlt = computed(() => t('app.logo_alt'))
 
 @media (max-width: $sm) {
   .logo {
-      max-height: 25px;
-    }
+    max-height: 25px;
+  }
 
   .logo img {
-      max-height: 25px;
-    }
+    max-height: 25px;
+  }
 }
 </style>

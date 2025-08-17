@@ -1,8 +1,15 @@
 <template>
   <div class="homepage">
     <div class="abstract-autumn-container">
-      <Image src="/paintings/abstract-autumn.jpg" sizes="sm:200px, md:350px, lg:500px" maxHeight="500px" :title="abstractAutumnPaintingTitle" :alt="abstractAutumnPaintingAlt" />
-      <div class="description" v-t="'pages.main.abstract_autumn_painting.description'" />
+      <Image
+        src="/paintings/abstract-autumn.jpg"
+        sizes="sm:200px, md:350px, lg:500px"
+        max-height="500px"
+        :title="abstractAutumnPaintingTitle"
+        :alt="abstractAutumnPaintingAlt" />
+      <div
+        v-t="'pages.main.abstract_autumn_painting.description'"
+        class="description" />
       <div v-t="'pages.main.abstract_autumn_painting.meta'" />
     </div>
   </div>
@@ -37,13 +44,17 @@ useSeoMeta({
   twitterImageAlt: computed(() => t('app.meta.description')),
   twitterImageType: 'image/jpeg',
   appleMobileWebAppTitle: '%s %separator %siteName',
-  msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`
+  msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
 })
 
 defineOgImageComponent('NuxtSeo', { theme: '#ff0000', colorMode: 'dark' })
 
-const abstractAutumnPaintingTitle = computed(() => t('pages.main.abstract_autumn_painting.title'))
-const abstractAutumnPaintingAlt = computed(() => t('pages.main.abstract_autumn_painting.alt'))
+const abstractAutumnPaintingTitle = computed(() =>
+  t('pages.main.abstract_autumn_painting.title')
+)
+const abstractAutumnPaintingAlt = computed(() =>
+  t('pages.main.abstract_autumn_painting.alt')
+)
 </script>
 
 <style lang="scss" scoped>

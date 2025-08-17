@@ -43,7 +43,7 @@ const logoContainerClass = computed(() => {
       .logo-container {
         order: 0;
       }
-  
+
       .logo-container-mobile {
         order: 2;
       }
