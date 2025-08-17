@@ -46,7 +46,14 @@ export default defineNuxtConfig({
   typescript: {
     strict: true,
   },
-  modules: ['@nuxt/image', '@nuxtjs/i18n', '@nuxtjs/seo', '@nuxt/ui', '@nuxt/fonts'],
+  modules: [
+    '@nuxt/image',
+    '@nuxtjs/i18n',
+    '@nuxtjs/seo',
+    '@nuxt/ui',
+    '@nuxt/fonts',
+    '@nuxt/eslint',
+  ],
   imports: {
     dirs: [],
   },
