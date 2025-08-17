@@ -1,5 +1,8 @@
 # atelier-libr-emotions
 
+[![Build][build-badge]][build-link]
+[![Release][release-badge]][release-link]
+
 A static website to present an artist and what she does.
 
 Here it is: [atelierlibremotions](https://atelierlibremotions.vercel.app/)
@@ -59,3 +62,9 @@ yarn preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+[build-badge]: https://github.com/PABERTHIER/atelier-libr-emotions/actions/workflows/ci.yml/badge.svg
+[build-link]: https://github.com/PABERTHIER/atelier-libr-emotions/actions/workflows/ci.yml
+
+[release-badge]: https://deploy-badge.vercel.app/?url=https://atelierlibremotions.vercel.app/&name=website
+[release-link]: https://atelierlibremotions.vercel.app
