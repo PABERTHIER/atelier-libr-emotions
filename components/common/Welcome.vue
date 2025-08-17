@@ -1,5 +1,5 @@
 <template>
-  <div class="welcome-container" :class="{'hidden': !show}">
+  <div class="welcome-container" :class="{ hidden: !show }">
     <div class="welcome">
       <div class="logo-container">
         <Logo />
@@ -16,7 +16,7 @@ const { t } = useI18n()
 const appName = t('app.name')
 
 const show = ref(true)
-function start() : void {
+function start(): void {
   setTimeout(() => {
     show.value = false
   }, 2000)
@@ -47,7 +47,7 @@ onMounted(() => {
     .logo-container {
       margin-right: 15px;
     }
-  
+
     .text {
       font-size: 30px;
     }
@@ -57,6 +57,8 @@ onMounted(() => {
 .hidden {
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s 0.2s, opacity 0.2s linear;
+  transition:
+    visibility 0s 0.2s,
+    opacity 0.2s linear;
 }
 </style>

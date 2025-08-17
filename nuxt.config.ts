@@ -10,12 +10,18 @@ export default defineNuxtConfig({
       title: "Atelier Libr'Émotions",
       viewport: 'width=device-width, initial-scale=1',
       meta: [
-        { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
+        {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1, viewport-fit=cover',
+        },
         { name: 'application-name', content: "Atelier Libr'Émotions" },
         { name: 'apple-mobile-web-app-capable', content: 'yes' },
         { name: 'mobile-web-app-capable', content: 'yes' },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
-        { name: 'apple-mobile-web-app-title', content: "Atelier Libr'Émotions" },
+        {
+          name: 'apple-mobile-web-app-title',
+          content: "Atelier Libr'Émotions",
+        },
       ],
       templateParams: {
         separator: '-',
@@ -37,7 +43,7 @@ export default defineNuxtConfig({
   ],
   image: {
     format: ['webp', 'jpg', 'jpeg', 'png'],
-    provider: 'ipx'
+    provider: 'ipx',
   },
   plugins: [],
   build: {
@@ -88,7 +94,7 @@ export default defineNuxtConfig({
     ],
     bundle: {
       optimizeTranslationDirective: false,
-    }
+    },
   },
   vite: {
     css: {

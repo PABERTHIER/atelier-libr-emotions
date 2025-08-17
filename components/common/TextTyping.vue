@@ -1,6 +1,8 @@
 <template>
   <div class="text-typing">
-    <div v-for="(char, index) in chars" :key="index" v-html="char" class="char" />
+    <div v-for="(char, index) in chars" :key="index" class="char">
+      {{ char }}
+    </div>
   </div>
 </template>
 
@@ -8,13 +10,13 @@
 const props = defineProps({
   text: {
     type: String,
-    required: true
+    required: true,
   },
   waitingTime: {
     type: Number,
     required: false,
-    default: 50
-  }
+    default: 50,
+  },
 })
 
 const chars = ref<string[]>([])
@@ -24,10 +26,10 @@ onMounted(() => {
   start()
 })
 
-function start() : void {
+function start(): void {
   setTimeout(() => {
     if (props.text[currentIndex] === ' ') {
-      chars.value.push('&nbsp;')
+      chars.value.push('\u00A0')
     } else {
       chars.value.push(props.text[currentIndex]!)
     }
@@ -37,8 +39,7 @@ function start() : void {
     if (currentIndex < props.text.length) {
       start()
     }
-
-   }, props.waitingTime)
+  }, props.waitingTime)
 }
 </script>
 
