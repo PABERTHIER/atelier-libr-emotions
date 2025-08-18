@@ -45,13 +45,19 @@
           color="black"
           size="25px"
           mode="svg"
+          :aria-label="openMenuLabel"
           class="menu-icon"
           @click="toggleMobileMenu" />
       </div>
       <Transition name="menu-opening-mobile">
         <div v-if="isMenuOpen" class="menu-container">
           <div class="close-icon-container" @click="toggleMobileMenu">
-            <Icon name="ale-icon:close" color="white" size="25px" mode="svg" />
+            <Icon
+              name="ale-icon:close"
+              color="white"
+              size="25px"
+              mode="svg"
+              :aria-label="closeMenuLabel" />
           </div>
           <div class="sections-container">
             <div
@@ -104,6 +110,8 @@ import { useScreenSize } from '~/composables/screen-size'
 const { t } = useI18n()
 const localePath = useLocalePath()
 const aboutTitle = computed(() => t('pages.about.tab_name'))
+const openMenuLabel = computed(() => t('components.menu.open'))
+const closeMenuLabel = computed(() => t('components.menu.close'))
 
 const device = useScreenSize()
 const isMenuOpen = ref(false)
