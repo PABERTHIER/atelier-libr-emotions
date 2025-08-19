@@ -77,7 +77,8 @@ body {
 
   #page-container {
     height: calc(
-      var(--vh, 1vh) * 100 - #{$header-height} - #{$footer-height} - 20px
+      var(--vh, 1vh) * 100 - #{$header-height-desktop} - #{$footer-height} -
+        20px
     );
     flex: 1;
     padding: 0px 20px 20px 20px;
@@ -99,7 +100,8 @@ body {
 
     #page-container {
       height: calc(
-        var(--vh, 1vh) * 100 - #{$header-height} - #{$footer-height} - 20px
+        var(--vh, 1vh) * 100 - #{$header-height-mobile} - #{$footer-height} -
+          20px
       );
     }
   }
