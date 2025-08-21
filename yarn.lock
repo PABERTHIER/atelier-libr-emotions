@@ -2193,7 +2193,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/image@npm:^1.10.0":
+"@nuxt/image@npm:^1.11.0":
   version: 1.11.0
   resolution: "@nuxt/image@npm:1.11.0"
   dependencies:
@@ -6200,7 +6200,7 @@ __metadata:
     "@nuxt/eslint": "npm:1.9.0"
     "@nuxt/eslint-config": "npm:^1.9.0"
     "@nuxt/fonts": "npm:^0.11.4"
-    "@nuxt/image": "npm:^1.10.0"
+    "@nuxt/image": "npm:^1.11.0"
     "@nuxt/types": "npm:^2.18.1"
     "@nuxt/ui": "npm:^3.3.2"
     "@nuxtjs/eslint-config-typescript": "npm:^12.1.0"
