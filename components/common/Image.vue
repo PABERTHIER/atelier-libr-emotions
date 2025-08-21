@@ -1,6 +1,6 @@
 <template>
   <div class="image">
-    <NuxtLink :to="link">
+    <NuxtLink :to="src">
       <NuxtImg
         :src="src"
         :sizes="sizes"
@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
+defineProps({
   src: {
     type: String,
     required: true,
@@ -40,10 +40,6 @@ const props = defineProps({
     default: '',
   },
 })
-
-const runtimeConfig = useRuntimeConfig()
-const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
-const link = ref(baseUrl.value + props.src)
 </script>
 
 <style lang="scss" scoped></style>
