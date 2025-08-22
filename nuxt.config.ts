@@ -10,12 +10,18 @@ export default defineNuxtConfig({
       title: "Atelier Libr'Émotions",
       viewport: 'width=device-width, initial-scale=1',
       meta: [
-        { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
+        {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1, viewport-fit=cover',
+        },
         { name: 'application-name', content: "Atelier Libr'Émotions" },
         { name: 'apple-mobile-web-app-capable', content: 'yes' },
         { name: 'mobile-web-app-capable', content: 'yes' },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
-        { name: 'apple-mobile-web-app-title', content: "Atelier Libr'Émotions" },
+        {
+          name: 'apple-mobile-web-app-title',
+          content: "Atelier Libr'Émotions",
+        },
       ],
       templateParams: {
         separator: '-',
@@ -37,7 +43,7 @@ export default defineNuxtConfig({
   ],
   image: {
     format: ['webp', 'jpg', 'jpeg', 'png'],
-    provider: 'ipx'
+    provider: 'ipx',
   },
   plugins: [],
   build: {
@@ -46,7 +52,14 @@ export default defineNuxtConfig({
   typescript: {
     strict: true,
   },
-  modules: ['@nuxt/image', '@nuxtjs/i18n', '@nuxtjs/seo', '@nuxt/ui', '@nuxt/fonts'],
+  modules: [
+    '@nuxt/image',
+    '@nuxtjs/i18n',
+    '@nuxtjs/seo',
+    '@nuxt/ui',
+    '@nuxt/fonts',
+    '@nuxt/eslint',
+  ],
   imports: {
     dirs: [],
   },
@@ -55,9 +68,11 @@ export default defineNuxtConfig({
       apiBase: '',
       i18n: {
         baseUrl:
-          process.env.NODE_ENV !== 'production'
+          process.env.NODE_ENV === 'development'
             ? 'http://localhost:3000'
-            : 'https://atelierlibremotions.vercel.app',
+            : process.env.VERCEL_URL
+              ? `https://${process.env.VERCEL_URL}`
+              : 'https://atelierlibremotions.vercel.app',
       },
     },
   },
@@ -81,14 +96,13 @@ export default defineNuxtConfig({
     ],
     bundle: {
       optimizeTranslationDirective: false,
-    }
+    },
   },
   vite: {
     css: {
       preprocessorOptions: {
         scss: {
           additionalData: '@use "@/styles/variables.scss" as *;',
-          api: 'modern-compiler',
         },
       },
     },

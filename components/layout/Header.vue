@@ -4,8 +4,11 @@
       <ClientOnly>
         <div class="menu-container">
           <div :class="logoContainerClass">
-            <NuxtLink :to="localePath('/')">
-              <Logo />
+            <NuxtLink
+              :to="localePath('/')"
+              :aria-label="logoLinkLabel"
+              :title="logoLinkLabel">
+              <Logo aria-hidden="true" />
             </NuxtLink>
           </div>
           <Menu />
@@ -18,9 +21,11 @@
 <script setup lang="ts">
 import { useScreenSize } from '~/composables/screen-size'
 
+const { t } = useI18n()
 const localePath = useLocalePath()
 const device = useScreenSize()
 
+const logoLinkLabel = computed(() => t('components.header.logo_link_label'))
 const logoContainerClass = computed(() => {
   return device.isMobile.value ? 'logo-container-mobile' : 'logo-container'
 })
@@ -43,7 +48,7 @@ const logoContainerClass = computed(() => {
       .logo-container {
         order: 0;
       }
-  
+
       .logo-container-mobile {
         order: 2;
       }

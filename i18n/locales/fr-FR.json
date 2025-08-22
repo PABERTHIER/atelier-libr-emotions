@@ -7,7 +7,18 @@
     }
   },
   "links": {},
-  "components": {},
+  "components": {
+    "header": {
+      "logo_link_label": "Accueil"
+    },
+    "lang_switcher": {
+      "change_language_label": "Changer de langue"
+    },
+    "menu": {
+      "open": "Ouvrir le menu",
+      "close": "Fermer le menu"
+    }
+  },
   "pages": {
     "main": {
       "tab_name": "Accueil",

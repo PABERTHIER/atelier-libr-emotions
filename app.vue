@@ -12,14 +12,18 @@ const ogImageEndPath = 'paintings/celestial-collision.jpg'
 
 const availableLocaleAlternates = computed(() => {
   const localesFiltered = locales.value.filter(l => l.code !== locale.value)
-  const localesFilteredUpdated = localesFiltered.map((x) => x.language?.replace('-', '_') ?? 'en_US')
-  return localesFilteredUpdated.filter((item, index) => localesFilteredUpdated.indexOf(item) === index)
+  const localesFilteredUpdated = localesFiltered.map(
+    x => x.language?.replace('-', '_') ?? 'en_US'
+  )
+  return localesFilteredUpdated.filter(
+    (item, index) => localesFilteredUpdated.indexOf(item) === index
+  )
 })
 
 useHead({
   titleTemplate: '%s %separator %siteName',
   meta: [
-    { name: 'description', content: computed(() => t('app.meta.description')) }
+    { name: 'description', content: computed(() => t('app.meta.description')) },
   ],
   link: [
     { rel: 'canonical', href: `${baseUrl.value}/${locale.value}` },
@@ -27,12 +31,16 @@ useHead({
     { rel: 'alternate', href: `${baseUrl.value}/fr`, hreflang: 'fr-FR' },
     { rel: 'alternate', href: `${baseUrl.value}/en`, hreflang: 'en-US' },
     { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-    { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto&display=swap', crossorigin: '' },
+    {
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css2?family=Roboto&display=swap',
+      crossorigin: '',
+    },
     { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     { rel: 'apple-touch-icon', href: 'apple-icon.jpg' },
     { rel: 'apple-touch-icon-precomposed', href: 'apple-icon.jpg' },
     { rel: 'apple-touch-startup-image', href: 'apple-icon.jpg' },
-    { rel: 'mask-icon', href: 'apple-icon.jpg', color: '#000000' } // TODO: Replace with a svg file (logo)
+    { rel: 'mask-icon', href: 'apple-icon.jpg', color: '#000000' }, // TODO: Replace with a svg file (logo)
   ],
 })
 
@@ -70,7 +78,7 @@ useSeoMeta({
     computed(() => t('miscellaneous.pottery')).value,
     computed(() => t('miscellaneous.emotions')).value,
     computed(() => t('about.author')).value,
-    computed(() => t('app.name')).value
+    computed(() => t('app.name')).value,
   ]),
   profileFirstName: computed(() => t('about.first_name')),
   profileLastName: computed(() => t('about.last_name')),
@@ -83,7 +91,7 @@ useSeoMeta({
   appleMobileWebAppStatusBarStyle: 'default',
   appleMobileWebAppTitle: computed(() => t('app.name')),
   msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
-  msapplicationTileColor: '#ff0000'
+  msapplicationTileColor: '#ff0000',
 })
 </script>
 

@@ -3,7 +3,9 @@
     <div class="left-part">
       <LangSwitcher />
     </div>
-    <div class="right-part">{{ authorName }} © {{ new Date().getFullYear() }}</div>
+    <div class="right-part">
+      {{ authorName }} © {{ new Date().getFullYear() }}
+    </div>
   </div>
 </template>
 
@@ -11,7 +13,6 @@
 const { t } = useI18n()
 
 const authorName = computed(() => t('about.author'))
-
 </script>
 
 <style lang="scss" scoped>
