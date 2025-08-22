@@ -7,10 +7,10 @@
         max-height="500px"
         :title="abstractAutumnPaintingTitle"
         :alt="abstractAutumnPaintingAlt" />
-      <div
-        v-t="'pages.main.abstract_autumn_painting.description'"
-        class="description" />
-      <div v-t="'pages.main.abstract_autumn_painting.meta'" />
+      <div class="description">
+        {{ t('pages.main.abstract_autumn_painting.description') }}
+      </div>
+      <div>{{ t('pages.main.abstract_autumn_painting.meta') }}</div>
     </div>
   </div>
 </template>
