@@ -68,9 +68,11 @@ export default defineNuxtConfig({
       apiBase: '',
       i18n: {
         baseUrl:
-          process.env.NODE_ENV !== 'production'
+          process.env.NODE_ENV === 'development'
             ? 'http://localhost:3000'
-            : 'https://atelierlibremotions.vercel.app',
+            : process.env.VERCEL_URL
+              ? `https://${process.env.VERCEL_URL}`
+              : 'https://atelierlibremotions.vercel.app',
       },
     },
   },
