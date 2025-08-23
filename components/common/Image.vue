@@ -42,7 +42,7 @@ const props = defineProps({
 })
 
 const runtimeConfig = useRuntimeConfig()
-const baseUrl = ref(runtimeConfig.public.baseUrl)
+const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
 const link = ref(baseUrl.value + props.src)
 </script>
 
