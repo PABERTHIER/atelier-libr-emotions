@@ -400,7 +400,7 @@ const toggleMobileSection = (index: number) => {
         position: absolute;
         top: 100%;
         left: 3%;
-        width: 95%;
+        width: 75%;
         max-height: 550px;
         z-index: $menu-z-index;
         overflow-y: auto;
@@ -409,7 +409,7 @@ const toggleMobileSection = (index: number) => {
         padding-left: 50px;
         box-shadow: 0 8px 16px $box-shadow-color;
         border-top: 2px solid $primary-text-color;
-        gap: 40px;
+        gap: 15px 40px;
 
         .menu-column {
           min-width: 250px;
