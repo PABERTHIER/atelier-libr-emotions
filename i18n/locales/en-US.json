@@ -33,9 +33,15 @@
       }
     },
     "about": {
-      "tab_name": "About",
+      "tab_name": "About myself",
       "meta": {
-        "content": "About"
+        "content": "About myself"
+      }
+    },
+    "contact": {
+      "tab_name": "Contact",
+      "meta": {
+        "content": "Contact"
       }
     }
   },
@@ -52,23 +58,42 @@
     "pottery": "Pottery",
     "emotions": "Emotions",
     "miscellaneous": "Miscellaneous",
-    "acrylics": "Acrylics",
-    "glazing": "Glazing",
+    "acrylic": "Acrylic",
+    "oil_painting": "Oil painting",
     "inks": "Inks",
-    "charcoals": "Charcoals",
-    "pastels": "Pastels",
+    "charcoal": "Charcoal",
+    "pastel": "Pastel",
+    "felt_pen": "Felt pen",
     "electric_kiln_firing": "Electric kiln firing",
-    "Raku_and_smouldering": "Raku and smouldering",
+    "raku_and_smouldering": "Raku and smouldering",
+    "porcelain": "Porcelain",
+    "kiln_pottery": "Kiln pottery",
     "abstracts": "Abstracts",
     "faces": "Faces",
     "nature": "Nature",
     "nudes": "Nudes",
     "animals": "Animals",
-    "letting_go": "Letting go",
     "various_objects": "Various objects",
     "person": "Person",
     "vases_and_pots": "Vases and pots",
     "christmas": "Christmas",
-    "easter": "Easter"
+    "easter": "Easter",
+    "flowers": "Flowers",
+    "candle_holder": "Candle holder",
+    "before_after": "Before and after",
+    "ceramics_in_context": "Ceramics in context",
+    "first_creations": "First creations",
+    "quick_work": "Quick work",
+    "mixed_techniques": "Mixed techniques",
+    "in_action": "\"In action\"",
+    "different_projects": "Different projects",
+    "painting_while_dancing": "Painting while dancing",
+    "performances": "Performances",
+    "life_is_love": "Life is Love",
+    "the_artist": "The Artist",
+    "about_myself": "About myself",
+    "career_cv": "Career path and CV",
+    "my_artistic_approach": "My artistic approach",
+    "contact": "Contact"
   }
 }
