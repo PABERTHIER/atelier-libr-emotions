@@ -1,18 +1,22 @@
 <template>
   <div class="menu">
-    <div v-show="!device.isMobile.value" class="menu-desktop">
+    <div
+      v-show="!device.isMobile.value"
+      class="menu-desktop"
+      @pointerleave="hideContent()">
       <div
         v-for="(section, index) in sections"
         :key="index"
         class="menu-section"
-        @mouseover="showContent(index)"
-        @mouseleave="hideContent(index)">
+        @pointerenter="showContent(index)">
         <div
           class="menu-title"
-          :class="{ 'menu-selected': section.showContent }">
+          :class="{ 'menu-selected': activeIndex === index }"
+          tabindex="0"
+          @focus="showContent(index)">
           {{ section.title }}
         </div>
-        <div v-if="section.showContent" class="menu-content">
+        <div v-if="activeIndex === index" class="menu-content">
           <div
             v-for="(subSection, subIndex) in section.subSections"
             :key="subIndex"
@@ -26,7 +30,7 @@
                 <NuxtLink
                   :to="localePath(link.url)"
                   class="link"
-                  @click="hideContent(index)">
+                  @click="hideContent()">
                   {{ link.text }}
                 </NuxtLink>
               </li>
@@ -34,7 +38,10 @@
           </div>
         </div>
       </div>
-      <NuxtLink :to="localePath('contact')" class="specific-section">
+      <NuxtLink
+        :to="localePath('contact')"
+        class="specific-section"
+        @click="hideContent()">
         {{ contactTitle }}
       </NuxtLink>
     </div>
@@ -67,7 +74,7 @@
               <div
                 class="section-title"
                 :class="{ 'menu-selected': section.showContent }"
-                @click="toggleSection(index)">
+                @click="toggleMobileSection(index)">
                 {{ section.title }}
               </div>
               <div v-if="section.showContent" class="sub-section-container">
@@ -338,19 +345,21 @@ const sections = ref([
   },
 ])
 
+const activeIndex = ref<number | null>(null)
+
 const showContent = (index: number) => {
-  sections.value[index]!.showContent = true
+  activeIndex.value = index
 }
 
-const hideContent = (index: number) => {
-  sections.value[index]!.showContent = false
+const hideContent = () => {
+  activeIndex.value = null
 }
 
 const toggleMobileMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
 }
 
-const toggleSection = (index: number) => {
+const toggleMobileSection = (index: number) => {
   sections.value[index]!.showContent = !sections.value[index]!.showContent
 }
 </script>
