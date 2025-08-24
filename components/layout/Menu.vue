@@ -396,12 +396,10 @@ const toggleMobileSection = (index: number) => {
 
       .menu-content {
         display: flex;
-        flex-wrap: wrap;
         position: absolute;
         top: 100%;
         left: 3%;
         width: 75%;
-        max-height: 550px;
         z-index: $menu-z-index;
         overflow-y: auto;
         background-color: $background-color;
@@ -412,8 +410,6 @@ const toggleMobileSection = (index: number) => {
         gap: 15px 40px;
 
         .menu-column {
-          min-width: 250px;
-          max-width: 300px;
           padding-top: 15px;
 
           .sub-section-title {
@@ -438,6 +434,30 @@ const toggleMobileSection = (index: number) => {
                 }
               }
             }
+          }
+        }
+      }
+
+      @media (min-height: $md) {
+        .menu-content {
+          flex-wrap: wrap;
+          max-height: 550px;
+
+          .menu-column {
+            min-width: 250px;
+            max-width: 300px;
+          }
+        }
+      }
+
+      @media (max-height: $md) {
+        .menu-content {
+          flex-wrap: nowrap;
+          max-height: 210px;
+
+          .menu-column {
+            min-width: 150px;
+            max-width: 200px;
           }
         }
       }
