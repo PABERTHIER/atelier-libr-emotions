@@ -53,8 +53,8 @@ export default defineNuxtConfig({
     strict: true,
   },
   modules: [
-    '@nuxtjs/i18n',
     '@nuxt/image',
+    '@nuxtjs/i18n',
     '@nuxtjs/seo',
     '@nuxt/ui',
     '@nuxt/fonts',
