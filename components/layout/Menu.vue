@@ -4,13 +4,13 @@
       v-show="!device.isMobile.value"
       class="menu-desktop"
       @mouseleave="hideContent()"
-      @touchtart="hideContent()">
+      @touchtart:passive="hideContent()">
       <div
         v-for="(section, index) in sections"
         :key="index"
         class="menu-section"
         @mouseenter="showContent(index)"
-        @touchstart="showContent(index)">
+        @touchstart:passive="showContent(index)">
         <div
           class="menu-title"
           :class="{ 'menu-selected': activeIndex === index }"
