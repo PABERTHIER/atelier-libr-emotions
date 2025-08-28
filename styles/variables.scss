@@ -13,12 +13,13 @@ $grey-blue-color: #7A9FF0;
 
 // background-color
 $background: linear-gradient(45deg, $grey-blue-color 0%, $dark-red-color 50%, $grey-blue-color 100%);
-$background-color: $white-color;
+$background-color: #F7F5F2;
+$white-background-color: $white-color;
 $animation-background-color: #53647A;
 $mobile-menu-background-color: #2D3748;
 $primary-color: rgb(245, 245, 247);
 $secondary-color: rgb(1, 42, 53);
-$footer-background-color: #F5F5F5;
+$footer-background-color: $white-color;
 
 
 // border-color

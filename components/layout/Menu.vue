@@ -146,7 +146,10 @@ const sections = ref([
       {
         title: computed(() => t('miscellaneous.oil_painting')),
         links: [
-          { text: computed(() => t('miscellaneous.abstracts')), url: '/wip' },
+          {
+            text: computed(() => t('miscellaneous.abstracts')),
+            url: '/painting/oil/abstracts',
+          },
           { text: computed(() => t('miscellaneous.faces')), url: '/wip' },
           { text: computed(() => t('miscellaneous.nudes')), url: '/wip' },
           { text: computed(() => t('miscellaneous.nature')), url: '/wip' },
@@ -404,7 +407,7 @@ const toggleMobileSection = (index: number) => {
         width: 75%;
         z-index: $menu-z-index;
         overflow-y: auto;
-        background-color: $background-color;
+        background-color: $white-background-color;
         padding: 20px 0;
         padding-left: 50px;
         box-shadow: 0 8px 16px $box-shadow-color;
