@@ -5,10 +5,10 @@
         <div class="hero-text">
           <h1 class="hero-title">
             <span class="title-line">
-              {{ t('pages.main.hero-title.part_1') }}
+              {{ t('pages.main.hero_title.part_1') }}
             </span>
             <span class="title-line accent">
-              {{ t('pages.main.hero-title.part_2') }}
+              {{ t('pages.main.hero_title.part_2') }}
             </span>
           </h1>
           <div class="hero-description">
