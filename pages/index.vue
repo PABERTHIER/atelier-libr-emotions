@@ -411,6 +411,8 @@ const title = 'Painting'
         flex-wrap: wrap;
         justify-content: space-between;
         margin-top: 30px;
+        margin-bottom: 15px;
+        gap: 10px;
 
         @media (max-width: '395px') {
           justify-content: center;
