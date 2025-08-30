@@ -25,6 +25,15 @@
       "meta": {
         "content": "Homepage"
       },
+      "hero-title": {
+        "part_1": "Creating Emotions",
+        "part_2": "Through Art"
+      },
+      "hero_description": "Discover a world where colors dance on canvas and clay transforms into poetry. Each piece tells a story of passion, technique, emotion, and the endless pursuit of artistic expression.",
+      "buttons": {
+        "view_gallery": "View Gallery",
+        "about": "About the Artist"
+      },
       "abstract_autumn_painting": {
         "description": "Abstract art painting with a vibrant autumn-inspired color palette. Featuring rich, textured layers of warm oranges, yellows, and earthy browns, this expressive artwork evokes feelings of nature, change, and depth. Perfect for art lovers and collectors seeking unique, emotion-driven compositions.",
         "title": "Vibrant autumn-inspired abstract art with textured layers.",

@@ -25,6 +25,15 @@
       "meta": {
         "content": "Accueil"
       },
+      "hero-title": {
+        "part_1": "Créer des Émotions",
+        "part_2": "À travers l'Art"
+      },
+      "hero_description": "Découvrez un monde où les couleurs dansent sur la toile et où l'argile se transforme en poésie. Chaque œuvre raconte une histoire de passion, de technique, d'émotion et de quête infinie d'expression artistique.",
+      "buttons": {
+        "view_gallery": "Voir la Galerie",
+        "about": "À propos de l'Artiste"
+      },
       "abstract_autumn_painting": {
         "description": "Peinture d'art abstrait avec une palette de couleurs vibrantes inspirées de l'automne. Présentant des couches riches et texturées d'oranges chaudes, de jaunes et de bruns terreux, cette œuvre d'art expressive évoque des sentiments de nature, de changement et de profondeur. Parfait pour les amateurs d'art et les collectionneurs à la recherche de compositions uniques et pleines d'émotions.",
         "title": "Art abstrait vibrant d'inspiration automnale avec des couches texturées.",

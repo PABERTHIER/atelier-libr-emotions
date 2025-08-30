@@ -56,9 +56,13 @@ button {
     backdrop-filter: blur(10px);
     font-size: 20px;
     line-height: 25px;
-    padding: 10px;
+    padding: 20px;
     text-align: center;
     width: v-bind(width);
+
+    @media (max-width: $md) {
+      padding: 10px;
+    }
   }
 
   .button::before {
