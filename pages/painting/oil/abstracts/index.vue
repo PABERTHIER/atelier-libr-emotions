@@ -8,9 +8,9 @@
         :title="abstractAutumnPaintingTitle"
         :alt="abstractAutumnPaintingAlt" />
       <div class="description">
-        {{ t('pages.main.abstract_autumn_painting.description') }}
+        {{ t('pictures.paintings.abstract_autumn.description') }}
       </div>
-      <div>{{ t('pages.main.abstract_autumn_painting.meta') }}</div>
+      <div>{{ t('pictures.paintings.abstract_autumn.meta') }}</div>
     </div>
   </div>
 </template>
@@ -19,10 +19,10 @@
 const { t } = useI18n()
 
 const abstractAutumnPaintingTitle = computed(() =>
-  t('pages.main.abstract_autumn_painting.title')
+  t('pictures.paintings.abstract_autumn.title')
 )
 const abstractAutumnPaintingAlt = computed(() =>
-  t('pages.main.abstract_autumn_painting.alt')
+  t('pictures.paintings.abstract_autumn.alt')
 )
 </script>
 

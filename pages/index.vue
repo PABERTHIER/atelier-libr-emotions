@@ -28,34 +28,44 @@
             <div class="artwork-frame first-picture">
               <div class="artwork-content">
                 <Image
-                  src="/paintings/celestial-collision.jpg"
+                  :src="linksConfigFirstPicture[currentFirstPicture]!.filePath"
                   sizes="xs:100px, sm:150px, md:150px, lg:175px, xl:200px"
                   max-height="300px"
-                  :title="abstractAutumnPaintingTitle"
-                  :alt="abstractAutumnPaintingAlt" />
-                <div class="artwork-title-left">{{ title }}</div>
+                  :title="linksConfigFirstPicture[currentFirstPicture]!.title"
+                  :alt="linksConfigFirstPicture[currentFirstPicture]!.alt" />
+                <div class="artwork-title-left">
+                  {{ linksConfigFirstPicture[currentFirstPicture]!.technique }}
+                </div>
               </div>
             </div>
             <div class="artwork-frame second-picture">
               <div class="artwork-content">
                 <Image
-                  src="/paintings/entangled-echoes.jpg"
+                  :src="
+                    linksConfigSecondPicture[currentSecondPicture]!.filePath
+                  "
                   sizes="xs:80px, sm:130px, md:130px, lg:150px, xl:180px"
                   max-height="180px"
-                  :title="abstractAutumnPaintingTitle"
-                  :alt="abstractAutumnPaintingAlt" />
-                <div class="artwork-title">{{ title }}</div>
+                  :title="linksConfigSecondPicture[currentSecondPicture]!.title"
+                  :alt="linksConfigSecondPicture[currentSecondPicture]!.alt" />
+                <div class="artwork-title">
+                  {{
+                    linksConfigSecondPicture[currentSecondPicture]!.technique
+                  }}
+                </div>
               </div>
             </div>
             <div class="artwork-frame third-picture">
               <div class="artwork-content">
                 <Image
-                  src="/paintings/abstract-autumn.jpg"
+                  :src="linksConfigThirdPicture[currentThirdPicture]!.filePath"
                   sizes="xs:80px, sm:100px md:100px, lg:125px, xl:150px"
                   max-height="250px"
-                  :title="abstractAutumnPaintingTitle"
-                  :alt="abstractAutumnPaintingAlt" />
-                <div class="artwork-title">{{ title }}</div>
+                  :title="linksConfigThirdPicture[currentThirdPicture]!.title"
+                  :alt="linksConfigThirdPicture[currentThirdPicture]!.alt" />
+                <div class="artwork-title">
+                  {{ linksConfigThirdPicture[currentThirdPicture]!.technique }}
+                </div>
               </div>
             </div>
           </div>
@@ -110,17 +120,90 @@ useSeoMeta({
 
 defineOgImageComponent('NuxtSeo', { theme: '#ff0000', colorMode: 'dark' })
 
-// TODO: Update title for each picture (config instead + move the content from json locales)
-// + Add a link for each picture for the page where they are
-const abstractAutumnPaintingTitle = computed(() =>
-  t('pages.main.abstract_autumn_painting.title')
-)
-const abstractAutumnPaintingAlt = computed(() =>
-  t('pages.main.abstract_autumn_painting.alt')
-)
+const linksConfigFirstPicture = ref([
+  {
+    filePath: '/paintings/celestial-collision.jpg',
+    title: computed(() => t('pictures.paintings.celestial_collision.title')),
+    alt: computed(() => t('pictures.paintings.celestial_collision.alt')),
+    technique: computed(() => t('miscellaneous.mixed')),
+  },
+  {
+    filePath: '/paintings/entangled-echoes.jpg',
+    title: computed(() => t('pictures.paintings.entangled_echoes.title')),
+    alt: computed(() => t('pictures.paintings.entangled_echoes.alt')),
+    technique: computed(() => t('miscellaneous.oil_painting')),
+  },
+  {
+    filePath: '/paintings/abstract-autumn.jpg',
+    title: computed(() => t('pictures.paintings.abstract_autumn.title')),
+    alt: computed(() => t('pictures.paintings.abstract_autumn.alt')),
+    technique: computed(() => t('miscellaneous.acrylic')),
+  },
+])
 
-// TODO: Dynamic title in config instead
-const title = 'Painting'
+const linksConfigSecondPicture = ref([
+  {
+    filePath: '/paintings/entangled-echoes.jpg',
+    title: computed(() => t('pictures.paintings.entangled_echoes.title')),
+    alt: computed(() => t('pictures.paintings.entangled_echoes.alt')),
+    technique: computed(() => t('miscellaneous.oil_painting')),
+  },
+  {
+    filePath: '/paintings/abstract-autumn.jpg',
+    title: computed(() => t('pictures.paintings.abstract_autumn.title')),
+    alt: computed(() => t('pictures.paintings.abstract_autumn.alt')),
+    technique: computed(() => t('miscellaneous.acrylic')),
+  },
+  {
+    filePath: '/paintings/celestial-collision.jpg',
+    title: computed(() => t('pictures.paintings.celestial_collision.title')),
+    alt: computed(() => t('pictures.paintings.celestial_collision.alt')),
+    technique: computed(() => t('miscellaneous.mixed')),
+  },
+])
+
+const linksConfigThirdPicture = ref([
+  {
+    filePath: '/paintings/abstract-autumn.jpg',
+    title: computed(() => t('pictures.paintings.abstract_autumn.title')),
+    alt: computed(() => t('pictures.paintings.abstract_autumn.alt')),
+    technique: computed(() => t('miscellaneous.acrylic')),
+  },
+  {
+    filePath: '/paintings/celestial-collision.jpg',
+    title: computed(() => t('pictures.paintings.celestial_collision.title')),
+    alt: computed(() => t('pictures.paintings.celestial_collision.alt')),
+    technique: computed(() => t('miscellaneous.mixed')),
+  },
+  {
+    filePath: '/paintings/entangled-echoes.jpg',
+    title: computed(() => t('pictures.paintings.entangled_echoes.title')),
+    alt: computed(() => t('pictures.paintings.entangled_echoes.alt')),
+    technique: computed(() => t('miscellaneous.oil_painting')),
+  },
+])
+
+const currentFirstPicture = ref(0)
+const currentSecondPicture = ref(0)
+const currentThirdPicture = ref(0)
+const timer = ref<NodeJS.Timeout | undefined>(undefined)
+
+const next = () => {
+  currentFirstPicture.value =
+    (currentFirstPicture.value + 1) % linksConfigFirstPicture.value.length
+  currentSecondPicture.value =
+    (currentSecondPicture.value + 1) % linksConfigSecondPicture.value.length
+  currentThirdPicture.value =
+    (currentThirdPicture.value + 1) % linksConfigThirdPicture.value.length
+}
+
+onMounted(() => {
+  timer.value = setInterval(next, 5000)
+})
+
+onBeforeUnmount(() => {
+  clearInterval(timer.value)
+})
 </script>
 
 <style lang="scss" scoped>
