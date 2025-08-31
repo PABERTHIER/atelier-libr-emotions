@@ -59,7 +59,7 @@
               <div class="artwork-content">
                 <Image
                   :src="linksConfigThirdPicture[currentThirdPicture]!.filePath"
-                  sizes="xs:80px, sm:100px md:100px, lg:125px, xl:150px"
+                  sizes="xs:80px, sm:100px, md:100px, lg:125px, xl:150px"
                   max-height="250px"
                   :title="linksConfigThirdPicture[currentThirdPicture]!.title"
                   :alt="linksConfigThirdPicture[currentThirdPicture]!.alt" />
