@@ -140,12 +140,6 @@ const title = 'Painting'
       justify-content: space-around;
 
       @media (max-width: $lg) {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-      }
-
-      @media (max-width: $sm) {
         height: auto;
         display: flex;
         flex-direction: column;
@@ -222,11 +216,11 @@ const title = 'Painting'
 
           .artwork-frame {
             position: absolute;
+            padding: 15px 15px 5px 15px;
+            background: $white-color;
             border-radius: 12px;
             box-shadow: 0 20px 40px $box-shadow-color;
             transition: transform 0.3s ease;
-            background: $white-color;
-            padding: 15px 15px 5px 15px;
 
             &.first-picture {
               top: 50px;
@@ -347,6 +341,7 @@ const title = 'Painting'
 
             .artwork-frame {
               padding: 10px 10px 3px 10px;
+              border-radius: 5px;
 
               &.first-picture {
                 top: 0px;
