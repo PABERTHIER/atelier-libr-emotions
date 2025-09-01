@@ -122,19 +122,19 @@ defineOgImageComponent('NuxtSeo', { theme: '#ff0000', colorMode: 'dark' })
 
 const linksConfigFirstPicture = ref([
   {
-    filePath: '/paintings/celestial-collision.jpg',
+    filePath: '/paintings/celestial-collision.webp',
     title: computed(() => t('pictures.paintings.celestial_collision.title')),
     alt: computed(() => t('pictures.paintings.celestial_collision.alt')),
     technique: computed(() => t('miscellaneous.mixed')),
   },
   {
-    filePath: '/paintings/entangled-echoes.jpg',
+    filePath: '/paintings/entangled-echoes.webp',
     title: computed(() => t('pictures.paintings.entangled_echoes.title')),
     alt: computed(() => t('pictures.paintings.entangled_echoes.alt')),
     technique: computed(() => t('miscellaneous.oil_painting')),
   },
   {
-    filePath: '/paintings/abstract-autumn.jpg',
+    filePath: '/paintings/abstract-autumn.webp',
     title: computed(() => t('pictures.paintings.abstract_autumn.title')),
     alt: computed(() => t('pictures.paintings.abstract_autumn.alt')),
     technique: computed(() => t('miscellaneous.acrylic')),
@@ -143,19 +143,19 @@ const linksConfigFirstPicture = ref([
 
 const linksConfigSecondPicture = ref([
   {
-    filePath: '/paintings/entangled-echoes.jpg',
+    filePath: '/paintings/entangled-echoes.webp',
     title: computed(() => t('pictures.paintings.entangled_echoes.title')),
     alt: computed(() => t('pictures.paintings.entangled_echoes.alt')),
     technique: computed(() => t('miscellaneous.oil_painting')),
   },
   {
-    filePath: '/paintings/abstract-autumn.jpg',
+    filePath: '/paintings/abstract-autumn.webp',
     title: computed(() => t('pictures.paintings.abstract_autumn.title')),
     alt: computed(() => t('pictures.paintings.abstract_autumn.alt')),
     technique: computed(() => t('miscellaneous.acrylic')),
   },
   {
-    filePath: '/paintings/celestial-collision.jpg',
+    filePath: '/paintings/celestial-collision.webp',
     title: computed(() => t('pictures.paintings.celestial_collision.title')),
     alt: computed(() => t('pictures.paintings.celestial_collision.alt')),
     technique: computed(() => t('miscellaneous.mixed')),
@@ -164,19 +164,19 @@ const linksConfigSecondPicture = ref([
 
 const linksConfigThirdPicture = ref([
   {
-    filePath: '/paintings/abstract-autumn.jpg',
+    filePath: '/paintings/abstract-autumn.webp',
     title: computed(() => t('pictures.paintings.abstract_autumn.title')),
     alt: computed(() => t('pictures.paintings.abstract_autumn.alt')),
     technique: computed(() => t('miscellaneous.acrylic')),
   },
   {
-    filePath: '/paintings/celestial-collision.jpg',
+    filePath: '/paintings/celestial-collision.webp',
     title: computed(() => t('pictures.paintings.celestial_collision.title')),
     alt: computed(() => t('pictures.paintings.celestial_collision.alt')),
     technique: computed(() => t('miscellaneous.mixed')),
   },
   {
-    filePath: '/paintings/entangled-echoes.jpg',
+    filePath: '/paintings/entangled-echoes.webp',
     title: computed(() => t('pictures.paintings.entangled_echoes.title')),
     alt: computed(() => t('pictures.paintings.entangled_echoes.alt')),
     technique: computed(() => t('miscellaneous.oil_painting')),
