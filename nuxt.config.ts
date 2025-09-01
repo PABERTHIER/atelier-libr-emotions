@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { generateImageRoutes } from './utils/generateImageRoutes'
+
 export default defineNuxtConfig({
   app: {
     head: {
@@ -32,7 +34,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ['/'],
+      routes: ['/', ...generateImageRoutes()],
     },
   },
   components: [
