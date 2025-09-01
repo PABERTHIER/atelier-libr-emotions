@@ -34,7 +34,7 @@ const logoContainerClass = computed(() => {
 <style lang="scss" scoped>
 .header-container {
   width: 100%;
-  background-color: $background-color;
+  background-color: $white-background-color;
   box-shadow: 0 2px 8px $box-shadow-color;
 
   .header {

@@ -25,11 +25,14 @@
       "meta": {
         "content": "Accueil"
       },
-      "abstract_autumn_painting": {
-        "description": "Peinture d'art abstrait avec une palette de couleurs vibrantes inspirées de l'automne. Présentant des couches riches et texturées d'oranges chaudes, de jaunes et de bruns terreux, cette œuvre d'art expressive évoque des sentiments de nature, de changement et de profondeur. Parfait pour les amateurs d'art et les collectionneurs à la recherche de compositions uniques et pleines d'émotions.",
-        "title": "Art abstrait vibrant d'inspiration automnale avec des couches texturées.",
-        "alt": "Art abstrait avec des couleurs automnales vibrantes et des couches texturées.",
-        "meta": "Explorez une peinture d'art abstrait présentant des couleurs automnales vibrantes et des couches texturées, évoquant des sentiments de nature et de changement."
+      "hero_title": {
+        "part_1": "Créer des Émotions",
+        "part_2": "À travers l'Art"
+      },
+      "hero_description": "Découvrez un monde où les couleurs dansent sur la toile et où l'argile se transforme en poésie. Chaque œuvre raconte une histoire de passion, de technique, d'émotion et de quête infinie d'expression artistique.",
+      "buttons": {
+        "view_gallery": "Voir la Galerie",
+        "about": "À propos de l'Artiste"
       }
     },
     "about": {
@@ -50,6 +53,24 @@
     "first_name": "Véronique",
     "last_name": "Berthier",
     "username": "oreV"
+  },
+  "pictures": {
+    "paintings": {
+      "abstract_autumn": {
+        "description": "Peinture d'art abstrait avec une palette de couleurs vibrantes inspirées de l'automne. Présentant des couches riches et texturées d'oranges chaudes, de jaunes et de bruns terreux, cette œuvre d'art expressive évoque des sentiments de nature, de changement et de profondeur. Parfait pour les amateurs d'art et les collectionneurs à la recherche de compositions uniques et pleines d'émotions.",
+        "title": "Art abstrait vibrant d'inspiration automnale avec des couches texturées.",
+        "alt": "Art abstrait avec des couleurs automnales vibrantes et des couches texturées.",
+        "meta": "Explorez une peinture d'art abstrait présentant des couleurs automnales vibrantes et des couches texturées, évoquant des sentiments de nature et de changement."
+      },
+      "celestial_collision": {
+        "title": "Technique mixte avec des couleurs vibrantes.",
+        "alt": "Technique mixte avec des couleurs vibrantes."
+      },
+      "entangled_echoes": {
+        "title": "Huile présentant des couches riches et texturées d'oranges et de jaunes chauds.",
+        "alt": "Huile présentant des couches riches et texturées d'oranges et de jaunes chauds."
+      }
+    }
   },
   "miscellaneous": {
     "art": "Art",
@@ -85,6 +106,7 @@
     "first_creations": "Premières créations",
     "quick_work": "Travaux rapides",
     "mixed_techniques": "Techniques mixtes",
+    "mixed": "Mixte",
     "in_action": "\"En pleine action\"",
     "different_projects": "Différents projets",
     "painting_while_dancing": "Peindre en dansant",

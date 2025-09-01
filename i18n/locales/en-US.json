@@ -25,11 +25,14 @@
       "meta": {
         "content": "Homepage"
       },
-      "abstract_autumn_painting": {
-        "description": "Abstract art painting with a vibrant autumn-inspired color palette. Featuring rich, textured layers of warm oranges, yellows, and earthy browns, this expressive artwork evokes feelings of nature, change, and depth. Perfect for art lovers and collectors seeking unique, emotion-driven compositions.",
-        "title": "Vibrant autumn-inspired abstract art with textured layers.",
-        "alt": "Abstract art with vibrant autumn colors and textured layers.",
-        "meta": "Explore an abstract art painting featuring vibrant autumn colors and textured layers, evoking feelings of nature and change."
+      "hero_title": {
+        "part_1": "Creating Emotions",
+        "part_2": "Through Art"
+      },
+      "hero_description": "Discover a world where colors dance on canvas and clay transforms into poetry. Each piece tells a story of passion, technique, emotion, and the endless pursuit of artistic expression.",
+      "buttons": {
+        "view_gallery": "View Gallery",
+        "about": "About the Artist"
       }
     },
     "about": {
@@ -51,6 +54,24 @@
     "last_name": "Berthier",
     "username": "oreV"
   },
+  "pictures": {
+    "paintings": {
+      "abstract_autumn": {
+        "description": "Abstract art painting with a vibrant autumn-inspired color palette. Featuring rich, textured layers of warm oranges, yellows, and earthy browns, this expressive artwork evokes feelings of nature, change, and depth. Perfect for art lovers and collectors seeking unique, emotion-driven compositions.",
+        "title": "Vibrant autumn-inspired abstract art with textured layers.",
+        "alt": "Abstract art with vibrant autumn colors and textured layers.",
+        "meta": "Explore an abstract art painting featuring vibrant autumn colors and textured layers, evoking feelings of nature and change."
+      },
+      "celestial_collision": {
+        "title": "Mixed techniques with vibrant colors.",
+        "alt": "Mixed techniques with vibrant colors."
+      },
+      "entangled_echoes": {
+        "title": "Oil painting featuring rich, textured layers of warm oranges, yellows.",
+        "alt": "Oil painting featuring rich, textured layers of warm oranges, yellows."
+      }
+    }
+  },
   "miscellaneous": {
     "art": "Art",
     "painting": "Painting",
@@ -59,7 +80,7 @@
     "emotions": "Emotions",
     "miscellaneous": "Miscellaneous",
     "acrylic": "Acrylic",
-    "oil_painting": "Oil painting",
+    "oil_painting": "Oil",
     "inks": "Inks",
     "charcoal": "Charcoal",
     "pastel": "Pastel",
@@ -85,6 +106,7 @@
     "first_creations": "First creations",
     "quick_work": "Quick work",
     "mixed_techniques": "Mixed techniques",
+    "mixed": "Mixed",
     "in_action": "\"In action\"",
     "different_projects": "Different projects",
     "painting_while_dancing": "Painting while dancing",
