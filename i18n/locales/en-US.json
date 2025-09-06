@@ -45,14 +45,25 @@
       "tab_name": "Contact",
       "meta": {
         "content": "Contact"
-      }
+      },
+      "title": "Contact me",
+      "subtitle": "Discover art through colors, textures and emotions.",
+      "image": {
+        "title": "Some paintings...",
+        "alt": "Some paintings..."
+      },
+      "connect_me": "Connect with me",
+      "ready": "Ready to bring art into your space?",
+      "contact_me": "Contact me"
     }
   },
   "about": {
     "author": "Véronique Berthier",
     "first_name": "Véronique",
     "last_name": "Berthier",
-    "username": "oreV"
+    "username": "oreV",
+    "mail_address": "atelierlibremotions{'@'}gmail.com",
+    "location": "Vandeléville, France"
   },
   "pictures": {
     "paintings": {
@@ -116,6 +127,10 @@
     "about_myself": "About myself",
     "career_cv": "Career path and CV",
     "my_artistic_approach": "My artistic approach",
-    "contact": "Contact"
+    "contact": "Contact",
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "follow_on_facebook": "Follow on Facebook",
+    "follow_on_instagram": "Follow on Instagram"
   }
 }
