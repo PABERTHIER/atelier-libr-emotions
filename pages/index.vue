@@ -265,7 +265,7 @@ onBeforeUnmount(() => {
         .hero-description {
           max-width: 500px;
           margin-bottom: 50px;
-          font-size: 1.2rem;
+          font-size: 18px;
           line-height: 1.6;
           color: $grey-color-2;
 
@@ -326,11 +326,13 @@ onBeforeUnmount(() => {
             .artwork-content {
               .artwork-title {
                 width: 100%;
+                margin-top: 5px;
                 text-align: center;
               }
 
               .artwork-title-left {
                 width: 100%;
+                margin-top: 5px;
                 text-align: left;
               }
             }

@@ -46,4 +46,11 @@ const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
 const link = ref(baseUrl.value + props.src)
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.image {
+  :deep(a) {
+    display: block;
+    line-height: 0;
+  }
+}
+</style>
