@@ -73,7 +73,7 @@ body {
   #header-container {
     max-height: $header-height-desktop;
     padding: 20px;
-    z-index: $menu-z-index;
+    z-index: $header-z-index;
   }
 
   #page-container {
@@ -98,7 +98,7 @@ body {
   @media (max-width: $sm) {
     #header-container {
       max-height: $header-height-mobile;
-      z-index: $menu-z-index;
+      z-index: $header-z-index;
     }
 
     #page-container {
