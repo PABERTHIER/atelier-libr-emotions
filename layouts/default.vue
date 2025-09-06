@@ -98,7 +98,6 @@ body {
   @media (max-width: $sm) {
     #header-container {
       max-height: $header-height-mobile;
-      z-index: $header-z-index;
     }
 
     #page-container {
