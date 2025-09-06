@@ -408,15 +408,11 @@ const toggleMobileSection = (index: number) => {
         z-index: $menu-z-index;
         overflow-y: auto;
         background-color: $white-background-color;
-        padding: 20px 0;
-        padding-left: 50px;
         box-shadow: 0 8px 16px $box-shadow-color;
         border-top: 2px solid $primary-text-color;
         gap: 15px 40px;
 
         .menu-column {
-          padding-top: 15px;
-
           .sub-section-title {
             margin-bottom: 12px;
             font-weight: bold;
@@ -447,10 +443,13 @@ const toggleMobileSection = (index: number) => {
         .menu-content {
           flex-wrap: wrap;
           max-height: 550px;
+          padding: 20px 0;
+          padding-left: 50px;
 
           .menu-column {
             min-width: 250px;
             max-width: 300px;
+            padding-top: 15px;
           }
         }
       }
@@ -458,11 +457,14 @@ const toggleMobileSection = (index: number) => {
       @media (max-height: $md) {
         .menu-content {
           flex-wrap: nowrap;
-          max-height: 210px;
+          max-height: 200px;
+          padding: 10px 0;
+          padding-left: 20px;
 
           .menu-column {
             min-width: 150px;
             max-width: 200px;
+            padding-top: 0px;
           }
         }
       }
