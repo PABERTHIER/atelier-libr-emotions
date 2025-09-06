@@ -208,8 +208,11 @@ onBeforeUnmount(() => {
 
 <style lang="scss" scoped>
 .homepage {
-  height: 100%;
   width: 100%;
+
+  @media (min-width: $lg) {
+    height: 100%;
+  }
 
   .hero-section {
     height: 100%;
@@ -491,7 +494,6 @@ onBeforeUnmount(() => {
         flex-wrap: wrap;
         justify-content: space-between;
         margin-top: 30px;
-        margin-bottom: 15px;
         gap: 10px;
 
         @media (max-width: '395px') {
