@@ -209,17 +209,14 @@ onBeforeUnmount(() => {
 <style lang="scss" scoped>
 .homepage {
   width: 100%;
-
-  @media (min-width: $lg) {
-    height: 100%;
-  }
+  height: 100%;
 
   .hero-section {
     height: 100%;
     width: 100%;
 
     .hero-content {
-      height: 90%;
+      height: 100%;
       width: 100%;
       display: flex;
       align-items: center;

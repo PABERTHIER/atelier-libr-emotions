@@ -28,6 +28,9 @@ const abstractAutumnPaintingAlt = computed(() =>
 
 <style lang="scss" scoped>
 .oil-abstracts {
+  height: 100%;
+  width: 100%;
+
   .abstract-autumn-container {
     display: flex;
     flex-direction: column;
