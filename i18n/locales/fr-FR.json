@@ -25,25 +25,63 @@
       "meta": {
         "content": "Accueil"
       },
-      "abstract_autumn_painting": {
-        "description": "Peinture d'art abstrait avec une palette de couleurs vibrantes inspirées de l'automne. Présentant des couches riches et texturées d'oranges chaudes, de jaunes et de bruns terreux, cette œuvre d'art expressive évoque des sentiments de nature, de changement et de profondeur. Parfait pour les amateurs d'art et les collectionneurs à la recherche de compositions uniques et pleines d'émotions.",
-        "title": "Art abstrait vibrant d'inspiration automnale avec des couches texturées.",
-        "alt": "Art abstrait avec des couleurs automnales vibrantes et des couches texturées.",
-        "meta": "Explorez une peinture d'art abstrait présentant des couleurs automnales vibrantes et des couches texturées, évoquant des sentiments de nature et de changement."
+      "hero_title": {
+        "part_1": "Créer des Émotions",
+        "part_2": "À travers l'Art"
+      },
+      "hero_description": "Découvrez un monde où les couleurs dansent sur la toile et où l'argile se transforme en poésie. Chaque œuvre raconte une histoire de passion, de technique, d'émotion et de quête infinie d'expression artistique.",
+      "buttons": {
+        "view_gallery": "Voir la Galerie",
+        "about": "À propos de l'Artiste"
       }
     },
     "about": {
-      "tab_name": "À Propos",
+      "tab_name": "À Propos de moi",
       "meta": {
-        "content": "À propos"
+        "content": "À propos de moi"
       }
+    },
+    "contact": {
+      "tab_name": "Contact",
+      "meta": {
+        "content": "Contact"
+      },
+      "title": "Contactez-moi",
+      "subtitle": "Découvrez l'art à travers les couleurs, les textures et les émotions.",
+      "image": {
+        "title": "Quelques peintures...",
+        "alt": "Quelques peintures..."
+      },
+      "connect_me": "Connectez-vous avec moi",
+      "ready": "Prêt à faire entrer l'art dans votre espace ?",
+      "contact_me": "Contactez-moi"
     }
   },
   "about": {
     "author": "Véronique Berthier",
     "first_name": "Véronique",
     "last_name": "Berthier",
-    "username": "oreV"
+    "username": "oreV",
+    "mail_address": "atelierlibremotions{'@'}gmail.com",
+    "location": "Vandeléville, France"
+  },
+  "pictures": {
+    "paintings": {
+      "abstract_autumn": {
+        "description": "Peinture d'art abstrait avec une palette de couleurs vibrantes inspirées de l'automne. Présentant des couches riches et texturées d'oranges chaudes, de jaunes et de bruns terreux, cette œuvre d'art expressive évoque des sentiments de nature, de changement et de profondeur. Parfait pour les amateurs d'art et les collectionneurs à la recherche de compositions uniques et pleines d'émotions.",
+        "title": "Art abstrait vibrant d'inspiration automnale avec des couches texturées.",
+        "alt": "Art abstrait avec des couleurs automnales vibrantes et des couches texturées.",
+        "meta": "Explorez une peinture d'art abstrait présentant des couleurs automnales vibrantes et des couches texturées, évoquant des sentiments de nature et de changement."
+      },
+      "celestial_collision": {
+        "title": "Technique mixte avec des couleurs vibrantes.",
+        "alt": "Technique mixte avec des couleurs vibrantes."
+      },
+      "entangled_echoes": {
+        "title": "Huile présentant des couches riches et texturées d'oranges et de jaunes chauds.",
+        "alt": "Huile présentant des couches riches et texturées d'oranges et de jaunes chauds."
+      }
+    }
   },
   "miscellaneous": {
     "art": "Art",
@@ -52,23 +90,47 @@
     "pottery": "Poterie",
     "emotions": "Émotions",
     "miscellaneous": "Divers",
-    "acrylics": "Acryliques",
-    "glazing": "Glacis",
+    "acrylic": "Acrylique",
+    "oil_painting": "Huile",
     "inks": "Encres",
-    "charcoals": "Fusains",
-    "pastels": "Pastels",
+    "charcoal": "Fusain",
+    "pastel": "Pastel",
+    "felt_pen": "Feutre",
     "electric_kiln_firing": "Cuisson four électrique",
-    "Raku_and_smouldering": "Raku et enfumage",
+    "raku_and_smouldering": "Raku et enfumage",
+    "porcelain": "Porcelaine",
+    "kiln_pottery": "Poterie au four",
     "abstracts": "Abstraits",
     "faces": "Visages",
     "nature": "Nature",
     "nudes": "Nus",
     "animals": "Animaux",
-    "letting_go": "Lâcher prise",
     "various_objects": "Objets divers",
     "person": "Personnages",
     "vases_and_pots": "Vases et pots",
     "christmas": "Noël",
-    "easter": "Pâques"
+    "easter": "Pâques",
+    "flowers": "Fleurs",
+    "candle_holder": "Photophore",
+    "before_after": "Avant-après",
+    "ceramics_in_context": "Céramiques en situation",
+    "first_creations": "Premières créations",
+    "quick_work": "Travaux rapides",
+    "mixed_techniques": "Techniques mixtes",
+    "mixed": "Mixte",
+    "in_action": "\"En pleine action\"",
+    "different_projects": "Différents projets",
+    "painting_while_dancing": "Peindre en dansant",
+    "performances": "Performances",
+    "life_is_love": "La vie c'est de l'Amour",
+    "the_artist": "L'Artiste",
+    "about_myself": "À propos de moi",
+    "career_cv": "Parcours et CV",
+    "my_artistic_approach": "Ma démarche artistique",
+    "contact": "Contact",
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "follow_on_facebook": "Suivez-moi sur Facebook",
+    "follow_on_instagram": "Suivez-moi sur Instagram"
   }
 }

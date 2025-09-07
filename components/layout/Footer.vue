@@ -23,6 +23,7 @@ const authorName = computed(() => t('about.author'))
   align-items: center;
   padding: 0px 20px;
   background-color: $footer-background-color;
+  z-index: $footer-z-index;
 
   .right-part {
     font-size: 12px;

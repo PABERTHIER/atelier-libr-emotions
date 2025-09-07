@@ -25,25 +25,63 @@
       "meta": {
         "content": "Homepage"
       },
-      "abstract_autumn_painting": {
-        "description": "Abstract art painting with a vibrant autumn-inspired color palette. Featuring rich, textured layers of warm oranges, yellows, and earthy browns, this expressive artwork evokes feelings of nature, change, and depth. Perfect for art lovers and collectors seeking unique, emotion-driven compositions.",
-        "title": "Vibrant autumn-inspired abstract art with textured layers.",
-        "alt": "Abstract art with vibrant autumn colors and textured layers.",
-        "meta": "Explore an abstract art painting featuring vibrant autumn colors and textured layers, evoking feelings of nature and change."
+      "hero_title": {
+        "part_1": "Creating Emotions",
+        "part_2": "Through Art"
+      },
+      "hero_description": "Discover a world where colors dance on canvas and clay transforms into poetry. Each piece tells a story of passion, technique, emotion, and the endless pursuit of artistic expression.",
+      "buttons": {
+        "view_gallery": "View Gallery",
+        "about": "About the Artist"
       }
     },
     "about": {
-      "tab_name": "About",
+      "tab_name": "About myself",
       "meta": {
-        "content": "About"
+        "content": "About myself"
       }
+    },
+    "contact": {
+      "tab_name": "Contact",
+      "meta": {
+        "content": "Contact"
+      },
+      "title": "Contact me",
+      "subtitle": "Discover art through colors, textures and emotions.",
+      "image": {
+        "title": "Some paintings...",
+        "alt": "Some paintings..."
+      },
+      "connect_me": "Connect with me",
+      "ready": "Ready to bring art into your space?",
+      "contact_me": "Contact me"
     }
   },
   "about": {
     "author": "Véronique Berthier",
     "first_name": "Véronique",
     "last_name": "Berthier",
-    "username": "oreV"
+    "username": "oreV",
+    "mail_address": "atelierlibremotions{'@'}gmail.com",
+    "location": "Vandeléville, France"
+  },
+  "pictures": {
+    "paintings": {
+      "abstract_autumn": {
+        "description": "Abstract art painting with a vibrant autumn-inspired color palette. Featuring rich, textured layers of warm oranges, yellows, and earthy browns, this expressive artwork evokes feelings of nature, change, and depth. Perfect for art lovers and collectors seeking unique, emotion-driven compositions.",
+        "title": "Vibrant autumn-inspired abstract art with textured layers.",
+        "alt": "Abstract art with vibrant autumn colors and textured layers.",
+        "meta": "Explore an abstract art painting featuring vibrant autumn colors and textured layers, evoking feelings of nature and change."
+      },
+      "celestial_collision": {
+        "title": "Mixed techniques with vibrant colors.",
+        "alt": "Mixed techniques with vibrant colors."
+      },
+      "entangled_echoes": {
+        "title": "Oil painting featuring rich, textured layers of warm oranges, yellows.",
+        "alt": "Oil painting featuring rich, textured layers of warm oranges, yellows."
+      }
+    }
   },
   "miscellaneous": {
     "art": "Art",
@@ -52,23 +90,47 @@
     "pottery": "Pottery",
     "emotions": "Emotions",
     "miscellaneous": "Miscellaneous",
-    "acrylics": "Acrylics",
-    "glazing": "Glazing",
+    "acrylic": "Acrylic",
+    "oil_painting": "Oil",
     "inks": "Inks",
-    "charcoals": "Charcoals",
-    "pastels": "Pastels",
+    "charcoal": "Charcoal",
+    "pastel": "Pastel",
+    "felt_pen": "Felt pen",
     "electric_kiln_firing": "Electric kiln firing",
-    "Raku_and_smouldering": "Raku and smouldering",
+    "raku_and_smouldering": "Raku and smouldering",
+    "porcelain": "Porcelain",
+    "kiln_pottery": "Kiln pottery",
     "abstracts": "Abstracts",
     "faces": "Faces",
     "nature": "Nature",
     "nudes": "Nudes",
     "animals": "Animals",
-    "letting_go": "Letting go",
     "various_objects": "Various objects",
     "person": "Person",
     "vases_and_pots": "Vases and pots",
     "christmas": "Christmas",
-    "easter": "Easter"
+    "easter": "Easter",
+    "flowers": "Flowers",
+    "candle_holder": "Candle holder",
+    "before_after": "Before and after",
+    "ceramics_in_context": "Ceramics in context",
+    "first_creations": "First creations",
+    "quick_work": "Quick work",
+    "mixed_techniques": "Mixed techniques",
+    "mixed": "Mixed",
+    "in_action": "\"In action\"",
+    "different_projects": "Different projects",
+    "painting_while_dancing": "Painting while dancing",
+    "performances": "Performances",
+    "life_is_love": "Life is Love",
+    "the_artist": "The Artist",
+    "about_myself": "About myself",
+    "career_cv": "Career path and CV",
+    "my_artistic_approach": "My artistic approach",
+    "contact": "Contact",
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "follow_on_facebook": "Follow on Facebook",
+    "follow_on_instagram": "Follow on Instagram"
   }
 }
