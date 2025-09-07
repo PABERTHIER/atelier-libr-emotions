@@ -354,14 +354,22 @@ const activeIndex = ref<number | null>(null)
 
 const showContent = (index: number) => {
   activeIndex.value = index
+  document.body.classList.add('no-scroll')
 }
 
 const hideContent = () => {
   activeIndex.value = null
+  document.body.classList.remove('no-scroll')
 }
 
 const toggleMobileMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
+
+  if (isMenuOpen.value) {
+    document.body.classList.add('no-scroll')
+  } else {
+    document.body.classList.remove('no-scroll')
+  }
 }
 
 const toggleMobileSection = (index: number) => {
@@ -406,11 +414,12 @@ const toggleMobileSection = (index: number) => {
         left: 3%;
         width: 75%;
         z-index: $menu-z-index;
-        overflow-y: auto;
         background-color: $white-background-color;
         box-shadow: 0 8px 16px $box-shadow-color;
         border-top: 2px solid $primary-text-color;
         gap: 15px 40px;
+        overflow-y: auto;
+        overscroll-behavior: contain;
 
         .menu-column {
           .sub-section-title {
@@ -498,6 +507,7 @@ const toggleMobileSection = (index: number) => {
     }
 
     .menu-container {
+      height: 100%;
       z-index: $menu-z-index;
       position: fixed;
       top: 0;
@@ -507,10 +517,13 @@ const toggleMobileSection = (index: number) => {
       padding: 15px;
       background-color: $mobile-menu-background-color;
       overflow-y: auto;
+      overscroll-behavior: contain;
 
       .close-icon-container {
-        position: absolute;
-        right: 15px;
+        display: flex;
+        justify-content: right;
+        position: sticky;
+        top: 15px;
         cursor: pointer;
       }
 

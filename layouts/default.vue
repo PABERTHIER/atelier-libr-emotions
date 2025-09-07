@@ -1,15 +1,17 @@
 <template>
   <div id="layoutContainer">
     <Welcome />
-    <div id="header-container">
+    <header id="header-container">
       <Header />
-    </div>
-    <div id="page-container">
-      <slot />
-    </div>
-    <div id="footer-container">
+    </header>
+    <main id="page-container">
+      <div class="page-content">
+        <slot />
+      </div>
+    </main>
+    <footer id="footer-container">
       <Footer />
-    </div>
+    </footer>
   </div>
 </template>
 
@@ -35,6 +37,10 @@ onBeforeUnmount(() => {
 <style lang="scss">
 @use '~/styles/default.scss' as *;
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   font-family:
     'Nunito', 'Inter', 'Manrope', 'Poppins', 'Sora', Arial, sans-serif;
@@ -44,55 +50,87 @@ html {
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-  height: 100%;
-  width: 100%;
   color: $primary-text-color;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  background-color: $background-color;
 }
 
 body {
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  margin: 0px;
+  margin: 0;
+  padding: 0;
+  background-color: $background-color;
 
   #__nuxt,
   #__layout {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+    background-color: $background-color;
   }
 }
 
+body.no-scroll {
+  overflow: hidden !important;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  border: 1px solid #caca;
+  background-color: #f1f1f1;
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, $grey-blue-color, $dark-red-color);
+  border-radius: 10px;
+}
+
 #layoutContainer {
-  height: calc(var(--vh, 1vh) * 100);
-  min-height: 100%;
   background-color: $background-color;
 
   #header-container {
     max-height: $header-height-desktop;
-    padding: 20px;
+    position: sticky;
+    padding: 20px 20px 0px 20px;
+    top: 0;
     z-index: $header-z-index;
+    background-color: $background-color;
   }
 
   #page-container {
-    height: calc(
-      var(--vh, 1vh) * 100 - #{$header-height-desktop} - #{$footer-height} -
-        20px
+    background-color: $background-color;
+    min-height: calc(
+      var(--vh, 1vh) * 100 - #{$header-height-desktop} - #{$footer-height}
     );
-    flex: 1;
-    padding: 0px 20px 20px 20px;
-    overflow-y: auto;
-    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 20px);
+    height: 100%;
+
+    .page-content {
+      height: 100%;
+      min-height: calc(
+        var(--vh, 1vh) * 100 - #{$header-height-desktop} - #{$footer-height}
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    }
   }
 
   #footer-container {
     width: 100%;
     height: $footer-height;
-    position: fixed;
     bottom: 0;
+    left: 0;
+    right: 0;
     z-index: $footer-z-index;
+    background-color: $background-color;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
   }
 
   @media (max-width: $sm) {
@@ -101,29 +139,32 @@ body {
     }
 
     #page-container {
-      height: calc(
-        var(--vh, 1vh) * 100 - #{$header-height-mobile} - #{$footer-height} -
-          20px
+      min-height: calc(
+        var(--vh, 1vh) * 100 - #{$header-height-mobile} - #{$footer-height}
       );
     }
   }
 }
 
-#page-container::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
-  border-radius: 10px;
+// Handle safe areas on modern devices
+@supports (padding: max(0px)) {
+  #layoutContainer {
+    #footer-container {
+      height: calc(#{$footer-height} + max(env(safe-area-inset-bottom), 0px));
+      padding-bottom: max(env(safe-area-inset-bottom), 0px);
+    }
+
+    #page-container .page-content {
+      padding-bottom: calc(20px + max(env(safe-area-inset-bottom), 0px));
+    }
+  }
 }
 
-#page-container::-webkit-scrollbar-track {
-  border-radius: 10px;
-  border: 1px solid #caca;
-  background-color: #f1f1f1;
-  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
-}
-
-#page-container::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, $grey-blue-color, $dark-red-color);
-  border-radius: 10px;
+// Mobile optimizations
+@media screen and (max-width: $sm) {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 </style>

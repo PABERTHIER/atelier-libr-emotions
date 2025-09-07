@@ -138,6 +138,8 @@ const instagramLink = 'https://www.instagram.com/atelier_libremotions'
 @use 'sass:color';
 
 .contact {
+  height: 100%;
+  width: 100%;
   position: relative;
 
   .particles-container {
