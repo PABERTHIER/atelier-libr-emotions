@@ -9,7 +9,7 @@
         densities="x1 x2"
         loading="lazy"
         placeholder
-        :style="{ maxHeight: maxHeight }" />
+        :style="{ maxHeight }" />
     </NuxtLink>
   </div>
 </template>
