@@ -1,9 +1,6 @@
 <template>
   <div class="wip">
-    <NuxtImg
-      src="wip.gif"
-      sizes="sm:400px, md:700px, lg:1000px"
-      densities="x1 x2" />
+    <Image src="wip.gif" sizes="sm:400px, md:700px, lg:1000px" />
   </div>
 </template>
 
