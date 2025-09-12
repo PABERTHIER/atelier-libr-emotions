@@ -26,47 +26,28 @@
         <div class="hero-image">
           <div class="floating-artwork">
             <div class="artwork-frame first-picture">
-              <div class="artwork-content">
-                <Image
-                  :src="linksConfigFirstPicture[currentFirstPicture]!.filePath"
-                  sizes="xs:100px, sm:150px, md:150px, lg:175px, xl:200px"
-                  max-height="300px"
-                  :title="linksConfigFirstPicture[currentFirstPicture]!.title"
-                  :alt="linksConfigFirstPicture[currentFirstPicture]!.alt" />
-                <div class="artwork-title-left">
-                  {{ linksConfigFirstPicture[currentFirstPicture]!.technique }}
-                </div>
-              </div>
+              <Image
+                :src="linksConfigFirstPicture[currentFirstPicture]!.filePath"
+                sizes="xs:100px, sm:150px, md:150px, lg:175px, xl:200px"
+                max-height="300px"
+                :title="linksConfigFirstPicture[currentFirstPicture]!.title"
+                :alt="linksConfigFirstPicture[currentFirstPicture]!.alt" />
             </div>
             <div class="artwork-frame second-picture">
-              <div class="artwork-content">
-                <Image
-                  :src="
-                    linksConfigSecondPicture[currentSecondPicture]!.filePath
-                  "
-                  sizes="xs:80px, sm:130px, md:130px, lg:150px, xl:180px"
-                  max-height="180px"
-                  :title="linksConfigSecondPicture[currentSecondPicture]!.title"
-                  :alt="linksConfigSecondPicture[currentSecondPicture]!.alt" />
-                <div class="artwork-title">
-                  {{
-                    linksConfigSecondPicture[currentSecondPicture]!.technique
-                  }}
-                </div>
-              </div>
+              <Image
+                :src="linksConfigSecondPicture[currentSecondPicture]!.filePath"
+                sizes="xs:80px, sm:130px, md:130px, lg:150px, xl:180px"
+                max-height="180px"
+                :title="linksConfigSecondPicture[currentSecondPicture]!.title"
+                :alt="linksConfigSecondPicture[currentSecondPicture]!.alt" />
             </div>
             <div class="artwork-frame third-picture">
-              <div class="artwork-content">
-                <Image
-                  :src="linksConfigThirdPicture[currentThirdPicture]!.filePath"
-                  sizes="xs:80px, sm:100px, md:100px, lg:125px, xl:150px"
-                  max-height="250px"
-                  :title="linksConfigThirdPicture[currentThirdPicture]!.title"
-                  :alt="linksConfigThirdPicture[currentThirdPicture]!.alt" />
-                <div class="artwork-title">
-                  {{ linksConfigThirdPicture[currentThirdPicture]!.technique }}
-                </div>
-              </div>
+              <Image
+                :src="linksConfigThirdPicture[currentThirdPicture]!.filePath"
+                sizes="xs:80px, sm:100px, md:100px, lg:125px, xl:150px"
+                max-height="250px"
+                :title="linksConfigThirdPicture[currentThirdPicture]!.title"
+                :alt="linksConfigThirdPicture[currentThirdPicture]!.alt" />
             </div>
           </div>
         </div>
@@ -125,19 +106,16 @@ const linksConfigFirstPicture = ref([
     filePath: '/paintings/celestial-collision.webp',
     title: computed(() => t('pictures.paintings.celestial_collision.title')),
     alt: computed(() => t('pictures.paintings.celestial_collision.alt')),
-    technique: computed(() => t('miscellaneous.mixed')),
   },
   {
     filePath: '/paintings/entangled-echoes.webp',
     title: computed(() => t('pictures.paintings.entangled_echoes.title')),
     alt: computed(() => t('pictures.paintings.entangled_echoes.alt')),
-    technique: computed(() => t('miscellaneous.oil_painting')),
   },
   {
     filePath: '/paintings/abstract-autumn.webp',
     title: computed(() => t('pictures.paintings.abstract_autumn.title')),
     alt: computed(() => t('pictures.paintings.abstract_autumn.alt')),
-    technique: computed(() => t('miscellaneous.acrylic')),
   },
 ])
 
@@ -146,19 +124,16 @@ const linksConfigSecondPicture = ref([
     filePath: '/paintings/entangled-echoes.webp',
     title: computed(() => t('pictures.paintings.entangled_echoes.title')),
     alt: computed(() => t('pictures.paintings.entangled_echoes.alt')),
-    technique: computed(() => t('miscellaneous.oil_painting')),
   },
   {
     filePath: '/paintings/abstract-autumn.webp',
     title: computed(() => t('pictures.paintings.abstract_autumn.title')),
     alt: computed(() => t('pictures.paintings.abstract_autumn.alt')),
-    technique: computed(() => t('miscellaneous.acrylic')),
   },
   {
     filePath: '/paintings/celestial-collision.webp',
     title: computed(() => t('pictures.paintings.celestial_collision.title')),
     alt: computed(() => t('pictures.paintings.celestial_collision.alt')),
-    technique: computed(() => t('miscellaneous.mixed')),
   },
 ])
 
@@ -167,19 +142,16 @@ const linksConfigThirdPicture = ref([
     filePath: '/paintings/abstract-autumn.webp',
     title: computed(() => t('pictures.paintings.abstract_autumn.title')),
     alt: computed(() => t('pictures.paintings.abstract_autumn.alt')),
-    technique: computed(() => t('miscellaneous.acrylic')),
   },
   {
     filePath: '/paintings/celestial-collision.webp',
     title: computed(() => t('pictures.paintings.celestial_collision.title')),
     alt: computed(() => t('pictures.paintings.celestial_collision.alt')),
-    technique: computed(() => t('miscellaneous.mixed')),
   },
   {
     filePath: '/paintings/entangled-echoes.webp',
     title: computed(() => t('pictures.paintings.entangled_echoes.title')),
     alt: computed(() => t('pictures.paintings.entangled_echoes.alt')),
-    technique: computed(() => t('miscellaneous.oil_painting')),
   },
 ])
 
@@ -299,7 +271,7 @@ onBeforeUnmount(() => {
 
           .artwork-frame {
             position: absolute;
-            padding: 15px 15px 5px 15px;
+            padding: 15px;
             background: $white-color;
             border-radius: 12px;
             box-shadow: 0 20px 40px $box-shadow-color;
@@ -321,20 +293,6 @@ onBeforeUnmount(() => {
               top: 200px;
               left: 200px;
               animation: float 6s ease-in-out infinite 4s;
-            }
-
-            .artwork-content {
-              .artwork-title {
-                width: 100%;
-                margin-top: 5px;
-                text-align: center;
-              }
-
-              .artwork-title-left {
-                width: 100%;
-                margin-top: 5px;
-                text-align: left;
-              }
             }
 
             @keyframes float {
@@ -359,7 +317,7 @@ onBeforeUnmount(() => {
             height: 450px;
 
             .artwork-frame {
-              padding: 10px 10px 5px 10px;
+              padding: 10px;
 
               &.first-picture {
                 top: 80px;
@@ -392,7 +350,7 @@ onBeforeUnmount(() => {
             height: 300px;
 
             .artwork-frame {
-              padding: 10px 10px 5px 10px;
+              padding: 10px;
 
               &.first-picture {
                 top: 0px;
@@ -425,7 +383,7 @@ onBeforeUnmount(() => {
             height: 250px;
 
             .artwork-frame {
-              padding: 10px 10px 3px 10px;
+              padding: 10px;
               border-radius: 5px;
 
               &.first-picture {
@@ -460,7 +418,7 @@ onBeforeUnmount(() => {
             height: 150px;
 
             .artwork-frame {
-              padding: 5px 5px 2px 5px;
+              padding: 5px;
 
               &.first-picture {
                 top: 0px;
