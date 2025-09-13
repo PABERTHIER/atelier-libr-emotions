@@ -185,7 +185,7 @@ const sections = ref([
         ],
       },
       {
-        title: computed(() => t('miscellaneous.mixed_techniques')),
+        title: computed(() => t('miscellaneous.mixed_technique')),
         links: [
           { text: computed(() => t('miscellaneous.abstracts')), url: '/wip' },
           { text: computed(() => t('miscellaneous.faces')), url: '/wip' },
@@ -285,21 +285,22 @@ const sections = ref([
     ],
   },
   {
-    title: computed(() => t('miscellaneous.miscellaneous')),
+    title: computed(() => t('miscellaneous.events')),
     showContent: false,
     subSections: [
       {
-        title: computed(() => t('miscellaneous.in_action')),
-        links: [
-          { text: computed(() => t('miscellaneous.painting')), url: '/wip' },
-          { text: computed(() => t('miscellaneous.ceramic')), url: '/wip' },
-        ],
-      },
-      {
-        title: computed(() => t('miscellaneous.different_projects')),
+        title: computed(() => t('miscellaneous.exhibitions')),
         links: [
           {
-            text: computed(() => t('miscellaneous.painting_while_dancing')),
+            text: computed(() => t('miscellaneous.2011_2019')),
+            url: '/wip',
+          },
+          {
+            text: computed(() => t('miscellaneous.2020_2022')),
+            url: '/wip',
+          },
+          {
+            text: computed(() => t('miscellaneous.2023_2025')),
             url: '/wip',
           },
         ],
@@ -313,6 +314,23 @@ const sections = ref([
           },
         ],
       },
+      {
+        title: computed(() => t('miscellaneous.miscellaneous_projects')),
+        links: [
+          {
+            text: computed(() => t('miscellaneous.painting_while_dancing')),
+            url: '/wip',
+          },
+          {
+            text: computed(() => t('miscellaneous.collective_work')),
+            url: '/wip',
+          },
+          {
+            text: computed(() => t('miscellaneous.ceramic_courses')),
+            url: '/wip',
+          },
+        ],
+      },
     ],
   },
   {
@@ -320,28 +338,31 @@ const sections = ref([
     showContent: false,
     subSections: [
       {
-        title: '',
+        title: computed(() => t('miscellaneous.about_myself')),
         links: [
           {
-            text: computed(() => t('miscellaneous.about_myself')),
+            text: computed(() => t('miscellaneous.my_artistic_approach')),
             url: '/about',
           },
-        ],
-      },
-      {
-        title: '',
-        links: [
           {
-            text: computed(() => t('miscellaneous.career_cv')),
+            text: computed(() => t('miscellaneous.my_career')),
+            url: '/wip',
+          },
+          {
+            text: computed(() => t('miscellaneous.my_cv')),
             url: '/wip',
           },
         ],
       },
       {
-        title: '',
+        title: computed(() => t('miscellaneous.in_action')),
         links: [
           {
-            text: computed(() => t('miscellaneous.my_artistic_approach')),
+            text: computed(() => t('miscellaneous.painting')),
+            url: '/wip',
+          },
+          {
+            text: computed(() => t('miscellaneous.ceramic')),
             url: '/wip',
           },
         ],
