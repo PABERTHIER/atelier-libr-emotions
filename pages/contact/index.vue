@@ -9,9 +9,9 @@
         <div class="page-title">
           {{ t('pages.contact.title') }}
         </div>
-        <p class="subtitle">
+        <div class="subtitle">
           {{ t('pages.contact.subtitle') }}
-        </p>
+        </div>
       </div>
 
       <div class="artwork-container">
@@ -217,7 +217,8 @@ const instagramLink = 'https://www.instagram.com/atelier_libremotions'
     }
 
     .subtitle {
-      max-width: 600px;
+      max-width: 650px;
+      margin-bottom: 25px;
       font-size: 18px;
       color: color.adjust($primary-text-color, $lightness: -10%);
       font-style: italic;
