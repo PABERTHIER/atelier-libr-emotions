@@ -27,27 +27,41 @@
           <div class="floating-artwork">
             <div class="artwork-frame first-picture">
               <Image
-                :src="linksConfigFirstPicture[currentFirstPicture]!.filePath"
+                :src="
+                  linksConfigFirstPicture[currentFirstPictureIndex]!.filePath
+                "
                 sizes="xs:100px, sm:150px, md:150px, lg:175px, xl:200px"
                 max-height="300px"
-                :title="linksConfigFirstPicture[currentFirstPicture]!.title"
-                :alt="linksConfigFirstPicture[currentFirstPicture]!.alt" />
+                :title="
+                  linksConfigFirstPicture[currentFirstPictureIndex]!.title
+                "
+                :alt="linksConfigFirstPicture[currentFirstPictureIndex]!.alt" />
             </div>
             <div class="artwork-frame second-picture">
               <Image
-                :src="linksConfigSecondPicture[currentSecondPicture]!.filePath"
+                :src="
+                  linksConfigSecondPicture[currentSecondPictureIndex]!.filePath
+                "
                 sizes="xs:80px, sm:130px, md:130px, lg:150px, xl:180px"
                 max-height="180px"
-                :title="linksConfigSecondPicture[currentSecondPicture]!.title"
-                :alt="linksConfigSecondPicture[currentSecondPicture]!.alt" />
+                :title="
+                  linksConfigSecondPicture[currentSecondPictureIndex]!.title
+                "
+                :alt="
+                  linksConfigSecondPicture[currentSecondPictureIndex]!.alt
+                " />
             </div>
             <div class="artwork-frame third-picture">
               <Image
-                :src="linksConfigThirdPicture[currentThirdPicture]!.filePath"
+                :src="
+                  linksConfigThirdPicture[currentThirdPictureIndex]!.filePath
+                "
                 sizes="xs:80px, sm:100px, md:100px, lg:125px, xl:150px"
                 max-height="250px"
-                :title="linksConfigThirdPicture[currentThirdPicture]!.title"
-                :alt="linksConfigThirdPicture[currentThirdPicture]!.alt" />
+                :title="
+                  linksConfigThirdPicture[currentThirdPictureIndex]!.title
+                "
+                :alt="linksConfigThirdPicture[currentThirdPictureIndex]!.alt" />
             </div>
           </div>
         </div>
@@ -155,18 +169,19 @@ const linksConfigThirdPicture = ref([
   },
 ])
 
-const currentFirstPicture = ref(0)
-const currentSecondPicture = ref(0)
-const currentThirdPicture = ref(0)
+const currentFirstPictureIndex = ref(0)
+const currentSecondPictureIndex = ref(0)
+const currentThirdPictureIndex = ref(0)
 const timer = ref<NodeJS.Timeout | undefined>(undefined)
 
 const next = () => {
-  currentFirstPicture.value =
-    (currentFirstPicture.value + 1) % linksConfigFirstPicture.value.length
-  currentSecondPicture.value =
-    (currentSecondPicture.value + 1) % linksConfigSecondPicture.value.length
-  currentThirdPicture.value =
-    (currentThirdPicture.value + 1) % linksConfigThirdPicture.value.length
+  currentFirstPictureIndex.value =
+    (currentFirstPictureIndex.value + 1) % linksConfigFirstPicture.value.length
+  currentSecondPictureIndex.value =
+    (currentSecondPictureIndex.value + 1) %
+    linksConfigSecondPicture.value.length
+  currentThirdPictureIndex.value =
+    (currentThirdPictureIndex.value + 1) % linksConfigThirdPicture.value.length
 }
 
 onMounted(() => {
