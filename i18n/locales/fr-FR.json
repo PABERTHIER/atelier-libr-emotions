@@ -25,11 +25,8 @@
       "meta": {
         "content": "Accueil"
       },
-      "hero_title": {
-        "part_1": "Créer des Émotions",
-        "part_2": "À travers l'Art"
-      },
-      "hero_description": "Découvrez un monde où les couleurs dansent sur la toile et où l'argile se transforme en poésie. Chaque œuvre raconte une histoire de passion, de technique, d'émotion et de quête infinie d'expression artistique.",
+      "hero_title": "Peinture et Céramique",
+      "hero_description": "Découvrez un monde où les couleurs, les formes et les textures dansent sur la toile et où la terre se transforme en poésie. Peintures intuitives et inspirées par Dame Nature. Céramiques décoratives ou abstraites. Techniques multiples. Aventures, émotions, …",
       "buttons": {
         "view_gallery": "Voir la Galerie",
         "about": "À propos de l'Artiste"
@@ -47,7 +44,7 @@
         "content": "Contact"
       },
       "title": "Contactez-moi",
-      "subtitle": "Découvrez l'art à travers les couleurs, les textures et les émotions.",
+      "subtitle": "Couleurs, formes et textures ! Parcourez mon travail en écoutant vos ressentis.",
       "image": {
         "title": "Quelques peintures...",
         "alt": "Quelques peintures..."
@@ -78,8 +75,8 @@
         "alt": "Technique mixte avec des couleurs vibrantes."
       },
       "entangled_echoes": {
-        "title": "Huile présentant des couches riches et texturées d'oranges et de jaunes chauds.",
-        "alt": "Huile présentant des couches riches et texturées d'oranges et de jaunes chauds."
+        "title": "Acrylique présentant des couches riches et texturées d'oranges et de jaunes chauds.",
+        "alt": "Acrylique présentant des couches riches et texturées d'oranges et de jaunes chauds."
       }
     }
   },
@@ -116,21 +113,28 @@
     "ceramics_in_context": "Céramiques en situation",
     "first_creations": "Premières créations",
     "quick_work": "Travaux rapides",
-    "mixed_techniques": "Techniques mixtes",
-    "mixed": "Mixte",
+    "collective_work": "Travail collectif",
+    "ceramic_courses": "Stages céramique",
+    "mixed_technique": "Technique mixte",
+    "events": "Événements",
+    "exhibitions": "Expositions",
     "in_action": "\"En pleine action\"",
-    "different_projects": "Différents projets",
+    "miscellaneous_projects": "Divers projets",
     "painting_while_dancing": "Peindre en dansant",
     "performances": "Performances",
-    "life_is_love": "La vie c'est de l'Amour",
+    "life_is_love": "La Vie c'est de l'Amour",
     "the_artist": "L'Artiste",
     "about_myself": "À propos de moi",
-    "career_cv": "Parcours et CV",
     "my_artistic_approach": "Ma démarche artistique",
+    "my_career": "Mon parcours",
+    "my_cv": "Mon CV",
     "contact": "Contact",
     "facebook": "Facebook",
     "instagram": "Instagram",
     "follow_on_facebook": "Suivez-moi sur Facebook",
-    "follow_on_instagram": "Suivez-moi sur Instagram"
+    "follow_on_instagram": "Suivez-moi sur Instagram",
+    "2011_2019": "2011 - 2019",
+    "2020_2022": "2020 - 2022",
+    "2023_2025": "2023 - 2025"
   }
 }

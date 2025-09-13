@@ -25,11 +25,8 @@
       "meta": {
         "content": "Homepage"
       },
-      "hero_title": {
-        "part_1": "Creating Emotions",
-        "part_2": "Through Art"
-      },
-      "hero_description": "Discover a world where colors dance on canvas and clay transforms into poetry. Each piece tells a story of passion, technique, emotion, and the endless pursuit of artistic expression.",
+      "hero_title": "Painting and Ceramic",
+      "hero_description": "Discover a world where colors, shapes, and textures dance on canvas and where the clay transforms into poetry. Intuitive paintings inspired by Mother Nature. Decorative or abstract ceramics. Multiple techniques. Adventures, emotions, …",
       "buttons": {
         "view_gallery": "View Gallery",
         "about": "About the Artist"
@@ -47,7 +44,7 @@
         "content": "Contact"
       },
       "title": "Contact me",
-      "subtitle": "Discover art through colors, textures and emotions.",
+      "subtitle": "Colors, shapes, and textures! Explore my work and listen to your feelings.",
       "image": {
         "title": "Some paintings...",
         "alt": "Some paintings..."
@@ -78,8 +75,8 @@
         "alt": "Mixed techniques with vibrant colors."
       },
       "entangled_echoes": {
-        "title": "Oil painting featuring rich, textured layers of warm oranges, yellows.",
-        "alt": "Oil painting featuring rich, textured layers of warm oranges, yellows."
+        "title": "Acrylic featuring rich, textured layers of warm oranges, yellows.",
+        "alt": "Acrylic featuring rich, textured layers of warm oranges, yellows."
       }
     }
   },
@@ -116,21 +113,28 @@
     "ceramics_in_context": "Ceramics in context",
     "first_creations": "First creations",
     "quick_work": "Quick work",
-    "mixed_techniques": "Mixed techniques",
-    "mixed": "Mixed",
+    "collective_work": "Collective work",
+    "ceramic_courses": "Ceramic courses",
+    "mixed_technique": "Mixed technique",
+    "events": "Events",
+    "exhibitions": "Exhibitions",
     "in_action": "\"In action\"",
-    "different_projects": "Different projects",
+    "miscellaneous_projects": "Miscellaneous projects",
     "painting_while_dancing": "Painting while dancing",
     "performances": "Performances",
     "life_is_love": "Life is Love",
     "the_artist": "The Artist",
     "about_myself": "About myself",
-    "career_cv": "Career path and CV",
     "my_artistic_approach": "My artistic approach",
+    "my_career": "My career path",
+    "my_cv": "My CV",
     "contact": "Contact",
     "facebook": "Facebook",
     "instagram": "Instagram",
     "follow_on_facebook": "Follow on Facebook",
-    "follow_on_instagram": "Follow on Instagram"
+    "follow_on_instagram": "Follow on Instagram",
+    "2011_2019": "2011 - 2019",
+    "2020_2022": "2020 - 2022",
+    "2023_2025": "2023 - 2025"
   }
 }
