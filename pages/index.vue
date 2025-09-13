@@ -5,10 +5,10 @@
         <div class="hero-text">
           <h1 class="hero-title">
             <span class="title-line">
-              {{ t('pages.main.hero_title.part_1') }}
+              {{ t('app.name') }}
             </span>
             <span class="title-line accent">
-              {{ t('pages.main.hero_title.part_2') }}
+              {{ t('pages.main.hero_title') }}
             </span>
           </h1>
           <div class="hero-description">
@@ -218,22 +218,22 @@ onBeforeUnmount(() => {
       .hero-text {
         .hero-title {
           margin-bottom: 30px;
-          font-size: clamp(3rem, 8vw, 5rem);
-          font-weight: 300;
-          line-height: 1.1;
-          letter-spacing: -2px;
-
-          @media (max-width: $xl) {
-            font-size: clamp(3rem, 5vw, 5rem);
-          }
-
-          @media (max-width: $lg) {
-            font-size: clamp(3rem, 6vw, 5rem);
-          }
 
           .title-line {
             display: block;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 300;
+            line-height: 1.1;
+            letter-spacing: -2px;
             color: $dark-grey-blue-color;
+
+            @media (max-width: $xl) {
+              font-size: clamp(3rem, 5vw, 4rem);
+            }
+
+            @media (max-width: $lg) {
+              font-size: clamp(3rem, 6vw, 4rem);
+            }
 
             &.accent {
               background: linear-gradient(
@@ -245,6 +245,15 @@ onBeforeUnmount(() => {
               -webkit-background-clip: text;
               font-weight: 500;
               color: transparent;
+              font-size: clamp(3rem, 3vw, 4rem);
+
+              @media (max-width: $xl) {
+                font-size: clamp(2rem, 3vw, 4rem);
+              }
+
+              @media (max-width: $lg) {
+                font-size: clamp(2rem, 3vw, 3rem);
+              }
             }
           }
         }

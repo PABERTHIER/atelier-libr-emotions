@@ -25,11 +25,8 @@
       "meta": {
         "content": "Accueil"
       },
-      "hero_title": {
-        "part_1": "Créer des Émotions",
-        "part_2": "À travers l'Art"
-      },
-      "hero_description": "Découvrez un monde où les couleurs dansent sur la toile et où l'argile se transforme en poésie. Chaque œuvre raconte une histoire de passion, de technique, d'émotion et de quête infinie d'expression artistique.",
+      "hero_title": "Peinture et Céramique",
+      "hero_description": "Découvrez un monde où les couleurs, les formes et les textures dansent sur la toile et où la terre se transforme en poésie. Peintures intuitives et inspirées par Dame Nature. Céramiques décoratives ou abstraites. Techniques multiples. Aventures, émotions, …",
       "buttons": {
         "view_gallery": "Voir la Galerie",
         "about": "À propos de l'Artiste"
@@ -78,8 +75,8 @@
         "alt": "Technique mixte avec des couleurs vibrantes."
       },
       "entangled_echoes": {
-        "title": "Huile présentant des couches riches et texturées d'oranges et de jaunes chauds.",
-        "alt": "Huile présentant des couches riches et texturées d'oranges et de jaunes chauds."
+        "title": "Acrylique présentant des couches riches et texturées d'oranges et de jaunes chauds.",
+        "alt": "Acrylique présentant des couches riches et texturées d'oranges et de jaunes chauds."
       }
     }
   },

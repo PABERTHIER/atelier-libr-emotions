@@ -25,11 +25,8 @@
       "meta": {
         "content": "Homepage"
       },
-      "hero_title": {
-        "part_1": "Creating Emotions",
-        "part_2": "Through Art"
-      },
-      "hero_description": "Discover a world where colors dance on canvas and clay transforms into poetry. Each piece tells a story of passion, technique, emotion, and the endless pursuit of artistic expression.",
+      "hero_title": "Painting and Ceramic",
+      "hero_description": "Discover a world where colors, shapes, and textures dance on canvas and where the clay transforms into poetry. Intuitive paintings inspired by Mother Nature. Decorative or abstract ceramics. Multiple techniques. Adventures, emotions, …",
       "buttons": {
         "view_gallery": "View Gallery",
         "about": "About the Artist"
@@ -78,8 +75,8 @@
         "alt": "Mixed techniques with vibrant colors."
       },
       "entangled_echoes": {
-        "title": "Oil painting featuring rich, textured layers of warm oranges, yellows.",
-        "alt": "Oil painting featuring rich, textured layers of warm oranges, yellows."
+        "title": "Acrylic featuring rich, textured layers of warm oranges, yellows.",
+        "alt": "Acrylic featuring rich, textured layers of warm oranges, yellows."
       }
     }
   },
