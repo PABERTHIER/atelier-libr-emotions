@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { generateImageRoutes } from './utils/generateImageRoutes'
+import { generateImageRoutes } from './app/utils/generateImageRoutes'
 
 export default defineNuxtConfig({
   app: {
@@ -83,7 +83,7 @@ export default defineNuxtConfig({
     customCollections: [
       {
         prefix: 'ale-icon',
-        dir: './assets/svg',
+        dir: './app/assets/svg',
       },
     ],
   },
