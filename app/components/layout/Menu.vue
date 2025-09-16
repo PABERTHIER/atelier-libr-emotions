@@ -488,8 +488,7 @@ const toggleMobileSection = (index: number) => {
         .menu-content {
           flex-wrap: nowrap;
           max-height: 200px;
-          padding: 10px 0;
-          padding-left: 20px;
+          padding: 10px 20px;
 
           .menu-column {
             min-width: 150px;
