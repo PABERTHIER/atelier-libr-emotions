@@ -346,7 +346,7 @@ const sections = ref([
           },
           {
             text: computed(() => t('miscellaneous.my_career')),
-            url: '/wip',
+            url: '/about/development',
           },
           {
             text: computed(() => t('miscellaneous.my_cv')),
