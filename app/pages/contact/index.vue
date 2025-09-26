@@ -6,12 +6,9 @@
 
     <div class="content-wrapper">
       <div class="intro-section">
-        <div class="page-title">
-          {{ t('pages.contact.title') }}
-        </div>
-        <p class="subtitle">
-          {{ t('pages.contact.subtitle') }}
-        </p>
+        <PageTitle
+          :title="t('pages.contact.title')"
+          :subtitle="t('pages.contact.subtitle')" />
       </div>
 
       <div class="artwork-container">
@@ -191,39 +188,7 @@ const instagramLink = 'https://www.instagram.com/atelier_libremotions'
   }
 
   .intro-section {
-    text-align: center;
-
-    .page-title {
-      position: relative;
-      margin-bottom: 25px;
-      font-size: clamp(2.5rem, 3vw, 4rem);
-      font-weight: 300;
-
-      &::after {
-        width: 80px;
-        height: 2px;
-        position: absolute;
-        bottom: 0px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: linear-gradient(
-          90deg,
-          transparent,
-          $gold-color,
-          transparent
-        );
-        content: '';
-      }
-    }
-
-    .subtitle {
-      max-width: 600px;
-      font-size: 18px;
-      color: color.adjust($primary-text-color, $lightness: -10%);
-      font-style: italic;
-      font-weight: 300;
-      line-height: 1.6;
-    }
+    margin-bottom: 25px;
   }
 
   .artwork-container {
