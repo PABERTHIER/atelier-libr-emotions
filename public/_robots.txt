@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Content-Usage: ai=n
 
 Sitemap: https://atelierlibremotions.vercel.app/sitemap.xml
