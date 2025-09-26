@@ -33,9 +33,45 @@
       }
     },
     "about": {
-      "tab_name": "About myself",
+      "tab_name": "My artistic approach",
       "meta": {
-        "content": "About myself"
+        "content": "My artistic approach"
+      }
+    },
+    "development": {
+      "tab_name": "My development",
+      "meta": {
+        "content": "My artistic journey: from science to intuitive painting."
+      },
+      "title": "My development",
+      "subtitle": "An authentic artistic journey.",
+      "intro": "Born in 69, I spent my childhood in department 68 and my student life in department 67 (Strasbourg), then a stint in Lorraine in department 54, then 20 years in the Paris region, in Seine et Marne 77, before returning to Lorraine!",
+      "characteristic": "My characteristic: \"My hand itches\"",
+      "early_life_title": "The First Inspirations",
+      "early_life": "Even as a child, I felt the need to draw, paint, and model clay, and I felt immense pleasure in the act of doing it, a complete fulfillment. But I put all that aside for many years, believing that scientific studies would prepare me more reliably for a career.",
+      "scientific_career_title": "Scientific Journey",
+      "scientific_career": "With a master's degree in biochemistry and plant physiology in my pocket, here I am, an analyst-writer in the Biology section of the Ministry of Defense. A very interesting job, certainly, but after several years, I chose not to renew the contract to devote more time to my children, whom I saw too little. Always full of projects, I decided to change careers. As I had already given numerous courses, homework help, and literacy training in different organizations throughout my university years, I opted for teaching. Another very interesting job... However, while I always loved what I did, and took great pleasure in it, I was missing something essential.",
+      "artistic_discovery_title": "Decisive Encounter",
+      "artistic_discovery": "At the end of 2006, I met a painter who used a painting technique that really spoke to me: oil glazing. I had to know this technique, I felt it! So I signed up for her workshop. I slowly reconnected with the medium, the material, the tools, and above all, with myself. At first, I worked with the group, whose energy and dynamics were inspiring.",
+      "solo_journey_title": "Personal Exploration",
+      "solo_journey": "Then in 2008, I felt the need to work alone, \"my hand was itching\" more and more: I became a researcher, an explorer in pictorial expression and since then, I have never stopped painting, \"fusing\", testing new mixtures of materials on new supports and this in complete freedom, in an intuitive way. I became fully aware that this mode of expression suited me. It allowed me to release my emotions without seeking to have a particular representation of what I was going to produce beforehand and to evolve on a personal level. I then decided to devote myself entirely to intuitive painting using mixed techniques.",
+      "learning_title": "Training and Development",
+      "learning": "Then, I completed my exploratory work by working for 2 years with Alain Marie (Lésigny 77, in the Paris region), a painter who taught me to look differently. I like his work, even if it is very different from mine. I also participated in Live Model sessions for several years, I wanted to learn to work for a short time, just to get to the essentials, or try in any case! I did various internships (Watercolors Catherine Mithouard 2020 and Pascale Lelièvre 2021, Acrylic Glazing Fabienne Martin 2020, Mixed Techniques MHélène Lecuyer 2016, ...), but I continue to search for myself! I like surprises! I always say, I don't go towards the painting, it comes to me. Then, it's a back and forth between him and me, a real dialogue that takes place.",
+      "current_practice_title": "My Current Practice",
+      "current_practice": "Today, I paint freely, without imitating or reproducing, I just let it \"come out of me\": I create. Beautiful or not, it doesn't matter to me! I see throughout my work that there are very different periods (hard expressions, soft atmosphere, bright colors, splashes, swirls, ...). I accept each of these periods, the change happens naturally without any constraint on my part and I move forward, constantly evolving in my pictorial work and in my personal life, always more motivated and confident.",
+      "teaching_title": "Transmission and Sharing",
+      "teaching": "Convinced that my experience was transferable, I began offering my services in different organizations. I was able to validate the relevance of this tool in a GRETA, Cultural Centers, and in a hospital setting. The feedback was very positive: a feeling of freedom, development of creativity, self-awareness, gain in self-confidence, a desire to dare more, to move forward, to surpass oneself. So many feelings that release an unsuspected energy and allow a better relationship with oneself and others.",
+      "workshop_title": "Workshop Creation",
+      "workshop_name": "I also created a wandering workshop called \"Libr'Emotions Workshop\", which distils my method.",
+      "ceramics_title": "Back to the land",
+      "ceramics_journey": "My work as a visual artist is now complemented by work as a ceramist, as I felt the need to reconnect with the earth. This element has since become an integral part of my life. A very strong relationship has been forged between it and me.",
+      "current_ceramics_title": "Contemporary Ceramics",
+      "current_ceramics": "Since 2023, I have been working with clay (modeling, sculpture, etc.) in my workshop and I run ceramic workshops!"
+    },
+    "cv": {
+      "tab_name": "My CV",
+      "meta": {
+        "content": "My CV"
       }
     },
     "contact": {
@@ -135,6 +171,9 @@
     "follow_on_instagram": "Follow on Instagram",
     "2011_2019": "2011 - 2019",
     "2020_2022": "2020 - 2022",
-    "2023_2025": "2023 - 2025"
+    "2023_2025": "2023 - 2025",
+    "2006": "2006",
+    "2008": "2008",
+    "2023": "2023"
   }
 }

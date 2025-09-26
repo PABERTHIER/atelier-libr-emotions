@@ -33,9 +33,45 @@
       }
     },
     "about": {
-      "tab_name": "À Propos de moi",
+      "tab_name": "Ma démarche artistique",
       "meta": {
-        "content": "À propos de moi"
+        "content": "Ma démarche artistique"
+      }
+    },
+    "development": {
+      "tab_name": "Mon cheminement",
+      "meta": {
+        "content": "Mon cheminement artistique: de la science à la peinture intuitive."
+      },
+      "title": "Mon Cheminement",
+      "subtitle": "Un parcours artistique authentique.",
+      "intro": "Née en 69, j'ai passé mon enfance dans le 68 et ma vie estudiantine dans le 67 (Strasbourg), puis un passage en Lorraine dans le 54, puis 20 ans en région parisienne, en Seine et Marne 77, avant de revenir en Lorraine !",
+      "characteristic": "Ma caractéristique : \"Ma main me démange\"",
+      "early_life_title": "Les Premières Inspirations",
+      "early_life": "Petite déjà, j'éprouvais le besoin de dessiner, peindre, modeler la terre et je ressentais un immense plaisir pendant l'acte de faire, un plein épanouissement. Mais, j'ai laissé tout cela de côté pendant de nombreuses années, avec comme croyance que des études scientifiques allaient me préparer plus sûrement à un métier.",
+      "scientific_career_title": "Parcours Scientifique",
+      "scientific_career": "Une maîtrise de biochimie et physiologie végétale en poche et me voilà analyste-rédactrice à la section Biologie du Ministère de la Défense. Métier certes très intéressant, mais après plusieurs années, j'ai choisi de ne pas renouveler le contrat pour consacrer plus de temps à mes enfants que je voyais trop peu. Toujours pleine de projets, j'ai décidé de changer de voie. Comme j'avais déjà dispensé de nombreux cours, aides aux devoirs et alphabétisation dans différentes structures tout au long de mes années universitaires, j'ai opté pour l'enseignement. Autre métier très intéressant… Pourtant, alors que j'ai toujours aimé ce que je faisais, que j'y prenais beaucoup de plaisir, il me manquait quelque chose d'essentiel.",
+      "artistic_discovery_title": "Rencontre Déterminante",
+      "artistic_discovery": "Fin 2006, j'ai fait une rencontre avec une artiste peintre utilisant une technique de peinture qui me parlait vraiment : le glacis à l'huile. Il me fallait connaître cette technique, je le sentais ! Je me suis donc inscrite à son atelier. J'ai doucement repris contact avec le support, la matière, les outils et surtout avec moi-même. Dans un premier temps, j'ai cheminé en travaillant avec le groupe dont l'énergie et la dynamique étaient porteuses.",
+      "solo_journey_title": "L'Exploration Personnelle",
+      "solo_journey": "Puis en 2008, j'ai senti le besoin de travailler seule, \"ma main me démangeait\" de plus en plus : je suis devenue chercheuse, exploratrice en expression picturale et depuis, je n'ai plus jamais cessé de peindre, \"fusiner\", tester de nouveaux mélanges de matières sur de nouveaux supports et ce en toute liberté, de façon intuitive. J'ai pris pleinement conscience que ce mode d'expression me correspondait. Il me permettait de libérer mes émotions sans chercher à avoir au préalable une représentation particulière de ce que j'allais produire et d'évoluer sur le plan personnel. J'ai alors décidé de me consacrer entièrement à la peinture intuitive en utilisant des techniques mixtes.",
+      "learning_title": "Formation et Perfectionnement",
+      "learning": "Puis, j'ai complété mon travail d'exploration en travaillant 2 ans avec Alain Marie (Lésigny 77, en région parisienne), un peintre qui m'a appris à regarder différemment. J'aime son travail, même s'il est très différent du mien. J'ai également participé à des séances de Modèles vivants pendant plusieurs années, je voulais apprendre à travailler sur une courte durée, juste pour aller à l'essentiel, ou essayer en tout cas ! J'ai effectué divers stages (Aquarelles Catherine Mithouard 2020 et Pascale Lelièvre 2021, Glacis Acrylique Fabienne Martin 2020, Techniques mixtes MHélène Lecuyer 2016,...), mais je continue à chercher par moi-même ! J'aime les surprises ! Je dis toujours, je ne vais pas vers le tableau, il vient à moi. Puis, c'est un va et vient entre lui et moi, un véritable dialogue qui s'installe.",
+      "current_practice_title": "Ma Pratique Actuelle",
+      "current_practice": "Aujourd'hui, je peins librement, sans imiter ni reproduire, je laisse juste \"sortir de moi\" : je crée. Beau ou pas, peu m'importe ! Je vois au fil de mes travaux qu'il y a des périodes très différentes (expressions dures, ambiance douce, couleurs vives, giclures, tourbillons, …). J'accepte chacune de ces périodes, le changement se fait naturellement sans aucune contrainte de ma part et j'avance ainsi, en constante évolution dans mon travail pictural et dans ma vie personnelle, toujours plus motivée et confiante.",
+      "teaching_title": "Transmission et Partage",
+      "teaching": "Convaincue que mon expérience était transposable, j'ai commencé à proposer mes services dans différentes structures. J'ai en effet pu valider la pertinence de cet outil dans un GRETA, des Centres Culturels, en milieu hospitalier. Les retours ont été très positifs : sentiment de liberté, développement de la créativité, prises de conscience sur soi, gain de confiance en soi, envie d'oser davantage, d'avancer, de se dépasser. Autant de ressentis qui libèrent une énergie insoupçonnée et permettent un meilleur rapport à soi et aux autres.",
+      "workshop_title": "Création d'Atelier",
+      "workshop_name": "J'ai aussi créé un atelier itinérant qui s'intitule : l'\"Atelier Libr'Emotions\", y distillant ma méthode.",
+      "ceramics_title": "Retour à la terre",
+      "ceramics_journey": "Mon travail de plasticienne se complète aujourd'hui par un travail de céramiste, car j'ai ressenti le besoin de renouer avec la terre. Cet élément est alors également devenu partie intégrante de ma vie. Entre elle et moi se tisse une relation très forte.",
+      "current_ceramics_title": "Céramique Contemporaine",
+      "current_ceramics": "Depuis 2023, je travaille la terre (modelage, sculpture, …) dans mon atelier et j'anime des ateliers de céramique !"
+    },
+    "cv": {
+      "tab_name": "Mon CV",
+      "meta": {
+        "content": "Mon CV"
       }
     },
     "contact": {
@@ -135,6 +171,9 @@
     "follow_on_instagram": "Suivez-moi sur Instagram",
     "2011_2019": "2011 - 2019",
     "2020_2022": "2020 - 2022",
-    "2023_2025": "2023 - 2025"
+    "2023_2025": "2023 - 2025",
+    "2006": "2006",
+    "2008": "2008",
+    "2023": "2023"
   }
 }
