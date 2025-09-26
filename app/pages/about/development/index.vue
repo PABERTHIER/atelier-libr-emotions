@@ -30,7 +30,7 @@
         class="text-section"
         :title="t('pages.development.artistic_discovery_title')"
         :text-content="t('pages.development.artistic_discovery')"
-        :date="'2006'"
+        :date="t('miscellaneous.2006')"
         :custom-dot-class="'milestone-dot'"
         :custom-section-class="'milestone-section'"
         :custom-title-class="'milestone-title'" />
@@ -38,7 +38,7 @@
         class="text-section"
         :title="t('pages.development.solo_journey_title')"
         :text-content="t('pages.development.solo_journey')"
-        :date="'2008'"
+        :date="t('miscellaneous.2008')"
         :custom-dot-class="'milestone-dot'"
         :custom-section-class="'milestone-section'"
         :custom-title-class="'milestone-title'" />
@@ -72,7 +72,7 @@
         class="text-section"
         :title="t('pages.development.current_ceramics_title')"
         :text-content="t('pages.development.current_ceramics')"
-        :date="'2023'"
+        :date="t('miscellaneous.2023')"
         :custom-dot-class="'final-dot'"
         :custom-section-class="'final-section'"
         :custom-title-class="'milestone-title'"
@@ -87,7 +87,10 @@ const { t } = useI18n()
 useHead({
   title: computed(() => t('pages.development.tab_name')),
   meta: [
-    { name: 'description', content: computed(() => t('app.meta.description')) },
+    {
+      name: 'description',
+      content: computed(() => t('pages.development.meta.content')),
+    },
   ],
 })
 </script>

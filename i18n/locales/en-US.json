@@ -41,7 +41,7 @@
     "development": {
       "tab_name": "My development",
       "meta": {
-        "content": "My development"
+        "content": "My artistic journey: from science to intuitive painting."
       },
       "title": "My development",
       "subtitle": "An authentic artistic journey.",
@@ -171,6 +171,9 @@
     "follow_on_instagram": "Follow on Instagram",
     "2011_2019": "2011 - 2019",
     "2020_2022": "2020 - 2022",
-    "2023_2025": "2023 - 2025"
+    "2023_2025": "2023 - 2025",
+    "2006": "2006",
+    "2008": "2008",
+    "2023": "2023"
   }
 }
