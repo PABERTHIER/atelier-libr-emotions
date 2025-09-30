@@ -3,7 +3,7 @@
     <h1 class="page-title">
       {{ props.title }}
     </h1>
-    <div class="subtitle">
+    <div v-if="props.subtitle" class="subtitle">
       {{ props.subtitle }}
     </div>
   </div>
