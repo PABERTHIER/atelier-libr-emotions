@@ -105,8 +105,18 @@
     "cv": {
       "tab_name": "Mon CV",
       "meta": {
-        "content": "Mon CV"
-      }
+        "content": "Curriculum vitae : parcours artistique, formations et expositions."
+      },
+      "title": "Mon CV",
+      "subtitle": "Parcours et expériences artistiques",
+      "pdf_title": "CV Artistique",
+      "download_button": "Télécharger le CV",
+      "download_label": "Télécharger le CV au format PDF",
+      "download_filename": "CV_Berthier_Véronique.pdf",
+      "page_1_title": "CV page 1",
+      "page_1_alt": "CV page 1",
+      "page_2_title": "CV page 2",
+      "page_2_alt": "CV page 2"
     },
     "contact": {
       "tab_name": "Contact",

@@ -350,7 +350,7 @@ const sections = ref([
           },
           {
             text: computed(() => t('miscellaneous.my_cv')),
-            url: '/wip',
+            url: '/about/cv',
           },
         ],
       },

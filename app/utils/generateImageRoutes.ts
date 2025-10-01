@@ -30,4 +30,12 @@ const imagesConfig = [
       80, 100, 125, 130, 150, 160, 175, 180, 200, 250, 260, 300, 350, 360, 400,
     ],
   },
+  {
+    imagePath: '/cv/page_1.webp',
+    sizes: [600, 900, 1200],
+  },
+  {
+    imagePath: '/cv/page_2.webp',
+    sizes: [600, 900, 1200],
+  },
 ]
