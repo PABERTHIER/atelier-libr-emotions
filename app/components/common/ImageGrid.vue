@@ -15,7 +15,7 @@
             height: `${Math.round(row.rowHeight)}px`,
           }">
           <NuxtLink :to="baseUrl + item.imageSource.src" class="cell-link">
-            <NuxtImg
+            <!-- <NuxtImg
               :src="item.imageSource.src"
               :alt="item.imageSource.alt ?? ''"
               :title="item.imageSource.title ?? ''"
@@ -23,14 +23,14 @@
               loading="lazy"
               placeholder
               v-bind="nuxtImgWidthBinding(item)"
-              class="img" />
-            <!-- <img
+              class="img" /> -->
+            <img
               :src="item.imageSource.src"
               :alt="item.imageSource.alt ?? ''"
               :title="item.imageSource.title ?? ''"
               loading="lazy"
               v-bind="nuxtImgWidthBinding(item)"
-              class="img" /> -->
+              class="img" />
           </NuxtLink>
         </div>
       </div>
@@ -253,16 +253,16 @@ watch(
       line-height: 0;
       text-decoration: none;
 
-      // img {
-      //   width: 100%;
-      //   height: 100%;
-      //   display: block;
-      //   transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
-      //   object-fit: contain;
-      //   transform-origin: center center;
-      //   -webkit-user-drag: none;
-      //   user-select: none;
-      // }
+      img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+        object-fit: contain;
+        transform-origin: center center;
+        -webkit-user-drag: none;
+        user-select: none;
+      }
     }
   }
 
@@ -273,16 +273,16 @@ watch(
 }
 
 // For NuxtImg
-.img,
-:deep(.nuxt-img) img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: contain; /* preserve whole image (no crop) */
-  transform-origin: center center;
-  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
-  will-change: transform;
-  -webkit-user-drag: none;
-  user-select: none;
-}
+// .img,
+// :deep(.nuxt-img) img {
+//   width: 100%;
+//   height: 100%;
+//   display: block;
+//   object-fit: contain; /* preserve whole image (no crop) */
+//   transform-origin: center center;
+//   transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+//   will-change: transform;
+//   -webkit-user-drag: none;
+//   user-select: none;
+// }
 </style>
