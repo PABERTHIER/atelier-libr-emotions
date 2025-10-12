@@ -43,7 +43,7 @@ import type { Heights, ImageSource, ItemInternal, Row } from '~/types/image'
 
 const props = defineProps({
   images: {
-    type: Object as PropType<ImageSource[]>,
+    type: Array as PropType<ImageSource[]>,
     required: true,
   },
   heights: {
@@ -59,8 +59,13 @@ const runtimeConfig = useRuntimeConfig()
 const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
 
 const GAP_PX = 24
+const TOLERANCE_WIDTH_PX = 20 // Small tolerance for "almost same" width
+const TOLERANCE_SCROLLBAR_WIDTH_PX = 10
+
 let resizeObserver: ResizeObserver | null = null
 let resizeTimer: ReturnType<typeof setTimeout> | null = null
+let lastContainerWidth = 0
+let lastRowsSnapshot: Row[] | null = null
 
 function pickTargetHeightPx(containerWidth: number): number {
   if (containerWidth <= 480) {
@@ -83,9 +88,11 @@ function nuxtImgWidthBinding(item: ItemInternal): Record<string, number> {
 }
 
 async function ensureAspects(): Promise<void> {
-  internalItems.value = props.images.map(img => {
-    return { imageSource: img, aspect: 0, renderWidth: 0 }
-  })
+  internalItems.value = props.images.map(img => ({
+    imageSource: img,
+    aspect: 0,
+    renderWidth: 0,
+  }))
 
   const promises: Promise<void>[] = []
   for (const item of internalItems.value) {
@@ -106,7 +113,7 @@ async function ensureAspects(): Promise<void> {
           resolve()
         }
         image.onerror = () => {
-          // fallback safe square
+          // Fallback safe square
           item.aspect = 1
           resolve()
         }
@@ -130,13 +137,15 @@ function buildRows(containerWidth: number, targetRowHeight: number): Row[] {
     while (idx < items.length) {
       const item = items[idx]
 
+      // Always advance index to avoid infinite loops
+      idx++
+
       if (!item) {
         continue
       }
 
       rowItems.push(item)
       sumAspect += item.aspect
-      idx++
 
       const projectedWidth =
         sumAspect * targetRowHeight + GAP_PX * (rowItems.length - 1)
@@ -175,15 +184,101 @@ function buildRows(containerWidth: number, targetRowHeight: number): Row[] {
   return rowsLocal
 }
 
+function findBestMatchingPrevRow(
+  newRow: Row,
+  prevRows: Row[] | null
+): Row | null {
+  if (!prevRows || prevRows.length === 0) {
+    return null
+  }
+
+  const newSrcs = new Set(newRow.items.map(it => it.imageSource.src))
+  let bestMatch: Row | null = null
+  let bestOverlap = 0
+
+  for (const prevRow of prevRows) {
+    let overlap = 0
+
+    for (const item of prevRow.items) {
+      if (newSrcs.has(item.imageSource.src)) {
+        overlap++
+      }
+    }
+
+    if (overlap > bestOverlap) {
+      bestOverlap = overlap
+      bestMatch = prevRow
+    }
+  }
+
+  if (!bestMatch) {
+    return null
+  }
+
+  const smallerLength = Math.min(newRow.items.length, bestMatch.items.length)
+
+  if (smallerLength === 0) {
+    return null
+  }
+
+  const overlapRatio = bestOverlap / smallerLength
+  return overlapRatio >= 0.5 ? bestMatch : null
+}
+
 async function computeLayout(): Promise<void> {
   if (!root.value) {
     return
   }
 
-  const containerWidth = Math.max(1, root.value.clientWidth)
+  const containerWidth = Math.max(1, Math.floor(root.value.clientWidth))
+  const delta = Math.abs(containerWidth - lastContainerWidth)
+
+  // Skip exact same width to avoid redundant recompute
+  // Or skip with a tolerance when scrollbar can appear on the screen
+  if (delta === 0 || delta < TOLERANCE_SCROLLBAR_WIDTH_PX) {
+    return
+  }
+
   await ensureAspects()
   const targetHeight = pickTargetHeightPx(containerWidth)
-  rows.value = buildRows(containerWidth, targetHeight)
+  const newRows = buildRows(containerWidth, targetHeight)
+
+  // Security to prevent layout flickering when being between two rows length choices
+  // Prefer the layout with fewer images
+  if (
+    lastRowsSnapshot &&
+    Math.abs(containerWidth - lastContainerWidth) <= TOLERANCE_WIDTH_PX
+  ) {
+    for (const newRow of newRows) {
+      const matchedPrev = findBestMatchingPrevRow(newRow, lastRowsSnapshot)
+      if (matchedPrev) {
+        if (newRow.items.length > matchedPrev.items.length) {
+          lastContainerWidth = containerWidth
+          return
+        }
+      }
+    }
+
+    let matchedCount = 0
+
+    for (const newRow of newRows) {
+      if (findBestMatchingPrevRow(newRow, lastRowsSnapshot)) {
+        matchedCount++
+      }
+    }
+
+    if (newRows.length > 0 && matchedCount < Math.floor(newRows.length / 2)) {
+      lastContainerWidth = containerWidth
+      return
+    }
+  }
+
+  rows.value = newRows
+  lastRowsSnapshot = newRows.map(row => ({
+    rowHeight: row.rowHeight,
+    items: row.items.map(item => ({ ...item })),
+  }))
+  lastContainerWidth = containerWidth
 }
 
 onMounted(async () => {
@@ -191,7 +286,7 @@ onMounted(async () => {
 
   if (root.value) {
     resizeObserver = new ResizeObserver(() => {
-      // debounce rapid resize
+      // Debounce rapid resize
       if (resizeTimer) {
         clearTimeout(resizeTimer)
       }
