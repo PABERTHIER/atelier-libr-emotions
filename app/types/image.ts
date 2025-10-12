@@ -15,6 +15,7 @@ export type ItemInternal = {
   imageSource: ImageSource
   aspect: number
   renderWidth: number
+  isOnError: boolean
 }
 
 export type Row = {

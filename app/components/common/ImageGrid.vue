@@ -9,21 +9,12 @@
         <div
           v-for="(item, iIdx) in row.items"
           :key="`item-${rIdx}-${iIdx}`"
-          class="image-cell"
+          :class="{ 'image-cell': !item.isOnError }"
           :style="{
             width: `${Math.round(item.renderWidth)}px`,
             height: `${Math.round(row.rowHeight)}px`,
           }">
           <NuxtLink :to="baseUrl + item.imageSource.src" class="cell-link">
-            <!-- <NuxtImg
-              :src="item.imageSource.src"
-              :alt="item.imageSource.alt ?? ''"
-              :title="item.imageSource.title ?? ''"
-              densities="x1 x2"
-              loading="lazy"
-              placeholder
-              v-bind="nuxtImgWidthBinding(item)"
-              class="img" /> -->
             <img
               :src="item.imageSource.src"
               :alt="item.imageSource.alt ?? ''"
@@ -92,6 +83,7 @@ async function ensureAspects(): Promise<void> {
     imageSource: img,
     aspect: 0,
     renderWidth: 0,
+    isOnError: false,
   }))
 
   const promises: Promise<void>[] = []
@@ -115,6 +107,7 @@ async function ensureAspects(): Promise<void> {
         image.onerror = () => {
           // Fallback safe square
           item.aspect = 1
+          item.isOnError = true
           resolve()
         }
       }
@@ -366,18 +359,4 @@ watch(
     transform: scale(1.12);
   }
 }
-
-// For NuxtImg
-// .img,
-// :deep(.nuxt-img) img {
-//   width: 100%;
-//   height: 100%;
-//   display: block;
-//   object-fit: contain; /* preserve whole image (no crop) */
-//   transform-origin: center center;
-//   transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
-//   will-change: transform;
-//   -webkit-user-drag: none;
-//   user-select: none;
-// }
 </style>
