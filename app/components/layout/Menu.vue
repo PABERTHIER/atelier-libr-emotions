@@ -161,7 +161,10 @@ const sections = ref([
           { text: computed(() => t('miscellaneous.abstracts')), url: '/wip' },
           { text: computed(() => t('miscellaneous.faces')), url: '/wip' },
           { text: computed(() => t('miscellaneous.nudes')), url: '/wip' },
-          { text: computed(() => t('miscellaneous.nature')), url: '/wip' },
+          {
+            text: computed(() => t('miscellaneous.nature')),
+            url: '/painting/inks/nature',
+          },
           {
             text: computed(() => t('miscellaneous.miscellaneous')),
             url: '/wip',

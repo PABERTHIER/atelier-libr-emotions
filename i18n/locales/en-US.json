@@ -32,6 +32,18 @@
         "about": "About the Artist"
       }
     },
+    "painting": {
+      "inks": {
+        "nature": {
+          "tab_name": "Inks - Nature",
+          "meta": {
+            "content": "Collection of inks inspired by nature: landscapes, natural elements and atmospheres."
+          },
+          "title": "Inks - Nature",
+          "subtitle": "Expressions inspired by nature"
+        }
+      }
+    },
     "about": {
       "tab_name": "My artistic approach",
       "meta": {
@@ -157,6 +169,50 @@
       "entangled_echoes": {
         "title": "Acrylic featuring rich, textured layers of warm oranges, yellows.",
         "alt": "Acrylic featuring rich, textured layers of warm oranges, yellows."
+      },
+      "inks": {
+        "nature": {
+          "ec1": {
+            "title": "II1 : 23x31",
+            "alt": "Inks and water jet"
+          },
+          "ec2": {
+            "title": "II2 : 38x42",
+            "alt": "Inks and water jet"
+          },
+          "ec3": {
+            "title": "II3 : 23x31",
+            "alt": "Inks and water jet"
+          },
+          "ec4": {
+            "title": "II4 : 22x27",
+            "alt": "Inks and water jet"
+          },
+          "ec5": {
+            "title": "II5 : 38x42",
+            "alt": "Inks and water jet"
+          },
+          "ec6": {
+            "title": "II6 : 23x31",
+            "alt": "Inks and water jet"
+          },
+          "ec7": {
+            "title": "II7 : 22X22",
+            "alt": "Inks and water jet"
+          },
+          "ec8": {
+            "title": "II8 : 22x22",
+            "alt": "Inks and water jet"
+          },
+          "ec9": {
+            "title": "II9 : 38x42",
+            "alt": "Inks and water jet"
+          },
+          "ec10": {
+            "title": "II10 : 60x80",
+            "alt": "Inks and water jet"
+          }
+        }
       }
     }
   },
@@ -219,5 +275,11 @@
     "2006": "2006",
     "2008": "2008",
     "2023": "2023"
+  },
+  "wip": {
+    "previous_page_name": "WIP",
+    "next_page_name": "WIP",
+    "previous_page_description": "WIP",
+    "next_page_description": "WIP"
   }
 }

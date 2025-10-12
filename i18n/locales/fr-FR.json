@@ -32,6 +32,18 @@
         "about": "À propos de l'Artiste"
       }
     },
+    "painting": {
+      "inks": {
+        "nature": {
+          "tab_name": "Encres - Nature",
+          "meta": {
+            "content": "Collection d'encres inspirées par la nature : paysages, éléments naturels et atmosphères."
+          },
+          "title": "Encres - Nature",
+          "subtitle": "Expressions inspirées par la nature"
+        }
+      }
+    },
     "about": {
       "tab_name": "Ma démarche artistique",
       "meta": {
@@ -157,6 +169,50 @@
       "entangled_echoes": {
         "title": "Acrylique présentant des couches riches et texturées d'oranges et de jaunes chauds.",
         "alt": "Acrylique présentant des couches riches et texturées d'oranges et de jaunes chauds."
+      },
+      "inks": {
+        "nature": {
+          "ec1": {
+            "title": "EC1 : 23x31",
+            "alt": "Jeu d'encres et d'eau"
+          },
+          "ec2": {
+            "title": "EC2 : 38x42",
+            "alt": "Jeu d'encres et d'eau"
+          },
+          "ec3": {
+            "title": "EC3 : 23x31",
+            "alt": "Jeu d'encres et d'eau"
+          },
+          "ec4": {
+            "title": "EC4 : 22x27",
+            "alt": "Jeu d'encres et d'eau"
+          },
+          "ec5": {
+            "title": "EC5 : 38x42",
+            "alt": "Jeu d'encres et d'eau"
+          },
+          "ec6": {
+            "title": "EC6 : 23x31",
+            "alt": "Jeu d'encres et d'eau"
+          },
+          "ec7": {
+            "title": "EC7 : 22X22",
+            "alt": "Jeu d'encres et d'eau"
+          },
+          "ec8": {
+            "title": "EC8 : 22x22",
+            "alt": "Jeu d'encres et d'eau"
+          },
+          "ec9": {
+            "title": "EC9 : 38x42",
+            "alt": "Jeu d'encres et d'eau"
+          },
+          "ec10": {
+            "title": "EC10 : 60x80",
+            "alt": "Jeu d'encres et d'eau"
+          }
+        }
       }
     }
   },
@@ -219,5 +275,11 @@
     "2006": "2006",
     "2008": "2008",
     "2023": "2023"
+  },
+  "wip": {
+    "previous_page_name": "WIP",
+    "next_page_name": "WIP",
+    "previous_page_description": "WIP",
+    "next_page_description": "WIP"
   }
 }
