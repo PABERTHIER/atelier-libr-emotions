@@ -56,21 +56,49 @@ const localePath = useLocalePath()
 
   .nav-link {
     max-width: 400px;
+    position: relative;
     display: flex;
     align-items: center;
     gap: 12px;
     padding: 16px 24px;
-    background: $white-color;
+    background-color: $white-color;
     border-radius: 12px;
     text-decoration: none;
     box-shadow: 0 4px 16px $box-shadow-color;
-    transition: all 0.3s ease;
-    border: 1px solid transparent;
 
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-      border-color: rgba(212, 175, 55, 0.3);
+    &::before {
+      position: absolute;
+      inset: 0;
+      padding: 2px;
+      border-radius: 12px;
+      background: linear-gradient(
+        90deg,
+        $light-grey-color-2 0%,
+        $light-grey-color-2 25%,
+        $grey-blue-color 50%,
+        $dark-red-color 75%,
+        $grey-blue-color 100%
+      );
+      opacity: 0;
+      background-size: 400% auto;
+      transition:
+        background-position 0.4s ease-in-out,
+        opacity 0.2s ease-in-out;
+      // Mask the center: show only the border (content-box)
+      -webkit-mask:
+        linear-gradient($white-color 0 0) content-box,
+        linear-gradient($white-color 0 0);
+      mask:
+        linear-gradient($white-color 0 0) content-box,
+        linear-gradient($white-color 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      content: '';
+    }
+
+    &:hover::before {
+      background-position: -50% 0;
+      opacity: 1;
     }
 
     .nav-content {
@@ -102,7 +130,7 @@ const localePath = useLocalePath()
       }
     }
 
-    :deep(svg) {
+    :deep(.iconify) {
       color: $gold-color;
       flex-shrink: 0;
     }
