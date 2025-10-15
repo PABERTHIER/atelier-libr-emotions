@@ -21,11 +21,14 @@
 import type { ImageSource } from '~/types/image'
 
 const { t } = useI18n()
+const runtimeConfig = useRuntimeConfig()
+const route = useRoute()
 
-// TODO: Update
-// Quelques mots clés : Nature, paysage, racines, arbres, eau
-// Description en 2 ou 3 phrases (optionnel) : Jeu d’encres et d’eau
-// TODO: Set up SEO for this page
+const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
+const ogImageEndPath = 'paintings/inks/nature/EC10.webp'
+
+const canonicalUrl = computed(() => `${baseUrl.value}${route.path}`)
+
 useHead({
   title: computed(() => t('pages.painting.inks.nature.tab_name')),
   meta: [
@@ -33,7 +36,74 @@ useHead({
       name: 'description',
       content: computed(() => t('pages.painting.inks.nature.meta.content')),
     },
+    {
+      name: 'keywords',
+      content: [
+        computed(() => t('miscellaneous.painting')).value,
+        computed(() => t('miscellaneous.inks')).value,
+        computed(() => t('miscellaneous.abstracts')).value,
+        computed(() => t('miscellaneous.abstract_art')).value,
+        computed(() => t('miscellaneous.art')).value,
+        computed(() => t('miscellaneous.emotions')).value,
+        computed(() => t('miscellaneous.nature')).value,
+        computed(() => t('miscellaneous.landscape')).value,
+        computed(() => t('miscellaneous.roots')).value,
+        computed(() => t('miscellaneous.trees')).value,
+        computed(() => t('miscellaneous.water')).value,
+        computed(() => t('miscellaneous.water_jet')).value,
+        computed(() => t('about.author')).value,
+        computed(() => t('app.name')).value,
+      ],
+    },
   ],
+  link: [{ rel: 'canonical', href: canonicalUrl.value }],
+})
+
+useSeoMeta({
+  ogTitle: computed(
+    () => `${t('pages.painting.inks.nature.tab_name')} %separator %siteName`
+  ),
+  description: computed(() => t('pages.painting.inks.nature.meta.content')),
+  ogDescription: computed(() => t('pages.painting.inks.nature.meta.content')),
+  ogImage: `${baseUrl.value}/${ogImageEndPath}`,
+  ogImageSecureUrl: `${baseUrl.value}/${ogImageEndPath}`,
+  ogImageAlt: computed(() => t('pages.painting.inks.nature.meta.content')),
+  ogImageType: 'image/jpeg',
+  ogImageWidth: '1200',
+  ogImageHeight: '600',
+  ogUrl: canonicalUrl.value,
+  ogType: 'article', // More specific than 'website' for content pages
+  twitterTitle: computed(
+    () => `${t('pages.painting.inks.nature.tab_name')} %separator %siteName`
+  ),
+  twitterDescription: computed(() =>
+    t('pages.painting.inks.nature.meta.content')
+  ),
+  twitterImage: `${baseUrl.value}/${ogImageEndPath}`,
+  twitterImageAlt: computed(() => t('pages.painting.inks.nature.meta.content')),
+  articleTag: [
+    computed(() => t('miscellaneous.painting')).value,
+    computed(() => t('miscellaneous.inks')).value,
+    computed(() => t('miscellaneous.abstracts')).value,
+    computed(() => t('miscellaneous.abstract_art')).value,
+    computed(() => t('miscellaneous.art')).value,
+    computed(() => t('miscellaneous.emotions')).value,
+    computed(() => t('miscellaneous.nature')).value,
+    computed(() => t('miscellaneous.landscape')).value,
+    computed(() => t('miscellaneous.roots')).value,
+    computed(() => t('miscellaneous.trees')).value,
+    computed(() => t('miscellaneous.water')).value,
+    computed(() => t('miscellaneous.water_jet')).value,
+    computed(() => t('about.author')).value,
+    computed(() => t('app.name')).value,
+  ],
+})
+
+defineOgImageComponent('NuxtSeo', {
+  theme: '#4A7C59',
+  colorMode: 'dark',
+  title: computed(() => t('pages.painting.inks.nature.tab_name')),
+  description: computed(() => t('pages.painting.inks.nature.meta.content')),
 })
 
 const images: ImageSource[] = [
