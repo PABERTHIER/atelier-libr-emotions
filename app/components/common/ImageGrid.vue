@@ -9,19 +9,25 @@
         <div
           v-for="(item, iIdx) in row.items"
           :key="`item-${rIdx}-${iIdx}`"
-          :class="{ 'image-cell': !item.isOnError }"
-          :style="{
-            width: `${Math.round(item.renderWidth)}px`,
-            height: `${Math.round(row.rowHeight)}px`,
-          }">
+          :class="item.isOnError ? 'image-cell-error' : 'image-cell'"
+          :style="
+            !item.isOnError
+              ? {
+                  width: `${Math.round(item.renderWidth)}px`,
+                  height: `${Math.round(row.rowHeight)}px`,
+                }
+              : {}
+          ">
           <NuxtLink :to="baseUrl + item.imageSource.src" class="cell-link">
             <img
               :src="item.imageSource.src"
               :alt="item.imageSource.alt ?? ''"
-              :title="item.imageSource.title ?? ''"
               loading="lazy"
               v-bind="nuxtImgWidthBinding(item)"
               class="img" />
+            <div v-if="item.imageSource.title" class="image-title-overlay">
+              {{ item.imageSource.title }}
+            </div>
           </NuxtLink>
         </div>
       </div>
@@ -288,6 +294,7 @@ onMounted(async () => {
         await computeLayout()
       }, 80)
     })
+
     resizeObserver.observe(root.value)
   }
 })
@@ -298,6 +305,7 @@ onBeforeUnmount(() => {
     resizeObserver.disconnect()
     resizeObserver = null
   }
+
   if (resizeTimer) {
     clearTimeout(resizeTimer)
     resizeTimer = null
@@ -325,38 +333,127 @@ watch(
     justify-content: flex-start;
     gap: 24px; // Must match GAP_PX constant
     margin-bottom: 24px;
-  }
 
-  .image-cell {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px $box-shadow-color;
-    background-color: transparent;
+    .image-cell {
+      position: relative;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px $box-shadow-color;
+      background-color: transparent;
 
-    .cell-link {
-      width: 100%;
-      height: 100%;
-      display: block;
-      line-height: 0;
-      text-decoration: none;
-
-      img {
+      .cell-link {
         width: 100%;
         height: 100%;
+        position: relative;
         display: block;
-        transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
-        object-fit: contain;
-        transform-origin: center center;
-        -webkit-user-drag: none;
-        user-select: none;
+        line-height: 0;
+        text-decoration: none;
+
+        img {
+          width: 100%;
+          height: 100%;
+          display: block;
+          border-radius: 12px;
+          transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+          object-fit: contain;
+          transform-origin: center center;
+          -webkit-user-drag: none;
+          user-select: none;
+        }
+      }
+    }
+
+    .image-cell-error {
+      .cell-link {
+        img {
+          border-radius: 12px;
+        }
+
+        .image-title-overlay {
+          text-align: center;
+          font-size: 15px;
+          text-wrap: wrap;
+        }
       }
     }
   }
 
-  .image-cell:hover .img,
-  .image-cell:focus-within .img {
-    transform: scale(1.12);
+  @media ((min-width: $md) and (hover: hover)) {
+    .image-row {
+      .image-cell {
+        overflow: hidden;
+
+        .cell-link {
+          .image-title-overlay {
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            right: 0;
+            padding: 16px 12px 12px;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.3;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+            pointer-events: none;
+            color: $white-color;
+            background: linear-gradient(
+              to top,
+              rgba(44, 24, 16, 0.9) 0%,
+              rgba(44, 24, 16, 0.7) 60%,
+              transparent 100%
+            );
+          }
+        }
+      }
+
+      .image-cell:hover .img,
+      .image-cell:focus-within .img {
+        transform: scale(1.12);
+      }
+
+      .image-cell:hover .image-title-overlay,
+      .image-cell:focus-within .image-title-overlay {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  // Mobile: show title on tap/touch or small screens
+  @media ((hover: none) or (max-width: $md)) {
+    .image-row {
+      margin-bottom: 40px;
+
+      .image-cell {
+        overflow: visible;
+
+        .cell-link {
+          img {
+            transition: none;
+          }
+
+          .image-title-overlay {
+            padding-top: 10px;
+            text-align: center;
+            font-size: 12px;
+            text-wrap: wrap;
+          }
+        }
+      }
+
+      .image-cell-error {
+        .cell-link {
+          .image-title-overlay {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    .image-row .image-cell-error {
+      margin-bottom: -20px;
+    }
   }
 }
 </style>
