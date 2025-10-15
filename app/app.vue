@@ -58,7 +58,7 @@ useSeoMeta({
   ogImageWidth: '1200',
   ogImageHeight: '600',
   ogUrl: `${baseUrl.value}`,
-  ogType: 'article',
+  ogType: 'article', // More specific than 'website' for content pages
   ogLocale: locale.value,
   ogLocaleAlternate: availableLocaleAlternates.value,
   twitterCard: 'summary_large_image',

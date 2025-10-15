@@ -6,10 +6,4 @@
 
 <script setup lang="ts"></script>
 
-<style lang="scss" scoped>
-.wip {
-  display: flex;
-  justify-content: center;
-  margin-top: 10%;
-}
-</style>
+<style lang="scss" scoped></style>
