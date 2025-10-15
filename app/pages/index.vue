@@ -17,10 +17,10 @@
           <div v-show="device.isComputer.value" class="hero-buttons-desktop">
             <Button
               :name="t('pages.main.buttons.view_gallery')"
-              @click="navigateTo(localPath('/painting/oil/abstracts'))" />
+              @click="navigateTo(localPath(galleryLink))" />
             <Button
               :name="t('pages.main.buttons.about')"
-              @click="navigateTo(localPath('/about'))" />
+              @click="navigateTo(localPath(aboutLink))" />
           </div>
         </div>
         <div class="hero-image">
@@ -68,10 +68,10 @@
         <div v-show="!device.isComputer.value" class="hero-buttons-mobile">
           <Button
             :name="t('pages.main.buttons.view_gallery')"
-            @click="navigateTo(localPath('/painting/oil/abstracts'))" />
+            @click="navigateTo(localPath(galleryLink))" />
           <Button
             :name="t('pages.main.buttons.about')"
-            @click="navigateTo(localPath('/about'))" />
+            @click="navigateTo(localPath(aboutLink))" />
         </div>
       </div>
     </section>
@@ -168,6 +168,9 @@ const linksConfigThirdPicture = ref([
     alt: computed(() => t('pictures.paintings.entangled_echoes.alt')),
   },
 ])
+
+const galleryLink = ref('/painting/inks/nature')
+const aboutLink = ref('/about')
 
 const currentFirstPictureIndex = ref(0)
 const currentSecondPictureIndex = ref(0)
