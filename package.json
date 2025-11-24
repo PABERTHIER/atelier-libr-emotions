@@ -21,7 +21,7 @@
     "@nuxtjs/i18n": "^10.2.1",
     "@nuxtjs/seo": "^3.2.2",
     "@vue/composition-api": "^1.7.2",
-    "nuxt": "^4.2.0",
+    "nuxt": "^4.2.1",
     "sass": "^1.94.2"
   },
   "devDependencies": {
