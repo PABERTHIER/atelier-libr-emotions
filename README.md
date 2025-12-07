@@ -9,7 +9,7 @@ Here it is: [atelierlibremotions](https://atelierlibremotions.vercel.app/)
 
 It uses Vercel for deployment and hosting.
 
-## Nuxt 3 Minimal Starter
+## Nuxt 3 Minimal Starter :man_technologist:
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
