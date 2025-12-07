@@ -344,12 +344,12 @@ const sections = ref([
         title: computed(() => t('miscellaneous.about_myself')),
         links: [
           {
-            text: computed(() => t('miscellaneous.my_artistic_approach')),
-            url: '/about',
-          },
-          {
             text: computed(() => t('miscellaneous.my_career')),
             url: '/about/development',
+          },
+          {
+            text: computed(() => t('miscellaneous.my_artistic_approach')),
+            url: '/about',
           },
           {
             text: computed(() => t('miscellaneous.my_cv')),

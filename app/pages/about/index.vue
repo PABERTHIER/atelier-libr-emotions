@@ -131,18 +131,18 @@
           :objective-number="5"
           class="text-block" />
 
-        <h2 class="section-title personal-title">
-          {{ t('pages.about.personal_objectives_title') }}
+        <h2 class="section-title professional-title">
+          {{ t('pages.about.professional_objectives_title') }}
         </h2>
 
         <TextBlock
-          :text-content="t('pages.about.personal_objective_1')"
-          type="personal-objective"
+          :text-content="t('pages.about.professional_objective_1')"
+          type="professional-objective"
           class="text-block" />
 
         <TextBlock
-          :text-content="t('pages.about.personal_objective_2')"
-          type="personal-objective"
+          :text-content="t('pages.about.professional_objective_2')"
+          type="professional-objective"
           class="text-block" />
       </div>
     </div>
@@ -218,7 +218,7 @@ useHead({
           content: '';
         }
 
-        &.personal-title {
+        &.professional-title {
           color: $dark-red-color;
 
           &::after {
