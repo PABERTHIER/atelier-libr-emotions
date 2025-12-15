@@ -110,10 +110,111 @@
 
 <script setup lang="ts">
 const { t } = useI18n()
+const runtimeConfig = useRuntimeConfig()
+const route = useRoute()
+
+const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
+const urlEndPath = 'contact'
+const ogImageEndPath = 'paintings/celestial-collision.jpg' // TODO: Update ogImage
+
+const canonicalUrl = computed(() => `${baseUrl.value}${route.path}`)
 
 useHead({
   title: computed(() => t('pages.contact.tab_name')),
+  meta: [
+    {
+      name: 'description',
+      content: computed(() => t('pages.contact.meta.content')),
+    },
+    {
+      name: 'keywords',
+      content: `${computed(() => t('miscellaneous.art')).value},
+        ${computed(() => t('miscellaneous.contact')).value},
+        ${computed(() => t('miscellaneous.artist')).value},
+        ${computed(() => t('miscellaneous.painting')).value},
+        ${computed(() => t('miscellaneous.painter')).value},
+        ${computed(() => t('miscellaneous.ceramic')).value},
+        ${computed(() => t('miscellaneous.ceramicist')).value},
+        ${computed(() => t('miscellaneous.pottery')).value},
+        ${computed(() => t('miscellaneous.emotions')).value},
+        ${computed(() => t('about.author')).value},
+        ${computed(() => t('app.name')).value},
+        ${computed(() => t('app.meta.alt_name_1')).value},
+        ${computed(() => t('app.meta.alt_name_2')).value},
+        ${computed(() => t('app.meta.alt_name_3')).value},
+        ${computed(() => t('app.meta.alt_name_4')).value},
+        ${computed(() => t('app.meta.alt_name_5')).value},
+        ${computed(() => t('app.meta.alt_name_6')).value},
+        ${computed(() => t('app.meta.alt_name_7')).value},
+      `,
+    },
+  ],
+  link: [
+    { rel: 'canonical', href: canonicalUrl.value },
+    {
+      rel: 'alternate',
+      href: computed(() => `${baseUrl.value}/en/${urlEndPath}`),
+      hreflang: 'en-US',
+    },
+    {
+      rel: 'alternate',
+      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
+      hreflang: 'fr-FR',
+    },
+    {
+      rel: 'alternate',
+      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
+      hreflang: 'x-default',
+    },
+  ],
 })
+
+useSeoMeta({
+  ogTitle: '%s %separator %siteName',
+  description: computed(() => t('pages.contact.meta.content')),
+  ogDescription: computed(() => t('pages.contact.meta.content')),
+  ogImage: `${baseUrl.value}/${ogImageEndPath}`,
+  ogImageSecureUrl: `${baseUrl.value}/${ogImageEndPath}`,
+  ogImageAlt: computed(() => t('pages.contact.meta.content')),
+  ogImageType: 'image/jpeg',
+  ogImageWidth: '1200',
+  ogImageHeight: '600',
+  ogUrl: canonicalUrl.value,
+  twitterTitle: '%s %separator %siteName',
+  twitterDescription: computed(() => t('pages.contact.meta.content')),
+  twitterImage: `${baseUrl.value}/${ogImageEndPath}`,
+  twitterImageAlt: computed(() => t('pages.contact.meta.content')),
+  twitterImageType: 'image/jpeg',
+  articleTag: [
+    computed(() => t('miscellaneous.contact')).value,
+    computed(() => t('miscellaneous.art')).value,
+    computed(() => t('miscellaneous.artist')).value,
+    computed(() => t('miscellaneous.painting')).value,
+    computed(() => t('miscellaneous.painter')).value,
+    computed(() => t('miscellaneous.ceramic')).value,
+    computed(() => t('miscellaneous.ceramicist')).value,
+    computed(() => t('miscellaneous.pottery')).value,
+    computed(() => t('miscellaneous.emotions')).value,
+    computed(() => t('about.author')).value,
+    computed(() => t('app.name')).value,
+    computed(() => t('app.meta.alt_name_1')).value,
+    computed(() => t('app.meta.alt_name_2')).value,
+    computed(() => t('app.meta.alt_name_3')).value,
+    computed(() => t('app.meta.alt_name_4')).value,
+    computed(() => t('app.meta.alt_name_5')).value,
+    computed(() => t('app.meta.alt_name_6')).value,
+    computed(() => t('app.meta.alt_name_7')).value,
+  ],
+  appleMobileWebAppTitle: '%s %separator %siteName',
+  msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
+})
+
+// defineOgImageComponent('NuxtSeo', {
+//   theme: '#FF0000',
+//   colorMode: 'dark',
+//   title: computed(() => t('pages.contact.tab_name')),
+//   description: computed(() => t('pages.contact.meta.content')),
+// })
 
 const somePaintingsTitle = computed(() => t('pages.contact.image.title'))
 const somePaintingsAlt = computed(() => t('pages.contact.image.alt'))
