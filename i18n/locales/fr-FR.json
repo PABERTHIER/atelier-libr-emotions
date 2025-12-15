@@ -3,10 +3,16 @@
     "name": "Atelier Libr'Émotions",
     "logo_alt": "Logo Atelier Libr'Émotions",
     "meta": {
-      "description": "Ma peinture et moi...lâcher prise, ressenti, émotions, expression : thérapie."
+      "description": "Ma peinture et moi...lâcher prise, ressenti, émotions, expression : thérapie.",
+      "alt_name_1": "atelierlibremotions",
+      "alt_name_2": "atelier libremotions",
+      "alt_name_3": "atelier libre emotions",
+      "alt_name_4": "atelier libr emotions",
+      "alt_name_5": "Atelier-LibrEmotions",
+      "alt_name_6": "atelier_libremotions",
+      "alt_name_7": "AtelierLibr'Émotions"
     }
   },
-  "links": {},
   "components": {
     "header": {
       "logo_link_label": "Accueil"
@@ -23,7 +29,7 @@
     "main": {
       "tab_name": "Accueil",
       "meta": {
-        "content": "Accueil"
+        "content": "Bienvenue dans mon Univers artistique, où peintures intuitives, céramiques et éléments naturels se côtoient. Créations abstraites ou figuratives, elles sont inspirées par Dame Nature, puits intarissable de beauté, de surprises et d'émerveillement, que je remercie tous les jours !"
       },
       "hero_title": "Peinture et Céramique",
       "hero_description": "Bienvenue dans mon Univers artistique, où peintures intuitives, céramiques et éléments naturels se côtoient. Créations abstraites ou figuratives, elles sont inspirées par Dame Nature, puits intarissable de beauté, de surprises et d'émerveillement, que je remercie tous les jours !",
@@ -133,7 +139,7 @@
     "contact": {
       "tab_name": "Contact",
       "meta": {
-        "content": "Contact"
+        "content": "Gestuelles, couleurs, formes et textures, c'est l'aventure ! Je vous invite à partager vos ressentis."
       },
       "title": "Contactez-moi",
       "subtitle": "Gestuelles, couleurs, formes et textures, c'est l'aventure ! Je vous invite à partager vos ressentis.",
@@ -219,13 +225,16 @@
   "miscellaneous": {
     "art": "Art",
     "painting": "Peinture",
+    "painter": "Peintre",
     "ceramic": "Céramique",
+    "ceramicist": "Céramiste",
     "pottery": "Poterie",
     "emotions": "Émotions",
     "miscellaneous": "Divers",
     "acrylic": "Acrylique",
     "oil_painting": "Huile",
     "inks": "Encres",
+    "indian_inks": "Encres de Chine",
     "charcoal": "Fusain",
     "pastel": "Pastel",
     "felt_pen": "Feutre",
@@ -256,20 +265,27 @@
     "first_creations": "Premières créations",
     "quick_work": "Travaux rapides",
     "collective_work": "Travail collectif",
+    "creation": "Création",
     "ceramic_courses": "Stages céramique",
     "mixed_technique": "Technique mixte",
     "events": "Événements",
     "exhibitions": "Expositions",
+    "experiences": "Expériences",
+    "activity_leader": "Animatrice",
     "in_action": "\"En pleine action\"",
     "miscellaneous_projects": "Divers projets",
     "painting_while_dancing": "Peindre en dansant",
     "performances": "Performances",
     "life_is_love": "La Vie c'est de l'Amour",
     "the_artist": "L'Artiste",
+    "artist": "Artiste",
     "about_myself": "À propos de moi",
     "my_artistic_approach": "Ma démarche artistique",
+    "artistic_journey": "Parcours artistique",
     "my_career": "Mon parcours",
+    "development": "Cheminement",
     "my_cv": "Mon CV",
+    "cv": "CV",
     "contact": "Contact",
     "facebook": "Facebook",
     "instagram": "Instagram",
