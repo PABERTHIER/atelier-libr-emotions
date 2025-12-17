@@ -213,7 +213,7 @@ useSeoMeta({
     .text-section {
       position: relative;
       z-index: 2;
-      animation: fadeInUp 0.8s ease-out;
+      animation: fadeInUpBlock 0.8s ease-out;
       animation-fill-mode: both;
 
       @for $i from 1 through 15 {
@@ -234,17 +234,6 @@ useSeoMeta({
     .content-container::before {
       left: 9px;
     }
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 </style>
