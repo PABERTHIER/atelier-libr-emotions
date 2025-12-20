@@ -326,6 +326,17 @@ watch(
   width: 100%;
   box-sizing: border-box;
 
+  :deep(.image-cell) {
+    animation: fadeInUpBlock 0.8s ease-out;
+    animation-fill-mode: both;
+
+    @for $i from 1 through 15 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.1}s;
+      }
+    }
+  }
+
   .image-row {
     display: flex;
     flex-direction: row;

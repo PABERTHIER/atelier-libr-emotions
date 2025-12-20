@@ -182,6 +182,14 @@ onMounted(() => {
       border-radius: 12px;
       box-shadow: 0 8px 32px $box-shadow-color;
       background: $white-color;
+      animation: fadeInUpBlock 0.8s ease-out;
+      animation-fill-mode: both;
+
+      @for $i from 1 through 15 {
+        &:nth-child(#{$i}) {
+          animation-delay: #{$i * 0.1}s;
+        }
+      }
 
       iframe {
         display: block;

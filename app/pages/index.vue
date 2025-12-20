@@ -360,29 +360,19 @@ onBeforeUnmount(() => {
             &.first-picture {
               top: 50px;
               left: 50px;
-              animation: float 6s ease-in-out infinite;
+              animation: floatBlock 6s ease-in-out infinite;
             }
 
             &.second-picture {
               top: 150px;
               left: 420px;
-              animation: float 6s ease-in-out infinite 2s;
+              animation: floatBlock 6s ease-in-out infinite 2s;
             }
 
             &.third-picture {
               top: 200px;
               left: 200px;
-              animation: float 6s ease-in-out infinite 4s;
-            }
-
-            @keyframes float {
-              0%,
-              100% {
-                transform: translateY(0px);
-              }
-              50% {
-                transform: translateY(-20px);
-              }
+              animation: floatBlock 6s ease-in-out infinite 4s;
             }
           }
         }
@@ -402,19 +392,19 @@ onBeforeUnmount(() => {
               &.first-picture {
                 top: 80px;
                 left: 10px;
-                animation: float 8s ease-in-out infinite;
+                animation: floatBlock 8s ease-in-out infinite;
               }
 
               &.second-picture {
                 top: 175px;
                 left: 330px;
-                animation: float 8s ease-in-out infinite 2s;
+                animation: floatBlock 8s ease-in-out infinite 2s;
               }
 
               &.third-picture {
                 top: 225px;
                 left: 140px;
-                animation: float 8s ease-in-out infinite 4s;
+                animation: floatBlock 8s ease-in-out infinite 4s;
               }
             }
           }
@@ -435,19 +425,19 @@ onBeforeUnmount(() => {
               &.first-picture {
                 top: 0px;
                 left: 10px;
-                animation: float 8s ease-in-out infinite;
+                animation: floatBlock 8s ease-in-out infinite;
               }
 
               &.second-picture {
                 top: 75px;
                 left: 275px;
-                animation: float 8s ease-in-out infinite 2s;
+                animation: floatBlock 8s ease-in-out infinite 2s;
               }
 
               &.third-picture {
                 top: 125px;
                 left: 125px;
-                animation: float 8s ease-in-out infinite 4s;
+                animation: floatBlock 8s ease-in-out infinite 4s;
               }
             }
           }
@@ -469,19 +459,19 @@ onBeforeUnmount(() => {
               &.first-picture {
                 top: 0px;
                 left: 10px;
-                animation: float 10s ease-in-out infinite;
+                animation: floatBlock 10s ease-in-out infinite;
               }
 
               &.second-picture {
                 top: 50px;
                 left: 210px;
-                animation: float 10s ease-in-out infinite 2s;
+                animation: floatBlock 10s ease-in-out infinite 2s;
               }
 
               &.third-picture {
                 top: 100px;
                 left: 90px;
-                animation: float 10s ease-in-out infinite 4s;
+                animation: floatBlock 10s ease-in-out infinite 4s;
               }
             }
           }
@@ -503,19 +493,19 @@ onBeforeUnmount(() => {
               &.first-picture {
                 top: 0px;
                 left: 0px;
-                animation: float 15s ease-in-out infinite;
+                animation: floatBlock 15s ease-in-out infinite;
               }
 
               &.second-picture {
                 top: 50px;
                 left: 175px;
-                animation: float 15s ease-in-out infinite 2s;
+                animation: floatBlock 15s ease-in-out infinite 2s;
               }
 
               &.third-picture {
                 top: 70px;
                 left: 70px;
-                animation: float 15s ease-in-out infinite 4s;
+                animation: floatBlock 15s ease-in-out infinite 4s;
               }
             }
           }
