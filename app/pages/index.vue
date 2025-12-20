@@ -222,7 +222,7 @@ const linksConfigThirdPicture = ref([
   },
 ])
 
-const galleryLink = ref('/painting/inks/nature')
+const galleryLink = ref('/painting/acrylic/abstracts')
 const aboutLink = ref('/about')
 
 const currentFirstPictureIndex = ref(0)

@@ -134,7 +134,10 @@ const sections = ref([
       {
         title: computed(() => t('miscellaneous.acrylic')),
         links: [
-          { text: computed(() => t('miscellaneous.abstracts')), url: '/wip' },
+          {
+            text: computed(() => t('miscellaneous.abstracts')),
+            url: '/painting/acrylic/abstracts',
+          },
           { text: computed(() => t('miscellaneous.faces')), url: '/wip' },
           {
             text: computed(() => t('miscellaneous.miscellaneous')),
