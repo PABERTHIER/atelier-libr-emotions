@@ -1,5 +1,5 @@
 <template>
-  <div class="menu">
+  <div class="menu" data-lenis-prevent>
     <div
       v-show="!device.isMobile.value"
       class="menu-desktop"
