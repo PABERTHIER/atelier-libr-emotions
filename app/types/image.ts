@@ -1,6 +1,7 @@
 export type ImageSource = {
   src: string
   title?: string
+  mobileTitle?: string
   alt?: string
 }
 

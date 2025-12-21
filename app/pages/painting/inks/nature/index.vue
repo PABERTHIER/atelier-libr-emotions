@@ -131,51 +131,61 @@ const images: ImageSource[] = [
   {
     src: '/paintings/inks/nature/EC1.webp',
     title: t('pictures.paintings.inks.nature.ec1.title'),
+    mobileTitle: t('pictures.paintings.inks.nature.ec1.mobile_title'),
     alt: t('pictures.paintings.inks.nature.ec1.alt'),
   },
   {
     src: '/paintings/inks/nature/EC2.webp',
     title: t('pictures.paintings.inks.nature.ec2.title'),
+    mobileTitle: t('pictures.paintings.inks.nature.ec2.mobile_title'),
     alt: t('pictures.paintings.inks.nature.ec2.alt'),
   },
   {
     src: '/paintings/inks/nature/EC3.webp',
     title: t('pictures.paintings.inks.nature.ec3.title'),
+    mobileTitle: t('pictures.paintings.inks.nature.ec3.mobile_title'),
     alt: t('pictures.paintings.inks.nature.ec3.alt'),
   },
   {
     src: '/paintings/inks/nature/EC4.webp',
     title: t('pictures.paintings.inks.nature.ec4.title'),
+    mobileTitle: t('pictures.paintings.inks.nature.ec4.mobile_title'),
     alt: t('pictures.paintings.inks.nature.ec4.alt'),
   },
   {
     src: '/paintings/inks/nature/EC5.webp',
     title: t('pictures.paintings.inks.nature.ec5.title'),
+    mobileTitle: t('pictures.paintings.inks.nature.ec5.mobile_title'),
     alt: t('pictures.paintings.inks.nature.ec5.alt'),
   },
   {
     src: '/paintings/inks/nature/EC6.webp',
     title: t('pictures.paintings.inks.nature.ec6.title'),
+    mobileTitle: t('pictures.paintings.inks.nature.ec6.mobile_title'),
     alt: t('pictures.paintings.inks.nature.ec6.alt'),
   },
   {
     src: '/paintings/inks/nature/EC7.webp',
     title: t('pictures.paintings.inks.nature.ec7.title'),
+    mobileTitle: t('pictures.paintings.inks.nature.ec7.mobile_title'),
     alt: t('pictures.paintings.inks.nature.ec7.alt'),
   },
   {
     src: '/paintings/inks/nature/EC8.webp',
     title: t('pictures.paintings.inks.nature.ec8.title'),
+    mobileTitle: t('pictures.paintings.inks.nature.ec8.mobile_title'),
     alt: t('pictures.paintings.inks.nature.ec8.alt'),
   },
   {
     src: '/paintings/inks/nature/EC9.webp',
     title: t('pictures.paintings.inks.nature.ec9.title'),
+    mobileTitle: t('pictures.paintings.inks.nature.ec9.mobile_title'),
     alt: t('pictures.paintings.inks.nature.ec9.alt'),
   },
   {
     src: '/paintings/inks/nature/EC10.webp',
     title: t('pictures.paintings.inks.nature.ec10.title'),
+    mobileTitle: t('pictures.paintings.inks.nature.ec10.mobile_title'),
     alt: t('pictures.paintings.inks.nature.ec10.alt'),
   },
 ]

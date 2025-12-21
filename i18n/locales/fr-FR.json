@@ -190,42 +190,52 @@
         "abstracts": {
           "automatic_painting_1": {
             "title": "Pêle-Mêle 1 : 80x80",
+            "mobile_title": "PM1: 80x80",
             "alt": "Peinture Automatique"
           },
           "automatic_painting_2": {
             "title": "Méli-Mélo animaux : 80x80",
+            "mobile_title": "MM1: 80x80",
             "alt": "Peinture Automatique"
           },
           "automatic_painting_3": {
             "title": "Pêle-Mêle 2 : 80x80",
+            "mobile_title": "PM2: 80x80",
             "alt": "Peinture Automatique"
           },
           "automatic_painting_4": {
             "title": "Pêle-Mêle 3 : 100x40",
+            "mobile_title": "PM3: 100x40",
             "alt": "Peinture Automatique"
           },
           "automatic_painting_5": {
             "title": "Pêle-Mêle 4 : 120x40",
+            "mobile_title": "PM4: 120x40",
             "alt": "Peinture Automatique"
           },
           "automatic_painting_6": {
             "title": "Pêle-Mêle 5 : 70x50",
+            "mobile_title": "PM5: 70x50",
             "alt": "Peinture Automatique"
           },
           "automatic_painting_7": {
             "title": "Pêle-Mêle 6 : 35x45",
+            "mobile_title": "PM6: 35x45",
             "alt": "Peinture Automatique"
           },
           "automatic_painting_8": {
             "title": "Pêle-Mêle 7 : 35x45",
+            "mobile_title": "PM7: 35x45",
             "alt": "Peinture Automatique"
           },
           "automatic_painting_9": {
             "title": "Pêle-Mêle 8 : 45x35",
+            "mobile_title": "PM8: 45x35",
             "alt": "Peinture Automatique"
           },
           "automatic_painting_10": {
             "title": "Pêle-Mêle 9 : 45x35",
+            "mobile_title": "PM9: 45x35",
             "alt": "Peinture Automatique"
           }
         }
@@ -233,43 +243,53 @@
       "inks": {
         "nature": {
           "ec1": {
-            "title": "EC1 : 23x31",
+            "title": "Encre de Chine 1 : 23x31",
+            "mobile_title": "EC1: 23x31",
             "alt": "Jeu d'encres et d'eau"
           },
           "ec2": {
-            "title": "EC2 : 38x42",
+            "title": "Encre de Chine 2 : 38x42",
+            "mobile_title": "EC2: 38x42",
             "alt": "Jeu d'encres et d'eau"
           },
           "ec3": {
-            "title": "EC3 : 23x31",
+            "title": "Encre de Chine 3 : 23x31",
+            "mobile_title": "EC3: 23x31",
             "alt": "Jeu d'encres et d'eau"
           },
           "ec4": {
-            "title": "EC4 : 22x27",
+            "title": "Encre de Chine 4 : 22x27",
+            "mobile_title": "EC4: 22x27",
             "alt": "Jeu d'encres et d'eau"
           },
           "ec5": {
-            "title": "EC5 : 38x42",
+            "title": "Encre de Chine 5 : 38x42",
+            "mobile_title": "EC5: 38x42",
             "alt": "Jeu d'encres et d'eau"
           },
           "ec6": {
-            "title": "EC6 : 23x31",
+            "title": "Encre de Chine 6 : 23x31",
+            "mobile_title": "EC6: 23x31",
             "alt": "Jeu d'encres et d'eau"
           },
           "ec7": {
-            "title": "EC7 : 22X22",
+            "title": "Encre de Chine 7 : 22x22",
+            "mobile_title": "EC7: 22x22",
             "alt": "Jeu d'encres et d'eau"
           },
           "ec8": {
-            "title": "EC8 : 22x22",
+            "title": "Encre de Chine 8 : 22x22",
+            "mobile_title": "EC8: 22x22",
             "alt": "Jeu d'encres et d'eau"
           },
           "ec9": {
-            "title": "EC9 : 38x42",
+            "title": "Encre de Chine 9 : 38x42",
+            "mobile_title": "EC9: 38x42",
             "alt": "Jeu d'encres et d'eau"
           },
           "ec10": {
-            "title": "EC10 : 60x80",
+            "title": "Encre de Chine 10 : 60x80",
+            "mobile_title": "EC10: 60x80",
             "alt": "Jeu d'encres et d'eau"
           }
         }
