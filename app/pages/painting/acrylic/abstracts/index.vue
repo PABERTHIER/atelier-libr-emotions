@@ -13,7 +13,7 @@
         :heights="{ xs: 120, sm: 160, md: 220, lg: 300 }" />
     </div>
 
-    <PageNavigation :previous-page="previousPage" :next-page="nextPage" />
+    <PageNavigation :next-page="nextPage" />
   </div>
 </template>
 
@@ -217,12 +217,6 @@ const images: ImageSource[] = [
     alt: t('pictures.paintings.acrylic.abstracts.automatic_painting_10.alt'),
   },
 ]
-
-const previousPage = {
-  path: '/wip',
-  title: t('wip.previous_page_name'),
-  description: t('wip.previous_page_description'),
-}
 
 const nextPage = {
   path: '/wip',
