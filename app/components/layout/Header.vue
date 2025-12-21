@@ -19,8 +19,6 @@
 </template>
 
 <script setup lang="ts">
-import { useScreenSize } from '~/composables/screen-size'
-
 const { t } = useI18n()
 const localePath = useLocalePath()
 const device = useScreenSize()

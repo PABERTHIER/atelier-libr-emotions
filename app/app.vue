@@ -26,10 +26,6 @@ useHead({
     { name: 'description', content: computed(() => t('app.meta.description')) },
   ],
   link: [
-    { rel: 'canonical', href: `${baseUrl.value}/${locale.value}` },
-    { rel: 'alternate', href: `${baseUrl.value}`, hreflang: 'fr-FR' },
-    { rel: 'alternate', href: `${baseUrl.value}/fr`, hreflang: 'fr-FR' },
-    { rel: 'alternate', href: `${baseUrl.value}/en`, hreflang: 'en-US' },
     { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
     {
       rel: 'stylesheet',
@@ -73,8 +69,11 @@ useSeoMeta({
   articleSection: computed(() => t('miscellaneous.art')),
   articleTag: computed(() => [
     computed(() => t('miscellaneous.art')).value,
+    computed(() => t('miscellaneous.artist')).value,
     computed(() => t('miscellaneous.painting')).value,
+    computed(() => t('miscellaneous.painter')).value,
     computed(() => t('miscellaneous.ceramic')).value,
+    computed(() => t('miscellaneous.ceramicist')).value,
     computed(() => t('miscellaneous.pottery')).value,
     computed(() => t('miscellaneous.emotions')).value,
     computed(() => t('about.author')).value,
@@ -91,7 +90,7 @@ useSeoMeta({
   appleMobileWebAppStatusBarStyle: 'default',
   appleMobileWebAppTitle: computed(() => t('app.name')),
   msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
-  msapplicationTileColor: '#ff0000',
+  msapplicationTileColor: '#FF0000',
 })
 </script>
 

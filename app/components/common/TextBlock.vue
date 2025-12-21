@@ -6,7 +6,7 @@
       </div>
 
       <div
-        v-if="type === 'objective' || type === 'personal-objective'"
+        v-if="type === 'objective' || type === 'professional-objective'"
         class="objective-number">
         <span v-if="objectiveNumber">{{ objectiveNumber }}</span>
       </div>
@@ -41,7 +41,7 @@ const props = defineProps({
         'master-word',
         'axis',
         'objective',
-        'personal-objective',
+        'professional-objective',
       ].includes(value),
   },
   axisNumber: {
@@ -296,7 +296,7 @@ const blockClass = computed(() => {
   }
 
   &.block-objective .block-content,
-  &.block-personal-objective .block-content {
+  &.block-professional-objective .block-content {
     padding-top: 35px;
     border-left: 3px solid;
   }
@@ -313,7 +313,7 @@ const blockClass = computed(() => {
     }
   }
 
-  &.block-personal-objective .block-content {
+  &.block-professional-objective .block-content {
     border-left-color: $dark-red-color;
 
     .objective-number {

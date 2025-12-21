@@ -131,18 +131,18 @@
           :objective-number="5"
           class="text-block" />
 
-        <h2 class="section-title personal-title">
-          {{ t('pages.about.personal_objectives_title') }}
+        <h2 class="section-title professional-title">
+          {{ t('pages.about.professional_objectives_title') }}
         </h2>
 
         <TextBlock
-          :text-content="t('pages.about.personal_objective_1')"
-          type="personal-objective"
+          :text-content="t('pages.about.professional_objective_1')"
+          type="professional-objective"
           class="text-block" />
 
         <TextBlock
-          :text-content="t('pages.about.personal_objective_2')"
-          type="personal-objective"
+          :text-content="t('pages.about.professional_objective_2')"
+          type="professional-objective"
           class="text-block" />
       </div>
     </div>
@@ -151,6 +151,14 @@
 
 <script setup lang="ts">
 const { t } = useI18n()
+const runtimeConfig = useRuntimeConfig()
+const route = useRoute()
+
+const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
+const urlEndPath = 'about'
+const ogImageEndPath = 'paintings/celestial-collision.jpg' // TODO: Update ogImage
+
+const canonicalUrl = computed(() => `${baseUrl.value}${route.path}`)
 
 useHead({
   title: computed(() => t('pages.about.tab_name')),
@@ -159,8 +167,85 @@ useHead({
       name: 'description',
       content: computed(() => t('pages.about.meta.content')),
     },
+    {
+      name: 'keywords',
+      content: `${computed(() => t('miscellaneous.art')).value},
+        ${computed(() => t('miscellaneous.my_artistic_approach')).value},
+        ${computed(() => t('miscellaneous.creation')).value},
+        ${computed(() => t('miscellaneous.activity_leader')).value},
+        ${computed(() => t('miscellaneous.artist')).value},
+        ${computed(() => t('miscellaneous.painting')).value},
+        ${computed(() => t('miscellaneous.painter')).value},
+        ${computed(() => t('miscellaneous.ceramic')).value},
+        ${computed(() => t('miscellaneous.ceramicist')).value},
+        ${computed(() => t('miscellaneous.pottery')).value},
+        ${computed(() => t('miscellaneous.emotions')).value},
+        ${computed(() => t('about.author')).value},
+        ${computed(() => t('app.name')).value},
+      `,
+    },
+  ],
+  link: [
+    { rel: 'canonical', href: canonicalUrl.value },
+    {
+      rel: 'alternate',
+      href: computed(() => `${baseUrl.value}/en/${urlEndPath}`),
+      hreflang: 'en-US',
+    },
+    {
+      rel: 'alternate',
+      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
+      hreflang: 'fr-FR',
+    },
+    {
+      rel: 'alternate',
+      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
+      hreflang: 'x-default',
+    },
   ],
 })
+
+useSeoMeta({
+  ogTitle: '%s %separator %siteName',
+  description: computed(() => t('pages.about.meta.content')),
+  ogDescription: computed(() => t('pages.about.meta.content')),
+  ogImage: `${baseUrl.value}/${ogImageEndPath}`,
+  ogImageSecureUrl: `${baseUrl.value}/${ogImageEndPath}`,
+  ogImageAlt: computed(() => t('pages.about.meta.content')),
+  ogImageType: 'image/jpeg',
+  ogImageWidth: '1200',
+  ogImageHeight: '600',
+  ogUrl: canonicalUrl.value,
+  twitterTitle: '%s %separator %siteName',
+  twitterDescription: computed(() => t('pages.about.meta.content')),
+  twitterImage: `${baseUrl.value}/${ogImageEndPath}`,
+  twitterImageAlt: computed(() => t('pages.about.meta.content')),
+  twitterImageType: 'image/jpeg',
+  articleTag: [
+    computed(() => t('miscellaneous.my_artistic_approach')).value,
+    computed(() => t('miscellaneous.creation')).value,
+    computed(() => t('miscellaneous.activity_leader')).value,
+    computed(() => t('miscellaneous.art')).value,
+    computed(() => t('miscellaneous.artist')).value,
+    computed(() => t('miscellaneous.painting')).value,
+    computed(() => t('miscellaneous.painter')).value,
+    computed(() => t('miscellaneous.ceramic')).value,
+    computed(() => t('miscellaneous.ceramicist')).value,
+    computed(() => t('miscellaneous.pottery')).value,
+    computed(() => t('miscellaneous.emotions')).value,
+    computed(() => t('about.author')).value,
+    computed(() => t('app.name')).value,
+  ],
+  appleMobileWebAppTitle: '%s %separator %siteName',
+  msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
+})
+
+// defineOgImageComponent('NuxtSeo', {
+//   theme: '#FF0000',
+//   colorMode: 'dark',
+//   title: computed(() => t('pages.about.tab_name')),
+//   description: computed(() => t('pages.about.meta.content')),
+// })
 </script>
 
 <style lang="scss" scoped>
@@ -176,6 +261,14 @@ useHead({
 
     .text-block {
       margin-bottom: 30px;
+      animation: fadeInUpBlock 0.8s ease-out;
+      animation-fill-mode: both;
+
+      @for $i from 1 through 15 {
+        &:nth-child(#{$i}) {
+          animation-delay: #{$i * 0.1}s;
+        }
+      }
 
       &:last-child {
         margin-bottom: 25px;
@@ -218,7 +311,7 @@ useHead({
           content: '';
         }
 
-        &.personal-title {
+        &.professional-title {
           color: $dark-red-color;
 
           &::after {

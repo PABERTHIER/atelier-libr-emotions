@@ -3,10 +3,16 @@
     "name": "Atelier Libr'Émotions",
     "logo_alt": "Atelier Libr'Émotions logo",
     "meta": {
-      "description": "My painting and me...letting go, feeling, emotions, expression: therapy."
+      "description": "My painting and me...letting go, feeling, emotions, expression: therapy.",
+      "alt_name_1": "atelierlibremotions",
+      "alt_name_2": "atelier libremotions",
+      "alt_name_3": "atelier libre emotions",
+      "alt_name_4": "atelier libr emotions",
+      "alt_name_5": "Atelier-LibrEmotions",
+      "alt_name_6": "atelier_libremotions",
+      "alt_name_7": "AtelierLibr'Émotions"
     }
   },
-  "links": {},
   "components": {
     "header": {
       "logo_link_label": "Homepage"
@@ -23,16 +29,26 @@
     "main": {
       "tab_name": "Homepage",
       "meta": {
-        "content": "Homepage"
+        "content": "Welcome to my artistic universe, where intuitive paintings, ceramics, and natural elements come together. Whether abstract or figurative, my creations are inspired by Mother Nature, an inexhaustible source of beauty, surprises, and wonder, for which I give thanks every day!"
       },
       "hero_title": "Painting and Ceramic",
-      "hero_description": "Discover a world where colors, shapes, and textures dance on canvas and where the clay transforms into poetry. Intuitive paintings inspired by Mother Nature. Decorative or abstract ceramics. Multiple techniques. Adventures, emotions, ...",
+      "hero_description": "Welcome to my artistic universe, where intuitive paintings, ceramics, and natural elements come together. Whether abstract or figurative, my creations are inspired by Mother Nature, an inexhaustible source of beauty, surprises, and wonder, for which I give thanks every day!",
       "buttons": {
         "view_gallery": "View Gallery",
         "about": "About the Artist"
       }
     },
     "painting": {
+      "acrylic": {
+        "abstracts": {
+          "tab_name": "Acrylic - Abstracts",
+          "meta": {
+            "content": "A background, free-form graphics, eyes, apparitions!"
+          },
+          "title": "Acrylic - Abstracts",
+          "subtitle": "A background, free-form graphics, eyes, apparitions!"
+        }
+      },
       "inks": {
         "nature": {
           "tab_name": "Inks - Nature",
@@ -51,38 +67,38 @@
       },
       "title": "My artistic approach",
       "subtitle": "An intuitive approach to art",
-      "intro": "Whether in painting, drawing, or clay, I start with a spontaneous trace and then, at my own pace, trying to be free, I set off on an Adventure.",
+      "intro": "In painting, in drawing, as in clay, I start from a spontaneous mark and then, at my own pace, I set off on an Adventure.",
       "intuitive_work": "I work intuitively, without preconceived ideas or particular expectations. Only the desire, the pleasure of creating, and the acceptance of what is happening, in the present moment, matter to me.",
       "creative_process_title": "My Creative Process",
-      "creative_process": "I play with shapes, sizes, colors, on all supports. I project, I move... I live my painting, I dance it sometimes too! Calm times, more turbulent times, impulses, moments of pause... I try, I test, I search the material, I question it, a dialogue is established between it and me and the work takes shape. I agree to work only with what I am. Sometimes accidents happen, as in life! It is always interesting to see what scars they will leave and how the work will evolve. This adventure is not easy and sometimes, I come out shaken, but always in the end grown. The more I manage to let go, the more I feel better, I gain self-esteem and my creativity gains spontaneity.",
+      "creative_process": "I play with shapes, colors, and materials on a variety of surfaces. I project, I move... I live my painting, I even dance to it sometimes! Calm times, more turbulent times, impulses, moments of pause... I try, I test, I explore the material, I question it, a dialogue develops between it and me, and the artwork takes shape. I accept working with who I am. Sometimes accidents happen, just like in life! It's always interesting to see what scars they leave and where the work will evolve. This adventure isn't always easy, and sometimes I come away shaken, but ultimately, always stronger. The more I manage to let go, the more I feel better, my self-esteem grows, and my creativity becomes more spontaneous.",
       "realization": "I realize after each new production, with a joy renewed each time, that I am capable of doing interesting things, which speak to me. A motivation which makes me thirst to continue again and again.",
       "evolution": "My personal development and that of my artistic work are linked and feed off each other, like a virtuous spiral.",
       "wellbeing": "Whatever the material I explore (oils, acrylics, charcoal, mixtures of materials, clay, ...), in silence or with music, what always predominates, when I am in full research and creativity, is this feeling of incredible well-being. I feel as if I am merging with my nascent work, I forget everything, I am in my bubble and when I reach the feeling of true freedom, when I manage to listen to myself and create by detaching myself from all external judgment, I feel that I am moving forward.",
-      "emotional_expression": "I like what takes shape before my eyes. I like to let myself be surprised. Sometimes, a single trace of paint or a quick imprint in the earth is enough to feel good and I leave it at that, other times the need to add, dig, wipe, hit, scratch, polish is felt. It all depends on my emotional state of the moment. The final result is always a way of testifying to an emotion, a moment of life, a state of mind, but sometimes also a desire to convey a message.",
-      "technique_philosophy": "Technique, media, colors, tools... lead to nothing without the feelings, emotions, and memories that impose themselves on the soul. Reality is only a matter of perspective.",
+      "emotional_expression": "I love what takes shape before my eyes. I love being surprised. Sometimes, a single mark of paint or a quick imprint in the earth is enough to make me feel good, and I leave it at that. Other times, the need to add, dig, wipe, strike, scratch, polish arises. It all depends on my emotional state at the time. The final result is always a way of expressing an emotion, a moment in life, a state of mind, but sometimes also a desire to convey a message.",
+      "technique_philosophy": "Technique, materials, colors, tools... lead to nothing without the feelings, emotions and memories that impose themselves on the soul.",
       "benefits_title": "The Benefits of Creation",
-      "benefits": "Painting and clay allow you to express yourself, to be moved, to move, to marvel, to be astonished, to surprise yourself, to release your emotions, to free yourself, to let go, to open up, to touch, to feel, to feel just good, simply in your place, to feel \"capable of\", to feel alive!",
-      "external_views": "If it is true that painting, drawing, sculpting, modeling allows all this, outside views on our current or completed productions should not be limiting, nor hinder our creativity. They can sometimes allow us to become aware (example: we are \"capable of\", it is cheerful, it is sad, it is sweet, it is \"surprising\", \"audacious\", we \"dare\"...), which is interesting. If the criticism is constructive, I welcome it! I take the reactions that my works provoke in others as encouragement that motivates us to persevere, to continue, to go further and reinforces self-awareness. I agree to DISCOVER myself (double meaning) a little more each time, I progress and I gain even more self-confidence and self-esteem: I evolve.",
+      "benefits": "I feel a constant need to create, and these two mediums, painting and clay, allow me to experience this creative process intensely. It's an incredibly rich experience because creating allows me to: express myself, question myself, be moved, move, marvel, be astonished, surprise myself, release my emotions, free myself, let go, open myself up, touch, feel, simply feel good, just be where I belong, feel \"capable of\", feel alive!",
+      "external_views": "To create freely, I've learned to detach myself from the opinions of others. With their own, often limiting, beliefs, they can be a hindrance to my creativity. To avoid this, I only welcome questions and constructive criticism, allowing me to move forward and evolve in my creative work. Only what is good for me matters. In any case, reality is simply a matter of perspective. To each their own point of view, to each their own reality. Ultimately, there is no right or wrong. The important thing is to allow yourself to create freely.",
       "dare": "To dare",
-      "master_word": "It's overwhelming, energizing, motivating, transforming, ... My key word is \"dare\": dare to be yourself, dare to evolve at your own pace, dare to take a step back, dare to test, dare to accept the unpredictable, dare to innovate, dare to transform, dare to let go, Dare the Adventure!",
+      "master_word": "It's overwhelming, energizing, motivating, transforming... My key word is \"dare\": dare to evolve at your own pace, dare to take a step back, dare to test, dare to accept the unpredictable, dare to innovate, dare to transform, dare to let go, dare to be yourself, Dare the Adventure!",
       "workshop_philosophy": "I distill my artistic approach into the workshops that I lead.",
       "final_quote": "When we exhibit a work, it no longer belongs to us, it belongs to the person who looks at it.",
       "activity_axes_title": "3 main axes",
-      "axis_1_title": "My traveling workshop, \"L'Atelier Libr'Emotions\"",
-      "axis_1_content": "\"À la carte\", for all audiences, within which: I offer creative plastic work, I am attentive, open, caring, attentive to the comfort of each person, sufficiently observant to be able to invite the person, who wishes, to take their work further or to try to get out of their comfort zone, I transmit my positive energy, my passion, my audacity,...",
-      "axis_2_title": "My painting and ceramics activities",
-      "axis_2_content": "In MJC (Toul and Villers, department 54) and associations (VAA: Villaroise Artistic Association, Villers, department 54), Mondays, Tuesdays and Wednesdays. These are free workshops, where everyone progresses at their own pace and can benefit from my advice, be made aware of my personal artistic approach and choose to join it and commit to going on an Adventure!",
-      "axis_3_title": "My personal workshop",
-      "axis_3_content": "A work of research and free intuitive expression, alone in my \"bubble\".",
+      "axis_1_title": "The Atelier Libr'Emotions: a traveling workshop",
+      "axis_1_content": "\"À la carte\", for everyone. I offer a creative and free-form workshop, using a wide variety of materials and techniques. I am attentive, open, supportive, and mindful of everyone's comfort. I also guide and encourage those who wish to take their work further, to step outside their comfort zone, and to grow. I share my positive energy, my passion, my boldness, and also my desire for adventure, leading to artistic and personal discovery. Everyone progresses at their own pace without judgment or specific expectations. Just the joy of the creative process.",
+      "axis_2_title": "Painting and ceramics instructor",
+      "axis_2_content": "In hospitals, Greta, youth centers, and artistic associations. These are open workshops where everyone progresses at their own pace, with or without a model. Everyone can benefit from my guidance, learn about my personal artistic approach, and choose to join and embark on this adventure!",
+      "axis_3_title": "My personal work",
+      "axis_3_content": "In my studio: a work of research and free intuitive expression, alone in my \"bubble\".",
       "general_objectives_title": "General objectives",
       "objective_1": "Having fun, feeling good during the act of creating.",
       "objective_2": "Explore a means of expression other than words (which may come later), let your emotions emerge, free your creativity, sometimes give form to buried memories,...",
       "objective_3": "Realize that we all have fabulous creative potential and give ourselves the opportunity to express it.",
       "objective_4": "Search, discover, welcome, journey, progress, reveal yourself by gaining self-confidence and self-love, achieve fulfillment, move towards a better well-being, reveal yourself, open up to others.",
       "objective_5": "Set up different exhibition projects (which allows those who wish to exhibit, to promote their work and themselves at the same time).",
-      "personal_objectives_title": "Personal goals",
-      "personal_objective_1": "Show my work in order to exchange impressions, feelings,... because if working with the material is my way of revealing my emotions, exhibiting allows me to communicate with visitors, another enriching, fulfilling and very meaningful moment. I touch the material and if I also touch people, it's a double win!!",
-      "personal_objective_2": "Sell ​​my creations."
+      "professional_objectives_title": "Professional objectives",
+      "professional_objective_1": "Show my work in order to exchange impressions and feelings... because whilst working with materials is my way of expressing my emotions, exhibiting allows me to connect with visitors, another enriching, fulfilling, and very rewarding experience. I touch the material, and if I also touch people, it's a double win!",
+      "professional_objective_2": "Sell my creations."
     },
     "development": {
       "tab_name": "My development",
@@ -90,29 +106,29 @@
         "content": "My artistic journey: from science to intuitive painting."
       },
       "title": "My development",
-      "subtitle": "An authentic artistic journey.",
+      "subtitle": "An atypical artistic journey",
       "intro": "Born in 69, I spent my childhood in department 68 and my student life in department 67 (Strasbourg), then a stint in Lorraine in department 54, then 20 years in the Paris region, in Seine et Marne 77, before returning to Lorraine!",
       "characteristic": "My characteristic: \"My hand itches\"",
-      "early_life_title": "The First Inspirations",
-      "early_life": "Even as a child, I felt the need to draw, paint, and model clay, and I felt immense pleasure in the act of doing it, a complete fulfillment. But I put all that aside for many years, believing that scientific studies would prepare me more reliably for a career.",
+      "early_life_title": "My First Inspirations",
+      "early_life": "Even as a child, I felt the need to draw, paint, and model clay, and I experienced immense pleasure and fulfillment in the act of creation. However, I put all of this aside for many years, believing that scientific studies would better prepare me for a career.",
       "scientific_career_title": "Scientific Journey",
-      "scientific_career": "With a master's degree in biochemistry and plant physiology in my pocket, here I am, an analyst-writer in the Biology section of the Ministry of Defense. A very interesting job, certainly, but after several years, I chose not to renew the contract to devote more time to my children, whom I saw too little. Always full of projects, I decided to change careers. As I had already given numerous courses, homework help, and literacy training in different organizations throughout my university years, I opted for teaching. Another very interesting job... However, while I always loved what I did, and took great pleasure in it, I was missing something essential.",
+      "scientific_career": "With a master's degree in biochemistry and plant physiology, I found myself working as an analyst-writer in the Biology section of the Ministry of Defense. A very interesting job, certainly, but after several years, I chose not to renew my contract to dedicate more time to my children, whom I saw far too little. Always full of ideas, I decided to change direction. Having already provided numerous tutoring sessions, homework help, and literacy classes in various settings throughout my university years, I opted for teaching. Another very interesting profession... Yet, while I always loved what I did, something essential was missing.",
       "artistic_discovery_title": "Decisive Encounter",
-      "artistic_discovery": "At the end of 2006, I met a painter who used a painting technique that really spoke to me: oil glazing. I had to know this technique, I felt it! So I signed up for her workshop. I slowly reconnected with the medium, the material, the tools, and above all, with myself. At first, I worked with the group, whose energy and dynamics were inspiring.",
+      "artistic_discovery": "At the end of 2006, I met a painter who used a technique that really resonated with me: oil glazing. I felt I had to learn this technique! So I enrolled in her workshop. I slowly reconnected with the canvas, the materials, the tools, and above all, with myself. Initially, I progressed by working with the group, whose energy and dynamism were truly inspiring.",
       "solo_journey_title": "Personal Exploration",
-      "solo_journey": "Then in 2008, I felt the need to work alone, \"my hand was itching\" more and more: I became a researcher, an explorer in pictorial expression and since then, I have never stopped painting, \"fusing\", testing new mixtures of materials on new supports and this in complete freedom, in an intuitive way. I became fully aware that this mode of expression suited me. It allowed me to release my emotions without seeking to have a particular representation of what I was going to produce beforehand and to evolve on a personal level. I then decided to devote myself entirely to intuitive painting using mixed techniques.",
+      "solo_journey": "In 2008, I felt the need to work alone. \"My hand was itching\" more and more: I became a researcher, an explorer of pictorial expression, and since then, I have never stopped painting, \"fusing\", testing new mixtures of materials on new supports, all with complete freedom and intuition. I became fully aware that this mode of expression suited me. It allowed me to release my emotions without seeking to have a particular representation of what I was going to produce beforehand, and to evolve on a personal level. I then decided to dedicate myself entirely to intuitive painting using mixed techniques.",
       "learning_title": "Training and Development",
-      "learning": "Then, I completed my exploratory work by working for 2 years with Alain Marie (Lésigny 77, in the Paris region), a painter who taught me to look differently. I like his work, even if it is very different from mine. I also participated in Live Model sessions for several years, I wanted to learn to work for a short time, just to get to the essentials, or try in any case! I did various internships (Watercolors Catherine Mithouard 2020 and Pascale Lelièvre 2021, Acrylic Glazing Fabienne Martin 2020, Mixed Techniques MHélène Lecuyer 2016, ...), but I continue to search for myself! I like surprises! I always say, I don't go towards the painting, it comes to me. Then, it's a back and forth between him and me, a real dialogue that takes place.",
+      "learning": "I completed my exploration by working for 2 years with Alain Marie (Lésigny 77, in the Paris region). I particularly appreciate this painter's Work. He notably taught me how to integrate \"the piano\" and \"the forte\" into a painting, allowing the viewer's eye to wander freely. I also participated in life drawing sessions for several years, I wanted to learn to work for short periods, to get to the heart of the matter, or at least try! I attended various workshops (Watercolors with Catherine Mithouard in 2020 and Pascale Lelièvre in 2021, Acrylic Glazing with Fabienne Martin in 2020, Mixed Techniques with Marie-Hélène Lecuyer in 2016,...), but I continue to explore on my own! I love surprises! I always say, \"I don't go to the painting, it comes to me.\" Then, there was a back and forth between him and me, a real dialogue that developed.",
       "current_practice_title": "My Current Practice",
-      "current_practice": "Today, I paint freely, without imitating or reproducing, I just let it \"come out of me\": I create. Beautiful or not, it doesn't matter to me! I see throughout my work that there are very different periods (hard expressions, soft atmosphere, bright colors, splashes, swirls, ...). I accept each of these periods, the change happens naturally without any constraint on my part and I move forward, constantly evolving in my pictorial work and in my personal life, always more motivated and confident.",
+      "current_practice": "Today, I paint freely, without imitating or reproducing, I simply let it \"come out of me\": I create. Whether it's beautiful or not is irrelevant to me! I see, throughout my work, that there are very different periods (harsh expressions, soft atmospheres, vibrant colors, splashes, swirls,...). I accept each of these periods, the change happens naturally, without any constraint on my part, and I move forward in this way, constantly evolving in my painting and in my personal life, ever more motivated and confident.",
       "teaching_title": "Transmission and Sharing",
       "teaching": "Convinced that my experience was transferable, I began offering my services in different organizations. I was able to validate the relevance of this tool in a GRETA, Cultural Centers, and in a hospital setting. The feedback was very positive: a feeling of freedom, development of creativity, self-awareness, gain in self-confidence, a desire to dare more, to move forward, to surpass oneself. So many feelings that release an unsuspected energy and allow a better relationship with oneself and others.",
       "workshop_title": "Workshop Creation",
       "workshop_name": "I also created a wandering workshop called \"L'Atelier Libr'Emotions\", which distils my method.",
-      "ceramics_title": "Back to the land",
-      "ceramics_journey": "My work as a visual artist is now complemented by work as a ceramist, as I felt the need to reconnect with the earth. This element has since become an integral part of my life. A very strong relationship has been forged between it and me.",
-      "current_ceramics_title": "Contemporary Ceramics",
-      "current_ceramics": "Since 2023, I have been working with clay (modeling, sculpture, etc.) in my workshop and I run ceramic workshops!"
+      "ceramics_title": "Back to the earth",
+      "ceramics_journey": "My work as a visual artist has been complemented, for the past few years, by work as a ceramicist. I felt the need to reconnect with the earth. This element has since become an integral part of my life. A very strong relationship has been forged between it and me.",
+      "current_ceramics_title": "Hands in the earth",
+      "current_ceramics": "Since 2023, I have been working intensively with clay (modeling, sculpture,...) in my studio and I run ceramics workshops!"
     },
     "cv": {
       "tab_name": "My CV",
@@ -133,10 +149,10 @@
     "contact": {
       "tab_name": "Contact",
       "meta": {
-        "content": "Contact"
+        "content": "Gestures, colours, shapes and textures, it's an adventure! I invite you to share your feelings."
       },
       "title": "Contact me",
-      "subtitle": "Colors, shapes, and textures! Explore my work and listen to your feelings.",
+      "subtitle": "Gestures, colours, shapes and textures, it's an adventure! I invite you to share your feelings.",
       "image": {
         "title": "Some paintings...",
         "alt": "Some paintings..."
@@ -170,46 +186,110 @@
         "title": "Acrylic featuring rich, textured layers of warm oranges, yellows.",
         "alt": "Acrylic featuring rich, textured layers of warm oranges, yellows."
       },
+      "acrylic": {
+        "abstracts": {
+          "automatic_painting_1": {
+            "title": "Haphazardly 1 : 80x80",
+            "mobile_title": "H1: 80x80",
+            "alt": "Automatic Painting"
+          },
+          "automatic_painting_2": {
+            "title": "Mish-Mash animals : 80x80",
+            "mobile_title": "MM1: 80x80",
+            "alt": "Automatic Painting"
+          },
+          "automatic_painting_3": {
+            "title": "Haphazardly 2 : 80x80",
+            "mobile_title": "H2: 80x80",
+            "alt": "Automatic Painting"
+          },
+          "automatic_painting_4": {
+            "title": "Haphazardly 3 : 100x40",
+            "mobile_title": "H3: 100x40",
+            "alt": "Automatic Painting"
+          },
+          "automatic_painting_5": {
+            "title": "Haphazardly 4 : 120x40",
+            "mobile_title": "H4: 120x40",
+            "alt": "Automatic Painting"
+          },
+          "automatic_painting_6": {
+            "title": "Haphazardly 5 : 70x50",
+            "mobile_title": "H5: 70x50",
+            "alt": "Automatic Painting"
+          },
+          "automatic_painting_7": {
+            "title": "Haphazardly 6 : 35x45",
+            "mobile_title": "H6: 35x45",
+            "alt": "Automatic Painting"
+          },
+          "automatic_painting_8": {
+            "title": "Haphazardly 7 : 35x45",
+            "mobile_title": "H7: 35x45",
+            "alt": "Automatic Painting"
+          },
+          "automatic_painting_9": {
+            "title": "Haphazardly 8 : 45x35",
+            "mobile_title": "H8: 45x35",
+            "alt": "Automatic Painting"
+          },
+          "automatic_painting_10": {
+            "title": "Haphazardly 9 : 45x35",
+            "mobile_title": "H9: 45x35",
+            "alt": "Automatic Painting"
+          }
+        }
+      },
       "inks": {
         "nature": {
           "ec1": {
-            "title": "II1 : 23x31",
+            "title": "Indian ink 1 : 23x31",
+            "mobile_title": "II1: 23x31",
             "alt": "Inks and water jet"
           },
           "ec2": {
-            "title": "II2 : 38x42",
+            "title": "Indian ink 2 : 38x42",
+            "mobile_title": "II2: 38x42",
             "alt": "Inks and water jet"
           },
           "ec3": {
-            "title": "II3 : 23x31",
+            "title": "Indian ink 3 : 23x31",
+            "mobile_title": "II3: 23x31",
             "alt": "Inks and water jet"
           },
           "ec4": {
-            "title": "II4 : 22x27",
+            "title": "Indian ink 4 : 22x27",
+            "mobile_title": "II4: 22x27",
             "alt": "Inks and water jet"
           },
           "ec5": {
-            "title": "II5 : 38x42",
+            "title": "Indian ink 5 : 38x42",
+            "mobile_title": "II5: 38x42",
             "alt": "Inks and water jet"
           },
           "ec6": {
-            "title": "II6 : 23x31",
+            "title": "Indian ink 6 : 23x31",
+            "mobile_title": "II6: 23x31",
             "alt": "Inks and water jet"
           },
           "ec7": {
-            "title": "II7 : 22X22",
+            "title": "Indian ink 7 : 22x22",
+            "mobile_title": "II7: 22x22",
             "alt": "Inks and water jet"
           },
           "ec8": {
-            "title": "II8 : 22x22",
+            "title": "Indian ink 8 : 22x22",
+            "mobile_title": "II8: 22x22",
             "alt": "Inks and water jet"
           },
           "ec9": {
-            "title": "II9 : 38x42",
+            "title": "Indian ink 9 : 38x42",
+            "mobile_title": "II9: 38x42",
             "alt": "Inks and water jet"
           },
           "ec10": {
-            "title": "II10 : 60x80",
+            "title": "Indian ink 10 : 60x80",
+            "mobile_title": "II10: 60x80",
             "alt": "Inks and water jet"
           }
         }
@@ -219,13 +299,16 @@
   "miscellaneous": {
     "art": "Art",
     "painting": "Painting",
+    "painter": "Painter",
     "ceramic": "Ceramic",
+    "ceramicist": "Ceramicist",
     "pottery": "Pottery",
     "emotions": "Emotions",
     "miscellaneous": "Miscellaneous",
     "acrylic": "Acrylic",
     "oil_painting": "Oil",
     "inks": "Inks",
+    "indian_inks": "Indian inks",
     "charcoal": "Charcoal",
     "pastel": "Pastel",
     "felt_pen": "Felt pen",
@@ -244,6 +327,9 @@
     "water_jet": "Water jet",
     "nudes": "Nudes",
     "animals": "Animals",
+    "haphazardly": "Haphazardly",
+    "mish_mash": "Mish-Mash",
+    "automatic_painting": "Automatic Painting",
     "various_objects": "Various objects",
     "person": "Person",
     "vases_and_pots": "Vases and pots",
@@ -256,20 +342,27 @@
     "first_creations": "First creations",
     "quick_work": "Quick work",
     "collective_work": "Collective work",
+    "creation": "Creation",
     "ceramic_courses": "Ceramic courses",
     "mixed_technique": "Mixed technique",
     "events": "Events",
     "exhibitions": "Exhibitions",
+    "experiences": "Experiences",
+    "activity_leader": "Activity leader",
     "in_action": "\"In action\"",
     "miscellaneous_projects": "Miscellaneous projects",
     "painting_while_dancing": "Painting while dancing",
     "performances": "Performances",
     "life_is_love": "Life is Love",
     "the_artist": "The Artist",
+    "artist": "Artist",
     "about_myself": "About myself",
     "my_artistic_approach": "My artistic approach",
+    "artistic_journey": "Artistic journey",
     "my_career": "My career path",
+    "development": "Development",
     "my_cv": "My CV",
+    "cv": "CV",
     "contact": "Contact",
     "facebook": "Facebook",
     "instagram": "Instagram",

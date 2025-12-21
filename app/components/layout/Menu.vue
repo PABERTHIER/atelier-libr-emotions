@@ -1,5 +1,5 @@
 <template>
-  <div class="menu">
+  <div class="menu" data-lenis-prevent>
     <div
       v-show="!device.isMobile.value"
       class="menu-desktop"
@@ -114,15 +114,14 @@
 </template>
 
 <script setup lang="ts">
-import { useScreenSize } from '~/composables/screen-size'
-
 const { t } = useI18n()
 const localePath = useLocalePath()
+const device = useScreenSize()
+
 const contactTitle = computed(() => t('pages.contact.tab_name'))
 const openMenuLabel = computed(() => t('components.menu.open'))
 const closeMenuLabel = computed(() => t('components.menu.close'))
 
-const device = useScreenSize()
 const isMenuOpen = ref(false)
 
 // TODO: Update links
@@ -134,7 +133,10 @@ const sections = ref([
       {
         title: computed(() => t('miscellaneous.acrylic')),
         links: [
-          { text: computed(() => t('miscellaneous.abstracts')), url: '/wip' },
+          {
+            text: computed(() => t('miscellaneous.abstracts')),
+            url: '/painting/acrylic/abstracts',
+          },
           { text: computed(() => t('miscellaneous.faces')), url: '/wip' },
           {
             text: computed(() => t('miscellaneous.miscellaneous')),
@@ -344,12 +346,12 @@ const sections = ref([
         title: computed(() => t('miscellaneous.about_myself')),
         links: [
           {
-            text: computed(() => t('miscellaneous.my_artistic_approach')),
-            url: '/about',
-          },
-          {
             text: computed(() => t('miscellaneous.my_career')),
             url: '/about/development',
+          },
+          {
+            text: computed(() => t('miscellaneous.my_artistic_approach')),
+            url: '/about',
           },
           {
             text: computed(() => t('miscellaneous.my_cv')),
