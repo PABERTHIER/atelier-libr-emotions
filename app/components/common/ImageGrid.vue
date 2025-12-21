@@ -25,8 +25,20 @@
               loading="lazy"
               v-bind="nuxtImgWidthBinding(item)"
               class="img" />
-            <div v-if="item.imageSource.title" class="image-title-overlay">
+            <div
+              v-if="
+                item.imageSource.title && !device.isMediumOrBelowScreen.value
+              "
+              class="image-title-overlay">
               {{ item.imageSource.title }}
+            </div>
+            <div
+              v-else-if="
+                item.imageSource.mobileTitle &&
+                device.isMediumOrBelowScreen.value
+              "
+              class="image-title-overlay">
+              {{ item.imageSource.mobileTitle }}
             </div>
           </NuxtLink>
         </div>
@@ -48,6 +60,8 @@ const props = defineProps({
     required: true,
   },
 })
+
+const device = useScreenSize()
 
 const root = ref<HTMLElement | null>(null)
 const rows = ref<Row[]>([])
@@ -432,7 +446,7 @@ watch(
   }
 
   // Mobile: show title on tap/touch or small screens
-  @media ((hover: none) or (max-width: $md)) {
+  @media ((hover: none) or (max-width: calc($md - 1px))) {
     .image-row {
       margin-bottom: 40px;
 
@@ -445,10 +459,14 @@ watch(
           }
 
           .image-title-overlay {
-            padding-top: 10px;
+            max-height: 35px;
+            padding-top: 5px;
             text-align: center;
-            font-size: 12px;
+            font-size: 11px;
+            line-height: 0.9;
             text-wrap: wrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
         }
       }
