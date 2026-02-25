@@ -2,9 +2,9 @@
   <div class="oil-abstracts">
     <div class="abstract-autumn-container">
       <Image
-        src="/paintings/abstract-autumn.jpg"
-        sizes="sm:200px, md:350px, lg:500px"
-        max-height="500px"
+        src="/paintings/abstract-autumn.webp"
+        sizes="sm:150px, md:250px, lg:350px"
+        max-height="400px"
         :title="abstractAutumnPaintingTitle"
         :alt="abstractAutumnPaintingAlt" />
       <div class="description">

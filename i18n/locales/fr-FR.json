@@ -3,7 +3,7 @@
     "name": "Atelier Libr'Émotions",
     "logo_alt": "Logo Atelier Libr'Émotions",
     "meta": {
-      "description": "Ma peinture et moi...lâcher prise, ressenti, émotions, expression : thérapie.",
+      "description": "Atelier Libr'Émotions : peintures intuitives et céramiques inspirées par la nature. Art expressif entre abstrait et figuratif, porté par les émotions de Véronique Berthier.",
       "alt_name_1": "atelierlibremotions",
       "alt_name_2": "atelier libremotions",
       "alt_name_3": "atelier libre emotions",
@@ -29,7 +29,7 @@
     "main": {
       "tab_name": "Accueil",
       "meta": {
-        "content": "Bienvenue dans mon Univers artistique, où peintures intuitives, céramiques et éléments naturels se côtoient. Créations abstraites ou figuratives, elles sont inspirées par Dame Nature, puits intarissable de beauté, de surprises et d'émerveillement, que je remercie tous les jours !"
+        "content": "Découvrez l'univers artistique de Véronique Berthier : peintures intuitives, céramiques et créations inspirées par la nature. Ateliers créatifs Libr'Émotions en Lorraine."
       },
       "hero_title": "Peinture et Céramique",
       "hero_description": "Bienvenue dans mon Univers artistique, où peintures intuitives, céramiques et éléments naturels se côtoient. Créations abstraites ou figuratives, elles sont inspirées par Dame Nature, puits intarissable de beauté, de surprises et d'émerveillement, que je remercie tous les jours !",
@@ -43,7 +43,7 @@
         "abstracts": {
           "tab_name": "Acrylique - Abstraits",
           "meta": {
-            "content": "Un fond, un graphisme libre, des yeux, des apparitions !"
+            "content": "Galerie de peintures acryliques abstraites de Véronique Berthier : fonds colorés, graphismes libres, apparitions et peintures automatiques. Émotions et intuition sur toile."
           },
           "title": "Acrylique - Abstraits",
           "subtitle": "Un fond, un graphisme libre, des yeux, des apparitions !"
@@ -53,17 +53,49 @@
         "nature": {
           "tab_name": "Encres - Nature",
           "meta": {
-            "content": "Collection d'encres inspirées par la nature : paysages, éléments naturels et atmosphères."
+            "content": "Collection d'encres de Véronique Berthier inspirées par la nature : paysages, éléments naturels, faune, flore et atmosphères poétiques créées à l'encre de Chine."
           },
           "title": "Encres - Nature",
           "subtitle": "Expressions inspirées par la nature"
         }
       }
     },
+    "ceramic": {
+      "electric_kiln": {
+        "nature": {
+          "tab_name": "Grès - four électrique - Nature",
+          "meta": {
+            "content": "Galerie de céramiques grès de Véronique Berthier cuites au four électrique : fleurs décoratives et pièces nature en terre blanche, noire ou ocre, laissées brutes, engobées ou émaillées."
+          },
+          "title": "Grès - four électrique - Nature",
+          "subtitle": "Fleurs décoratives, pour intérieur et/ou extérieur"
+        }
+      },
+      "porcelain": {
+        "flowers": {
+          "tab_name": "Porcelaine - Fleurs",
+          "meta": {
+            "content": "Collection de fleurs en porcelaine de Véronique Berthier : pièces délicates et dentelées pour décoration murale ou sur meuble, seules ou associées à un élément naturel ou une autre céramique."
+          },
+          "title": "Porcelaine - Fleurs",
+          "subtitle": "Pièces de décoration, sur un meuble ou au mur, seules ou associées à un élément naturel ou une autre céramique"
+        }
+      },
+      "raku_and_smouldering": {
+        "nature": {
+          "tab_name": "Raku et enfumage - Nature",
+          "meta": {
+            "content": "Galerie de céramiques raku et enfumage de Véronique Berthier : pièces décoratives aux craquelures noires caractéristiques dans un émail blanc brillant, pour une décoration intérieure unique."
+          },
+          "title": "Raku et enfumage - Nature",
+          "subtitle": "Céramiques pour décoration intérieure"
+        }
+      }
+    },
     "about": {
       "tab_name": "Ma démarche artistique",
       "meta": {
-        "content": "Ma démarche artistique : peinture intuitive, céramique et expression créative libre."
+        "content": "Démarche artistique de Véronique Berthier : peinture intuitive, céramique et ateliers créatifs ouverts à tous. Expression libre, émotions et connexion profonde à la nature."
       },
       "title": "Ma démarche artistique",
       "subtitle": "Une approche intuitive de l'art",
@@ -103,7 +135,7 @@
     "development": {
       "tab_name": "Mon cheminement",
       "meta": {
-        "content": "Mon cheminement artistique: de la science à la peinture intuitive."
+        "content": "Découvrez le parcours artistique de Véronique Berthier : de la biochimie à la peinture intuitive et à la céramique, une reconversion passionnée nourrie par les émotions et la nature."
       },
       "title": "Mon Cheminement",
       "subtitle": "Un parcours artistique atypique",
@@ -133,7 +165,7 @@
     "cv": {
       "tab_name": "Mon CV",
       "meta": {
-        "content": "Curriculum vitae : parcours artistique, formations et expositions."
+        "content": "CV artistique de Véronique Berthier : formations, expositions et expériences en peinture intuitive, céramique et animation d'ateliers créatifs en Lorraine."
       },
       "title": "Mon CV",
       "subtitle": "Parcours et expériences artistiques",
@@ -149,7 +181,7 @@
     "contact": {
       "tab_name": "Contact",
       "meta": {
-        "content": "Gestuelles, couleurs, formes et textures, c'est l'aventure ! Je vous invite à partager vos ressentis."
+        "content": "Contactez Véronique Berthier, artiste peintre et céramiste. Partagez vos ressentis, commandez une œuvre ou rejoignez les ateliers créatifs Libr'Émotions."
       },
       "title": "Contactez-moi",
       "subtitle": "Gestuelles, couleurs, formes et textures, c'est l'aventure ! Je vous invite à partager vos ressentis.",
@@ -174,17 +206,17 @@
     "paintings": {
       "abstract_autumn": {
         "description": "Peinture d'art abstrait avec une palette de couleurs vibrantes inspirées de l'automne. Présentant des couches riches et texturées d'oranges chaudes, de jaunes et de bruns terreux, cette œuvre d'art expressive évoque des sentiments de nature, de changement et de profondeur. Parfait pour les amateurs d'art et les collectionneurs à la recherche de compositions uniques et pleines d'émotions.",
-        "title": "Art abstrait vibrant d'inspiration automnale avec des couches texturées.",
-        "alt": "Art abstrait avec des couleurs automnales vibrantes et des couches texturées.",
+        "title": "Peinture à l'huile abstraite - inspiration automnale",
+        "alt": "Peinture à l'huile abstraite - inspiration automnale",
         "meta": "Explorez une peinture d'art abstrait présentant des couleurs automnales vibrantes et des couches texturées, évoquant des sentiments de nature et de changement."
       },
       "celestial_collision": {
-        "title": "Technique mixte avec des couleurs vibrantes.",
-        "alt": "Technique mixte avec des couleurs vibrantes."
+        "title": "Technique mixte - ambiance astrale",
+        "alt": "Technique mixte - ambiance astrale"
       },
       "entangled_echoes": {
-        "title": "Acrylique présentant des couches riches et texturées d'oranges et de jaunes chauds.",
-        "alt": "Acrylique présentant des couches riches et texturées d'oranges et de jaunes chauds."
+        "title": "Acrylique abstraite - peinture automatique",
+        "alt": "Acrylique abstraite - peinture automatique"
       },
       "acrylic": {
         "abstracts": {
@@ -294,6 +326,180 @@
           }
         }
       }
+    },
+    "ceramics": {
+      "electric_kiln": {
+        "nature": {
+          "f1": {
+            "title": "Diverses fleurs 1",
+            "mobile_title": "F1",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "f2": {
+            "title": "Diverses fleurs 2",
+            "mobile_title": "F2",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "f3": {
+            "title": "Diverses fleurs 3",
+            "mobile_title": "F3",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "f4": {
+            "title": "Diverses fleurs 4",
+            "mobile_title": "F4",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "f5": {
+            "title": "Diverses fleurs 5",
+            "mobile_title": "F5",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "f6": {
+            "title": "Diverses fleurs 6",
+            "mobile_title": "F6",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "f7": {
+            "title": "Diverses fleurs 7",
+            "mobile_title": "F7",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "f8": {
+            "title": "Diverses fleurs 8",
+            "mobile_title": "F8",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "f9": {
+            "title": "Diverses fleurs 9",
+            "mobile_title": "F9",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "f10": {
+            "title": "Diverses fleurs 10",
+            "mobile_title": "F10",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "gf1": {
+            "title": "Grosses fleurs 1",
+            "mobile_title": "GF1",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "gf2": {
+            "title": "Grosses fleurs 2",
+            "mobile_title": "GF2",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "gf3": {
+            "title": "Grosses fleurs 3",
+            "mobile_title": "GF3",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "gf4": {
+            "title": "Grosses fleurs 4",
+            "mobile_title": "GF4",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "gf5": {
+            "title": "Grosses fleurs 5",
+            "mobile_title": "GF5",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "gf6": {
+            "title": "Grosses fleurs 6",
+            "mobile_title": "GF6",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "gf7": {
+            "title": "Grosses fleurs 7",
+            "mobile_title": "GF7",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          }
+        }
+      },
+      "porcelain": {
+        "flowers": {
+          "fp1": {
+            "title": "Fleur Porcelaine 1",
+            "mobile_title": "FP1",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp2": {
+            "title": "Fleur Porcelaine 2",
+            "mobile_title": "FP2",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp3": {
+            "title": "Fleur Porcelaine 3",
+            "mobile_title": "FP3",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp4": {
+            "title": "Fleur Porcelaine 4",
+            "mobile_title": "FP4",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp5": {
+            "title": "Fleur Porcelaine 5",
+            "mobile_title": "FP5",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp6": {
+            "title": "Fleur Porcelaine 6",
+            "mobile_title": "FP6",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp7": {
+            "title": "Fleur Porcelaine 7",
+            "mobile_title": "FP7",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp8": {
+            "title": "Fleur Porcelaine 8",
+            "mobile_title": "FP8",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp9": {
+            "title": "Fleur Porcelaine 9",
+            "mobile_title": "FP9",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp10": {
+            "title": "Fleur Porcelaine 10",
+            "mobile_title": "FP10",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp11": {
+            "title": "Fleur Porcelaine 11",
+            "mobile_title": "FP11",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp12": {
+            "title": "Fleur Porcelaine 12",
+            "mobile_title": "FP12",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp13": {
+            "title": "Fleur Porcelaine 13",
+            "mobile_title": "FP13",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp14": {
+            "title": "Fleur Porcelaine 14",
+            "mobile_title": "FP14",
+            "alt": "Fleur en céramique pour décoration"
+          }
+        }
+      },
+      "raku_smouldering": {
+        "nature": {
+          "fr1": {
+            "title": "Fleur 1",
+            "mobile_title": "FR1",
+            "alt": "Fleur en céramique pour décoration intérieure"
+          }
+        }
+      }
     }
   },
   "miscellaneous": {
@@ -312,10 +518,10 @@
     "charcoal": "Fusain",
     "pastel": "Pastel",
     "felt_pen": "Feutre",
-    "electric_kiln_firing": "Cuisson four électrique",
+    "electric_kiln": "Grès - four électrique",
     "raku_and_smouldering": "Raku et enfumage",
     "porcelain": "Porcelaine",
-    "kiln_pottery": "Poterie au four",
+    "wheel_pottery": "Poterie au tour",
     "abstracts": "Abstraits",
     "abstract_art": "Art abstrait",
     "faces": "Visages",

@@ -138,11 +138,11 @@ const sections = ref([
             url: '/painting/acrylic/abstracts',
           },
           { text: computed(() => t('miscellaneous.faces')), url: '/wip' },
+          { text: computed(() => t('miscellaneous.nature')), url: '/wip' },
           {
             text: computed(() => t('miscellaneous.miscellaneous')),
             url: '/wip',
           },
-          { text: computed(() => t('miscellaneous.nature')), url: '/wip' },
         ],
       },
       {
@@ -155,6 +155,10 @@ const sections = ref([
           { text: computed(() => t('miscellaneous.faces')), url: '/wip' },
           { text: computed(() => t('miscellaneous.nudes')), url: '/wip' },
           { text: computed(() => t('miscellaneous.nature')), url: '/wip' },
+          {
+            text: computed(() => t('miscellaneous.miscellaneous')),
+            url: '/wip',
+          },
         ],
       },
       {
@@ -178,6 +182,10 @@ const sections = ref([
         links: [
           { text: computed(() => t('miscellaneous.faces')), url: '/wip' },
           { text: computed(() => t('miscellaneous.nudes')), url: '/wip' },
+          {
+            text: computed(() => t('miscellaneous.miscellaneous')),
+            url: '/wip',
+          },
         ],
       },
       {
@@ -187,6 +195,10 @@ const sections = ref([
           { text: computed(() => t('miscellaneous.faces')), url: '/wip' },
           { text: computed(() => t('miscellaneous.nudes')), url: '/wip' },
           { text: computed(() => t('miscellaneous.nature')), url: '/wip' },
+          {
+            text: computed(() => t('miscellaneous.miscellaneous')),
+            url: '/wip',
+          },
         ],
       },
       {
@@ -196,6 +208,10 @@ const sections = ref([
           { text: computed(() => t('miscellaneous.faces')), url: '/wip' },
           { text: computed(() => t('miscellaneous.nudes')), url: '/wip' },
           { text: computed(() => t('miscellaneous.nature')), url: '/wip' },
+          {
+            text: computed(() => t('miscellaneous.miscellaneous')),
+            url: '/wip',
+          },
         ],
       },
       {
@@ -213,9 +229,12 @@ const sections = ref([
     showContent: false,
     subSections: [
       {
-        title: computed(() => t('miscellaneous.electric_kiln_firing')),
+        title: computed(() => t('miscellaneous.electric_kiln')),
         links: [
-          { text: computed(() => t('miscellaneous.nature')), url: '/wip' },
+          {
+            text: computed(() => t('miscellaneous.nature')),
+            url: '/ceramic/electric-kiln/nature',
+          },
           { text: computed(() => t('miscellaneous.animals')), url: '/wip' },
           { text: computed(() => t('miscellaneous.person')), url: '/wip' },
           {
@@ -233,7 +252,10 @@ const sections = ref([
       {
         title: computed(() => t('miscellaneous.raku_and_smouldering')),
         links: [
-          { text: computed(() => t('miscellaneous.nature')), url: '/wip' },
+          {
+            text: computed(() => t('miscellaneous.nature')),
+            url: '/ceramic/raku-smouldering/nature',
+          },
           { text: computed(() => t('miscellaneous.animals')), url: '/wip' },
           { text: computed(() => t('miscellaneous.person')), url: '/wip' },
           {
@@ -253,7 +275,7 @@ const sections = ref([
         links: [
           {
             text: computed(() => t('miscellaneous.flowers')),
-            url: '/wip',
+            url: '/ceramic/porcelain/flowers',
           },
           {
             text: computed(() => t('miscellaneous.candle_holder')),
@@ -279,7 +301,7 @@ const sections = ref([
         ],
       },
       {
-        title: computed(() => t('miscellaneous.kiln_pottery')),
+        title: computed(() => t('miscellaneous.wheel_pottery')),
         links: [
           {
             text: computed(() => t('miscellaneous.first_creations')),
