@@ -54,7 +54,7 @@ useSeoMeta({
   ogImageWidth: '1200',
   ogImageHeight: '600',
   ogUrl: `${baseUrl.value}`,
-  ogType: 'article', // More specific than 'website' for content pages
+  ogType: 'website',
   ogLocale: locale.value,
   ogLocaleAlternate: availableLocaleAlternates.value,
   twitterCard: 'summary_large_image',
@@ -83,7 +83,7 @@ useSeoMeta({
   profileLastName: computed(() => t('about.last_name')),
   profileUsername: computed(() => t('about.username')),
   profileGender: 'female',
-  publisher: 'https://vercel.com/',
+  publisher: 'https://atelierlibremotions.vercel.app',
   generator: 'https://nuxt.com/',
   mobileWebAppCapable: 'yes',
   appleMobileWebAppCapable: 'yes',
