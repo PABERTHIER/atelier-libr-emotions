@@ -61,6 +61,16 @@
       }
     },
     "ceramic": {
+      "electric_kiln": {
+        "nature": {
+          "tab_name": "Stoneware - electric kiln - Nature",
+          "meta": {
+            "content": "My pieces are made of white, black, or ochre stoneware. They are fired at low or high temperatures. I choose to leave them natural, or to paint them with engobes, or to glaze them."
+          },
+          "title": "Stoneware - electric kiln - Nature",
+          "subtitle": "Decorative flowers, for indoor and/or outdoor use"
+        }
+      },
       "porcelain": {
         "flowers": {
           "tab_name": "Porcelain - Flowers",
@@ -318,6 +328,95 @@
       }
     },
     "ceramics": {
+      "electric_kiln": {
+        "nature": {
+          "f1": {
+            "title": "Various flowers 1",
+            "mobile_title": "F1",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "f2": {
+            "title": "Various flowers 2",
+            "mobile_title": "F2",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "f3": {
+            "title": "Various flowers 3",
+            "mobile_title": "F3",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "f4": {
+            "title": "Various flowers 4",
+            "mobile_title": "F4",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "f5": {
+            "title": "Various flowers 5",
+            "mobile_title": "F5",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "f6": {
+            "title": "Various flowers 6",
+            "mobile_title": "F6",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "f7": {
+            "title": "Various flowers 7",
+            "mobile_title": "F7",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "f8": {
+            "title": "Various flowers 8",
+            "mobile_title": "F8",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "f9": {
+            "title": "Various flowers 9",
+            "mobile_title": "F9",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "f10": {
+            "title": "Various flowers 10",
+            "mobile_title": "F10",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "gf1": {
+            "title": "Large flowers 1",
+            "mobile_title": "LF1",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "gf2": {
+            "title": "Large flowers 2",
+            "mobile_title": "LF2",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "gf3": {
+            "title": "Large flowers 3",
+            "mobile_title": "LF3",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "gf4": {
+            "title": "Large flowers 4",
+            "mobile_title": "LF4",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "gf5": {
+            "title": "Large flowers 5",
+            "mobile_title": "LF5",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "gf6": {
+            "title": "Large flowers 6",
+            "mobile_title": "LF6",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "gf7": {
+            "title": "Large flowers 7",
+            "mobile_title": "LF7",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          }
+        }
+      },
       "porcelain": {
         "flowers": {
           "fp1": {

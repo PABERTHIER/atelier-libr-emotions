@@ -231,7 +231,10 @@ const sections = ref([
       {
         title: computed(() => t('miscellaneous.electric_kiln')),
         links: [
-          { text: computed(() => t('miscellaneous.nature')), url: '/wip' },
+          {
+            text: computed(() => t('miscellaneous.nature')),
+            url: '/ceramic/electric-kiln/nature',
+          },
           { text: computed(() => t('miscellaneous.animals')), url: '/wip' },
           { text: computed(() => t('miscellaneous.person')), url: '/wip' },
           {

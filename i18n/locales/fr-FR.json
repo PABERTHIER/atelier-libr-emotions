@@ -61,6 +61,16 @@
       }
     },
     "ceramic": {
+      "electric_kiln": {
+        "nature": {
+          "tab_name": "Grès - four électrique - Nature",
+          "meta": {
+            "content": "Mes pièces sont en terre grès blanche, noire ou ocre. Elles sont cuites à basse ou à haute température. Je choisis de les laisser nature, ou de les peindre avec des engobes, ou de les émailler. "
+          },
+          "title": "Grès - four électrique - Nature",
+          "subtitle": "Fleurs décoratives, pour intérieur et/ou extérieur"
+        }
+      },
       "porcelain": {
         "flowers": {
           "tab_name": "Porcelaine - Fleurs",
@@ -318,6 +328,95 @@
       }
     },
     "ceramics": {
+      "electric_kiln": {
+        "nature": {
+          "f1": {
+            "title": "Diverses fleurs 1",
+            "mobile_title": "F1",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "f2": {
+            "title": "Diverses fleurs 2",
+            "mobile_title": "F2",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "f3": {
+            "title": "Diverses fleurs 3",
+            "mobile_title": "F3",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "f4": {
+            "title": "Diverses fleurs 4",
+            "mobile_title": "F4",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "f5": {
+            "title": "Diverses fleurs 5",
+            "mobile_title": "F5",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "f6": {
+            "title": "Diverses fleurs 6",
+            "mobile_title": "F6",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "f7": {
+            "title": "Diverses fleurs 7",
+            "mobile_title": "F7",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "f8": {
+            "title": "Diverses fleurs 8",
+            "mobile_title": "F8",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "f9": {
+            "title": "Diverses fleurs 9",
+            "mobile_title": "F9",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "f10": {
+            "title": "Diverses fleurs 10",
+            "mobile_title": "F10",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "gf1": {
+            "title": "Grosses fleurs 1",
+            "mobile_title": "GF1",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "gf2": {
+            "title": "Grosses fleurs 2",
+            "mobile_title": "GF2",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "gf3": {
+            "title": "Grosses fleurs 3",
+            "mobile_title": "GF3",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "gf4": {
+            "title": "Grosses fleurs 4",
+            "mobile_title": "GF4",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "gf5": {
+            "title": "Grosses fleurs 5",
+            "mobile_title": "GF5",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "gf6": {
+            "title": "Grosses fleurs 6",
+            "mobile_title": "GF6",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          },
+          "gf7": {
+            "title": "Grosses fleurs 7",
+            "mobile_title": "GF7",
+            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          }
+        }
+      },
       "porcelain": {
         "flowers": {
           "fp1": {
