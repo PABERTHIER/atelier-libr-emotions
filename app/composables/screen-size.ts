@@ -1,7 +1,7 @@
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
 
 export function useScreenSize() {
-  const breakpoints = useBreakpoints(breakpointsTailwind)
+  const breakpoints = useBreakpoints(breakpointsTailwind, { ssrWidth: 1024 })
   const isMobile = breakpoints.smaller('sm')
   const isMediumOrBelowScreen = breakpoints.smaller('md')
   const isTablet = breakpoints.between('sm', 'lg')
