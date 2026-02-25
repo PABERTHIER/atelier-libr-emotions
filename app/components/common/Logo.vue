@@ -2,7 +2,7 @@
   <div class="logo">
     <!-- TODO: Replace by the logo  -->
     <NuxtImg
-      src="paintings/celestial-collision.jpg"
+      src="paintings/celestial-collision.webp"
       :title="logoTitle"
       :alt="logoAlt"
       sizes="xs:20px, sm:30px, md:35px, lg:40px"
