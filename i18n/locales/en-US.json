@@ -29,7 +29,7 @@
     "main": {
       "tab_name": "Homepage",
       "meta": {
-        "content": "Welcome to my artistic universe, where intuitive paintings, ceramics, and natural elements come together. Whether abstract or figurative, my creations are inspired by Mother Nature, an inexhaustible source of beauty, surprises, and wonder, for which I give thanks every day!"
+        "content": "Explore Véronique Berthier's artistic universe: intuitive paintings, ceramics and nature-inspired creations. Libr'Émotions creative workshops in Lorraine, France."
       },
       "hero_title": "Painting and Ceramic",
       "hero_description": "Welcome to my artistic universe, where intuitive paintings, ceramics, and natural elements come together. Whether abstract or figurative, my creations are inspired by Mother Nature, an inexhaustible source of beauty, surprises, and wonder, for which I give thanks every day!",
@@ -65,7 +65,7 @@
         "nature": {
           "tab_name": "Stoneware - electric kiln - Nature",
           "meta": {
-            "content": "My pieces are made of white, black, or ochre stoneware. They are fired at low or high temperatures. I choose to leave them natural, or to paint them with engobes, or to glaze them."
+            "content": "Gallery of stoneware ceramics by Véronique Berthier fired in an electric kiln: decorative flowers and nature-inspired pieces in white, black or ochre clay, left natural, with engobes or glazed."
           },
           "title": "Stoneware - electric kiln - Nature",
           "subtitle": "Decorative flowers, for indoor and/or outdoor use"
@@ -75,7 +75,7 @@
         "flowers": {
           "tab_name": "Porcelain - Flowers",
           "meta": {
-            "content": "Delicate, serrated flowers. They can be used as simple decorations on a piece of furniture or hung on the wall. They can also be combined with a natural element such as wood. I can display a flower on its own, but I also really enjoy pairing a flower with another ceramic piece."
+            "content": "Collection of porcelain flowers by Véronique Berthier: delicate lace-like pieces for wall or furniture display, alone or paired with natural elements or other ceramics."
           },
           "title": "Porcelain - Flowers",
           "subtitle": "Decorative pieces, placed on a piece of furniture or on the wall, alone or combined with a natural element or another ceramic"
@@ -85,7 +85,7 @@
         "nature": {
           "tab_name": "Raku and smouldering - Nature",
           "meta": {
-            "content": "After an initial bisque firing, the piece is glazed and then fired in a gas kiln. Upon removal from the kiln (at approximately 1000°C), it undergoes a thermal shock and is smoked to reveal attractive black cracks in the glossy white glaze."
+            "content": "Gallery of raku and smouldering ceramics by Véronique Berthier: decorative pieces with distinctive black crackles in glossy white glaze, fired in a gas kiln for unique interior decoration."
           },
           "title": "Raku and smouldering - Nature",
           "subtitle": "Ceramics for interior decoration"
@@ -135,7 +135,7 @@
     "development": {
       "tab_name": "My development",
       "meta": {
-        "content": "My artistic journey: from science to intuitive painting."
+        "content": "Discover Véronique Berthier's artistic journey: from biochemistry to intuitive painting and ceramics, a passionate transition fuelled by emotions and a deep connection to nature."
       },
       "title": "My development",
       "subtitle": "An atypical artistic journey",
@@ -165,7 +165,7 @@
     "cv": {
       "tab_name": "My CV",
       "meta": {
-        "content": "Curriculum vitae: artistic career, training and exhibitions."
+        "content": "Artistic CV of Véronique Berthier: training, exhibitions and experience in intuitive painting, ceramics and creative workshop facilitation in Lorraine, France."
       },
       "title": "My CV",
       "subtitle": "Artistic journey and experiences",

@@ -29,7 +29,7 @@
     "main": {
       "tab_name": "Accueil",
       "meta": {
-        "content": "Bienvenue dans mon Univers artistique, où peintures intuitives, céramiques et éléments naturels se côtoient. Créations abstraites ou figuratives, elles sont inspirées par Dame Nature, puits intarissable de beauté, de surprises et d'émerveillement, que je remercie tous les jours !"
+        "content": "Découvrez l'univers artistique de Véronique Berthier : peintures intuitives, céramiques et créations inspirées par la nature. Ateliers créatifs Libr'Émotions en Lorraine."
       },
       "hero_title": "Peinture et Céramique",
       "hero_description": "Bienvenue dans mon Univers artistique, où peintures intuitives, céramiques et éléments naturels se côtoient. Créations abstraites ou figuratives, elles sont inspirées par Dame Nature, puits intarissable de beauté, de surprises et d'émerveillement, que je remercie tous les jours !",
@@ -65,7 +65,7 @@
         "nature": {
           "tab_name": "Grès - four électrique - Nature",
           "meta": {
-            "content": "Mes pièces sont en terre grès blanche, noire ou ocre. Elles sont cuites à basse ou à haute température. Je choisis de les laisser nature, ou de les peindre avec des engobes, ou de les émailler. "
+            "content": "Galerie de céramiques grès de Véronique Berthier cuites au four électrique : fleurs décoratives et pièces nature en terre blanche, noire ou ocre, laissées brutes, engobées ou émaillées."
           },
           "title": "Grès - four électrique - Nature",
           "subtitle": "Fleurs décoratives, pour intérieur et/ou extérieur"
@@ -75,7 +75,7 @@
         "flowers": {
           "tab_name": "Porcelaine - Fleurs",
           "meta": {
-            "content": "Fleurs dentelées et délicates. Elles peuvent servir de simple décoration sur un meuble, ou accrochées au mur. Elles peuvent également être associées à un élément naturel tel que le bois. Je peux présenter une fleur seule, mais j'aime aussi beaucoup associer une fleur avec une autre pièce en céramique."
+            "content": "Collection de fleurs en porcelaine de Véronique Berthier : pièces délicates et dentelées pour décoration murale ou sur meuble, seules ou associées à un élément naturel ou une autre céramique."
           },
           "title": "Porcelaine - Fleurs",
           "subtitle": "Pièces de décoration, sur un meuble ou au mur, seules ou associées à un élément naturel ou une autre céramique"
@@ -85,7 +85,7 @@
         "nature": {
           "tab_name": "Raku et enfumage - Nature",
           "meta": {
-            "content": "Après une première cuisson biscuit, la pièce est émaillée, puis cuite dans un four à gaz. À la sortie du four (1000°C environ), elle subit un choc thermique et sera enfumée pour laisser apparaître de jolies fissures noires dans l'émail blanc brillant."
+            "content": "Galerie de céramiques raku et enfumage de Véronique Berthier : pièces décoratives aux craquelures noires caractéristiques dans un émail blanc brillant, pour une décoration intérieure unique."
           },
           "title": "Raku et enfumage - Nature",
           "subtitle": "Céramiques pour décoration intérieure"
@@ -135,7 +135,7 @@
     "development": {
       "tab_name": "Mon cheminement",
       "meta": {
-        "content": "Mon cheminement artistique: de la science à la peinture intuitive."
+        "content": "Découvrez le parcours artistique de Véronique Berthier : de la biochimie à la peinture intuitive et à la céramique, une reconversion passionnée nourrie par les émotions et la nature."
       },
       "title": "Mon Cheminement",
       "subtitle": "Un parcours artistique atypique",
@@ -165,7 +165,7 @@
     "cv": {
       "tab_name": "Mon CV",
       "meta": {
-        "content": "Curriculum vitae : parcours artistique, formations et expositions."
+        "content": "CV artistique de Véronique Berthier : formations, expositions et expériences en peinture intuitive, céramique et animation d'ateliers créatifs en Lorraine."
       },
       "title": "Mon CV",
       "subtitle": "Parcours et expériences artistiques",
