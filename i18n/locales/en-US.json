@@ -29,7 +29,7 @@
     "main": {
       "tab_name": "Homepage",
       "meta": {
-        "content": "Welcome to my artistic universe, where intuitive paintings, ceramics, and natural elements come together. Whether abstract or figurative, my creations are inspired by Mother Nature, an inexhaustible source of beauty, surprises, and wonder, for which I give thanks every day!"
+        "content": "Explore Véronique Berthier's artistic universe: intuitive paintings, ceramics and nature-inspired creations. Libr'Émotions creative workshops in Lorraine, France."
       },
       "hero_title": "Painting and Ceramic",
       "hero_description": "Welcome to my artistic universe, where intuitive paintings, ceramics, and natural elements come together. Whether abstract or figurative, my creations are inspired by Mother Nature, an inexhaustible source of beauty, surprises, and wonder, for which I give thanks every day!",
@@ -57,6 +57,38 @@
           },
           "title": "Inks - Nature",
           "subtitle": "Expressions inspired by nature"
+        }
+      }
+    },
+    "ceramic": {
+      "electric_kiln": {
+        "nature": {
+          "tab_name": "Stoneware - electric kiln - Nature",
+          "meta": {
+            "content": "Gallery of stoneware ceramics by Véronique Berthier fired in an electric kiln: decorative flowers and nature-inspired pieces in white, black or ochre clay, left natural, with engobes or glazed."
+          },
+          "title": "Stoneware - electric kiln - Nature",
+          "subtitle": "Decorative flowers, for indoor and/or outdoor use"
+        }
+      },
+      "porcelain": {
+        "flowers": {
+          "tab_name": "Porcelain - Flowers",
+          "meta": {
+            "content": "Collection of porcelain flowers by Véronique Berthier: delicate lace-like pieces for wall or furniture display, alone or paired with natural elements or other ceramics."
+          },
+          "title": "Porcelain - Flowers",
+          "subtitle": "Decorative pieces, placed on a piece of furniture or on the wall, alone or combined with a natural element or another ceramic"
+        }
+      },
+      "raku_and_smouldering": {
+        "nature": {
+          "tab_name": "Raku and smouldering - Nature",
+          "meta": {
+            "content": "Gallery of raku and smouldering ceramics by Véronique Berthier: decorative pieces with distinctive black crackles in glossy white glaze, fired in a gas kiln for unique interior decoration."
+          },
+          "title": "Raku and smouldering - Nature",
+          "subtitle": "Ceramics for interior decoration"
         }
       }
     },
@@ -103,7 +135,7 @@
     "development": {
       "tab_name": "My development",
       "meta": {
-        "content": "My artistic journey: from science to intuitive painting."
+        "content": "Discover Véronique Berthier's artistic journey: from biochemistry to intuitive painting and ceramics, a passionate transition fuelled by emotions and a deep connection to nature."
       },
       "title": "My development",
       "subtitle": "An atypical artistic journey",
@@ -133,7 +165,7 @@
     "cv": {
       "tab_name": "My CV",
       "meta": {
-        "content": "Curriculum vitae: artistic career, training and exhibitions."
+        "content": "Artistic CV of Véronique Berthier: training, exhibitions and experience in intuitive painting, ceramics and creative workshop facilitation in Lorraine, France."
       },
       "title": "My CV",
       "subtitle": "Artistic journey and experiences",
@@ -291,6 +323,180 @@
             "title": "Indian ink 10 : 60x80",
             "mobile_title": "II10: 60x80",
             "alt": "Inks and water jet"
+          }
+        }
+      }
+    },
+    "ceramics": {
+      "electric_kiln": {
+        "nature": {
+          "f1": {
+            "title": "Various flowers 1",
+            "mobile_title": "F1",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "f2": {
+            "title": "Various flowers 2",
+            "mobile_title": "F2",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "f3": {
+            "title": "Various flowers 3",
+            "mobile_title": "F3",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "f4": {
+            "title": "Various flowers 4",
+            "mobile_title": "F4",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "f5": {
+            "title": "Various flowers 5",
+            "mobile_title": "F5",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "f6": {
+            "title": "Various flowers 6",
+            "mobile_title": "F6",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "f7": {
+            "title": "Various flowers 7",
+            "mobile_title": "F7",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "f8": {
+            "title": "Various flowers 8",
+            "mobile_title": "F8",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "f9": {
+            "title": "Various flowers 9",
+            "mobile_title": "F9",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "f10": {
+            "title": "Various flowers 10",
+            "mobile_title": "F10",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "gf1": {
+            "title": "Large flowers 1",
+            "mobile_title": "LF1",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "gf2": {
+            "title": "Large flowers 2",
+            "mobile_title": "LF2",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "gf3": {
+            "title": "Large flowers 3",
+            "mobile_title": "LF3",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "gf4": {
+            "title": "Large flowers 4",
+            "mobile_title": "LF4",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "gf5": {
+            "title": "Large flowers 5",
+            "mobile_title": "LF5",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "gf6": {
+            "title": "Large flowers 6",
+            "mobile_title": "LF6",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          },
+          "gf7": {
+            "title": "Large flowers 7",
+            "mobile_title": "LF7",
+            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          }
+        }
+      },
+      "porcelain": {
+        "flowers": {
+          "fp1": {
+            "title": "Porcelain Flower 1",
+            "mobile_title": "PF1",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp2": {
+            "title": "Porcelain Flower 2",
+            "mobile_title": "PF2",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp3": {
+            "title": "Porcelain Flower 3",
+            "mobile_title": "PF3",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp4": {
+            "title": "Porcelain Flower 4",
+            "mobile_title": "PF4",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp5": {
+            "title": "Porcelain Flower 5",
+            "mobile_title": "PF5",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp6": {
+            "title": "Porcelain Flower 6",
+            "mobile_title": "PF6",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp7": {
+            "title": "Porcelain Flower 7",
+            "mobile_title": "PF7",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp8": {
+            "title": "Porcelain Flower 8",
+            "mobile_title": "PF8",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp9": {
+            "title": "Porcelain Flower 9",
+            "mobile_title": "PF9",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp10": {
+            "title": "Porcelain Flower 10",
+            "mobile_title": "PF10",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp11": {
+            "title": "Porcelain Flower 11",
+            "mobile_title": "PF11",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp12": {
+            "title": "Porcelain Flower 12",
+            "mobile_title": "PF12",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp13": {
+            "title": "Porcelain Flower 13",
+            "mobile_title": "PF13",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp14": {
+            "title": "Porcelain Flower 14",
+            "mobile_title": "PF14",
+            "alt": "Ceramic flower for decoration"
+          }
+        }
+      },
+      "raku_smouldering": {
+        "nature": {
+          "fr1": {
+            "title": "Flower 1",
+            "mobile_title": "FR1",
+            "alt": "Ceramic flower for interior decoration"
           }
         }
       }
