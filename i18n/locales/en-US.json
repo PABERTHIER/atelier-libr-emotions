@@ -174,17 +174,17 @@
     "paintings": {
       "abstract_autumn": {
         "description": "Abstract art painting with a vibrant autumn-inspired color palette. Featuring rich, textured layers of warm oranges, yellows, and earthy browns, this expressive artwork evokes feelings of nature, change, and depth. Perfect for art lovers and collectors seeking unique, emotion-driven compositions.",
-        "title": "Vibrant autumn-inspired abstract art with textured layers.",
-        "alt": "Abstract art with vibrant autumn colors and textured layers.",
+        "title": "Abstract oil painting - autumnal inspiration",
+        "alt": "Abstract oil painting - autumnal inspiration",
         "meta": "Explore an abstract art painting featuring vibrant autumn colors and textured layers, evoking feelings of nature and change."
       },
       "celestial_collision": {
-        "title": "Mixed techniques with vibrant colors.",
-        "alt": "Mixed techniques with vibrant colors."
+        "title": "Mixed technique - astral atmosphere",
+        "alt": "Mixed technique - astral atmosphere"
       },
       "entangled_echoes": {
-        "title": "Acrylic featuring rich, textured layers of warm oranges, yellows.",
-        "alt": "Acrylic featuring rich, textured layers of warm oranges, yellows."
+        "title": "Abstract acrylic - automatic painting",
+        "alt": "Abstract acrylic - automatic painting"
       },
       "acrylic": {
         "abstracts": {
@@ -312,10 +312,10 @@
     "charcoal": "Charcoal",
     "pastel": "Pastel",
     "felt_pen": "Felt pen",
-    "electric_kiln_firing": "Electric kiln firing",
+    "electric_kiln": "Stoneware - electric kiln",
     "raku_and_smouldering": "Raku and smouldering",
     "porcelain": "Porcelain",
-    "kiln_pottery": "Kiln pottery",
+    "wheel_pottery": "Pottery on the wheel",
     "abstracts": "Abstracts",
     "abstract_art": "Abstract art",
     "faces": "Faces",
