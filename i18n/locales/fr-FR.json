@@ -3,7 +3,7 @@
     "name": "Atelier Libr'Émotions",
     "logo_alt": "Logo Atelier Libr'Émotions",
     "meta": {
-      "description": "Ma peinture et moi...lâcher prise, ressenti, émotions, expression : thérapie.",
+      "description": "Atelier Libr'Émotions : peintures intuitives et céramiques inspirées par la nature. Art expressif entre abstrait et figuratif, porté par les émotions de Véronique Berthier.",
       "alt_name_1": "atelierlibremotions",
       "alt_name_2": "atelier libremotions",
       "alt_name_3": "atelier libre emotions",
@@ -43,7 +43,7 @@
         "abstracts": {
           "tab_name": "Acrylique - Abstraits",
           "meta": {
-            "content": "Un fond, un graphisme libre, des yeux, des apparitions !"
+            "content": "Galerie de peintures acryliques abstraites de Véronique Berthier : fonds colorés, graphismes libres, apparitions et peintures automatiques. Émotions et intuition sur toile."
           },
           "title": "Acrylique - Abstraits",
           "subtitle": "Un fond, un graphisme libre, des yeux, des apparitions !"
@@ -53,7 +53,7 @@
         "nature": {
           "tab_name": "Encres - Nature",
           "meta": {
-            "content": "Collection d'encres inspirées par la nature : paysages, éléments naturels et atmosphères."
+            "content": "Collection d'encres de Véronique Berthier inspirées par la nature : paysages, éléments naturels, faune, flore et atmosphères poétiques créées à l'encre de Chine."
           },
           "title": "Encres - Nature",
           "subtitle": "Expressions inspirées par la nature"
@@ -63,7 +63,7 @@
     "about": {
       "tab_name": "Ma démarche artistique",
       "meta": {
-        "content": "Ma démarche artistique : peinture intuitive, céramique et expression créative libre."
+        "content": "Démarche artistique de Véronique Berthier : peinture intuitive, céramique et ateliers créatifs ouverts à tous. Expression libre, émotions et connexion profonde à la nature."
       },
       "title": "Ma démarche artistique",
       "subtitle": "Une approche intuitive de l'art",
@@ -149,7 +149,7 @@
     "contact": {
       "tab_name": "Contact",
       "meta": {
-        "content": "Gestuelles, couleurs, formes et textures, c'est l'aventure ! Je vous invite à partager vos ressentis."
+        "content": "Contactez Véronique Berthier, artiste peintre et céramiste. Partagez vos ressentis, commandez une œuvre ou rejoignez les ateliers créatifs Libr'Émotions."
       },
       "title": "Contactez-moi",
       "subtitle": "Gestuelles, couleurs, formes et textures, c'est l'aventure ! Je vous invite à partager vos ressentis.",
