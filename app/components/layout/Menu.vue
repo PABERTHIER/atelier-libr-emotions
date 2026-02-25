@@ -272,7 +272,7 @@ const sections = ref([
         links: [
           {
             text: computed(() => t('miscellaneous.flowers')),
-            url: '/wip',
+            url: '/ceramic/porcelain/flowers',
           },
           {
             text: computed(() => t('miscellaneous.candle_holder')),

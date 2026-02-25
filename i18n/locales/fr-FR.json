@@ -61,6 +61,16 @@
       }
     },
     "ceramic": {
+      "porcelain": {
+        "flowers": {
+          "tab_name": "Porcelaine - Fleurs",
+          "meta": {
+            "content": "Fleurs dentelées et délicates. Elles peuvent servir de simple décoration sur un meuble, ou accrochées au mur. Elles peuvent également être associées à un élément naturel tel que le bois. Je peux présenter une fleur seule, mais j'aime aussi beaucoup associer une fleur avec une autre pièce en céramique."
+          },
+          "title": "Porcelaine - Fleurs",
+          "subtitle": "Pièces de décoration, sur un meuble ou au mur, seules ou associées à un élément naturel ou une autre céramique"
+        }
+      },
       "raku_and_smouldering": {
         "nature": {
           "tab_name": "Raku et enfumage - Nature",
@@ -308,6 +318,80 @@
       }
     },
     "ceramics": {
+      "porcelain": {
+        "flowers": {
+          "fp1": {
+            "title": "Fleur Porcelaine 1",
+            "mobile_title": "FP1",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp2": {
+            "title": "Fleur Porcelaine 2",
+            "mobile_title": "FP2",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp3": {
+            "title": "Fleur Porcelaine 3",
+            "mobile_title": "FP3",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp4": {
+            "title": "Fleur Porcelaine 4",
+            "mobile_title": "FP4",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp5": {
+            "title": "Fleur Porcelaine 5",
+            "mobile_title": "FP5",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp6": {
+            "title": "Fleur Porcelaine 6",
+            "mobile_title": "FP6",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp7": {
+            "title": "Fleur Porcelaine 7",
+            "mobile_title": "FP7",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp8": {
+            "title": "Fleur Porcelaine 8",
+            "mobile_title": "FP8",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp9": {
+            "title": "Fleur Porcelaine 9",
+            "mobile_title": "FP9",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp10": {
+            "title": "Fleur Porcelaine 10",
+            "mobile_title": "FP10",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp11": {
+            "title": "Fleur Porcelaine 11",
+            "mobile_title": "FP11",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp12": {
+            "title": "Fleur Porcelaine 12",
+            "mobile_title": "FP12",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp13": {
+            "title": "Fleur Porcelaine 13",
+            "mobile_title": "FP13",
+            "alt": "Fleur en céramique pour décoration"
+          },
+          "fp14": {
+            "title": "Fleur Porcelaine 14",
+            "mobile_title": "FP14",
+            "alt": "Fleur en céramique pour décoration"
+          }
+        }
+      },
       "raku_smouldering": {
         "nature": {
           "fr1": {

@@ -61,6 +61,16 @@
       }
     },
     "ceramic": {
+      "porcelain": {
+        "flowers": {
+          "tab_name": "Porcelain - Flowers",
+          "meta": {
+            "content": "Delicate, serrated flowers. They can be used as simple decorations on a piece of furniture or hung on the wall. They can also be combined with a natural element such as wood. I can display a flower on its own, but I also really enjoy pairing a flower with another ceramic piece."
+          },
+          "title": "Porcelain - Flowers",
+          "subtitle": "Decorative pieces, placed on a piece of furniture or on the wall, alone or combined with a natural element or another ceramic"
+        }
+      },
       "raku_and_smouldering": {
         "nature": {
           "tab_name": "Raku and smouldering - Nature",
@@ -308,6 +318,80 @@
       }
     },
     "ceramics": {
+      "porcelain": {
+        "flowers": {
+          "fp1": {
+            "title": "Porcelain Flower 1",
+            "mobile_title": "PF1",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp2": {
+            "title": "Porcelain Flower 2",
+            "mobile_title": "PF2",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp3": {
+            "title": "Porcelain Flower 3",
+            "mobile_title": "PF3",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp4": {
+            "title": "Porcelain Flower 4",
+            "mobile_title": "PF4",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp5": {
+            "title": "Porcelain Flower 5",
+            "mobile_title": "PF5",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp6": {
+            "title": "Porcelain Flower 6",
+            "mobile_title": "PF6",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp7": {
+            "title": "Porcelain Flower 7",
+            "mobile_title": "PF7",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp8": {
+            "title": "Porcelain Flower 8",
+            "mobile_title": "PF8",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp9": {
+            "title": "Porcelain Flower 9",
+            "mobile_title": "PF9",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp10": {
+            "title": "Porcelain Flower 10",
+            "mobile_title": "PF10",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp11": {
+            "title": "Porcelain Flower 11",
+            "mobile_title": "PF11",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp12": {
+            "title": "Porcelain Flower 12",
+            "mobile_title": "PF12",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp13": {
+            "title": "Porcelain Flower 13",
+            "mobile_title": "PF13",
+            "alt": "Ceramic flower for decoration"
+          },
+          "fp14": {
+            "title": "Porcelain Flower 14",
+            "mobile_title": "PF14",
+            "alt": "Ceramic flower for decoration"
+          }
+        }
+      },
       "raku_smouldering": {
         "nature": {
           "fr1": {
