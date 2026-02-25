@@ -1,6 +1,6 @@
 <template>
-  <ClientOnly>
-    <div ref="root" class="image-grid">
+  <div ref="root" class="image-grid">
+    <template v-if="rows.length > 0">
       <div
         v-for="(row, rIdx) in rows"
         :key="`row-${rIdx}`"
@@ -43,8 +43,9 @@
           </NuxtLink>
         </div>
       </div>
-    </div>
-  </ClientOnly>
+    </template>
+    <div v-else class="image-grid-skeleton" />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -336,6 +337,8 @@ watch(
 </script>
 
 <style scoped lang="scss">
+@use 'sass:color';
+
 .image-grid {
   width: 100%;
   box-sizing: border-box;
@@ -484,5 +487,19 @@ watch(
       margin-bottom: -20px;
     }
   }
+}
+
+.image-grid-skeleton {
+  width: 100%;
+  min-height: 300px;
+  border-radius: 12px;
+  background: linear-gradient(
+    90deg,
+    $warm-beige 25%,
+    color.adjust($warm-beige, $lightness: 4%) 50%,
+    $warm-beige 75%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s ease-in-out infinite;
 }
 </style>
