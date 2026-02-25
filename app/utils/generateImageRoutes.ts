@@ -32,11 +32,19 @@ const imagesConfig = [
     ],
   },
   {
+    imagePath: '/paintings/some-paintings.webp',
+    sizes: [150, 200, 250, 300, 400],
+  },
+  {
     imagePath: '/cv/page_1.webp',
     sizes: [600, 900, 1200],
   },
   {
     imagePath: '/cv/page_2.webp',
     sizes: [600, 900, 1200],
+  },
+  {
+    imagePath: '/wip.gif',
+    sizes: [400, 700, 1000],
   },
 ]
