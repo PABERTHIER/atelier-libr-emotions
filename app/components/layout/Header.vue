@@ -1,19 +1,17 @@
 <template>
   <div class="header-container">
     <div class="header">
-      <ClientOnly>
-        <div class="menu-container">
-          <div :class="logoContainerClass">
-            <NuxtLink
-              :to="localePath('/')"
-              :aria-label="logoLinkLabel"
-              :title="logoLinkLabel">
-              <Logo aria-hidden="true" />
-            </NuxtLink>
-          </div>
-          <Menu />
+      <div class="menu-container">
+        <div :class="logoContainerClass">
+          <NuxtLink
+            :to="localePath('/')"
+            :aria-label="logoLinkLabel"
+            :title="logoLinkLabel">
+            <Logo aria-hidden="true" />
+          </NuxtLink>
         </div>
-      </ClientOnly>
+        <Menu />
+      </div>
     </div>
   </div>
 </template>
