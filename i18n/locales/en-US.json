@@ -3,7 +3,7 @@
     "name": "Atelier Libr'Émotions",
     "logo_alt": "Atelier Libr'Émotions logo",
     "meta": {
-      "description": "My painting and me...letting go, feeling, emotions, expression: therapy.",
+      "description": "Atelier Libr'Émotions: intuitive paintings and ceramics inspired by nature. Discover expressive art between abstract and figurative, driven by the emotions of Véronique Berthier.",
       "alt_name_1": "atelierlibremotions",
       "alt_name_2": "atelier libremotions",
       "alt_name_3": "atelier libre emotions",
@@ -43,7 +43,7 @@
         "abstracts": {
           "tab_name": "Acrylic - Abstracts",
           "meta": {
-            "content": "A background, free-form graphics, eyes, apparitions!"
+            "content": "Gallery of abstract acrylic paintings by Véronique Berthier: colourful backgrounds, free-form graphics, apparitions and automatic painting. Emotions and intuition on canvas."
           },
           "title": "Acrylic - Abstracts",
           "subtitle": "A background, free-form graphics, eyes, apparitions!"
@@ -53,7 +53,7 @@
         "nature": {
           "tab_name": "Inks - Nature",
           "meta": {
-            "content": "Collection of inks inspired by nature: landscapes, natural elements and atmospheres."
+            "content": "Collection of nature-inspired ink paintings by Véronique Berthier: landscapes, natural elements, flora, fauna and poetic atmospheres rendered in fluid Indian ink."
           },
           "title": "Inks - Nature",
           "subtitle": "Expressions inspired by nature"
@@ -63,7 +63,7 @@
     "about": {
       "tab_name": "My artistic approach",
       "meta": {
-        "content": "My artistic approach: intuitive painting, ceramics and free creative expression."
+        "content": "Discover Véronique Berthier's artistic approach: intuitive painting, ceramics and creative workshops open to all. Free expression, emotions and a deep connection to nature."
       },
       "title": "My artistic approach",
       "subtitle": "An intuitive approach to art",
@@ -149,7 +149,7 @@
     "contact": {
       "tab_name": "Contact",
       "meta": {
-        "content": "Gestures, colours, shapes and textures, it's an adventure! I invite you to share your feelings."
+        "content": "Contact Véronique Berthier, intuitive painter and ceramicist. Share your feelings, commission a unique artwork or join the Libr'Émotions creative workshops."
       },
       "title": "Contact me",
       "subtitle": "Gestures, colours, shapes and textures, it's an adventure! I invite you to share your feelings.",

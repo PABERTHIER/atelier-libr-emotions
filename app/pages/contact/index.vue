@@ -180,6 +180,7 @@ useSeoMeta({
   ogImageWidth: '1200',
   ogImageHeight: '600',
   ogUrl: canonicalUrl.value,
+  ogType: 'article',
   twitterTitle: '%s %separator %siteName',
   twitterDescription: computed(() => t('pages.contact.meta.content')),
   twitterImage: `${baseUrl.value}/${ogImageEndPath}`,
