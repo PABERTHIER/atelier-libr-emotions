@@ -382,7 +382,7 @@ watch(
           display: block;
           border-radius: 12px;
           transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
-          object-fit: contain;
+          object-fit: fill;
           transform-origin: center center;
           -webkit-user-drag: none;
           user-select: none;
