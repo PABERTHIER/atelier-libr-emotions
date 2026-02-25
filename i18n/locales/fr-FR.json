@@ -60,6 +60,18 @@
         }
       }
     },
+    "ceramic": {
+      "raku_and_smouldering": {
+        "nature": {
+          "tab_name": "Raku et enfumage - Nature",
+          "meta": {
+            "content": "Après une première cuisson biscuit, la pièce est émaillée, puis cuite dans un four à gaz. À la sortie du four (1000°C environ), elle subit un choc thermique et sera enfumée pour laisser apparaître de jolies fissures noires dans l'émail blanc brillant."
+          },
+          "title": "Raku et enfumage - Nature",
+          "subtitle": "Céramiques pour décoration intérieure"
+        }
+      }
+    },
     "about": {
       "tab_name": "Ma démarche artistique",
       "meta": {
@@ -291,6 +303,17 @@
             "title": "Encre de Chine 10 : 60x80",
             "mobile_title": "EC10: 60x80",
             "alt": "Jeu d'encres et d'eau"
+          }
+        }
+      }
+    },
+    "ceramics": {
+      "raku_smouldering": {
+        "nature": {
+          "fr1": {
+            "title": "Fleur 1",
+            "mobile_title": "FR1",
+            "alt": "Fleur en céramique pour décoration intérieure"
           }
         }
       }

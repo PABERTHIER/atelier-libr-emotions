@@ -60,6 +60,18 @@
         }
       }
     },
+    "ceramic": {
+      "raku_and_smouldering": {
+        "nature": {
+          "tab_name": "Raku and smouldering - Nature",
+          "meta": {
+            "content": "After an initial bisque firing, the piece is glazed and then fired in a gas kiln. Upon removal from the kiln (at approximately 1000°C), it undergoes a thermal shock and is smoked to reveal attractive black cracks in the glossy white glaze."
+          },
+          "title": "Raku and smouldering - Nature",
+          "subtitle": "Ceramics for interior decoration"
+        }
+      }
+    },
     "about": {
       "tab_name": "My artistic approach",
       "meta": {
@@ -291,6 +303,17 @@
             "title": "Indian ink 10 : 60x80",
             "mobile_title": "II10: 60x80",
             "alt": "Inks and water jet"
+          }
+        }
+      }
+    },
+    "ceramics": {
+      "raku_smouldering": {
+        "nature": {
+          "fr1": {
+            "title": "Flower 1",
+            "mobile_title": "FR1",
+            "alt": "Ceramic flower for interior decoration"
           }
         }
       }

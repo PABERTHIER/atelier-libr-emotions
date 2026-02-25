@@ -249,7 +249,10 @@ const sections = ref([
       {
         title: computed(() => t('miscellaneous.raku_and_smouldering')),
         links: [
-          { text: computed(() => t('miscellaneous.nature')), url: '/wip' },
+          {
+            text: computed(() => t('miscellaneous.nature')),
+            url: '/ceramic/raku-smouldering/nature',
+          },
           { text: computed(() => t('miscellaneous.animals')), url: '/wip' },
           { text: computed(() => t('miscellaneous.person')), url: '/wip' },
           {
