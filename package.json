@@ -12,7 +12,8 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "profile": "nuxt build --profile"
   },
   "dependencies": {
     "@nuxt/fonts": "^0.12.1",
@@ -22,7 +23,7 @@
     "@nuxtjs/seo": "^3.4.0",
     "@vue/composition-api": "^1.7.2",
     "lenis": "^1.3.18",
-    "nuxt": "^4.3.0",
+    "nuxt": "^4.4.2",
     "sass": "^1.98.0"
   },
   "devDependencies": {
