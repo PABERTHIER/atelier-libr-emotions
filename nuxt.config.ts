@@ -110,6 +110,14 @@ export default defineNuxtConfig({
         },
       },
     },
+    optimizeDeps: {
+      include: [
+        '@vueuse/core',
+        '@vue/devtools-core',
+        '@vue/devtools-kit',
+        'lenis',
+      ],
+    },
     plugins: [],
   },
   compatibilityDate: '2024-10-05',
