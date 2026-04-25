@@ -30,11 +30,15 @@
                 :key="linkIndex"
                 class="links">
                 <NuxtLink
+                  v-if="link.url !== '/wip'"
                   :to="localePath(link.url)"
                   class="link"
                   @click="hideContent()">
                   {{ link.text }}
                 </NuxtLink>
+                <span v-else class="link link--disabled" aria-disabled="true">
+                  {{ link.text }}
+                </span>
               </li>
             </ul>
           </div>
@@ -91,11 +95,18 @@
                       :key="linkIndex"
                       class="links">
                       <NuxtLink
+                        v-if="link.url !== '/wip'"
                         :to="localePath(link.url)"
                         class="link"
                         @click="toggleMobileMenu">
                         {{ link.text }}
                       </NuxtLink>
+                      <span
+                        v-else
+                        class="link link--disabled"
+                        aria-disabled="true">
+                        {{ link.text }}
+                      </span>
                     </li>
                   </ul>
                 </div>
@@ -490,6 +501,15 @@ const toggleMobileSection = (index: number) => {
                 &:hover {
                   color: $primary-text-color;
                 }
+
+                &.link--disabled {
+                  color: $light-grey-color-2;
+                  cursor: default;
+
+                  &:hover {
+                    color: $light-grey-color-2;
+                  }
+                }
               }
             }
           }
@@ -629,6 +649,16 @@ const toggleMobileSection = (index: number) => {
                     &:hover {
                       background-color: $dark-grey-color;
                       color: $white-color;
+                    }
+
+                    &.link--disabled {
+                      color: $dark-grey-color;
+                      cursor: default;
+
+                      &:hover {
+                        background-color: transparent;
+                        color: $dark-grey-color;
+                      }
                     }
                   }
                 }
