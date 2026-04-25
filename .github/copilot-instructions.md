@@ -24,6 +24,19 @@ This file provides Copilot-specific behavioral guidance that complements `AGENTS
 - Use `computed()` for reactive i18n values in meta tags
 - All image paths start with `/` (relative to `public/`)
 
+## Git Policy
+
+**Never run any git write command without explicit user instruction.**
+
+Forbidden without a direct user request:
+- `git commit`, `git push`, `git reset`, `git rebase`, `git merge`
+- `git cherry-pick`, `git revert`, `git stash`, `git tag`
+- `git branch -D`, `git am`
+
+Allowed: `git status`, `git diff`, `git log`, `git show` (read-only inspection).
+
+If asked to commit or push, **ask for confirmation first** and show what will be committed. Never commit speculatively at the end of a task.
+
 ### Commit Messages
 
 - Use conventional commit format

@@ -75,6 +75,34 @@ atelier-libr-emotions/
 
 ---
 
+## Git Policy — AI Agents Must Never Commit or Push
+
+**AI agents (Claude Code, GitHub Copilot, and any other tool) are strictly forbidden from running any destructive or history-altering git commands without explicit user instruction.**
+
+### Permanently forbidden without explicit user request
+
+- `git commit` — never commit on behalf of the user
+- `git push` — never push to any remote
+- `git reset` — never alter HEAD or the index
+- `git rebase` — never rebase branches
+- `git merge` — never merge branches
+- `git cherry-pick` — never cherry-pick commits
+- `git revert` — never create revert commits
+- `git stash` — never stash changes
+- `git tag` — never create or delete tags
+- `git branch -D` — never delete branches
+- `git am` — never apply patches
+
+### Allowed read-only git operations
+
+- `git status`, `git diff`, `git log`, `git show` — inspection only
+
+### Rule
+
+If the user says "commit the changes" or "push", **ask for confirmation first** and show exactly what will be committed/pushed before running the command. Never commit speculatively at the end of a task.
+
+---
+
 ## Build and Dev Commands
 
 ```bash
