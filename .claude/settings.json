@@ -17,6 +17,7 @@
     "deny": [
       "Bash(rm -rf *)",
       "Bash(del /s /q *)",
+      "Bash(git commit *)",
       "Bash(git push *)",
       "Bash(git reset --hard *)",
       "Bash(git reset *)",
