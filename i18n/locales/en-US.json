@@ -23,6 +23,13 @@
     "menu": {
       "open": "Open the menu",
       "close": "Close the menu"
+    },
+    "image_preview_modal": {
+      "close_label": "Close",
+      "zoom_label": "Zoom",
+      "zoom_fit": "Fit",
+      "dimensions_label": "Dimensions",
+      "aria_label": "Image preview"
     }
   },
   "pages": {
@@ -191,7 +198,8 @@
       },
       "connect_me": "Connect with me",
       "ready": "Ready to bring art into your space?",
-      "contact_me": "Contact me"
+      "contact_me": "Contact me",
+      "contact_me_by_mail": "Contact me by email"
     }
   },
   "about": {
