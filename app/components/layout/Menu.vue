@@ -3,14 +3,13 @@
     <div
       v-show="!device.isMobile.value"
       class="menu-desktop"
-      @mouseleave="hideContent()"
-      @touchtart:passive="hideContent()">
+      @mouseleave="hideContent()">
       <div
         v-for="(section, index) in sections"
         :key="index"
         class="menu-section"
         @mouseenter="showContent(index)"
-        @touchstart:passive="showContent(index)">
+        @touchstart.passive="showContent(index)">
         <div
           class="menu-title"
           :class="{ 'menu-selected': activeIndex === index }"
@@ -51,6 +50,13 @@
         {{ contactTitle }}
       </NuxtLink>
     </div>
+    <Teleport to="body">
+      <div
+        v-if="!device.isMobile.value && activeIndex !== null"
+        class="menu-desktop-overlay"
+        @click="hideContent()"
+        @touchstart.passive="hideContent()" />
+    </Teleport>
     <div v-show="device.isMobile.value" class="menu-mobile">
       <div class="menu-icon-container">
         <Icon
@@ -437,6 +443,15 @@ const toggleMobileSection = (index: number) => {
 </script>
 
 <style lang="scss" scoped>
+.menu-desktop-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: $header-z-index - 1;
+}
+
 .menu {
   width: 100%;
 
