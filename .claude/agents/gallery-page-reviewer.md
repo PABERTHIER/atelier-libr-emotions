@@ -43,7 +43,7 @@ Read the Vue file. Note the `urlEndPath`, `ogImageEndPath`, and the i18n key pre
 - [ ] `articleTag` values use `.value`
 - [ ] Commented `defineOgImageComponent` block is present
 - [ ] `images` array has correct type `ImageSource[]` and one entry per image
-- [ ] Each image entry has `src`, `title`, `mobileTitle`, `alt`
+- [ ] Each image entry has `src`, `title`, `mobileTitle`, `alt` — and `dimensions` for painting pages (not ceramics)
 - [ ] `previousPage` and `nextPage` are defined (may point to `/wip`)
 
 **Style:**

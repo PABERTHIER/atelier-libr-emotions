@@ -63,6 +63,8 @@ const images: ImageSource[] = [
     title: t('pictures.{domain_plural}.{technique_snake}.{category_snake}.{image_key}.title'),
     mobileTitle: t('pictures.{domain_plural}.{technique_snake}.{category_snake}.{image_key}.mobile_title'),
     alt: t('pictures.{domain_plural}.{technique_snake}.{category_snake}.{image_key}.alt'),
+    // For paintings only — omit for ceramics:
+    dimensions: t('pictures.{domain_plural}.{technique_snake}.{category_snake}.{image_key}.dimensions'),
   },
   // ... one entry per image
 ]

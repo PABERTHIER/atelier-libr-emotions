@@ -73,6 +73,7 @@ Where:
 pictures.{domain_plural}.{technique_snake}.{category_snake}.{image_key}.title
 pictures.{domain_plural}.{technique_snake}.{category_snake}.{image_key}.mobile_title
 pictures.{domain_plural}.{technique_snake}.{category_snake}.{image_key}.alt
+pictures.{domain_plural}.{technique_snake}.{category_snake}.{image_key}.dimensions  (paintings only)
 ```
 
 Where:
@@ -156,6 +157,7 @@ These are already defined in both locale files.
 | `meta.content` | ≤160 chars, starts with "Galerie de…" or "Collection de…", includes artist name | ≤160 chars, natural English, includes artist name |
 | `title` | Same as `tab_name` | Same as `tab_name` |
 | `subtitle` | Artist's exact phrasing | Natural English adaptation |
-| `title` (image) | "{Type} {N} : {WxH}cm" format when dimensions known | Same format |
+| `title` (image) | "{Type} {N}" (no dimensions — dimensions go in separate `dimensions` field) | Same format |
 | `mobile_title` | Short code: "{PREFIX}{N}" e.g., "FP1", "EC3" | Same |
 | `alt` | Short accessible description of what's depicted | Translated, descriptive |
+| `dimensions` | "{W} x {H} cm" — paintings only, omit for ceramics | Same value (locale-independent) |

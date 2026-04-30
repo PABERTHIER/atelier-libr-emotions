@@ -65,9 +65,11 @@ If images are missing, warn the user and continue scaffolding.
 **`i18n/locales/fr-FR.json`** — add under `pictures.{domain_plural}.{technique_snake}.{category_snake}`:
 ```json
 {
-  "fp1": { "title": "Fleur Porcelaine 1 : 12cm", "mobile_title": "FP1", "alt": "Fleur en porcelaine" }
+  "fp1": { "title": "Fleur Porcelaine 1", "mobile_title": "FP1", "alt": "Fleur en porcelaine", "dimensions": "W x H cm" }
 }
 ```
+
+> **Note:** `dimensions` is required for paintings. Omit it for ceramics.
 
 Then **`i18n/locales/en-US.json`** — same structure, natural English (not literal translation).
 
@@ -137,7 +139,7 @@ Run `yarn lint` and fix any issues before reporting completion.
 - [ ] Both `fr-FR.json` and `en-US.json` updated with page metadata and all image entries
 - [ ] `meta.content` ≤ 160 chars in both locales
 - [ ] Vue page created at correct path
-- [ ] All images in the `images` array (one entry per image file)
+- [ ] All images in the `images` array (one entry per image file), each with `src`, `title`, `mobileTitle`, `alt` — and `dimensions` for paintings (not ceramics)
 - [ ] `useHead()` has canonical + all 3 hreflang entries
 - [ ] `useSeoMeta()` has OG + Twitter + articleTag
 - [ ] Commented `defineOgImageComponent` block present

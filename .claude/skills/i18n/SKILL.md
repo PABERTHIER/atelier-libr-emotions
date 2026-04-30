@@ -32,6 +32,7 @@ pages.{domain}.{technique_snake}.{category_snake}.subtitle
 pictures.{domain_plural}.{technique_snake}.{category_snake}.{image_key}.title
 pictures.{domain_plural}.{technique_snake}.{category_snake}.{image_key}.mobile_title
 pictures.{domain_plural}.{technique_snake}.{category_snake}.{image_key}.alt
+pictures.{domain_plural}.{technique_snake}.{category_snake}.{image_key}.dimensions  (paintings only)
 ```
 
 - `{domain}` = `painting` or `ceramic` (singular)
@@ -85,15 +86,18 @@ pictures.{domain_plural}.{technique_snake}.{category_snake}.{image_key}.alt
     "{technique_snake}": {
       "{category_snake}": {
         "{image_key}": {
-          "title": "{Type} {N} : {WxH}cm",
+          "title": "{Type} {N}",
           "mobile_title": "{PREFIX}{N}",
-          "alt": "Short accessible description of what is depicted"
+          "alt": "Short accessible description of what is depicted",
+          "dimensions": "{W x H cm}"
         }
       }
     }
   }
 }
 ```
+
+> **Note:** `dimensions` is required for paintings. Omit it for ceramics.
 
 ### en-US.json — same structure, natural English
 
@@ -110,7 +114,8 @@ The English `meta.content` must be independently written for English SEO — not
 | `subtitle` | Artist's phrasing (FR), natural adaptation (EN). |
 | `mobile_title` | Short code ≤10 chars, matches filename prefix. E.g., `FP1`, `EC3`, `PM2`. |
 | `alt` | Describes what is visually depicted. 5–15 words. No "image of" prefix. |
-| `title` (image) | Format: `"{Type} {N} : {W}x{H}"` when dimensions are known. |
+| `title` (image) | `"{Type} {N}"` — no dimensions inline; dimensions go in the separate `dimensions` field. |
+| `dimensions` | `"{W} x {H} cm"` — paintings only, omit for ceramics. Value is locale-independent. |
 
 ---
 

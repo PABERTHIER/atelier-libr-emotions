@@ -89,15 +89,14 @@
                 {{ image.alt }}
               </div>
 
-              <!-- TODO: Rework dimensions display -->
-              <!-- <div v-if="naturalWidth > 0" class="info-row info-dimensions">
+              <div v-if="image.dimensions" class="info-row info-dimensions">
                 <span class="info-label">
                   {{ t('components.image_preview_modal.dimensions_label') }}
                 </span>
                 <span class="info-value">
-                  {{ naturalWidth }} x {{ naturalHeight }}
+                  {{ image.dimensions }}
                 </span>
-              </div> -->
+              </div>
             </div>
           </div>
         </div>
