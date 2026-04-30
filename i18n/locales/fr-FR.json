@@ -23,6 +23,14 @@
     "menu": {
       "open": "Ouvrir le menu",
       "close": "Fermer le menu"
+    },
+    "image_preview_modal": {
+      "close_label": "Fermer",
+      "zoom_label": "Zoom",
+      "zoom_fit": "Ajuster",
+      "dimensions_label": "Dimensions",
+      "aria_label": "Aperçu de l'image",
+      "image_unavailable": "Image non disponible"
     }
   },
   "pages": {
@@ -191,7 +199,8 @@
       },
       "connect_me": "Connectez-vous avec moi",
       "ready": "Prêt à faire entrer l'art dans votre espace ?",
-      "contact_me": "Contactez-moi"
+      "contact_me": "Contactez-moi",
+      "contact_me_by_mail": "Contactez-moi par mail"
     }
   },
   "about": {

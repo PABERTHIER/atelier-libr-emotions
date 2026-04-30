@@ -99,7 +99,10 @@
           {{ t('pages.contact.ready') }}
         </div>
         <a :href="`mailto:${mailAddress}`">
-          <button class="cta-button">
+          <button
+            :title="contactLinkTitle"
+            :aria-label="contact"
+            class="cta-button">
             {{ t('pages.contact.contact_me') }}
           </button>
         </a>
@@ -226,6 +229,8 @@ const instagram = computed(() => t('miscellaneous.instagram'))
 const instagramLinkTitle = computed(() =>
   t('miscellaneous.follow_on_instagram')
 )
+const contact = computed(() => t('miscellaneous.contact'))
+const contactLinkTitle = computed(() => t('pages.contact.contact_me_by_mail'))
 
 const facebookLink =
   'https://www.facebook.com/people/Atelier-LibrEmotions/100063484446329/'
