@@ -43,12 +43,15 @@ Add under `pictures.{domain_plural}.{technique_snake}.{category_snake}` in each 
 ```json
 {
   "{lowercase_filename_without_ext}": {
-    "title": "{Type} {N} : {dimensions}",
+    "title": "{Type} {N}",
     "mobile_title": "{SHORT_CODE}",
-    "alt": "{Short accessible description}"
+    "alt": "{Short accessible description}",
+    "dimensions": "{W x H cm}"
   }
 }
 ```
+
+> **Note:** `dimensions` is required for paintings. Omit it for ceramics.
 
 ## Rules
 

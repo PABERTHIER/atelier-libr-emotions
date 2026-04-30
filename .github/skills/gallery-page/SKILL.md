@@ -131,6 +131,8 @@ const images: ImageSource[] = [
     title: t('pictures.{domain_plural}.{technique_snake}.{category_snake}.{image_key1}.title'),
     mobileTitle: t('pictures.{domain_plural}.{technique_snake}.{category_snake}.{image_key1}.mobile_title'),
     alt: t('pictures.{domain_plural}.{technique_snake}.{category_snake}.{image_key1}.alt'),
+    // For paintings only — omit for ceramics:
+    dimensions: t('pictures.{domain_plural}.{technique_snake}.{category_snake}.{image_key1}.dimensions'),
   },
   // ... repeat for each image
 ]
@@ -222,9 +224,10 @@ const nextPage = {
       "{technique_snake}": {
         "{category_snake}": {
           "{image_key}": {
-            "title": "{Descriptive title}: {dimensions if known}",
+            "title": "{Descriptive title}",
             "mobile_title": "{Short code, e.g. FP1}",
-            "alt": "{Accessible description of the artwork}"
+            "alt": "{Accessible description of the artwork}",
+            "dimensions": "{W x H cm}"
           }
         }
       }
@@ -232,6 +235,8 @@ const nextPage = {
   }
 }
 ```
+
+> **Note:** `dimensions` is required for paintings. Omit it for ceramics.
 
 ---
 

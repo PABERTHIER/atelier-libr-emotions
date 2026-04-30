@@ -170,6 +170,7 @@ pages.{domain}.{technique_snake_case}.{category_snake_case}.subtitle
 pictures.{domain_plural}.{technique_snake_case}.{category_snake_case}.{image_key}.title
 pictures.{domain_plural}.{technique_snake_case}.{category_snake_case}.{image_key}.mobile_title
 pictures.{domain_plural}.{technique_snake_case}.{category_snake_case}.{image_key}.alt
+pictures.{domain_plural}.{technique_snake_case}.{category_snake_case}.{image_key}.dimensions  (paintings only, optional)
 ```
 
 **Shared labels** are in `miscellaneous.*` and `about.*`.
@@ -247,7 +248,7 @@ Every gallery page script block must include:
 3. **URL configuration**: `baseUrl`, `urlEndPath`, `ogImageEndPath`, `canonicalUrl`
 4. **`useHead()`**: title, meta description, keywords, canonical URL, hreflang alternates
 5. **`useSeoMeta()`**: OG tags, Twitter cards, article tags
-6. **Images array**: `ImageSource[]` with `src`, `title`, `mobileTitle`, `alt`
+6. **Images array**: `ImageSource[]` with `src`, `title`, `mobileTitle`, `alt`, and optional `dimensions` (for paintings — use the `dimensions` i18n key)
 7. **Navigation**: `previousPage` and/or `nextPage` objects with `path`, `title`, `description`
 
 ### Style Block
@@ -308,7 +309,7 @@ In **both** `i18n/locales/fr-FR.json` and `i18n/locales/en-US.json`:
    - `subtitle`: Artist's title for the category
 
 2. Add image descriptions under `pictures.{domain_plural}.{technique_snake}.{category_snake}`:
-   - For each image: `{image_key}` with `title`, `mobile_title`, `alt`
+   - For each image: `{image_key}` with `title`, `mobile_title`, `alt`, and `dimensions` (paintings only)
 
 3. Add any missing `miscellaneous.*` keys needed for menu labels and SEO keywords
 

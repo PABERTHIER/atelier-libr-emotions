@@ -45,12 +45,15 @@ Update **both** `i18n/locales/fr-FR.json` and `i18n/locales/en-US.json`:
 ```json
 {
   "fp1": {
-    "title": "Descriptive title with dimensions",
+    "title": "Descriptive title",
     "mobile_title": "FP1",
-    "alt": "Accessible description of the artwork"
+    "alt": "Accessible description of the artwork",
+    "dimensions": "W x H cm"
   }
 }
 ```
+
+> **Note:** `dimensions` is required for paintings. Omit it for ceramics.
 
 **Shared labels** — add any missing keys in `miscellaneous.*` for menu labels and SEO keywords.
 

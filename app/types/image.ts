@@ -3,6 +3,7 @@ export type ImageSource = {
   title?: string
   mobileTitle?: string
   alt?: string
+  dimensions?: string
 }
 
 export type Heights = {
