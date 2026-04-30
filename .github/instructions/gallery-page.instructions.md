@@ -46,7 +46,22 @@ const canonicalUrl = computed(() => `${baseUrl.value}${route.path}`)
 - `title`: use `tab_name` i18n key
 - `meta description`: use `meta.content` i18n key
 - `keywords`: relevant `miscellaneous.*` keys, always include `art`, `artist`, `emotions`, `about.author`, `app.name`
-- `link`: canonical + hreflang alternates (en-US, fr-FR, x-default pointing to fr)
+- `link`: canonical + hreflang alternates (en-US, fr-FR, x-default pointing to fr) + apple-touch-icon override
+
+The `link` array **must** include an `apple-touch-icon` entry that overrides the global default (`apple-icon.jpg`) with the page's representative artwork. This ensures Safari shows the correct gallery image when the page is bookmarked to the iOS home screen:
+
+```typescript
+link: [
+  { rel: 'canonical', href: canonicalUrl.value },
+  // ... hreflang alternates ...
+  {
+    rel: 'apple-touch-icon',
+    sizes: '180x180',
+    href: `/${ogImageEndPath}`,
+    key: 'apple-touch-icon',  // key is required: Unhead uses it to override the global entry in app.vue
+  },
+],
+```
 
 ### SEO — useSeoMeta()
 - `ogTitle`, `twitterTitle`, `appleMobileWebAppTitle`: `'%s %separator %siteName'`

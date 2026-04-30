@@ -98,6 +98,9 @@ The script block must contain all of these in order:
 { rel: 'alternate', href: computed(() => `${baseUrl.value}/en/${urlEndPath}`), hreflang: 'en-US' },
 { rel: 'alternate', href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`), hreflang: 'fr-FR' },
 { rel: 'alternate', href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`), hreflang: 'x-default' },
+// iOS home screen: overrides app.vue global apple-icon.jpg with this page's gallery artwork.
+// `key` is required so Unhead deduplicates — page-level entry wins over app.vue.
+{ rel: 'apple-touch-icon', sizes: '180x180', href: `/${ogImageEndPath}`, key: 'apple-touch-icon' },
 ```
 `x-default` always points to `/fr/` — French is the default locale.
 
@@ -140,7 +143,7 @@ Run `yarn lint` and fix any issues before reporting completion.
 - [ ] `meta.content` ≤ 160 chars in both locales
 - [ ] Vue page created at correct path
 - [ ] All images in the `images` array (one entry per image file), each with `src`, `title`, `mobileTitle`, `alt` — and `dimensions` for paintings (not ceramics)
-- [ ] `useHead()` has canonical + all 3 hreflang entries
+- [ ] `useHead()` has canonical + all 3 hreflang entries + `apple-touch-icon` override pointing to `/${ogImageEndPath}`
 - [ ] `useSeoMeta()` has OG + Twitter + articleTag
 - [ ] Commented `defineOgImageComponent` block present
 - [ ] Menu.vue link updated from `/wip` to new path

@@ -84,3 +84,4 @@ In `app/components/layout/Menu.vue`, find the link with `url: '/wip'` for this t
 - Images must be WebP format
 - The artist's description becomes the SEO `meta.content` — rewrite it into a proper, concise SEO meta description
 - Always update both FR and EN translation files
+- Every gallery page **must** include an `apple-touch-icon` link entry in `useHead()` pointing to `/${ogImageEndPath}` with `key: 'apple-touch-icon'` — this overrides the global `apple-icon.jpg` so Safari shows the gallery artwork when the page is bookmarked to the iOS home screen

@@ -71,6 +71,14 @@ useHead({
       href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
       hreflang: 'x-default',
     },
+    // iOS home screen: overrides app.vue global apple-icon.jpg with this page's gallery artwork.
+    // `key` is required so Unhead deduplicates — page-level entry wins over app.vue.
+    {
+      rel: 'apple-touch-icon',
+      sizes: '180x180',
+      href: `/${ogImageEndPath}`,
+      key: 'apple-touch-icon',
+    },
   ],
 })
 ```

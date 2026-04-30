@@ -33,10 +33,33 @@ useHead({
       crossorigin: '',
     },
     { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-    { rel: 'apple-touch-icon', href: 'apple-icon.jpg' },
-    { rel: 'apple-touch-icon-precomposed', href: 'apple-icon.jpg' },
-    { rel: 'apple-touch-startup-image', href: 'apple-icon.jpg' },
-    { rel: 'mask-icon', href: 'apple-icon.jpg', color: '#000000' }, // TODO: Replace with a svg file (logo)
+    { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '16x16',
+      href: '/favicon-16x16.png',
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '32x32',
+      href: '/favicon-32x32.png',
+    },
+    {
+      rel: 'apple-touch-icon',
+      sizes: '180x180',
+      href: '/apple-icon.jpg',
+      key: 'apple-touch-icon',
+    },
+    {
+      rel: 'apple-touch-icon-precomposed',
+      sizes: '180x180',
+      href: '/apple-icon.jpg',
+      key: 'apple-touch-icon-precomposed',
+    },
+    { rel: 'apple-touch-startup-image', href: '/apple-icon.jpg' },
+    { rel: 'mask-icon', href: '/logo.svg', color: '#1D3461' },
   ],
 })
 

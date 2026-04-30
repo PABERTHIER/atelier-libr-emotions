@@ -73,6 +73,12 @@ useHead({
       href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
       hreflang: 'x-default',
     },
+    {
+      rel: 'apple-touch-icon',
+      sizes: '180x180',
+      href: `/${ogImageEndPath}`,
+      key: 'apple-touch-icon',
+    },
   ],
 })
 
