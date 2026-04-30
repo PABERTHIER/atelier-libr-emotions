@@ -349,6 +349,8 @@ watch(
     }
 
     .image-cell-error {
+      position: relative;
+
       :deep(.grid-item) {
         .img {
           border-radius: 12px;
@@ -401,7 +403,7 @@ watch(
     }
 
     .image-row .image-cell-error {
-      margin-bottom: -20px;
+      overflow: visible;
     }
   }
 }
