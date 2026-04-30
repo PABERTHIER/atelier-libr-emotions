@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Atelier Libr'Émotions">
+  <defs>
+    <linearGradient id="ale-bg" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#FDFAF3"/>
+      <stop offset="100%" stop-color="#F2EDE0"/>
+    </linearGradient>
+    <linearGradient id="ale-handle" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2A65B0"/>
+      <stop offset="100%" stop-color="#1D3461"/>
+    </linearGradient>
+    <!-- Clips stains so they never bleed outside the badge circle -->
+    <clipPath id="ale-clip">
+      <circle cx="100" cy="100" r="98"/>
+    </clipPath>
+  </defs>
+
+  <!-- Warm parchment background -->
+  <circle cx="100" cy="100" r="99" fill="url(#ale-bg)"/>
+
+  <!-- ─── PAINT STAINS (behind all other elements) ─── -->
+  <g clip-path="url(#ale-clip)">
+    <!-- Green stain: lower-left, partially behind the bowl -->
+    <path d="M40 138 C30 134,20 148,26 162 C32 176,48 186,64 182 C80 178,84 166,78 154 C72 142,56 136,40 138Z"
+          fill="#4AAF65" opacity="0.38"/>
+    <!-- Yellow stain: upper-right, in the space above/right of the brush -->
+    <path d="M158 38 C168 32,178 44,174 56 C170 68,158 76,146 72 C134 68,128 58,132 46 C136 34,148 36,158 38Z"
+          fill="#E8C030" opacity="0.42"/>
+    <!-- Purple stain: lower-right, partially behind the bowl's right side -->
+    <path d="M150 146 C160 138,170 148,166 160 C162 173,150 182,138 180 C126 178,120 167,124 156 C128 145,140 146,150 146Z"
+          fill="#8E7CC3" opacity="0.40"/>
+  </g>
+
+  <!-- Ultra-thin navy ring — defines the badge edge -->
+  <circle cx="100" cy="100" r="92" fill="none" stroke="#1D3461" stroke-width="1.2" opacity="0.2"/>
+
+  <!-- ─── PAINTBRUSH ─── -->
+  <g transform="translate(82 78) rotate(-30)">
+    <!-- Wooden handle: navy gradient -->
+    <rect x="-3.5" y="-55" width="7" height="58" rx="2" fill="url(#ale-handle)"/>
+    <!-- Ferrule: steel-blue metal band -->
+    <rect x="-5" y="3" width="10" height="8" rx="1" fill="#4A72A8"/>
+    <!-- Bristle tip: deep crimson -->
+    <path d="M-7 11 L7 11 L0 50 Z" fill="#C41230"/>
+  </g>
+
+  <!-- ─── CERAMIC BOWL ─── -->
+  <!-- Outer body: deep navy -->
+  <path d="M55 135 C52 158,70 173,100 174 C130 173,148 158,145 135"
+        fill="none" stroke="#1D3461" stroke-width="4" stroke-linecap="round"/>
+  <!-- Rim: compressed ellipse for 3-D depth -->
+  <ellipse cx="100" cy="135" rx="45" ry="10" fill="none" stroke="#1D3461" stroke-width="2.5"/>
+  <!-- Expressive brushmark on the bowl: crimson -->
+  <path d="M72 149 Q91 144 109 151" fill="none" stroke="#C41230"
+        stroke-width="2.5" stroke-linecap="round"/>
+</svg>

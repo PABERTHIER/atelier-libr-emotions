@@ -246,7 +246,7 @@ Every gallery page script block must include:
 1. **Imports**: `import type { ImageSource } from '~/types/image'`
 2. **Composables**: `useI18n()`, `useRuntimeConfig()`, `useRoute()`
 3. **URL configuration**: `baseUrl`, `urlEndPath`, `ogImageEndPath`, `canonicalUrl`
-4. **`useHead()`**: title, meta description, keywords, canonical URL, hreflang alternates
+4. **`useHead()`**: title, meta description, keywords, canonical URL, hreflang alternates, apple-touch-icon override
 5. **`useSeoMeta()`**: OG tags, Twitter cards, article tags
 6. **Images array**: `ImageSource[]` with `src`, `title`, `mobileTitle`, `alt`, and optional `dimensions` (for paintings — use the `dimensions` i18n key)
 7. **Navigation**: `previousPage` and/or `nextPage` objects with `path`, `title`, `description`

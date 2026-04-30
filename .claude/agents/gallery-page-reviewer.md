@@ -37,6 +37,7 @@ Read the Vue file. Note the `urlEndPath`, `ogImageEndPath`, and the i18n key pre
 - [ ] `import type { ImageSource } from '~/types/image'` is present
 - [ ] No manual imports of auto-imported composables (`ref`, `computed`, `useI18n`, etc.)
 - [ ] `useHead()` present with title, description, keywords, canonical, and 3 hreflang links
+- [ ] `apple-touch-icon` link present in `useHead()` with `href: \`/${ogImageEndPath}\`` and `key: 'apple-touch-icon'`
 - [ ] `x-default` hreflang points to `/fr/` URL
 - [ ] `useSeoMeta()` present with OG, Twitter, `articleTag`, and `msapplicationTileImage`
 - [ ] All `t()` calls inside `useHead()`/`useSeoMeta()` are wrapped in `computed(() => ...)`

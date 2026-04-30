@@ -18,7 +18,7 @@ SEO metadata is split across two composables and i18n:
 |---|---|
 | Browser tab title | `useHead({ title })` |
 | Meta description + keywords | `useHead({ meta: [...] })` |
-| Canonical URL + hreflang | `useHead({ link: [...] })` |
+| Canonical URL + hreflang + apple-touch-icon | `useHead({ link: [...] })` |
 | Open Graph + Twitter | `useSeoMeta({...})` |
 | Translations | `i18n/locales/*.json` → `pages.{domain}.{technique}.{category}.meta.content` |
 | Site-level config | `nuxt.config.ts` → `site: { url, name }` |
@@ -83,6 +83,14 @@ useHead({
       rel: 'alternate',
       href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
       hreflang: 'x-default',  // French is the default locale
+    },
+    // iOS home screen: overrides the global apple-icon.jpg with the gallery's artwork image.
+    // `key` is required so Unhead deduplicates against the app.vue global entry (page wins).
+    {
+      rel: 'apple-touch-icon',
+      sizes: '180x180',
+      href: `/${ogImageEndPath}`,
+      key: 'apple-touch-icon',
     },
   ],
 })
