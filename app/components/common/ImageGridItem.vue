@@ -58,32 +58,6 @@ const nuxtImgWidthBinding = computed(() => {
   }
 }
 
-@media ((min-width: $md) and (hover: hover)) {
-  .grid-item {
-    .image-title-overlay {
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      right: 0;
-      padding: 16px 12px 12px;
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 1.3;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: all 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
-      pointer-events: none;
-      color: $white-color;
-      background: linear-gradient(
-        to top,
-        rgba(44, 24, 16, 0.9) 0%,
-        rgba(44, 24, 16, 0.7) 60%,
-        transparent 100%
-      );
-    }
-  }
-}
-
 @media ((hover: none) or (max-width: calc($md - 1px))) {
   .grid-item {
     .img {

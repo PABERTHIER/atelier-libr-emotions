@@ -369,6 +369,53 @@ watch(
     .image-row {
       .image-cell {
         overflow: hidden;
+
+        // Base state: title hidden below the image, revealed on hover
+        :deep(.image-title-overlay) {
+          position: absolute;
+          bottom: -10px;
+          left: 0;
+          right: 0;
+          padding: 16px 12px 12px;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 1.3;
+          opacity: 0;
+          transform: translateY(10px);
+          transition: all 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+          pointer-events: none;
+          color: $white-color;
+          background: linear-gradient(
+            to top,
+            rgba(44, 24, 16, 0.9) 0%,
+            rgba(44, 24, 16, 0.7) 60%,
+            transparent 100%
+          );
+        }
+      }
+
+      // Error cells: title always visible at the bottom of the cell
+      .image-cell-error {
+        :deep(.image-title-overlay) {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          padding: 8px 12px;
+          font-size: 13px;
+          font-weight: 500;
+          line-height: 1.3;
+          opacity: 1;
+          color: $white-color;
+          text-align: center;
+          text-wrap: wrap;
+          background: linear-gradient(
+            to top,
+            rgba(44, 24, 16, 0.9) 0%,
+            rgba(44, 24, 16, 0.7) 60%,
+            transparent 100%
+          );
+        }
       }
 
       .image-cell:hover :deep(.img),
