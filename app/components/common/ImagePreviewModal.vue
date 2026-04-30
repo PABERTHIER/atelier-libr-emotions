@@ -36,10 +36,22 @@
                     :src="fullImageSrc"
                     :alt="image.alt ?? ''"
                     class="preview-image"
+                    :class="{ hidden: imageError }"
                     :style="imageStyle"
                     draggable="false"
                     @load="onImageLoad"
+                    @error="onImageError"
                     @click="onImageClick" />
+                  <div v-if="imageError" class="image-error-placeholder">
+                    <span class="image-error-icon" aria-hidden="true">🖼️</span>
+                    <span class="image-error-text">
+                      {{
+                        displayTitle ||
+                        image.alt ||
+                        t('components.image_preview_modal.image_unavailable')
+                      }}
+                    </span>
+                  </div>
                 </div>
               </div>
 
@@ -107,8 +119,6 @@ const emit = defineEmits<{
 }>()
 
 const { t } = useI18n()
-const runtimeConfig = useRuntimeConfig()
-const baseUrl = runtimeConfig.public.i18n.baseUrl
 
 const modalContentRef = ref<HTMLElement | null>(null)
 const closeButtonRef = ref<HTMLElement | null>(null)
@@ -120,6 +130,7 @@ const maxZoom = 3
 const naturalWidth = ref(0)
 const naturalHeight = ref(0)
 const containerSize = ref({ width: 0, height: 0 })
+const imageError = ref(false)
 
 let triggerElement: HTMLElement | null = null
 let scrollLockActive = false
@@ -127,7 +138,7 @@ let bodyScrollY = 0
 // Stores the relative click position so the zoom watch can centre on it
 let pendingClickPosition: { relX: number; relY: number } | null = null
 
-const fullImageSrc = computed(() => `${baseUrl}${props.image.src}`)
+const fullImageSrc = computed(() => props.image.src)
 const displayTitle = computed(
   () => props.image.title || props.image.mobileTitle || ''
 )
@@ -216,6 +227,12 @@ function onImageLoad() {
   }
 
   // nextTick ensures the container has finished layout before measuring
+  nextTick(measureContainer)
+}
+
+function onImageError() {
+  imageError.value = true
+  // Still measure so zoom controls are sized correctly if the user tries them
   nextTick(measureContainer)
 }
 
@@ -409,6 +426,7 @@ watch(
       naturalWidth.value = 0
       naturalHeight.value = 0
       containerSize.value = { width: 0, height: 0 }
+      imageError.value = false
       pendingClickPosition = null
 
       nextTick(() => {
@@ -546,6 +564,32 @@ onBeforeUnmount(() => {
             flex-shrink: 0;
             -webkit-user-drag: none;
             user-select: none;
+
+            &.hidden {
+              display: none;
+            }
+          }
+
+          .image-error-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 24px;
+            color: $grey-color;
+            text-align: center;
+
+            .image-error-icon {
+              font-size: 48px;
+              line-height: 1;
+            }
+
+            .image-error-text {
+              font-size: 15px;
+              font-style: italic;
+              max-width: 260px;
+            }
           }
 
           &.zoomed {

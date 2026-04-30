@@ -10,14 +10,10 @@
           v-for="(item, iIdx) in row.items"
           :key="`item-${rIdx}-${iIdx}`"
           :class="item.isOnError ? 'image-cell-error' : 'image-cell'"
-          :style="
-            !item.isOnError
-              ? {
-                  width: `${Math.round(item.renderWidth)}px`,
-                  height: `${Math.round(row.rowHeight)}px`,
-                }
-              : {}
-          ">
+          :style="{
+            width: `${Math.round(item.renderWidth)}px`,
+            height: `${Math.round(row.rowHeight)}px`,
+          }">
           <ImageGridItem
             :item="item"
             :is-mobile="device.isMediumOrBelowScreen.value"
@@ -353,7 +349,7 @@ watch(
     }
 
     .image-cell-error {
-      :deep(.grid-item-button) {
+      :deep(.grid-item) {
         .img {
           border-radius: 12px;
         }
@@ -396,7 +392,7 @@ watch(
       }
 
       .image-cell-error {
-        :deep(.grid-item-button) {
+        :deep(.grid-item) {
           .image-title-overlay {
             font-size: 12px;
           }

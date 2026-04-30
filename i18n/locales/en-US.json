@@ -29,7 +29,8 @@
       "zoom_label": "Zoom",
       "zoom_fit": "Fit",
       "dimensions_label": "Dimensions",
-      "aria_label": "Image preview"
+      "aria_label": "Image preview",
+      "image_unavailable": "Image unavailable"
     }
   },
   "pages": {
