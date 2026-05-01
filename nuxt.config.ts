@@ -146,7 +146,9 @@ export default defineNuxtConfig({
       type: 'Person',
       name: "Atelier Libr'Émotions",
       url: 'https://atelierlibremotions.vercel.app',
-      logo: 'https://atelierlibremotions.vercel.app/paintings/celestial-collision.jpg', // TODO: Replace by the logo
+      logo: 'https://atelierlibremotions.vercel.app/logo.svg',
+      image:
+        'https://atelierlibremotions.vercel.app/paintings/celestial-collision.jpg',
     },
   },
   ogImage: {
