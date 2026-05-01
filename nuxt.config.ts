@@ -98,6 +98,11 @@ export default defineNuxtConfig({
       { code: 'fr', language: 'fr-FR', name: 'Français', file: 'fr-FR.json' },
       { code: 'en', language: 'en-US', name: 'English', file: 'en-US.json' },
     ],
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root',
+    },
   },
   vite: {
     css: {
@@ -130,6 +135,7 @@ export default defineNuxtConfig({
     identity: {
       type: 'Person',
     },
+    indexable: true,
     robots: {
       index: true,
       follow: true,
