@@ -80,13 +80,13 @@
         }
       },
       "porcelain": {
-        "flowers": {
-          "tab_name": "Porcelaine - Fleurs",
+        "nature": {
+          "tab_name": "Porcelaine - Nature",
           "meta": {
-            "content": "Collection de fleurs en porcelaine de Véronique Berthier : pièces délicates et dentelées pour décoration murale ou sur meuble, seules ou associées à un élément naturel ou une autre céramique."
+            "content": "Collection de porcelaines de Véronique Berthier : pièces délicates et dentelées pour décoration murale ou sur meuble, seules ou associées à un autre élément (céramique, bois, métal)."
           },
-          "title": "Porcelaine - Fleurs",
-          "subtitle": "Pièces de décoration, sur un meuble ou au mur, seules ou associées à un élément naturel ou une autre céramique"
+          "title": "Porcelaine - Nature",
+          "subtitle": "Pièces pour décoration murale ou sur meuble, seules ou associées à un autre élément (céramique, bois, métal)"
         }
       },
       "raku_and_smouldering": {
@@ -447,7 +447,7 @@
         }
       },
       "porcelain": {
-        "flowers": {
+        "nature": {
           "fp1": {
             "title": "Fleur Porcelaine 1",
             "mobile_title": "FP1",
@@ -517,6 +517,11 @@
             "title": "Fleur Porcelaine 14",
             "mobile_title": "FP14",
             "alt": "Fleur en céramique pour décoration"
+          },
+          "fp15": {
+            "title": "Fleur Porcelaine 15",
+            "mobile_title": "FP15",
+            "alt": "Fleur en céramique pour décoration"
           }
         }
       },
@@ -571,7 +576,7 @@
     "christmas": "Noël",
     "easter": "Pâques",
     "flowers": "Fleurs",
-    "candle_holder": "Photophore",
+    "candle_holders": "Photophores",
     "before_after": "Avant-après",
     "ceramics_in_context": "Céramiques en situation",
     "first_creations": "Premières créations",
@@ -594,8 +599,8 @@
     "about_myself": "À propos de moi",
     "my_artistic_approach": "Ma démarche artistique",
     "artistic_journey": "Parcours artistique",
-    "my_career": "Mon parcours",
     "development": "Cheminement",
+    "my_development": "Mon cheminement",
     "my_cv": "Mon CV",
     "cv": "CV",
     "contact": "Contact",

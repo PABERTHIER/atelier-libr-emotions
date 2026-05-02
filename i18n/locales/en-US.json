@@ -80,13 +80,13 @@
         }
       },
       "porcelain": {
-        "flowers": {
-          "tab_name": "Porcelain - Flowers",
+        "nature": {
+          "tab_name": "Porcelain - Nature",
           "meta": {
-            "content": "Collection of porcelain flowers by Véronique Berthier: delicate lace-like pieces for wall or furniture display, alone or paired with natural elements or other ceramics."
+            "content": "Collection of porcelain by Véronique Berthier: delicate lace-like pieces for wall or furniture display, alone or combined with another element (ceramic, wood, metal)."
           },
-          "title": "Porcelain - Flowers",
-          "subtitle": "Decorative pieces, placed on a piece of furniture or on the wall, alone or combined with a natural element or another ceramic"
+          "title": "Porcelain - Nature",
+          "subtitle": "Pieces for wall or furniture decoration, alone or combined with another element (ceramic, wood, metal)"
         }
       },
       "raku_and_smouldering": {
@@ -447,7 +447,7 @@
         }
       },
       "porcelain": {
-        "flowers": {
+        "nature": {
           "fp1": {
             "title": "Porcelain Flower 1",
             "mobile_title": "PF1",
@@ -517,6 +517,11 @@
             "title": "Porcelain Flower 14",
             "mobile_title": "PF14",
             "alt": "Ceramic flower for decoration"
+          },
+          "fp15": {
+            "title": "Porcelain Flower 15",
+            "mobile_title": "PF15",
+            "alt": "Ceramic flower for decoration"
           }
         }
       },
@@ -571,7 +576,7 @@
     "christmas": "Christmas",
     "easter": "Easter",
     "flowers": "Flowers",
-    "candle_holder": "Candle holder",
+    "candle_holders": "Candle holders",
     "before_after": "Before and after",
     "ceramics_in_context": "Ceramics in context",
     "first_creations": "First creations",
@@ -594,8 +599,8 @@
     "about_myself": "About myself",
     "my_artistic_approach": "My artistic approach",
     "artistic_journey": "Artistic journey",
-    "my_career": "My career path",
     "development": "Development",
+    "my_development": "My development",
     "my_cv": "My CV",
     "cv": "CV",
     "contact": "Contact",

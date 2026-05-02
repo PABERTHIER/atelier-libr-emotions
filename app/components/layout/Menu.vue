@@ -291,11 +291,15 @@ const sections = ref([
         title: computed(() => t('miscellaneous.porcelain')),
         links: [
           {
-            text: computed(() => t('miscellaneous.flowers')),
-            url: '/ceramic/porcelain/flowers',
+            text: computed(() => t('miscellaneous.nature')),
+            url: '/ceramic/porcelain/nature',
           },
           {
-            text: computed(() => t('miscellaneous.candle_holder')),
+            text: computed(() => t('miscellaneous.candle_holders')),
+            url: '/wip',
+          },
+          {
+            text: computed(() => t('miscellaneous.vases_and_pots')),
             url: '/wip',
           },
           {
@@ -385,7 +389,7 @@ const sections = ref([
         title: computed(() => t('miscellaneous.about_myself')),
         links: [
           {
-            text: computed(() => t('miscellaneous.my_career')),
+            text: computed(() => t('miscellaneous.my_development')),
             url: '/about/development',
           },
           {

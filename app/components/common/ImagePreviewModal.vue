@@ -91,7 +91,7 @@
 
               <div v-if="image.dimensions" class="info-row info-dimensions">
                 <span class="info-label">
-                  {{ t('components.image_preview_modal.dimensions_label') }}
+                  {{ t('components.image_preview_modal.dimensions_label') }}:
                 </span>
                 <span class="info-value">
                   {{ image.dimensions }}
