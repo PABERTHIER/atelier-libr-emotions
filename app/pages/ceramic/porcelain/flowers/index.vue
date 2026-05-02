@@ -213,6 +213,12 @@ const images: ImageSource[] = [
     mobileTitle: t('pictures.ceramics.porcelain.flowers.fp14.mobile_title'),
     alt: t('pictures.ceramics.porcelain.flowers.fp14.alt'),
   },
+  {
+    src: '/ceramics/porcelain/flowers/FP15.webp',
+    title: t('pictures.ceramics.porcelain.flowers.fp15.title'),
+    mobileTitle: t('pictures.ceramics.porcelain.flowers.fp15.mobile_title'),
+    alt: t('pictures.ceramics.porcelain.flowers.fp15.alt'),
+  },
 ]
 
 const previousPage = {

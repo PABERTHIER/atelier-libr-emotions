@@ -517,6 +517,11 @@
             "title": "Porcelain Flower 14",
             "mobile_title": "PF14",
             "alt": "Ceramic flower for decoration"
+          },
+          "fp15": {
+            "title": "Porcelain Flower 15",
+            "mobile_title": "PF15",
+            "alt": "Ceramic flower for decoration"
           }
         }
       },
