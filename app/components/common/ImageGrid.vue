@@ -10,41 +10,23 @@
           v-for="(item, iIdx) in row.items"
           :key="`item-${rIdx}-${iIdx}`"
           :class="item.isOnError ? 'image-cell-error' : 'image-cell'"
-          :style="
-            !item.isOnError
-              ? {
-                  width: `${Math.round(item.renderWidth)}px`,
-                  height: `${Math.round(row.rowHeight)}px`,
-                }
-              : {}
-          ">
-          <NuxtLink :to="baseUrl + item.imageSource.src" class="cell-link">
-            <img
-              :src="item.imageSource.src"
-              :alt="item.imageSource.alt ?? ''"
-              loading="lazy"
-              v-bind="nuxtImgWidthBinding(item)"
-              class="img" />
-            <div
-              v-if="
-                item.imageSource.title && !device.isMediumOrBelowScreen.value
-              "
-              class="image-title-overlay">
-              {{ item.imageSource.title }}
-            </div>
-            <div
-              v-else-if="
-                item.imageSource.mobileTitle &&
-                device.isMediumOrBelowScreen.value
-              "
-              class="image-title-overlay">
-              {{ item.imageSource.mobileTitle }}
-            </div>
-          </NuxtLink>
+          :style="{
+            width: `${Math.round(item.renderWidth)}px`,
+            height: `${Math.round(row.rowHeight)}px`,
+          }">
+          <ImageGridItem
+            :item="item"
+            :is-mobile="device.isMediumOrBelowScreen.value"
+            @select="selectedImage = item.imageSource" />
         </div>
       </div>
     </template>
     <div v-else class="image-grid-skeleton" />
+
+    <ImagePreviewModal
+      :image="selectedImage ?? fallbackImage"
+      :visible="selectedImage !== null"
+      @close="selectedImage = null" />
   </div>
 </template>
 
@@ -70,6 +52,9 @@ const internalItems = ref<ItemInternal[]>([])
 const runtimeConfig = useRuntimeConfig()
 const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
 
+const selectedImage = ref<ImageSource | null>(null)
+const fallbackImage: ImageSource = { src: '' }
+
 const GAP_PX = 24
 const TOLERANCE_WIDTH_PX = 20 // Small tolerance for "almost same" width
 const TOLERANCE_SCROLLBAR_WIDTH_PX = 10
@@ -91,12 +76,6 @@ function pickTargetHeightPx(containerWidth: number): number {
   }
 
   return props.heights.lg
-}
-
-// Prepare NuxtImg binding for width (only send width if positive integer)
-function nuxtImgWidthBinding(item: ItemInternal): Record<string, number> {
-  const width = Math.max(1, Math.round(item.renderWidth))
-  return { width }
 }
 
 async function ensureAspects(): Promise<void> {
@@ -367,32 +346,13 @@ watch(
       border-radius: 12px;
       box-shadow: 0 4px 16px $box-shadow-color;
       background-color: transparent;
-
-      .cell-link {
-        width: 100%;
-        height: 100%;
-        position: relative;
-        display: block;
-        line-height: 0;
-        text-decoration: none;
-
-        img {
-          width: 100%;
-          height: 100%;
-          display: block;
-          border-radius: 12px;
-          transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
-          object-fit: fill;
-          transform-origin: center center;
-          -webkit-user-drag: none;
-          user-select: none;
-        }
-      }
     }
 
     .image-cell-error {
-      .cell-link {
-        img {
+      position: relative;
+
+      :deep(.grid-item) {
+        .img {
           border-radius: 12px;
         }
 
@@ -410,38 +370,61 @@ watch(
       .image-cell {
         overflow: hidden;
 
-        .cell-link {
-          .image-title-overlay {
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            right: 0;
-            padding: 16px 12px 12px;
-            font-size: 14px;
-            font-weight: 500;
-            line-height: 1.3;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
-            pointer-events: none;
-            color: $white-color;
-            background: linear-gradient(
-              to top,
-              rgba(44, 24, 16, 0.9) 0%,
-              rgba(44, 24, 16, 0.7) 60%,
-              transparent 100%
-            );
-          }
+        // Base state: title hidden below the image, revealed on hover
+        :deep(.image-title-overlay) {
+          position: absolute;
+          bottom: -10px;
+          left: 0;
+          right: 0;
+          padding: 16px 12px 12px;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 1.3;
+          opacity: 0;
+          transform: translateY(10px);
+          transition: all 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+          pointer-events: none;
+          color: $white-color;
+          background: linear-gradient(
+            to top,
+            rgba(44, 24, 16, 0.9) 0%,
+            rgba(44, 24, 16, 0.7) 60%,
+            transparent 100%
+          );
         }
       }
 
-      .image-cell:hover .img,
-      .image-cell:focus-within .img {
+      // Error cells: title always visible at the bottom of the cell
+      .image-cell-error {
+        :deep(.image-title-overlay) {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          padding: 8px 12px;
+          font-size: 13px;
+          font-weight: 500;
+          line-height: 1.3;
+          opacity: 1;
+          color: $white-color;
+          text-align: center;
+          text-wrap: wrap;
+          background: linear-gradient(
+            to top,
+            rgba(44, 24, 16, 0.9) 0%,
+            rgba(44, 24, 16, 0.7) 60%,
+            transparent 100%
+          );
+        }
+      }
+
+      .image-cell:hover :deep(.img),
+      .image-cell:focus-within :deep(.img) {
         transform: scale(1.12);
       }
 
-      .image-cell:hover .image-title-overlay,
-      .image-cell:focus-within .image-title-overlay {
+      .image-cell:hover :deep(.image-title-overlay),
+      .image-cell:focus-within :deep(.image-title-overlay) {
         opacity: 1;
         transform: translateY(0);
       }
@@ -455,27 +438,10 @@ watch(
 
       .image-cell {
         overflow: visible;
-
-        .cell-link {
-          img {
-            transition: none;
-          }
-
-          .image-title-overlay {
-            max-height: 35px;
-            padding-top: 5px;
-            text-align: center;
-            font-size: 11px;
-            line-height: 0.9;
-            text-wrap: wrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-          }
-        }
       }
 
       .image-cell-error {
-        .cell-link {
+        :deep(.grid-item) {
           .image-title-overlay {
             font-size: 12px;
           }
@@ -484,7 +450,7 @@ watch(
     }
 
     .image-row .image-cell-error {
-      margin-bottom: -20px;
+      overflow: visible;
     }
   }
 }

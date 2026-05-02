@@ -99,7 +99,10 @@
           {{ t('pages.contact.ready') }}
         </div>
         <a :href="`mailto:${mailAddress}`">
-          <button class="cta-button">
+          <button
+            :title="contactLinkTitle"
+            :aria-label="contact"
+            class="cta-button">
             {{ t('pages.contact.contact_me') }}
           </button>
         </a>
@@ -115,7 +118,7 @@ const route = useRoute()
 
 const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
 const urlEndPath = 'contact'
-const ogImageEndPath = 'paintings/celestial-collision.jpg' // TODO: Update ogImage
+const ogImageEndPath = 'og-images/contact.webp'
 
 const canonicalUrl = computed(() => `${baseUrl.value}${route.path}`)
 
@@ -165,6 +168,12 @@ useHead({
       rel: 'alternate',
       href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
       hreflang: 'x-default',
+    },
+    {
+      rel: 'apple-touch-icon',
+      sizes: '180x180',
+      href: `/${ogImageEndPath}`,
+      key: 'apple-touch-icon',
     },
   ],
 })
@@ -226,6 +235,8 @@ const instagram = computed(() => t('miscellaneous.instagram'))
 const instagramLinkTitle = computed(() =>
   t('miscellaneous.follow_on_instagram')
 )
+const contact = computed(() => t('miscellaneous.contact'))
+const contactLinkTitle = computed(() => t('pages.contact.contact_me_by_mail'))
 
 const facebookLink =
   'https://www.facebook.com/people/Atelier-LibrEmotions/100063484446329/'

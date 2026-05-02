@@ -23,6 +23,14 @@
     "menu": {
       "open": "Open the menu",
       "close": "Close the menu"
+    },
+    "image_preview_modal": {
+      "close_label": "Close",
+      "zoom_label": "Zoom",
+      "zoom_fit": "Fit",
+      "dimensions_label": "Dimensions",
+      "aria_label": "Image preview",
+      "image_unavailable": "Image unavailable"
     }
   },
   "pages": {
@@ -72,13 +80,13 @@
         }
       },
       "porcelain": {
-        "flowers": {
-          "tab_name": "Porcelain - Flowers",
+        "nature": {
+          "tab_name": "Porcelain - Nature",
           "meta": {
-            "content": "Collection of porcelain flowers by Véronique Berthier: delicate lace-like pieces for wall or furniture display, alone or paired with natural elements or other ceramics."
+            "content": "Collection of porcelain by Véronique Berthier: delicate lace-like pieces for wall or furniture display, alone or combined with another element (ceramic, wood, metal)."
           },
-          "title": "Porcelain - Flowers",
-          "subtitle": "Decorative pieces, placed on a piece of furniture or on the wall, alone or combined with a natural element or another ceramic"
+          "title": "Porcelain - Nature",
+          "subtitle": "Pieces for wall or furniture decoration, alone or combined with another element (ceramic, wood, metal)"
         }
       },
       "raku_and_smouldering": {
@@ -191,7 +199,8 @@
       },
       "connect_me": "Connect with me",
       "ready": "Ready to bring art into your space?",
-      "contact_me": "Contact me"
+      "contact_me": "Contact me",
+      "contact_me_by_mail": "Contact me by email"
     }
   },
   "about": {
@@ -221,108 +230,128 @@
       "acrylic": {
         "abstracts": {
           "automatic_painting_1": {
-            "title": "Haphazardly 1 : 80x80",
-            "mobile_title": "H1: 80x80",
-            "alt": "Automatic Painting"
+            "title": "Haphazardly 1",
+            "mobile_title": "H1",
+            "alt": "Automatic Painting",
+            "dimensions": "80 x 80 cm"
           },
           "automatic_painting_2": {
-            "title": "Mish-Mash animals : 80x80",
-            "mobile_title": "MM1: 80x80",
-            "alt": "Automatic Painting"
+            "title": "Mish-Mash animals",
+            "mobile_title": "MM1",
+            "alt": "Automatic Painting",
+            "dimensions": "80 x 80 cm"
           },
           "automatic_painting_3": {
-            "title": "Haphazardly 2 : 80x80",
-            "mobile_title": "H2: 80x80",
-            "alt": "Automatic Painting"
+            "title": "Haphazardly 2",
+            "mobile_title": "H2",
+            "alt": "Automatic Painting",
+            "dimensions": "80 x 80 cm"
           },
           "automatic_painting_4": {
-            "title": "Haphazardly 3 : 100x40",
-            "mobile_title": "H3: 100x40",
-            "alt": "Automatic Painting"
+            "title": "Haphazardly 3",
+            "mobile_title": "H3",
+            "alt": "Automatic Painting",
+            "dimensions": "100 x 40 cm"
           },
           "automatic_painting_5": {
-            "title": "Haphazardly 4 : 120x40",
-            "mobile_title": "H4: 120x40",
-            "alt": "Automatic Painting"
+            "title": "Haphazardly 4",
+            "mobile_title": "H4",
+            "alt": "Automatic Painting",
+            "dimensions": "120 x 40 cm"
           },
           "automatic_painting_6": {
-            "title": "Haphazardly 5 : 70x50",
-            "mobile_title": "H5: 70x50",
-            "alt": "Automatic Painting"
+            "title": "Haphazardly 5",
+            "mobile_title": "H5",
+            "alt": "Automatic Painting",
+            "dimensions": "70 x 50 cm"
           },
           "automatic_painting_7": {
-            "title": "Haphazardly 6 : 35x45",
-            "mobile_title": "H6: 35x45",
-            "alt": "Automatic Painting"
+            "title": "Haphazardly 6",
+            "mobile_title": "H6",
+            "alt": "Automatic Painting",
+            "dimensions": "35 x 45 cm"
           },
           "automatic_painting_8": {
-            "title": "Haphazardly 7 : 35x45",
-            "mobile_title": "H7: 35x45",
-            "alt": "Automatic Painting"
+            "title": "Haphazardly 7",
+            "mobile_title": "H7",
+            "alt": "Automatic Painting",
+            "dimensions": "35 x 45 cm"
           },
           "automatic_painting_9": {
-            "title": "Haphazardly 8 : 45x35",
-            "mobile_title": "H8: 45x35",
-            "alt": "Automatic Painting"
+            "title": "Haphazardly 8",
+            "mobile_title": "H8",
+            "alt": "Automatic Painting",
+            "dimensions": "45 x 35 cm"
           },
           "automatic_painting_10": {
-            "title": "Haphazardly 9 : 45x35",
-            "mobile_title": "H9: 45x35",
-            "alt": "Automatic Painting"
+            "title": "Haphazardly 9",
+            "mobile_title": "H9",
+            "alt": "Automatic Painting",
+            "dimensions": "45 x 35 cm"
           }
         }
       },
       "inks": {
         "nature": {
           "ec1": {
-            "title": "Indian ink 1 : 23x31",
-            "mobile_title": "II1: 23x31",
-            "alt": "Inks and water jet"
+            "title": "Indian ink 1",
+            "mobile_title": "II1",
+            "alt": "Inks and water jet",
+            "dimensions": "23 x 31 cm"
           },
           "ec2": {
-            "title": "Indian ink 2 : 38x42",
-            "mobile_title": "II2: 38x42",
-            "alt": "Inks and water jet"
+            "title": "Indian ink 2",
+            "mobile_title": "II2",
+            "alt": "Inks and water jet",
+            "dimensions": "38 x 42 cm"
           },
           "ec3": {
-            "title": "Indian ink 3 : 23x31",
-            "mobile_title": "II3: 23x31",
-            "alt": "Inks and water jet"
+            "title": "Indian ink 3",
+            "mobile_title": "II3",
+            "alt": "Inks and water jet",
+            "dimensions": "23 x 31 cm"
           },
           "ec4": {
-            "title": "Indian ink 4 : 22x27",
-            "mobile_title": "II4: 22x27",
-            "alt": "Inks and water jet"
+            "title": "Indian ink 4",
+            "mobile_title": "II4",
+            "alt": "Inks and water jet",
+            "dimensions": "22 x 27 cm"
           },
           "ec5": {
-            "title": "Indian ink 5 : 38x42",
-            "mobile_title": "II5: 38x42",
-            "alt": "Inks and water jet"
+            "title": "Indian ink 5",
+            "mobile_title": "II5",
+            "alt": "Inks and water jet",
+            "dimensions": "38 x 42 cm"
           },
           "ec6": {
-            "title": "Indian ink 6 : 23x31",
-            "mobile_title": "II6: 23x31",
-            "alt": "Inks and water jet"
+            "title": "Indian ink 6",
+            "mobile_title": "II6",
+            "alt": "Inks and water jet",
+            "dimensions": "23 x 31 cm"
           },
           "ec7": {
-            "title": "Indian ink 7 : 22x22",
-            "mobile_title": "II7: 22x22",
-            "alt": "Inks and water jet"
+            "title": "Indian ink 7",
+            "mobile_title": "II7",
+            "alt": "Inks and water jet",
+            "dimensions": "22 x 22 cm"
           },
           "ec8": {
-            "title": "Indian ink 8 : 22x22",
-            "mobile_title": "II8: 22x22",
-            "alt": "Inks and water jet"
+            "title": "Indian ink 8",
+            "mobile_title": "II8",
+            "alt": "Inks and water jet",
+            "dimensions": "22 x 22 cm"
           },
           "ec9": {
-            "title": "Indian ink 9 : 38x42",
-            "mobile_title": "II9: 38x42",
-            "alt": "Inks and water jet"
+            "title": "Indian ink 9",
+            "mobile_title": "II9",
+            "alt": "Inks and water jet",
+            "dimensions": "38 x 42 cm"
           },
           "ec10": {
-            "title": "Indian ink 10 : 60x80",
-            "mobile_title": "II10: 60x80",
-            "alt": "Inks and water jet"
+            "title": "Indian ink 10",
+            "mobile_title": "II10",
+            "alt": "Inks and water jet",
+            "dimensions": "60 x 80 cm"
           }
         }
       }
@@ -418,7 +447,7 @@
         }
       },
       "porcelain": {
-        "flowers": {
+        "nature": {
           "fp1": {
             "title": "Porcelain Flower 1",
             "mobile_title": "PF1",
@@ -488,6 +517,11 @@
             "title": "Porcelain Flower 14",
             "mobile_title": "PF14",
             "alt": "Ceramic flower for decoration"
+          },
+          "fp15": {
+            "title": "Porcelain Flower 15",
+            "mobile_title": "PF15",
+            "alt": "Ceramic flower for decoration"
           }
         }
       },
@@ -542,7 +576,7 @@
     "christmas": "Christmas",
     "easter": "Easter",
     "flowers": "Flowers",
-    "candle_holder": "Candle holder",
+    "candle_holders": "Candle holders",
     "before_after": "Before and after",
     "ceramics_in_context": "Ceramics in context",
     "first_creations": "First creations",
@@ -565,8 +599,8 @@
     "about_myself": "About myself",
     "my_artistic_approach": "My artistic approach",
     "artistic_journey": "Artistic journey",
-    "my_career": "My career path",
     "development": "Development",
+    "my_development": "My development",
     "my_cv": "My CV",
     "cv": "CV",
     "contact": "Contact",

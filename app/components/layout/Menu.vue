@@ -3,14 +3,13 @@
     <div
       v-show="!device.isMobile.value"
       class="menu-desktop"
-      @mouseleave="hideContent()"
-      @touchtart:passive="hideContent()">
+      @mouseleave="hideContent()">
       <div
         v-for="(section, index) in sections"
         :key="index"
         class="menu-section"
         @mouseenter="showContent(index)"
-        @touchstart:passive="showContent(index)">
+        @touchstart.passive="showContent(index)">
         <div
           class="menu-title"
           :class="{ 'menu-selected': activeIndex === index }"
@@ -30,11 +29,15 @@
                 :key="linkIndex"
                 class="links">
                 <NuxtLink
+                  v-if="link.url !== '/wip'"
                   :to="localePath(link.url)"
                   class="link"
                   @click="hideContent()">
                   {{ link.text }}
                 </NuxtLink>
+                <span v-else class="link link--disabled" aria-disabled="true">
+                  {{ link.text }}
+                </span>
               </li>
             </ul>
           </div>
@@ -47,6 +50,13 @@
         {{ contactTitle }}
       </NuxtLink>
     </div>
+    <Teleport to="body">
+      <div
+        v-if="!device.isMobile.value && activeIndex !== null"
+        class="menu-desktop-overlay"
+        @click="hideContent()"
+        @touchstart.passive="hideContent()" />
+    </Teleport>
     <div v-show="device.isMobile.value" class="menu-mobile">
       <div class="menu-icon-container">
         <Icon
@@ -91,11 +101,18 @@
                       :key="linkIndex"
                       class="links">
                       <NuxtLink
+                        v-if="link.url !== '/wip'"
                         :to="localePath(link.url)"
                         class="link"
                         @click="toggleMobileMenu">
                         {{ link.text }}
                       </NuxtLink>
+                      <span
+                        v-else
+                        class="link link--disabled"
+                        aria-disabled="true">
+                        {{ link.text }}
+                      </span>
                     </li>
                   </ul>
                 </div>
@@ -274,11 +291,15 @@ const sections = ref([
         title: computed(() => t('miscellaneous.porcelain')),
         links: [
           {
-            text: computed(() => t('miscellaneous.flowers')),
-            url: '/ceramic/porcelain/flowers',
+            text: computed(() => t('miscellaneous.nature')),
+            url: '/ceramic/porcelain/nature',
           },
           {
-            text: computed(() => t('miscellaneous.candle_holder')),
+            text: computed(() => t('miscellaneous.candle_holders')),
+            url: '/wip',
+          },
+          {
+            text: computed(() => t('miscellaneous.vases_and_pots')),
             url: '/wip',
           },
           {
@@ -368,7 +389,7 @@ const sections = ref([
         title: computed(() => t('miscellaneous.about_myself')),
         links: [
           {
-            text: computed(() => t('miscellaneous.my_career')),
+            text: computed(() => t('miscellaneous.my_development')),
             url: '/about/development',
           },
           {
@@ -426,6 +447,15 @@ const toggleMobileSection = (index: number) => {
 </script>
 
 <style lang="scss" scoped>
+.menu-desktop-overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $header-z-index - 1;
+}
+
 .menu {
   width: 100%;
 
@@ -489,6 +519,15 @@ const toggleMobileSection = (index: number) => {
 
                 &:hover {
                   color: $primary-text-color;
+                }
+
+                &.link--disabled {
+                  color: $light-grey-color-2;
+                  cursor: default;
+
+                  &:hover {
+                    color: $light-grey-color-2;
+                  }
                 }
               }
             }
@@ -629,6 +668,16 @@ const toggleMobileSection = (index: number) => {
                     &:hover {
                       background-color: $dark-grey-color;
                       color: $white-color;
+                    }
+
+                    &.link--disabled {
+                      color: $dark-grey-color;
+                      cursor: default;
+
+                      &:hover {
+                        background-color: transparent;
+                        color: $dark-grey-color;
+                      }
                     }
                   }
                 }

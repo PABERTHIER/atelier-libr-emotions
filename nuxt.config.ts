@@ -95,9 +95,14 @@ export default defineNuxtConfig({
     langDir: 'locales',
     strategy: 'prefix',
     locales: [
-      { code: 'en', language: 'en-US', name: 'English', file: 'en-US.json' },
       { code: 'fr', language: 'fr-FR', name: 'Français', file: 'fr-FR.json' },
+      { code: 'en', language: 'en-US', name: 'English', file: 'en-US.json' },
     ],
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root',
+    },
   },
   vite: {
     css: {
@@ -109,6 +114,14 @@ export default defineNuxtConfig({
           `,
         },
       },
+    },
+    optimizeDeps: {
+      include: [
+        '@vueuse/core',
+        '@vue/devtools-core',
+        '@vue/devtools-kit',
+        'lenis',
+      ],
     },
     plugins: [],
   },
@@ -122,6 +135,7 @@ export default defineNuxtConfig({
     identity: {
       type: 'Person',
     },
+    indexable: true,
     robots: {
       index: true,
       follow: true,
@@ -132,7 +146,9 @@ export default defineNuxtConfig({
       type: 'Person',
       name: "Atelier Libr'Émotions",
       url: 'https://atelierlibremotions.vercel.app',
-      logo: 'https://atelierlibremotions.vercel.app/paintings/celestial-collision.jpg', // TODO: Replace by the logo
+      logo: 'https://atelierlibremotions.vercel.app/logo.svg',
+      image:
+        'https://atelierlibremotions.vercel.app/paintings/celestial-collision.jpg',
     },
   },
   ogImage: {

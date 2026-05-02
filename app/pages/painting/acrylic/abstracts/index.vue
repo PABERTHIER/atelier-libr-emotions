@@ -76,6 +76,12 @@ useHead({
       href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
       hreflang: 'x-default',
     },
+    {
+      rel: 'apple-touch-icon',
+      sizes: '180x180',
+      href: `/${ogImageEndPath}`,
+      key: 'apple-touch-icon',
+    },
   ],
 })
 
@@ -142,6 +148,9 @@ const images: ImageSource[] = [
       'pictures.paintings.acrylic.abstracts.automatic_painting_1.mobile_title'
     ),
     alt: t('pictures.paintings.acrylic.abstracts.automatic_painting_1.alt'),
+    dimensions: t(
+      'pictures.paintings.acrylic.abstracts.automatic_painting_1.dimensions'
+    ),
   },
   {
     src: '/paintings/acrylic/abstracts/AutomaticPainting2.webp',
@@ -150,6 +159,9 @@ const images: ImageSource[] = [
       'pictures.paintings.acrylic.abstracts.automatic_painting_2.mobile_title'
     ),
     alt: t('pictures.paintings.acrylic.abstracts.automatic_painting_2.alt'),
+    dimensions: t(
+      'pictures.paintings.acrylic.abstracts.automatic_painting_2.dimensions'
+    ),
   },
   {
     src: '/paintings/acrylic/abstracts/AutomaticPainting3.webp',
@@ -158,6 +170,9 @@ const images: ImageSource[] = [
       'pictures.paintings.acrylic.abstracts.automatic_painting_3.mobile_title'
     ),
     alt: t('pictures.paintings.acrylic.abstracts.automatic_painting_3.alt'),
+    dimensions: t(
+      'pictures.paintings.acrylic.abstracts.automatic_painting_3.dimensions'
+    ),
   },
   {
     src: '/paintings/acrylic/abstracts/AutomaticPainting4.webp',
@@ -166,6 +181,9 @@ const images: ImageSource[] = [
       'pictures.paintings.acrylic.abstracts.automatic_painting_4.mobile_title'
     ),
     alt: t('pictures.paintings.acrylic.abstracts.automatic_painting_4.alt'),
+    dimensions: t(
+      'pictures.paintings.acrylic.abstracts.automatic_painting_4.dimensions'
+    ),
   },
   {
     src: '/paintings/acrylic/abstracts/AutomaticPainting5.webp',
@@ -174,6 +192,9 @@ const images: ImageSource[] = [
       'pictures.paintings.acrylic.abstracts.automatic_painting_5.mobile_title'
     ),
     alt: t('pictures.paintings.acrylic.abstracts.automatic_painting_5.alt'),
+    dimensions: t(
+      'pictures.paintings.acrylic.abstracts.automatic_painting_5.dimensions'
+    ),
   },
   {
     src: '/paintings/acrylic/abstracts/AutomaticPainting6.webp',
@@ -182,6 +203,9 @@ const images: ImageSource[] = [
       'pictures.paintings.acrylic.abstracts.automatic_painting_6.mobile_title'
     ),
     alt: t('pictures.paintings.acrylic.abstracts.automatic_painting_6.alt'),
+    dimensions: t(
+      'pictures.paintings.acrylic.abstracts.automatic_painting_6.dimensions'
+    ),
   },
   {
     src: '/paintings/acrylic/abstracts/AutomaticPainting7.webp',
@@ -190,6 +214,9 @@ const images: ImageSource[] = [
       'pictures.paintings.acrylic.abstracts.automatic_painting_7.mobile_title'
     ),
     alt: t('pictures.paintings.acrylic.abstracts.automatic_painting_7.alt'),
+    dimensions: t(
+      'pictures.paintings.acrylic.abstracts.automatic_painting_7.dimensions'
+    ),
   },
   {
     src: '/paintings/acrylic/abstracts/AutomaticPainting8.webp',
@@ -198,6 +225,9 @@ const images: ImageSource[] = [
       'pictures.paintings.acrylic.abstracts.automatic_painting_8.mobile_title'
     ),
     alt: t('pictures.paintings.acrylic.abstracts.automatic_painting_8.alt'),
+    dimensions: t(
+      'pictures.paintings.acrylic.abstracts.automatic_painting_8.dimensions'
+    ),
   },
   {
     src: '/paintings/acrylic/abstracts/AutomaticPainting9.webp',
@@ -206,6 +236,9 @@ const images: ImageSource[] = [
       'pictures.paintings.acrylic.abstracts.automatic_painting_9.mobile_title'
     ),
     alt: t('pictures.paintings.acrylic.abstracts.automatic_painting_9.alt'),
+    dimensions: t(
+      'pictures.paintings.acrylic.abstracts.automatic_painting_9.dimensions'
+    ),
   },
   {
     src: '/paintings/acrylic/abstracts/AutomaticPainting10.webp',
@@ -216,6 +249,9 @@ const images: ImageSource[] = [
       'pictures.paintings.acrylic.abstracts.automatic_painting_10.mobile_title'
     ),
     alt: t('pictures.paintings.acrylic.abstracts.automatic_painting_10.alt'),
+    dimensions: t(
+      'pictures.paintings.acrylic.abstracts.automatic_painting_10.dimensions'
+    ),
   },
 ]
 
