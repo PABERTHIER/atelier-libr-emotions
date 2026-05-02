@@ -15,6 +15,10 @@ export function generateImageRoutes() {
 
 const imagesConfig = [
   {
+    imagePath: '/logo.svg',
+    sizes: [20, 30, 35, 40, 60, 70, 80],
+  },
+  {
     imagePath: '/paintings/celestial-collision.webp',
     sizes: [
       20, 30, 35, 40, 60, 70, 80, 100, 125, 130, 150, 160, 175, 180, 200, 250,
