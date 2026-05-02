@@ -102,7 +102,7 @@ useHead({
     {
       name: 'keywords',
       content: `${computed(() => t('miscellaneous.art')).value},
-        ${computed(() => t('miscellaneous.my_career')).value},
+        ${computed(() => t('miscellaneous.my_development')).value},
         ${computed(() => t('miscellaneous.development')).value},
         ${computed(() => t('miscellaneous.artistic_journey')).value},
         ${computed(() => t('miscellaneous.artist')).value},
@@ -160,7 +160,7 @@ useSeoMeta({
   twitterImageAlt: computed(() => t('pages.development.meta.content')),
   twitterImageType: 'image/jpeg',
   articleTag: [
-    computed(() => t('miscellaneous.my_career')).value,
+    computed(() => t('miscellaneous.my_development')).value,
     computed(() => t('miscellaneous.development')).value,
     computed(() => t('miscellaneous.artistic_journey')).value,
     computed(() => t('miscellaneous.art')).value,

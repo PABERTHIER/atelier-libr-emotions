@@ -389,7 +389,7 @@ const sections = ref([
         title: computed(() => t('miscellaneous.about_myself')),
         links: [
           {
-            text: computed(() => t('miscellaneous.my_career')),
+            text: computed(() => t('miscellaneous.my_development')),
             url: '/about/development',
           },
           {
