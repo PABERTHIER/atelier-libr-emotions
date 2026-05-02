@@ -56,7 +56,7 @@ const route = useRoute()
 
 const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
 const urlEndPath = 'about/cv'
-const ogImageEndPath = 'paintings/celestial-collision.jpg' // TODO: Update ogImage
+const ogImageEndPath = 'og-images/cv.webp'
 
 const canonicalUrl = computed(() => `${baseUrl.value}${route.path}`)
 
