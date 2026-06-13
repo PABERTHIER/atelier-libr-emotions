@@ -217,7 +217,7 @@ The `meta.content` translation key powers the description, OG description, and T
 All pages have this commented block — **do not remove it**, it's kept for future use:
 
 ```typescript
-// defineOgImageComponent('NuxtSeo', {
+// defineOgImage('NuxtSeo', {
 //   theme: '#4A7C59',
 //   colorMode: 'dark',
 //   title: computed(() => t('pages.{domain}.{technique}.{category}.tab_name')),

@@ -138,7 +138,7 @@ useSeoMeta({
 ## Commented OgImageComponent (NON-NEGOTIABLE: always keep)
 
 ```typescript
-// defineOgImageComponent('NuxtSeo', {
+// defineOgImage('NuxtSeo', {
 //   theme: '#4A7C59',
 //   colorMode: 'dark',
 //   title: computed(() => t('pages.{domain}.{technique}.{category}.tab_name')),

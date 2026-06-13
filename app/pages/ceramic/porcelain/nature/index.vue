@@ -118,7 +118,7 @@ useSeoMeta({
   msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
 })
 
-// defineOgImageComponent('NuxtSeo', {
+// defineOgImage('NuxtSeo', {
 //   theme: '#4A7C59',
 //   colorMode: 'dark',
 //   title: computed(() => t('pages.ceramic.porcelain.nature.tab_name')),
