@@ -124,13 +124,6 @@ useSeoMeta({
   msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
 })
 
-// defineOgImage('NuxtSeo', {
-//   theme: '#4A7C59',
-//   colorMode: 'dark',
-//   title: computed(() => t('pages.ceramic.electric_kiln.nature.tab_name')),
-//   description: computed(() => t('pages.ceramic.electric_kiln.nature.meta.content')),
-// })
-
 const subtitle1 = computed(() => t('miscellaneous.flowers'))
 
 const images: ImageSource[] = [

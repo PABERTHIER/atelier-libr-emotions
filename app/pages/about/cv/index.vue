@@ -154,13 +154,6 @@ useSeoMeta({
   msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
 })
 
-// defineOgImage('NuxtSeo', {
-//   theme: '#FF0000',
-//   colorMode: 'dark',
-//   title: computed(() => t('pages.cv.tab_name')),
-//   description: computed(() => t('pages.cv.meta.content')),
-// })
-
 const pdfPath = '/documents/CV_Berthier_Véronique.pdf'
 
 const pageOneTitle = computed(() => t('pages.cv.page_1_title'))
