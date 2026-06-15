@@ -209,18 +209,3 @@ The `meta.content` translation key powers the description, OG description, and T
 
 **Example (EN):**
 > "Collection of porcelain flowers by Véronique Berthier: delicate lace-like pieces for wall or furniture display, alone or paired with natural elements or other ceramics."
-
----
-
-## Commented-out OgImageComponent
-
-All pages have this commented block — **do not remove it**, it's kept for future use:
-
-```typescript
-// defineOgImageComponent('NuxtSeo', {
-//   theme: '#4A7C59',
-//   colorMode: 'dark',
-//   title: computed(() => t('pages.{domain}.{technique}.{category}.tab_name')),
-//   description: computed(() => t('pages.{domain}.{technique}.{category}.meta.content')),
-// })
-```

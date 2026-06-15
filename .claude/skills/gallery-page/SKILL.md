@@ -89,9 +89,8 @@ The script block must contain all of these in order:
 3. URL vars: `baseUrl`, `urlEndPath`, `ogImageEndPath`, `canonicalUrl`
 4. `useHead()` with title, description, keywords, canonical, hreflang links
 5. `useSeoMeta()` with OG, Twitter, article tags
-6. Commented-out `defineOgImageComponent` block (keep for future use)
-7. `images: ImageSource[]` array
-8. `previousPage` and `nextPage` objects
+6. `images: ImageSource[]` array
+7. `previousPage` and `nextPage` objects
 
 **Hreflang (NON-NEGOTIABLE):**
 ```typescript
@@ -145,7 +144,6 @@ Run `yarn lint` and fix any issues before reporting completion.
 - [ ] All images in the `images` array (one entry per image file), each with `src`, `title`, `mobileTitle`, `alt` — and `dimensions` for paintings (not ceramics)
 - [ ] `useHead()` has canonical + all 3 hreflang entries + `apple-touch-icon` override pointing to `/${ogImageEndPath}`
 - [ ] `useSeoMeta()` has OG + Twitter + articleTag
-- [ ] Commented `defineOgImageComponent` block present
 - [ ] Menu.vue link updated from `/wip` to new path
 - [ ] Navigation links updated on new and adjacent pages
 - [ ] `yarn lint` passes

@@ -219,13 +219,6 @@ useSeoMeta({
   msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
 })
 
-// defineOgImageComponent('NuxtSeo', {
-//   theme: '#FF0000',
-//   colorMode: 'dark',
-//   title: computed(() => t('pages.contact.tab_name')),
-//   description: computed(() => t('pages.contact.meta.content')),
-// })
-
 const somePaintingsTitle = computed(() => t('pages.contact.image.title'))
 const somePaintingsAlt = computed(() => t('pages.contact.image.alt'))
 const mailAddress = computed(() => t('about.mail_address'))

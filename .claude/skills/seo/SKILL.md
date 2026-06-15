@@ -135,21 +135,6 @@ useSeoMeta({
 
 ---
 
-## Commented OgImageComponent (NON-NEGOTIABLE: always keep)
-
-```typescript
-// defineOgImageComponent('NuxtSeo', {
-//   theme: '#4A7C59',
-//   colorMode: 'dark',
-//   title: computed(() => t('pages.{domain}.{technique}.{category}.tab_name')),
-//   description: computed(() => t('pages.{domain}.{technique}.{category}.meta.content')),
-// })
-```
-
-Do not remove this block from any page — it is kept for future activation.
-
----
-
 ## Keyword Reference by Domain
 
 **Base keywords (every gallery page):**

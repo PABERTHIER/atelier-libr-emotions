@@ -125,13 +125,6 @@ useSeoMeta({
   msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
 })
 
-// defineOgImageComponent('NuxtSeo', {
-//   theme: '#4A7C59',
-//   colorMode: 'dark',
-//   title: computed(() => t('pages.ceramic.raku_and_smouldering.nature.tab_name')),
-//   description: computed(() => t('pages.ceramic.raku_and_smouldering.nature.meta.content')),
-// })
-
 const images: ImageSource[] = [
   {
     src: '/ceramics/raku_smouldering/nature/FR1.webp',

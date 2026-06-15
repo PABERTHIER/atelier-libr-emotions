@@ -161,13 +161,6 @@ useSeoMeta({
   msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
 })
 
-// defineOgImageComponent('NuxtSeo', {
-//   theme: '#FF0000',
-//   colorMode: 'dark',
-//   title: computed(() => t('pages.main.tab_name')),
-//   description: computed(() => t('pages.main.meta.content')),
-// })
-
 const linksConfigFirstPicture = ref([
   {
     filePath: '/paintings/celestial-collision.webp',

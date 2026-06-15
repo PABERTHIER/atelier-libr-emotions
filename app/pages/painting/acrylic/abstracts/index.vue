@@ -133,13 +133,6 @@ useSeoMeta({
   msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
 })
 
-// defineOgImageComponent('NuxtSeo', {
-//   theme: '#4A7C59',
-//   colorMode: 'dark',
-//   title: computed(() => t('pages.painting.acrylic.abstracts.tab_name')),
-//   description: computed(() => t('pages.painting.acrylic.abstracts.meta.content')),
-// })
-
 const images: ImageSource[] = [
   {
     src: '/paintings/acrylic/abstracts/AutomaticPainting1.webp',
