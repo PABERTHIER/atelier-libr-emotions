@@ -31,12 +31,12 @@
     "@nuxt/eslint-config": "^1.16.0",
     "@nuxt/types": "^2.18.1",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
-    "@types/node": "^25.9.3",
-    "eslint": "^10.5.0",
+    "@types/node": "^25.9.5",
+    "eslint": "^10.7.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.6",
-    "globals": "^17.6.0",
-    "prettier": "^3.8.4",
+    "globals": "^17.7.0",
+    "prettier": "^3.9.5",
     "typescript": "^6.0.3",
     "vite-svg-loader": "^5.1.1"
   }
