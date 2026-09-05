@@ -126,11 +126,6 @@ useSeoMeta({
   ogImageWidth: '1200',
   ogImageHeight: '600',
   ogUrl: canonicalUrl.value,
-  twitterTitle: '%s %separator %siteName',
-  twitterDescription: computed(() => t('pages.cv.meta.content')),
-  twitterImage: `${baseUrl.value}/${ogImageEndPath}`,
-  twitterImageAlt: computed(() => t('pages.cv.meta.content')),
-  twitterImageType: 'image/jpeg',
   articleTag: [
     computed(() => t('miscellaneous.my_cv')).value,
     computed(() => t('miscellaneous.cv')).value,

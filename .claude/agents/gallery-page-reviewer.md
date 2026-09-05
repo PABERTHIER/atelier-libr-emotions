@@ -39,7 +39,7 @@ Read the Vue file. Note the `urlEndPath`, `ogImageEndPath`, and the i18n key pre
 - [ ] `useHead()` present with title, description, keywords, canonical, and 3 hreflang links
 - [ ] `apple-touch-icon` link present in `useHead()` with `href: \`/${ogImageEndPath}\`` and `key: 'apple-touch-icon'`
 - [ ] `x-default` hreflang points to `/fr/` URL
-- [ ] `useSeoMeta()` present with OG, Twitter, `articleTag`, and `msapplicationTileImage`
+- [ ] `useSeoMeta()` present with OG, `articleTag`, and `msapplicationTileImage`
 - [ ] All `t()` calls inside `useHead()`/`useSeoMeta()` are wrapped in `computed(() => ...)`
 - [ ] `articleTag` values use `.value`
 - [ ] `images` array has correct type `ImageSource[]` and one entry per image
