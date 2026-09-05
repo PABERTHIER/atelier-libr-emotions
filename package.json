@@ -26,7 +26,7 @@
     "@vue/composition-api": "^1.7.2",
     "lenis": "^1.3.25",
     "nuxt": "^4.5.0",
-    "sass": "^1.101.0"
+    "sass": "^1.104.0"
   },
   "devDependencies": {
     "@nuxt/eslint": "1.17.0",
