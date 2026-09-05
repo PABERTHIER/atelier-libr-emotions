@@ -20,7 +20,7 @@
     "@iconify-json/lucide": "^1.2.129",
     "@nuxt/fonts": "^0.14.0",
     "@nuxt/image": "^2.1.0",
-    "@nuxt/ui": "^4.10.0",
+    "@nuxt/ui": "^4.11.0",
     "@nuxtjs/i18n": "^10.4.1",
     "@nuxtjs/seo": "^5.3.3",
     "@vue/composition-api": "^1.7.2",
