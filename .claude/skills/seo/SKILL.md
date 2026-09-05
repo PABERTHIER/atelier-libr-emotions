@@ -97,12 +97,10 @@ useHead({
 ```typescript
 useSeoMeta({
   ogTitle: '%s %separator %siteName',
-  twitterTitle: '%s %separator %siteName',
   appleMobileWebAppTitle: '%s %separator %siteName',
 
   description: computed(() => t('pages.{domain}.{technique}.{category}.meta.content')),
   ogDescription: computed(() => t('pages.{domain}.{technique}.{category}.meta.content')),
-  twitterDescription: computed(() => t('pages.{domain}.{technique}.{category}.meta.content')),
 
   ogImage: `${baseUrl.value}/${ogImageEndPath}`,
   ogImageSecureUrl: `${baseUrl.value}/${ogImageEndPath}`,
@@ -110,10 +108,6 @@ useSeoMeta({
   ogImageType: 'image/jpeg',
   ogImageWidth: '1200',
   ogImageHeight: '600',
-
-  twitterImage: `${baseUrl.value}/${ogImageEndPath}`,
-  twitterImageAlt: computed(() => t('pages.{domain}.{technique}.{category}.meta.content')),
-  twitterImageType: 'image/jpeg',
 
   ogUrl: canonicalUrl.value,
   ogType: 'article',

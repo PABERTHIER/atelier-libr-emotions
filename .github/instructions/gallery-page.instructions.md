@@ -64,9 +64,9 @@ link: [
 ```
 
 ### SEO — useSeoMeta()
-- `ogTitle`, `twitterTitle`, `appleMobileWebAppTitle`: `'%s %separator %siteName'`
-- `description`, `ogDescription`, `twitterDescription`: `meta.content` i18n key
-- `ogImage`, `twitterImage`, `msapplicationTileImage`: full URL to a representative image
+- `ogTitle`, `appleMobileWebAppTitle`: `'%s %separator %siteName'`
+- `description`, `ogDescription`: `meta.content` i18n key
+- `ogImage`, `msapplicationTileImage`: full URL to a representative image
 - `ogType`: `'article'`
 - `articleTag`: array of keyword values matching the `keywords` meta
 

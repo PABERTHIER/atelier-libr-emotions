@@ -61,11 +61,11 @@ atelier-libr-emotions/
 
 | Purpose            | Technology                          |
 |--------------------|-------------------------------------|
-| Framework          | Nuxt 4 (Vue 3 + TypeScript)        |
+| Framework          | Nuxt 4 (Vue 3 + TypeScript)         |
 | Styling            | SCSS with global variables          |
 | Image optimization | @nuxt/image (IPX provider)          |
-| i18n               | @nuxtjs/i18n (prefix strategy)     |
-| SEO                | @nuxtjs/seo (OG, Twitter, Schema)  |
+| i18n               | @nuxtjs/i18n (prefix strategy)      |
+| SEO                | @nuxtjs/seo (OG, Schema)            |
 | UI components      | @nuxt/ui                            |
 | Fonts              | @nuxt/fonts (Google Fonts)          |
 | Smooth scroll      | Lenis                               |
@@ -247,7 +247,7 @@ Every gallery page script block must include:
 2. **Composables**: `useI18n()`, `useRuntimeConfig()`, `useRoute()`
 3. **URL configuration**: `baseUrl`, `urlEndPath`, `ogImageEndPath`, `canonicalUrl`
 4. **`useHead()`**: title, meta description, keywords, canonical URL, hreflang alternates, apple-touch-icon override
-5. **`useSeoMeta()`**: OG tags, Twitter cards, article tags
+5. **`useSeoMeta()`**: OG tags, article tags
 6. **Images array**: `ImageSource[]` with `src`, `title`, `mobileTitle`, `alt`, and optional `dimensions` (for paintings — use the `dimensions` i18n key)
 7. **Navigation**: `previousPage` and/or `nextPage` objects with `path`, `title`, `description`
 

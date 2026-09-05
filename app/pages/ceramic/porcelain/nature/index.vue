@@ -93,15 +93,6 @@ useSeoMeta({
   ogImageHeight: '600',
   ogUrl: canonicalUrl.value,
   ogType: 'article',
-  twitterTitle: '%s %separator %siteName',
-  twitterDescription: computed(() =>
-    t('pages.ceramic.porcelain.nature.meta.content')
-  ),
-  twitterImage: `${baseUrl.value}/${ogImageEndPath}`,
-  twitterImageAlt: computed(() =>
-    t('pages.ceramic.porcelain.nature.meta.content')
-  ),
-  twitterImageType: 'image/jpeg',
   articleTag: [
     computed(() => t('miscellaneous.ceramic')).value,
     computed(() => t('miscellaneous.ceramicist')).value,

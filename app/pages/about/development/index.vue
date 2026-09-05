@@ -154,11 +154,6 @@ useSeoMeta({
   ogImageWidth: '1200',
   ogImageHeight: '600',
   ogUrl: canonicalUrl.value,
-  twitterTitle: '%s %separator %siteName',
-  twitterDescription: computed(() => t('pages.development.meta.content')),
-  twitterImage: `${baseUrl.value}/${ogImageEndPath}`,
-  twitterImageAlt: computed(() => t('pages.development.meta.content')),
-  twitterImageType: 'image/jpeg',
   articleTag: [
     computed(() => t('miscellaneous.my_development')).value,
     computed(() => t('miscellaneous.development')).value,

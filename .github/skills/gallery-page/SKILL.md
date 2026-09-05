@@ -109,15 +109,6 @@ useSeoMeta({
   ogImageHeight: '600',
   ogUrl: canonicalUrl.value,
   ogType: 'article',
-  twitterTitle: '%s %separator %siteName',
-  twitterDescription: computed(() =>
-    t('pages.{domain}.{technique_snake}.{category_snake}.meta.content')
-  ),
-  twitterImage: `${baseUrl.value}/${ogImageEndPath}`,
-  twitterImageAlt: computed(() =>
-    t('pages.{domain}.{technique_snake}.{category_snake}.meta.content')
-  ),
-  twitterImageType: 'image/jpeg',
   articleTag: [
     computed(() => t('miscellaneous.{keyword1}')).value,
     computed(() => t('miscellaneous.{keyword2}')).value,
