@@ -319,6 +319,10 @@ const sections = ref([
             text: computed(() => t('miscellaneous.ceramics_in_context')),
             url: '/wip',
           },
+          {
+            text: computed(() => t('miscellaneous.raku_firing')),
+            url: '/wip',
+          },
         ],
       },
       {
@@ -358,6 +362,10 @@ const sections = ref([
         links: [
           {
             text: computed(() => t('miscellaneous.life_is_love')),
+            url: '/wip',
+          },
+          {
+            text: computed(() => t('miscellaneous.collaborative_painting')),
             url: '/wip',
           },
         ],
