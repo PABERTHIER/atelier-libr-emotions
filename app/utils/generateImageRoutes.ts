@@ -39,7 +39,7 @@ const imagesConfig = [
     ],
   },
   {
-    imagePath: '/paintings/some-paintings.webp',
+    imagePath: '/misc/contact.webp',
     sizes: [150, 200, 250, 300, 400, 500, 600, 800],
   },
   {

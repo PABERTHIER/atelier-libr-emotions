@@ -15,7 +15,7 @@
         <div class="artwork-frame">
           <div class="frame-inner">
             <Image
-              src="/paintings/some-paintings.webp"
+              src="/misc/contact.webp"
               sizes="xs:150px, sm:200px, md:250px, lg:300px, xl:400px"
               max-height="600px"
               class="featured-image"
