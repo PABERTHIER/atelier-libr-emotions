@@ -66,6 +66,16 @@
           "title": "Encres - Nature",
           "subtitle": "Expressions inspirées par la nature"
         }
+      },
+      "mixed_technique": {
+        "nature": {
+          "tab_name": "Technique mixte - Nature",
+          "meta": {
+            "content": "Galerie de peintures en technique mixte de Véronique Berthier inspirées par la nature, entre matières, reliefs, mouvements et évasion."
+          },
+          "title": "Technique mixte - Nature",
+          "subtitle": "L'expression de la nature prend forme grâce aux mélanges de divers médiums et matériaux"
+        }
       }
     },
     "ceramic": {
@@ -352,6 +362,94 @@
             "mobile_title": "EC10",
             "alt": "Jeu d'encres et d'eau",
             "dimensions": "60 x 80 cm"
+          }
+        }
+      },
+      "mixed_technique": {
+        "nature": {
+          "tmn1": {
+            "title": "Technique mixte Nature 1",
+            "mobile_title": "TMn1",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "60 x 80 cm"
+          },
+          "tmn2": {
+            "title": "Technique mixte Nature 2",
+            "mobile_title": "TMn2",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "80 x 80 cm"
+          },
+          "tmn3": {
+            "title": "Technique mixte Nature 3",
+            "mobile_title": "TMn3",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "60 x 80 cm"
+          },
+          "tmn4": {
+            "title": "Technique mixte Nature 4",
+            "mobile_title": "TMn4",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "80 x 80 cm"
+          },
+          "tmn5": {
+            "title": "Technique mixte Nature 5",
+            "mobile_title": "TMn5",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "80 x 80 cm"
+          },
+          "tmn6": {
+            "title": "Technique mixte Nature 6",
+            "mobile_title": "TMn6",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "70 x 40 cm"
+          },
+          "tmn7": {
+            "title": "Technique mixte Nature 7",
+            "mobile_title": "TMn7",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn8": {
+            "title": "Technique mixte Nature 8",
+            "mobile_title": "TMn8",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn9": {
+            "title": "Technique mixte Nature 9",
+            "mobile_title": "TMn9",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn10": {
+            "title": "Technique mixte Nature 10",
+            "mobile_title": "TMn10",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn11": {
+            "title": "Technique mixte Nature 11",
+            "mobile_title": "TMn11",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn12": {
+            "title": "Technique mixte Nature 12",
+            "mobile_title": "TMn12",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn13": {
+            "title": "Technique mixte Nature 13",
+            "mobile_title": "TMn13",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn14": {
+            "title": "Technique mixte Nature 14",
+            "mobile_title": "TMn14",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "70 x 50 cm"
           }
         }
       }

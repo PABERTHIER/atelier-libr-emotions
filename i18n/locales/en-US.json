@@ -66,6 +66,16 @@
           "title": "Inks - Nature",
           "subtitle": "Expressions inspired by nature"
         }
+      },
+      "mixed_technique": {
+        "nature": {
+          "tab_name": "Mixed technique - Nature",
+          "meta": {
+            "content": "Gallery of mixed technique nature paintings by Véronique Berthier, combining materials, textures and movement to invite the viewer to escape."
+          },
+          "title": "Mixed technique - Nature",
+          "subtitle": "Nature takes shape through a blend of different mediums and materials"
+        }
       }
     },
     "ceramic": {
@@ -352,6 +362,94 @@
             "mobile_title": "II10",
             "alt": "Inks and water jet",
             "dimensions": "60 x 80 cm"
+          }
+        }
+      },
+      "mixed_technique": {
+        "nature": {
+          "tmn1": {
+            "title": "Mixed technique Nature 1",
+            "mobile_title": "MTn1",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "60 x 80 cm"
+          },
+          "tmn2": {
+            "title": "Mixed technique Nature 2",
+            "mobile_title": "MTn2",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "80 x 80 cm"
+          },
+          "tmn3": {
+            "title": "Mixed technique Nature 3",
+            "mobile_title": "MTn3",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "60 x 80 cm"
+          },
+          "tmn4": {
+            "title": "Mixed technique Nature 4",
+            "mobile_title": "MTn4",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "80 x 80 cm"
+          },
+          "tmn5": {
+            "title": "Mixed technique Nature 5",
+            "mobile_title": "MTn5",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "80 x 80 cm"
+          },
+          "tmn6": {
+            "title": "Mixed technique Nature 6",
+            "mobile_title": "MTn6",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "70 x 40 cm"
+          },
+          "tmn7": {
+            "title": "Mixed technique Nature 7",
+            "mobile_title": "MTn7",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn8": {
+            "title": "Mixed technique Nature 8",
+            "mobile_title": "MTn8",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn9": {
+            "title": "Mixed technique Nature 9",
+            "mobile_title": "MTn9",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn10": {
+            "title": "Mixed technique Nature 10",
+            "mobile_title": "MTn10",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn11": {
+            "title": "Mixed technique Nature 11",
+            "mobile_title": "MTn11",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn12": {
+            "title": "Mixed technique Nature 12",
+            "mobile_title": "MTn12",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn13": {
+            "title": "Mixed technique Nature 13",
+            "mobile_title": "MTn13",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn14": {
+            "title": "Mixed technique Nature 14",
+            "mobile_title": "MTn14",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "70 x 50 cm"
           }
         }
       }
