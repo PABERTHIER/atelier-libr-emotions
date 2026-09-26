@@ -88,6 +88,14 @@
           "title": "Grès - four électrique - Nature",
           "subtitle": "Fleurs décoratives, pour intérieur et/ou extérieur"
         },
+        "vases_and_pots": {
+          "tab_name": "Grès - four électrique - Vases et pots",
+          "meta": {
+            "content": "Galerie de vases et pots en grès de Véronique Berthier, des objets pratiques et décoratifs pour sublimer la maison et le jardin."
+          },
+          "title": "Grès - four électrique - Vases et pots",
+          "subtitle": "Pots et des vases en céramiques, pour intérieur et jardin"
+        },
         "various_objects": {
           "tab_name": "Grès - four électrique - Objets divers",
           "meta": {
@@ -551,6 +559,169 @@
             "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
           }
         },
+        "vases_and_pots": {
+          "intuitive_pots": {
+            "pots_intuitifs1": {
+              "title": "Pot intuitif 1",
+              "mobile_title": "PI1",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs2": {
+              "title": "Pot intuitif 2",
+              "mobile_title": "PI2",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs3": {
+              "title": "Pot intuitif 3",
+              "mobile_title": "PI3",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs4": {
+              "title": "Pot intuitif 4",
+              "mobile_title": "PI4",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs5": {
+              "title": "Pot intuitif 5",
+              "mobile_title": "PI5",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs6": {
+              "title": "Pot intuitif 6",
+              "mobile_title": "PI6",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs7": {
+              "title": "Pot intuitif 7",
+              "mobile_title": "PI7",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs8": {
+              "title": "Pot intuitif 8",
+              "mobile_title": "PI8",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs9": {
+              "title": "Pot intuitif 9",
+              "mobile_title": "PI9",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs10": {
+              "title": "Pot intuitif 10",
+              "mobile_title": "PI10",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs11": {
+              "title": "Pot intuitif 11",
+              "mobile_title": "PI11",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs12": {
+              "title": "Pot intuitif 12",
+              "mobile_title": "PI12",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs13": {
+              "title": "Pot intuitif 13",
+              "mobile_title": "PI13",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs14": {
+              "title": "Pot intuitif 14",
+              "mobile_title": "PI14",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs15": {
+              "title": "Pot intuitif 15",
+              "mobile_title": "PI15",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            }
+          },
+          "single_flower_vases": {
+            "soliflores1": {
+              "title": "Soliflore 1",
+              "mobile_title": "S1",
+              "alt": "Soliflore en grès pour mettre en valeur une fleur"
+            },
+            "soliflores2": {
+              "title": "Soliflore 2",
+              "mobile_title": "S2",
+              "alt": "Soliflore en grès pour mettre en valeur une fleur"
+            },
+            "soliflores3": {
+              "title": "Soliflore 3",
+              "mobile_title": "S3",
+              "alt": "Soliflore en grès pour mettre en valeur une fleur"
+            },
+            "soliflores4": {
+              "title": "Soliflore 4",
+              "mobile_title": "S4",
+              "alt": "Soliflore en grès pour mettre en valeur une fleur"
+            },
+            "soliflores5": {
+              "title": "Soliflore 5",
+              "mobile_title": "S5",
+              "alt": "Soliflore en grès pour mettre en valeur une fleur"
+            },
+            "soliflores6": {
+              "title": "Soliflore 6",
+              "mobile_title": "S6",
+              "alt": "Soliflore en grès pour mettre en valeur une fleur"
+            },
+            "soliflores7": {
+              "title": "Soliflore 7",
+              "mobile_title": "S7",
+              "alt": "Soliflore en grès pour mettre en valeur une fleur"
+            },
+            "soliflores8": {
+              "title": "Soliflore 8",
+              "mobile_title": "S8",
+              "alt": "Soliflore en grès pour mettre en valeur une fleur"
+            },
+            "soliflores9": {
+              "title": "Soliflore 9",
+              "mobile_title": "S9",
+              "alt": "Soliflore en grès pour mettre en valeur une fleur"
+            },
+            "soliflores10": {
+              "title": "Soliflore 10",
+              "mobile_title": "S10",
+              "alt": "Soliflore en grès pour mettre en valeur une fleur"
+            }
+          },
+          "round_vases": {
+            "vases_ronds1": {
+              "title": "Vase rond 1",
+              "mobile_title": "VR1",
+              "alt": "Vase rond en grès pour intérieur ou jardin"
+            },
+            "vases_ronds2": {
+              "title": "Vase rond 2",
+              "mobile_title": "VR2",
+              "alt": "Vase rond en grès pour intérieur ou jardin"
+            },
+            "vases_ronds3": {
+              "title": "Vase rond 3",
+              "mobile_title": "VR3",
+              "alt": "Vase rond en grès pour intérieur ou jardin"
+            },
+            "vases_ronds4": {
+              "title": "Vase rond 4",
+              "mobile_title": "VR4",
+              "alt": "Vase rond en grès pour intérieur ou jardin"
+            },
+            "vases_ronds5": {
+              "title": "Vase rond 5",
+              "mobile_title": "VR5",
+              "alt": "Vase rond en grès pour intérieur ou jardin"
+            },
+            "vases_ronds6": {
+              "title": "Vase rond 6",
+              "mobile_title": "VR6",
+              "alt": "Vase rond en grès pour intérieur ou jardin"
+            }
+          }
+        },
         "various_objects": {
           "boite1": {
             "title": "Boîte 1",
@@ -761,6 +932,9 @@
     "various_objects": "Objets divers",
     "person": "Personnages",
     "vases_and_pots": "Vases et pots",
+    "intuitive_pots": "Pots intuitifs",
+    "single_flower_vases": "Soliflores",
+    "round_vases": "Vases ronds",
     "christmas": "Noël",
     "easter": "Pâques",
     "flowers": "Fleurs",

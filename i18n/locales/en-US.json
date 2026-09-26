@@ -88,6 +88,14 @@
           "title": "Stoneware - electric kiln - Nature",
           "subtitle": "Decorative flowers, for indoor and/or outdoor use"
         },
+        "vases_and_pots": {
+          "tab_name": "Stoneware - electric kiln - Vases and pots",
+          "meta": {
+            "content": "Gallery of stoneware vases and pots by Véronique Berthier, practical decorative pieces to enhance both the home and garden."
+          },
+          "title": "Stoneware - electric kiln - Vases and pots",
+          "subtitle": "Ceramic pots and vases for indoor and garden spaces"
+        },
         "various_objects": {
           "tab_name": "Stoneware - electric kiln - Various objects",
           "meta": {
@@ -551,6 +559,169 @@
             "alt": "Decorative flowers, for indoor and/or outdoor use"
           }
         },
+        "vases_and_pots": {
+          "intuitive_pots": {
+            "pots_intuitifs1": {
+              "title": "Intuitive pot 1",
+              "mobile_title": "IP1",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs2": {
+              "title": "Intuitive pot 2",
+              "mobile_title": "IP2",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs3": {
+              "title": "Intuitive pot 3",
+              "mobile_title": "IP3",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs4": {
+              "title": "Intuitive pot 4",
+              "mobile_title": "IP4",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs5": {
+              "title": "Intuitive pot 5",
+              "mobile_title": "IP5",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs6": {
+              "title": "Intuitive pot 6",
+              "mobile_title": "IP6",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs7": {
+              "title": "Intuitive pot 7",
+              "mobile_title": "IP7",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs8": {
+              "title": "Intuitive pot 8",
+              "mobile_title": "IP8",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs9": {
+              "title": "Intuitive pot 9",
+              "mobile_title": "IP9",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs10": {
+              "title": "Intuitive pot 10",
+              "mobile_title": "IP10",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs11": {
+              "title": "Intuitive pot 11",
+              "mobile_title": "IP11",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs12": {
+              "title": "Intuitive pot 12",
+              "mobile_title": "IP12",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs13": {
+              "title": "Intuitive pot 13",
+              "mobile_title": "IP13",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs14": {
+              "title": "Intuitive pot 14",
+              "mobile_title": "IP14",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs15": {
+              "title": "Intuitive pot 15",
+              "mobile_title": "IP15",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            }
+          },
+          "single_flower_vases": {
+            "soliflores1": {
+              "title": "Single-flower vase 1",
+              "mobile_title": "SFV1",
+              "alt": "Stoneware single-flower vase to showcase one flower"
+            },
+            "soliflores2": {
+              "title": "Single-flower vase 2",
+              "mobile_title": "SFV2",
+              "alt": "Stoneware single-flower vase to showcase one flower"
+            },
+            "soliflores3": {
+              "title": "Single-flower vase 3",
+              "mobile_title": "SFV3",
+              "alt": "Stoneware single-flower vase to showcase one flower"
+            },
+            "soliflores4": {
+              "title": "Single-flower vase 4",
+              "mobile_title": "SFV4",
+              "alt": "Stoneware single-flower vase to showcase one flower"
+            },
+            "soliflores5": {
+              "title": "Single-flower vase 5",
+              "mobile_title": "SFV5",
+              "alt": "Stoneware single-flower vase to showcase one flower"
+            },
+            "soliflores6": {
+              "title": "Single-flower vase 6",
+              "mobile_title": "SFV6",
+              "alt": "Stoneware single-flower vase to showcase one flower"
+            },
+            "soliflores7": {
+              "title": "Single-flower vase 7",
+              "mobile_title": "SFV7",
+              "alt": "Stoneware single-flower vase to showcase one flower"
+            },
+            "soliflores8": {
+              "title": "Single-flower vase 8",
+              "mobile_title": "SFV8",
+              "alt": "Stoneware single-flower vase to showcase one flower"
+            },
+            "soliflores9": {
+              "title": "Single-flower vase 9",
+              "mobile_title": "SFV9",
+              "alt": "Stoneware single-flower vase to showcase one flower"
+            },
+            "soliflores10": {
+              "title": "Single-flower vase 10",
+              "mobile_title": "SFV10",
+              "alt": "Stoneware single-flower vase to showcase one flower"
+            }
+          },
+          "round_vases": {
+            "vases_ronds1": {
+              "title": "Round vase 1",
+              "mobile_title": "RV1",
+              "alt": "Round stoneware vase for indoor or outdoor use"
+            },
+            "vases_ronds2": {
+              "title": "Round vase 2",
+              "mobile_title": "RV2",
+              "alt": "Round stoneware vase for indoor or outdoor use"
+            },
+            "vases_ronds3": {
+              "title": "Round vase 3",
+              "mobile_title": "RV3",
+              "alt": "Round stoneware vase for indoor or outdoor use"
+            },
+            "vases_ronds4": {
+              "title": "Round vase 4",
+              "mobile_title": "RV4",
+              "alt": "Round stoneware vase for indoor or outdoor use"
+            },
+            "vases_ronds5": {
+              "title": "Round vase 5",
+              "mobile_title": "RV5",
+              "alt": "Round stoneware vase for indoor or outdoor use"
+            },
+            "vases_ronds6": {
+              "title": "Round vase 6",
+              "mobile_title": "RV6",
+              "alt": "Round stoneware vase for indoor or outdoor use"
+            }
+          }
+        },
         "various_objects": {
           "boite1": {
             "title": "Box 1",
@@ -761,6 +932,9 @@
     "various_objects": "Various objects",
     "person": "Person",
     "vases_and_pots": "Vases and pots",
+    "intuitive_pots": "Intuitive pots",
+    "single_flower_vases": "Single-flower vases",
+    "round_vases": "Round vases",
     "christmas": "Christmas",
     "easter": "Easter",
     "flowers": "Flowers",

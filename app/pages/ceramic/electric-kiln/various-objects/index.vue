@@ -143,9 +143,9 @@ const images: ImageSource[] = imageEntries.map(([filename, imageKey]) => ({
 }))
 
 const previousPage = {
-  path: '/wip',
-  title: t('wip.next_page_name'),
-  description: t('wip.next_page_description'),
+  path: '/ceramic/electric-kiln/vases-and-pots',
+  title: t('pages.ceramic.electric_kiln.vases_and_pots.tab_name'),
+  description: t('pages.ceramic.electric_kiln.vases_and_pots.subtitle'),
 }
 
 const nextPage = {
