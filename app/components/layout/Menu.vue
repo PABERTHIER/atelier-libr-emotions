@@ -255,7 +255,10 @@ const sections = ref([
             text: computed(() => t('miscellaneous.nature')),
             url: '/ceramic/electric-kiln/nature',
           },
-          { text: computed(() => t('miscellaneous.animals')), url: '/wip' },
+          {
+            text: computed(() => t('miscellaneous.animals')),
+            url: '/ceramic/electric-kiln/animals',
+          },
           { text: computed(() => t('miscellaneous.person')), url: '/wip' },
           {
             text: computed(() => t('miscellaneous.vases_and_pots')),

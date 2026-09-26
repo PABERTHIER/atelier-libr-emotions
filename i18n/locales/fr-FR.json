@@ -88,6 +88,14 @@
           "title": "Grès - four électrique - Nature",
           "subtitle": "Fleurs décoratives, pour intérieur et/ou extérieur"
         },
+        "animals": {
+          "tab_name": "Grès - four électrique - Animaux",
+          "meta": {
+            "content": "Galerie d'animaux en grès de Véronique Berthier, cuits au four électrique et modelés avec réalisme ou poésie pour une décoration élégante."
+          },
+          "title": "Grès - four électrique - Animaux",
+          "subtitle": "Des animaux apportant une touche de poésie et d'élégance"
+        },
         "vases_and_pots": {
           "tab_name": "Grès - four électrique - Vases et pots",
           "meta": {
@@ -559,6 +567,241 @@
             "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
           }
         },
+        "animals": {
+          "cats": {
+            "cats1": {
+              "title": "Chat en grès 1",
+              "mobile_title": "Chat1",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats2": {
+              "title": "Chat en grès 2",
+              "mobile_title": "Chat2",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats3": {
+              "title": "Chat en grès 3",
+              "mobile_title": "Chat3",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats4": {
+              "title": "Chat en grès 4",
+              "mobile_title": "Chat4",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats5": {
+              "title": "Chat en grès 5",
+              "mobile_title": "Chat5",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats6": {
+              "title": "Chat en grès 6",
+              "mobile_title": "Chat6",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats7": {
+              "title": "Chat en grès 7",
+              "mobile_title": "Chat7",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats8": {
+              "title": "Chat en grès 8",
+              "mobile_title": "Chat8",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats9": {
+              "title": "Chat en grès 9",
+              "mobile_title": "Chat9",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats10": {
+              "title": "Chat en grès 10",
+              "mobile_title": "Chat10",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats11": {
+              "title": "Chat en grès 11",
+              "mobile_title": "Chat11",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats12": {
+              "title": "Chat en grès 12",
+              "mobile_title": "Chat12",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats13": {
+              "title": "Chat en grès 13",
+              "mobile_title": "Chat13",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats14": {
+              "title": "Chat en grès 14",
+              "mobile_title": "Chat14",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats15": {
+              "title": "Chat en grès 15",
+              "mobile_title": "Chat15",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            }
+          },
+          "snails": {
+            "snails1": {
+              "title": "Escargot en grès 1",
+              "mobile_title": "Esc1",
+              "alt": "Escargot décoratif en grès, réaliste ou stylisé"
+            },
+            "snails2": {
+              "title": "Escargot en grès 2",
+              "mobile_title": "Esc2",
+              "alt": "Escargot décoratif en grès, réaliste ou stylisé"
+            },
+            "snails3": {
+              "title": "Escargot en grès 3",
+              "mobile_title": "Esc3",
+              "alt": "Escargot décoratif en grès, réaliste ou stylisé"
+            },
+            "snails4": {
+              "title": "Escargot en grès 4",
+              "mobile_title": "Esc4",
+              "alt": "Escargot décoratif en grès, réaliste ou stylisé"
+            },
+            "snails5": {
+              "title": "Escargot en grès 5",
+              "mobile_title": "Esc5",
+              "alt": "Escargot décoratif en grès, réaliste ou stylisé"
+            },
+            "snails6": {
+              "title": "Escargot en grès 6",
+              "mobile_title": "Esc6",
+              "alt": "Escargot décoratif en grès, réaliste ou stylisé"
+            },
+            "snails7": {
+              "title": "Escargot en grès 7",
+              "mobile_title": "Esc7",
+              "alt": "Escargot décoratif en grès, réaliste ou stylisé"
+            },
+            "snails8": {
+              "title": "Escargot en grès 8",
+              "mobile_title": "Esc8",
+              "alt": "Escargot décoratif en grès, réaliste ou stylisé"
+            }
+          },
+          "birds": {
+            "birds1": {
+              "title": "Oiseau en grès 1",
+              "mobile_title": "Ois1",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds2": {
+              "title": "Oiseau en grès 2",
+              "mobile_title": "Ois2",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds3": {
+              "title": "Oiseau en grès 3",
+              "mobile_title": "Ois3",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds4": {
+              "title": "Oiseau en grès 4",
+              "mobile_title": "Ois4",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds5": {
+              "title": "Oiseau en grès 5",
+              "mobile_title": "Ois5",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds6": {
+              "title": "Oiseau en grès 6",
+              "mobile_title": "Ois6",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds7": {
+              "title": "Oiseau en grès 7",
+              "mobile_title": "Ois7",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds8": {
+              "title": "Oiseau en grès 8",
+              "mobile_title": "Ois8",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds9": {
+              "title": "Oiseau en grès 9",
+              "mobile_title": "Ois9",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds10": {
+              "title": "Oiseau en grès 10",
+              "mobile_title": "Ois10",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds11": {
+              "title": "Oiseau en grès 11",
+              "mobile_title": "Ois11",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds12": {
+              "title": "Oiseau en grès 12",
+              "mobile_title": "Ois12",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds13": {
+              "title": "Oiseau en grès 13",
+              "mobile_title": "Ois13",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds14": {
+              "title": "Oiseau en grès 14",
+              "mobile_title": "Ois14",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            }
+          },
+          "tortoises": {
+            "tortoises1": {
+              "title": "Tortue en grès 1",
+              "mobile_title": "Tort1",
+              "alt": "Tortue décorative en grès, réaliste ou stylisée"
+            },
+            "tortoises2": {
+              "title": "Tortue en grès 2",
+              "mobile_title": "Tort2",
+              "alt": "Tortue décorative en grès, réaliste ou stylisée"
+            },
+            "tortoises3": {
+              "title": "Tortue en grès 3",
+              "mobile_title": "Tort3",
+              "alt": "Tortue décorative en grès, réaliste ou stylisée"
+            },
+            "tortoises4": {
+              "title": "Tortue en grès 4",
+              "mobile_title": "Tort4",
+              "alt": "Tortue décorative en grès, réaliste ou stylisée"
+            },
+            "tortoises5": {
+              "title": "Tortue en grès 5",
+              "mobile_title": "Tort5",
+              "alt": "Tortue décorative en grès, réaliste ou stylisée"
+            },
+            "tortoises6": {
+              "title": "Tortue en grès 6",
+              "mobile_title": "Tort6",
+              "alt": "Tortue décorative en grès, réaliste ou stylisée"
+            },
+            "tortoises7": {
+              "title": "Tortue en grès 7",
+              "mobile_title": "Tort7",
+              "alt": "Tortue décorative en grès, réaliste ou stylisée"
+            },
+            "tortoises8": {
+              "title": "Tortue en grès 8",
+              "mobile_title": "Tort8",
+              "alt": "Tortue décorative en grès, réaliste ou stylisée"
+            }
+          }
+        },
         "vases_and_pots": {
           "intuitive_pots": {
             "pots_intuitifs1": {
@@ -926,6 +1169,10 @@
     "water_jet": "Jeu d'eau",
     "nudes": "Nus",
     "animals": "Animaux",
+    "cats": "Chats",
+    "snails": "Escargots",
+    "birds": "Oiseaux",
+    "tortoises": "Tortues",
     "haphazardly": "Pêle-Mêle",
     "mish_mash": "Méli-Mélo",
     "automatic_painting": "Peinture Automatique",

@@ -88,6 +88,14 @@
           "title": "Stoneware - electric kiln - Nature",
           "subtitle": "Decorative flowers, for indoor and/or outdoor use"
         },
+        "animals": {
+          "tab_name": "Stoneware - electric kiln - Animals",
+          "meta": {
+            "content": "Gallery of stoneware animals by Véronique Berthier, electric-kiln fired and shaped with realism or poetry for elegant interiors."
+          },
+          "title": "Stoneware - electric kiln - Animals",
+          "subtitle": "Animals bringing a touch of poetry and elegance"
+        },
         "vases_and_pots": {
           "tab_name": "Stoneware - electric kiln - Vases and pots",
           "meta": {
@@ -559,6 +567,241 @@
             "alt": "Decorative flowers, for indoor and/or outdoor use"
           }
         },
+        "animals": {
+          "cats": {
+            "cats1": {
+              "title": "Stoneware cat 1",
+              "mobile_title": "Cat1",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats2": {
+              "title": "Stoneware cat 2",
+              "mobile_title": "Cat2",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats3": {
+              "title": "Stoneware cat 3",
+              "mobile_title": "Cat3",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats4": {
+              "title": "Stoneware cat 4",
+              "mobile_title": "Cat4",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats5": {
+              "title": "Stoneware cat 5",
+              "mobile_title": "Cat5",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats6": {
+              "title": "Stoneware cat 6",
+              "mobile_title": "Cat6",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats7": {
+              "title": "Stoneware cat 7",
+              "mobile_title": "Cat7",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats8": {
+              "title": "Stoneware cat 8",
+              "mobile_title": "Cat8",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats9": {
+              "title": "Stoneware cat 9",
+              "mobile_title": "Cat9",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats10": {
+              "title": "Stoneware cat 10",
+              "mobile_title": "Cat10",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats11": {
+              "title": "Stoneware cat 11",
+              "mobile_title": "Cat11",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats12": {
+              "title": "Stoneware cat 12",
+              "mobile_title": "Cat12",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats13": {
+              "title": "Stoneware cat 13",
+              "mobile_title": "Cat13",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats14": {
+              "title": "Stoneware cat 14",
+              "mobile_title": "Cat14",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats15": {
+              "title": "Stoneware cat 15",
+              "mobile_title": "Cat15",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            }
+          },
+          "snails": {
+            "snails1": {
+              "title": "Stoneware snail 1",
+              "mobile_title": "Snail1",
+              "alt": "Decorative stoneware snail, realistic or stylized"
+            },
+            "snails2": {
+              "title": "Stoneware snail 2",
+              "mobile_title": "Snail2",
+              "alt": "Decorative stoneware snail, realistic or stylized"
+            },
+            "snails3": {
+              "title": "Stoneware snail 3",
+              "mobile_title": "Snail3",
+              "alt": "Decorative stoneware snail, realistic or stylized"
+            },
+            "snails4": {
+              "title": "Stoneware snail 4",
+              "mobile_title": "Snail4",
+              "alt": "Decorative stoneware snail, realistic or stylized"
+            },
+            "snails5": {
+              "title": "Stoneware snail 5",
+              "mobile_title": "Snail5",
+              "alt": "Decorative stoneware snail, realistic or stylized"
+            },
+            "snails6": {
+              "title": "Stoneware snail 6",
+              "mobile_title": "Snail6",
+              "alt": "Decorative stoneware snail, realistic or stylized"
+            },
+            "snails7": {
+              "title": "Stoneware snail 7",
+              "mobile_title": "Snail7",
+              "alt": "Decorative stoneware snail, realistic or stylized"
+            },
+            "snails8": {
+              "title": "Stoneware snail 8",
+              "mobile_title": "Snail8",
+              "alt": "Decorative stoneware snail, realistic or stylized"
+            }
+          },
+          "birds": {
+            "birds1": {
+              "title": "Stoneware bird 1",
+              "mobile_title": "Bird1",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds2": {
+              "title": "Stoneware bird 2",
+              "mobile_title": "Bird2",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds3": {
+              "title": "Stoneware bird 3",
+              "mobile_title": "Bird3",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds4": {
+              "title": "Stoneware bird 4",
+              "mobile_title": "Bird4",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds5": {
+              "title": "Stoneware bird 5",
+              "mobile_title": "Bird5",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds6": {
+              "title": "Stoneware bird 6",
+              "mobile_title": "Bird6",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds7": {
+              "title": "Stoneware bird 7",
+              "mobile_title": "Bird7",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds8": {
+              "title": "Stoneware bird 8",
+              "mobile_title": "Bird8",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds9": {
+              "title": "Stoneware bird 9",
+              "mobile_title": "Bird9",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds10": {
+              "title": "Stoneware bird 10",
+              "mobile_title": "Bird10",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds11": {
+              "title": "Stoneware bird 11",
+              "mobile_title": "Bird11",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds12": {
+              "title": "Stoneware bird 12",
+              "mobile_title": "Bird12",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds13": {
+              "title": "Stoneware bird 13",
+              "mobile_title": "Bird13",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds14": {
+              "title": "Stoneware bird 14",
+              "mobile_title": "Bird14",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            }
+          },
+          "tortoises": {
+            "tortoises1": {
+              "title": "Stoneware tortoise 1",
+              "mobile_title": "Tort1",
+              "alt": "Decorative stoneware tortoise, realistic or stylized"
+            },
+            "tortoises2": {
+              "title": "Stoneware tortoise 2",
+              "mobile_title": "Tort2",
+              "alt": "Decorative stoneware tortoise, realistic or stylized"
+            },
+            "tortoises3": {
+              "title": "Stoneware tortoise 3",
+              "mobile_title": "Tort3",
+              "alt": "Decorative stoneware tortoise, realistic or stylized"
+            },
+            "tortoises4": {
+              "title": "Stoneware tortoise 4",
+              "mobile_title": "Tort4",
+              "alt": "Decorative stoneware tortoise, realistic or stylized"
+            },
+            "tortoises5": {
+              "title": "Stoneware tortoise 5",
+              "mobile_title": "Tort5",
+              "alt": "Decorative stoneware tortoise, realistic or stylized"
+            },
+            "tortoises6": {
+              "title": "Stoneware tortoise 6",
+              "mobile_title": "Tort6",
+              "alt": "Decorative stoneware tortoise, realistic or stylized"
+            },
+            "tortoises7": {
+              "title": "Stoneware tortoise 7",
+              "mobile_title": "Tort7",
+              "alt": "Decorative stoneware tortoise, realistic or stylized"
+            },
+            "tortoises8": {
+              "title": "Stoneware tortoise 8",
+              "mobile_title": "Tort8",
+              "alt": "Decorative stoneware tortoise, realistic or stylized"
+            }
+          }
+        },
         "vases_and_pots": {
           "intuitive_pots": {
             "pots_intuitifs1": {
@@ -926,6 +1169,10 @@
     "water_jet": "Water jet",
     "nudes": "Nudes",
     "animals": "Animals",
+    "cats": "Cats",
+    "snails": "Snails",
+    "birds": "Birds",
+    "tortoises": "Tortoises",
     "haphazardly": "Haphazardly",
     "mish_mash": "Mish-Mash",
     "automatic_painting": "Automatic Painting",

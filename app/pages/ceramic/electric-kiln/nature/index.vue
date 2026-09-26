@@ -229,9 +229,9 @@ const previousPage = {
 }
 
 const nextPage = {
-  path: '/wip',
-  title: t('wip.next_page_name'),
-  description: t('wip.next_page_description'),
+  path: '/ceramic/electric-kiln/animals',
+  title: t('pages.ceramic.electric_kiln.animals.tab_name'),
+  description: t('pages.ceramic.electric_kiln.animals.subtitle'),
 }
 </script>
 
