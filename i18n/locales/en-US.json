@@ -87,6 +87,14 @@
           },
           "title": "Stoneware - electric kiln - Nature",
           "subtitle": "Decorative flowers, for indoor and/or outdoor use"
+        },
+        "various_objects": {
+          "tab_name": "Stoneware - electric kiln - Various objects",
+          "meta": {
+            "content": "Gallery of stoneware boxes by Véronique Berthier, made in an electric kiln with coloured clays, varied techniques and natural elements."
+          },
+          "title": "Stoneware - electric kiln - Various objects",
+          "subtitle": "Decorative objects made with clays in different colours"
         }
       },
       "porcelain": {
@@ -542,6 +550,88 @@
             "mobile_title": "LF7",
             "alt": "Decorative flowers, for indoor and/or outdoor use"
           }
+        },
+        "various_objects": {
+          "boite1": {
+            "title": "Box 1",
+            "mobile_title": "Box1",
+            "alt": "Decorative stoneware box made with coloured clays"
+          },
+          "boite2": {
+            "title": "Box 2",
+            "mobile_title": "Box2",
+            "alt": "Decorative stoneware box made with coloured clays"
+          },
+          "boite3": {
+            "title": "Box 3",
+            "mobile_title": "Box3",
+            "alt": "Decorative stoneware box made with coloured clays"
+          },
+          "boite4": {
+            "title": "Box 4",
+            "mobile_title": "Box4",
+            "alt": "Decorative stoneware box made with coloured clays"
+          },
+          "boite5": {
+            "title": "Box 5",
+            "mobile_title": "Box5",
+            "alt": "Decorative stoneware box made with coloured clays"
+          },
+          "boite6": {
+            "title": "Box 6",
+            "mobile_title": "Box6",
+            "alt": "Decorative stoneware box made with coloured clays"
+          },
+          "boite7": {
+            "title": "Box 7",
+            "mobile_title": "Box7",
+            "alt": "Decorative stoneware box made with coloured clays"
+          },
+          "boite8": {
+            "title": "Box 8",
+            "mobile_title": "Box8",
+            "alt": "Decorative stoneware box made with coloured clays"
+          },
+          "boite9": {
+            "title": "Box 9",
+            "mobile_title": "Box9",
+            "alt": "Decorative stoneware box made with coloured clays"
+          },
+          "boite_oeuf": {
+            "title": "Egg-shaped box",
+            "mobile_title": "EggBox",
+            "alt": "Stoneware box inspired by the shape of an egg"
+          },
+          "sgraffitto1": {
+            "title": "Sgraffito box 1",
+            "mobile_title": "Sgraffitto1",
+            "alt": "Decorative stoneware box decorated with Sgraffitto"
+          },
+          "sgraffitto2": {
+            "title": "Sgraffito box 2",
+            "mobile_title": "Sgraffitto2",
+            "alt": "Decorative stoneware box decorated with Sgraffitto"
+          },
+          "sgraffitto3": {
+            "title": "Sgraffito box 3",
+            "mobile_title": "Sgraffitto3",
+            "alt": "Decorative stoneware box decorated with Sgraffitto"
+          },
+          "sgraffitto4": {
+            "title": "Sgraffito box 4",
+            "mobile_title": "Sgraffitto4",
+            "alt": "Decorative stoneware box decorated with Sgraffitto"
+          },
+          "sgraffitto5": {
+            "title": "Sgraffito box 5",
+            "mobile_title": "Sgraffitto5",
+            "alt": "Decorative stoneware box decorated with Sgraffitto"
+          },
+          "sgraffitto6": {
+            "title": "Sgraffito box 6",
+            "mobile_title": "Sgraffitto6",
+            "alt": "Decorative stoneware box decorated with Sgraffitto"
+          }
         }
       },
       "porcelain": {
@@ -674,6 +764,7 @@
     "christmas": "Christmas",
     "easter": "Easter",
     "flowers": "Flowers",
+    "boxes": "Boxes",
     "candle_holders": "Candle holders",
     "before_after": "Before and after",
     "ceramics_in_context": "Ceramics in context",

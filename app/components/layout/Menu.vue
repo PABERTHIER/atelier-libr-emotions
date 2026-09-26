@@ -263,7 +263,7 @@ const sections = ref([
           },
           {
             text: computed(() => t('miscellaneous.various_objects')),
-            url: '/wip',
+            url: '/ceramic/electric-kiln/various-objects',
           },
           { text: computed(() => t('miscellaneous.easter')), url: '/wip' },
           { text: computed(() => t('miscellaneous.christmas')), url: '/wip' },

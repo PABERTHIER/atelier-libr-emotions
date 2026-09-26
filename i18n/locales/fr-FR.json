@@ -87,6 +87,14 @@
           },
           "title": "Grès - four électrique - Nature",
           "subtitle": "Fleurs décoratives, pour intérieur et/ou extérieur"
+        },
+        "various_objects": {
+          "tab_name": "Grès - four électrique - Objets divers",
+          "meta": {
+            "content": "Galerie de boîtes en grès de Véronique Berthier, créées au four électrique avec des terres colorées, des techniques variées et des éléments naturels."
+          },
+          "title": "Grès - four électrique - Objets divers",
+          "subtitle": "Objets de décoration, créés avec des terres de différentes couleurs"
         }
       },
       "porcelain": {
@@ -542,6 +550,88 @@
             "mobile_title": "GF7",
             "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
           }
+        },
+        "various_objects": {
+          "boite1": {
+            "title": "Boîte 1",
+            "mobile_title": "Boîte1",
+            "alt": "Boîte décorative en grès aux terres colorées"
+          },
+          "boite2": {
+            "title": "Boîte 2",
+            "mobile_title": "Boîte2",
+            "alt": "Boîte décorative en grès aux terres colorées"
+          },
+          "boite3": {
+            "title": "Boîte 3",
+            "mobile_title": "Boîte3",
+            "alt": "Boîte décorative en grès aux terres colorées"
+          },
+          "boite4": {
+            "title": "Boîte 4",
+            "mobile_title": "Boîte4",
+            "alt": "Boîte décorative en grès aux terres colorées"
+          },
+          "boite5": {
+            "title": "Boîte 5",
+            "mobile_title": "Boîte5",
+            "alt": "Boîte décorative en grès aux terres colorées"
+          },
+          "boite6": {
+            "title": "Boîte 6",
+            "mobile_title": "Boîte6",
+            "alt": "Boîte décorative en grès aux terres colorées"
+          },
+          "boite7": {
+            "title": "Boîte 7",
+            "mobile_title": "Boîte7",
+            "alt": "Boîte décorative en grès aux terres colorées"
+          },
+          "boite8": {
+            "title": "Boîte 8",
+            "mobile_title": "Boîte8",
+            "alt": "Boîte décorative en grès aux terres colorées"
+          },
+          "boite9": {
+            "title": "Boîte 9",
+            "mobile_title": "Boîte9",
+            "alt": "Boîte décorative en grès aux terres colorées"
+          },
+          "boite_oeuf": {
+            "title": "Boîte œuf",
+            "mobile_title": "BoîteOeuf",
+            "alt": "Boîte en grès inspirée de la forme d'un œuf"
+          },
+          "sgraffitto1": {
+            "title": "Boîte Sgraffitto 1",
+            "mobile_title": "Sgraffitto1",
+            "alt": "Boîte décorative en grès ornée de Sgraffitto"
+          },
+          "sgraffitto2": {
+            "title": "Boîte Sgraffitto 2",
+            "mobile_title": "Sgraffitto2",
+            "alt": "Boîte décorative en grès ornée de Sgraffitto"
+          },
+          "sgraffitto3": {
+            "title": "Boîte Sgraffitto 3",
+            "mobile_title": "Sgraffitto3",
+            "alt": "Boîte décorative en grès ornée de Sgraffitto"
+          },
+          "sgraffitto4": {
+            "title": "Boîte Sgraffitto 4",
+            "mobile_title": "Sgraffitto4",
+            "alt": "Boîte décorative en grès ornée de Sgraffitto"
+          },
+          "sgraffitto5": {
+            "title": "Boîte Sgraffitto 5",
+            "mobile_title": "Sgraffitto5",
+            "alt": "Boîte décorative en grès ornée de Sgraffitto"
+          },
+          "sgraffitto6": {
+            "title": "Boîte Sgraffitto 6",
+            "mobile_title": "Sgraffitto6",
+            "alt": "Boîte décorative en grès ornée de Sgraffitto"
+          }
         }
       },
       "porcelain": {
@@ -674,6 +764,7 @@
     "christmas": "Noël",
     "easter": "Pâques",
     "flowers": "Fleurs",
+    "boxes": "Boîtes",
     "candle_holders": "Photophores",
     "before_after": "Avant-après",
     "ceramics_in_context": "Céramiques en situation",
