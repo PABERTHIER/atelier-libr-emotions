@@ -135,7 +135,7 @@
       "objective_2": "Explore a means of expression other than words (which may come later), let your emotions emerge, free your creativity, sometimes give form to buried memories,...",
       "objective_3": "Realize that we all have fabulous creative potential and give ourselves the opportunity to express it.",
       "objective_4": "Search, discover, welcome, journey, progress, reveal yourself by gaining self-confidence and self-love, achieve fulfillment, move towards a better well-being, reveal yourself, open up to others.",
-      "objective_5": "Set up different exhibition projects (which allows those who wish to exhibit, to promote their work and themselves at the same time).",
+      "objective_5": "Set up different exhibition projects, which allows those who wish to exchange and talk about their creations.",
       "professional_objectives_title": "Professional objectives",
       "professional_objective_1": "Show my work in order to exchange impressions and feelings... because whilst working with materials is my way of expressing my emotions, exhibiting allows me to connect with visitors, another enriching, fulfilling, and very rewarding experience. I touch the material, and if I also touch people, it's a double win!",
       "professional_objective_2": "Sell my creations."
@@ -194,8 +194,8 @@
       "title": "Contact me",
       "subtitle": "Gestures, colours, shapes and textures, it's an adventure! I invite you to share your feelings.",
       "image": {
-        "title": "Some paintings...",
-        "alt": "Some paintings..."
+        "title": "Some creations...",
+        "alt": "Some creations..."
       },
       "connect_me": "Connect with me",
       "ready": "Ready to bring art into your space?",
@@ -579,6 +579,7 @@
     "candle_holders": "Candle holders",
     "before_after": "Before and after",
     "ceramics_in_context": "Ceramics in context",
+    "raku_firing": "Raku firing",
     "first_creations": "First creations",
     "quick_work": "Quick work",
     "collective_work": "Collective work",
@@ -594,6 +595,7 @@
     "painting_while_dancing": "Painting while dancing",
     "performances": "Performances",
     "life_is_love": "Life is Love",
+    "collaborative_painting": "4 hands painting",
     "the_artist": "The Artist",
     "artist": "Artist",
     "about_myself": "About myself",
