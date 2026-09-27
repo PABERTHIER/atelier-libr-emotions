@@ -481,90 +481,149 @@
     "ceramics": {
       "electric_kiln": {
         "nature": {
-          "f1": {
-            "title": "Diverses fleurs 1",
-            "mobile_title": "F1",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          "flowers": {
+            "f1": {
+              "title": "Diverses fleurs 1",
+              "mobile_title": "F1",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "f2": {
+              "title": "Diverses fleurs 2",
+              "mobile_title": "F2",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "f3": {
+              "title": "Diverses fleurs 3",
+              "mobile_title": "F3",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "f4": {
+              "title": "Diverses fleurs 4",
+              "mobile_title": "F4",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "f5": {
+              "title": "Diverses fleurs 5",
+              "mobile_title": "F5",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "f6": {
+              "title": "Diverses fleurs 6",
+              "mobile_title": "F6",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "f7": {
+              "title": "Diverses fleurs 7",
+              "mobile_title": "F7",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "f8": {
+              "title": "Diverses fleurs 8",
+              "mobile_title": "F8",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "f9": {
+              "title": "Diverses fleurs 9",
+              "mobile_title": "F9",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "f10": {
+              "title": "Diverses fleurs 10",
+              "mobile_title": "F10",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "gf1": {
+              "title": "Grosses fleurs 1",
+              "mobile_title": "GF1",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "gf2": {
+              "title": "Grosses fleurs 2",
+              "mobile_title": "GF2",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "gf3": {
+              "title": "Grosses fleurs 3",
+              "mobile_title": "GF3",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "gf4": {
+              "title": "Grosses fleurs 4",
+              "mobile_title": "GF4",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "gf5": {
+              "title": "Grosses fleurs 5",
+              "mobile_title": "GF5",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "gf6": {
+              "title": "Grosses fleurs 6",
+              "mobile_title": "GF6",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "gf7": {
+              "title": "Grosses fleurs 7",
+              "mobile_title": "GF7",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            }
           },
-          "f2": {
-            "title": "Diverses fleurs 2",
-            "mobile_title": "F2",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
-          },
-          "f3": {
-            "title": "Diverses fleurs 3",
-            "mobile_title": "F3",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
-          },
-          "f4": {
-            "title": "Diverses fleurs 4",
-            "mobile_title": "F4",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
-          },
-          "f5": {
-            "title": "Diverses fleurs 5",
-            "mobile_title": "F5",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
-          },
-          "f6": {
-            "title": "Diverses fleurs 6",
-            "mobile_title": "F6",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
-          },
-          "f7": {
-            "title": "Diverses fleurs 7",
-            "mobile_title": "F7",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
-          },
-          "f8": {
-            "title": "Diverses fleurs 8",
-            "mobile_title": "F8",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
-          },
-          "f9": {
-            "title": "Diverses fleurs 9",
-            "mobile_title": "F9",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
-          },
-          "f10": {
-            "title": "Diverses fleurs 10",
-            "mobile_title": "F10",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
-          },
-          "gf1": {
-            "title": "Grosses fleurs 1",
-            "mobile_title": "GF1",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
-          },
-          "gf2": {
-            "title": "Grosses fleurs 2",
-            "mobile_title": "GF2",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
-          },
-          "gf3": {
-            "title": "Grosses fleurs 3",
-            "mobile_title": "GF3",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
-          },
-          "gf4": {
-            "title": "Grosses fleurs 4",
-            "mobile_title": "GF4",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
-          },
-          "gf5": {
-            "title": "Grosses fleurs 5",
-            "mobile_title": "GF5",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
-          },
-          "gf6": {
-            "title": "Grosses fleurs 6",
-            "mobile_title": "GF6",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
-          },
-          "gf7": {
-            "title": "Grosses fleurs 7",
-            "mobile_title": "GF7",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          "leaves": {
+            "feuilles1": {
+              "title": "Feuille décorative 1",
+              "mobile_title": "Feui1",
+              "alt": "Feuille décorative en grès pour intérieur ou extérieur"
+            },
+            "feuilles2": {
+              "title": "Feuille décorative 2",
+              "mobile_title": "Feui2",
+              "alt": "Feuille décorative en grès pour intérieur ou extérieur"
+            },
+            "feuilles3": {
+              "title": "Feuille décorative 3",
+              "mobile_title": "Feui3",
+              "alt": "Feuille décorative en grès pour intérieur ou extérieur"
+            },
+            "feuilles4": {
+              "title": "Feuille décorative 4",
+              "mobile_title": "Feui4",
+              "alt": "Feuille décorative en grès pour intérieur ou extérieur"
+            },
+            "feuilles5": {
+              "title": "Feuille décorative 5",
+              "mobile_title": "Feui5",
+              "alt": "Feuille décorative en grès pour intérieur ou extérieur"
+            },
+            "feuilles6": {
+              "title": "Feuille décorative 6",
+              "mobile_title": "Feui6",
+              "alt": "Feuille décorative en grès pour intérieur ou extérieur"
+            },
+            "feuilles7": {
+              "title": "Feuille décorative 7",
+              "mobile_title": "Feui7",
+              "alt": "Feuille décorative en grès pour intérieur ou extérieur"
+            },
+            "feuilles8": {
+              "title": "Feuille décorative 8",
+              "mobile_title": "Feui8",
+              "alt": "Feuille décorative en grès pour intérieur ou extérieur"
+            },
+            "feuilles9": {
+              "title": "Feuille décorative 9",
+              "mobile_title": "Feui9",
+              "alt": "Feuille décorative en grès pour intérieur ou extérieur"
+            },
+            "feuilles10": {
+              "title": "Feuille décorative 10",
+              "mobile_title": "Feui10",
+              "alt": "Feuille décorative en grès pour intérieur ou extérieur"
+            },
+            "feuilles11": {
+              "title": "Feuille décorative 11",
+              "mobile_title": "Feui11",
+              "alt": "Feuille décorative en grès pour intérieur ou extérieur"
+            }
           }
         },
         "animals": {
@@ -1185,6 +1244,7 @@
     "christmas": "Noël",
     "easter": "Pâques",
     "flowers": "Fleurs",
+    "leaves": "Feuilles",
     "boxes": "Boîtes",
     "candle_holders": "Photophores",
     "before_after": "Avant-après",
