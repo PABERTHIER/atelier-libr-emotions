@@ -253,14 +253,6 @@
         "alt": "Peinture à l'huile abstraite - inspiration automnale",
         "meta": "Explorez une peinture d'art abstrait présentant des couleurs automnales vibrantes et des couches texturées, évoquant des sentiments de nature et de changement."
       },
-      "celestial_collision": {
-        "title": "Technique mixte - ambiance astrale",
-        "alt": "Technique mixte - ambiance astrale"
-      },
-      "entangled_echoes": {
-        "title": "Acrylique abstraite - peinture automatique",
-        "alt": "Acrylique abstraite - peinture automatique"
-      },
       "acrylic": {
         "abstracts": {
           "automatic_painting_1": {
@@ -1194,6 +1186,96 @@
             "alt": "Fleur en céramique pour décoration intérieure"
           }
         }
+      }
+    },
+    "carousel": {
+      "celestial_collision": {
+        "title": "Technique mixte - ambiance astrale",
+        "alt": "Composition abstraite aux teintes astrales"
+      },
+      "abstract_autumn": {
+        "title": "Peinture à l'huile abstraite - inspiration automnale",
+        "alt": "Peinture abstraite aux couleurs chaudes de l'automne"
+      },
+      "entangled_echoes": {
+        "title": "Acrylique abstraite - peinture automatique",
+        "alt": "Composition abstraite créée en peinture automatique"
+      },
+      "automatic_painting_2": {
+        "title": "Méli-Mélo animaux",
+        "alt": "Peinture acrylique abstraite aux formes animales"
+      },
+      "ec10": {
+        "title": "Encre de Chine 10",
+        "alt": "Composition expressive réalisée à l'encre de Chine"
+      },
+      "tmn9": {
+        "title": "Technique mixte Nature 9",
+        "alt": "Composition naturelle en peinture mixte"
+      },
+      "cats14": {
+        "title": "Chat en grès 14",
+        "alt": "Chat décoratif en grès"
+      },
+      "snails5": {
+        "title": "Escargot en grès 5",
+        "alt": "Escargot décoratif en grès"
+      },
+      "birds5": {
+        "title": "Oiseau en grès 5",
+        "alt": "Oiseau décoratif en grès"
+      },
+      "tortoises8": {
+        "title": "Tortue en grès 8",
+        "alt": "Tortue décorative en grès"
+      },
+      "f7": {
+        "title": "Fleur en grès 7",
+        "alt": "Fleur décorative en grès"
+      },
+      "feuilles8": {
+        "title": "Feuille décorative 8",
+        "alt": "Feuille décorative en grès"
+      },
+      "sgraffitto4": {
+        "title": "Boîte Sgraffitto 4",
+        "alt": "Boîte décorative en grès ornée de Sgraffitto"
+      },
+      "pots_intuitifs7": {
+        "title": "Pot intuitif 7",
+        "alt": "Pot intuitif en grès"
+      },
+      "soliflores10": {
+        "title": "Soliflore 10",
+        "alt": "Soliflore en grès pour une fleur"
+      },
+      "vases_ronds4": {
+        "title": "Vase rond 4",
+        "alt": "Vase rond en grès"
+      },
+      "fp13": {
+        "title": "Fleur Porcelaine 13",
+        "alt": "Fleur en porcelaine pour décoration"
+      },
+      "ceramic_wip": {
+        "title": "Céramique en préparation",
+        "alt": "Aperçu d'une céramique en cours de création"
+      },
+      "creations": {
+        "title": "Créations artistiques",
+        "alt": "Sélection de créations artistiques"
+      },
+      "nature": {
+        "title": "Au sein de la nature",
+        "alt": "La nature m'inspire"
+      },
+      "my_artistic_approach": {
+        "title": "Démarche artistique",
+        "alt": "Créations illustrant une démarche artistique intuitive"
+      },
+      "my_development": {
+        "title": "Cheminement artistique",
+        "alt": "Créations illustrant un parcours artistique"
       }
     }
   },

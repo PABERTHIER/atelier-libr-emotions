@@ -253,14 +253,6 @@
         "alt": "Abstract oil painting - autumnal inspiration",
         "meta": "Explore an abstract art painting featuring vibrant autumn colors and textured layers, evoking feelings of nature and change."
       },
-      "celestial_collision": {
-        "title": "Mixed technique - astral atmosphere",
-        "alt": "Mixed technique - astral atmosphere"
-      },
-      "entangled_echoes": {
-        "title": "Abstract acrylic - automatic painting",
-        "alt": "Abstract acrylic - automatic painting"
-      },
       "acrylic": {
         "abstracts": {
           "automatic_painting_1": {
@@ -1194,6 +1186,96 @@
             "alt": "Ceramic flower for interior decoration"
           }
         }
+      }
+    },
+    "carousel": {
+      "celestial_collision": {
+        "title": "Mixed technique - astral atmosphere",
+        "alt": "Abstract composition with astral tones"
+      },
+      "abstract_autumn": {
+        "title": "Abstract oil painting - autumnal inspiration",
+        "alt": "Abstract painting in warm autumn colours"
+      },
+      "entangled_echoes": {
+        "title": "Abstract acrylic - automatic painting",
+        "alt": "Abstract composition created with automatic painting"
+      },
+      "automatic_painting_2": {
+        "title": "Mish-Mash animals",
+        "alt": "Abstract acrylic painting with animal forms"
+      },
+      "ec10": {
+        "title": "Indian ink 10",
+        "alt": "Expressive composition created with Indian ink"
+      },
+      "tmn9": {
+        "title": "Mixed technique Nature 9",
+        "alt": "Nature-inspired mixed technique composition"
+      },
+      "cats14": {
+        "title": "Stoneware cat 14",
+        "alt": "Decorative stoneware cat"
+      },
+      "snails5": {
+        "title": "Stoneware snail 5",
+        "alt": "Decorative stoneware snail"
+      },
+      "birds5": {
+        "title": "Stoneware bird 5",
+        "alt": "Decorative stoneware bird"
+      },
+      "tortoises8": {
+        "title": "Stoneware tortoise 8",
+        "alt": "Decorative stoneware tortoise"
+      },
+      "f7": {
+        "title": "Stoneware flower 7",
+        "alt": "Decorative stoneware flower"
+      },
+      "feuilles8": {
+        "title": "Decorative leaf 8",
+        "alt": "Decorative stoneware leaf"
+      },
+      "sgraffitto4": {
+        "title": "Sgraffito box 4",
+        "alt": "Decorative stoneware box with Sgraffito decoration"
+      },
+      "pots_intuitifs7": {
+        "title": "Intuitive pot 7",
+        "alt": "Intuitive stoneware pot"
+      },
+      "soliflores10": {
+        "title": "Single-flower vase 10",
+        "alt": "Stoneware vase for a single flower"
+      },
+      "vases_ronds4": {
+        "title": "Round vase 4",
+        "alt": "Round stoneware vase"
+      },
+      "fp13": {
+        "title": "Porcelain flower 13",
+        "alt": "Porcelain flower for decoration"
+      },
+      "ceramic_wip": {
+        "title": "Ceramic in progress",
+        "alt": "Preview of a ceramic in progress"
+      },
+      "creations": {
+        "title": "Artistic creations",
+        "alt": "Selection of artistic creations"
+      },
+      "nature": {
+        "title": "Within nature",
+        "alt": "Nature inspires me"
+      },
+      "my_artistic_approach": {
+        "title": "Artistic approach",
+        "alt": "Creations illustrating an intuitive artistic approach"
+      },
+      "my_development": {
+        "title": "Artistic journey",
+        "alt": "Creations illustrating an artistic journey"
       }
     }
   },
