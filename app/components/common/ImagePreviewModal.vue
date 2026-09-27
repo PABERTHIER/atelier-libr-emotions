@@ -427,7 +427,12 @@ function unlockBodyScroll() {
   document.body.style.position = ''
   document.body.style.top = ''
   document.body.style.width = ''
+
+  const htmlElement = document.documentElement
+  const previousScrollBehavior = htmlElement.style.scrollBehavior
+  htmlElement.style.scrollBehavior = 'auto'
   window.scrollTo(0, bodyScrollY)
+  htmlElement.style.scrollBehavior = previousScrollBehavior
 }
 
 watch(
