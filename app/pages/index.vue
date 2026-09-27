@@ -159,54 +159,117 @@ useSeoMeta({
 const linksConfigFirstPicture = ref([
   {
     filePath: '/paintings/celestial-collision.webp',
-    title: computed(() => t('pictures.paintings.celestial_collision.title')),
-    alt: computed(() => t('pictures.paintings.celestial_collision.alt')),
-  },
-  {
-    filePath: '/paintings/entangled-echoes.webp',
-    title: computed(() => t('pictures.paintings.entangled_echoes.title')),
-    alt: computed(() => t('pictures.paintings.entangled_echoes.alt')),
+    title: computed(() => t('pictures.carousel.celestial_collision.title')),
+    alt: computed(() => t('pictures.carousel.celestial_collision.alt')),
   },
   {
     filePath: '/paintings/abstract-autumn.webp',
-    title: computed(() => t('pictures.paintings.abstract_autumn.title')),
-    alt: computed(() => t('pictures.paintings.abstract_autumn.alt')),
+    title: computed(() => t('pictures.carousel.abstract_autumn.title')),
+    alt: computed(() => t('pictures.carousel.abstract_autumn.alt')),
+  },
+  {
+    filePath: '/paintings/acrylic/abstracts/AutomaticPainting2.webp',
+    title: computed(() => t('pictures.carousel.automatic_painting_2.title')),
+    alt: computed(() => t('pictures.carousel.automatic_painting_2.alt')),
+  },
+  {
+    filePath: '/paintings/inks/nature/EC10.webp',
+    title: computed(() => t('pictures.carousel.ec10.title')),
+    alt: computed(() => t('pictures.carousel.ec10.alt')),
+  },
+  {
+    filePath: '/paintings/mixed_technique/nature/TMn9.webp',
+    title: computed(() => t('pictures.carousel.tmn9.title')),
+    alt: computed(() => t('pictures.carousel.tmn9.alt')),
   },
 ])
 
 const linksConfigSecondPicture = ref([
   {
-    filePath: '/paintings/entangled-echoes.webp',
-    title: computed(() => t('pictures.paintings.entangled_echoes.title')),
-    alt: computed(() => t('pictures.paintings.entangled_echoes.alt')),
+    filePath: '/ceramics/electric_kiln/animals/cats/Cats14.webp',
+    title: computed(() => t('pictures.carousel.cats14.title')),
+    alt: computed(() => t('pictures.carousel.cats14.alt')),
   },
   {
-    filePath: '/paintings/abstract-autumn.webp',
-    title: computed(() => t('pictures.paintings.abstract_autumn.title')),
-    alt: computed(() => t('pictures.paintings.abstract_autumn.alt')),
+    filePath: '/ceramics/electric_kiln/animals/snails/Snails5.webp',
+    title: computed(() => t('pictures.carousel.snails5.title')),
+    alt: computed(() => t('pictures.carousel.snails5.alt')),
   },
   {
-    filePath: '/paintings/celestial-collision.webp',
-    title: computed(() => t('pictures.paintings.celestial_collision.title')),
-    alt: computed(() => t('pictures.paintings.celestial_collision.alt')),
+    filePath: '/ceramics/electric_kiln/animals/birds/Birds5.webp',
+    title: computed(() => t('pictures.carousel.birds5.title')),
+    alt: computed(() => t('pictures.carousel.birds5.alt')),
+  },
+  {
+    filePath: '/ceramics/electric_kiln/animals/tortoises/Tortoises8.webp',
+    title: computed(() => t('pictures.carousel.tortoises8.title')),
+    alt: computed(() => t('pictures.carousel.tortoises8.alt')),
+  },
+  {
+    filePath: '/ceramics/electric_kiln/nature/flowers/F7.webp',
+    title: computed(() => t('pictures.carousel.f7.title')),
+    alt: computed(() => t('pictures.carousel.f7.alt')),
+  },
+  {
+    filePath: '/ceramics/electric_kiln/nature/leaves/Feuilles8.webp',
+    title: computed(() => t('pictures.carousel.feuilles8.title')),
+    alt: computed(() => t('pictures.carousel.feuilles8.alt')),
+  },
+  {
+    filePath: '/ceramics/electric_kiln/various_objects/boxes/Sgraffitto4.webp',
+    title: computed(() => t('pictures.carousel.sgraffitto4.title')),
+    alt: computed(() => t('pictures.carousel.sgraffitto4.alt')),
+  },
+  {
+    filePath:
+      '/ceramics/electric_kiln/vases_and_pots/intuitive_pots/PotsIntuitifs7.webp',
+    title: computed(() => t('pictures.carousel.pots_intuitifs7.title')),
+    alt: computed(() => t('pictures.carousel.pots_intuitifs7.alt')),
+  },
+  {
+    filePath:
+      '/ceramics/electric_kiln/vases_and_pots/single_flower_vases/Soliflores10.webp',
+    title: computed(() => t('pictures.carousel.soliflores10.title')),
+    alt: computed(() => t('pictures.carousel.soliflores10.alt')),
+  },
+  {
+    filePath:
+      '/ceramics/electric_kiln/vases_and_pots/round_vases/VasesRonds4.webp',
+    title: computed(() => t('pictures.carousel.vases_ronds4.title')),
+    alt: computed(() => t('pictures.carousel.vases_ronds4.alt')),
+  },
+  {
+    filePath: '/ceramics/porcelain/nature/flowers/FP13.webp',
+    title: computed(() => t('pictures.carousel.fp13.title')),
+    alt: computed(() => t('pictures.carousel.fp13.alt')),
   },
 ])
 
 const linksConfigThirdPicture = ref([
   {
-    filePath: '/paintings/abstract-autumn.webp',
-    title: computed(() => t('pictures.paintings.abstract_autumn.title')),
-    alt: computed(() => t('pictures.paintings.abstract_autumn.alt')),
+    filePath: '/ceramics/CeramicInProgress.webp',
+    title: computed(() => t('pictures.carousel.ceramic_wip.title')),
+    alt: computed(() => t('pictures.carousel.ceramic_wip.alt')),
   },
   {
-    filePath: '/paintings/celestial-collision.webp',
-    title: computed(() => t('pictures.paintings.celestial_collision.title')),
-    alt: computed(() => t('pictures.paintings.celestial_collision.alt')),
+    filePath: '/og-images/contact.webp',
+    title: computed(() => t('pictures.carousel.creations.title')),
+    alt: computed(() => t('pictures.carousel.creations.alt')),
   },
   {
-    filePath: '/paintings/entangled-echoes.webp',
-    title: computed(() => t('pictures.paintings.entangled_echoes.title')),
-    alt: computed(() => t('pictures.paintings.entangled_echoes.alt')),
+    filePath: '/og-images/cv.webp',
+    title: computed(() => t('pictures.carousel.nature.title')),
+    alt: computed(() => t('pictures.carousel.nature.alt')),
+  },
+  {
+    filePath: '/og-images/my_artistic_approach.webp',
+    title: computed(() => t('pictures.carousel.my_artistic_approach.title')),
+    alt: computed(() => t('pictures.carousel.my_artistic_approach.alt')),
+  },
+  {
+    filePath: '/og-images/my_development.webp',
+    title: computed(() => t('pictures.carousel.my_development.title')),
+    alt: computed(() => t('pictures.carousel.my_development.alt')),
   },
 ])
 
