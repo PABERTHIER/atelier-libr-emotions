@@ -30,7 +30,7 @@
                 class="image-container"
                 :class="{ zoomed: isZoomed }"
                 @wheel.prevent="onContainerWheel">
-                <div class="image-centering-wrapper">
+                <div class="image-centering-wrapper" :style="imageWrapperStyle">
                   <img
                     ref="imageRef"
                     :src="fullImageSrc"
@@ -204,6 +204,23 @@ const imageStyle = computed(() => {
     width: `${Math.round(baseDimensions.value.width * zoomLevel.value)}px`,
     height: `${Math.round(baseDimensions.value.height * zoomLevel.value)}px`,
     cursor: 'zoom-out',
+  }
+})
+
+const imageWrapperStyle = computed(() => {
+  if (!isZoomed.value || baseDimensions.value.width === 0) {
+    return undefined
+  }
+
+  return {
+    width: `${Math.max(
+      containerSize.value.width,
+      Math.round(baseDimensions.value.width * zoomLevel.value)
+    )}px`,
+    height: `${Math.max(
+      containerSize.value.height,
+      Math.round(baseDimensions.value.height * zoomLevel.value)
+    )}px`,
   }
 })
 
