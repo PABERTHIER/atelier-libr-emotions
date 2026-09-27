@@ -3,7 +3,8 @@
     <NuxtLink
       v-if="previousPage"
       :to="localePath(previousPage.path)"
-      class="nav-link prev-link">
+      class="nav-link prev-link"
+      @click="scrollToTop">
       <Icon name="heroicons:arrow-left" size="20px" />
       <div class="nav-content">
         <span class="nav-title">{{ previousPage.title }}</span>
@@ -16,7 +17,8 @@
     <NuxtLink
       v-if="nextPage"
       :to="localePath(nextPage.path)"
-      class="nav-link next-link">
+      class="nav-link next-link"
+      @click="scrollToTop">
       <div class="nav-content">
         <span class="nav-title">{{ nextPage.title }}</span>
         <span class="nav-description">{{ nextPage.description }}</span>
@@ -45,6 +47,18 @@ defineProps({
 })
 
 const localePath = useLocalePath()
+const { $lenis } = useNuxtApp()
+
+function scrollToTop() {
+  $lenis.scrollTo(0, { immediate: false, force: true })
+
+  const htmlElement = document.documentElement
+  const previousScrollBehavior = htmlElement.style.scrollBehavior
+
+  htmlElement.style.scrollBehavior = 'auto'
+  window.scrollTo(0, 0)
+  htmlElement.style.scrollBehavior = previousScrollBehavior
+}
 </script>
 
 <style lang="scss" scoped>
