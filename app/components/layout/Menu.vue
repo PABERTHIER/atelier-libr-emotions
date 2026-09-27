@@ -224,7 +224,10 @@ const sections = ref([
           { text: computed(() => t('miscellaneous.abstracts')), url: '/wip' },
           { text: computed(() => t('miscellaneous.faces')), url: '/wip' },
           { text: computed(() => t('miscellaneous.nudes')), url: '/wip' },
-          { text: computed(() => t('miscellaneous.nature')), url: '/wip' },
+          {
+            text: computed(() => t('miscellaneous.nature')),
+            url: '/painting/mixed-technique/nature',
+          },
           {
             text: computed(() => t('miscellaneous.miscellaneous')),
             url: '/wip',
@@ -252,15 +255,18 @@ const sections = ref([
             text: computed(() => t('miscellaneous.nature')),
             url: '/ceramic/electric-kiln/nature',
           },
-          { text: computed(() => t('miscellaneous.animals')), url: '/wip' },
+          {
+            text: computed(() => t('miscellaneous.animals')),
+            url: '/ceramic/electric-kiln/animals',
+          },
           { text: computed(() => t('miscellaneous.person')), url: '/wip' },
           {
             text: computed(() => t('miscellaneous.vases_and_pots')),
-            url: '/wip',
+            url: '/ceramic/electric-kiln/vases-and-pots',
           },
           {
             text: computed(() => t('miscellaneous.various_objects')),
-            url: '/wip',
+            url: '/ceramic/electric-kiln/various-objects',
           },
           { text: computed(() => t('miscellaneous.easter')), url: '/wip' },
           { text: computed(() => t('miscellaneous.christmas')), url: '/wip' },
@@ -319,6 +325,10 @@ const sections = ref([
             text: computed(() => t('miscellaneous.ceramics_in_context')),
             url: '/wip',
           },
+          {
+            text: computed(() => t('miscellaneous.raku_firing')),
+            url: '/wip',
+          },
         ],
       },
       {
@@ -358,6 +368,10 @@ const sections = ref([
         links: [
           {
             text: computed(() => t('miscellaneous.life_is_love')),
+            url: '/wip',
+          },
+          {
+            text: computed(() => t('miscellaneous.collaborative_painting')),
             url: '/wip',
           },
         ],

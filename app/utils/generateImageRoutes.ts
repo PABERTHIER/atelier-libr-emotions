@@ -26,12 +26,6 @@ const imagesConfig = [
     ],
   },
   {
-    imagePath: '/paintings/entangled-echoes.webp',
-    sizes: [
-      80, 100, 125, 130, 150, 160, 175, 180, 200, 250, 260, 300, 350, 360, 400,
-    ],
-  },
-  {
     imagePath: '/paintings/abstract-autumn.webp',
     sizes: [
       80, 100, 125, 130, 150, 160, 175, 180, 200, 250, 260, 300, 350, 360, 400,
@@ -39,7 +33,124 @@ const imagesConfig = [
     ],
   },
   {
-    imagePath: '/paintings/some-paintings.webp',
+    imagePath: '/paintings/acrylic/abstracts/AutomaticPainting2.webp',
+    sizes: [
+      80, 100, 125, 130, 150, 160, 175, 180, 200, 250, 260, 300, 350, 360, 400,
+    ],
+  },
+  {
+    imagePath: '/paintings/inks/nature/EC10.webp',
+    sizes: [
+      80, 100, 125, 130, 150, 160, 175, 180, 200, 250, 260, 300, 350, 360, 400,
+    ],
+  },
+  {
+    imagePath: '/paintings/mixed_technique/nature/TMn9.webp',
+    sizes: [
+      80, 100, 125, 130, 150, 160, 175, 180, 200, 250, 260, 300, 350, 360, 400,
+    ],
+  },
+  {
+    imagePath: '/ceramics/electric_kiln/animals/cats/Cats14.webp',
+    sizes: [
+      80, 100, 125, 130, 150, 160, 175, 180, 200, 250, 260, 300, 350, 360, 400,
+    ],
+  },
+  {
+    imagePath: '/ceramics/electric_kiln/animals/snails/Snails5.webp',
+    sizes: [
+      80, 100, 125, 130, 150, 160, 175, 180, 200, 250, 260, 300, 350, 360, 400,
+    ],
+  },
+  {
+    imagePath: '/ceramics/electric_kiln/animals/birds/Birds5.webp',
+    sizes: [
+      80, 100, 125, 130, 150, 160, 175, 180, 200, 250, 260, 300, 350, 360, 400,
+    ],
+  },
+  {
+    imagePath: '/ceramics/electric_kiln/animals/tortoises/Tortoises8.webp',
+    sizes: [
+      80, 100, 125, 130, 150, 160, 175, 180, 200, 250, 260, 300, 350, 360, 400,
+    ],
+  },
+  {
+    imagePath: '/ceramics/electric_kiln/nature/flowers/F7.webp',
+    sizes: [
+      80, 100, 125, 130, 150, 160, 175, 180, 200, 250, 260, 300, 350, 360, 400,
+    ],
+  },
+  {
+    imagePath: '/ceramics/electric_kiln/nature/leaves/Feuilles8.webp',
+    sizes: [
+      80, 100, 125, 130, 150, 160, 175, 180, 200, 250, 260, 300, 350, 360, 400,
+    ],
+  },
+  {
+    imagePath: '/ceramics/electric_kiln/various_objects/boxes/Sgraffitto4.webp',
+    sizes: [
+      80, 100, 125, 130, 150, 160, 175, 180, 200, 250, 260, 300, 350, 360, 400,
+    ],
+  },
+  {
+    imagePath:
+      '/ceramics/electric_kiln/vases_and_pots/intuitive_pots/PotsIntuitifs7.webp',
+    sizes: [
+      80, 100, 125, 130, 150, 160, 175, 180, 200, 250, 260, 300, 350, 360, 400,
+    ],
+  },
+  {
+    imagePath:
+      '/ceramics/electric_kiln/vases_and_pots/single_flower_vases/Soliflores10.webp',
+    sizes: [
+      80, 100, 125, 130, 150, 160, 175, 180, 200, 250, 260, 300, 350, 360, 400,
+    ],
+  },
+  {
+    imagePath:
+      '/ceramics/electric_kiln/vases_and_pots/round_vases/VasesRonds4.webp',
+    sizes: [
+      80, 100, 125, 130, 150, 160, 175, 180, 200, 250, 260, 300, 350, 360, 400,
+    ],
+  },
+  {
+    imagePath: '/ceramics/porcelain/nature/flowers/FP13.webp',
+    sizes: [
+      80, 100, 125, 130, 150, 160, 175, 180, 200, 250, 260, 300, 350, 360, 400,
+    ],
+  },
+  {
+    imagePath: '/ceramics/CeramicInProgress.webp',
+    sizes: [
+      80, 100, 125, 130, 150, 160, 175, 180, 200, 250, 260, 300, 350, 360, 400,
+    ],
+  },
+  {
+    imagePath: '/og-images/contact.webp',
+    sizes: [
+      80, 100, 125, 130, 150, 160, 175, 180, 200, 250, 260, 300, 350, 360, 400,
+    ],
+  },
+  {
+    imagePath: '/og-images/cv.webp',
+    sizes: [
+      80, 100, 125, 130, 150, 160, 175, 180, 200, 250, 260, 300, 350, 360, 400,
+    ],
+  },
+  {
+    imagePath: '/og-images/my_artistic_approach.webp',
+    sizes: [
+      80, 100, 125, 130, 150, 160, 175, 180, 200, 250, 260, 300, 350, 360, 400,
+    ],
+  },
+  {
+    imagePath: '/og-images/my_development.webp',
+    sizes: [
+      80, 100, 125, 130, 150, 160, 175, 180, 200, 250, 260, 300, 350, 360, 400,
+    ],
+  },
+  {
+    imagePath: '/misc/contact.webp',
     sizes: [150, 200, 250, 300, 400, 500, 600, 800],
   },
   {

@@ -7,10 +7,17 @@
         :subtitle="t('pages.ceramic.electric_kiln.nature.subtitle')" />
     </div>
 
-    <h2>{{ subtitle1 }}</h2>
+    <h2>{{ flowersTitle }}</h2>
     <div class="gallery-container">
       <ImageGrid
-        :images="images"
+        :images="flowersImages"
+        :heights="{ xs: 120, sm: 160, md: 220, lg: 300 }" />
+    </div>
+
+    <h2>{{ leavesSubtitle }}</h2>
+    <div class="gallery-container">
+      <ImageGrid
+        :images="leavesImages"
         :heights="{ xs: 120, sm: 160, md: 220, lg: 300 }" />
     </div>
 
@@ -31,6 +38,21 @@ const ogImageEndPath = 'ceramics/electric_kiln/nature/flowers/F8.webp'
 
 const canonicalUrl = computed(() => `${baseUrl.value}${route.path}`)
 
+const keywords = [
+  'miscellaneous.ceramic',
+  'miscellaneous.ceramicist',
+  'miscellaneous.electric_kiln',
+  'miscellaneous.nature',
+  'miscellaneous.flowers',
+  'miscellaneous.leaves',
+  'miscellaneous.art',
+  'miscellaneous.artist',
+  'miscellaneous.emotions',
+  'about.author',
+  'app.name',
+]
+const keywordValues = computed(() => keywords.map(keyword => t(keyword)))
+
 useHead({
   title: computed(() => t('pages.ceramic.electric_kiln.nature.tab_name')),
   meta: [
@@ -42,17 +64,7 @@ useHead({
     },
     {
       name: 'keywords',
-      content: `${computed(() => t('miscellaneous.ceramic')).value},
-        ${computed(() => t('miscellaneous.ceramicist')).value},
-        ${computed(() => t('miscellaneous.electric_kiln')).value},
-        ${computed(() => t('miscellaneous.nature')).value},
-        ${computed(() => t('miscellaneous.flowers')).value},
-        ${computed(() => t('miscellaneous.art')).value},
-        ${computed(() => t('miscellaneous.artist')).value},
-        ${computed(() => t('miscellaneous.emotions')).value},
-        ${computed(() => t('about.author')).value},
-        ${computed(() => t('app.name')).value},
-      `,
+      content: computed(() => keywordValues.value.join(', ')),
     },
   ],
   link: [
@@ -99,144 +111,49 @@ useSeoMeta({
   ogImageHeight: '600',
   ogUrl: canonicalUrl.value,
   ogType: 'article',
-  twitterTitle: '%s %separator %siteName',
-  twitterDescription: computed(() =>
-    t('pages.ceramic.electric_kiln.nature.meta.content')
-  ),
-  twitterImage: `${baseUrl.value}/${ogImageEndPath}`,
-  twitterImageAlt: computed(() =>
-    t('pages.ceramic.electric_kiln.nature.meta.content')
-  ),
-  twitterImageType: 'image/jpeg',
-  articleTag: [
-    computed(() => t('miscellaneous.ceramic')).value,
-    computed(() => t('miscellaneous.ceramicist')).value,
-    computed(() => t('miscellaneous.electric_kiln')).value,
-    computed(() => t('miscellaneous.nature')).value,
-    computed(() => t('miscellaneous.flowers')).value,
-    computed(() => t('miscellaneous.art')).value,
-    computed(() => t('miscellaneous.artist')).value,
-    computed(() => t('miscellaneous.emotions')).value,
-    computed(() => t('about.author')).value,
-    computed(() => t('app.name')).value,
-  ],
+  articleTag: keywordValues.value,
   appleMobileWebAppTitle: '%s %separator %siteName',
   msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
 })
 
-// defineOgImageComponent('NuxtSeo', {
-//   theme: '#4A7C59',
-//   colorMode: 'dark',
-//   title: computed(() => t('pages.ceramic.electric_kiln.nature.tab_name')),
-//   description: computed(() => t('pages.ceramic.electric_kiln.nature.meta.content')),
-// })
+const flowersTitle = computed(() => t('miscellaneous.flowers'))
+const leavesSubtitle = computed(() => t('miscellaneous.leaves'))
 
-const subtitle1 = computed(() => t('miscellaneous.flowers'))
+const createImages = (
+  entries: readonly (readonly [string, string])[],
+  folder: string,
+  translationSection: string
+): ImageSource[] =>
+  entries.map(([filename, imageKey]) => ({
+    src: `/ceramics/electric_kiln/nature/${folder}/${filename}`,
+    title: t(
+      `pictures.ceramics.electric_kiln.nature.${translationSection}.${imageKey}.title`
+    ),
+    mobileTitle: t(
+      `pictures.ceramics.electric_kiln.nature.${translationSection}.${imageKey}.mobile_title`
+    ),
+    alt: t(
+      `pictures.ceramics.electric_kiln.nature.${translationSection}.${imageKey}.alt`
+    ),
+  }))
 
-const images: ImageSource[] = [
-  {
-    src: '/ceramics/electric_kiln/nature/flowers/F1.webp',
-    title: t('pictures.ceramics.electric_kiln.nature.f1.title'),
-    mobileTitle: t('pictures.ceramics.electric_kiln.nature.f1.mobile_title'),
-    alt: t('pictures.ceramics.electric_kiln.nature.f1.alt'),
-  },
-  {
-    src: '/ceramics/electric_kiln/nature/flowers/F2.webp',
-    title: t('pictures.ceramics.electric_kiln.nature.f2.title'),
-    mobileTitle: t('pictures.ceramics.electric_kiln.nature.f2.mobile_title'),
-    alt: t('pictures.ceramics.electric_kiln.nature.f2.alt'),
-  },
-  {
-    src: '/ceramics/electric_kiln/nature/flowers/F3.webp',
-    title: t('pictures.ceramics.electric_kiln.nature.f3.title'),
-    mobileTitle: t('pictures.ceramics.electric_kiln.nature.f3.mobile_title'),
-    alt: t('pictures.ceramics.electric_kiln.nature.f3.alt'),
-  },
-  {
-    src: '/ceramics/electric_kiln/nature/flowers/F4.webp',
-    title: t('pictures.ceramics.electric_kiln.nature.f4.title'),
-    mobileTitle: t('pictures.ceramics.electric_kiln.nature.f4.mobile_title'),
-    alt: t('pictures.ceramics.electric_kiln.nature.f4.alt'),
-  },
-  {
-    src: '/ceramics/electric_kiln/nature/flowers/F5.webp',
-    title: t('pictures.ceramics.electric_kiln.nature.f5.title'),
-    mobileTitle: t('pictures.ceramics.electric_kiln.nature.f5.mobile_title'),
-    alt: t('pictures.ceramics.electric_kiln.nature.f5.alt'),
-  },
-  {
-    src: '/ceramics/electric_kiln/nature/flowers/F6.webp',
-    title: t('pictures.ceramics.electric_kiln.nature.f6.title'),
-    mobileTitle: t('pictures.ceramics.electric_kiln.nature.f6.mobile_title'),
-    alt: t('pictures.ceramics.electric_kiln.nature.f6.alt'),
-  },
-  {
-    src: '/ceramics/electric_kiln/nature/flowers/F7.webp',
-    title: t('pictures.ceramics.electric_kiln.nature.f7.title'),
-    mobileTitle: t('pictures.ceramics.electric_kiln.nature.f7.mobile_title'),
-    alt: t('pictures.ceramics.electric_kiln.nature.f7.alt'),
-  },
-  {
-    src: '/ceramics/electric_kiln/nature/flowers/F8.webp',
-    title: t('pictures.ceramics.electric_kiln.nature.f8.title'),
-    mobileTitle: t('pictures.ceramics.electric_kiln.nature.f8.mobile_title'),
-    alt: t('pictures.ceramics.electric_kiln.nature.f8.alt'),
-  },
-  {
-    src: '/ceramics/electric_kiln/nature/flowers/F9.webp',
-    title: t('pictures.ceramics.electric_kiln.nature.f9.title'),
-    mobileTitle: t('pictures.ceramics.electric_kiln.nature.f9.mobile_title'),
-    alt: t('pictures.ceramics.electric_kiln.nature.f9.alt'),
-  },
-  {
-    src: '/ceramics/electric_kiln/nature/flowers/F10.webp',
-    title: t('pictures.ceramics.electric_kiln.nature.f10.title'),
-    mobileTitle: t('pictures.ceramics.electric_kiln.nature.f10.mobile_title'),
-    alt: t('pictures.ceramics.electric_kiln.nature.f10.alt'),
-  },
-  {
-    src: '/ceramics/electric_kiln/nature/flowers/GF1.webp',
-    title: t('pictures.ceramics.electric_kiln.nature.gf1.title'),
-    mobileTitle: t('pictures.ceramics.electric_kiln.nature.gf1.mobile_title'),
-    alt: t('pictures.ceramics.electric_kiln.nature.gf1.alt'),
-  },
-  {
-    src: '/ceramics/electric_kiln/nature/flowers/GF2.webp',
-    title: t('pictures.ceramics.electric_kiln.nature.gf2.title'),
-    mobileTitle: t('pictures.ceramics.electric_kiln.nature.gf2.mobile_title'),
-    alt: t('pictures.ceramics.electric_kiln.nature.gf2.alt'),
-  },
-  {
-    src: '/ceramics/electric_kiln/nature/flowers/GF3.webp',
-    title: t('pictures.ceramics.electric_kiln.nature.gf3.title'),
-    mobileTitle: t('pictures.ceramics.electric_kiln.nature.gf3.mobile_title'),
-    alt: t('pictures.ceramics.electric_kiln.nature.gf3.alt'),
-  },
-  {
-    src: '/ceramics/electric_kiln/nature/flowers/GF4.webp',
-    title: t('pictures.ceramics.electric_kiln.nature.gf4.title'),
-    mobileTitle: t('pictures.ceramics.electric_kiln.nature.gf4.mobile_title'),
-    alt: t('pictures.ceramics.electric_kiln.nature.gf4.alt'),
-  },
-  {
-    src: '/ceramics/electric_kiln/nature/flowers/GF5.webp',
-    title: t('pictures.ceramics.electric_kiln.nature.gf5.title'),
-    mobileTitle: t('pictures.ceramics.electric_kiln.nature.gf5.mobile_title'),
-    alt: t('pictures.ceramics.electric_kiln.nature.gf5.alt'),
-  },
-  {
-    src: '/ceramics/electric_kiln/nature/flowers/GF6.webp',
-    title: t('pictures.ceramics.electric_kiln.nature.gf6.title'),
-    mobileTitle: t('pictures.ceramics.electric_kiln.nature.gf6.mobile_title'),
-    alt: t('pictures.ceramics.electric_kiln.nature.gf6.alt'),
-  },
-  {
-    src: '/ceramics/electric_kiln/nature/flowers/GF7.webp',
-    title: t('pictures.ceramics.electric_kiln.nature.gf7.title'),
-    mobileTitle: t('pictures.ceramics.electric_kiln.nature.gf7.mobile_title'),
-    alt: t('pictures.ceramics.electric_kiln.nature.gf7.alt'),
-  },
+const flowersEntries = [
+  ...Array.from({ length: 10 }, (_, index) => {
+    const number = index + 1
+    return [`F${number}.webp`, `f${number}`] as const
+  }),
+  ...Array.from({ length: 7 }, (_, index) => {
+    const number = index + 1
+    return [`GF${number}.webp`, `gf${number}`] as const
+  }),
 ]
+const leavesEntries = Array.from({ length: 11 }, (_, index) => {
+  const number = index + 1
+  return [`Feuilles${number}.webp`, `feuilles${number}`] as const
+})
+
+const flowersImages = createImages(flowersEntries, 'flowers', 'flowers')
+const leavesImages = createImages(leavesEntries, 'leaves', 'leaves')
 
 const previousPage = {
   path: '/wip',
@@ -245,9 +162,9 @@ const previousPage = {
 }
 
 const nextPage = {
-  path: '/wip',
-  title: t('wip.next_page_name'),
-  description: t('wip.next_page_description'),
+  path: '/ceramic/electric-kiln/animals',
+  title: t('pages.ceramic.electric_kiln.animals.tab_name'),
+  description: t('pages.ceramic.electric_kiln.animals.subtitle'),
 }
 </script>
 
@@ -258,6 +175,10 @@ const nextPage = {
 
   .page-header {
     margin-bottom: 50px;
+  }
+
+  h2 {
+    margin: 40px 0 20px;
   }
 }
 </style>

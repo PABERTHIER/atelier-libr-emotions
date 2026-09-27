@@ -88,7 +88,7 @@ const route = useRoute()
 
 const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
 const urlEndPath = 'about/development'
-const ogImageEndPath = 'paintings/celestial-collision.jpg' // TODO: Update ogImage
+const ogImageEndPath = 'og-images/my_development.webp'
 
 const canonicalUrl = computed(() => `${baseUrl.value}${route.path}`)
 
@@ -154,11 +154,6 @@ useSeoMeta({
   ogImageWidth: '1200',
   ogImageHeight: '600',
   ogUrl: canonicalUrl.value,
-  twitterTitle: '%s %separator %siteName',
-  twitterDescription: computed(() => t('pages.development.meta.content')),
-  twitterImage: `${baseUrl.value}/${ogImageEndPath}`,
-  twitterImageAlt: computed(() => t('pages.development.meta.content')),
-  twitterImageType: 'image/jpeg',
   articleTag: [
     computed(() => t('miscellaneous.my_development')).value,
     computed(() => t('miscellaneous.development')).value,
@@ -177,13 +172,6 @@ useSeoMeta({
   appleMobileWebAppTitle: '%s %separator %siteName',
   msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
 })
-
-// defineOgImageComponent('NuxtSeo', {
-//   theme: '#FF0000',
-//   colorMode: 'dark',
-//   title: computed(() => t('pages.development.tab_name')),
-//   description: computed(() => t('pages.development.meta.content')),
-// })
 </script>
 
 <style lang="scss" scoped>

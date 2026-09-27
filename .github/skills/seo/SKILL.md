@@ -1,6 +1,6 @@
 ---
 name: seo
-description: "Full SEO implementation pattern for gallery pages: useHead, useSeoMeta, canonical URL, hreflang, Open Graph, Twitter cards, and article tags. Use this skill when writing or reviewing SEO metadata on any page."
+description: "Full SEO implementation pattern for gallery pages: useHead, useSeoMeta, canonical URL, hreflang, Open Graph, and article tags. Use this skill when writing or reviewing SEO metadata on any page."
 ---
 
 # SEO Skill
@@ -19,7 +19,7 @@ SEO metadata is split across two composables and i18n:
 | Browser tab title | `useHead({ title })` |
 | Meta description + keywords | `useHead({ meta: [...] })` |
 | Canonical URL + hreflang + apple-touch-icon | `useHead({ link: [...] })` |
-| Open Graph + Twitter | `useSeoMeta({...})` |
+| Open Graph | `useSeoMeta({...})` |
 | Translations | `i18n/locales/*.json` → `pages.{domain}.{technique}.{category}.meta.content` |
 | Site-level config | `nuxt.config.ts` → `site: { url, name }` |
 
@@ -109,13 +109,11 @@ useHead({
 useSeoMeta({
   // Title format: "Page Name - Atelier Libr'Émotions"
   ogTitle: '%s %separator %siteName',
-  twitterTitle: '%s %separator %siteName',
   appleMobileWebAppTitle: '%s %separator %siteName',
 
   // Description — same content as meta description
   description: computed(() => t('pages.{domain}.{technique}.{category}.meta.content')),
   ogDescription: computed(() => t('pages.{domain}.{technique}.{category}.meta.content')),
-  twitterDescription: computed(() => t('pages.{domain}.{technique}.{category}.meta.content')),
 
   // OG image — full absolute URL to a representative image from the gallery
   ogImage: `${baseUrl.value}/${ogImageEndPath}`,
@@ -124,11 +122,6 @@ useSeoMeta({
   ogImageType: 'image/jpeg',
   ogImageWidth: '1200',
   ogImageHeight: '600',
-
-  // Twitter card
-  twitterImage: `${baseUrl.value}/${ogImageEndPath}`,
-  twitterImageAlt: computed(() => t('pages.{domain}.{technique}.{category}.meta.content')),
-  twitterImageType: 'image/jpeg',
 
   // Page type and URL
   ogUrl: canonicalUrl.value,
@@ -190,7 +183,7 @@ Prefer:
 
 ## meta.content Quality Rules
 
-The `meta.content` translation key powers the description, OG description, and Twitter description.
+The `meta.content` translation key powers the description and OG description.
 
 **Do:**
 - ≤160 characters
@@ -209,18 +202,3 @@ The `meta.content` translation key powers the description, OG description, and T
 
 **Example (EN):**
 > "Collection of porcelain flowers by Véronique Berthier: delicate lace-like pieces for wall or furniture display, alone or paired with natural elements or other ceramics."
-
----
-
-## Commented-out OgImageComponent
-
-All pages have this commented block — **do not remove it**, it's kept for future use:
-
-```typescript
-// defineOgImageComponent('NuxtSeo', {
-//   theme: '#4A7C59',
-//   colorMode: 'dark',
-//   title: computed(() => t('pages.{domain}.{technique}.{category}.tab_name')),
-//   description: computed(() => t('pages.{domain}.{technique}.{category}.meta.content')),
-// })
-```

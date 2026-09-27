@@ -126,11 +126,6 @@ useSeoMeta({
   ogImageWidth: '1200',
   ogImageHeight: '600',
   ogUrl: canonicalUrl.value,
-  twitterTitle: '%s %separator %siteName',
-  twitterDescription: computed(() => t('pages.cv.meta.content')),
-  twitterImage: `${baseUrl.value}/${ogImageEndPath}`,
-  twitterImageAlt: computed(() => t('pages.cv.meta.content')),
-  twitterImageType: 'image/jpeg',
   articleTag: [
     computed(() => t('miscellaneous.my_cv')).value,
     computed(() => t('miscellaneous.cv')).value,
@@ -153,13 +148,6 @@ useSeoMeta({
   appleMobileWebAppTitle: '%s %separator %siteName',
   msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
 })
-
-// defineOgImageComponent('NuxtSeo', {
-//   theme: '#FF0000',
-//   colorMode: 'dark',
-//   title: computed(() => t('pages.cv.tab_name')),
-//   description: computed(() => t('pages.cv.meta.content')),
-// })
 
 const pdfPath = '/documents/CV_Berthier_Véronique.pdf'
 

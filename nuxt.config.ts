@@ -4,13 +4,8 @@ import { generateImageRoutes } from './app/utils/generateImageRoutes'
 export default defineNuxtConfig({
   app: {
     head: {
-      charset: 'utf-8',
-      htmlAttrs: {
-        lang: 'fr',
-      },
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
       title: "Atelier Libr'Émotions",
-      viewport: 'width=device-width, initial-scale=1',
       meta: [
         {
           name: 'viewport',
@@ -117,6 +112,7 @@ export default defineNuxtConfig({
     },
     optimizeDeps: {
       include: [
+        '@unhead/schema-org/vue',
         '@vueuse/core',
         '@vue/devtools-core',
         '@vue/devtools-kit',
@@ -152,8 +148,6 @@ export default defineNuxtConfig({
     },
   },
   ogImage: {
-    componentOptions: {
-      global: true,
-    },
+    enabled: false,
   },
 })

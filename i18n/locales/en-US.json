@@ -66,6 +66,16 @@
           "title": "Inks - Nature",
           "subtitle": "Expressions inspired by nature"
         }
+      },
+      "mixed_technique": {
+        "nature": {
+          "tab_name": "Mixed technique - Nature",
+          "meta": {
+            "content": "Gallery of mixed technique nature paintings by Véronique Berthier, combining materials, textures and movement to invite the viewer to escape."
+          },
+          "title": "Mixed technique - Nature",
+          "subtitle": "Nature takes shape through a blend of different mediums and materials"
+        }
       }
     },
     "ceramic": {
@@ -77,6 +87,30 @@
           },
           "title": "Stoneware - electric kiln - Nature",
           "subtitle": "Decorative flowers, for indoor and/or outdoor use"
+        },
+        "animals": {
+          "tab_name": "Stoneware - electric kiln - Animals",
+          "meta": {
+            "content": "Gallery of stoneware animals by Véronique Berthier, electric-kiln fired and shaped with realism or poetry for elegant interiors."
+          },
+          "title": "Stoneware - electric kiln - Animals",
+          "subtitle": "Animals bringing a touch of poetry and elegance"
+        },
+        "vases_and_pots": {
+          "tab_name": "Stoneware - electric kiln - Vases and pots",
+          "meta": {
+            "content": "Gallery of stoneware vases and pots by Véronique Berthier, practical decorative pieces to enhance both the home and garden."
+          },
+          "title": "Stoneware - electric kiln - Vases and pots",
+          "subtitle": "Ceramic pots and vases for indoor and garden spaces"
+        },
+        "various_objects": {
+          "tab_name": "Stoneware - electric kiln - Various objects",
+          "meta": {
+            "content": "Gallery of stoneware boxes by Véronique Berthier, made in an electric kiln with coloured clays, varied techniques and natural elements."
+          },
+          "title": "Stoneware - electric kiln - Various objects",
+          "subtitle": "Decorative objects made with clays in different colours"
         }
       },
       "porcelain": {
@@ -135,7 +169,7 @@
       "objective_2": "Explore a means of expression other than words (which may come later), let your emotions emerge, free your creativity, sometimes give form to buried memories,...",
       "objective_3": "Realize that we all have fabulous creative potential and give ourselves the opportunity to express it.",
       "objective_4": "Search, discover, welcome, journey, progress, reveal yourself by gaining self-confidence and self-love, achieve fulfillment, move towards a better well-being, reveal yourself, open up to others.",
-      "objective_5": "Set up different exhibition projects (which allows those who wish to exhibit, to promote their work and themselves at the same time).",
+      "objective_5": "Set up different exhibition projects, which allows those who wish to exchange and talk about their creations.",
       "professional_objectives_title": "Professional objectives",
       "professional_objective_1": "Show my work in order to exchange impressions and feelings... because whilst working with materials is my way of expressing my emotions, exhibiting allows me to connect with visitors, another enriching, fulfilling, and very rewarding experience. I touch the material, and if I also touch people, it's a double win!",
       "professional_objective_2": "Sell my creations."
@@ -194,8 +228,8 @@
       "title": "Contact me",
       "subtitle": "Gestures, colours, shapes and textures, it's an adventure! I invite you to share your feelings.",
       "image": {
-        "title": "Some paintings...",
-        "alt": "Some paintings..."
+        "title": "Some creations...",
+        "alt": "Some creations..."
       },
       "connect_me": "Connect with me",
       "ready": "Ready to bring art into your space?",
@@ -218,14 +252,6 @@
         "title": "Abstract oil painting - autumnal inspiration",
         "alt": "Abstract oil painting - autumnal inspiration",
         "meta": "Explore an abstract art painting featuring vibrant autumn colors and textured layers, evoking feelings of nature and change."
-      },
-      "celestial_collision": {
-        "title": "Mixed technique - astral atmosphere",
-        "alt": "Mixed technique - astral atmosphere"
-      },
-      "entangled_echoes": {
-        "title": "Abstract acrylic - automatic painting",
-        "alt": "Abstract acrylic - automatic painting"
       },
       "acrylic": {
         "abstracts": {
@@ -354,95 +380,722 @@
             "dimensions": "60 x 80 cm"
           }
         }
+      },
+      "mixed_technique": {
+        "nature": {
+          "tmn1": {
+            "title": "Mixed technique Nature 1",
+            "mobile_title": "MTn1",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "60 x 80 cm"
+          },
+          "tmn2": {
+            "title": "Mixed technique Nature 2",
+            "mobile_title": "MTn2",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "80 x 80 cm"
+          },
+          "tmn3": {
+            "title": "Mixed technique Nature 3",
+            "mobile_title": "MTn3",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "60 x 80 cm"
+          },
+          "tmn4": {
+            "title": "Mixed technique Nature 4",
+            "mobile_title": "MTn4",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "80 x 80 cm"
+          },
+          "tmn5": {
+            "title": "Mixed technique Nature 5",
+            "mobile_title": "MTn5",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "80 x 80 cm"
+          },
+          "tmn6": {
+            "title": "Mixed technique Nature 6",
+            "mobile_title": "MTn6",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "70 x 40 cm"
+          },
+          "tmn7": {
+            "title": "Mixed technique Nature 7",
+            "mobile_title": "MTn7",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn8": {
+            "title": "Mixed technique Nature 8",
+            "mobile_title": "MTn8",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn9": {
+            "title": "Mixed technique Nature 9",
+            "mobile_title": "MTn9",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn10": {
+            "title": "Mixed technique Nature 10",
+            "mobile_title": "MTn10",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn11": {
+            "title": "Mixed technique Nature 11",
+            "mobile_title": "MTn11",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn12": {
+            "title": "Mixed technique Nature 12",
+            "mobile_title": "MTn12",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn13": {
+            "title": "Mixed technique Nature 13",
+            "mobile_title": "MTn13",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn14": {
+            "title": "Mixed technique Nature 14",
+            "mobile_title": "MTn14",
+            "alt": "Nature-inspired mixed technique painting",
+            "dimensions": "70 x 50 cm"
+          }
+        }
       }
     },
     "ceramics": {
       "electric_kiln": {
         "nature": {
-          "f1": {
-            "title": "Various flowers 1",
-            "mobile_title": "F1",
-            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          "flowers": {
+            "f1": {
+              "title": "Various flowers 1",
+              "mobile_title": "F1",
+              "alt": "Decorative flowers, for indoor and/or outdoor use"
+            },
+            "f2": {
+              "title": "Various flowers 2",
+              "mobile_title": "F2",
+              "alt": "Decorative flowers, for indoor and/or outdoor use"
+            },
+            "f3": {
+              "title": "Various flowers 3",
+              "mobile_title": "F3",
+              "alt": "Decorative flowers, for indoor and/or outdoor use"
+            },
+            "f4": {
+              "title": "Various flowers 4",
+              "mobile_title": "F4",
+              "alt": "Decorative flowers, for indoor and/or outdoor use"
+            },
+            "f5": {
+              "title": "Various flowers 5",
+              "mobile_title": "F5",
+              "alt": "Decorative flowers, for indoor and/or outdoor use"
+            },
+            "f6": {
+              "title": "Various flowers 6",
+              "mobile_title": "F6",
+              "alt": "Decorative flowers, for indoor and/or outdoor use"
+            },
+            "f7": {
+              "title": "Various flowers 7",
+              "mobile_title": "F7",
+              "alt": "Decorative flowers, for indoor and/or outdoor use"
+            },
+            "f8": {
+              "title": "Various flowers 8",
+              "mobile_title": "F8",
+              "alt": "Decorative flowers, for indoor and/or outdoor use"
+            },
+            "f9": {
+              "title": "Various flowers 9",
+              "mobile_title": "F9",
+              "alt": "Decorative flowers, for indoor and/or outdoor use"
+            },
+            "f10": {
+              "title": "Various flowers 10",
+              "mobile_title": "F10",
+              "alt": "Decorative flowers, for indoor and/or outdoor use"
+            },
+            "gf1": {
+              "title": "Large flowers 1",
+              "mobile_title": "LF1",
+              "alt": "Decorative flowers, for indoor and/or outdoor use"
+            },
+            "gf2": {
+              "title": "Large flowers 2",
+              "mobile_title": "LF2",
+              "alt": "Decorative flowers, for indoor and/or outdoor use"
+            },
+            "gf3": {
+              "title": "Large flowers 3",
+              "mobile_title": "LF3",
+              "alt": "Decorative flowers, for indoor and/or outdoor use"
+            },
+            "gf4": {
+              "title": "Large flowers 4",
+              "mobile_title": "LF4",
+              "alt": "Decorative flowers, for indoor and/or outdoor use"
+            },
+            "gf5": {
+              "title": "Large flowers 5",
+              "mobile_title": "LF5",
+              "alt": "Decorative flowers, for indoor and/or outdoor use"
+            },
+            "gf6": {
+              "title": "Large flowers 6",
+              "mobile_title": "LF6",
+              "alt": "Decorative flowers, for indoor and/or outdoor use"
+            },
+            "gf7": {
+              "title": "Large flowers 7",
+              "mobile_title": "LF7",
+              "alt": "Decorative flowers, for indoor and/or outdoor use"
+            }
           },
-          "f2": {
-            "title": "Various flowers 2",
-            "mobile_title": "F2",
-            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          "leaves": {
+            "feuilles1": {
+              "title": "Decorative leaf 1",
+              "mobile_title": "Leaf1",
+              "alt": "Decorative stoneware leaf for indoor or outdoor use"
+            },
+            "feuilles2": {
+              "title": "Decorative leaf 2",
+              "mobile_title": "Leaf2",
+              "alt": "Decorative stoneware leaf for indoor or outdoor use"
+            },
+            "feuilles3": {
+              "title": "Decorative leaf 3",
+              "mobile_title": "Leaf3",
+              "alt": "Decorative stoneware leaf for indoor or outdoor use"
+            },
+            "feuilles4": {
+              "title": "Decorative leaf 4",
+              "mobile_title": "Leaf4",
+              "alt": "Decorative stoneware leaf for indoor or outdoor use"
+            },
+            "feuilles5": {
+              "title": "Decorative leaf 5",
+              "mobile_title": "Leaf5",
+              "alt": "Decorative stoneware leaf for indoor or outdoor use"
+            },
+            "feuilles6": {
+              "title": "Decorative leaf 6",
+              "mobile_title": "Leaf6",
+              "alt": "Decorative stoneware leaf for indoor or outdoor use"
+            },
+            "feuilles7": {
+              "title": "Decorative leaf 7",
+              "mobile_title": "Leaf7",
+              "alt": "Decorative stoneware leaf for indoor or outdoor use"
+            },
+            "feuilles8": {
+              "title": "Decorative leaf 8",
+              "mobile_title": "Leaf8",
+              "alt": "Decorative stoneware leaf for indoor or outdoor use"
+            },
+            "feuilles9": {
+              "title": "Decorative leaf 9",
+              "mobile_title": "Leaf9",
+              "alt": "Decorative stoneware leaf for indoor or outdoor use"
+            },
+            "feuilles10": {
+              "title": "Decorative leaf 10",
+              "mobile_title": "Leaf10",
+              "alt": "Decorative stoneware leaf for indoor or outdoor use"
+            },
+            "feuilles11": {
+              "title": "Decorative leaf 11",
+              "mobile_title": "Leaf11",
+              "alt": "Decorative stoneware leaf for indoor or outdoor use"
+            }
+          }
+        },
+        "animals": {
+          "cats": {
+            "cats1": {
+              "title": "Stoneware cat 1",
+              "mobile_title": "Cat1",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats2": {
+              "title": "Stoneware cat 2",
+              "mobile_title": "Cat2",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats3": {
+              "title": "Stoneware cat 3",
+              "mobile_title": "Cat3",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats4": {
+              "title": "Stoneware cat 4",
+              "mobile_title": "Cat4",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats5": {
+              "title": "Stoneware cat 5",
+              "mobile_title": "Cat5",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats6": {
+              "title": "Stoneware cat 6",
+              "mobile_title": "Cat6",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats7": {
+              "title": "Stoneware cat 7",
+              "mobile_title": "Cat7",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats8": {
+              "title": "Stoneware cat 8",
+              "mobile_title": "Cat8",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats9": {
+              "title": "Stoneware cat 9",
+              "mobile_title": "Cat9",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats10": {
+              "title": "Stoneware cat 10",
+              "mobile_title": "Cat10",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats11": {
+              "title": "Stoneware cat 11",
+              "mobile_title": "Cat11",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats12": {
+              "title": "Stoneware cat 12",
+              "mobile_title": "Cat12",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats13": {
+              "title": "Stoneware cat 13",
+              "mobile_title": "Cat13",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats14": {
+              "title": "Stoneware cat 14",
+              "mobile_title": "Cat14",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            },
+            "cats15": {
+              "title": "Stoneware cat 15",
+              "mobile_title": "Cat15",
+              "alt": "Decorative stoneware cat, realistic or stylized"
+            }
           },
-          "f3": {
-            "title": "Various flowers 3",
-            "mobile_title": "F3",
-            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          "snails": {
+            "snails1": {
+              "title": "Stoneware snail 1",
+              "mobile_title": "Snail1",
+              "alt": "Decorative stoneware snail, realistic or stylized"
+            },
+            "snails2": {
+              "title": "Stoneware snail 2",
+              "mobile_title": "Snail2",
+              "alt": "Decorative stoneware snail, realistic or stylized"
+            },
+            "snails3": {
+              "title": "Stoneware snail 3",
+              "mobile_title": "Snail3",
+              "alt": "Decorative stoneware snail, realistic or stylized"
+            },
+            "snails4": {
+              "title": "Stoneware snail 4",
+              "mobile_title": "Snail4",
+              "alt": "Decorative stoneware snail, realistic or stylized"
+            },
+            "snails5": {
+              "title": "Stoneware snail 5",
+              "mobile_title": "Snail5",
+              "alt": "Decorative stoneware snail, realistic or stylized"
+            },
+            "snails6": {
+              "title": "Stoneware snail 6",
+              "mobile_title": "Snail6",
+              "alt": "Decorative stoneware snail, realistic or stylized"
+            },
+            "snails7": {
+              "title": "Stoneware snail 7",
+              "mobile_title": "Snail7",
+              "alt": "Decorative stoneware snail, realistic or stylized"
+            },
+            "snails8": {
+              "title": "Stoneware snail 8",
+              "mobile_title": "Snail8",
+              "alt": "Decorative stoneware snail, realistic or stylized"
+            }
           },
-          "f4": {
-            "title": "Various flowers 4",
-            "mobile_title": "F4",
-            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          "birds": {
+            "birds1": {
+              "title": "Stoneware bird 1",
+              "mobile_title": "Bird1",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds2": {
+              "title": "Stoneware bird 2",
+              "mobile_title": "Bird2",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds3": {
+              "title": "Stoneware bird 3",
+              "mobile_title": "Bird3",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds4": {
+              "title": "Stoneware bird 4",
+              "mobile_title": "Bird4",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds5": {
+              "title": "Stoneware bird 5",
+              "mobile_title": "Bird5",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds6": {
+              "title": "Stoneware bird 6",
+              "mobile_title": "Bird6",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds7": {
+              "title": "Stoneware bird 7",
+              "mobile_title": "Bird7",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds8": {
+              "title": "Stoneware bird 8",
+              "mobile_title": "Bird8",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds9": {
+              "title": "Stoneware bird 9",
+              "mobile_title": "Bird9",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds10": {
+              "title": "Stoneware bird 10",
+              "mobile_title": "Bird10",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds11": {
+              "title": "Stoneware bird 11",
+              "mobile_title": "Bird11",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds12": {
+              "title": "Stoneware bird 12",
+              "mobile_title": "Bird12",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds13": {
+              "title": "Stoneware bird 13",
+              "mobile_title": "Bird13",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            },
+            "birds14": {
+              "title": "Stoneware bird 14",
+              "mobile_title": "Bird14",
+              "alt": "Decorative stoneware bird, realistic or stylized"
+            }
           },
-          "f5": {
-            "title": "Various flowers 5",
-            "mobile_title": "F5",
-            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          "tortoises": {
+            "tortoises1": {
+              "title": "Stoneware tortoise 1",
+              "mobile_title": "Tort1",
+              "alt": "Decorative stoneware tortoise, realistic or stylized"
+            },
+            "tortoises2": {
+              "title": "Stoneware tortoise 2",
+              "mobile_title": "Tort2",
+              "alt": "Decorative stoneware tortoise, realistic or stylized"
+            },
+            "tortoises3": {
+              "title": "Stoneware tortoise 3",
+              "mobile_title": "Tort3",
+              "alt": "Decorative stoneware tortoise, realistic or stylized"
+            },
+            "tortoises4": {
+              "title": "Stoneware tortoise 4",
+              "mobile_title": "Tort4",
+              "alt": "Decorative stoneware tortoise, realistic or stylized"
+            },
+            "tortoises5": {
+              "title": "Stoneware tortoise 5",
+              "mobile_title": "Tort5",
+              "alt": "Decorative stoneware tortoise, realistic or stylized"
+            },
+            "tortoises6": {
+              "title": "Stoneware tortoise 6",
+              "mobile_title": "Tort6",
+              "alt": "Decorative stoneware tortoise, realistic or stylized"
+            },
+            "tortoises7": {
+              "title": "Stoneware tortoise 7",
+              "mobile_title": "Tort7",
+              "alt": "Decorative stoneware tortoise, realistic or stylized"
+            },
+            "tortoises8": {
+              "title": "Stoneware tortoise 8",
+              "mobile_title": "Tort8",
+              "alt": "Decorative stoneware tortoise, realistic or stylized"
+            }
+          }
+        },
+        "vases_and_pots": {
+          "intuitive_pots": {
+            "pots_intuitifs1": {
+              "title": "Intuitive pot 1",
+              "mobile_title": "IP1",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs2": {
+              "title": "Intuitive pot 2",
+              "mobile_title": "IP2",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs3": {
+              "title": "Intuitive pot 3",
+              "mobile_title": "IP3",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs4": {
+              "title": "Intuitive pot 4",
+              "mobile_title": "IP4",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs5": {
+              "title": "Intuitive pot 5",
+              "mobile_title": "IP5",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs6": {
+              "title": "Intuitive pot 6",
+              "mobile_title": "IP6",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs7": {
+              "title": "Intuitive pot 7",
+              "mobile_title": "IP7",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs8": {
+              "title": "Intuitive pot 8",
+              "mobile_title": "IP8",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs9": {
+              "title": "Intuitive pot 9",
+              "mobile_title": "IP9",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs10": {
+              "title": "Intuitive pot 10",
+              "mobile_title": "IP10",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs11": {
+              "title": "Intuitive pot 11",
+              "mobile_title": "IP11",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs12": {
+              "title": "Intuitive pot 12",
+              "mobile_title": "IP12",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs13": {
+              "title": "Intuitive pot 13",
+              "mobile_title": "IP13",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs14": {
+              "title": "Intuitive pot 14",
+              "mobile_title": "IP14",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            },
+            "pots_intuitifs15": {
+              "title": "Intuitive pot 15",
+              "mobile_title": "IP15",
+              "alt": "Intuitive stoneware pot for indoor or outdoor use"
+            }
           },
-          "f6": {
-            "title": "Various flowers 6",
-            "mobile_title": "F6",
-            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          "single_flower_vases": {
+            "soliflores1": {
+              "title": "Single-flower vase 1",
+              "mobile_title": "SFV1",
+              "alt": "Stoneware single-flower vase to showcase one flower"
+            },
+            "soliflores2": {
+              "title": "Single-flower vase 2",
+              "mobile_title": "SFV2",
+              "alt": "Stoneware single-flower vase to showcase one flower"
+            },
+            "soliflores3": {
+              "title": "Single-flower vase 3",
+              "mobile_title": "SFV3",
+              "alt": "Stoneware single-flower vase to showcase one flower"
+            },
+            "soliflores4": {
+              "title": "Single-flower vase 4",
+              "mobile_title": "SFV4",
+              "alt": "Stoneware single-flower vase to showcase one flower"
+            },
+            "soliflores5": {
+              "title": "Single-flower vase 5",
+              "mobile_title": "SFV5",
+              "alt": "Stoneware single-flower vase to showcase one flower"
+            },
+            "soliflores6": {
+              "title": "Single-flower vase 6",
+              "mobile_title": "SFV6",
+              "alt": "Stoneware single-flower vase to showcase one flower"
+            },
+            "soliflores7": {
+              "title": "Single-flower vase 7",
+              "mobile_title": "SFV7",
+              "alt": "Stoneware single-flower vase to showcase one flower"
+            },
+            "soliflores8": {
+              "title": "Single-flower vase 8",
+              "mobile_title": "SFV8",
+              "alt": "Stoneware single-flower vase to showcase one flower"
+            },
+            "soliflores9": {
+              "title": "Single-flower vase 9",
+              "mobile_title": "SFV9",
+              "alt": "Stoneware single-flower vase to showcase one flower"
+            },
+            "soliflores10": {
+              "title": "Single-flower vase 10",
+              "mobile_title": "SFV10",
+              "alt": "Stoneware single-flower vase to showcase one flower"
+            }
           },
-          "f7": {
-            "title": "Various flowers 7",
-            "mobile_title": "F7",
-            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          "round_vases": {
+            "vases_ronds1": {
+              "title": "Round vase 1",
+              "mobile_title": "RV1",
+              "alt": "Round stoneware vase for indoor or outdoor use"
+            },
+            "vases_ronds2": {
+              "title": "Round vase 2",
+              "mobile_title": "RV2",
+              "alt": "Round stoneware vase for indoor or outdoor use"
+            },
+            "vases_ronds3": {
+              "title": "Round vase 3",
+              "mobile_title": "RV3",
+              "alt": "Round stoneware vase for indoor or outdoor use"
+            },
+            "vases_ronds4": {
+              "title": "Round vase 4",
+              "mobile_title": "RV4",
+              "alt": "Round stoneware vase for indoor or outdoor use"
+            },
+            "vases_ronds5": {
+              "title": "Round vase 5",
+              "mobile_title": "RV5",
+              "alt": "Round stoneware vase for indoor or outdoor use"
+            },
+            "vases_ronds6": {
+              "title": "Round vase 6",
+              "mobile_title": "RV6",
+              "alt": "Round stoneware vase for indoor or outdoor use"
+            }
+          }
+        },
+        "various_objects": {
+          "boite1": {
+            "title": "Box 1",
+            "mobile_title": "Box1",
+            "alt": "Decorative stoneware box made with coloured clays"
           },
-          "f8": {
-            "title": "Various flowers 8",
-            "mobile_title": "F8",
-            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          "boite2": {
+            "title": "Box 2",
+            "mobile_title": "Box2",
+            "alt": "Decorative stoneware box made with coloured clays"
           },
-          "f9": {
-            "title": "Various flowers 9",
-            "mobile_title": "F9",
-            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          "boite3": {
+            "title": "Box 3",
+            "mobile_title": "Box3",
+            "alt": "Decorative stoneware box made with coloured clays"
           },
-          "f10": {
-            "title": "Various flowers 10",
-            "mobile_title": "F10",
-            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          "boite4": {
+            "title": "Box 4",
+            "mobile_title": "Box4",
+            "alt": "Decorative stoneware box made with coloured clays"
           },
-          "gf1": {
-            "title": "Large flowers 1",
-            "mobile_title": "LF1",
-            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          "boite5": {
+            "title": "Box 5",
+            "mobile_title": "Box5",
+            "alt": "Decorative stoneware box made with coloured clays"
           },
-          "gf2": {
-            "title": "Large flowers 2",
-            "mobile_title": "LF2",
-            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          "boite6": {
+            "title": "Box 6",
+            "mobile_title": "Box6",
+            "alt": "Decorative stoneware box made with coloured clays"
           },
-          "gf3": {
-            "title": "Large flowers 3",
-            "mobile_title": "LF3",
-            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          "boite7": {
+            "title": "Box 7",
+            "mobile_title": "Box7",
+            "alt": "Decorative stoneware box made with coloured clays"
           },
-          "gf4": {
-            "title": "Large flowers 4",
-            "mobile_title": "LF4",
-            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          "boite8": {
+            "title": "Box 8",
+            "mobile_title": "Box8",
+            "alt": "Decorative stoneware box made with coloured clays"
           },
-          "gf5": {
-            "title": "Large flowers 5",
-            "mobile_title": "LF5",
-            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          "boite9": {
+            "title": "Box 9",
+            "mobile_title": "Box9",
+            "alt": "Decorative stoneware box made with coloured clays"
           },
-          "gf6": {
-            "title": "Large flowers 6",
-            "mobile_title": "LF6",
-            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          "boite_oeuf": {
+            "title": "Egg-shaped box",
+            "mobile_title": "EggBox",
+            "alt": "Stoneware box inspired by the shape of an egg"
           },
-          "gf7": {
-            "title": "Large flowers 7",
-            "mobile_title": "LF7",
-            "alt": "Decorative flowers, for indoor and/or outdoor use"
+          "sgraffitto1": {
+            "title": "Sgraffito box 1",
+            "mobile_title": "Sgraffitto1",
+            "alt": "Decorative stoneware box decorated with Sgraffitto"
+          },
+          "sgraffitto2": {
+            "title": "Sgraffito box 2",
+            "mobile_title": "Sgraffitto2",
+            "alt": "Decorative stoneware box decorated with Sgraffitto"
+          },
+          "sgraffitto3": {
+            "title": "Sgraffito box 3",
+            "mobile_title": "Sgraffitto3",
+            "alt": "Decorative stoneware box decorated with Sgraffitto"
+          },
+          "sgraffitto4": {
+            "title": "Sgraffito box 4",
+            "mobile_title": "Sgraffitto4",
+            "alt": "Decorative stoneware box decorated with Sgraffitto"
+          },
+          "sgraffitto5": {
+            "title": "Sgraffito box 5",
+            "mobile_title": "Sgraffitto5",
+            "alt": "Decorative stoneware box decorated with Sgraffitto"
+          },
+          "sgraffitto6": {
+            "title": "Sgraffito box 6",
+            "mobile_title": "Sgraffitto6",
+            "alt": "Decorative stoneware box decorated with Sgraffitto"
           }
         }
       },
@@ -534,6 +1187,96 @@
           }
         }
       }
+    },
+    "carousel": {
+      "celestial_collision": {
+        "title": "Mixed technique - astral atmosphere",
+        "alt": "Abstract composition with astral tones"
+      },
+      "abstract_autumn": {
+        "title": "Abstract oil painting - autumnal inspiration",
+        "alt": "Abstract painting in warm autumn colours"
+      },
+      "entangled_echoes": {
+        "title": "Abstract acrylic - automatic painting",
+        "alt": "Abstract composition created with automatic painting"
+      },
+      "automatic_painting_2": {
+        "title": "Mish-Mash animals",
+        "alt": "Abstract acrylic painting with animal forms"
+      },
+      "ec10": {
+        "title": "Indian ink 10",
+        "alt": "Expressive composition created with Indian ink"
+      },
+      "tmn9": {
+        "title": "Mixed technique Nature 9",
+        "alt": "Nature-inspired mixed technique composition"
+      },
+      "cats14": {
+        "title": "Stoneware cat 14",
+        "alt": "Decorative stoneware cat"
+      },
+      "snails5": {
+        "title": "Stoneware snail 5",
+        "alt": "Decorative stoneware snail"
+      },
+      "birds5": {
+        "title": "Stoneware bird 5",
+        "alt": "Decorative stoneware bird"
+      },
+      "tortoises8": {
+        "title": "Stoneware tortoise 8",
+        "alt": "Decorative stoneware tortoise"
+      },
+      "f7": {
+        "title": "Stoneware flower 7",
+        "alt": "Decorative stoneware flower"
+      },
+      "feuilles8": {
+        "title": "Decorative leaf 8",
+        "alt": "Decorative stoneware leaf"
+      },
+      "sgraffitto4": {
+        "title": "Sgraffito box 4",
+        "alt": "Decorative stoneware box with Sgraffito decoration"
+      },
+      "pots_intuitifs7": {
+        "title": "Intuitive pot 7",
+        "alt": "Intuitive stoneware pot"
+      },
+      "soliflores10": {
+        "title": "Single-flower vase 10",
+        "alt": "Stoneware vase for a single flower"
+      },
+      "vases_ronds4": {
+        "title": "Round vase 4",
+        "alt": "Round stoneware vase"
+      },
+      "fp13": {
+        "title": "Porcelain flower 13",
+        "alt": "Porcelain flower for decoration"
+      },
+      "ceramic_wip": {
+        "title": "Ceramic in progress",
+        "alt": "Preview of a ceramic in progress"
+      },
+      "creations": {
+        "title": "Artistic creations",
+        "alt": "Selection of artistic creations"
+      },
+      "nature": {
+        "title": "Within nature",
+        "alt": "Nature inspires me"
+      },
+      "my_artistic_approach": {
+        "title": "Artistic approach",
+        "alt": "Creations illustrating an intuitive artistic approach"
+      },
+      "my_development": {
+        "title": "Artistic journey",
+        "alt": "Creations illustrating an artistic journey"
+      }
     }
   },
   "miscellaneous": {
@@ -567,18 +1310,28 @@
     "water_jet": "Water jet",
     "nudes": "Nudes",
     "animals": "Animals",
+    "cats": "Cats",
+    "snails": "Snails",
+    "birds": "Birds",
+    "tortoises": "Tortoises",
     "haphazardly": "Haphazardly",
     "mish_mash": "Mish-Mash",
     "automatic_painting": "Automatic Painting",
     "various_objects": "Various objects",
     "person": "Person",
     "vases_and_pots": "Vases and pots",
+    "intuitive_pots": "Intuitive pots",
+    "single_flower_vases": "Single-flower vases",
+    "round_vases": "Round vases",
     "christmas": "Christmas",
     "easter": "Easter",
     "flowers": "Flowers",
+    "leaves": "Leaves",
+    "boxes": "Boxes",
     "candle_holders": "Candle holders",
     "before_after": "Before and after",
     "ceramics_in_context": "Ceramics in context",
+    "raku_firing": "Raku firing",
     "first_creations": "First creations",
     "quick_work": "Quick work",
     "collective_work": "Collective work",
@@ -594,6 +1347,7 @@
     "painting_while_dancing": "Painting while dancing",
     "performances": "Performances",
     "life_is_love": "Life is Love",
+    "collaborative_painting": "4 hands painting",
     "the_artist": "The Artist",
     "artist": "Artist",
     "about_myself": "About myself",

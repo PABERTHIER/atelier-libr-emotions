@@ -26,7 +26,11 @@ useHead({
     { name: 'description', content: computed(() => t('app.meta.description')) },
   ],
   link: [
-    { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+    {
+      rel: 'preconnect',
+      href: 'https://fonts.googleapis.com',
+      crossorigin: '',
+    },
     {
       rel: 'stylesheet',
       href: 'https://fonts.googleapis.com/css2?family=Roboto&display=swap',
@@ -52,12 +56,6 @@ useHead({
       href: '/apple-icon.jpg',
       key: 'apple-touch-icon',
     },
-    {
-      rel: 'apple-touch-icon-precomposed',
-      sizes: '180x180',
-      href: '/apple-icon.jpg',
-      key: 'apple-touch-icon-precomposed',
-    },
     { rel: 'apple-touch-startup-image', href: '/apple-icon.jpg' },
     { rel: 'mask-icon', href: '/logo.svg', color: '#1D3461' },
   ],
@@ -80,12 +78,6 @@ useSeoMeta({
   ogType: 'website',
   ogLocale: locale.value,
   ogLocaleAlternate: availableLocaleAlternates.value,
-  twitterCard: 'summary_large_image',
-  twitterTitle: computed(() => t('app.name')),
-  twitterDescription: computed(() => t('app.meta.description')),
-  twitterImage: `${baseUrl.value}/${ogImageEndPath}`,
-  twitterImageAlt: computed(() => t('app.meta.description')),
-  twitterImageType: 'image/jpeg',
   author: computed(() => t('about.author')),
   creator: computed(() => t('about.author')),
   articleAuthor: computed(() => [computed(() => t('about.author')).value]),

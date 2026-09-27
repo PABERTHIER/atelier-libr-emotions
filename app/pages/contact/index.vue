@@ -15,7 +15,7 @@
         <div class="artwork-frame">
           <div class="frame-inner">
             <Image
-              src="/paintings/some-paintings.webp"
+              src="/misc/contact.webp"
               sizes="xs:150px, sm:200px, md:250px, lg:300px, xl:400px"
               max-height="600px"
               class="featured-image"
@@ -190,11 +190,6 @@ useSeoMeta({
   ogImageHeight: '600',
   ogUrl: canonicalUrl.value,
   ogType: 'article',
-  twitterTitle: '%s %separator %siteName',
-  twitterDescription: computed(() => t('pages.contact.meta.content')),
-  twitterImage: `${baseUrl.value}/${ogImageEndPath}`,
-  twitterImageAlt: computed(() => t('pages.contact.meta.content')),
-  twitterImageType: 'image/jpeg',
   articleTag: [
     computed(() => t('miscellaneous.contact')).value,
     computed(() => t('miscellaneous.art')).value,
@@ -218,13 +213,6 @@ useSeoMeta({
   appleMobileWebAppTitle: '%s %separator %siteName',
   msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
 })
-
-// defineOgImageComponent('NuxtSeo', {
-//   theme: '#FF0000',
-//   colorMode: 'dark',
-//   title: computed(() => t('pages.contact.tab_name')),
-//   description: computed(() => t('pages.contact.meta.content')),
-// })
 
 const somePaintingsTitle = computed(() => t('pages.contact.image.title'))
 const somePaintingsAlt = computed(() => t('pages.contact.image.alt'))

@@ -93,15 +93,6 @@ useSeoMeta({
   ogImageHeight: '600',
   ogUrl: canonicalUrl.value,
   ogType: 'article',
-  twitterTitle: '%s %separator %siteName',
-  twitterDescription: computed(() =>
-    t('pages.ceramic.porcelain.nature.meta.content')
-  ),
-  twitterImage: `${baseUrl.value}/${ogImageEndPath}`,
-  twitterImageAlt: computed(() =>
-    t('pages.ceramic.porcelain.nature.meta.content')
-  ),
-  twitterImageType: 'image/jpeg',
   articleTag: [
     computed(() => t('miscellaneous.ceramic')).value,
     computed(() => t('miscellaneous.ceramicist')).value,
@@ -117,13 +108,6 @@ useSeoMeta({
   appleMobileWebAppTitle: '%s %separator %siteName',
   msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
 })
-
-// defineOgImageComponent('NuxtSeo', {
-//   theme: '#4A7C59',
-//   colorMode: 'dark',
-//   title: computed(() => t('pages.ceramic.porcelain.nature.tab_name')),
-//   description: computed(() => t('pages.ceramic.porcelain.nature.meta.content')),
-// })
 
 const subtitle1 = computed(() => t('miscellaneous.flowers'))
 

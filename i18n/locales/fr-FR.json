@@ -66,6 +66,16 @@
           "title": "Encres - Nature",
           "subtitle": "Expressions inspirées par la nature"
         }
+      },
+      "mixed_technique": {
+        "nature": {
+          "tab_name": "Technique mixte - Nature",
+          "meta": {
+            "content": "Galerie de peintures en technique mixte de Véronique Berthier inspirées par la nature, entre matières, reliefs, mouvements et évasion."
+          },
+          "title": "Technique mixte - Nature",
+          "subtitle": "L'expression de la nature prend forme grâce aux mélanges de divers médiums et matériaux"
+        }
       }
     },
     "ceramic": {
@@ -77,6 +87,30 @@
           },
           "title": "Grès - four électrique - Nature",
           "subtitle": "Fleurs décoratives, pour intérieur et/ou extérieur"
+        },
+        "animals": {
+          "tab_name": "Grès - four électrique - Animaux",
+          "meta": {
+            "content": "Galerie d'animaux en grès de Véronique Berthier, cuits au four électrique et modelés avec réalisme ou poésie pour une décoration élégante."
+          },
+          "title": "Grès - four électrique - Animaux",
+          "subtitle": "Des animaux apportant une touche de poésie et d'élégance"
+        },
+        "vases_and_pots": {
+          "tab_name": "Grès - four électrique - Vases et pots",
+          "meta": {
+            "content": "Galerie de vases et pots en grès de Véronique Berthier, des objets pratiques et décoratifs pour sublimer la maison et le jardin."
+          },
+          "title": "Grès - four électrique - Vases et pots",
+          "subtitle": "Pots et des vases en céramiques, pour intérieur et jardin"
+        },
+        "various_objects": {
+          "tab_name": "Grès - four électrique - Objets divers",
+          "meta": {
+            "content": "Galerie de boîtes en grès de Véronique Berthier, créées au four électrique avec des terres colorées, des techniques variées et des éléments naturels."
+          },
+          "title": "Grès - four électrique - Objets divers",
+          "subtitle": "Objets de décoration, créés avec des terres de différentes couleurs"
         }
       },
       "porcelain": {
@@ -135,7 +169,7 @@
       "objective_2": "Explorer un moyen d'expression autre que les mots (qui viendront peut-être par la suite), laisser émerger ses émotions, libérer sa créativité, parfois donner forme à des souvenirs enfouis,...",
       "objective_3": "Prendre conscience qu'on possède tous un fabuleux potentiel créatif et s'offrir la possibilité de l'exprimer.",
       "objective_4": "Chercher, découvrir, accueillir, cheminer, progresser, se révéler en gagnant confiance en soi et en amour de soi, se réaliser, aller vers un mieux-être, se révéler, s'ouvrir aux autres.",
-      "objective_5": "Monter différents projets d'expositions (ce qui permet, à ceux qui souhaitent exposer, de valoriser leur travail et eux par la même occasion).",
+      "objective_5": "Monter différents projets d'expositions, ce qui permet, à ceux qui le souhaitent, d'échanger et de parler de leurs créations.",
       "professional_objectives_title": "Objectifs professionnels",
       "professional_objective_1": "Montrer mes travaux afin d'échanger des impressions, des ressentis,... car si travailler la matière est Ma façon de dévoiler mes émotions, exposer c'est me permettre d'entrer en communication avec les visiteurs, autre moment enrichissant, épanouissant et très porteur. Je touche la matière et si en plus je touche les gens, c'est doublement gagné !!",
       "professional_objective_2": "Vendre mes créations."
@@ -194,8 +228,8 @@
       "title": "Contactez-moi",
       "subtitle": "Gestuelles, couleurs, formes et textures, c'est l'aventure ! Je vous invite à partager vos ressentis.",
       "image": {
-        "title": "Quelques peintures...",
-        "alt": "Quelques peintures..."
+        "title": "Quelques créations...",
+        "alt": "Quelques créations..."
       },
       "connect_me": "Connectez-vous avec moi",
       "ready": "Prêt à faire entrer l'art dans votre espace ?",
@@ -218,14 +252,6 @@
         "title": "Peinture à l'huile abstraite - inspiration automnale",
         "alt": "Peinture à l'huile abstraite - inspiration automnale",
         "meta": "Explorez une peinture d'art abstrait présentant des couleurs automnales vibrantes et des couches texturées, évoquant des sentiments de nature et de changement."
-      },
-      "celestial_collision": {
-        "title": "Technique mixte - ambiance astrale",
-        "alt": "Technique mixte - ambiance astrale"
-      },
-      "entangled_echoes": {
-        "title": "Acrylique abstraite - peinture automatique",
-        "alt": "Acrylique abstraite - peinture automatique"
       },
       "acrylic": {
         "abstracts": {
@@ -354,95 +380,722 @@
             "dimensions": "60 x 80 cm"
           }
         }
+      },
+      "mixed_technique": {
+        "nature": {
+          "tmn1": {
+            "title": "Technique mixte Nature 1",
+            "mobile_title": "TMn1",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "60 x 80 cm"
+          },
+          "tmn2": {
+            "title": "Technique mixte Nature 2",
+            "mobile_title": "TMn2",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "80 x 80 cm"
+          },
+          "tmn3": {
+            "title": "Technique mixte Nature 3",
+            "mobile_title": "TMn3",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "60 x 80 cm"
+          },
+          "tmn4": {
+            "title": "Technique mixte Nature 4",
+            "mobile_title": "TMn4",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "80 x 80 cm"
+          },
+          "tmn5": {
+            "title": "Technique mixte Nature 5",
+            "mobile_title": "TMn5",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "80 x 80 cm"
+          },
+          "tmn6": {
+            "title": "Technique mixte Nature 6",
+            "mobile_title": "TMn6",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "70 x 40 cm"
+          },
+          "tmn7": {
+            "title": "Technique mixte Nature 7",
+            "mobile_title": "TMn7",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn8": {
+            "title": "Technique mixte Nature 8",
+            "mobile_title": "TMn8",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn9": {
+            "title": "Technique mixte Nature 9",
+            "mobile_title": "TMn9",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn10": {
+            "title": "Technique mixte Nature 10",
+            "mobile_title": "TMn10",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn11": {
+            "title": "Technique mixte Nature 11",
+            "mobile_title": "TMn11",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn12": {
+            "title": "Technique mixte Nature 12",
+            "mobile_title": "TMn12",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn13": {
+            "title": "Technique mixte Nature 13",
+            "mobile_title": "TMn13",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "70 x 50 cm"
+          },
+          "tmn14": {
+            "title": "Technique mixte Nature 14",
+            "mobile_title": "TMn14",
+            "alt": "Composition naturelle en peinture mixte",
+            "dimensions": "70 x 50 cm"
+          }
+        }
       }
     },
     "ceramics": {
       "electric_kiln": {
         "nature": {
-          "f1": {
-            "title": "Diverses fleurs 1",
-            "mobile_title": "F1",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          "flowers": {
+            "f1": {
+              "title": "Diverses fleurs 1",
+              "mobile_title": "F1",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "f2": {
+              "title": "Diverses fleurs 2",
+              "mobile_title": "F2",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "f3": {
+              "title": "Diverses fleurs 3",
+              "mobile_title": "F3",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "f4": {
+              "title": "Diverses fleurs 4",
+              "mobile_title": "F4",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "f5": {
+              "title": "Diverses fleurs 5",
+              "mobile_title": "F5",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "f6": {
+              "title": "Diverses fleurs 6",
+              "mobile_title": "F6",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "f7": {
+              "title": "Diverses fleurs 7",
+              "mobile_title": "F7",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "f8": {
+              "title": "Diverses fleurs 8",
+              "mobile_title": "F8",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "f9": {
+              "title": "Diverses fleurs 9",
+              "mobile_title": "F9",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "f10": {
+              "title": "Diverses fleurs 10",
+              "mobile_title": "F10",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "gf1": {
+              "title": "Grosses fleurs 1",
+              "mobile_title": "GF1",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "gf2": {
+              "title": "Grosses fleurs 2",
+              "mobile_title": "GF2",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "gf3": {
+              "title": "Grosses fleurs 3",
+              "mobile_title": "GF3",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "gf4": {
+              "title": "Grosses fleurs 4",
+              "mobile_title": "GF4",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "gf5": {
+              "title": "Grosses fleurs 5",
+              "mobile_title": "GF5",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "gf6": {
+              "title": "Grosses fleurs 6",
+              "mobile_title": "GF6",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            },
+            "gf7": {
+              "title": "Grosses fleurs 7",
+              "mobile_title": "GF7",
+              "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+            }
           },
-          "f2": {
-            "title": "Diverses fleurs 2",
-            "mobile_title": "F2",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          "leaves": {
+            "feuilles1": {
+              "title": "Feuille décorative 1",
+              "mobile_title": "Feui1",
+              "alt": "Feuille décorative en grès pour intérieur ou extérieur"
+            },
+            "feuilles2": {
+              "title": "Feuille décorative 2",
+              "mobile_title": "Feui2",
+              "alt": "Feuille décorative en grès pour intérieur ou extérieur"
+            },
+            "feuilles3": {
+              "title": "Feuille décorative 3",
+              "mobile_title": "Feui3",
+              "alt": "Feuille décorative en grès pour intérieur ou extérieur"
+            },
+            "feuilles4": {
+              "title": "Feuille décorative 4",
+              "mobile_title": "Feui4",
+              "alt": "Feuille décorative en grès pour intérieur ou extérieur"
+            },
+            "feuilles5": {
+              "title": "Feuille décorative 5",
+              "mobile_title": "Feui5",
+              "alt": "Feuille décorative en grès pour intérieur ou extérieur"
+            },
+            "feuilles6": {
+              "title": "Feuille décorative 6",
+              "mobile_title": "Feui6",
+              "alt": "Feuille décorative en grès pour intérieur ou extérieur"
+            },
+            "feuilles7": {
+              "title": "Feuille décorative 7",
+              "mobile_title": "Feui7",
+              "alt": "Feuille décorative en grès pour intérieur ou extérieur"
+            },
+            "feuilles8": {
+              "title": "Feuille décorative 8",
+              "mobile_title": "Feui8",
+              "alt": "Feuille décorative en grès pour intérieur ou extérieur"
+            },
+            "feuilles9": {
+              "title": "Feuille décorative 9",
+              "mobile_title": "Feui9",
+              "alt": "Feuille décorative en grès pour intérieur ou extérieur"
+            },
+            "feuilles10": {
+              "title": "Feuille décorative 10",
+              "mobile_title": "Feui10",
+              "alt": "Feuille décorative en grès pour intérieur ou extérieur"
+            },
+            "feuilles11": {
+              "title": "Feuille décorative 11",
+              "mobile_title": "Feui11",
+              "alt": "Feuille décorative en grès pour intérieur ou extérieur"
+            }
+          }
+        },
+        "animals": {
+          "cats": {
+            "cats1": {
+              "title": "Chat en grès 1",
+              "mobile_title": "Chat1",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats2": {
+              "title": "Chat en grès 2",
+              "mobile_title": "Chat2",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats3": {
+              "title": "Chat en grès 3",
+              "mobile_title": "Chat3",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats4": {
+              "title": "Chat en grès 4",
+              "mobile_title": "Chat4",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats5": {
+              "title": "Chat en grès 5",
+              "mobile_title": "Chat5",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats6": {
+              "title": "Chat en grès 6",
+              "mobile_title": "Chat6",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats7": {
+              "title": "Chat en grès 7",
+              "mobile_title": "Chat7",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats8": {
+              "title": "Chat en grès 8",
+              "mobile_title": "Chat8",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats9": {
+              "title": "Chat en grès 9",
+              "mobile_title": "Chat9",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats10": {
+              "title": "Chat en grès 10",
+              "mobile_title": "Chat10",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats11": {
+              "title": "Chat en grès 11",
+              "mobile_title": "Chat11",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats12": {
+              "title": "Chat en grès 12",
+              "mobile_title": "Chat12",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats13": {
+              "title": "Chat en grès 13",
+              "mobile_title": "Chat13",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats14": {
+              "title": "Chat en grès 14",
+              "mobile_title": "Chat14",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            },
+            "cats15": {
+              "title": "Chat en grès 15",
+              "mobile_title": "Chat15",
+              "alt": "Chat décoratif en grès, réaliste ou stylisé"
+            }
           },
-          "f3": {
-            "title": "Diverses fleurs 3",
-            "mobile_title": "F3",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          "snails": {
+            "snails1": {
+              "title": "Escargot en grès 1",
+              "mobile_title": "Esc1",
+              "alt": "Escargot décoratif en grès, réaliste ou stylisé"
+            },
+            "snails2": {
+              "title": "Escargot en grès 2",
+              "mobile_title": "Esc2",
+              "alt": "Escargot décoratif en grès, réaliste ou stylisé"
+            },
+            "snails3": {
+              "title": "Escargot en grès 3",
+              "mobile_title": "Esc3",
+              "alt": "Escargot décoratif en grès, réaliste ou stylisé"
+            },
+            "snails4": {
+              "title": "Escargot en grès 4",
+              "mobile_title": "Esc4",
+              "alt": "Escargot décoratif en grès, réaliste ou stylisé"
+            },
+            "snails5": {
+              "title": "Escargot en grès 5",
+              "mobile_title": "Esc5",
+              "alt": "Escargot décoratif en grès, réaliste ou stylisé"
+            },
+            "snails6": {
+              "title": "Escargot en grès 6",
+              "mobile_title": "Esc6",
+              "alt": "Escargot décoratif en grès, réaliste ou stylisé"
+            },
+            "snails7": {
+              "title": "Escargot en grès 7",
+              "mobile_title": "Esc7",
+              "alt": "Escargot décoratif en grès, réaliste ou stylisé"
+            },
+            "snails8": {
+              "title": "Escargot en grès 8",
+              "mobile_title": "Esc8",
+              "alt": "Escargot décoratif en grès, réaliste ou stylisé"
+            }
           },
-          "f4": {
-            "title": "Diverses fleurs 4",
-            "mobile_title": "F4",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          "birds": {
+            "birds1": {
+              "title": "Oiseau en grès 1",
+              "mobile_title": "Ois1",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds2": {
+              "title": "Oiseau en grès 2",
+              "mobile_title": "Ois2",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds3": {
+              "title": "Oiseau en grès 3",
+              "mobile_title": "Ois3",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds4": {
+              "title": "Oiseau en grès 4",
+              "mobile_title": "Ois4",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds5": {
+              "title": "Oiseau en grès 5",
+              "mobile_title": "Ois5",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds6": {
+              "title": "Oiseau en grès 6",
+              "mobile_title": "Ois6",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds7": {
+              "title": "Oiseau en grès 7",
+              "mobile_title": "Ois7",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds8": {
+              "title": "Oiseau en grès 8",
+              "mobile_title": "Ois8",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds9": {
+              "title": "Oiseau en grès 9",
+              "mobile_title": "Ois9",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds10": {
+              "title": "Oiseau en grès 10",
+              "mobile_title": "Ois10",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds11": {
+              "title": "Oiseau en grès 11",
+              "mobile_title": "Ois11",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds12": {
+              "title": "Oiseau en grès 12",
+              "mobile_title": "Ois12",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds13": {
+              "title": "Oiseau en grès 13",
+              "mobile_title": "Ois13",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            },
+            "birds14": {
+              "title": "Oiseau en grès 14",
+              "mobile_title": "Ois14",
+              "alt": "Oiseau décoratif en grès, réaliste ou stylisé"
+            }
           },
-          "f5": {
-            "title": "Diverses fleurs 5",
-            "mobile_title": "F5",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          "tortoises": {
+            "tortoises1": {
+              "title": "Tortue en grès 1",
+              "mobile_title": "Tort1",
+              "alt": "Tortue décorative en grès, réaliste ou stylisée"
+            },
+            "tortoises2": {
+              "title": "Tortue en grès 2",
+              "mobile_title": "Tort2",
+              "alt": "Tortue décorative en grès, réaliste ou stylisée"
+            },
+            "tortoises3": {
+              "title": "Tortue en grès 3",
+              "mobile_title": "Tort3",
+              "alt": "Tortue décorative en grès, réaliste ou stylisée"
+            },
+            "tortoises4": {
+              "title": "Tortue en grès 4",
+              "mobile_title": "Tort4",
+              "alt": "Tortue décorative en grès, réaliste ou stylisée"
+            },
+            "tortoises5": {
+              "title": "Tortue en grès 5",
+              "mobile_title": "Tort5",
+              "alt": "Tortue décorative en grès, réaliste ou stylisée"
+            },
+            "tortoises6": {
+              "title": "Tortue en grès 6",
+              "mobile_title": "Tort6",
+              "alt": "Tortue décorative en grès, réaliste ou stylisée"
+            },
+            "tortoises7": {
+              "title": "Tortue en grès 7",
+              "mobile_title": "Tort7",
+              "alt": "Tortue décorative en grès, réaliste ou stylisée"
+            },
+            "tortoises8": {
+              "title": "Tortue en grès 8",
+              "mobile_title": "Tort8",
+              "alt": "Tortue décorative en grès, réaliste ou stylisée"
+            }
+          }
+        },
+        "vases_and_pots": {
+          "intuitive_pots": {
+            "pots_intuitifs1": {
+              "title": "Pot intuitif 1",
+              "mobile_title": "PI1",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs2": {
+              "title": "Pot intuitif 2",
+              "mobile_title": "PI2",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs3": {
+              "title": "Pot intuitif 3",
+              "mobile_title": "PI3",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs4": {
+              "title": "Pot intuitif 4",
+              "mobile_title": "PI4",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs5": {
+              "title": "Pot intuitif 5",
+              "mobile_title": "PI5",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs6": {
+              "title": "Pot intuitif 6",
+              "mobile_title": "PI6",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs7": {
+              "title": "Pot intuitif 7",
+              "mobile_title": "PI7",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs8": {
+              "title": "Pot intuitif 8",
+              "mobile_title": "PI8",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs9": {
+              "title": "Pot intuitif 9",
+              "mobile_title": "PI9",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs10": {
+              "title": "Pot intuitif 10",
+              "mobile_title": "PI10",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs11": {
+              "title": "Pot intuitif 11",
+              "mobile_title": "PI11",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs12": {
+              "title": "Pot intuitif 12",
+              "mobile_title": "PI12",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs13": {
+              "title": "Pot intuitif 13",
+              "mobile_title": "PI13",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs14": {
+              "title": "Pot intuitif 14",
+              "mobile_title": "PI14",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            },
+            "pots_intuitifs15": {
+              "title": "Pot intuitif 15",
+              "mobile_title": "PI15",
+              "alt": "Pot intuitif en grès pour intérieur ou jardin"
+            }
           },
-          "f6": {
-            "title": "Diverses fleurs 6",
-            "mobile_title": "F6",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          "single_flower_vases": {
+            "soliflores1": {
+              "title": "Soliflore 1",
+              "mobile_title": "S1",
+              "alt": "Soliflore en grès pour mettre en valeur une fleur"
+            },
+            "soliflores2": {
+              "title": "Soliflore 2",
+              "mobile_title": "S2",
+              "alt": "Soliflore en grès pour mettre en valeur une fleur"
+            },
+            "soliflores3": {
+              "title": "Soliflore 3",
+              "mobile_title": "S3",
+              "alt": "Soliflore en grès pour mettre en valeur une fleur"
+            },
+            "soliflores4": {
+              "title": "Soliflore 4",
+              "mobile_title": "S4",
+              "alt": "Soliflore en grès pour mettre en valeur une fleur"
+            },
+            "soliflores5": {
+              "title": "Soliflore 5",
+              "mobile_title": "S5",
+              "alt": "Soliflore en grès pour mettre en valeur une fleur"
+            },
+            "soliflores6": {
+              "title": "Soliflore 6",
+              "mobile_title": "S6",
+              "alt": "Soliflore en grès pour mettre en valeur une fleur"
+            },
+            "soliflores7": {
+              "title": "Soliflore 7",
+              "mobile_title": "S7",
+              "alt": "Soliflore en grès pour mettre en valeur une fleur"
+            },
+            "soliflores8": {
+              "title": "Soliflore 8",
+              "mobile_title": "S8",
+              "alt": "Soliflore en grès pour mettre en valeur une fleur"
+            },
+            "soliflores9": {
+              "title": "Soliflore 9",
+              "mobile_title": "S9",
+              "alt": "Soliflore en grès pour mettre en valeur une fleur"
+            },
+            "soliflores10": {
+              "title": "Soliflore 10",
+              "mobile_title": "S10",
+              "alt": "Soliflore en grès pour mettre en valeur une fleur"
+            }
           },
-          "f7": {
-            "title": "Diverses fleurs 7",
-            "mobile_title": "F7",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          "round_vases": {
+            "vases_ronds1": {
+              "title": "Vase rond 1",
+              "mobile_title": "VR1",
+              "alt": "Vase rond en grès pour intérieur ou jardin"
+            },
+            "vases_ronds2": {
+              "title": "Vase rond 2",
+              "mobile_title": "VR2",
+              "alt": "Vase rond en grès pour intérieur ou jardin"
+            },
+            "vases_ronds3": {
+              "title": "Vase rond 3",
+              "mobile_title": "VR3",
+              "alt": "Vase rond en grès pour intérieur ou jardin"
+            },
+            "vases_ronds4": {
+              "title": "Vase rond 4",
+              "mobile_title": "VR4",
+              "alt": "Vase rond en grès pour intérieur ou jardin"
+            },
+            "vases_ronds5": {
+              "title": "Vase rond 5",
+              "mobile_title": "VR5",
+              "alt": "Vase rond en grès pour intérieur ou jardin"
+            },
+            "vases_ronds6": {
+              "title": "Vase rond 6",
+              "mobile_title": "VR6",
+              "alt": "Vase rond en grès pour intérieur ou jardin"
+            }
+          }
+        },
+        "various_objects": {
+          "boite1": {
+            "title": "Boîte 1",
+            "mobile_title": "Boîte1",
+            "alt": "Boîte décorative en grès aux terres colorées"
           },
-          "f8": {
-            "title": "Diverses fleurs 8",
-            "mobile_title": "F8",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          "boite2": {
+            "title": "Boîte 2",
+            "mobile_title": "Boîte2",
+            "alt": "Boîte décorative en grès aux terres colorées"
           },
-          "f9": {
-            "title": "Diverses fleurs 9",
-            "mobile_title": "F9",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          "boite3": {
+            "title": "Boîte 3",
+            "mobile_title": "Boîte3",
+            "alt": "Boîte décorative en grès aux terres colorées"
           },
-          "f10": {
-            "title": "Diverses fleurs 10",
-            "mobile_title": "F10",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          "boite4": {
+            "title": "Boîte 4",
+            "mobile_title": "Boîte4",
+            "alt": "Boîte décorative en grès aux terres colorées"
           },
-          "gf1": {
-            "title": "Grosses fleurs 1",
-            "mobile_title": "GF1",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          "boite5": {
+            "title": "Boîte 5",
+            "mobile_title": "Boîte5",
+            "alt": "Boîte décorative en grès aux terres colorées"
           },
-          "gf2": {
-            "title": "Grosses fleurs 2",
-            "mobile_title": "GF2",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          "boite6": {
+            "title": "Boîte 6",
+            "mobile_title": "Boîte6",
+            "alt": "Boîte décorative en grès aux terres colorées"
           },
-          "gf3": {
-            "title": "Grosses fleurs 3",
-            "mobile_title": "GF3",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          "boite7": {
+            "title": "Boîte 7",
+            "mobile_title": "Boîte7",
+            "alt": "Boîte décorative en grès aux terres colorées"
           },
-          "gf4": {
-            "title": "Grosses fleurs 4",
-            "mobile_title": "GF4",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          "boite8": {
+            "title": "Boîte 8",
+            "mobile_title": "Boîte8",
+            "alt": "Boîte décorative en grès aux terres colorées"
           },
-          "gf5": {
-            "title": "Grosses fleurs 5",
-            "mobile_title": "GF5",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          "boite9": {
+            "title": "Boîte 9",
+            "mobile_title": "Boîte9",
+            "alt": "Boîte décorative en grès aux terres colorées"
           },
-          "gf6": {
-            "title": "Grosses fleurs 6",
-            "mobile_title": "GF6",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          "boite_oeuf": {
+            "title": "Boîte œuf",
+            "mobile_title": "BoîteOeuf",
+            "alt": "Boîte en grès inspirée de la forme d'un œuf"
           },
-          "gf7": {
-            "title": "Grosses fleurs 7",
-            "mobile_title": "GF7",
-            "alt": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          "sgraffitto1": {
+            "title": "Boîte Sgraffitto 1",
+            "mobile_title": "Sgraffitto1",
+            "alt": "Boîte décorative en grès ornée de Sgraffitto"
+          },
+          "sgraffitto2": {
+            "title": "Boîte Sgraffitto 2",
+            "mobile_title": "Sgraffitto2",
+            "alt": "Boîte décorative en grès ornée de Sgraffitto"
+          },
+          "sgraffitto3": {
+            "title": "Boîte Sgraffitto 3",
+            "mobile_title": "Sgraffitto3",
+            "alt": "Boîte décorative en grès ornée de Sgraffitto"
+          },
+          "sgraffitto4": {
+            "title": "Boîte Sgraffitto 4",
+            "mobile_title": "Sgraffitto4",
+            "alt": "Boîte décorative en grès ornée de Sgraffitto"
+          },
+          "sgraffitto5": {
+            "title": "Boîte Sgraffitto 5",
+            "mobile_title": "Sgraffitto5",
+            "alt": "Boîte décorative en grès ornée de Sgraffitto"
+          },
+          "sgraffitto6": {
+            "title": "Boîte Sgraffitto 6",
+            "mobile_title": "Sgraffitto6",
+            "alt": "Boîte décorative en grès ornée de Sgraffitto"
           }
         }
       },
@@ -534,6 +1187,96 @@
           }
         }
       }
+    },
+    "carousel": {
+      "celestial_collision": {
+        "title": "Technique mixte - ambiance astrale",
+        "alt": "Composition abstraite aux teintes astrales"
+      },
+      "abstract_autumn": {
+        "title": "Peinture à l'huile abstraite - inspiration automnale",
+        "alt": "Peinture abstraite aux couleurs chaudes de l'automne"
+      },
+      "entangled_echoes": {
+        "title": "Acrylique abstraite - peinture automatique",
+        "alt": "Composition abstraite créée en peinture automatique"
+      },
+      "automatic_painting_2": {
+        "title": "Méli-Mélo animaux",
+        "alt": "Peinture acrylique abstraite aux formes animales"
+      },
+      "ec10": {
+        "title": "Encre de Chine 10",
+        "alt": "Composition expressive réalisée à l'encre de Chine"
+      },
+      "tmn9": {
+        "title": "Technique mixte Nature 9",
+        "alt": "Composition naturelle en peinture mixte"
+      },
+      "cats14": {
+        "title": "Chat en grès 14",
+        "alt": "Chat décoratif en grès"
+      },
+      "snails5": {
+        "title": "Escargot en grès 5",
+        "alt": "Escargot décoratif en grès"
+      },
+      "birds5": {
+        "title": "Oiseau en grès 5",
+        "alt": "Oiseau décoratif en grès"
+      },
+      "tortoises8": {
+        "title": "Tortue en grès 8",
+        "alt": "Tortue décorative en grès"
+      },
+      "f7": {
+        "title": "Fleur en grès 7",
+        "alt": "Fleur décorative en grès"
+      },
+      "feuilles8": {
+        "title": "Feuille décorative 8",
+        "alt": "Feuille décorative en grès"
+      },
+      "sgraffitto4": {
+        "title": "Boîte Sgraffitto 4",
+        "alt": "Boîte décorative en grès ornée de Sgraffitto"
+      },
+      "pots_intuitifs7": {
+        "title": "Pot intuitif 7",
+        "alt": "Pot intuitif en grès"
+      },
+      "soliflores10": {
+        "title": "Soliflore 10",
+        "alt": "Soliflore en grès pour une fleur"
+      },
+      "vases_ronds4": {
+        "title": "Vase rond 4",
+        "alt": "Vase rond en grès"
+      },
+      "fp13": {
+        "title": "Fleur Porcelaine 13",
+        "alt": "Fleur en porcelaine pour décoration"
+      },
+      "ceramic_wip": {
+        "title": "Céramique en préparation",
+        "alt": "Aperçu d'une céramique en cours de création"
+      },
+      "creations": {
+        "title": "Créations artistiques",
+        "alt": "Sélection de créations artistiques"
+      },
+      "nature": {
+        "title": "Au sein de la nature",
+        "alt": "La nature m'inspire"
+      },
+      "my_artistic_approach": {
+        "title": "Démarche artistique",
+        "alt": "Créations illustrant une démarche artistique intuitive"
+      },
+      "my_development": {
+        "title": "Cheminement artistique",
+        "alt": "Créations illustrant un parcours artistique"
+      }
     }
   },
   "miscellaneous": {
@@ -567,18 +1310,28 @@
     "water_jet": "Jeu d'eau",
     "nudes": "Nus",
     "animals": "Animaux",
+    "cats": "Chats",
+    "snails": "Escargots",
+    "birds": "Oiseaux",
+    "tortoises": "Tortues",
     "haphazardly": "Pêle-Mêle",
     "mish_mash": "Méli-Mélo",
     "automatic_painting": "Peinture Automatique",
     "various_objects": "Objets divers",
     "person": "Personnages",
     "vases_and_pots": "Vases et pots",
+    "intuitive_pots": "Pots intuitifs",
+    "single_flower_vases": "Soliflores",
+    "round_vases": "Vases ronds",
     "christmas": "Noël",
     "easter": "Pâques",
     "flowers": "Fleurs",
+    "leaves": "Feuilles",
+    "boxes": "Boîtes",
     "candle_holders": "Photophores",
     "before_after": "Avant-après",
     "ceramics_in_context": "Céramiques en situation",
+    "raku_firing": "Cuisson Raku",
     "first_creations": "Premières créations",
     "quick_work": "Travaux rapides",
     "collective_work": "Travail collectif",
@@ -594,6 +1347,7 @@
     "painting_while_dancing": "Peindre en dansant",
     "performances": "Performances",
     "life_is_love": "La Vie c'est de l'Amour",
+    "collaborative_painting": "Peinture à 4 mains",
     "the_artist": "L'Artiste",
     "artist": "Artiste",
     "about_myself": "À propos de moi",

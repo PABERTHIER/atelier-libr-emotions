@@ -103,15 +103,6 @@ useSeoMeta({
   ogImageHeight: '600',
   ogUrl: canonicalUrl.value,
   ogType: 'article',
-  twitterTitle: '%s %separator %siteName',
-  twitterDescription: computed(() =>
-    t('pages.painting.acrylic.abstracts.meta.content')
-  ),
-  twitterImage: `${baseUrl.value}/${ogImageEndPath}`,
-  twitterImageAlt: computed(() =>
-    t('pages.painting.acrylic.abstracts.meta.content')
-  ),
-  twitterImageType: 'image/jpeg',
   articleTag: [
     computed(() => t('miscellaneous.painting')).value,
     computed(() => t('miscellaneous.painter')).value,
@@ -132,13 +123,6 @@ useSeoMeta({
   appleMobileWebAppTitle: '%s %separator %siteName',
   msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
 })
-
-// defineOgImageComponent('NuxtSeo', {
-//   theme: '#4A7C59',
-//   colorMode: 'dark',
-//   title: computed(() => t('pages.painting.acrylic.abstracts.tab_name')),
-//   description: computed(() => t('pages.painting.acrylic.abstracts.meta.content')),
-// })
 
 const images: ImageSource[] = [
   {

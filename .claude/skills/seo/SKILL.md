@@ -97,12 +97,10 @@ useHead({
 ```typescript
 useSeoMeta({
   ogTitle: '%s %separator %siteName',
-  twitterTitle: '%s %separator %siteName',
   appleMobileWebAppTitle: '%s %separator %siteName',
 
   description: computed(() => t('pages.{domain}.{technique}.{category}.meta.content')),
   ogDescription: computed(() => t('pages.{domain}.{technique}.{category}.meta.content')),
-  twitterDescription: computed(() => t('pages.{domain}.{technique}.{category}.meta.content')),
 
   ogImage: `${baseUrl.value}/${ogImageEndPath}`,
   ogImageSecureUrl: `${baseUrl.value}/${ogImageEndPath}`,
@@ -110,10 +108,6 @@ useSeoMeta({
   ogImageType: 'image/jpeg',
   ogImageWidth: '1200',
   ogImageHeight: '600',
-
-  twitterImage: `${baseUrl.value}/${ogImageEndPath}`,
-  twitterImageAlt: computed(() => t('pages.{domain}.{technique}.{category}.meta.content')),
-  twitterImageType: 'image/jpeg',
 
   ogUrl: canonicalUrl.value,
   ogType: 'article',
@@ -132,21 +126,6 @@ useSeoMeta({
 ```
 
 `articleTag` values use `.value` directly (resolved strings, not reactive). All other i18n values must be `computed(() => t(...))`.
-
----
-
-## Commented OgImageComponent (NON-NEGOTIABLE: always keep)
-
-```typescript
-// defineOgImageComponent('NuxtSeo', {
-//   theme: '#4A7C59',
-//   colorMode: 'dark',
-//   title: computed(() => t('pages.{domain}.{technique}.{category}.tab_name')),
-//   description: computed(() => t('pages.{domain}.{technique}.{category}.meta.content')),
-// })
-```
-
-Do not remove this block from any page — it is kept for future activation.
 
 ---
 
