@@ -3,21 +3,28 @@
     <div class="page-header">
       <PageHeaderOrnament />
       <PageTitle
-        :title="t('pages.ceramic.electric_kiln.nature.title')"
-        :subtitle="t('pages.ceramic.electric_kiln.nature.subtitle')" />
+        :title="t('pages.ceramic.electric_kiln.vases_and_pots.title')"
+        :subtitle="t('pages.ceramic.electric_kiln.vases_and_pots.subtitle')" />
     </div>
 
-    <h2>{{ flowersTitle }}</h2>
+    <h2>{{ intuitivePotsTitle }}</h2>
     <div class="gallery-container">
       <ImageGrid
-        :images="flowersImages"
+        :images="intuitivePotsImages"
         :heights="{ xs: 120, sm: 160, md: 220, lg: 300 }" />
     </div>
 
-    <h2>{{ leavesSubtitle }}</h2>
+    <h2>{{ singleFlowerVasesTitle }}</h2>
     <div class="gallery-container">
       <ImageGrid
-        :images="leavesImages"
+        :images="singleFlowerVasesImages"
+        :heights="{ xs: 120, sm: 160, md: 220, lg: 300 }" />
+    </div>
+
+    <h2>{{ roundVasesTitle }}</h2>
+    <div class="gallery-container">
+      <ImageGrid
+        :images="roundVasesImages"
         :heights="{ xs: 120, sm: 160, md: 220, lg: 300 }" />
     </div>
 
@@ -33,18 +40,19 @@ const runtimeConfig = useRuntimeConfig()
 const route = useRoute()
 
 const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
-const urlEndPath = 'ceramic/electric-kiln/nature'
-const ogImageEndPath = 'ceramics/electric_kiln/nature/flowers/F8.webp'
-
+const urlEndPath = 'ceramic/electric-kiln/vases-and-pots'
+const ogImageEndPath =
+  'ceramics/electric_kiln/vases_and_pots/single_flower_vases/Soliflores10.webp'
 const canonicalUrl = computed(() => `${baseUrl.value}${route.path}`)
 
 const keywords = [
   'miscellaneous.ceramic',
   'miscellaneous.ceramicist',
   'miscellaneous.electric_kiln',
-  'miscellaneous.nature',
-  'miscellaneous.flowers',
-  'miscellaneous.leaves',
+  'miscellaneous.vases_and_pots',
+  'miscellaneous.intuitive_pots',
+  'miscellaneous.single_flower_vases',
+  'miscellaneous.round_vases',
   'miscellaneous.art',
   'miscellaneous.artist',
   'miscellaneous.emotions',
@@ -54,12 +62,14 @@ const keywords = [
 const keywordValues = computed(() => keywords.map(keyword => t(keyword)))
 
 useHead({
-  title: computed(() => t('pages.ceramic.electric_kiln.nature.tab_name')),
+  title: computed(() =>
+    t('pages.ceramic.electric_kiln.vases_and_pots.tab_name')
+  ),
   meta: [
     {
       name: 'description',
       content: computed(() =>
-        t('pages.ceramic.electric_kiln.nature.meta.content')
+        t('pages.ceramic.electric_kiln.vases_and_pots.meta.content')
       ),
     },
     {
@@ -96,15 +106,15 @@ useHead({
 useSeoMeta({
   ogTitle: '%s %separator %siteName',
   description: computed(() =>
-    t('pages.ceramic.electric_kiln.nature.meta.content')
+    t('pages.ceramic.electric_kiln.vases_and_pots.meta.content')
   ),
   ogDescription: computed(() =>
-    t('pages.ceramic.electric_kiln.nature.meta.content')
+    t('pages.ceramic.electric_kiln.vases_and_pots.meta.content')
   ),
   ogImage: `${baseUrl.value}/${ogImageEndPath}`,
   ogImageSecureUrl: `${baseUrl.value}/${ogImageEndPath}`,
   ogImageAlt: computed(() =>
-    t('pages.ceramic.electric_kiln.nature.meta.content')
+    t('pages.ceramic.electric_kiln.vases_and_pots.meta.content')
   ),
   ogImageType: 'image/jpeg',
   ogImageWidth: '1200',
@@ -116,8 +126,11 @@ useSeoMeta({
   msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
 })
 
-const flowersTitle = computed(() => t('miscellaneous.flowers'))
-const leavesSubtitle = computed(() => t('miscellaneous.leaves'))
+const intuitivePotsTitle = computed(() => t('miscellaneous.intuitive_pots'))
+const singleFlowerVasesTitle = computed(() =>
+  t('miscellaneous.single_flower_vases')
+)
+const roundVasesTitle = computed(() => t('miscellaneous.round_vases'))
 
 const createImages = (
   entries: readonly (readonly [string, string])[],
@@ -125,46 +138,57 @@ const createImages = (
   translationSection: string
 ): ImageSource[] =>
   entries.map(([filename, imageKey]) => ({
-    src: `/ceramics/electric_kiln/nature/${folder}/${filename}`,
+    src: `/ceramics/electric_kiln/vases_and_pots/${folder}/${filename}`,
     title: t(
-      `pictures.ceramics.electric_kiln.nature.${translationSection}.${imageKey}.title`
+      `pictures.ceramics.electric_kiln.vases_and_pots.${translationSection}.${imageKey}.title`
     ),
     mobileTitle: t(
-      `pictures.ceramics.electric_kiln.nature.${translationSection}.${imageKey}.mobile_title`
+      `pictures.ceramics.electric_kiln.vases_and_pots.${translationSection}.${imageKey}.mobile_title`
     ),
     alt: t(
-      `pictures.ceramics.electric_kiln.nature.${translationSection}.${imageKey}.alt`
+      `pictures.ceramics.electric_kiln.vases_and_pots.${translationSection}.${imageKey}.alt`
     ),
   }))
 
-const flowersEntries = [
-  ...Array.from({ length: 10 }, (_, index) => {
-    const number = index + 1
-    return [`F${number}.webp`, `f${number}`] as const
-  }),
-  ...Array.from({ length: 7 }, (_, index) => {
-    const number = index + 1
-    return [`GF${number}.webp`, `gf${number}`] as const
-  }),
-]
-const leavesEntries = Array.from({ length: 11 }, (_, index) => {
+const intuitivePotsEntries = Array.from({ length: 15 }, (_, index) => {
   const number = index + 1
-  return [`Feuilles${number}.webp`, `feuilles${number}`] as const
+  return [`PotsIntuitifs${number}.webp`, `pots_intuitifs${number}`] as const
+})
+const singleFlowerVasesEntries = Array.from({ length: 10 }, (_, index) => {
+  const number = index + 1
+  return [`Soliflores${number}.webp`, `soliflores${number}`] as const
+})
+const roundVasesEntries = Array.from({ length: 6 }, (_, index) => {
+  const number = index + 1
+  return [`VasesRonds${number}.webp`, `vases_ronds${number}`] as const
 })
 
-const flowersImages = createImages(flowersEntries, 'flowers', 'flowers')
-const leavesImages = createImages(leavesEntries, 'leaves', 'leaves')
+const intuitivePotsImages = createImages(
+  intuitivePotsEntries,
+  'intuitive_pots',
+  'intuitive_pots'
+)
+const singleFlowerVasesImages = createImages(
+  singleFlowerVasesEntries,
+  'single_flower_vases',
+  'single_flower_vases'
+)
+const roundVasesImages = createImages(
+  roundVasesEntries,
+  'round_vases',
+  'round_vases'
+)
 
 const previousPage = {
   path: '/wip',
-  title: t('wip.previous_page_name'),
-  description: t('wip.previous_page_description'),
+  title: t('wip.next_page_name'),
+  description: t('wip.next_page_description'),
 }
 
 const nextPage = {
-  path: '/ceramic/electric-kiln/animals',
-  title: t('pages.ceramic.electric_kiln.animals.tab_name'),
-  description: t('pages.ceramic.electric_kiln.animals.subtitle'),
+  path: '/ceramic/electric-kiln/various-objects',
+  title: t('pages.ceramic.electric_kiln.various_objects.tab_name'),
+  description: t('pages.ceramic.electric_kiln.various_objects.subtitle'),
 }
 </script>
 

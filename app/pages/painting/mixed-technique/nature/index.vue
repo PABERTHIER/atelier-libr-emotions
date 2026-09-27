@@ -3,21 +3,13 @@
     <div class="page-header">
       <PageHeaderOrnament />
       <PageTitle
-        :title="t('pages.ceramic.electric_kiln.nature.title')"
-        :subtitle="t('pages.ceramic.electric_kiln.nature.subtitle')" />
+        :title="t('pages.painting.mixed_technique.nature.title')"
+        :subtitle="t('pages.painting.mixed_technique.nature.subtitle')" />
     </div>
 
-    <h2>{{ flowersTitle }}</h2>
     <div class="gallery-container">
       <ImageGrid
-        :images="flowersImages"
-        :heights="{ xs: 120, sm: 160, md: 220, lg: 300 }" />
-    </div>
-
-    <h2>{{ leavesSubtitle }}</h2>
-    <div class="gallery-container">
-      <ImageGrid
-        :images="leavesImages"
+        :images="images"
         :heights="{ xs: 120, sm: 160, md: 220, lg: 300 }" />
     </div>
 
@@ -33,33 +25,34 @@ const runtimeConfig = useRuntimeConfig()
 const route = useRoute()
 
 const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
-const urlEndPath = 'ceramic/electric-kiln/nature'
-const ogImageEndPath = 'ceramics/electric_kiln/nature/flowers/F8.webp'
+const urlEndPath = 'painting/mixed-technique/nature'
+const ogImageEndPath = 'paintings/mixed_technique/nature/TMn9.webp'
 
 const canonicalUrl = computed(() => `${baseUrl.value}${route.path}`)
 
 const keywords = [
-  'miscellaneous.ceramic',
-  'miscellaneous.ceramicist',
-  'miscellaneous.electric_kiln',
+  'miscellaneous.painting',
+  'miscellaneous.painter',
+  'miscellaneous.mixed_technique',
   'miscellaneous.nature',
-  'miscellaneous.flowers',
-  'miscellaneous.leaves',
+  'miscellaneous.landscape',
+  'miscellaneous.trees',
   'miscellaneous.art',
   'miscellaneous.artist',
   'miscellaneous.emotions',
   'about.author',
   'app.name',
 ]
+
 const keywordValues = computed(() => keywords.map(keyword => t(keyword)))
 
 useHead({
-  title: computed(() => t('pages.ceramic.electric_kiln.nature.tab_name')),
+  title: computed(() => t('pages.painting.mixed_technique.nature.tab_name')),
   meta: [
     {
       name: 'description',
       content: computed(() =>
-        t('pages.ceramic.electric_kiln.nature.meta.content')
+        t('pages.painting.mixed_technique.nature.meta.content')
       ),
     },
     {
@@ -96,15 +89,15 @@ useHead({
 useSeoMeta({
   ogTitle: '%s %separator %siteName',
   description: computed(() =>
-    t('pages.ceramic.electric_kiln.nature.meta.content')
+    t('pages.painting.mixed_technique.nature.meta.content')
   ),
   ogDescription: computed(() =>
-    t('pages.ceramic.electric_kiln.nature.meta.content')
+    t('pages.painting.mixed_technique.nature.meta.content')
   ),
   ogImage: `${baseUrl.value}/${ogImageEndPath}`,
   ogImageSecureUrl: `${baseUrl.value}/${ogImageEndPath}`,
   ogImageAlt: computed(() =>
-    t('pages.ceramic.electric_kiln.nature.meta.content')
+    t('pages.painting.mixed_technique.nature.meta.content')
   ),
   ogImageType: 'image/jpeg',
   ogImageWidth: '1200',
@@ -116,44 +109,22 @@ useSeoMeta({
   msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
 })
 
-const flowersTitle = computed(() => t('miscellaneous.flowers'))
-const leavesSubtitle = computed(() => t('miscellaneous.leaves'))
+const images: ImageSource[] = Array.from({ length: 14 }, (_, index) => {
+  const imageNumber = index + 1
+  const imageKey = `tmn${imageNumber}`
 
-const createImages = (
-  entries: readonly (readonly [string, string])[],
-  folder: string,
-  translationSection: string
-): ImageSource[] =>
-  entries.map(([filename, imageKey]) => ({
-    src: `/ceramics/electric_kiln/nature/${folder}/${filename}`,
-    title: t(
-      `pictures.ceramics.electric_kiln.nature.${translationSection}.${imageKey}.title`
-    ),
+  return {
+    src: `/paintings/mixed_technique/nature/TMn${imageNumber}.webp`,
+    title: t(`pictures.paintings.mixed_technique.nature.${imageKey}.title`),
     mobileTitle: t(
-      `pictures.ceramics.electric_kiln.nature.${translationSection}.${imageKey}.mobile_title`
+      `pictures.paintings.mixed_technique.nature.${imageKey}.mobile_title`
     ),
-    alt: t(
-      `pictures.ceramics.electric_kiln.nature.${translationSection}.${imageKey}.alt`
+    alt: t(`pictures.paintings.mixed_technique.nature.${imageKey}.alt`),
+    dimensions: t(
+      `pictures.paintings.mixed_technique.nature.${imageKey}.dimensions`
     ),
-  }))
-
-const flowersEntries = [
-  ...Array.from({ length: 10 }, (_, index) => {
-    const number = index + 1
-    return [`F${number}.webp`, `f${number}`] as const
-  }),
-  ...Array.from({ length: 7 }, (_, index) => {
-    const number = index + 1
-    return [`GF${number}.webp`, `gf${number}`] as const
-  }),
-]
-const leavesEntries = Array.from({ length: 11 }, (_, index) => {
-  const number = index + 1
-  return [`Feuilles${number}.webp`, `feuilles${number}`] as const
+  }
 })
-
-const flowersImages = createImages(flowersEntries, 'flowers', 'flowers')
-const leavesImages = createImages(leavesEntries, 'leaves', 'leaves')
 
 const previousPage = {
   path: '/wip',
@@ -162,9 +133,9 @@ const previousPage = {
 }
 
 const nextPage = {
-  path: '/ceramic/electric-kiln/animals',
-  title: t('pages.ceramic.electric_kiln.animals.tab_name'),
-  description: t('pages.ceramic.electric_kiln.animals.subtitle'),
+  path: '/wip',
+  title: t('wip.next_page_name'),
+  description: t('wip.next_page_description'),
 }
 </script>
 
@@ -175,10 +146,6 @@ const nextPage = {
 
   .page-header {
     margin-bottom: 50px;
-  }
-
-  h2 {
-    margin: 40px 0 20px;
   }
 }
 </style>

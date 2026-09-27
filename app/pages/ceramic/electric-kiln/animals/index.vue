@@ -3,21 +3,35 @@
     <div class="page-header">
       <PageHeaderOrnament />
       <PageTitle
-        :title="t('pages.ceramic.electric_kiln.nature.title')"
-        :subtitle="t('pages.ceramic.electric_kiln.nature.subtitle')" />
+        :title="t('pages.ceramic.electric_kiln.animals.title')"
+        :subtitle="t('pages.ceramic.electric_kiln.animals.subtitle')" />
     </div>
 
-    <h2>{{ flowersTitle }}</h2>
+    <h2>{{ catsTitle }}</h2>
     <div class="gallery-container">
       <ImageGrid
-        :images="flowersImages"
+        :images="catsImages"
         :heights="{ xs: 120, sm: 160, md: 220, lg: 300 }" />
     </div>
 
-    <h2>{{ leavesSubtitle }}</h2>
+    <h2>{{ snailsTitle }}</h2>
     <div class="gallery-container">
       <ImageGrid
-        :images="leavesImages"
+        :images="snailsImages"
+        :heights="{ xs: 120, sm: 160, md: 220, lg: 300 }" />
+    </div>
+
+    <h2>{{ birdsTitle }}</h2>
+    <div class="gallery-container">
+      <ImageGrid
+        :images="birdsImages"
+        :heights="{ xs: 120, sm: 160, md: 220, lg: 300 }" />
+    </div>
+
+    <h2>{{ tortoisesTitle }}</h2>
+    <div class="gallery-container">
+      <ImageGrid
+        :images="tortoisesImages"
         :heights="{ xs: 120, sm: 160, md: 220, lg: 300 }" />
     </div>
 
@@ -33,18 +47,20 @@ const runtimeConfig = useRuntimeConfig()
 const route = useRoute()
 
 const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
-const urlEndPath = 'ceramic/electric-kiln/nature'
-const ogImageEndPath = 'ceramics/electric_kiln/nature/flowers/F8.webp'
-
+const urlEndPath = 'ceramic/electric-kiln/animals'
+const ogImageEndPath =
+  'ceramics/electric_kiln/animals/tortoises/Tortoises8.webp'
 const canonicalUrl = computed(() => `${baseUrl.value}${route.path}`)
 
 const keywords = [
   'miscellaneous.ceramic',
   'miscellaneous.ceramicist',
   'miscellaneous.electric_kiln',
-  'miscellaneous.nature',
-  'miscellaneous.flowers',
-  'miscellaneous.leaves',
+  'miscellaneous.animals',
+  'miscellaneous.cats',
+  'miscellaneous.snails',
+  'miscellaneous.birds',
+  'miscellaneous.tortoises',
   'miscellaneous.art',
   'miscellaneous.artist',
   'miscellaneous.emotions',
@@ -54,12 +70,12 @@ const keywords = [
 const keywordValues = computed(() => keywords.map(keyword => t(keyword)))
 
 useHead({
-  title: computed(() => t('pages.ceramic.electric_kiln.nature.tab_name')),
+  title: computed(() => t('pages.ceramic.electric_kiln.animals.tab_name')),
   meta: [
     {
       name: 'description',
       content: computed(() =>
-        t('pages.ceramic.electric_kiln.nature.meta.content')
+        t('pages.ceramic.electric_kiln.animals.meta.content')
       ),
     },
     {
@@ -96,15 +112,15 @@ useHead({
 useSeoMeta({
   ogTitle: '%s %separator %siteName',
   description: computed(() =>
-    t('pages.ceramic.electric_kiln.nature.meta.content')
+    t('pages.ceramic.electric_kiln.animals.meta.content')
   ),
   ogDescription: computed(() =>
-    t('pages.ceramic.electric_kiln.nature.meta.content')
+    t('pages.ceramic.electric_kiln.animals.meta.content')
   ),
   ogImage: `${baseUrl.value}/${ogImageEndPath}`,
   ogImageSecureUrl: `${baseUrl.value}/${ogImageEndPath}`,
   ogImageAlt: computed(() =>
-    t('pages.ceramic.electric_kiln.nature.meta.content')
+    t('pages.ceramic.electric_kiln.animals.meta.content')
   ),
   ogImageType: 'image/jpeg',
   ogImageWidth: '1200',
@@ -116,8 +132,10 @@ useSeoMeta({
   msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
 })
 
-const flowersTitle = computed(() => t('miscellaneous.flowers'))
-const leavesSubtitle = computed(() => t('miscellaneous.leaves'))
+const catsTitle = computed(() => t('miscellaneous.cats'))
+const snailsTitle = computed(() => t('miscellaneous.snails'))
+const birdsTitle = computed(() => t('miscellaneous.birds'))
+const tortoisesTitle = computed(() => t('miscellaneous.tortoises'))
 
 const createImages = (
   entries: readonly (readonly [string, string])[],
@@ -125,46 +143,50 @@ const createImages = (
   translationSection: string
 ): ImageSource[] =>
   entries.map(([filename, imageKey]) => ({
-    src: `/ceramics/electric_kiln/nature/${folder}/${filename}`,
+    src: `/ceramics/electric_kiln/animals/${folder}/${filename}`,
     title: t(
-      `pictures.ceramics.electric_kiln.nature.${translationSection}.${imageKey}.title`
+      `pictures.ceramics.electric_kiln.animals.${translationSection}.${imageKey}.title`
     ),
     mobileTitle: t(
-      `pictures.ceramics.electric_kiln.nature.${translationSection}.${imageKey}.mobile_title`
+      `pictures.ceramics.electric_kiln.animals.${translationSection}.${imageKey}.mobile_title`
     ),
     alt: t(
-      `pictures.ceramics.electric_kiln.nature.${translationSection}.${imageKey}.alt`
+      `pictures.ceramics.electric_kiln.animals.${translationSection}.${imageKey}.alt`
     ),
   }))
 
-const flowersEntries = [
-  ...Array.from({ length: 10 }, (_, index) => {
+const createEntries = (prefix: string, count: number) =>
+  Array.from({ length: count }, (_, index) => {
     const number = index + 1
-    return [`F${number}.webp`, `f${number}`] as const
-  }),
-  ...Array.from({ length: 7 }, (_, index) => {
-    const number = index + 1
-    return [`GF${number}.webp`, `gf${number}`] as const
-  }),
-]
-const leavesEntries = Array.from({ length: 11 }, (_, index) => {
-  const number = index + 1
-  return [`Feuilles${number}.webp`, `feuilles${number}`] as const
-})
+    return [
+      `${prefix}${number}.webp`,
+      `${prefix.toLowerCase()}${number}`,
+    ] as const
+  })
 
-const flowersImages = createImages(flowersEntries, 'flowers', 'flowers')
-const leavesImages = createImages(leavesEntries, 'leaves', 'leaves')
+const catsImages = createImages(createEntries('Cats', 15), 'cats', 'cats')
+const snailsImages = createImages(
+  createEntries('Snails', 8),
+  'snails',
+  'snails'
+)
+const birdsImages = createImages(createEntries('Birds', 14), 'birds', 'birds')
+const tortoisesImages = createImages(
+  createEntries('Tortoises', 8),
+  'tortoises',
+  'tortoises'
+)
 
 const previousPage = {
-  path: '/wip',
-  title: t('wip.previous_page_name'),
-  description: t('wip.previous_page_description'),
+  path: '/ceramic/electric-kiln/nature',
+  title: t('pages.ceramic.electric_kiln.nature.tab_name'),
+  description: t('pages.ceramic.electric_kiln.nature.subtitle'),
 }
 
 const nextPage = {
-  path: '/ceramic/electric-kiln/animals',
-  title: t('pages.ceramic.electric_kiln.animals.tab_name'),
-  description: t('pages.ceramic.electric_kiln.animals.subtitle'),
+  path: '/wip',
+  title: t('wip.next_page_name'),
+  description: t('wip.next_page_description'),
 }
 </script>
 
