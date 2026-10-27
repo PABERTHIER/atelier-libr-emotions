@@ -9,13 +9,13 @@ Here it is: [atelierlibremotions](https://atelierlibremotions.vercel.app/)
 
 It uses Vercel for deployment and hosting.
 
-## Nuxt 3 Minimal Starter :man_technologist:
+## Nuxt 4 Minimal Starter :man_technologist:
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Look at the [Nuxt 4 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
 ### Setup
 
-Try to use the latest version of Node.js (using the 22.17.0 for Nuxt 3.17.6 for example).
+Try to use the latest version of Node.js (using the 24.16.0 for Nuxt 4.x for example).
 
 Install the Volar VSCode extension.
 
