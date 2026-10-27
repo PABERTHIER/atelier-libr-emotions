@@ -1,0 +1,29 @@
+---
+description: 'Use when editing Atelier semantics, controls, navigation focus, overlays, image alternatives, readability or reduced-motion behavior.'
+applyTo: 'app/**/*.vue,app/plugins/**/*.ts,app/composables/**/*.ts,app/styles/**/*.scss'
+---
+
+# Accessible Interaction
+
+Apply these requirements when the change affects semantics, interaction, presentation or motion.
+Use [accessibility maintenance](../../.agents/docs/accessibility.md) for current source findings and [the accessibility skill](../../.agents/skills/accessibility/SKILL.md) for the scoped workflow.
+An instruction's presence does not require an unrelated site-wide audit or prove existing conformance.
+
+| Area                  | Required behavior for the affected change                                                                     |
+| --------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Controls              | Native links for destinations, buttons for actions, meaningful translated names and visible focus             |
+| Artwork               | Informative localized alt text, decorative imagery marked appropriately and operable artwork-opening controls |
+| Menus                 | Keyboard/touch operation, expanded state, reachable dismissal and no focus in hidden content                  |
+| Viewer                | Named dialog, focus entry/containment/return, Escape, reachable zoom/fit/close and preserved scroll position  |
+| Navigation            | Logical reading order, one main landmark, page H1 and useful focus/viewport behavior after navigation         |
+| Appearance and motion | Readable contrast and text enlargement, comfortable touch targets, and CSS/JavaScript reduced-motion behavior |
+
+Do not copy the current click-only gallery container as the pattern for a new control.
+Preserve the viewer's existing zoom range keyboard behavior; it has no previous/next artwork sequence.
+Check shared menu/modal scroll locking and cleanup when changing overlays.
+Use [i18n](../../.agents/skills/i18n/SKILL.md) for FR/EN labels and avoid tooltip-only or hover-only explanations of essential actions.
+For new-tab destinations, use `rel="noopener noreferrer"` alongside `target="_blank"` and verify the rendered link.
+
+Exercise affected journeys by keyboard, touch where available, enlarged text and reduced motion in both locales.
+Use the guide's manual audit matrix for release coverage and report untested devices or assistive technology.
+Automated checks and builds are supporting evidence, not a conformance certificate.

@@ -1,19 +1,58 @@
-# AGENTS.md
+# Atelier Libr'Émotions Website Guidance
 
-This file provides shared guidance for AI coding agents (Claude Code, GitHub Copilot, and others)
-when working with code in this repository.
+Atelier Libr'Émotions is Véronique Berthier's painting and ceramics portfolio at `https://atelierlibremotions.vercel.app`.
+It uses Nuxt 4, Vue 3, TypeScript, Yarn, scoped SCSS and French/English routes.
+This is the shared project entry point for Codex, GitHub Copilot and Claude Code.
+Use [.agents/README.md](.agents/README.md) to select focused context and verify implementation details against the current source.
 
----
+## Shared Constraints
 
-## Project Overview
+- Preserve unrelated user changes and keep work within the requested scope.
+  Use filesystem inspection and direct comparisons under the Git policy below.
+- Preserve supplied artwork, filenames, casing and curated order.
+  Confirm artist facts, work titles and physical dimensions rather than inventing missing information.
+- French is the source language.
+  Add, rename and remove message identities in both locales together, preserving interpolation names and natural English.
+- Mobile usability and accessible interaction are part of UI completion.
+  Preserve essential actions, full artwork, visible focus, readable text and reduced-motion behavior for affected journeys.
+- Reuse current component contracts and styling owners.
+  Keep browser-only work out of server setup and clean up added listeners, timers and observers.
+- Use the pinned package manager and task-relevant checks.
+  Leave generated `.nuxt/`, `.output/` and dependency files to their tools.
 
-**Atelier Libr'Émotions** is an artist portfolio website for a painter and ceramicist. It showcases paintings, ceramics, events, and artist information. Built with **Nuxt 4** (Vue 3 + TypeScript), deployed on **Vercel** as a statically pre-rendered site.
+## Git Policy
 
-The primary development workflow is **adding new gallery pages** — each page displays a collection of artwork images for a specific technique and category (e.g., painting/acrylic/abstracts, ceramic/porcelain/flowers).
+Do not run **any Git command** unless the user explicitly lifts this restriction for the task.
+This includes read-only commands such as `git status`, `git diff`, `git log` and `git show`, and commands that change files, the index, history or remotes.
+Use filesystem inspection and direct file comparisons instead, preserving unrelated user changes.
 
----
+If the user later requests a commit or push, show exactly what is proposed and ask for confirmation before running that command.
+Do not treat that request as permission for unrelated Git operations or commit speculatively at the end of a task.
 
-## Repository Layout
+## Build and Dev Commands
+
+Use Node.js 24 as in CI and the Yarn version pinned by `packageManager` in [package.json](package.json).
+The [Yarn configuration](.yarnrc.yml) uses the `node-modules` linker.
+Enable Corepack when setting up the launcher; use `corepack yarn` if needed, or `yarn.cmd` when PowerShell blocks `yarn.ps1`.
+Keep dependency changes within scope and let Yarn maintain `yarn.lock`.
+
+| Task                        | Command                    | Notes                                           |
+| --------------------------- | -------------------------- | ----------------------------------------------- |
+| Install locked dependencies | `yarn install --immutable` | Reproduce the current lockfile                  |
+| Start development           | `yarn dev`                 | Normally `http://localhost:3000`                |
+| Lint                        | `yarn lint`                | ESLint and its Prettier integration             |
+| Fix lint findings           | `yarn lint:fix`            | Review fixes and keep them within scope         |
+| Build production output     | `yarn build`               | Check SSR and Nuxt configuration                |
+| Generate static output      | `yarn generate`            | Check prerendered routes and image delivery     |
+| Preview built output        | `yarn preview`             | Run after the corresponding build or generation |
+| Prepare Nuxt types          | `yarn postinstall`         | Runs automatically after installation           |
+| Profile a build             | `yarn profile`             | Available when profiling is part of the task    |
+
+There are no `test`, `typecheck` or `format:check` scripts in the current package file.
+Check changed Markdown explicitly with the installed Prettier using `--prose-wrap preserve --end-of-line lf`.
+See [README.md](README.md) for the human-facing setup and dependency map.
+
+## Architecture
 
 ```
 atelier-libr-emotions/
@@ -25,18 +64,19 @@ atelier-libr-emotions/
 │   │   │   └── inks/nature/index.vue
 │   │   ├── ceramic/              # Ceramic gallery pages
 │   │   │   ├── electric-kiln/nature/index.vue
-│   │   │   ├── porcelain/flowers/index.vue
+│   │   │   ├── porcelain/nature/index.vue
 │   │   │   └── raku-smouldering/nature/index.vue
 │   │   ├── about/                # Artist pages (approach, career, CV)
 │   │   ├── contact/              # Contact page
 │   │   └── wip/                  # Work-in-progress placeholder
 │   ├── components/
 │   │   ├── layout/               # Header, Menu, Footer
-│   │   ├── ImageGrid.vue         # Responsive masonry gallery
-│   │   ├── Image.vue             # NuxtImg wrapper
-│   │   ├── PageTitle.vue         # Page heading
-│   │   ├── PageHeaderOrnament.vue
-│   │   └── PageNavigation.vue    # Previous/Next navigation
+│   │   └── common/              # Shared gallery and page components
+│   │       ├── ImageGrid.vue     # Responsive justified gallery rows
+│   │       ├── Image.vue         # NuxtImg wrapper
+│   │       ├── PageTitle.vue     # Page heading
+│   │       ├── PageHeaderOrnament.vue
+│   │       └── PageNavigation.vue # Previous/Next navigation
 │   ├── composables/              # screen-size, shared logic
 │   ├── types/                    # TypeScript types (ImageSource, Heights, PageNavigation)
 │   ├── utils/                    # generateImageRoutes for pre-rendering
@@ -55,321 +95,179 @@ atelier-libr-emotions/
 └── .editorconfig                 # Editor formatting rules
 ```
 
----
-
-## Tech Stack
-
-| Purpose            | Technology                          |
-|--------------------|-------------------------------------|
-| Framework          | Nuxt 4 (Vue 3 + TypeScript)         |
-| Styling            | SCSS with global variables          |
-| Image optimization | @nuxt/image (IPX provider)          |
-| i18n               | @nuxtjs/i18n (prefix strategy)      |
-| SEO                | @nuxtjs/seo (OG, Schema)            |
-| UI components      | @nuxt/ui                            |
-| Fonts              | @nuxt/fonts (Google Fonts)          |
-| Smooth scroll      | Lenis                               |
-| Linting            | ESLint + Prettier                   |
-| Package manager    | Yarn 4.13.0                         |
-| Deployment         | Vercel (static pre-rendering)       |
-
----
-
-## Git Policy — AI Agents Must Never Commit or Push
-
-**AI agents (Claude Code, GitHub Copilot, and any other tool) are strictly forbidden from running any destructive or history-altering git commands without explicit user instruction.**
-
-### Permanently forbidden without explicit user request
-
-- `git commit` — never commit on behalf of the user
-- `git push` — never push to any remote
-- `git reset` — never alter HEAD or the index
-- `git rebase` — never rebase branches
-- `git merge` — never merge branches
-- `git cherry-pick` — never cherry-pick commits
-- `git revert` — never create revert commits
-- `git stash` — never stash changes
-- `git tag` — never create or delete tags
-- `git branch -D` — never delete branches
-- `git am` — never apply patches
-
-### Allowed read-only git operations
-
-- `git status`, `git diff`, `git log`, `git show` — inspection only
-
-### Rule
-
-If the user says "commit the changes" or "push", **ask for confirmation first** and show exactly what will be committed/pushed before running the command. Never commit speculatively at the end of a task.
-
----
-
-## Build and Dev Commands
-
-```bash
-# Install dependencies
-yarn install
-
-# Start dev server
-yarn dev
-
-# Build for production
-yarn build
-
-# Generate static site
-yarn generate
-
-# Preview production build
-yarn preview
-
-# Lint
-yarn lint
-
-# Lint and auto-fix
-yarn lint:fix
-```
-
----
-
-## Code Style
-
-- **Indent**: 2 spaces
-- **End of line**: LF
-- **Charset**: utf-8
-- **Vue SFC order**: `<template>`, `<script setup lang="ts">`, `<style lang="scss" scoped>`
-- **Prefer Composition API** with `<script setup>`
-- **Use Nuxt auto-imports** — `useI18n()`, `useHead()`, `useSeoMeta()`, `useRoute()`, `useRuntimeConfig()`, `ref()`, `computed()` are auto-imported
-- **Import types explicitly**: `import type { ImageSource } from '~/types/image'`
-- **SCSS scoped styles**: all component styles use `<style lang="scss" scoped>`
-- **No inline comments** unless the logic is genuinely non-obvious
-- Run `yarn lint` before committing
-
----
-
-## Internationalization (i18n)
-
-**Default locale**: French (`fr`)
-**Strategy**: Prefix-based (`/fr/path` and `/en/path`)
-**Base URL**: `https://atelierlibremotions.vercel.app`
-
-### Translation Key Structure
-
-Translation files are located in `i18n/locales/fr-FR.json` and `i18n/locales/en-US.json`.
-
-**Page metadata keys** follow the pattern:
-
-```
-pages.{domain}.{technique_snake_case}.{category_snake_case}.tab_name
-pages.{domain}.{technique_snake_case}.{category_snake_case}.meta.content
-pages.{domain}.{technique_snake_case}.{category_snake_case}.title
-pages.{domain}.{technique_snake_case}.{category_snake_case}.subtitle
-```
-
-**Image description keys** follow the pattern:
-
-```
-pictures.{domain_plural}.{technique_snake_case}.{category_snake_case}.{image_key}.title
-pictures.{domain_plural}.{technique_snake_case}.{category_snake_case}.{image_key}.mobile_title
-pictures.{domain_plural}.{technique_snake_case}.{category_snake_case}.{image_key}.alt
-pictures.{domain_plural}.{technique_snake_case}.{category_snake_case}.{image_key}.dimensions  (paintings only, optional)
-```
-
-**Shared labels** are in `miscellaneous.*` and `about.*`.
-
-### Convention for domain names in i18n keys vs URL paths
-
-| Context       | Paintings domain | Ceramics domain       |
-|---------------|------------------|-----------------------|
-| URL path      | `painting`       | `ceramic`             |
-| i18n page key | `painting`       | `ceramic`             |
-| i18n pictures | `paintings`      | `ceramics`            |
-| Public folder | `paintings`      | `ceramics`            |
-
-Technique names use **snake_case** in i18n keys (e.g., `electric_kiln`, `raku_and_smouldering`) but **kebab-case** in URL paths (e.g., `electric-kiln`, `raku-smouldering`).
-
----
-
-## Image Conventions
-
-### Storage
-
-Images are stored in `public/` with the following structure:
-
-```
-public/paintings/{technique}/{category}/{Filename}.webp
-public/ceramics/{technique_snake_case}/{category}/{Filename}.webp
-```
-
-### Format
-
-- All images must be in **WebP** format (`.webp`)
-- Nuxt Image provides fallback to JPG/PNG
-
-### Naming
-
-- Image filenames use short prefix codes based on the artwork type
-- Examples: `FP1.webp` (Fleur Porcelaine 1), `F1.webp` (Fleur 1), `EC1.webp` (Encre Chine 1), `AutomaticPainting1.webp`
-- The user provides filenames — use them as-is
-
----
-
-## Gallery Page Architecture (Core Pattern)
-
-**This is the most important section.** All painting and ceramic gallery pages follow the same pattern.
-
-### Template Structure
-
-```vue
-<template>
-  <div class="gallery-page">
-    <div class="page-header">
-      <PageHeaderOrnament />
-      <PageTitle
-        :title="t('pages.{domain}.{technique}.{category}.title')"
-        :subtitle="t('pages.{domain}.{technique}.{category}.subtitle')" />
-    </div>
-
-    <div class="gallery-container">
-      <ImageGrid
-        :images="images"
-        :heights="{ xs: 120, sm: 160, md: 220, lg: 300 }" />
-    </div>
-
-    <PageNavigation :previous-page="previousPage" :next-page="nextPage" />
-  </div>
-</template>
-```
-
-### Script Structure
-
-Every gallery page script block must include:
-
-1. **Imports**: `import type { ImageSource } from '~/types/image'`
-2. **Composables**: `useI18n()`, `useRuntimeConfig()`, `useRoute()`
-3. **URL configuration**: `baseUrl`, `urlEndPath`, `ogImageEndPath`, `canonicalUrl`
-4. **`useHead()`**: title, meta description, keywords, canonical URL, hreflang alternates, apple-touch-icon override
-5. **`useSeoMeta()`**: OG tags, article tags
-6. **Images array**: `ImageSource[]` with `src`, `title`, `mobileTitle`, `alt`, and optional `dimensions` (for paintings — use the `dimensions` i18n key)
-7. **Navigation**: `previousPage` and/or `nextPage` objects with `path`, `title`, `description`
-
-### Style Block
-
-```scss
-<style lang="scss" scoped>
-.gallery-page {
-  position: relative;
-  width: 100%;
-
-  .page-header {
-    margin-bottom: 50px;
-  }
-}
-</style>
-```
-
-### SEO Keywords
-
-Keywords should be relevant to the artwork type. Use `t('miscellaneous.X')` for each keyword.
-Always include these base keywords: `art`, `artist`, `emotions`, `about.author`, `app.name`.
-Add domain-specific keywords (e.g., `ceramic`, `ceramicist`, `porcelain` for a ceramic page).
-
-### Navigation Links
-
-- Pages that are not yet created should link to `/wip`
-- `previousPage` and `nextPage` use i18n keys from the adjacent pages or `wip.*` keys
-
----
-
-## Creating a New Gallery Page — Step-by-Step
-
-When the user asks to create a new page, they provide:
-
-- **Domain**: painting or ceramic
-- **Section (technique)**: e.g., Porcelaine, Acrylique, Raku et enfumage
-- **Category (type)**: e.g., Fleurs, Abstraits, Nature
-- **Description** (optional): Artist's description — use it to write the `meta.content` (SEO meta description), do NOT use it as-is
-- **Title**: Used for the subtitle of the page
-- **Image filenames**: e.g., FP1,...FP14
-
-### Step 1: Add images to public/
-
-Verify images exist in the correct folder:
-
-```
-public/{domain_plural}/{technique_snake_case}/{category}/{Filename}.webp
-```
-
-### Step 2: Add i18n translations
-
-In **both** `i18n/locales/fr-FR.json` and `i18n/locales/en-US.json`:
-
-1. Add page metadata under `pages.{domain}.{technique_snake}.{category_snake}`:
-   - `tab_name`: Browser tab title (e.g., "Porcelaine - Fleurs")
-   - `meta.content`: SEO meta description (rewrite the artist's description into a proper SEO-friendly sentence)
-   - `title`: Page heading (e.g., "Porcelaine - Fleurs")
-   - `subtitle`: Artist's title for the category
-
-2. Add image descriptions under `pictures.{domain_plural}.{technique_snake}.{category_snake}`:
-   - For each image: `{image_key}` with `title`, `mobile_title`, `alt`, and `dimensions` (paintings only)
-
-3. Add any missing `miscellaneous.*` keys needed for menu labels and SEO keywords
-
-### Step 3: Create the page Vue file
-
-Create `app/pages/{domain}/{technique-kebab}/{category-kebab}/index.vue` following the gallery page pattern above.
-
-### Step 4: Update Menu.vue
-
-In `app/components/layout/Menu.vue`, find the link that currently points to `/wip` for this technique/category and update its `url` to the new page path.
-
-### Step 5: Update page navigation
-
-Update `previousPage`/`nextPage` references in:
-
-- The newly created page (point to adjacent pages)
-- Adjacent pages that should now link to the new page instead of `/wip`
-
----
-
-## Menu Structure
-
-The menu in `app/components/layout/Menu.vue` is organized as:
-
-```
-Section (e.g., Painting, Ceramic, Events, The Artist)
-└── Sub-section (technique, e.g., Acrylic, Porcelain)
-    └── Links (category, e.g., Abstracts, Flowers, Nature)
-```
-
-Links that point to `/wip` indicate pages not yet created. When creating a new page, the corresponding `/wip` link must be updated.
-
----
+| Concern                          | Owner                                                                                                                                                         | Contract                                                            |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Routes and authored page content | [app/pages](app/pages/)                                                                                                                                       | Home at `index.vue`; named routes in directories with `index.vue`   |
+| Shared page shell                | [default.vue](app/layouts/default.vue)                                                                                                                        | Welcome, header, main landmark and footer                           |
+| Gallery and page components      | [common components](app/components/common/)                                                                                                                   | PageTitle, ImageGrid, ImagePreviewModal, PageNavigation and Image   |
+| Navigation                       | [Menu.vue](app/components/layout/Menu.vue), [LangSwitcher.vue](app/components/common/LangSwitcher.vue)                                                        | Category destinations, mobile state and corresponding locale routes |
+| Shared types                     | [image.ts](app/types/image.ts), [page.ts](app/types/page.ts)                                                                                                  | ImageSource, Heights and PageNavigation                             |
+| Responsive state                 | [screen-size.ts](app/composables/screen-size.ts)                                                                                                              | Breakpoint refs with a stable SSR fallback                          |
+| Browser integration              | [smooth-scroll.client.ts](app/plugins/smooth-scroll.client.ts)                                                                                                | Existing Lenis instance                                             |
+| Visual rules                     | [variables.scss](app/styles/variables.scss), [default.scss](app/styles/default.scss), [keyframes.scss](app/styles/keyframes.scss) and scoped component styles | Current tokens, base rules, shared motion and local appearance      |
+| Metadata and module setup        | [app.vue](app/app.vue), [nuxt.config.ts](nuxt.config.ts) and page head calls                                                                                  | Root defaults, localized page values, origins and SEO configuration |
+| Messages                         | [fr-FR.json](i18n/locales/fr-FR.json), [en-US.json](i18n/locales/en-US.json)                                                                                  | Matching message identities and interpolation                       |
+| Published assets                 | [public](public/)                                                                                                                                             | Original painting, ceramic, CV and other public files               |
+| Explicit IPX coverage            | [generateImageRoutes.ts](app/utils/generateImageRoutes.ts)                                                                                                    | Transformed routes consumed by Nitro prerendering                   |
+| Tooling and CI                   | [package.json](package.json), [CI workflow](.github/workflows/ci.yml), [eslint.config.mjs](eslint.config.mjs)                                                 | Available scripts, immutable install and lint                       |
+
+The layout already supplies `<main id="page-container">`; do not add a nested main in a page.
+`PageTitle` supplies its H1, while the home and standalone artwork pages have their own structure.
+Component registration uses `pathPrefix: false`, so check for colliding component basenames.
+
+Use `<template>`, `<script setup lang="ts">`, then scoped SCSS for page and component SFCs.
+Prefer registered Nuxt auto-imports and explicit imports for shared types, data, utilities and library APIs.
+Keep intentional layout/global styles with their documented owner and use injected Sass tokens without repeating imports.
+Follow the actual [TypeScript configuration](tsconfig.json), [.editorconfig](.editorconfig) and [.prettierrc](.prettierrc).
+
+Preserve UTF-8 and existing accented text when editing files.
+On Windows, prefer Unicode-safe patch/file APIs; set PowerShell's `$OutputEncoding` to UTF-8 explicitly before piping authored non-ASCII text to another process.
+Verify the written text rather than assuming the console's display encoding also controls pipeline input.
+
+## Routes And Page Workflow
+
+I18n uses `prefix`, so French routes also start with `/fr`; equivalent English routes start with `/en`.
+The root `/` is configured for language detection and is also included in the current prerender crawl.
+Verify actual generated/deployed redirect behavior rather than assuming a runtime-only redirect.
+
+| Area              | Example route without locale  | Content owner                                                                    |
+| ----------------- | ----------------------------- | -------------------------------------------------------------------------------- |
+| Home              | `/`                           | [home page](app/pages/index.vue), `pages.main.*`                                 |
+| Painting gallery  | `/painting/acrylic/abstracts` | [painting pages](app/pages/painting/), `pages.painting.*`                        |
+| Ceramic gallery   | `/ceramic/porcelain/nature`   | [ceramic pages](app/pages/ceramic/), `pages.ceramic.*`                           |
+| Artistic approach | `/about`                      | [about page](app/pages/about/index.vue), `pages.about.*`                         |
+| Development       | `/about/development`          | [development page](app/pages/about/development/index.vue), `pages.development.*` |
+| CV                | `/about/cv`                   | [CV page](app/pages/about/cv/index.vue), `pages.cv.*`                            |
+| Contact           | `/contact`                    | [contact page](app/pages/contact/index.vue), `pages.contact.*`                   |
+| Work in progress  | `/wip`                        | [placeholder page](app/pages/wip/index.vue), `wip.*`                             |
+
+The home gallery action leads to acrylic abstracts; there is no general gallery overview route.
+Some menu categories are planned and remain disabled through their `/wip` value.
+Keep intentional differences in the standalone oil artwork page.
+
+For a new or substantially changed gallery:
+
+1. Read the nearest page, requested artwork and the [naming map](.agents/skills/i18n/references/artwork-naming.md).
+   Resolve route, message namespace, public directory, groups and curated ordering independently.
+2. Add affected page, picture and shared-label messages in both locale files.
+   Preserve the supplied French subtitle and use confirmed optional painting dimensions.
+3. Reuse the gallery shell and components using [gallery-page](.agents/skills/gallery-page/SKILL.md).
+   Keep translated images, navigation and metadata reactive rather than taking setup-time snapshots.
+4. Implement localized metadata using [seo](.agents/skills/seo/SKILL.md).
+   Preserve canonical/alternate identity and the keyed gallery touch-icon override while using truthful social-image data.
+5. Update the matching menu slot and only neighboring links representing the same sequence.
+   Pass unprefixed paths to `PageNavigation`, which localizes them internally.
+6. Check the actual image consumer using [artwork-assets](.agents/skills/artwork-assets/SKILL.md), then complete relevant verification.
+
+## Localization And Artwork
+
+| Context                  | Painting                     | Ceramic                    |
+| ------------------------ | ---------------------------- | -------------------------- |
+| Route and page namespace | `painting`, `pages.painting` | `ceramic`, `pages.ceramic` |
+| Picture namespace        | `pictures.paintings`         | `pictures.ceramics`        |
+| Public directory         | `public/paintings`           | `public/ceramics`          |
+
+Use the [naming map](.agents/skills/i18n/references/artwork-naming.md) for technique exceptions, picture keys and group subdirectories.
+Keep authored copy, image alternatives and control names in the locale files.
+Use `localePath()` for internal pages, preserving raw public-asset and external URLs.
+Use natural English and preserve official names, artist-authored titles and supplied identifiers.
+Inspect message syntax for `|` and `@` rather than treating them as ordinary punctuation in Vue I18n.
+
+New gallery artwork uses supplied WebP files with exact filename casing.
+Keep existing JPEG, GIF, SVG and document consumers intact when still used.
+Gallery tiles and the viewer use native images, while the standalone `Image` component uses `NuxtImg` with sizes, densities and a placeholder.
+Gallery row heights are layout inputs, not a list of IPX widths.
+Add explicit transformed routes when the consumer requires them; original-file availability does not prove static variant coverage.
+
+## Mobile Experience Acceptance Criteria
+
+Mobile usability is part of completion for UI changes.
+Preserve complete artwork, essential actions, keyboard operation and readable FR/EN text across viewports.
+Check focus, touch controls, short-screen menus/dialogs, text enlargement, safe areas and reduced motion for affected journeys.
+Use the [UX acceptance matrix](.agents/docs/ux-principles.md#mobile-acceptance) and [accessibility audit coverage](.agents/docs/accessibility.md#manual-release-audit).
+Their criteria describe the target behavior, not completed conformance.
+
+## Reference Documentation
+
+Read the relevant guide on demand and keep maintenance context in its owner.
+The [.agents index](.agents/README.md) explains evidence levels and maps shared resources.
+
+| Guide                     | File                                                      | Read for                                                    |
+| ------------------------- | --------------------------------------------------------- | ----------------------------------------------------------- |
+| Brand context             | [brand-context.md](.agents/docs/brand-context.md)         | Artist identity, presentation and factual positioning       |
+| Content direction         | [content-direction.md](.agents/docs/content-direction.md) | French-first voice, English adaptation and artwork copy     |
+| Design system             | [design-system.md](.agents/docs/design-system.md)         | Palette, typography, image framing and stylesheet ownership |
+| UX principles             | [ux-principles.md](.agents/docs/ux-principles.md)         | Responsive composition, navigation, viewer and CV journeys  |
+| Accessibility maintenance | [accessibility.md](.agents/docs/accessibility.md)         | Source findings, focus, motion and manual audit coverage    |
+| SEO maintenance           | [SEO.md](.agents/docs/SEO.md)                             | Metadata ownership, origins, indexing and discovery         |
+
+The [style and layout review](STYLE_LAYOUT_REVIEW.md) remains a dated proposal.
+Distinguish source observations, intended behavior and actual verification when changing or reporting the implementation.
 
 ## Available Skills
 
-Invoke with `/skill-name` in Copilot Chat. Claude Code loads them via `CLAUDE.md` imports.
+Canonical skills live in `.agents/skills/<name>/SKILL.md`.
+Use the skill relevant to the task and read linked references only when needed.
 
-| Skill | When to use |
-|---|---|
-| `/gallery-page` | Creating a new gallery page (painting or ceramic) — full template pattern |
-| `/seo` | Writing or reviewing SEO metadata: `useHead`, `useSeoMeta`, keywords, hreflang, OG |
-| `/i18n` | Managing translations: key structure, naming conventions, two-locale rule |
-| `/nuxt-vue-patterns` | Vue 3 / Nuxt 4 conventions: Composition API, auto-imports, SCSS, components |
+| Skill                | File                                                           | Use for                                                   |
+| -------------------- | -------------------------------------------------------------- | --------------------------------------------------------- |
+| Gallery pages        | [gallery-page](.agents/skills/gallery-page/SKILL.md)           | Create, extend or review collections and their navigation |
+| Internationalization | [i18n](.agents/skills/i18n/SKILL.md)                           | FR/EN keys, reactive copy and localized destinations      |
+| Nuxt and Vue         | [nuxt-vue-patterns](.agents/skills/nuxt-vue-patterns/SKILL.md) | Components, TypeScript, SSR and client lifecycle          |
+| Artwork assets       | [artwork-assets](.agents/skills/artwork-assets/SKILL.md)       | Exact paths, original images and IPX prerendering         |
+| Accessibility        | [accessibility](.agents/skills/accessibility/SKILL.md)         | Scoped audits, semantics, controls, focus and motion      |
+| SEO                  | [seo](.agents/skills/seo/SKILL.md)                             | Reactive page metadata, alternates and social artwork     |
 
----
+## Task Entry Points
 
-## Available Prompts (Copilot Chat) / Commands (Claude Code)
+| Task                            | Copilot prompt                                                           | Claude command                                                      | Shared owner            |
+| ------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------- | ----------------------- |
+| New or extended gallery         | [new-gallery-page.prompt.md](.github/prompts/new-gallery-page.prompt.md) | [new-gallery-page.md](.claude/commands/new-gallery-page.md)         | Gallery-page skill      |
+| Locale messages only            | [add-translations.prompt.md](.github/prompts/add-translations.prompt.md) | [add-translations.md](.claude/commands/add-translations.md)         | I18n skill              |
+| Read-only gallery source review | Request the gallery skill's review mode                                  | [gallery-page-reviewer.md](.claude/agents/gallery-page-reviewer.md) | Gallery review criteria |
 
-| Name | Copilot (`/`) | Claude Code (`/`) | When to use |
-|---|---|---|---|
-| `new-gallery-page` | ✅ | ✅ | Full end-to-end gallery page creation |
-| `add-translations` | ✅ | ✅ | Add i18n entries to both locale files only |
+The [Claude entry point](CLAUDE.md#command-adapters) lists every existing command adapter.
+Prompt and command files route to shared workflows rather than maintaining separate implementations.
+Availability of the review agent does not require delegation or establish runtime coverage.
 
----
+## Tool Integration And Scoped Instructions
 
-## Available Instructions (auto-applied by Copilot)
+| Agent          | Project entry point                                                                    | Shared skill access                              | Scoped instructions                                                                 |
+| -------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------- |
+| Codex          | This `AGENTS.md` and applicable ancestor/current-directory instruction files           | Native repository discovery in `.agents/skills/` | Select and read files from the applicability table below                            |
+| GitHub Copilot | [copilot-instructions.md](.github/copilot-instructions.md) and shared project guidance | Shared skill catalog                             | `description` and `applyTo` attachment where supported; read explicitly when needed |
+| Claude Code    | [CLAUDE.md](CLAUDE.md), importing this file                                            | Existing command adapters read shared skills     | Read applicable scoped files manually                                               |
 
-| File | Applies to |
-|---|---|
-| `gallery-page.instructions.md` | `app/pages/painting/**` and `app/pages/ceramic/**` |
-| `vue-nuxt.instructions.md` | `app/**/*.vue` — Composition API, auto-imports, SCSS |
-| `i18n.instructions.md` | `i18n/**/*.json` — key structure, two-locale rule, quality |
+For Codex, keep durable project rules here and reusable workflows in the shared skill directory.
+Codex's instruction discovery follows its applicable `AGENTS.md`/`AGENTS.override.md` chain; it does not make Copilot's `applyTo` metadata a repository-wide automatic rule.
+Before editing application files, **all coding agents, including Codex, must read the applicable scoped files below**.
+Use file patterns and task concerns to select them, including overlapping scopes.
+Keep project rules here, focused standards in scoped files, workflows in skills and maintenance context in guides.
+
+| Instruction                                                         | File patterns                                                                            | Use for                                                 |
+| ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| [Nuxt and Vue](.github/instructions/vue-nuxt.instructions.md)       | `app/**/*.vue`, `app/**/*.ts`, `nuxt.config.ts`                                          | Components, SSR, application helpers and configuration  |
+| [Styling](.github/instructions/styles.instructions.md)              | `app/**/*.vue`, `app/styles/**/*.scss`, `nuxt.config.ts`                                 | Appearance, responsive layout and style loading         |
+| [Internationalization](.github/instructions/i18n.instructions.md)   | `i18n/locales/*.json`                                                                    | French and English messages, keys and interpolation     |
+| [Accessibility](.github/instructions/accessibility.instructions.md) | `app/**/*.vue`, `app/plugins/**/*.ts`, `app/composables/**/*.ts`, `app/styles/**/*.scss` | Semantics, focus, overlays, readability and motion      |
+| [Gallery pages](.github/instructions/gallery-page.instructions.md)  | `app/pages/painting/**/*.vue`, `app/pages/ceramic/**/*.vue`                              | Collections, groups, menu slots and adjacent-page links |
+
+See [official Codex instruction discovery](https://learn.chatgpt.com/docs/agent-configuration/agents-md) and [repository skill discovery](https://learn.chatgpt.com/docs/build-skills) for client behavior.
+The [.agents index](.agents/README.md) is navigational, not a separate automatically loaded instruction file.
+
+## Verification
+
+| Change                                     | Relevant checks                                                                                                  |
+| ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| Documentation only                         | Changed-file Prettier with preserved prose wrapping and LF, frontmatter, local links/anchors and source accuracy |
+| Application implementation                 | `yarn lint` and affected FR/EN behavior                                                                          |
+| Shared behavior, SSR or Nuxt configuration | Relevant `yarn build` plus browser checks for affected consumers                                                 |
+| Routes, prerendering or image delivery     | `yarn generate`, affected generated pages and actual image requests                                              |
+| UI, styles or interaction                  | Mobile acceptance, keyboard/touch journeys, overlays, enlarged text and reduced motion                           |
+
+CI installs dependencies immutably and runs lint; its build-named job does not run the production build or static generation.
+Check the installed Yarn version if reproducing CI: the workflow has an explicit Corepack preparation version separate from `packageManager`.
+Production-mode validation needs an appropriate origin environment; read [SEO maintenance](.agents/docs/SEO.md#origins-and-indexing) before interpreting generated URLs.
+For shared UI changes, cover the different pages and states consuming the component.
+Use viewport and device coverage from the UX/accessibility guides and report what was actually checked.
+Do not claim unavailable browser, assistive-technology, deployment or crawler validation.
