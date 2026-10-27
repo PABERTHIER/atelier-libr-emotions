@@ -1,134 +1,22 @@
 ---
-applyTo: "app/pages/painting/**/*.vue,app/pages/ceramic/**/*.vue"
+description: 'Use when creating, extending or reviewing Atelier painting and ceramic gallery pages.'
+applyTo: 'app/pages/painting/**/*.vue,app/pages/ceramic/**/*.vue'
 ---
 
 # Gallery Page Instructions
 
-## Overview
+Read and apply [gallery-page](../../.agents/skills/gallery-page/SKILL.md) when creating, extending or reviewing a gallery.
+It owns the page shell, grouped collections, menu integration, adjacent-page navigation and verification.
+Follow its linked i18n, SEO and artwork guidance for those parts of the task.
 
-All painting and ceramic gallery pages follow the same template. When creating or modifying a gallery page, adhere strictly to the patterns described below.
+Resolve the actual route, picture namespace and public directory using the [artwork naming map](../../.agents/skills/i18n/references/artwork-naming.md).
+Verify supplied filenames and curated order, including grouped collections, before generating image entries.
+Keep translated images and previous/next navigation reactive, with unprefixed paths for `PageNavigation`.
+Update only the matching menu slot and relevant neighboring pages; unrelated `/wip` entries remain outside the task.
 
----
+Preserve intentional differences in existing pages unless the request includes converting them to a full gallery.
+The standalone oil artwork page is one such difference.
 
-## Template Requirements
-
-Every gallery page MUST include these components in this order:
-
-1. **PageHeaderOrnament** — decorative header element
-2. **PageTitle** — with `:title` and `:subtitle` bound to i18n keys
-3. **ImageGrid** — with `:images` and `:heights="{ xs: 120, sm: 160, md: 220, lg: 300 }"`
-4. **PageNavigation** — with `:previous-page` and/or `:next-page`
-
-Wrap everything in `<div class="gallery-page">` with the page header in `<div class="page-header">` and the gallery in `<div class="gallery-container">`.
-
----
-
-## Script Requirements
-
-### Imports and composables
-```typescript
-import type { ImageSource } from '~/types/image'
-
-const { t } = useI18n()
-const runtimeConfig = useRuntimeConfig()
-const route = useRoute()
-```
-
-### URL configuration
-```typescript
-const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
-const urlEndPath = '{domain}/{technique-kebab}/{category-kebab}'
-const ogImageEndPath = '{domain_plural}/{technique_snake}/{category}/{BestImage}.webp'
-const canonicalUrl = computed(() => `${baseUrl.value}${route.path}`)
-```
-
-### SEO — useHead()
-- `title`: use `tab_name` i18n key
-- `meta description`: use `meta.content` i18n key
-- `keywords`: relevant `miscellaneous.*` keys, always include `art`, `artist`, `emotions`, `about.author`, `app.name`
-- `link`: canonical + hreflang alternates (en-US, fr-FR, x-default pointing to fr) + apple-touch-icon override
-
-The `link` array **must** include an `apple-touch-icon` entry that overrides the global default (`apple-icon.jpg`) with the page's representative artwork. This ensures Safari shows the correct gallery image when the page is bookmarked to the iOS home screen:
-
-```typescript
-link: [
-  { rel: 'canonical', href: canonicalUrl.value },
-  // ... hreflang alternates ...
-  {
-    rel: 'apple-touch-icon',
-    sizes: '180x180',
-    href: `/${ogImageEndPath}`,
-    key: 'apple-touch-icon',  // key is required: Unhead uses it to override the global entry in app.vue
-  },
-],
-```
-
-### SEO — useSeoMeta()
-- `ogTitle`, `appleMobileWebAppTitle`: `'%s %separator %siteName'`
-- `description`, `ogDescription`: `meta.content` i18n key
-- `ogImage`, `msapplicationTileImage`: full URL to a representative image
-- `ogType`: `'article'`
-- `articleTag`: array of keyword values matching the `keywords` meta
-
-### Images array
-```typescript
-const images: ImageSource[] = [
-  {
-    src: '/{domain_plural}/{technique_snake}/{category}/{Filename}.webp',
-    title: t('pictures.{domain_plural}.{technique_snake}.{category_snake}.{image_key}.title'),
-    mobileTitle: t('pictures.{domain_plural}.{technique_snake}.{category_snake}.{image_key}.mobile_title'),
-    alt: t('pictures.{domain_plural}.{technique_snake}.{category_snake}.{image_key}.alt'),
-    // For paintings only — omit for ceramics:
-    dimensions: t('pictures.{domain_plural}.{technique_snake}.{category_snake}.{image_key}.dimensions'),
-  },
-  // ... one entry per image
-]
-```
-
-### Navigation
-```typescript
-const previousPage = {
-  path: '/{adjacent_page_path}',
-  title: t('{adjacent_page_i18n}.tab_name'),
-  description: t('{adjacent_page_i18n}.meta.content'),
-}
-```
-Use `/wip` with `wip.*` keys for pages that don't exist yet.
-
----
-
-## Style Block
-
-Always use this exact style block:
-```scss
-<style lang="scss" scoped>
-.gallery-page {
-  position: relative;
-  width: 100%;
-
-  .page-header {
-    margin-bottom: 50px;
-  }
-}
-</style>
-```
-
----
-
-## i18n Key Conventions
-
-- **Page keys**: `pages.{domain}.{technique_snake}.{category_snake}.*`
-- **Picture keys**: `pictures.{domain_plural}.{technique_snake}.{category_snake}.{image_key}.*`
-- Technique names: snake_case in keys (e.g., `electric_kiln`), kebab-case in URLs (e.g., `electric-kiln`)
-- Image keys: lowercase of the filename without extension (e.g., `fp1` for `FP1.webp`)
-
----
-
-## Checklist
-
-- [ ] Images placed in correct `public/` subfolder (WebP format)
-- [ ] i18n translations added to both `fr-FR.json` and `en-US.json`
-- [ ] Page Vue file created at correct path
-- [ ] Menu.vue link updated from `/wip` to new page path
-- [ ] Navigation links updated (new page + adjacent pages)
-- [ ] `yarn lint` passes
+For gallery composition or journey changes, consult [UX principles](../../.agents/docs/ux-principles.md).
+Use [content direction](../../.agents/docs/content-direction.md) when writing new collection copy.
+Verify both locales and actual browser rendering; the grid's initial SSR skeleton is not evidence that artwork loaded or captions updated.

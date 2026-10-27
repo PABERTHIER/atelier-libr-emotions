@@ -1,49 +1,64 @@
-# GitHub Copilot Repository Instructions
+# GitHub Copilot Entry Point
 
-This project uses shared agent instructions defined in `AGENTS.md` at the repository root.
-Copilot reads both this file and `AGENTS.md` automatically.
+[AGENTS.md](../AGENTS.md) is the shared source for project constraints, architecture, commands and verification.
+Its Git policy prohibits every Git command unless the user explicitly lifts the restriction for the task.
+Use [.agents/README.md](../.agents/README.md) for guidance ownership and evidence levels.
 
-This file provides Copilot-specific behavioral guidance that complements `AGENTS.md`.
+## Copilot Conventions
 
-## Copilot-Specific Guidelines
+- Treat [mobile acceptance](../AGENTS.md#mobile-experience-acceptance-criteria) as part of UI completion.
+  Verify affected FR/EN journeys, including keyboard, touch, short viewports and longer translated text.
+- Follow the nearest working component and the Nuxt/Vue skill.
+  The default layout owns the main landmark; page and component rules use scoped SCSS while global styles keep their documented owner.
+- Keep translated script-side data and metadata reactive.
+  Use locale-aware internal destinations and verified artwork paths; native gallery images and the optimized `Image` wrapper have different delivery requirements.
+- Read applicable scoped instructions and load only the guides and skills relevant to the task.
+  Automatic attachment depends on the client; shared requirements also apply when files are read manually.
 
-### Code Generation
+## Reference Documentation
 
-- Use `<script setup lang="ts">` for all Vue SFCs (never Options API)
-- Nuxt auto-imports are available — do NOT manually import `ref`, `computed`, `useI18n`, `useHead`, `useSeoMeta`, `useRoute`, `useRuntimeConfig`, `useLocalePath`
-- DO manually import types: `import type { ImageSource } from '~/types/image'`
-- All styles must use `<style lang="scss" scoped>`
-- Use SCSS variables from `@/styles/variables.scss` (auto-imported via Vite)
-- Follow `.editorconfig`: 2-space indent, LF line endings, utf-8
+| Guide                     | File                                                         | Read for                                                    |
+| ------------------------- | ------------------------------------------------------------ | ----------------------------------------------------------- |
+| Brand context             | [brand-context.md](../.agents/docs/brand-context.md)         | Artist identity, presentation and factual positioning       |
+| Content direction         | [content-direction.md](../.agents/docs/content-direction.md) | French-first voice, English adaptation and artwork copy     |
+| Design system             | [design-system.md](../.agents/docs/design-system.md)         | Palette, typography, image framing and stylesheet ownership |
+| UX principles             | [ux-principles.md](../.agents/docs/ux-principles.md)         | Responsive composition, navigation, viewer and CV journeys  |
+| Accessibility maintenance | [accessibility.md](../.agents/docs/accessibility.md)         | Source findings, focus, motion and manual audit coverage    |
+| SEO maintenance           | [SEO.md](../.agents/docs/SEO.md)                             | Metadata ownership, origins, indexing and discovery         |
 
-### When Suggesting Code Changes
+## Shared Skills
 
-- Match existing code patterns in the same file/project
-- Preserve the gallery page template structure exactly (see `AGENTS.md`)
-- Always include full SEO metadata (`useHead` + `useSeoMeta`) on gallery pages
-- Use `computed()` for reactive i18n values in meta tags
-- All image paths start with `/` (relative to `public/`)
+| Skill                | File                                                              | Use for                                                   |
+| -------------------- | ----------------------------------------------------------------- | --------------------------------------------------------- |
+| Gallery pages        | [gallery-page](../.agents/skills/gallery-page/SKILL.md)           | Create, extend or review collections and their navigation |
+| Internationalization | [i18n](../.agents/skills/i18n/SKILL.md)                           | FR/EN keys, reactive copy and localized destinations      |
+| Nuxt and Vue         | [nuxt-vue-patterns](../.agents/skills/nuxt-vue-patterns/SKILL.md) | Components, TypeScript, SSR and client lifecycle          |
+| Artwork assets       | [artwork-assets](../.agents/skills/artwork-assets/SKILL.md)       | Exact paths, original images and IPX prerendering         |
+| Accessibility        | [accessibility](../.agents/skills/accessibility/SKILL.md)         | Scoped audits, semantics, controls, focus and motion      |
+| SEO                  | [seo](../.agents/skills/seo/SKILL.md)                             | Reactive page metadata, alternates and social artwork     |
 
-## Git Policy
+Keep canonical skill content in `.agents/skills/`.
+The tables are discovery aids, not a request to preload every skill body.
 
-**Never run any git write command without explicit user instruction.**
+## Scoped Instructions
 
-Forbidden without a direct user request:
-- `git commit`, `git push`, `git reset`, `git rebase`, `git merge`
-- `git cherry-pick`, `git revert`, `git stash`, `git tag`
-- `git branch -D`, `git am`
+| Instruction                                                            | File patterns                                                                            | Use for                                                 |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| [Nuxt and Vue](../.github/instructions/vue-nuxt.instructions.md)       | `app/**/*.vue`, `app/**/*.ts`, `nuxt.config.ts`                                          | Components, SSR, application helpers and configuration  |
+| [Styling](../.github/instructions/styles.instructions.md)              | `app/**/*.vue`, `app/styles/**/*.scss`, `nuxt.config.ts`                                 | Appearance, responsive layout and style loading         |
+| [Internationalization](../.github/instructions/i18n.instructions.md)   | `i18n/locales/*.json`                                                                    | French and English messages, keys and interpolation     |
+| [Accessibility](../.github/instructions/accessibility.instructions.md) | `app/**/*.vue`, `app/plugins/**/*.ts`, `app/composables/**/*.ts`, `app/styles/**/*.scss` | Semantics, focus, overlays, readability and motion      |
+| [Gallery pages](../.github/instructions/gallery-page.instructions.md)  | `app/pages/painting/**/*.vue`, `app/pages/ceramic/**/*.vue`                              | Collections, groups, menu slots and adjacent-page links |
 
-Allowed: `git status`, `git diff`, `git log`, `git show` (read-only inspection).
+Each scoped file declares `description` and `applyTo` metadata.
+Use the [shared applicability rules](../AGENTS.md#tool-integration-and-scoped-instructions) when matching several scopes or working in a client that does not attach them automatically.
 
-If asked to commit or push, **ask for confirmation first** and show what will be committed. Never commit speculatively at the end of a task.
+## Reusable Prompts
 
-### Commit Messages
+| Prompt              | File                                                             | Scope                                          |
+| ------------------- | ---------------------------------------------------------------- | ---------------------------------------------- |
+| `/new-gallery-page` | [new-gallery-page.prompt.md](prompts/new-gallery-page.prompt.md) | Full gallery workflow through the shared skill |
+| `/add-translations` | [add-translations.prompt.md](prompts/add-translations.prompt.md) | Locale messages without creating a page        |
 
-- Use conventional commit format
-- Include a clear description of what changed and why
-
-### For Scoped Instructions
-
-- See `.github/instructions/` for file-type-specific rules that apply automatically
-- See `.github/prompts/` for reusable prompt templates (invoke with `/` in Copilot Chat)
-- See `.github/skills/` for detailed pattern references
+Keep tool-specific entry points focused on routing rather than maintaining separate workflows.
+Use [AGENTS.md verification](../AGENTS.md#verification) and report checks actually performed.

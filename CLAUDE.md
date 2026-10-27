@@ -1,72 +1,94 @@
-# CLAUDE.md
-
-This file provides project context for Claude Code.
-
-## Core Reference
+# Claude Code Entry Point
 
 @AGENTS.md
 
----
+Use the shared project rules and Git restriction in `AGENTS.md`.
+Read matching scoped instruction files manually; Copilot's `applyTo` metadata does not guarantee Claude attachment.
+Load guide and skill bodies only when the task needs them.
 
-## Claude Code — Specific Notes
+## Project References
 
-### Environment
+| File                                                                   | Purpose                                                                      |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| [AGENTS.md](AGENTS.md)                                                 | Shared constraints, architecture, commands, scope selection and verification |
+| [.agents/README.md](.agents/README.md)                                 | Guidance ownership, evidence levels and catalogs                             |
+| [README.md](README.md)                                                 | Site overview, local development and image/deployment workflow               |
+| [STYLE_LAYOUT_REVIEW.md](STYLE_LAYOUT_REVIEW.md)                       | Dated structural proposals, not proof of completed changes                   |
+| [copilot-instructions.md](.github/copilot-instructions.md)             | Copilot's entry point to the same shared catalogs                            |
+| [Artwork naming map](.agents/skills/i18n/references/artwork-naming.md) | Route, translation-key, filename and group-directory mappings                |
 
-- **OS**: Windows. Use PowerShell commands (not bash).  
-- **Package manager**: Yarn 4 — always use `yarn`, never `npm`.  
-- **Dev server**: `yarn dev` (port 3000). After changes, `yarn lint` to verify.
+## Reference Documentation
 
-### Auto-imports in this project
+| Guide                     | File                                                      | Read for                                                    |
+| ------------------------- | --------------------------------------------------------- | ----------------------------------------------------------- |
+| Brand context             | [brand-context.md](.agents/docs/brand-context.md)         | Artist identity, presentation and factual positioning       |
+| Content direction         | [content-direction.md](.agents/docs/content-direction.md) | French-first voice, English adaptation and artwork copy     |
+| Design system             | [design-system.md](.agents/docs/design-system.md)         | Palette, typography, image framing and stylesheet ownership |
+| UX principles             | [ux-principles.md](.agents/docs/ux-principles.md)         | Responsive composition, navigation, viewer and CV journeys  |
+| Accessibility maintenance | [accessibility.md](.agents/docs/accessibility.md)         | Source findings, focus, motion and manual audit coverage    |
+| SEO maintenance           | [SEO.md](.agents/docs/SEO.md)                             | Metadata ownership, origins, indexing and discovery         |
 
-Nuxt auto-imports mean you must **never** manually import these in `.vue` files:
-`ref`, `computed`, `watch`, `useI18n`, `useHead`, `useSeoMeta`, `useRoute`, `useRuntimeConfig`, `useLocalePath`, `navigateTo`, `definePageMeta`
+## Shared Skills
 
-You **must** manually import:
+| Skill                | Shared file                                                    | Existing shortcut                |
+| -------------------- | -------------------------------------------------------------- | -------------------------------- |
+| Gallery pages        | [gallery-page](.agents/skills/gallery-page/SKILL.md)           | `/gallery-page`                  |
+| Internationalization | [i18n](.agents/skills/i18n/SKILL.md)                           | `/i18n`                          |
+| Nuxt and Vue         | [nuxt-vue-patterns](.agents/skills/nuxt-vue-patterns/SKILL.md) | `/nuxt-vue-patterns`             |
+| Artwork assets       | [artwork-assets](.agents/skills/artwork-assets/SKILL.md)       | Read the shared file when needed |
+| Accessibility        | [accessibility](.agents/skills/accessibility/SKILL.md)         | Read the shared file when needed |
+| SEO                  | [seo](.agents/skills/seo/SKILL.md)                             | `/seo`                           |
 
-- Types: `import type { ImageSource } from '~/types/image'`
-- Type: `import type { PageNavigation } from '~/types/page'`
+Canonical skills live in `.agents/skills/`.
+Existing command files preserve shortcuts while reading those shared files.
+See [Claude Code skill locations and commands](https://code.claude.com/docs/en/skills#choose-where-skills-load) for client discovery behavior.
 
-### Where things live
+## Scoped Instructions
 
-| What | Where |
-|---|---|
-| Gallery pages | `app/pages/{painting\|ceramic}/{technique-kebab}/{category-kebab}/index.vue` |
-| Navigation menu | `app/components/layout/Menu.vue` — `const sections = ref([...])` at line ~128 |
-| FR translations | `i18n/locales/fr-FR.json` |
-| EN translations | `i18n/locales/en-US.json` |
-| Images | `public/paintings/...` or `public/ceramics/...` (WebP) |
-| SCSS variables | `app/styles/variables.scss` (auto-imported — use directly, no `@use` needed in `.vue`) |
-| Image route pre-render | `app/utils/generateImageRoutes.ts` — add new images here too |
-| TypeScript types | `app/types/image.ts`, `app/types/page.ts` |
+| Instruction                                                         | File patterns                                                                            | Use for                                                 |
+| ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| [Nuxt and Vue](.github/instructions/vue-nuxt.instructions.md)       | `app/**/*.vue`, `app/**/*.ts`, `nuxt.config.ts`                                          | Components, SSR, application helpers and configuration  |
+| [Styling](.github/instructions/styles.instructions.md)              | `app/**/*.vue`, `app/styles/**/*.scss`, `nuxt.config.ts`                                 | Appearance, responsive layout and style loading         |
+| [Internationalization](.github/instructions/i18n.instructions.md)   | `i18n/locales/*.json`                                                                    | French and English messages, keys and interpolation     |
+| [Accessibility](.github/instructions/accessibility.instructions.md) | `app/**/*.vue`, `app/plugins/**/*.ts`, `app/composables/**/*.ts`, `app/styles/**/*.scss` | Semantics, focus, overlays, readability and motion      |
+| [Gallery pages](.github/instructions/gallery-page.instructions.md)  | `app/pages/painting/**/*.vue`, `app/pages/ceramic/**/*.vue`                              | Collections, groups, menu slots and adjacent-page links |
 
-### Pre-rendering new images
+Select these files using [AGENTS.md's applicability rules](AGENTS.md#tool-integration-and-scoped-instructions).
+Keep requirements in their owning guide, skill or scoped file rather than duplicating them in Claude-only rules.
 
-When adding images to a new gallery page, **also add them** to `app/utils/generateImageRoutes.ts`
-in the `imagesConfig` array with relevant sizes so Vercel pre-renders the IPX routes.
-Typical gallery sizes: `[120, 160, 220, 300, 600]` plus `@2x` variants (handled automatically).
+## Command Adapters
 
----
+| Command              | File                                                          | Shared workflow                         |
+| -------------------- | ------------------------------------------------------------- | --------------------------------------- |
+| `/gallery-page`      | [gallery-page.md](.claude/commands/gallery-page.md)           | Gallery creation, extension or review   |
+| `/new-gallery-page`  | [new-gallery-page.md](.claude/commands/new-gallery-page.md)   | End-to-end gallery implementation       |
+| `/i18n`              | [i18n.md](.claude/commands/i18n.md)                           | Translation and localized UI work       |
+| `/add-translations`  | [add-translations.md](.claude/commands/add-translations.md)   | Locale messages without creating a page |
+| `/seo`               | [seo.md](.claude/commands/seo.md)                             | Page metadata implementation or review  |
+| `/nuxt-vue-patterns` | [nuxt-vue-patterns.md](.claude/commands/nuxt-vue-patterns.md) | Nuxt/Vue implementation guidance        |
 
-## Available Skills
+## Reusable Task Prompts
 
-Invoke with `/skill-name [arguments]` in Claude Code.
+| Prompt specification    | File                                                                     | Matching Claude workflow                       |
+| ----------------------- | ------------------------------------------------------------------------ | ---------------------------------------------- |
+| New or extended gallery | [new-gallery-page.prompt.md](.github/prompts/new-gallery-page.prompt.md) | `/new-gallery-page` and the gallery-page skill |
+| Gallery translations    | [add-translations.prompt.md](.github/prompts/add-translations.prompt.md) | `/add-translations` and the i18n skill         |
 
-| Skill | Invocation | When to use |
-|---|---|---|
-| gallery-page | `/gallery-page "Porcelaine - Fleurs"` | Create a new gallery page end-to-end |
-| seo | `/seo` | Write or review SEO metadata on a page |
-| i18n | `/i18n "porcelain flowers"` | Add or fix translation entries |
-| nuxt-vue-patterns | `/nuxt-vue-patterns` | Reference Vue/Nuxt conventions |
+These files define reusable Copilot prompts; Claude uses the command adapters above for the corresponding workflows.
 
-## Available Agents
+## Review Agent
 
-| Agent | When to use |
-|---|---|
-| `gallery-page-reviewer` | Review a finished gallery page for correctness and completeness |
+| Agent                   | File                                                                | Capability                                            |
+| ----------------------- | ------------------------------------------------------------------- | ----------------------------------------------------- |
+| `gallery-page-reviewer` | [gallery-page-reviewer.md](.claude/agents/gallery-page-reviewer.md) | Read-only source review using shared gallery criteria |
 
-## Available Commands
+Availability of this agent does not require delegation for ordinary work.
+Its read-only tool set does not establish runtime or build coverage.
 
-| Command | Invocation | When to use |
-|---|---|---|
-| new-gallery-page | `/new-gallery-page` | Full guided workflow for a new gallery page |
-| add-translations | `/add-translations` | Add i18n entries to both locale files only |
+## Local Execution And Other Agents
+
+Use Node.js 24 and the Yarn version pinned in `package.json`.
+On PowerShell hosts that block `yarn.ps1`, use `yarn.cmd`.
+Follow [shared verification](AGENTS.md#verification) and record checks actually run.
+
+Its explicit scoped-file selection is documented in [AGENTS.md](AGENTS.md#tool-integration-and-scoped-instructions); this Claude entry point is not its instruction source.

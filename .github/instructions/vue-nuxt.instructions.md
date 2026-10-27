@@ -1,85 +1,38 @@
 ---
-applyTo: "app/**/*.vue"
+description: 'Use when editing Atelier Nuxt pages, components, layouts, application TypeScript or Nuxt configuration.'
+applyTo: 'app/**/*.vue,app/**/*.ts,nuxt.config.ts'
 ---
 
-# Vue & Nuxt File Instructions
+# Vue And Nuxt Instructions
 
-## Script Block
+Use [nuxt-vue-patterns](../../.agents/skills/nuxt-vue-patterns/SKILL.md) for component contracts, TypeScript, SSR, lifecycle and validation.
+Read the nearest implementation before choosing a new abstraction or treating an existing source limitation as a required pattern.
 
-Always use `<script setup lang="ts">`. Never use Options API or `<script>` without `setup`.
+## Implementation Rules
 
-### Auto-imports — NEVER import these manually
+- Keep the SFC order `<template>`, `<script setup lang="ts">`, then scoped SCSS.
+  Prefer Nuxt auto-imports for registered composables and components; import shared types and unregistered utilities or library APIs explicitly.
+- The default layout already supplies the main landmark, header and footer.
+  Reuse `PageTitle` for its H1 and avoid a nested main or a second page H1.
+- Keep browser globals and DOM access in mounted hooks, event handlers or client plugins.
+  Preserve stable SSR markup, the responsive-state fallback and cleanup for added listeners, timers and observers.
+- Derive translated script-side arrays and objects with `computed()`.
+  Preserve mutable interface state separately, and verify captions or navigation at an unchanged viewport after a locale switch.
+- Use `useLocalePath()` for internal page destinations and `useSwitchLocalePath()` for locale changes.
+  Public assets and external URLs do not receive a locale prefix.
+- Reuse the existing Lenis integration and image/viewer components according to their actual contracts.
+  Native gallery images and the standalone `NuxtImg` wrapper have different delivery and prerender requirements.
 
-```typescript
-// ❌ These will trigger lint errors (unnecessary imports)
-import { ref, computed } from 'vue'
-import { useI18n } from 'vue-i18n'
-import { useHead, useSeoMeta } from '#imports'
-```
+## Select Additional Guidance
 
-Nuxt auto-imports: `ref`, `computed`, `watch`, `watchEffect`, `reactive`, `toRef`, `toRefs`, `useI18n`, `useHead`, `useSeoMeta`, `useRoute`, `useRouter`, `useRuntimeConfig`, `useNuxtApp`, `useState`, `navigateTo`, `definePageMeta`, `useLocalePath`
+| Concern in the task                                     | Guidance                                                                                                                    |
+| ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Gallery collection or navigation sequence               | [gallery-page](../../.agents/skills/gallery-page/SKILL.md)                                                                  |
+| Locale messages or translated consumers                 | [i18n](../../.agents/skills/i18n/SKILL.md)                                                                                  |
+| Page metadata, origins or indexing                      | [seo](../../.agents/skills/seo/SKILL.md) and [SEO maintenance](../../.agents/docs/SEO.md)                                   |
+| Artwork paths, optimized images or prerender transforms | [artwork-assets](../../.agents/skills/artwork-assets/SKILL.md)                                                              |
+| Appearance, responsive layout or interaction            | [styling instructions](styles.instructions.md) and [accessibility instructions](accessibility.instructions.md), as relevant |
 
-### DO import types explicitly
-
-```typescript
-import type { ImageSource } from '~/types/image'
-import type { PageNavigation } from '~/types/page'
-```
-
----
-
-## Template Block
-
-- Components are auto-imported — never manually register or import them in `<script setup>`
-- Always use `localePath()` for internal navigation links:
-  ```vue
-  <NuxtLink :to="localePath('/ceramic/porcelain/flowers')">...</NuxtLink>
-  ```
-- Use `:prop="value"` (v-bind shorthand) for dynamic props
-- Prefer `v-show` over `v-if` for layout elements that toggle (like menu visibility)
-
----
-
-## Style Block
-
-Always `<style lang="scss" scoped>`. Never:
-- Plain CSS (`<style>`)
-- Unscoped styles (`<style lang="scss">` without `scoped`)
-- Inline styles on elements
-
-SCSS variables from `app/styles/variables.scss` are globally injected — use them without `@use`:
-```scss
-.my-class {
-  color: $primary-text-color;       // ✅ correct
-  background: $background-color;
-}
-```
-
----
-
-## Reactive Values in Meta Tags
-
-i18n values used in `useHead()` and `useSeoMeta()` must be wrapped in `computed()`:
-
-```typescript
-// ✅ correct — reactive
-content: computed(() => t('pages.ceramic.porcelain.flowers.meta.content'))
-
-// ❌ wrong — not reactive, won't update on locale switch
-content: t('pages.ceramic.porcelain.flowers.meta.content')
-```
-
-Exception: `articleTag` array values use `.value` directly (already resolved):
-```typescript
-articleTag: [
-  computed(() => t('miscellaneous.ceramic')).value,  // ✅
-]
-```
-
----
-
-## TypeScript Strictness
-
-- `strict: true` is enabled — no implicit `any`
-- Always type reactive arrays: `const images: ImageSource[] = [...]`
-- Use `const` for everything that doesn't need reassignment
+Load only the guidance needed for the change.
+Use [AGENTS.md verification](../../AGENTS.md#verification) for the relevant lint, build, generation and browser checks.
+Run existing task-relevant checks and verify proposed infrastructure before documenting it as present.
