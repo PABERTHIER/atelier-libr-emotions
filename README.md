@@ -60,19 +60,24 @@ Locally preview production build:
 yarn preview
 ```
 
-| Command            | Purpose                                                           |
-| ------------------ | ----------------------------------------------------------------- |
-| `yarn dev`         | Start the development server, normally at `http://localhost:3000` |
-| `yarn lint`        | Run ESLint with the repository's Prettier integration             |
-| `yarn lint:fix`    | Apply lint fixes; review affected files                           |
-| `yarn build`       | Build production Nuxt output                                      |
-| `yarn generate`    | Generate static pages and prerendered image routes                |
-| `yarn preview`     | Preview the corresponding build output                            |
-| `yarn postinstall` | Prepare Nuxt generated types; also runs after installation        |
-| `yarn profile`     | Profile a production build                                        |
+| Command             | Purpose                                                            |
+| ------------------- | ------------------------------------------------------------------ |
+| `yarn dev`          | Start the development server, normally at `http://localhost:3000`  |
+| `yarn format:check` | Check application Vue, TypeScript, SCSS and locale JSON formatting |
+| `yarn format`       | Format those files; prefer targeting changed files for small edits |
+| `yarn typecheck`    | Check Nuxt and Vue types                                           |
+| `yarn lint`         | Run ESLint with the repository's Prettier integration              |
+| `yarn lint:fix`     | Apply lint fixes; review affected files                            |
+| `yarn build`        | Build production Nuxt output                                       |
+| `yarn generate`     | Generate static pages and prerendered image routes                 |
+| `yarn preview`      | Preview the corresponding build output                             |
+| `yarn postinstall`  | Prepare Nuxt generated types; also runs after installation         |
+| `yarn profile`      | Profile a production build                                         |
 
-There are no `test`, `typecheck` or `format:check` scripts in the current package file.
+There is no `test` script in the current package file.
+`format` and `format:check` exclude Markdown and root configuration files.
 CI installs locked dependencies and runs lint; it does not run the production build or generation.
+Run formatting, type checking and lint locally for application changes, with build or generation checks as required by the affected behavior.
 For documentation, check changed files with the installed Prettier using `--check --prose-wrap preserve --end-of-line lf`.
 Use [AGENTS.md verification](AGENTS.md#verification) for implementation checks.
 
@@ -92,7 +97,7 @@ Consult `package.json` for versions; this table groups its current direct entrie
 | `@vueuse/core`                                                                           | Responsive breakpoint utilities used by `useScreenSize()`                                     |
 | `rolldown`                                                                               | Build tooling satisfying Nuxt's Rolldown peer dependency                                      |
 | `@nuxt/eslint`, `eslint`, `eslint-config-prettier`, `eslint-plugin-prettier`, `prettier` | Linting and formatting configuration/tooling                                                  |
-| `typescript`, `@types/node`                                                              | TypeScript and Node type support                                                              |
+| `typescript`, `vue-tsc`, `@types/node`                                                   | Nuxt, Vue and Node type checking                                                              |
 | `sass`                                                                                   | SCSS compilation                                                                              |
 
 ## Project Map

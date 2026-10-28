@@ -13,7 +13,10 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "profile": "nuxt build --profile"
+    "profile": "nuxt build --profile",
+    "typecheck": "nuxt typecheck",
+    "format": "prettier --write \"app/**/*.{vue,ts,scss}\" \"i18n/locales/*.json\"",
+    "format:check": "prettier --check \"app/**/*.{vue,ts,scss}\" \"i18n/locales/*.json\""
   },
   "dependencies": {
     "@iconify-json/heroicons": "^1.2.3",
@@ -36,6 +39,7 @@
     "prettier": "^3.9.10",
     "rolldown": "1.2.15",
     "sass": "^1.106.1",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vue-tsc": "^3.3.13"
   }
 }
