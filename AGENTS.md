@@ -36,19 +36,23 @@ The [Yarn configuration](.yarnrc.yml) uses the `node-modules` linker.
 Enable Corepack when setting up the launcher; use `corepack yarn` if needed, or `yarn.cmd` when PowerShell blocks `yarn.ps1`.
 Keep dependency changes within scope and let Yarn maintain `yarn.lock`.
 
-| Task                        | Command                    | Notes                                           |
-| --------------------------- | -------------------------- | ----------------------------------------------- |
-| Install locked dependencies | `yarn install --immutable` | Reproduce the current lockfile                  |
-| Start development           | `yarn dev`                 | Normally `http://localhost:3000`                |
-| Lint                        | `yarn lint`                | ESLint and its Prettier integration             |
-| Fix lint findings           | `yarn lint:fix`            | Review fixes and keep them within scope         |
-| Build production output     | `yarn build`               | Check SSR and Nuxt configuration                |
-| Generate static output      | `yarn generate`            | Check prerendered routes and image delivery     |
-| Preview built output        | `yarn preview`             | Run after the corresponding build or generation |
-| Prepare Nuxt types          | `yarn postinstall`         | Runs automatically after installation           |
-| Profile a build             | `yarn profile`             | Available when profiling is part of the task    |
+| Task                        | Command                    | Notes                                                    |
+| --------------------------- | -------------------------- | -------------------------------------------------------- |
+| Install locked dependencies | `yarn install --immutable` | Reproduce the current lockfile                           |
+| Start development           | `yarn dev`                 | Normally `http://localhost:3000`                         |
+| Check formatting            | `yarn format:check`        | Checks application Vue, TypeScript, SCSS and locale JSON |
+| Format application files    | `yarn format`              | Broad write operation; prefer changed-file scope         |
+| Check types                 | `yarn typecheck`           | Nuxt and Vue TypeScript checks                           |
+| Lint                        | `yarn lint`                | ESLint and its Prettier integration                      |
+| Fix lint findings           | `yarn lint:fix`            | Review fixes and keep them within scope                  |
+| Build production output     | `yarn build`               | Check SSR and Nuxt configuration                         |
+| Generate static output      | `yarn generate`            | Check prerendered routes and image delivery              |
+| Preview built output        | `yarn preview`             | Run after the corresponding build or generation          |
+| Prepare Nuxt types          | `yarn postinstall`         | Runs automatically after installation                    |
+| Profile a build             | `yarn profile`             | Available when profiling is part of the task             |
 
-There are no `test`, `typecheck` or `format:check` scripts in the current package file.
+There is no `test` script in the current package file.
+`format` and `format:check` exclude Markdown and root configuration files.
 Check changed Markdown explicitly with the installed Prettier using `--prose-wrap preserve --end-of-line lf`.
 See [README.md](README.md) for the human-facing setup and dependency map.
 
@@ -68,7 +72,7 @@ Consult `package.json` for versions; this table groups its current direct entrie
 | `@vueuse/core`                                                                           | Responsive breakpoint utilities used by `useScreenSize()`                                     |
 | `rolldown`                                                                               | Build tooling satisfying Nuxt's Rolldown peer dependency                                      |
 | `@nuxt/eslint`, `eslint`, `eslint-config-prettier`, `eslint-plugin-prettier`, `prettier` | Linting and formatting configuration/tooling                                                  |
-| `typescript`, `@types/node`                                                              | TypeScript and Node type support                                                              |
+| `typescript`, `vue-tsc`, `@types/node`                                                   | Nuxt, Vue and Node type checking                                                              |
 | `sass`                                                                                   | SCSS compilation                                                                              |
 
 ## Architecture
@@ -279,7 +283,7 @@ The [.agents index](.agents/README.md) is navigational, not a separate automatic
 | Change                                     | Relevant checks                                                                                                  |
 | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
 | Documentation only                         | Changed-file Prettier with preserved prose wrapping and LF, frontmatter, local links/anchors and source accuracy |
-| Application implementation                 | `yarn lint` and affected FR/EN behavior                                                                          |
+| Application implementation                 | `yarn format:check`, `yarn typecheck`, `yarn lint` and affected FR/EN behavior                                   |
 | Shared behavior, SSR or Nuxt configuration | Relevant `yarn build` plus browser checks for affected consumers                                                 |
 | Routes, prerendering or image delivery     | `yarn generate`, affected generated pages and actual image requests                                              |
 | UI, styles or interaction                  | Mobile acceptance, keyboard/touch journeys, overlays, enlarged text and reduced motion                           |
