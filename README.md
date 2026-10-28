@@ -89,6 +89,9 @@ Consult `package.json` for versions; this table groups its current direct entrie
 | `@nuxt/ui`, `@iconify-json/heroicons`, `@iconify-json/lucide`                            | UI/icon integration and installed icon sets                                                   |
 | `@nuxt/fonts`                                                                            | Font integration; inspect source and browser output for actual requests and resolved families |
 | `lenis`                                                                                  | Client smooth-scroll integration                                                              |
+| `@vueuse/core`                                                                           | Responsive breakpoint utilities used by `useScreenSize()`                                     |
+| `vue`                                                                                    | Vue 3 runtime and explicit peer dependency for VueUse                                         |
+| `rolldown`                                                                               | Build tooling satisfying Nuxt's Rolldown peer dependency                                      |
 | `@nuxt/eslint`, `eslint`, `eslint-config-prettier`, `eslint-plugin-prettier`, `prettier` | Linting and formatting configuration/tooling                                                  |
 | `typescript`, `@types/node`                                                              | TypeScript and Node type support                                                              |
 | `sass`                                                                                   | SCSS compilation                                                                              |
