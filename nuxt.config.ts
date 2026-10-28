@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { fileURLToPath } from 'node:url'
 import { generateImageRoutes } from './app/utils/generateImageRoutes'
 
 export default defineNuxtConfig({
@@ -27,6 +28,10 @@ export default defineNuxtConfig({
   },
   ssr: true,
   nitro: {
+    externals: {
+      // Include Vue's ESM entry as well as the CommonJS files traced for SSR
+      traceInclude: [fileURLToPath(import.meta.resolve('vue'))],
+    },
     prerender: {
       crawlLinks: true,
       routes: ['/', ...generateImageRoutes()],
