@@ -5852,7 +5852,6 @@ __metadata:
     rolldown: "npm:1.2.15"
     sass: "npm:^1.104.0"
     typescript: "npm:^6.0.3"
-    vue: "npm:3.5.42"
   languageName: unknown
   linkType: soft
 
@@ -13758,7 +13757,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue@npm:3.5.42, vue@npm:^3.4.5, vue@npm:^3.5.40, vue@npm:~3.5.34":
+"vue@npm:^3.4.5, vue@npm:^3.5.40, vue@npm:~3.5.34":
   version: 3.5.42
   resolution: "vue@npm:3.5.42"
   dependencies:
