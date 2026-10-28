@@ -26,16 +26,6 @@ useHead({
     { name: 'description', content: computed(() => t('app.meta.description')) },
   ],
   link: [
-    {
-      rel: 'preconnect',
-      href: 'https://fonts.googleapis.com',
-      crossorigin: '',
-    },
-    {
-      rel: 'stylesheet',
-      href: 'https://fonts.googleapis.com/css2?family=Roboto&display=swap',
-      crossorigin: '',
-    },
     { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' },
     {

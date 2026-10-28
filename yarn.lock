@@ -2501,6 +2501,38 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nuxt/fonts@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@nuxt/fonts@npm:1.2.0"
+  dependencies:
+    "@nuxt/kit": "npm:^4.6.2"
+    defu: "npm:^6.1.7"
+    devframe: "npm:^1.2.5"
+    exsolve: "npm:^1.1.3"
+    fontless: "npm:^1.3.2"
+    h3: "npm:^1.15.11"
+    magic-regexp: "npm:^0.11.2"
+    nypm: "npm:^0.6.10"
+    ofetch: "npm:^1.5.1"
+    pathe: "npm:^2.0.3"
+    std-env: "npm:^4.3.0"
+    tinyglobby: "npm:^0.2.17"
+    ufo: "npm:^1.6.4"
+    unifont: "npm:^1.0.3"
+    unplugin: "npm:^3.4.0"
+    unstorage: "npm:^1.17.6"
+  peerDependencies:
+    lightningcss: ^1.33.0
+    subset-font: ^2.9.0
+  peerDependenciesMeta:
+    lightningcss:
+      optional: true
+    subset-font:
+      optional: true
+  checksum: 10c0/c0200209acd8afb19121a689d2ecab6b9f51047b4c3984238a37112492444d395c2ba79f4c15fc4cc5e1a1bf592df054b37de0635c6c03cc0cd8fd21d319014d
+  languageName: node
+  linkType: hard
+
 "@nuxt/icon@npm:^2.5.1":
   version: 2.6.1
   resolution: "@nuxt/icon@npm:2.6.1"
@@ -5817,7 +5849,7 @@ __metadata:
     "@iconify-json/heroicons": "npm:^1.2.3"
     "@iconify-json/lucide": "npm:^1.2.146"
     "@nuxt/eslint": "npm:1.17.0"
-    "@nuxt/fonts": "npm:^0.14.0"
+    "@nuxt/fonts": "npm:^1.2.0"
     "@nuxt/image": "npm:^2.2.0"
     "@nuxt/ui": "npm:^4.12.0"
     "@nuxtjs/i18n": "npm:^10.6.0"
@@ -6585,6 +6617,28 @@ __metadata:
   bin:
     devframe: ./bin/devframe.mjs
   checksum: 10c0/8b7e3b19013990a685835e062a31a336424648902ad1c57f1650ed664ecada4883eb16e7766a74bd60a83adf58fcc4206ec9cc36491cccbbadc2f52eca538e41
+  languageName: node
+  linkType: hard
+
+"devframe@npm:^1.2.5":
+  version: 1.2.6
+  resolution: "devframe@npm:1.2.6"
+  dependencies:
+    crossws: "npm:^0.4.12"
+    h3: "npm:^2.0.1"
+    nostics: "npm:^1.3.0"
+    pathe: "npm:^2.0.3"
+  peerDependencies:
+    "@devframes/agentic": 1.2.6
+    cac: ^7.0.0
+  peerDependenciesMeta:
+    "@devframes/agentic":
+      optional: true
+    cac:
+      optional: true
+  bin:
+    devframe: ./bin/devframe.mjs
+  checksum: 10c0/bb853ed633fb97f15f383df49addd862eaf45dcce98cf3fac375020c454e300191b4cdc0eda64eb31f9f1ce8c7b484e955c43950dc23e18e6a4bc6a2fdf00a9c
   languageName: node
   linkType: hard
 
@@ -7832,6 +7886,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fontaine@npm:1.0.3":
+  version: 1.0.3
+  resolution: "fontaine@npm:1.0.3"
+  dependencies:
+    "@capsizecss/unpack": "npm:^4.0.0"
+    css-tree: "npm:^3.1.0"
+    magic-string: "npm:^1.0.0"
+    unplugin: "npm:^3.0.0"
+  peerDependencies:
+    postcss: ^8.4.31
+  peerDependenciesMeta:
+    postcss:
+      optional: true
+  checksum: 10c0/5c4062e146fa39ba2b5c9b9e99f26d8ae89f16cf439a53e8ba685c274ffb53130b7f35219db45b7afe2d83b43675e5664e59c566a5a371c296bbc84ceee11b5e
+  languageName: node
+  linkType: hard
+
 "fontkitten@npm:^1.0.0":
   version: 1.0.3
   resolution: "fontkitten@npm:1.0.3"
@@ -7864,6 +7935,37 @@ __metadata:
     vite:
       optional: true
   checksum: 10c0/f377d21774b2297c1ee05e68279b70924eadb242dff5edee9576a7c783afd92e4025641080c83537b480e9d03eeab210b8f6b5444dc31f3954303157ae7ff48b
+  languageName: node
+  linkType: hard
+
+"fontless@npm:^1.3.2":
+  version: 1.3.4
+  resolution: "fontless@npm:1.3.4"
+  dependencies:
+    css-tree: "npm:^3.1.0"
+    defu: "npm:^6.1.4"
+    exsolve: "npm:^1.1.1"
+    fontaine: "npm:1.0.3"
+    magic-string: "npm:^1.0.0"
+    unifont: "npm:^1.0.2"
+  peerDependencies:
+    devframe: ^1.2.0
+    jiti: ^2.6.1
+    lightningcss: ^1.33.0
+    subset-font: ^2.5.0
+    vite: "*"
+  peerDependenciesMeta:
+    devframe:
+      optional: true
+    jiti:
+      optional: true
+    lightningcss:
+      optional: true
+    subset-font:
+      optional: true
+    vite:
+      optional: true
+  checksum: 10c0/96b98e15c06a1fc2187bb225751f04c4ba97a46f3af566c97ec3e88d2e85bc2477554bb17425d033795503f408909d6c628fb31c50d24bff58bac5b84fc695e7
   languageName: node
   linkType: hard
 
@@ -8133,6 +8235,26 @@ __metadata:
     ufo: "npm:^1.6.3"
     uncrypto: "npm:^0.1.3"
   checksum: 10c0/6ccb421b9f92e02e6330c2b6697b18ef18e9550e4a1708f224ca517c40ecd201cd00967d0feb26e718595e86e985edec1755933cf8792d34fb8504f1c7cc261d
+  languageName: node
+  linkType: hard
+
+"h3@npm:^2.0.1":
+  version: 2.0.8
+  resolution: "h3@npm:2.0.8"
+  dependencies:
+    rou3: "npm:^1.0.0"
+    srvx: "npm:^1.0.6"
+  peerDependencies:
+    crossws: ^0.4.12
+    ocache: ">=0.3.0"
+  peerDependenciesMeta:
+    crossws:
+      optional: true
+    ocache:
+      optional: true
+  bin:
+    h3: ./bin/h3.mjs
+  checksum: 10c0/6c6eb291ae0662442c4fe85a6f60e0b397e64e90771f5545ea70fe5cf572403eac4f670f5ab75e1c8fd2c071ef31c9d33a169f8a0c33348f02a438464520ac17
   languageName: node
   linkType: hard
 
@@ -9175,6 +9297,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lru-cache@npm:^11.5.3":
+  version: 11.5.3
+  resolution: "lru-cache@npm:11.5.3"
+  checksum: 10c0/2ad9bce6343a3544a1fd15364d8b35609aa52b2593d21fdc4877cabfe003b0f3deca4f9d6e9d13262f06e9e3d159de45c0a2f3edfc3adb46192333b5f146d8ed
+  languageName: node
+  linkType: hard
+
 "lru-cache@npm:^5.1.1":
   version: 5.1.1
   resolution: "lru-cache@npm:5.1.1"
@@ -9196,6 +9325,18 @@ __metadata:
     ufo: "npm:^1.5.4"
     unplugin: "npm:^2.0.0"
   checksum: 10c0/4f183439510984744fcff5af9ef6c2776d886aba832e1390c8d85328e2a4991464e5cb18dc6f491c0184ea1b96508475a5b112295a08fdeae1018193901688f9
+  languageName: node
+  linkType: hard
+
+"magic-regexp@npm:^0.11.2":
+  version: 0.11.2
+  resolution: "magic-regexp@npm:0.11.2"
+  dependencies:
+    magic-string: "npm:^1.1.0"
+    regexp-tree: "npm:^0.1.27"
+    type-level-regexp: "npm:~0.1.17"
+    unplugin: "npm:^3.3.0"
+  checksum: 10c0/c9f1a4ff781466644277dcb834b2b1292a131d99265e5234425ca7202d5c1df181c53672ffaa7c4ecf4a0f2a4ac08e6d8e02279a7247b799c4ce85dfaac0684f
   languageName: node
   linkType: hard
 
@@ -10206,6 +10347,19 @@ __metadata:
     zod:
       optional: true
   checksum: 10c0/4149380884b378ef9d56cb20c96b23d4d6a13726a9938eabd27486937ea2551a2a56cc399fecfeea352ac839fcb3767c5a77a92c41e15207f8c3eac3b82691e2
+  languageName: node
+  linkType: hard
+
+"nypm@npm:^0.6.10":
+  version: 0.6.11
+  resolution: "nypm@npm:0.6.11"
+  dependencies:
+    citty: "npm:^0.2.2"
+    pathe: "npm:^2.0.3"
+    tinyexec: "npm:^1.3.1"
+  bin:
+    nypm: ./dist/cli.mjs
+  checksum: 10c0/ab2330e6d5c30cb7fe7f49b5da9ea82fa884ad28b99b2693b51ee1c9d67d347af14722321e639e16f0ca6b6fc5bfda6ed8c912ac55310df4fde21436897f5d87
   languageName: node
   linkType: hard
 
@@ -11489,6 +11643,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"rou3@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "rou3@npm:1.0.0"
+  checksum: 10c0/c3d84fbb2dc3a1a4513beaac5cfc2f22753ab368bbe891a20dbb1c9f106564f1bc21071516cb771e7c0f0689ba84a841675ae4aeba6794eb82543b6dbb3a655e
+  languageName: node
+  linkType: hard
+
 "run-applescript@npm:^7.0.0":
   version: 7.0.0
   resolution: "run-applescript@npm:7.0.0"
@@ -12008,7 +12169,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"srvx@npm:^1.0.2, srvx@npm:^1.0.5":
+"srvx@npm:^1.0.2, srvx@npm:^1.0.5, srvx@npm:^1.0.6":
   version: 1.0.7
   resolution: "srvx@npm:1.0.7"
   bin:
@@ -12544,7 +12705,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:^8.12.1":
+"undici@npm:^8.0.0, undici@npm:^8.12.1":
   version: 8.12.3
   resolution: "undici@npm:8.12.3"
   checksum: 10c0/714919e62b4160eea195fb35c7f5c4907235741e47bfde8a014ac58f6d24df13434e23400d7f48e2c455fd2b259d27f07fce514f04a5b4e99936ba62cbc4bb71
@@ -12597,6 +12758,18 @@ __metadata:
     ofetch: "npm:^1.5.1"
     ohash: "npm:^2.0.11"
   checksum: 10c0/2b1c23e13083ce52382ac3e430b24c7f7a9a8657480f82847e254d5e3aa8a639c1178fda9ad157c21d2ceff5f7a037021c547501856dca7a93bc75bef6fe2f7d
+  languageName: node
+  linkType: hard
+
+"unifont@npm:^1.0.2, unifont@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "unifont@npm:1.0.3"
+  dependencies:
+    css-tree: "npm:^3.1.0"
+    fnv1a-64: "npm:^0.1.2"
+    std-env: "npm:^4.2.0"
+    undici: "npm:^8.0.0"
+  checksum: 10c0/9951e5a3414c5fb7097dad8696a9a37b50c9807261292df97142777d6424aab2c46d9b0743fd48709d365d93d06e9470f9fb30f030360cb827e72590d759804c
   languageName: node
   linkType: hard
 
@@ -12939,6 +13112,81 @@ __metadata:
     uploadthing:
       optional: true
   checksum: 10c0/52bc07d0951129f493cc2d2a5204f49df90c85e7ab3faac0019e3a31f22f507f7a8263fca7ca4d019950c14cbfed4d43e15c9afe4b5dcb307249ebb60d2e538e
+  languageName: node
+  linkType: hard
+
+"unstorage@npm:^1.17.6":
+  version: 1.17.6
+  resolution: "unstorage@npm:1.17.6"
+  dependencies:
+    anymatch: "npm:^3.1.3"
+    chokidar: "npm:^5.0.0"
+    destr: "npm:^2.0.5"
+    h3: "npm:^1.15.11"
+    lru-cache: "npm:^11.5.3"
+    node-fetch-native: "npm:^1.6.7"
+    ofetch: "npm:^1.5.1"
+    ufo: "npm:^1.6.4"
+  peerDependencies:
+    "@azure/app-configuration": ^1.8.0
+    "@azure/cosmos": ^4.2.0
+    "@azure/data-tables": ^13.3.0
+    "@azure/identity": ^4.6.0
+    "@azure/keyvault-secrets": ^4.9.0
+    "@azure/storage-blob": ^12.26.0
+    "@capacitor/preferences": ^6 || ^7 || ^8
+    "@deno/kv": ">=0.9.0"
+    "@netlify/blobs": ^6.5.0 || ^7.0.0 || ^8.1.0 || ^9.0.0 || ^10.0.0 || ^11.0.0
+    "@planetscale/database": ^1.19.0
+    "@upstash/redis": ^1.34.3
+    "@vercel/blob": ">=0.27.1"
+    "@vercel/functions": ^2.2.12 || ^3.0.0
+    "@vercel/kv": ^1 || ^2 || ^3
+    aws4fetch: ^1.0.20
+    db0: ">=0.2.1"
+    idb-keyval: ^6.2.1
+    ioredis: ^5.4.2
+    uploadthing: ^7.4.4
+  peerDependenciesMeta:
+    "@azure/app-configuration":
+      optional: true
+    "@azure/cosmos":
+      optional: true
+    "@azure/data-tables":
+      optional: true
+    "@azure/identity":
+      optional: true
+    "@azure/keyvault-secrets":
+      optional: true
+    "@azure/storage-blob":
+      optional: true
+    "@capacitor/preferences":
+      optional: true
+    "@deno/kv":
+      optional: true
+    "@netlify/blobs":
+      optional: true
+    "@planetscale/database":
+      optional: true
+    "@upstash/redis":
+      optional: true
+    "@vercel/blob":
+      optional: true
+    "@vercel/functions":
+      optional: true
+    "@vercel/kv":
+      optional: true
+    aws4fetch:
+      optional: true
+    db0:
+      optional: true
+    idb-keyval:
+      optional: true
+    ioredis:
+      optional: true
+    uploadthing:
+      optional: true
+  checksum: 10c0/a6fe3f4461fdff10fa401110450c0c8963d5dae421eff096561bbf673eb0a17e60f568b2027d09c40314a5ead98bcc3c1e8b30b73fb4a00e54947cffa19b2f14
   languageName: node
   linkType: hard
 
