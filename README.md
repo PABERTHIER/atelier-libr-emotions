@@ -80,20 +80,18 @@ Use [AGENTS.md verification](AGENTS.md#verification) for implementation checks.
 
 Consult `package.json` for versions; this table groups its current direct entries.
 
-| Dependencies                                                                                                               | Purpose or current status                                                                     |
-| -------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `nuxt`                                                                                                                     | Routing, Vue application build, SSR and prerendering                                          |
-| `@nuxtjs/i18n`                                                                                                             | French/English messages and prefixed routes                                                   |
-| `@nuxtjs/seo`                                                                                                              | Site metadata, sitemap and structured-data modules                                            |
-| `@nuxt/image`                                                                                                              | NuxtImg and IPX transforms for optimized-image consumers                                      |
-| `@nuxt/ui`, `@iconify-json/heroicons`, `@iconify-json/lucide`                                                              | UI/icon integration and installed icon sets                                                   |
-| `@nuxt/fonts`                                                                                                              | Font integration; inspect source and browser output for actual requests and resolved families |
-| `lenis`                                                                                                                    | Client smooth-scroll integration                                                              |
-| `@nuxt/eslint`, `@nuxt/eslint-config`, `eslint`, `eslint-config-prettier`, `eslint-plugin-prettier`, `prettier`, `globals` | Linting and formatting configuration/tooling                                                  |
-| `typescript`, `@types/node`                                                                                                | TypeScript and Node type support                                                              |
-| `sass`                                                                                                                     | SCSS compilation                                                                              |
-| `@nuxt/types`                                                                                                              | Existing explicit type entry in `tsconfig.json`                                               |
-| `@vue/composition-api`, `@nuxtjs/eslint-config-typescript`, `vite-svg-loader`                                              | Other existing direct declarations; inspect consumers before a separate dependency cleanup    |
+| Dependencies                                                                             | Purpose or current status                                                                     |
+| ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `nuxt`                                                                                   | Routing, Vue application build, SSR and prerendering                                          |
+| `@nuxtjs/i18n`                                                                           | French/English messages and prefixed routes                                                   |
+| `@nuxtjs/seo`                                                                            | Site metadata, sitemap and structured-data modules                                            |
+| `@nuxt/image`                                                                            | NuxtImg and IPX transforms for optimized-image consumers                                      |
+| `@nuxt/ui`, `@iconify-json/heroicons`, `@iconify-json/lucide`                            | UI/icon integration and installed icon sets                                                   |
+| `@nuxt/fonts`                                                                            | Font integration; inspect source and browser output for actual requests and resolved families |
+| `lenis`                                                                                  | Client smooth-scroll integration                                                              |
+| `@nuxt/eslint`, `eslint`, `eslint-config-prettier`, `eslint-plugin-prettier`, `prettier` | Linting and formatting configuration/tooling                                                  |
+| `typescript`, `@types/node`                                                              | TypeScript and Node type support                                                              |
+| `sass`                                                                                   | SCSS compilation                                                                              |
 
 ## Project Map
 
