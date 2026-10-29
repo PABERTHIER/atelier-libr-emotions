@@ -108,6 +108,7 @@ Consult `package.json` for versions; this table groups its current direct entrie
 | [app/components/common](app/components/common/)                                                                                    | Gallery, viewer, image wrapper, headings and page navigation       |
 | [app/components/layout](app/components/layout/), [default layout](app/layouts/default.vue)                                         | Header, menu, footer and shared main landmark                      |
 | [app/composables](app/composables/), [app/types](app/types/)                                                                       | Responsive state and shared TypeScript contracts                   |
+| [app/data](app/data/)                                                                                                              | Shared site name, social profiles and robots policies              |
 | [app/styles](app/styles/)                                                                                                          | Tokens, existing base rules and shared keyframes                   |
 | [smooth-scroll.client.ts](app/plugins/smooth-scroll.client.ts)                                                                     | Lenis integration                                                  |
 | [generateImageRoutes.ts](app/utils/generateImageRoutes.ts)                                                                         | Explicit IPX transform routes used by prerendering                 |
@@ -136,16 +137,25 @@ Gallery layout heights do not define IPX image widths.
 Use [artwork-assets](.agents/skills/artwork-assets/SKILL.md) and the [naming map](.agents/skills/i18n/references/artwork-naming.md) for grouped collections and delivery details.
 Physical painting measurements are authored content, separate from raster pixel dimensions.
 
-## Production And Verification
+## Deploy On Vercel
 
-`nuxt.config.ts` enables server rendering, a prerender link crawl and explicit IPX routes.
-Use `yarn build` to check production Nuxt output and `yarn generate` to verify static delivery.
-The production origin in the repository is `https://atelierlibremotions.vercel.app`.
+Use the Nuxt preset, `yarn install --immutable` and `yarn build` with Node.js 24 and the pinned Yarn version.
+Leave the Output Directory override disabled so Nuxt/Nitro controls deployment output.
+Use `yarn generate` for a static-delivery check, not as the Vercel SSR build target.
 
-Page metadata currently resolves development, production and preview origins separately from fixed Site Config/identity values.
-A local production-mode build without appropriate deployment variables can produce invalid page URLs.
-Read [SEO maintenance](.agents/docs/SEO.md#origins-and-indexing) when configuring a local production check or changing deployment behavior.
-Hosting settings are external to this repository; verify the actual Vercel build/output configuration before changing it.
+The production origin defaults to `https://atelierlibremotions.vercel.app`.
+To change it, set build-time `NUXT_SITE_URL` in Vercel's Production environment only.
+Previews use their own `VERCEL_URL` origin with indexing disabled; production and local production builds allow indexing.
+Both localized `/wip` pages are noindex and excluded from sitemaps.
+See [SEO maintenance](.agents/docs/SEO.md#origins-and-indexing) for environment settings, metadata ownership and release checks.
+
+`public/_robots.txt` retains `Content-Usage: train-ai=n`; Nuxt generates the sitemap declaration.
+Use `/robots.txt?mockProductionEnv` to inspect production-style rules during development.
+AI Ready and Skew Protection are disabled; social previews use existing public artwork.
+
+The site name and social profiles live in [site.ts](app/data/site.ts); shared robots policies live in [seo.ts](app/data/seo.ts).
+The config loads shared defaults/keyframes once and injects Sass variables into component styles.
+Native galleries serve original artwork; optimized image consumers retain IPX and explicit static transform routes.
 
 For route or image-delivery changes, inspect generated pages and actual original/transformed image requests.
 For UI changes, exercise both locales, mobile and desktop layouts, keyboard focus, menus, the viewer and reduced motion.

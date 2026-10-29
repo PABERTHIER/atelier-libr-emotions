@@ -1,5 +1,3 @@
 User-agent: *
 Allow: /
 Content-Usage: train-ai=n
-
-Sitemap: https://atelierlibremotions.vercel.app/sitemap.xml

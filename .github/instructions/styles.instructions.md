@@ -19,8 +19,8 @@ Keep the artwork primary and reuse the actual palette, typography and component 
 | Local appearance           | Scoped SCSS beside the component or page                                                    | Keep page-specific presentation local                                        |
 | Injection and fonts        | [nuxt.config.ts](../../nuxt.config.ts), [app.vue](../../app/app.vue) and the default layout | Check current output and resolved fonts before changing loading or ownership |
 
-The current injection includes emitted keyframes as well as tokens.
-Use the [style and layout review](../../STYLE_LAYOUT_REVIEW.md) when addressing that concern; its proposed extraction is not already implemented.
+The config's `css` array loads shared defaults and keyframes once; Vite injects only Sass tokens.
+Keep those styles out of repeated component imports and preserve the layout's remaining global rules.
 Introduce a shared stylesheet or token family only for demonstrated reuse within the task.
 Allow dynamic styles for measured gallery and zoom geometry; keep static presentation in SCSS.
 For style-only cleanup, preserve existing class names, appearance and interaction states.

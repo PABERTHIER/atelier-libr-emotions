@@ -99,7 +99,9 @@ Keep trailing-slash behavior consistent with the generated routes.
 The gallery touch icon overrides the root default with the same `key: 'apple-touch-icon'`; preserve that local behavior without claiming the original artwork is a generated square icon.
 
 Check the current origin table and source limitations in [SEO maintenance](../../docs/SEO.md#origins-and-indexing) before a production-mode build or environment change.
-The runtime I18n origin, fixed Site Config origin and indexability settings need joint verification; local builds can otherwise produce `https://undefined`.
+The shared `siteUrl` supplies runtime/configured I18n, Site Config and configured identity URLs, with environment-specific indexability and a production fallback for local builds.
+Keep `NUXT_SITE_URL` scoped to production overrides; Site Config reads it independently and can otherwise override a preview origin.
+Keep SEO v6's AI Ready and Skew Protection disabled unless their publishing/storage requirements are explicitly addressed.
 Address affected inconsistencies within scope and supply an appropriate local build environment for validation.
 Do not silently deploy, change hosting settings or claim preview noindex behavior without verification.
 

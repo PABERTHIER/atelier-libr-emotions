@@ -101,6 +101,7 @@ atelier-libr-emotions/
 │   │       ├── PageHeaderOrnament.vue
 │   │       └── PageNavigation.vue # Previous/Next navigation
 │   ├── composables/              # screen-size, shared logic
+│   ├── data/                     # Shared site identity, social URLs and robots policies
 │   ├── types/                    # TypeScript types (ImageSource, Heights, PageNavigation)
 │   ├── utils/                    # generateImageRoutes for pre-rendering
 │   ├── styles/                   # SCSS variables and keyframes
@@ -150,7 +151,7 @@ Verify the written text rather than assuming the console's display encoding also
 ## Routes And Page Workflow
 
 I18n uses `prefix`, so French routes also start with `/fr`; equivalent English routes start with `/en`.
-The root `/` is configured for language detection and is also included in the current prerender crawl.
+The root `/` is configured for language detection and is not explicitly prerendered during the server build.
 Verify actual generated/deployed redirect behavior rather than assuming a runtime-only redirect.
 
 | Area              | Example route without locale  | Content owner                                                                    |
@@ -290,7 +291,8 @@ The [.agents index](.agents/README.md) is navigational, not a separate automatic
 
 CI installs dependencies immutably and runs lint; its build-named job does not run the production build or static generation.
 Check the installed Yarn version if reproducing CI: the workflow has an explicit Corepack preparation version separate from `packageManager`.
-Production-mode validation needs an appropriate origin environment; read [SEO maintenance](.agents/docs/SEO.md#origins-and-indexing) before interpreting generated URLs.
+Production-mode validation uses the configured production-origin fallback locally; development and Vercel previews disable indexing.
+Keep `NUXT_SITE_URL` overrides scoped to production and read [SEO maintenance](.agents/docs/SEO.md#origins-and-indexing) before interpreting generated URLs.
 For shared UI changes, cover the different pages and states consuming the component.
 Use viewport and device coverage from the UX/accessibility guides and report what was actually checked.
 Do not claim unavailable browser, assistive-technology, deployment or crawler validation.

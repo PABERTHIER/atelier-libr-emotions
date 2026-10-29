@@ -39,7 +39,7 @@
 
         <div class="social-links">
           <NuxtLink
-            :to="facebookLink"
+            :to="externalLinks.facebook"
             :aria-label="facebook"
             :title="facebookLinkTitle"
             class="social-link facebook"
@@ -56,7 +56,7 @@
           </NuxtLink>
 
           <NuxtLink
-            :to="instagramLink"
+            :to="externalLinks.instagram"
             :aria-label="instagram"
             :title="instagramLinkTitle"
             class="social-link instagram"
@@ -112,6 +112,8 @@
 </template>
 
 <script setup lang="ts">
+import { externalLinks } from '~/data/site'
+
 const { t } = useI18n()
 const runtimeConfig = useRuntimeConfig()
 const route = useRoute()
@@ -225,10 +227,6 @@ const instagramLinkTitle = computed(() =>
 )
 const contact = computed(() => t('miscellaneous.contact'))
 const contactLinkTitle = computed(() => t('pages.contact.contact_me_by_mail'))
-
-const facebookLink =
-  'https://www.facebook.com/people/Atelier-LibrEmotions/100063484446329/'
-const instagramLink = 'https://www.instagram.com/atelier_libremotions'
 </script>
 
 <style lang="scss" scoped>
