@@ -6,20 +6,20 @@ Use [brand-context.md](brand-context.md) for identity and [ux-principles.md](ux-
 
 ## Styling ownership
 
-| Concern                                  | Current source                                    | Maintenance rule                                                    |
-| ---------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------- |
-| Sass tokens                              | [variables.scss](../../app/styles/variables.scss) | Reuse actual color, breakpoint, dimension and layer variables       |
-| Shared animations                        | [keyframes.scss](../../app/styles/keyframes.scss) | Preserve animation names used by existing components                |
-| Global anchor defaults                   | [default.scss](../../app/styles/default.scss)     | Currently imported by the default layout                            |
-| Global typography, reset and scroll lock | [default.vue](../../app/layouts/default.vue)      | Global rules currently live alongside layout selectors              |
-| Sass injection                           | [nuxt.config.ts](../../nuxt.config.ts)            | Currently injects both variables and emitted keyframes through Vite |
-| Page and component appearance            | Scoped SCSS beside each Vue component             | Keep local rules local and reuse components for shared behavior     |
+| Concern                                  | Current source                                    | Maintenance rule                                                |
+| ---------------------------------------- | ------------------------------------------------- | --------------------------------------------------------------- |
+| Sass tokens                              | [variables.scss](../../app/styles/variables.scss) | Reuse actual color, breakpoint, dimension and layer variables   |
+| Shared animations                        | [keyframes.scss](../../app/styles/keyframes.scss) | Preserve animation names used by existing components            |
+| Global anchor defaults                   | [default.scss](../../app/styles/default.scss)     | Loaded once through the Nuxt config's `css` array               |
+| Global typography, reset and scroll lock | [default.vue](../../app/layouts/default.vue)      | Global rules currently live alongside layout selectors          |
+| Sass injection                           | [nuxt.config.ts](../../nuxt.config.ts)            | Injects only variables; shared keyframes load through `css`     |
+| Page and component appearance            | Scoped SCSS beside each Vue component             | Keep local rules local and reuse components for shared behavior |
 
 Use the stylesheets and ownership listed above; introduce another shared file only when demonstrated reuse justifies it.
 Sass built-ins such as `sass:color` still require their own import when used.
 
-The existing [style and layout review](../../STYLE_LAYOUT_REVIEW.md) proposes consolidating global rules and loading keyframes once.
-Those recommendations are not implemented by adding this guide.
+Shared defaults and keyframes load once through the Nuxt config's `css` array.
+The existing [style and layout review](../../STYLE_LAYOUT_REVIEW.md) remains a dated proposal for broader global-style consolidation.
 Inspect all animation consumers and compare compiled output before changing injection or stylesheet ordering.
 
 ## Palette
@@ -48,7 +48,7 @@ Treat any additional palette as a proposal until it is part of the requested des
 ## Typography and hierarchy
 
 The default layout declares `Nunito`, `Inter`, `Manrope`, `Poppins`, `Sora`, Arial and sans-serif in that order.
-`app/app.vue` separately includes a Google Fonts stylesheet for Roboto, while Nuxt Fonts is installed.
+Nuxt Fonts is installed; inspect its generated CSS and the active family declarations when checking font delivery.
 This source configuration does not prove which font resolves in each browser or that all requests are self-hosted.
 Inspect computed styles and network requests before adding a family, removing a request or documenting a font optimization as complete.
 
