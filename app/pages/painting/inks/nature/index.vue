@@ -21,104 +21,6 @@
 import type { ImageSource } from '~/types/image'
 
 const { t } = useI18n()
-const runtimeConfig = useRuntimeConfig()
-const route = useRoute()
-
-const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
-const urlEndPath = 'painting/inks/nature'
-const ogImageEndPath = 'paintings/inks/nature/EC10.webp'
-
-const canonicalUrl = computed(() => `${baseUrl.value}${route.path}`)
-
-useHead({
-  title: computed(() => t('pages.painting.inks.nature.tab_name')),
-  meta: [
-    {
-      name: 'description',
-      content: computed(() => t('pages.painting.inks.nature.meta.content')),
-    },
-    {
-      name: 'keywords',
-      content: `${computed(() => t('miscellaneous.painting')).value},
-        ${computed(() => t('miscellaneous.painter')).value},
-        ${computed(() => t('miscellaneous.inks')).value},
-        ${computed(() => t('miscellaneous.indian_inks')).value},
-        ${computed(() => t('miscellaneous.abstracts')).value},
-        ${computed(() => t('miscellaneous.abstract_art')).value},
-        ${computed(() => t('miscellaneous.art')).value},
-        ${computed(() => t('miscellaneous.artist')).value},
-        ${computed(() => t('miscellaneous.emotions')).value},
-        ${computed(() => t('miscellaneous.nature')).value},
-        ${computed(() => t('miscellaneous.landscape')).value},
-        ${computed(() => t('miscellaneous.roots')).value},
-        ${computed(() => t('miscellaneous.trees')).value},
-        ${computed(() => t('miscellaneous.water')).value},
-        ${computed(() => t('miscellaneous.water_jet')).value},
-        ${computed(() => t('about.author')).value},
-        ${computed(() => t('app.name')).value},
-      `,
-    },
-  ],
-  link: [
-    { rel: 'canonical', href: canonicalUrl.value },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/en/${urlEndPath}`),
-      hreflang: 'en-US',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
-      hreflang: 'fr-FR',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
-      hreflang: 'x-default',
-    },
-    {
-      rel: 'apple-touch-icon',
-      sizes: '180x180',
-      href: `/${ogImageEndPath}`,
-      key: 'apple-touch-icon',
-    },
-  ],
-})
-
-useSeoMeta({
-  ogTitle: '%s %separator %siteName',
-  description: computed(() => t('pages.painting.inks.nature.meta.content')),
-  ogDescription: computed(() => t('pages.painting.inks.nature.meta.content')),
-  ogImage: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageSecureUrl: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageAlt: computed(() => t('pages.painting.inks.nature.meta.content')),
-  ogImageType: 'image/jpeg',
-  ogImageWidth: '1200',
-  ogImageHeight: '600',
-  ogUrl: canonicalUrl.value,
-  ogType: 'article',
-  articleTag: [
-    computed(() => t('miscellaneous.painting')).value,
-    computed(() => t('miscellaneous.painter')).value,
-    computed(() => t('miscellaneous.inks')).value,
-    computed(() => t('miscellaneous.indian_inks')).value,
-    computed(() => t('miscellaneous.abstracts')).value,
-    computed(() => t('miscellaneous.abstract_art')).value,
-    computed(() => t('miscellaneous.art')).value,
-    computed(() => t('miscellaneous.artist')).value,
-    computed(() => t('miscellaneous.emotions')).value,
-    computed(() => t('miscellaneous.nature')).value,
-    computed(() => t('miscellaneous.landscape')).value,
-    computed(() => t('miscellaneous.roots')).value,
-    computed(() => t('miscellaneous.trees')).value,
-    computed(() => t('miscellaneous.water')).value,
-    computed(() => t('miscellaneous.water_jet')).value,
-    computed(() => t('about.author')).value,
-    computed(() => t('app.name')).value,
-  ],
-  appleMobileWebAppTitle: '%s %separator %siteName',
-  msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
-})
 
 const images: ImageSource[] = [
   {
@@ -204,6 +106,8 @@ const nextPage = {
   title: t('wip.next_page_name'),
   description: t('wip.next_page_description'),
 }
+
+useHead(usePageSeo('painting_inks_nature'))
 </script>
 
 <style lang="scss" scoped>

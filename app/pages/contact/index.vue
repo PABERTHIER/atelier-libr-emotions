@@ -115,106 +115,6 @@
 import { externalLinks } from '~/data/site'
 
 const { t } = useI18n()
-const runtimeConfig = useRuntimeConfig()
-const route = useRoute()
-
-const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
-const urlEndPath = 'contact'
-const ogImageEndPath = 'og-images/contact.webp'
-
-const canonicalUrl = computed(() => `${baseUrl.value}${route.path}`)
-
-useHead({
-  title: computed(() => t('pages.contact.tab_name')),
-  meta: [
-    {
-      name: 'description',
-      content: computed(() => t('pages.contact.meta.content')),
-    },
-    {
-      name: 'keywords',
-      content: `${computed(() => t('miscellaneous.art')).value},
-        ${computed(() => t('miscellaneous.contact')).value},
-        ${computed(() => t('miscellaneous.artist')).value},
-        ${computed(() => t('miscellaneous.painting')).value},
-        ${computed(() => t('miscellaneous.painter')).value},
-        ${computed(() => t('miscellaneous.ceramic')).value},
-        ${computed(() => t('miscellaneous.ceramicist')).value},
-        ${computed(() => t('miscellaneous.pottery')).value},
-        ${computed(() => t('miscellaneous.emotions')).value},
-        ${computed(() => t('about.author')).value},
-        ${computed(() => t('app.name')).value},
-        ${computed(() => t('app.meta.alt_name_1')).value},
-        ${computed(() => t('app.meta.alt_name_2')).value},
-        ${computed(() => t('app.meta.alt_name_3')).value},
-        ${computed(() => t('app.meta.alt_name_4')).value},
-        ${computed(() => t('app.meta.alt_name_5')).value},
-        ${computed(() => t('app.meta.alt_name_6')).value},
-        ${computed(() => t('app.meta.alt_name_7')).value},
-      `,
-    },
-  ],
-  link: [
-    { rel: 'canonical', href: canonicalUrl.value },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/en/${urlEndPath}`),
-      hreflang: 'en-US',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
-      hreflang: 'fr-FR',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
-      hreflang: 'x-default',
-    },
-    {
-      rel: 'apple-touch-icon',
-      sizes: '180x180',
-      href: `/${ogImageEndPath}`,
-      key: 'apple-touch-icon',
-    },
-  ],
-})
-
-useSeoMeta({
-  ogTitle: '%s %separator %siteName',
-  description: computed(() => t('pages.contact.meta.content')),
-  ogDescription: computed(() => t('pages.contact.meta.content')),
-  ogImage: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageSecureUrl: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageAlt: computed(() => t('pages.contact.meta.content')),
-  ogImageType: 'image/jpeg',
-  ogImageWidth: '1200',
-  ogImageHeight: '600',
-  ogUrl: canonicalUrl.value,
-  ogType: 'article',
-  articleTag: [
-    computed(() => t('miscellaneous.contact')).value,
-    computed(() => t('miscellaneous.art')).value,
-    computed(() => t('miscellaneous.artist')).value,
-    computed(() => t('miscellaneous.painting')).value,
-    computed(() => t('miscellaneous.painter')).value,
-    computed(() => t('miscellaneous.ceramic')).value,
-    computed(() => t('miscellaneous.ceramicist')).value,
-    computed(() => t('miscellaneous.pottery')).value,
-    computed(() => t('miscellaneous.emotions')).value,
-    computed(() => t('about.author')).value,
-    computed(() => t('app.name')).value,
-    computed(() => t('app.meta.alt_name_1')).value,
-    computed(() => t('app.meta.alt_name_2')).value,
-    computed(() => t('app.meta.alt_name_3')).value,
-    computed(() => t('app.meta.alt_name_4')).value,
-    computed(() => t('app.meta.alt_name_5')).value,
-    computed(() => t('app.meta.alt_name_6')).value,
-    computed(() => t('app.meta.alt_name_7')).value,
-  ],
-  appleMobileWebAppTitle: '%s %separator %siteName',
-  msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
-})
 
 const somePaintingsTitle = computed(() => t('pages.contact.image.title'))
 const somePaintingsAlt = computed(() => t('pages.contact.image.alt'))
@@ -227,6 +127,8 @@ const instagramLinkTitle = computed(() =>
 )
 const contact = computed(() => t('miscellaneous.contact'))
 const contactLinkTitle = computed(() => t('pages.contact.contact_me_by_mail'))
+
+useHead(usePageSeo('contact'))
 </script>
 
 <style lang="scss" scoped>

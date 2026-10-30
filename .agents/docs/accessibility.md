@@ -34,7 +34,8 @@ Maintain one page H1 and logical group headings, and provide a meaningful bypass
 Give controls translated names that describe the action or destination.
 Keep useful visible labels rather than substituting hidden text or tooltip-only instructions.
 Icon-only controls need accessible names; icons accompanying a complete text label can be decorative.
-Use informative localized alt text for artwork and empty alt text for genuinely decorative imagery.
+Every rendered image must have informative nonempty localized alt text, including logos and unavailable-image placeholders.
+Use CSS backgrounds or `aria-hidden` interface icons for decoration, not empty-alt images.
 Do not infer artwork details solely from filenames or repeat entire page descriptions in every image alternative.
 Follow [content-direction.md](content-direction.md) for wording and [the i18n skill](../skills/i18n/SKILL.md) for FR/EN parity.
 

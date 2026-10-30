@@ -29,92 +29,6 @@
 import type { ImageSource } from '~/types/image'
 
 const { t } = useI18n()
-const runtimeConfig = useRuntimeConfig()
-const route = useRoute()
-
-const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
-const urlEndPath = 'ceramic/electric-kiln/nature'
-const ogImageEndPath = 'ceramics/electric_kiln/nature/flowers/F8.webp'
-
-const canonicalUrl = computed(() => `${baseUrl.value}${route.path}`)
-
-const keywords = [
-  'miscellaneous.ceramic',
-  'miscellaneous.ceramicist',
-  'miscellaneous.electric_kiln',
-  'miscellaneous.nature',
-  'miscellaneous.flowers',
-  'miscellaneous.leaves',
-  'miscellaneous.art',
-  'miscellaneous.artist',
-  'miscellaneous.emotions',
-  'about.author',
-  'app.name',
-]
-const keywordValues = computed(() => keywords.map(keyword => t(keyword)))
-
-useHead({
-  title: computed(() => t('pages.ceramic.electric_kiln.nature.tab_name')),
-  meta: [
-    {
-      name: 'description',
-      content: computed(() =>
-        t('pages.ceramic.electric_kiln.nature.meta.content')
-      ),
-    },
-    {
-      name: 'keywords',
-      content: computed(() => keywordValues.value.join(', ')),
-    },
-  ],
-  link: [
-    { rel: 'canonical', href: canonicalUrl.value },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/en/${urlEndPath}`),
-      hreflang: 'en-US',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
-      hreflang: 'fr-FR',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
-      hreflang: 'x-default',
-    },
-    {
-      rel: 'apple-touch-icon',
-      sizes: '180x180',
-      href: `/${ogImageEndPath}`,
-      key: 'apple-touch-icon',
-    },
-  ],
-})
-
-useSeoMeta({
-  ogTitle: '%s %separator %siteName',
-  description: computed(() =>
-    t('pages.ceramic.electric_kiln.nature.meta.content')
-  ),
-  ogDescription: computed(() =>
-    t('pages.ceramic.electric_kiln.nature.meta.content')
-  ),
-  ogImage: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageSecureUrl: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageAlt: computed(() =>
-    t('pages.ceramic.electric_kiln.nature.meta.content')
-  ),
-  ogImageType: 'image/jpeg',
-  ogImageWidth: '1200',
-  ogImageHeight: '600',
-  ogUrl: canonicalUrl.value,
-  ogType: 'article',
-  articleTag: keywordValues.value,
-  appleMobileWebAppTitle: '%s %separator %siteName',
-  msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
-})
 
 const flowersTitle = computed(() => t('miscellaneous.flowers'))
 const leavesSubtitle = computed(() => t('miscellaneous.leaves'))
@@ -166,6 +80,8 @@ const nextPage = {
   title: t('pages.ceramic.electric_kiln.animals.tab_name'),
   description: t('pages.ceramic.electric_kiln.animals.subtitle'),
 }
+
+useHead(usePageSeo('ceramic_electric_kiln_nature'))
 </script>
 
 <style lang="scss" scoped>

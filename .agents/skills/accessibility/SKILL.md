@@ -34,7 +34,8 @@ Check spacing between adjacent controls rather than increasing the visual icon s
 
 Provide translated accessible names for icon-only controls.
 Hide decorative icons from assistive technology when text already supplies the name.
-Use informative alt text for artwork and empty alt text for genuinely decorative images.
+Every rendered image requires informative nonempty localized alt text, including logos and placeholders.
+Use CSS backgrounds or `aria-hidden` interface icons for decoration instead of an image with empty alt.
 Do not repeat a long caption inside a control's accessible name when a short action and artwork identifier suffice.
 Preserve native range-input keyboard behavior for viewer zoom.
 

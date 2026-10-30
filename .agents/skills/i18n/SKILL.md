@@ -23,15 +23,18 @@ Use [artwork naming](references/artwork-naming.md) when resolving gallery route 
 
 | Namespace                                     | Ownership                                                                       |
 | --------------------------------------------- | ------------------------------------------------------------------------------- |
-| `app.*`                                       | Site name and global metadata                                                   |
+| `app.*`                                       | Visible site identity and logo alternative                                      |
+| `seo.*`, `error.*`                            | Full search titles/descriptions and standalone error messages                   |
 | `components.*`                                | Component labels, language controls and viewer messages                         |
-| `pages.*`                                     | Page titles, metadata, subtitles and page-specific copy                         |
+| `pages.*`                                     | Visible page titles, live navigation labels, subtitles and authored copy        |
 | `pictures.paintings.*`, `pictures.ceramics.*` | Artwork titles, compact identifiers, descriptions and known painting dimensions |
-| `miscellaneous.*`                             | Shared technique/category labels and existing SEO keywords                      |
+| `miscellaneous.*`                             | Shared technique/category labels                                                |
 | `about.*`                                     | Confirmed artist identity and contact information                               |
 | `wip.*`                                       | Placeholder page and previous/next fallback labels                              |
 
 Search existing namespaces before adding a shared message.
+SEO page IDs are route-qualified, such as `painting_inks_nature` and `ceramic_porcelain_nature`, and match `PageName` in `app/types/seo.ts`.
+Keep `tab_name` for page navigation; do not retain superseded metadata/profile keys as unused translations.
 Use snake_case for new multiword keys and preserve existing identities unless a rename is requested.
 Gallery pages use `pages.{domain}.{technique}.{category}` with singular `painting` or `ceramic`.
 Picture keys use plural `paintings` or `ceramics` and may include a group below the category.
@@ -47,16 +50,16 @@ Fallback French can hide missing English keys, so visible output is not sufficie
 Preserve confirmed names, work titles and supplied French artistic subtitles, and adapt their meaning naturally into English.
 Follow the content guide's factual boundaries; missing artwork details or measurements must not be invented to fill a field.
 
-| Field          | Guidance                                                                                                   |
-| -------------- | ---------------------------------------------------------------------------------------------------------- |
-| `tab_name`     | Concise translated browser title, usually technique and category                                           |
-| `meta.content` | Specific page description adapted from confirmed content; use [seo](../seo/SKILL.md) for metadata guidance |
-| `title`        | Page heading, usually matching the technique/category label                                                |
-| `subtitle`     | Artist's category title in French and a natural English adaptation                                         |
-| Image `title`  | Confirmed work title or the collection's descriptive label and number; keep dimensions separate            |
-| `mobile_title` | Compact artwork code, such as `FP1` or `TMn9`, consistent across locales                                   |
-| `alt`          | Concise description of relevant visible content; avoid keyword lists and arbitrary word-count limits       |
-| `dimensions`   | Known physical painting measurements, such as `40 x 50 cm`; not image pixel dimensions                     |
+| Field          | Guidance                                                                                             |
+| -------------- | ---------------------------------------------------------------------------------------------------- |
+| `tab_name`     | Concise visible navigation label, usually technique and category                                     |
+| `seo.*`        | Full search title and specific description; use [seo](../seo/SKILL.md) for metadata guidance         |
+| `title`        | Page heading, usually matching the technique/category label                                          |
+| `subtitle`     | Artist's category title in French and a natural English adaptation                                   |
+| Image `title`  | Confirmed work title or the collection's descriptive label and number; keep dimensions separate      |
+| `mobile_title` | Compact artwork code, such as `FP1` or `TMn9`, consistent across locales                             |
+| `alt`          | Concise description of relevant visible content; avoid keyword lists and arbitrary word-count limits |
+| `dimensions`   | Known physical painting measurements, such as `40 x 50 cm`; not image pixel dimensions               |
 
 Keep locale JSON valid, with two-space indentation and no trailing commas.
 Preserve unrelated ordering and content.
@@ -67,7 +70,7 @@ Keep translated copy as text and avoid introducing `v-html` to render it.
 
 Call `t()` in templates or inside a tracked getter.
 For translated arrays, labels and navigation objects created in script, use `computed()` rather than evaluating translations once during setup.
-Use getters or computed values for metadata, including keyword and article-tag arrays.
+Use the shared `usePageSeo()` helper for reactive metadata instead of page-level head blocks.
 Reading `computed(() => t(key)).value` once while constructing a static object still produces a stale string.
 
 ```ts
@@ -84,7 +87,9 @@ Pass unprefixed paths to `PageNavigation`, which calls `localePath()` internally
 Do not localize asset URLs or external destinations.
 
 Browser-language detection at `/` uses the `i18n_redirected` cookie.
-`LangSwitcher.vue` also reads and writes `preferredLanguage` in local storage.
+`LangSwitcher.vue` uses Nuxt I18n `setLocale()`.
+I18n owns root language detection and root head data owns HTML language/direction.
+The native language selector preserves the corresponding route through I18n and does not render fragment-dependent links.
 When changing language behavior, test the URL, cookie and stored preference together; directly changing `locale` is not proof that the URL changed.
 Keep `/` detection separate from the French `x-default` metadata convention.
 

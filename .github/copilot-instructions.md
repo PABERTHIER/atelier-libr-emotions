@@ -11,6 +11,7 @@ Use [.agents/README.md](../.agents/README.md) for guidance ownership and evidenc
 - Follow the nearest working component and the Nuxt/Vue skill.
   The default layout owns the main landmark; page and component rules use scoped SCSS while global styles keep their documented owner.
 - Keep translated script-side data and metadata reactive.
+  Page SEO uses the shared registry/composable and `seo.*` messages; root I18n head data owns canonical links, language alternates and OG locales.
   Use locale-aware internal destinations and verified artwork paths; native gallery images and the optimized `Image` wrapper have different delivery requirements.
 - Read applicable scoped instructions and load only the guides and skills relevant to the task.
   Automatic attachment depends on the client; shared requirements also apply when files are read manually.

@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { robotsContent } from './app/data/seo'
-import { externalLinks, siteName } from './app/data/site'
+import { pageSeo, robotsContent } from './app/data/seo'
+import type { PageSeoDefinition } from './app/types/seo'
+import { artistName, externalLinks, siteName } from './app/data/site'
 import { generateImageRoutes } from './app/utils/generateImageRoutes'
 
 // Production can override the Vercel fallback with NUXT_SITE_URL at build time
@@ -29,7 +30,32 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' },
+        {
+          rel: 'icon',
+          type: 'image/png',
+          sizes: '16x16',
+          href: '/favicon-16x16.png',
+        },
+        {
+          rel: 'icon',
+          type: 'image/png',
+          sizes: '32x32',
+          href: '/favicon-32x32.png',
+        },
+        {
+          rel: 'apple-touch-icon',
+          sizes: '180x180',
+          href: '/apple-touch-icon.png',
+        },
+        {
+          rel: 'mask-icon',
+          href: '/mask-icon.svg',
+          color: '#1D3461',
+        },
+      ],
       title: siteName,
       meta: [
         {
@@ -37,6 +63,8 @@ export default defineNuxtConfig({
           content: 'width=device-width, initial-scale=1, viewport-fit=cover',
         },
         { name: 'application-name', content: siteName },
+        { name: 'author', content: artistName },
+        { name: 'creator', content: artistName },
         { name: 'apple-mobile-web-app-capable', content: 'yes' },
         { name: 'mobile-web-app-capable', content: 'yes' },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
@@ -160,17 +188,43 @@ export default defineNuxtConfig({
   },
   aiReady: false, // SEO v6 bundles AI Ready; this SSR site does not publish AI content endpoints
   skewProtection: false, // Vercel builds do not share the local asset cache required by this module
+  sitemap: {
+    // The registry covers every public page; avoid duplicate auto-discovered routes overriding their images
+    excludeAppSources: ['nuxt:pages'],
+    // Runtime SSR pages aren't crawled for images by the sitemap module
+    // i18n expands each record into FR/EN with reciprocal alternates
+    urls: Object.values(pageSeo)
+      .filter((page: PageSeoDefinition) => page.indexable !== false)
+      .map(page => ({
+        loc: page.path,
+        _i18nTransform: true,
+        images: page.images.map(loc => ({ loc })),
+      })),
+  },
   schemaOrg: {
     reactive: true,
     identity: {
       type: 'Person',
-      name: siteName,
-      jobTitle: 'Painter & Ceramicist',
-      worksFor: 'Véronique Berthier',
+      name: artistName,
+      jobTitle: 'Painter and ceramicist',
+      worksFor: artistName,
+      givenName: 'Véronique',
+      familyName: 'Berthier',
       url: siteUrl,
       logo: `${siteUrl}/logo.svg`,
       image: `${siteUrl}/paintings/celestial-collision.jpg`,
       sameAs: [externalLinks.facebook, externalLinks.instagram],
+    },
+  },
+  unhead: {
+    vite: {
+      // Preserve this helper's reactive useSchemaOrg call on the client
+      // Other server-only composables can still be removed normally
+      treeshake: {
+        filter: {
+          exclude: [/[/\\]app[/\\]composables[/\\]usePageSeo\.ts(?:\?|$)/],
+        },
+      },
     },
   },
   ogImage: {

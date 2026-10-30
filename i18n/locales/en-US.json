@@ -3,7 +3,6 @@
     "name": "Atelier Libr'Émotions",
     "logo_alt": "Atelier Libr'Émotions logo",
     "meta": {
-      "description": "Atelier Libr'Émotions: intuitive paintings and ceramics inspired by nature. Discover expressive art between abstract and figurative, driven by the emotions of Véronique Berthier.",
       "alt_name_1": "atelierlibremotions",
       "alt_name_2": "atelier libremotions",
       "alt_name_3": "atelier libre emotions",
@@ -11,6 +10,91 @@
       "alt_name_5": "Atelier-LibrEmotions",
       "alt_name_6": "atelier_libremotions",
       "alt_name_7": "AtelierLibr'Émotions"
+    }
+  },
+  "seo": {
+    "site": {
+      "description": "Atelier Libr'Émotions: intuitive paintings and ceramics inspired by nature. Discover expressive art between abstract and figurative, driven by the emotions of Véronique Berthier."
+    },
+    "home": {
+      "title": "Homepage - Atelier Libr'Émotions",
+      "description": "Explore Véronique Berthier's artistic universe: intuitive paintings, ceramics and nature-inspired creations. Libr'Émotions creative workshops in Lorraine, France."
+    },
+    "about": {
+      "title": "My artistic approach - Atelier Libr'Émotions",
+      "description": "Discover Véronique Berthier's artistic approach: intuitive painting, ceramics and creative workshops open to all. Free expression, emotions and a deep connection to nature."
+    },
+    "about_development": {
+      "title": "My development - Atelier Libr'Émotions",
+      "description": "Discover Véronique Berthier's artistic journey: from biochemistry to intuitive painting and ceramics, a passionate transition fuelled by emotions and a deep connection to nature."
+    },
+    "about_cv": {
+      "title": "My CV - Atelier Libr'Émotions",
+      "description": "Artistic CV of Véronique Berthier: training, exhibitions and experience in intuitive painting, ceramics and creative workshop facilitation in Lorraine, France."
+    },
+    "contact": {
+      "title": "Contact - Atelier Libr'Émotions",
+      "description": "Contact Véronique Berthier, intuitive painter and ceramicist. Share your feelings, commission a unique artwork or join the Libr'Émotions creative workshops."
+    },
+    "painting_acrylic_abstracts": {
+      "title": "Acrylic - Abstracts - Atelier Libr'Émotions",
+      "description": "Gallery of abstract acrylic paintings by Véronique Berthier: colourful backgrounds, free-form graphics, apparitions and automatic painting. Emotions and intuition on canvas."
+    },
+    "painting_inks_nature": {
+      "title": "Inks - Nature - Atelier Libr'Émotions",
+      "description": "Collection of nature-inspired ink paintings by Véronique Berthier: landscapes, natural elements, flora, fauna and poetic atmospheres rendered in fluid Indian ink."
+    },
+    "painting_mixed_technique_nature": {
+      "title": "Mixed technique - Nature - Atelier Libr'Émotions",
+      "description": "Gallery of mixed technique nature paintings by Véronique Berthier, combining materials, textures and movement to invite the viewer to escape."
+    },
+    "ceramic_electric_kiln_nature": {
+      "title": "Stoneware - electric kiln - Nature - Atelier Libr'Émotions",
+      "description": "Gallery of stoneware ceramics by Véronique Berthier fired in an electric kiln: decorative flowers and nature-inspired pieces in white, black or ochre clay, left natural, with engobes or glazed."
+    },
+    "ceramic_electric_kiln_animals": {
+      "title": "Stoneware - electric kiln - Animals - Atelier Libr'Émotions",
+      "description": "Gallery of stoneware animals by Véronique Berthier, electric-kiln fired and shaped with realism or poetry for elegant interiors."
+    },
+    "ceramic_electric_kiln_vases_and_pots": {
+      "title": "Stoneware - electric kiln - Vases and pots - Atelier Libr'Émotions",
+      "description": "Gallery of stoneware vases and pots by Véronique Berthier, practical decorative pieces to enhance both the home and garden."
+    },
+    "ceramic_electric_kiln_various_objects": {
+      "title": "Stoneware - electric kiln - Various objects - Atelier Libr'Émotions",
+      "description": "Gallery of stoneware boxes by Véronique Berthier, made in an electric kiln with coloured clays, varied techniques and natural elements."
+    },
+    "ceramic_porcelain_nature": {
+      "title": "Porcelain - Nature - Atelier Libr'Émotions",
+      "description": "Collection of porcelain by Véronique Berthier: delicate lace-like pieces for wall or furniture display, alone or combined with another element (ceramic, wood, metal)."
+    },
+    "ceramic_raku_smouldering_nature": {
+      "title": "Raku and smouldering - Nature - Atelier Libr'Émotions",
+      "description": "Gallery of raku and smouldering ceramics by Véronique Berthier: decorative pieces with distinctive black crackles in glossy white glaze, fired in a gas kiln for unique interior decoration."
+    },
+    "painting_oil_abstracts": {
+      "title": "Oil painting - Atelier Libr'Émotions",
+      "description": "Explore an abstract oil painting by Véronique Berthier, inspired by autumn colours. Discover the rich tones and textures of this intuitive creation."
+    },
+    "wip": {
+      "title": "Work in progress - Atelier Libr'Émotions",
+      "description": "This page is a work in progress. Explore Véronique Berthier's paintings and ceramics in the collections that are already available."
+    }
+  },
+  "error": {
+    "code": "Error {code}",
+    "skip": "Skip to content",
+    "home": "Back to home",
+    "gallery": "Explore the paintings",
+    "not_found": {
+      "title": "Page not found - Atelier Libr'Émotions",
+      "heading": "Page not found",
+      "description": "This page does not exist or has moved. Return to the homepage or explore the paintings."
+    },
+    "unexpected": {
+      "title": "Something went wrong - Atelier Libr'Émotions",
+      "heading": "Something went wrong",
+      "description": "This page cannot be displayed right now. Return to the homepage or explore the paintings."
     }
   },
   "components": {
@@ -36,9 +120,6 @@
   "pages": {
     "main": {
       "tab_name": "Homepage",
-      "meta": {
-        "content": "Explore Véronique Berthier's artistic universe: intuitive paintings, ceramics and nature-inspired creations. Libr'Émotions creative workshops in Lorraine, France."
-      },
       "hero_title": "Painting and Ceramic",
       "hero_description": "Welcome to my artistic universe, where intuitive paintings, ceramics, and natural elements come together. Whether abstract or figurative, my creations are inspired by Mother Nature, an inexhaustible source of beauty, surprises, and wonder, for which I give thanks every day!",
       "buttons": {
@@ -50,9 +131,6 @@
       "acrylic": {
         "abstracts": {
           "tab_name": "Acrylic - Abstracts",
-          "meta": {
-            "content": "Gallery of abstract acrylic paintings by Véronique Berthier: colourful backgrounds, free-form graphics, apparitions and automatic painting. Emotions and intuition on canvas."
-          },
           "title": "Acrylic - Abstracts",
           "subtitle": "A background, free-form graphics, eyes, apparitions!"
         }
@@ -60,9 +138,6 @@
       "inks": {
         "nature": {
           "tab_name": "Inks - Nature",
-          "meta": {
-            "content": "Collection of nature-inspired ink paintings by Véronique Berthier: landscapes, natural elements, flora, fauna and poetic atmospheres rendered in fluid Indian ink."
-          },
           "title": "Inks - Nature",
           "subtitle": "Expressions inspired by nature"
         }
@@ -70,9 +145,6 @@
       "mixed_technique": {
         "nature": {
           "tab_name": "Mixed technique - Nature",
-          "meta": {
-            "content": "Gallery of mixed technique nature paintings by Véronique Berthier, combining materials, textures and movement to invite the viewer to escape."
-          },
           "title": "Mixed technique - Nature",
           "subtitle": "Nature takes shape through a blend of different mediums and materials"
         }
@@ -82,33 +154,21 @@
       "electric_kiln": {
         "nature": {
           "tab_name": "Stoneware - electric kiln - Nature",
-          "meta": {
-            "content": "Gallery of stoneware ceramics by Véronique Berthier fired in an electric kiln: decorative flowers and nature-inspired pieces in white, black or ochre clay, left natural, with engobes or glazed."
-          },
           "title": "Stoneware - electric kiln - Nature",
           "subtitle": "Decorative flowers, for indoor and/or outdoor use"
         },
         "animals": {
           "tab_name": "Stoneware - electric kiln - Animals",
-          "meta": {
-            "content": "Gallery of stoneware animals by Véronique Berthier, electric-kiln fired and shaped with realism or poetry for elegant interiors."
-          },
           "title": "Stoneware - electric kiln - Animals",
           "subtitle": "Animals bringing a touch of poetry and elegance"
         },
         "vases_and_pots": {
           "tab_name": "Stoneware - electric kiln - Vases and pots",
-          "meta": {
-            "content": "Gallery of stoneware vases and pots by Véronique Berthier, practical decorative pieces to enhance both the home and garden."
-          },
           "title": "Stoneware - electric kiln - Vases and pots",
           "subtitle": "Ceramic pots and vases for indoor and garden spaces"
         },
         "various_objects": {
           "tab_name": "Stoneware - electric kiln - Various objects",
-          "meta": {
-            "content": "Gallery of stoneware boxes by Véronique Berthier, made in an electric kiln with coloured clays, varied techniques and natural elements."
-          },
           "title": "Stoneware - electric kiln - Various objects",
           "subtitle": "Decorative objects made with clays in different colours"
         }
@@ -116,9 +176,6 @@
       "porcelain": {
         "nature": {
           "tab_name": "Porcelain - Nature",
-          "meta": {
-            "content": "Collection of porcelain by Véronique Berthier: delicate lace-like pieces for wall or furniture display, alone or combined with another element (ceramic, wood, metal)."
-          },
           "title": "Porcelain - Nature",
           "subtitle": "Pieces for wall or furniture decoration, alone or combined with another element (ceramic, wood, metal)"
         }
@@ -126,9 +183,6 @@
       "raku_and_smouldering": {
         "nature": {
           "tab_name": "Raku and smouldering - Nature",
-          "meta": {
-            "content": "Gallery of raku and smouldering ceramics by Véronique Berthier: decorative pieces with distinctive black crackles in glossy white glaze, fired in a gas kiln for unique interior decoration."
-          },
           "title": "Raku and smouldering - Nature",
           "subtitle": "Ceramics for interior decoration"
         }
@@ -136,9 +190,6 @@
     },
     "about": {
       "tab_name": "My artistic approach",
-      "meta": {
-        "content": "Discover Véronique Berthier's artistic approach: intuitive painting, ceramics and creative workshops open to all. Free expression, emotions and a deep connection to nature."
-      },
       "title": "My artistic approach",
       "subtitle": "An intuitive approach to art",
       "intro": "In painting, in drawing, as in clay, I start from a spontaneous mark and then, at my own pace, I set off on an Adventure.",
@@ -176,9 +227,6 @@
     },
     "development": {
       "tab_name": "My development",
-      "meta": {
-        "content": "Discover Véronique Berthier's artistic journey: from biochemistry to intuitive painting and ceramics, a passionate transition fuelled by emotions and a deep connection to nature."
-      },
       "title": "My development",
       "subtitle": "An atypical artistic journey",
       "intro": "Born in 69, I spent my childhood in department 68 and my student life in department 67 (Strasbourg), then a stint in Lorraine in department 54, then 20 years in the Paris region, in Seine et Marne 77, before returning to Lorraine!",
@@ -206,9 +254,6 @@
     },
     "cv": {
       "tab_name": "My CV",
-      "meta": {
-        "content": "Artistic CV of Véronique Berthier: training, exhibitions and experience in intuitive painting, ceramics and creative workshop facilitation in Lorraine, France."
-      },
       "title": "My CV",
       "subtitle": "Artistic journey and experiences",
       "pdf_title": "Artistic CV",
@@ -222,9 +267,6 @@
     },
     "contact": {
       "tab_name": "Contact",
-      "meta": {
-        "content": "Contact Véronique Berthier, intuitive painter and ceramicist. Share your feelings, commission a unique artwork or join the Libr'Émotions creative workshops."
-      },
       "title": "Contact me",
       "subtitle": "Gestures, colours, shapes and textures, it's an adventure! I invite you to share your feelings.",
       "image": {
@@ -1362,14 +1404,15 @@
     "instagram": "Instagram",
     "follow_on_facebook": "Follow on Facebook",
     "follow_on_instagram": "Follow on Instagram",
-    "2011_2019": "2011 - 2019",
-    "2020_2022": "2020 - 2022",
-    "2023_2025": "2023 - 2025",
     "2006": "2006",
     "2008": "2008",
-    "2023": "2023"
+    "2011_2019": "2011 - 2019",
+    "2020_2022": "2020 - 2022",
+    "2023": "2023",
+    "2023_2025": "2023 - 2025"
   },
   "wip": {
+    "image_alt": "Page under construction",
     "previous_page_name": "WIP",
     "next_page_name": "WIP",
     "previous_page_description": "WIP",

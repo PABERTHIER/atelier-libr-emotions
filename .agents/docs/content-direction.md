@@ -38,7 +38,7 @@ Do not invent materials, firing methods, dimensions, availability, prices or mea
 Keep a missing optional measurement absent rather than writing a placeholder or estimating it from pixels.
 Physical dimensions and raster image dimensions serve different purposes.
 Write informative artwork alt text without repeating an entire page description or stuffing technique keywords into every image.
-Use empty alt text for genuinely decorative imagery, following [accessibility.md](accessibility.md).
+Require nonempty localized alt text on every rendered image; use CSS backgrounds or hidden interface icons for decoration, following [accessibility.md](accessibility.md).
 
 ## Page copy
 

@@ -6,6 +6,7 @@ applyTo: 'app/**/*.vue,app/plugins/**/*.ts,app/composables/**/*.ts,app/styles/**
 # Accessible Interaction
 
 Apply these requirements when the change affects semantics, interaction, presentation or motion.
+Every rendered image, including a logo or placeholder, needs nonempty localized alt text; use CSS backgrounds or hidden interface icons for decoration instead of empty-alt images.
 Use [accessibility maintenance](../../.agents/docs/accessibility.md) for current source findings and [the accessibility skill](../../.agents/skills/accessibility/SKILL.md) for the scoped workflow.
 An instruction's presence does not require an unrelated site-wide audit or prove existing conformance.
 

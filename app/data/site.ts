@@ -1,4 +1,5 @@
 export const siteName = "Atelier Libr'Émotions"
+export const artistName = 'Véronique Berthier'
 
 export const externalLinks = {
   facebook:

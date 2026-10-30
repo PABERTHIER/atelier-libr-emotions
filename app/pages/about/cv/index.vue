@@ -51,103 +51,6 @@
 
 <script setup lang="ts">
 const { t } = useI18n()
-const runtimeConfig = useRuntimeConfig()
-const route = useRoute()
-
-const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
-const urlEndPath = 'about/cv'
-const ogImageEndPath = 'og-images/cv.webp'
-
-const canonicalUrl = computed(() => `${baseUrl.value}${route.path}`)
-
-useHead({
-  title: computed(() => t('pages.cv.tab_name')),
-  meta: [
-    {
-      name: 'description',
-      content: computed(() => t('pages.cv.meta.content')),
-    },
-    {
-      name: 'keywords',
-      content: `${computed(() => t('miscellaneous.art')).value},
-        ${computed(() => t('miscellaneous.my_cv')).value},
-        ${computed(() => t('miscellaneous.cv')).value},
-        ${computed(() => t('miscellaneous.exhibitions')).value},
-        ${computed(() => t('miscellaneous.events')).value},
-        ${computed(() => t('miscellaneous.experiences')).value},
-        ${computed(() => t('miscellaneous.performances')).value},
-        ${computed(() => t('miscellaneous.activity_leader')).value},
-        ${computed(() => t('miscellaneous.artist')).value},
-        ${computed(() => t('miscellaneous.painting')).value},
-        ${computed(() => t('miscellaneous.painter')).value},
-        ${computed(() => t('miscellaneous.ceramic')).value},
-        ${computed(() => t('miscellaneous.ceramicist')).value},
-        ${computed(() => t('miscellaneous.pottery')).value},
-        ${computed(() => t('miscellaneous.emotions')).value},
-        ${computed(() => t('about.author')).value},
-        ${computed(() => t('app.name')).value},
-      `,
-    },
-  ],
-  link: [
-    { rel: 'canonical', href: canonicalUrl.value },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/en/${urlEndPath}`),
-      hreflang: 'en-US',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
-      hreflang: 'fr-FR',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
-      hreflang: 'x-default',
-    },
-    {
-      rel: 'apple-touch-icon',
-      sizes: '180x180',
-      href: `/${ogImageEndPath}`,
-      key: 'apple-touch-icon',
-    },
-  ],
-})
-
-useSeoMeta({
-  ogTitle: '%s %separator %siteName',
-  description: computed(() => t('pages.cv.meta.content')),
-  ogDescription: computed(() => t('pages.cv.meta.content')),
-  ogImage: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageSecureUrl: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageAlt: computed(() => t('pages.cv.meta.content')),
-  ogImageType: 'image/jpeg',
-  ogImageWidth: '1200',
-  ogImageHeight: '600',
-  ogUrl: canonicalUrl.value,
-  articleTag: [
-    computed(() => t('miscellaneous.my_cv')).value,
-    computed(() => t('miscellaneous.cv')).value,
-    computed(() => t('miscellaneous.exhibitions')).value,
-    computed(() => t('miscellaneous.events')).value,
-    computed(() => t('miscellaneous.experiences')).value,
-    computed(() => t('miscellaneous.performances')).value,
-    computed(() => t('miscellaneous.activity_leader')).value,
-    computed(() => t('miscellaneous.art')).value,
-    computed(() => t('miscellaneous.artist')).value,
-    computed(() => t('miscellaneous.painting')).value,
-    computed(() => t('miscellaneous.painter')).value,
-    computed(() => t('miscellaneous.ceramic')).value,
-    computed(() => t('miscellaneous.ceramicist')).value,
-    computed(() => t('miscellaneous.pottery')).value,
-    computed(() => t('miscellaneous.emotions')).value,
-    computed(() => t('about.author')).value,
-    computed(() => t('app.name')).value,
-  ],
-  appleMobileWebAppTitle: '%s %separator %siteName',
-  msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
-})
 
 const pdfPath = '/documents/CV_Berthier_Véronique.pdf'
 
@@ -161,6 +64,8 @@ const isTouchDevice = ref(false)
 onMounted(() => {
   isTouchDevice.value = 'ontouchstart' in window || navigator.maxTouchPoints > 0
 })
+
+useHead(usePageSeo('about_cv'))
 </script>
 
 <style lang="scss" scoped>

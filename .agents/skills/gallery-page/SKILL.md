@@ -73,7 +73,7 @@ Define `pageKey` as the verified `pages.*` namespace in `<script setup lang="ts"
 For multiple groups, add translated H2 headings and one grid per group while keeping a single `PageTitle` H1.
 The default layout already owns `<main>`, the header and the footer.
 
-Keep `useI18n()`, `useRuntimeConfig()` and `useRoute()` with page URL configuration and the head composables.
+Keep `useI18n()` for page content and use `useHead(usePageSeo('pageName'))` for metadata.
 Import `ImageSource` and `PageNavigation` with `import type` when used.
 Derive translated image arrays with `computed<ImageSource[]>(() => ...)` and translated navigation objects with `computed<PageNavigation>(() => ...)`.
 Templates unwrap these computed values automatically.
@@ -81,7 +81,9 @@ Populate `src`, `title`, `mobileTitle` and descriptive `alt` for each artwork.
 Include painting `dimensions` only when confirmed; omit unknown dimensions and ceramic dimensions rather than inventing measurements.
 
 Add matching page and picture entries to both locale files using the i18n skill.
-Implement page metadata using the SEO skill, including the keyed gallery `apple-touch-icon` override.
+Implement metadata through the SEO skill: register the page, measured social image and sitemap artwork, then add bilingual `seo.*` messages.
+Preserve the selected representative artwork and register relevant existing topic-label keys as `keywordKeys` for semantic structured data.
+App icons remain shared; do not override the touch icon with gallery artwork.
 Check whether the chosen image consumer needs an entry in `generateImageRoutes.ts` using the artwork-assets skill.
 
 Keep page styles scoped and preserve the normal gallery spacing unless the requested layout requires an adjustment:
