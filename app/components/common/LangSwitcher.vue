@@ -4,7 +4,7 @@
       v-for="availableLocale in availableLocales"
       :key="availableLocale.code"
       :class="['btn', { active: availableLocale.code === locale }]"
-      :to="switchLocalePath(availableLocale.code)"
+      :to="availableLocale.path"
       :aria-label="changeLanguageLabel + ' ' + availableLocale.name"
       :aria-current="availableLocale.code === locale ? 'true' : 'false'"
       @click="setLanguagePreference(availableLocale.code)">
@@ -17,13 +17,23 @@
 import type { localesType } from '~/types/locales'
 
 const { locale, locales, t } = useI18n()
+
 const switchLocalePath = useSwitchLocalePath()
+const site = useSiteConfig()
 
 const availableLocales = computed(() =>
-  (locales.value as Array<{ code: localesType; name: string }>).map(l => ({
-    code: l.code,
-    name: l.name,
-  }))
+  (locales.value as Array<{ code: localesType; name: string }>).map(
+    localeInfo => {
+      const target = new URL(switchLocalePath(localeInfo.code), site.url)
+      target.hash = ''
+
+      return {
+        code: localeInfo.code,
+        name: localeInfo.name,
+        path: `${target.pathname}${target.search}`,
+      }
+    }
+  )
 )
 const changeLanguageLabel = computed(() =>
   t('components.lang_switcher.change_language_label')
@@ -36,28 +46,6 @@ const setLanguagePreference = (code: localesType) => {
 
   localStorage.setItem('preferredLanguage', code)
 }
-
-const updateDirAttribute = (newLocale: string) => {
-  const currentLocale = locales.value.find(l => l.code === newLocale)
-  document.documentElement.setAttribute('dir', currentLocale?.dir || 'ltr')
-}
-
-watch(locale, newLocale => {
-  updateDirAttribute(newLocale)
-})
-
-onMounted(() => {
-  const savedLanguage = localStorage.getItem('preferredLanguage') as localesType
-
-  if (
-    savedLanguage &&
-    locales.value.some(locale => locale.code === savedLanguage)
-  ) {
-    locale.value = savedLanguage
-  }
-
-  updateDirAttribute(locale.value)
-})
 </script>
 
 <style lang="scss" scoped>

@@ -24,6 +24,8 @@ const abstractAutumnPaintingTitle = computed(() =>
 const abstractAutumnPaintingAlt = computed(() =>
   t('pictures.paintings.abstract_autumn.alt')
 )
+
+useHead(usePageSeo('painting_oil_abstracts'))
 </script>
 
 <style lang="scss" scoped>

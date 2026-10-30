@@ -44,6 +44,7 @@ const props = defineProps({
   },
 })
 
+const { t } = useI18n()
 const device = useScreenSize()
 
 const root = ref<HTMLElement | null>(null)
@@ -53,7 +54,10 @@ const runtimeConfig = useRuntimeConfig()
 const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
 
 const selectedImage = ref<ImageSource | null>(null)
-const fallbackImage: ImageSource = { src: '' }
+const fallbackImage = computed<ImageSource>(() => ({
+  src: '',
+  alt: t('components.image_preview_modal.image_unavailable'),
+}))
 
 const GAP_PX = 24
 const TOLERANCE_WIDTH_PX = 20 // Small tolerance for "almost same" width

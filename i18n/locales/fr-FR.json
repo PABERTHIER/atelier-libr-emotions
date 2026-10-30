@@ -3,7 +3,6 @@
     "name": "Atelier Libr'Émotions",
     "logo_alt": "Logo Atelier Libr'Émotions",
     "meta": {
-      "description": "Atelier Libr'Émotions : peintures intuitives et céramiques inspirées par la nature. Art expressif entre abstrait et figuratif, porté par les émotions de Véronique Berthier.",
       "alt_name_1": "atelierlibremotions",
       "alt_name_2": "atelier libremotions",
       "alt_name_3": "atelier libre emotions",
@@ -11,6 +10,91 @@
       "alt_name_5": "Atelier-LibrEmotions",
       "alt_name_6": "atelier_libremotions",
       "alt_name_7": "AtelierLibr'Émotions"
+    }
+  },
+  "seo": {
+    "site": {
+      "description": "Atelier Libr'Émotions : peintures intuitives et céramiques inspirées par la nature. Art expressif entre abstrait et figuratif, porté par les émotions de Véronique Berthier."
+    },
+    "home": {
+      "title": "Accueil - Atelier Libr'Émotions",
+      "description": "Découvrez l'univers artistique de Véronique Berthier : peintures intuitives, céramiques et créations inspirées par la nature. Ateliers créatifs Libr'Émotions en Lorraine."
+    },
+    "about": {
+      "title": "Ma démarche artistique - Atelier Libr'Émotions",
+      "description": "Démarche artistique de Véronique Berthier : peinture intuitive, céramique et ateliers créatifs ouverts à tous. Expression libre, émotions et connexion profonde à la nature."
+    },
+    "about_development": {
+      "title": "Mon cheminement - Atelier Libr'Émotions",
+      "description": "Découvrez le parcours artistique de Véronique Berthier : de la biochimie à la peinture intuitive et à la céramique, une reconversion passionnée nourrie par les émotions et la nature."
+    },
+    "about_cv": {
+      "title": "Mon CV - Atelier Libr'Émotions",
+      "description": "CV artistique de Véronique Berthier : formations, expositions et expériences en peinture intuitive, céramique et animation d'ateliers créatifs en Lorraine."
+    },
+    "contact": {
+      "title": "Contact - Atelier Libr'Émotions",
+      "description": "Contactez Véronique Berthier, artiste peintre et céramiste. Partagez vos ressentis, commandez une œuvre ou rejoignez les ateliers créatifs Libr'Émotions."
+    },
+    "painting_acrylic_abstracts": {
+      "title": "Acrylique - Abstraits - Atelier Libr'Émotions",
+      "description": "Galerie de peintures acryliques abstraites de Véronique Berthier : fonds colorés, graphismes libres, apparitions et peintures automatiques. Émotions et intuition sur toile."
+    },
+    "painting_inks_nature": {
+      "title": "Encres - Nature - Atelier Libr'Émotions",
+      "description": "Collection d'encres de Véronique Berthier inspirées par la nature : paysages, éléments naturels, faune, flore et atmosphères poétiques créées à l'encre de Chine."
+    },
+    "painting_mixed_technique_nature": {
+      "title": "Technique mixte - Nature - Atelier Libr'Émotions",
+      "description": "Galerie de peintures en technique mixte de Véronique Berthier inspirées par la nature, entre matières, reliefs, mouvements et évasion."
+    },
+    "ceramic_electric_kiln_nature": {
+      "title": "Grès - four électrique - Nature - Atelier Libr'Émotions",
+      "description": "Galerie de céramiques grès de Véronique Berthier cuites au four électrique : fleurs décoratives et pièces nature en terre blanche, noire ou ocre, laissées brutes, engobées ou émaillées."
+    },
+    "ceramic_electric_kiln_animals": {
+      "title": "Grès - four électrique - Animaux - Atelier Libr'Émotions",
+      "description": "Galerie d'animaux en grès de Véronique Berthier, cuits au four électrique et modelés avec réalisme ou poésie pour une décoration élégante."
+    },
+    "ceramic_electric_kiln_vases_and_pots": {
+      "title": "Grès - four électrique - Vases et pots - Atelier Libr'Émotions",
+      "description": "Galerie de vases et pots en grès de Véronique Berthier, des objets pratiques et décoratifs pour sublimer la maison et le jardin."
+    },
+    "ceramic_electric_kiln_various_objects": {
+      "title": "Grès - four électrique - Objets divers - Atelier Libr'Émotions",
+      "description": "Galerie de boîtes en grès de Véronique Berthier, créées au four électrique avec des terres colorées, des techniques variées et des éléments naturels."
+    },
+    "ceramic_porcelain_nature": {
+      "title": "Porcelaine - Nature - Atelier Libr'Émotions",
+      "description": "Collection de porcelaines de Véronique Berthier : pièces délicates et dentelées pour décoration murale ou sur meuble, seules ou associées à un autre élément (céramique, bois, métal)."
+    },
+    "ceramic_raku_smouldering_nature": {
+      "title": "Raku et enfumage - Nature - Atelier Libr'Émotions",
+      "description": "Galerie de céramiques raku et enfumage de Véronique Berthier : pièces décoratives aux craquelures noires caractéristiques dans un émail blanc brillant, pour une décoration intérieure unique."
+    },
+    "painting_oil_abstracts": {
+      "title": "Peinture à l'huile - Atelier Libr'Émotions",
+      "description": "Une peinture abstraite à l'huile de Véronique Berthier, inspirée par les couleurs de l'automne. Découvrez les nuances et les textures de cette création intuitive."
+    },
+    "wip": {
+      "title": "En cours de création - Atelier Libr'Émotions",
+      "description": "Cette page est en cours de création. Découvrez les peintures et les céramiques de Véronique Berthier dans les collections déjà disponibles."
+    }
+  },
+  "error": {
+    "code": "Erreur {code}",
+    "skip": "Aller au contenu",
+    "home": "Retour à l'accueil",
+    "gallery": "Voir les peintures",
+    "not_found": {
+      "title": "Page introuvable - Atelier Libr'Émotions",
+      "heading": "Page introuvable",
+      "description": "Cette page n'existe pas ou a été déplacée. Retrouvez les créations depuis l'accueil ou explorez les peintures."
+    },
+    "unexpected": {
+      "title": "Une erreur est survenue - Atelier Libr'Émotions",
+      "heading": "Une erreur est survenue",
+      "description": "La page ne peut pas être affichée pour le moment. Revenez à l'accueil ou explorez les peintures."
     }
   },
   "components": {
@@ -36,9 +120,6 @@
   "pages": {
     "main": {
       "tab_name": "Accueil",
-      "meta": {
-        "content": "Découvrez l'univers artistique de Véronique Berthier : peintures intuitives, céramiques et créations inspirées par la nature. Ateliers créatifs Libr'Émotions en Lorraine."
-      },
       "hero_title": "Peinture et Céramique",
       "hero_description": "Bienvenue dans mon Univers artistique, où peintures intuitives, céramiques et éléments naturels se côtoient. Créations abstraites ou figuratives, elles sont inspirées par Dame Nature, puits intarissable de beauté, de surprises et d'émerveillement, que je remercie tous les jours !",
       "buttons": {
@@ -50,9 +131,6 @@
       "acrylic": {
         "abstracts": {
           "tab_name": "Acrylique - Abstraits",
-          "meta": {
-            "content": "Galerie de peintures acryliques abstraites de Véronique Berthier : fonds colorés, graphismes libres, apparitions et peintures automatiques. Émotions et intuition sur toile."
-          },
           "title": "Acrylique - Abstraits",
           "subtitle": "Un fond, un graphisme libre, des yeux, des apparitions !"
         }
@@ -60,9 +138,6 @@
       "inks": {
         "nature": {
           "tab_name": "Encres - Nature",
-          "meta": {
-            "content": "Collection d'encres de Véronique Berthier inspirées par la nature : paysages, éléments naturels, faune, flore et atmosphères poétiques créées à l'encre de Chine."
-          },
           "title": "Encres - Nature",
           "subtitle": "Expressions inspirées par la nature"
         }
@@ -70,9 +145,6 @@
       "mixed_technique": {
         "nature": {
           "tab_name": "Technique mixte - Nature",
-          "meta": {
-            "content": "Galerie de peintures en technique mixte de Véronique Berthier inspirées par la nature, entre matières, reliefs, mouvements et évasion."
-          },
           "title": "Technique mixte - Nature",
           "subtitle": "L'expression de la nature prend forme grâce aux mélanges de divers médiums et matériaux"
         }
@@ -82,33 +154,21 @@
       "electric_kiln": {
         "nature": {
           "tab_name": "Grès - four électrique - Nature",
-          "meta": {
-            "content": "Galerie de céramiques grès de Véronique Berthier cuites au four électrique : fleurs décoratives et pièces nature en terre blanche, noire ou ocre, laissées brutes, engobées ou émaillées."
-          },
           "title": "Grès - four électrique - Nature",
           "subtitle": "Fleurs décoratives, pour intérieur et/ou extérieur"
         },
         "animals": {
           "tab_name": "Grès - four électrique - Animaux",
-          "meta": {
-            "content": "Galerie d'animaux en grès de Véronique Berthier, cuits au four électrique et modelés avec réalisme ou poésie pour une décoration élégante."
-          },
           "title": "Grès - four électrique - Animaux",
           "subtitle": "Des animaux apportant une touche de poésie et d'élégance"
         },
         "vases_and_pots": {
           "tab_name": "Grès - four électrique - Vases et pots",
-          "meta": {
-            "content": "Galerie de vases et pots en grès de Véronique Berthier, des objets pratiques et décoratifs pour sublimer la maison et le jardin."
-          },
           "title": "Grès - four électrique - Vases et pots",
           "subtitle": "Pots et des vases en céramiques, pour intérieur et jardin"
         },
         "various_objects": {
           "tab_name": "Grès - four électrique - Objets divers",
-          "meta": {
-            "content": "Galerie de boîtes en grès de Véronique Berthier, créées au four électrique avec des terres colorées, des techniques variées et des éléments naturels."
-          },
           "title": "Grès - four électrique - Objets divers",
           "subtitle": "Objets de décoration, créés avec des terres de différentes couleurs"
         }
@@ -116,9 +176,6 @@
       "porcelain": {
         "nature": {
           "tab_name": "Porcelaine - Nature",
-          "meta": {
-            "content": "Collection de porcelaines de Véronique Berthier : pièces délicates et dentelées pour décoration murale ou sur meuble, seules ou associées à un autre élément (céramique, bois, métal)."
-          },
           "title": "Porcelaine - Nature",
           "subtitle": "Pièces pour décoration murale ou sur meuble, seules ou associées à un autre élément (céramique, bois, métal)"
         }
@@ -126,9 +183,6 @@
       "raku_and_smouldering": {
         "nature": {
           "tab_name": "Raku et enfumage - Nature",
-          "meta": {
-            "content": "Galerie de céramiques raku et enfumage de Véronique Berthier : pièces décoratives aux craquelures noires caractéristiques dans un émail blanc brillant, pour une décoration intérieure unique."
-          },
           "title": "Raku et enfumage - Nature",
           "subtitle": "Céramiques pour décoration intérieure"
         }
@@ -136,9 +190,6 @@
     },
     "about": {
       "tab_name": "Ma démarche artistique",
-      "meta": {
-        "content": "Démarche artistique de Véronique Berthier : peinture intuitive, céramique et ateliers créatifs ouverts à tous. Expression libre, émotions et connexion profonde à la nature."
-      },
       "title": "Ma démarche artistique",
       "subtitle": "Une approche intuitive de l'art",
       "intro": "En peinture, en dessin, comme en terre, je pars d'une trace spontanée puis, à mon rythme, je pars à l'Aventure.",
@@ -176,9 +227,6 @@
     },
     "development": {
       "tab_name": "Mon cheminement",
-      "meta": {
-        "content": "Découvrez le parcours artistique de Véronique Berthier : de la biochimie à la peinture intuitive et à la céramique, une reconversion passionnée nourrie par les émotions et la nature."
-      },
       "title": "Mon Cheminement",
       "subtitle": "Un parcours artistique atypique",
       "intro": "Née en 69, j'ai passé mon enfance dans le 68 et ma vie estudiantine dans le 67 (Strasbourg), puis un passage en Lorraine dans le 54, puis 20 ans en région parisienne, en Seine et Marne 77, avant de revenir en Lorraine !",
@@ -206,9 +254,6 @@
     },
     "cv": {
       "tab_name": "Mon CV",
-      "meta": {
-        "content": "CV artistique de Véronique Berthier : formations, expositions et expériences en peinture intuitive, céramique et animation d'ateliers créatifs en Lorraine."
-      },
       "title": "Mon CV",
       "subtitle": "Parcours et expériences artistiques",
       "pdf_title": "CV Artistique",
@@ -222,9 +267,6 @@
     },
     "contact": {
       "tab_name": "Contact",
-      "meta": {
-        "content": "Contactez Véronique Berthier, artiste peintre et céramiste. Partagez vos ressentis, commandez une œuvre ou rejoignez les ateliers créatifs Libr'Émotions."
-      },
       "title": "Contactez-moi",
       "subtitle": "Gestuelles, couleurs, formes et textures, c'est l'aventure ! Je vous invite à partager vos ressentis.",
       "image": {
@@ -1362,14 +1404,15 @@
     "instagram": "Instagram",
     "follow_on_facebook": "Suivez-moi sur Facebook",
     "follow_on_instagram": "Suivez-moi sur Instagram",
-    "2011_2019": "2011 - 2019",
-    "2020_2022": "2020 - 2022",
-    "2023_2025": "2023 - 2025",
     "2006": "2006",
     "2008": "2008",
-    "2023": "2023"
+    "2011_2019": "2011 - 2019",
+    "2020_2022": "2020 - 2022",
+    "2023": "2023",
+    "2023_2025": "2023 - 2025"
   },
   "wip": {
+    "image_alt": "Page en cours de création",
     "previous_page_name": "WIP",
     "next_page_name": "WIP",
     "previous_page_description": "WIP",

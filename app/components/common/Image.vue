@@ -36,8 +36,8 @@ const props = defineProps({
   },
   alt: {
     type: String,
-    required: false,
-    default: '',
+    required: true,
+    validator: (value: string) => value.trim().length > 0,
   },
 })
 

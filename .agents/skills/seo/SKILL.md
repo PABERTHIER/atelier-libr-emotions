@@ -6,132 +6,88 @@ description: Implement, review or debug Atelier Libr'Émotions localized page me
 # Atelier SEO
 
 Follow [AGENTS.md](../../../AGENTS.md) for shared constraints.
-Read the affected page, [app.vue](../../../app/app.vue) and [nuxt.config.ts](../../../nuxt.config.ts) before editing metadata.
-Check installed versions in [package.json](../../../package.json) rather than relying on legacy documentation naming an older SEO module.
-Use [SEO maintenance](../../docs/SEO.md) for environment behavior, indexing, sitemap discovery, structured data and release checks when those concerns are in scope.
+Read the affected page, [page registry](../../../app/data/seo.ts), [SEO composable](../../../app/composables/usePageSeo.ts), [app.vue](../../../app/app.vue) and [nuxt.config.ts](../../../nuxt.config.ts) before changing metadata.
+Check installed versions in [package.json](../../../package.json).
+Use [SEO maintenance](../../docs/SEO.md) for origins, indexing, schema, errors, discovery and release checks.
 
-## Metadata Ownership
+## Ownership
 
-| Concern                                                       | Current owner                              | Expected result                                                                        |
-| ------------------------------------------------------------- | ------------------------------------------ | -------------------------------------------------------------------------------------- |
-| Global title template, fallback metadata and icons            | `app/app.vue`                              | Page values override relevant defaults without duplicate effective tags                |
-| Site identity, indexing, sitemap and Schema.org configuration | `nuxt.config.ts` and installed SEO modules | Consistent origin and truthful identity                                                |
-| Localized title, canonical, alternates and gallery touch icon | Page `useHead()`                           | Reactive page-specific values                                                          |
-| Description, Open Graph and tile image                        | Page `useSeoMeta()`                        | Same page identity and description as the visible content                              |
-| Authored title and description                                | Both locale JSON files                     | Appropriate `pages.*.tab_name` and `pages.*.meta.content` keys                         |
-| Social artwork                                                | Verified public asset                      | Absolute URL, correct MIME type, measured pixel dimensions and image-specific alt text |
+| Concern                                                                                        | Owner                                                 |
+| ---------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| Page path, schema type, topic keys, social image, alt key, sitemap images and optional noindex | `app/data/seo.ts`                                     |
+| Actual social-image pixel dimensions                                                           | `app/data/imageDimensions.ts`                         |
+| Reactive page metadata and schema                                                              | `usePageSeo()`                                        |
+| Canonical, hreflang, HTML language/direction and OG locales                                    | Root `useLocaleHead({ seo: true })`                   |
+| Full localized title and description                                                           | `seo.<page>.title` and `.description` in both locales |
+| Site origin, app icons, robots, sitemap and Person identity                                    | Nuxt configuration and shared site data               |
+| Error metadata and recovery                                                                    | Standalone `app/error.vue`                            |
 
-Preserve the current per-page architecture unless the task explicitly includes centralization.
-Avoid registering the same description independently in both head composables; verify one effective description in the rendered output.
+## Add Or Update A Page
 
-## Reactive Page Metadata
-
-Keep translated values and route-dependent URLs inside getters or computed values.
-Reading a computed value once while constructing a static object does not preserve reactivity.
-This applies to `canonical`, `ogUrl`, keywords and `articleTag`, as well as titles and descriptions.
-
-For a gallery, define `pageKey`, `urlEndPath`, `ogImageEndPath` and `imageAltKey` from the verified page and representative artwork.
-`urlEndPath` has no leading slash or locale prefix, while `ogImageEndPath` is relative to `public/` without its prefix.
-Use the runtime-configured origin and `route.path`, which includes the current locale and excludes query strings and fragments.
+1. Add a route-qualified `PageName` in `app/types/seo.ts`, then register its unprefixed path in the explicitly typed `pageSeo` record.
+2. Select existing representative artwork and its actual translated image-description key.
+3. Measure the source image, add its dimensions to `imageDimensions`, and confirm WebP MIME type, file size and exact public URL.
+4. List artwork available on the page or in its carousel/viewer in `images`, preserving curated order and real series counts.
+5. Add `seo.<page>.title` and `.description` in French and English, with the brand included once in the full title.
+6. Preserve relevant page subjects as existing translated `keywordKeys`; the helper emits deduplicated Schema.org keywords, not a meta-keyword list.
+7. Call the shared helper once:
 
 ```ts
-const { t } = useI18n()
-const runtimeConfig = useRuntimeConfig()
-const route = useRoute()
-
-const baseUrl = runtimeConfig.public.i18n.baseUrl
-const canonicalUrl = computed(() => new URL(route.path, baseUrl).href)
-const socialImageUrl = new URL(`/${ogImageEndPath}`, baseUrl).href
-const keywordValues = computed(() => keywordKeys.map(key => t(key)))
-
-useHead(() => ({
-  title: t(`${pageKey}.tab_name`),
-  meta: [{ name: 'keywords', content: keywordValues.value.join(', ') }],
-  link: [
-    { rel: 'canonical', href: canonicalUrl.value },
-    {
-      rel: 'alternate',
-      hreflang: 'fr-FR',
-      href: new URL(`/fr/${urlEndPath}`, baseUrl).href,
-    },
-    {
-      rel: 'alternate',
-      hreflang: 'en-US',
-      href: new URL(`/en/${urlEndPath}`, baseUrl).href,
-    },
-    {
-      rel: 'alternate',
-      hreflang: 'x-default',
-      href: new URL(`/fr/${urlEndPath}`, baseUrl).href,
-    },
-    {
-      rel: 'apple-touch-icon',
-      sizes: '180x180',
-      href: `/${ogImageEndPath}`,
-      key: 'apple-touch-icon',
-    },
-  ],
-}))
-
-useSeoMeta({
-  description: () => t(`${pageKey}.meta.content`),
-  ogTitle: () => `${t(`${pageKey}.tab_name`)} - ${t('app.name')}`,
-  ogDescription: () => t(`${pageKey}.meta.content`),
-  ogUrl: () => canonicalUrl.value,
-  ogImage: socialImageUrl,
-  ogImageAlt: () => t(imageAltKey),
-  articleTag: () => keywordValues.value,
-  appleMobileWebAppTitle: () => t(`${pageKey}.tab_name`),
-  msapplicationTileImage: socialImageUrl,
-})
+useHead(usePageSeo('painting_acrylic_abstracts'))
 ```
 
-This fragment assumes verified identifiers and `keywordKeys` are defined earlier; add the verified image type, dimensions and appropriate page type as described below.
-Follow the existing article convention for ordinary gallery additions, keeping article tags reactive and aligned with keywords.
-For a semantic SEO review, evaluate whether `website` better describes a portfolio collection and remove or override inapplicable inherited article fields when changing its type.
-Do not copy article/profile metadata onto every page merely because it is currently present globally.
+Do not reproduce metadata blocks in pages or add competing canonical/alternate links.
+Keep `pages.*.tab_name` for visible navigation labels.
+Keep visible page/navigation labels and artist-authored subtitles separate from search copy.
+Use CollectionPage for a gallery, AboutPage for artist information, ContactPage for contact and ItemPage for a standalone artwork.
+Do not copy article/profile metadata, meta-keyword lists or artwork touch-icon overrides into new pages.
+Keep original representative artwork selections unless a content change explicitly calls for a different preview.
+The helper models page authorship through the Person identity; Nuxt Schema.org already supplies WebSite.publisher.
+Keep the stable application/Apple app name and global app icons in Nuxt configuration.
 
-## URLs And Environment Checks
+## Reactive URLs And Schema
 
-Include reciprocal `fr-FR` and `en-US` alternates and a French `x-default` for the same page.
-Do not use the current locale's `route.path` as both language alternates or expose query/fragment variants as page identities.
-Keep trailing-slash behavior consistent with the generated routes.
-The gallery touch icon overrides the root default with the same `key: 'apple-touch-icon'`; preserve that local behavior without claiming the original artwork is a generated square icon.
+The helper derives title, description, topic keywords, image alternative and localized URLs reactively.
+`seo.site.description` supplies separate site-level copy on the localized WebSite node; it must not override or duplicate the page description.
+Use a computed WebPage definition with a resolved keyword array rather than assigning a computed array directly to that schema property.
+Direct computed refs in `useSeoMeta()` are supported and reactive; `.value` belongs inside derived getters, not setup-time snapshots.
+`inLanguage` inside the computed WebPage node is already reactive.
+`localePath(pageData.path)` excludes query/hash variants and uses the environment's Site Config origin.
+Root I18n head data owns reciprocal French/English language links and French `x-default`.
+Keep `schemaOrg.reactive: true`, the helper's Unhead treeshake exclusion and its reactive URL/path template parameters coordinated.
+Verify schema node IDs, types, actions, images and Person references after client navigation, not only in SSR HTML.
 
-Check the current origin table and source limitations in [SEO maintenance](../../docs/SEO.md#origins-and-indexing) before a production-mode build or environment change.
-The shared `siteUrl` supplies runtime/configured I18n, Site Config and configured identity URLs, with environment-specific indexability and a production fallback for local builds.
-Keep `NUXT_SITE_URL` scoped to production overrides; Site Config reads it independently and can otherwise override a preview origin.
-Keep SEO v6's AI Ready and Skew Protection disabled unless their publishing/storage requirements are explicitly addressed.
-Address affected inconsistencies within scope and supply an appropriate local build environment for validation.
-Do not silently deploy, change hosting settings or claim preview noindex behavior without verification.
+## Authored Copy And Social Cards
 
-## Descriptions, Keywords And Social Images
+Use [content direction](../../docs/content-direction.md) for truthful, specific descriptions and natural English.
+Include confirmed artist, technique and category details without keyword stuffing or invented claims.
+Aim for concise useful snippets, not a rigid character count.
+Use the image's existing informative alternative rather than the whole page description.
+Physical painting measurements do not supply raster dimensions.
+Preserve original assets and use [artwork assets](../artwork-assets/SKILL.md) for delivery checks.
 
-Use [content direction](../../docs/content-direction.md) when authoring or revising prose.
-Write a unique description for each page using confirmed technique, category and artist details.
-For galleries, include `Véronique Berthier` naturally and rewrite the artist's source prose into a useful summary.
-Aim for roughly 140–160 characters when practical; do not sacrifice clarity to a rigid opening phrase or character count.
-Google truncates snippets according to available display width, not a universal 160-character rule.
-See [Google's snippet guidance](https://developers.google.com/search/docs/appearance/snippet) when reviewing that behavior.
+Open Graph supplies the sharing title, description, URL and image; `twitter:card` selects `summary_large_image`.
+Do not add redundant legacy Twitter title/description/image fields or fabricate an account handle.
+The current validator warns about the intentional card field; see the guide before treating that warning as missing metadata.
+Social cropping and public crawler access require post-deployment checks.
 
-Preserve this project's gallery keyword convention without presenting keywords as a search-ranking guarantee.
-Include `miscellaneous.art`, `miscellaneous.artist`, `miscellaneous.emotions`, `about.author` and `app.name`.
-Add only relevant existing technique/category labels, with painting/painter or ceramic/ceramicist as appropriate.
-Derive meta keywords and article tags from the same reactive key list.
+## Indexing And Errors
 
-Choose representative artwork actually displayed on the page; its series position is not a selection rule.
-Prefer a composition that survives social preview cropping without changing the original artwork.
-Use the image's own translated alt key instead of the entire page description.
-Set `ogImageType` to the served file's actual type, such as `image/webp`, and use measured pixel width and height.
-Do not copy `image/jpeg`, `1200` and `600` onto arbitrary WebP files; omit optional unverified dimensions rather than inventing them.
-Check existing HTTPS image metadata and tile-image references when replacing the asset, using [artwork-assets](../artwork-assets/SKILL.md).
-Do not invent publication dates, events, reviews, employers or unsupported structured-data properties.
+Keep `NUXT_SITE_URL` overrides production-only; Site Config also reads that variable independently.
+Development and previews remain noindex, with environment-correct absolute URLs.
+Use a registry `indexable: false` and matching route rules for reachable excluded content such as WIP.
+The helper restores robots policy during client navigation and error recovery.
+Do not add error URLs to the registry or sitemap.
+The standalone error page preserves status, sends noindex metadata/header, omits canonical/hreflang and recovers through valid localized destinations.
+Only set response headers on the server.
+Do not invent dates, employers, events, reviews or rich-result claims in structured data.
 
 ## Verification
 
-Run `yarn lint` for implementation changes and `yarn generate` when routes, head configuration or prerendered output change.
-Inspect effective FR/EN HTML for one title, description and canonical, correct alternates, absolute image URLs and matching image metadata.
-Check JSON-LD, robots and sitemap output when changing site identity, origin or indexing rather than assuming modules resolve conflicts automatically.
-Switch routes and locales without reloading and confirm head values update.
-Inspect development warnings from Unhead, hydration and missing translations.
-Verify representative social files load with an image content type and distinguish local checks from unavailable deployed crawler validation.
+Follow [shared verification](../../../AGENTS.md#verification): formatting, types, lint, production build and generation for shared head/config changes.
+Check all affected FR/EN HTML for one title, description and canonical, correct alternates, absolute image URLs and measured image metadata.
+Inspect robots headers/meta/file, sitemap index and child entries, image coverage and localized JSON-LD, including translated keywords and author/publisher references.
+Switch page and locale without reloading and verify the head and schema follow.
+Exercise WIP entry/exit and error recovery, including restoration of indexability in production.
+Check error status, language, no canonical/hreflang, keyboard/touch recovery and narrow/enlarged layouts.
+Report actual local coverage separately from unavailable deployment, platform and account validation.

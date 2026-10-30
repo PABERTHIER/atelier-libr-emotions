@@ -22,92 +22,6 @@
 import type { ImageSource } from '~/types/image'
 
 const { t } = useI18n()
-const runtimeConfig = useRuntimeConfig()
-const route = useRoute()
-
-const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
-const urlEndPath = 'ceramic/porcelain/nature'
-const ogImageEndPath = 'ceramics/porcelain/nature/flowers/FP13.webp'
-
-const canonicalUrl = computed(() => `${baseUrl.value}${route.path}`)
-
-useHead({
-  title: computed(() => t('pages.ceramic.porcelain.nature.tab_name')),
-  meta: [
-    {
-      name: 'description',
-      content: computed(() => t('pages.ceramic.porcelain.nature.meta.content')),
-    },
-    {
-      name: 'keywords',
-      content: `${computed(() => t('miscellaneous.ceramic')).value},
-        ${computed(() => t('miscellaneous.ceramicist')).value},
-        ${computed(() => t('miscellaneous.porcelain')).value},
-        ${computed(() => t('miscellaneous.nature')).value},
-        ${computed(() => t('miscellaneous.flowers')).value},
-        ${computed(() => t('miscellaneous.art')).value},
-        ${computed(() => t('miscellaneous.artist')).value},
-        ${computed(() => t('miscellaneous.emotions')).value},
-        ${computed(() => t('about.author')).value},
-        ${computed(() => t('app.name')).value},
-      `,
-    },
-  ],
-  link: [
-    { rel: 'canonical', href: canonicalUrl.value },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/en/${urlEndPath}`),
-      hreflang: 'en-US',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
-      hreflang: 'fr-FR',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
-      hreflang: 'x-default',
-    },
-    {
-      rel: 'apple-touch-icon',
-      sizes: '180x180',
-      href: `/${ogImageEndPath}`,
-      key: 'apple-touch-icon',
-    },
-  ],
-})
-
-useSeoMeta({
-  ogTitle: '%s %separator %siteName',
-  description: computed(() => t('pages.ceramic.porcelain.nature.meta.content')),
-  ogDescription: computed(() =>
-    t('pages.ceramic.porcelain.nature.meta.content')
-  ),
-  ogImage: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageSecureUrl: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageAlt: computed(() => t('pages.ceramic.porcelain.nature.meta.content')),
-  ogImageType: 'image/jpeg',
-  ogImageWidth: '1200',
-  ogImageHeight: '600',
-  ogUrl: canonicalUrl.value,
-  ogType: 'article',
-  articleTag: [
-    computed(() => t('miscellaneous.ceramic')).value,
-    computed(() => t('miscellaneous.ceramicist')).value,
-    computed(() => t('miscellaneous.porcelain')).value,
-    computed(() => t('miscellaneous.nature')).value,
-    computed(() => t('miscellaneous.flowers')).value,
-    computed(() => t('miscellaneous.art')).value,
-    computed(() => t('miscellaneous.artist')).value,
-    computed(() => t('miscellaneous.emotions')).value,
-    computed(() => t('about.author')).value,
-    computed(() => t('app.name')).value,
-  ],
-  appleMobileWebAppTitle: '%s %separator %siteName',
-  msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
-})
 
 const subtitle1 = computed(() => t('miscellaneous.flowers'))
 
@@ -215,6 +129,8 @@ const nextPage = {
   title: t('wip.next_page_name'),
   description: t('wip.next_page_description'),
 }
+
+useHead(usePageSeo('ceramic_porcelain_nature'))
 </script>
 
 <style lang="scss" scoped>

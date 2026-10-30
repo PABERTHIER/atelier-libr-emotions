@@ -79,82 +79,10 @@
 </template>
 
 <script setup lang="ts">
-const { t, locale } = useI18n()
+const { t } = useI18n()
 const localPath = useLocalePath()
-const runtimeConfig = useRuntimeConfig()
+
 const device = useScreenSize()
-
-const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
-const ogImageEndPath = 'paintings/celestial-collision.jpg'
-
-const canonicalUrl = computed(() => `${baseUrl.value}/${locale.value}`)
-
-useHead({
-  title: computed(() => t('pages.main.tab_name')),
-  meta: [
-    { name: 'description', content: computed(() => t('app.meta.description')) },
-    {
-      name: 'keywords',
-      content: `${computed(() => t('miscellaneous.art')).value},
-        ${computed(() => t('miscellaneous.artist')).value},
-        ${computed(() => t('miscellaneous.painting')).value},
-        ${computed(() => t('miscellaneous.painter')).value},
-        ${computed(() => t('miscellaneous.ceramic')).value},
-        ${computed(() => t('miscellaneous.ceramicist')).value},
-        ${computed(() => t('miscellaneous.pottery')).value},
-        ${computed(() => t('miscellaneous.emotions')).value},
-        ${computed(() => t('about.author')).value},
-        ${computed(() => t('app.name')).value},
-      `,
-    },
-  ],
-  link: [
-    { rel: 'canonical', href: canonicalUrl.value },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/en`),
-      hreflang: 'en-US',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/fr`),
-      hreflang: 'fr-FR',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}`),
-      hreflang: 'x-default',
-    },
-  ],
-})
-
-useSeoMeta({
-  ogTitle: '%s %separator %siteName',
-  description: computed(() => t('app.meta.description')),
-  ogDescription: computed(() => t('app.meta.description')),
-  ogImage: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageSecureUrl: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageAlt: computed(() => t('app.meta.description')),
-  ogImageType: 'image/jpeg',
-  ogImageWidth: '1200',
-  ogImageHeight: '600',
-  ogUrl: canonicalUrl.value,
-  articleTag: computed(() => [
-    computed(() => t('pages.main.tab_name')).value,
-    computed(() => t('miscellaneous.art')).value,
-    computed(() => t('miscellaneous.artist')).value,
-    computed(() => t('miscellaneous.painting')).value,
-    computed(() => t('miscellaneous.painter')).value,
-    computed(() => t('miscellaneous.ceramic')).value,
-    computed(() => t('miscellaneous.ceramicist')).value,
-    computed(() => t('miscellaneous.pottery')).value,
-    computed(() => t('miscellaneous.emotions')).value,
-    computed(() => t('about.author')).value,
-    computed(() => t('app.name')).value,
-  ]),
-  appleMobileWebAppTitle: '%s %separator %siteName',
-  msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
-})
 
 const linksConfigFirstPicture = ref([
   {
@@ -298,6 +226,8 @@ onMounted(() => {
 onBeforeUnmount(() => {
   clearInterval(timer.value)
 })
+
+useHead(usePageSeo('home'))
 </script>
 
 <style lang="scss" scoped>

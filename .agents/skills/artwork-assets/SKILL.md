@@ -19,7 +19,7 @@ For social metadata or sitemap discovery, use [SEO maintenance](../../docs/SEO.m
 | Gallery aspect measurement | [ImageGrid.vue](../../../app/components/common/ImageGrid.vue)                 | Browser `Image()` using configured origin plus `src` | Original must load; no inferred IPX sizes                      |
 | Enlarged artwork           | [ImagePreviewModal.vue](../../../app/components/common/ImagePreviewModal.vue) | Native `<img>` using `image.src`                     | Original public file                                           |
 | Standalone `Image`         | [Image.vue](../../../app/components/common/Image.vue)                         | `NuxtImg` with sizes, densities and placeholder      | Verify emitted IPX `src`, `srcset` and placeholder requests    |
-| Direct social image        | Page `ogImageEndPath`                                                         | Absolute URL to original artwork                     | Verify public file and its real MIME type and pixel dimensions |
+| Direct social image        | `pageSeo.image` and `imageDimensions`                                         | Absolute URL to original artwork                     | Verify public file and its real MIME type and pixel dimensions |
 | Explicit image routes      | [generateImageRoutes.ts](../../../app/utils/generateImageRoutes.ts)           | Enumerates IPX transforms                            | Consumed by `nitro.prerender.routes` in `nuxt.config.ts`       |
 
 ## File Handling

@@ -107,8 +107,8 @@ Consult `package.json` for versions; this table groups its current direct entrie
 | [app/pages](app/pages/)                                                                                                            | Localized home, artwork, artist, CV, contact and placeholder pages |
 | [app/components/common](app/components/common/)                                                                                    | Gallery, viewer, image wrapper, headings and page navigation       |
 | [app/components/layout](app/components/layout/), [default layout](app/layouts/default.vue)                                         | Header, menu, footer and shared main landmark                      |
-| [app/composables](app/composables/), [app/types](app/types/)                                                                       | Responsive state and shared TypeScript contracts                   |
-| [app/data](app/data/)                                                                                                              | Shared site name, social profiles and robots policies              |
+| [app/composables](app/composables/), [app/types](app/types/)                                                                       | Page SEO, responsive state and shared TypeScript contracts         |
+| [app/data](app/data/)                                                                                                              | Site identity, page SEO registry and measured image dimensions     |
 | [app/styles](app/styles/)                                                                                                          | Tokens, existing base rules and shared keyframes                   |
 | [smooth-scroll.client.ts](app/plugins/smooth-scroll.client.ts)                                                                     | Lenis integration                                                  |
 | [generateImageRoutes.ts](app/utils/generateImageRoutes.ts)                                                                         | Explicit IPX transform routes used by prerendering                 |
@@ -136,6 +136,8 @@ Preserve supplied filenames, casing and artwork order.
 Gallery layout heights do not define IPX image widths.
 Use [artwork-assets](.agents/skills/artwork-assets/SKILL.md) and the [naming map](.agents/skills/i18n/references/artwork-naming.md) for grouped collections and delivery details.
 Physical painting measurements are authored content, separate from raster pixel dimensions.
+All public source images are registered in the typed [dimension catalog](app/data/imageDimensions.ts).
+Every rendered image requires nonempty localized alt text.
 
 ## Deploy On Vercel
 
@@ -153,7 +155,11 @@ See [SEO maintenance](.agents/docs/SEO.md#origins-and-indexing) for environment 
 Use `/robots.txt?mockProductionEnv` to inspect production-style rules during development.
 AI Ready and Skew Protection are disabled; social previews use existing public artwork.
 
-The site name and social profiles live in [site.ts](app/data/site.ts); shared robots policies live in [seo.ts](app/data/seo.ts).
+The site name, artist identity and social profiles live in [site.ts](app/data/site.ts).
+[seo.ts](app/data/seo.ts) owns the explicitly typed page registry, sitemap artwork and robots policies; [types/seo.ts](app/types/seo.ts) owns route-qualified page names and contracts.
+Each page calls `useHead(usePageSeo('pageName'))`; [usePageSeo.ts](app/composables/usePageSeo.ts) supplies reactive metadata, Open Graph, the large-image Twitter card and page schema.
+Full titles and descriptions live in bilingual `seo.*` messages, while root I18n head data owns canonical links, language alternates and OG locales.
+[error.vue](app/error.vue) provides a simple localized, noindex error shell with home and painting-gallery recovery.
 The config loads shared defaults/keyframes once and injects Sass variables into component styles.
 Native galleries serve original artwork; optimized image consumers retain IPX and explicit static transform routes.
 

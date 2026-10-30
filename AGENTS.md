@@ -77,7 +77,7 @@ Consult `package.json` for versions; this table groups its current direct entrie
 
 ## Architecture
 
-```
+```text
 atelier-libr-emotions/
 ├── app/
 │   ├── pages/                    # Nuxt file-based routing
@@ -101,7 +101,7 @@ atelier-libr-emotions/
 │   │       ├── PageHeaderOrnament.vue
 │   │       └── PageNavigation.vue # Previous/Next navigation
 │   ├── composables/              # screen-size, shared logic
-│   ├── data/                     # Shared site identity, social URLs and robots policies
+│   ├── data/                     # Site identity, page SEO registry and image dimensions
 │   ├── types/                    # TypeScript types (ImageSource, Heights, PageNavigation)
 │   ├── utils/                    # generateImageRoutes for pre-rendering
 │   ├── styles/                   # SCSS variables and keyframes
@@ -119,25 +119,27 @@ atelier-libr-emotions/
 └── .editorconfig                 # Editor formatting rules
 ```
 
-| Concern                          | Owner                                                                                                                                                         | Contract                                                            |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| Routes and authored page content | [app/pages](app/pages/)                                                                                                                                       | Home at `index.vue`; named routes in directories with `index.vue`   |
-| Shared page shell                | [default.vue](app/layouts/default.vue)                                                                                                                        | Welcome, header, main landmark and footer                           |
-| Gallery and page components      | [common components](app/components/common/)                                                                                                                   | PageTitle, ImageGrid, ImagePreviewModal, PageNavigation and Image   |
-| Navigation                       | [Menu.vue](app/components/layout/Menu.vue), [LangSwitcher.vue](app/components/common/LangSwitcher.vue)                                                        | Category destinations, mobile state and corresponding locale routes |
-| Shared types                     | [image.ts](app/types/image.ts), [page.ts](app/types/page.ts)                                                                                                  | ImageSource, Heights and PageNavigation                             |
-| Responsive state                 | [screen-size.ts](app/composables/screen-size.ts)                                                                                                              | Breakpoint refs with a stable SSR fallback                          |
-| Browser integration              | [smooth-scroll.client.ts](app/plugins/smooth-scroll.client.ts)                                                                                                | Existing Lenis instance                                             |
-| Visual rules                     | [variables.scss](app/styles/variables.scss), [default.scss](app/styles/default.scss), [keyframes.scss](app/styles/keyframes.scss) and scoped component styles | Current tokens, base rules, shared motion and local appearance      |
-| Metadata and module setup        | [app.vue](app/app.vue), [nuxt.config.ts](nuxt.config.ts) and page head calls                                                                                  | Root defaults, localized page values, origins and SEO configuration |
-| Messages                         | [fr-FR.json](i18n/locales/fr-FR.json), [en-US.json](i18n/locales/en-US.json)                                                                                  | Matching message identities and interpolation                       |
-| Published assets                 | [public](public/)                                                                                                                                             | Original painting, ceramic, CV and other public files               |
-| Explicit IPX coverage            | [generateImageRoutes.ts](app/utils/generateImageRoutes.ts)                                                                                                    | Transformed routes consumed by Nitro prerendering                   |
-| Tooling and CI                   | [package.json](package.json), [CI workflow](.github/workflows/ci.yml), [eslint.config.mjs](eslint.config.mjs)                                                 | Available scripts, immutable install and lint                       |
+| Concern                          | Owner                                                                                                                                                         | Contract                                                                 |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| Routes and authored page content | [app/pages](app/pages/)                                                                                                                                       | Home at `index.vue`; named routes in directories with `index.vue`        |
+| Shared page shell                | [default.vue](app/layouts/default.vue)                                                                                                                        | Welcome, header, main landmark and footer                                |
+| Gallery and page components      | [common components](app/components/common/)                                                                                                                   | PageTitle, ImageGrid, ImagePreviewModal, PageNavigation and Image        |
+| Navigation                       | [Menu.vue](app/components/layout/Menu.vue), [LangSwitcher.vue](app/components/common/LangSwitcher.vue)                                                        | Category destinations, mobile state and corresponding locale routes      |
+| Shared types                     | [image.ts](app/types/image.ts), [page.ts](app/types/page.ts)                                                                                                  | ImageSource, Heights and PageNavigation                                  |
+| Responsive state                 | [screen-size.ts](app/composables/screen-size.ts)                                                                                                              | Breakpoint refs with a stable SSR fallback                               |
+| Browser integration              | [smooth-scroll.client.ts](app/plugins/smooth-scroll.client.ts)                                                                                                | Existing Lenis instance                                                  |
+| Visual rules                     | [variables.scss](app/styles/variables.scss), [default.scss](app/styles/default.scss), [keyframes.scss](app/styles/keyframes.scss) and scoped component styles | Current tokens, base rules, shared motion and local appearance           |
+| Metadata and module setup        | [usePageSeo.ts](app/composables/usePageSeo.ts), [seo.ts](app/data/seo.ts), [app.vue](app/app.vue) and [nuxt.config.ts](nuxt.config.ts)                        | Registry/composable page metadata, root I18n links, origins and indexing |
+| Messages                         | [fr-FR.json](i18n/locales/fr-FR.json), [en-US.json](i18n/locales/en-US.json)                                                                                  | Matching message identities and interpolation                            |
+| Published assets                 | [public](public/)                                                                                                                                             | Original painting, ceramic, CV and other public files                    |
+| Explicit IPX coverage            | [generateImageRoutes.ts](app/utils/generateImageRoutes.ts)                                                                                                    | Transformed routes consumed by Nitro prerendering                        |
+| Tooling and CI                   | [package.json](package.json), [CI workflow](.github/workflows/ci.yml), [eslint.config.mjs](eslint.config.mjs)                                                 | Available scripts, immutable install and lint                            |
 
 The layout already supplies `<main id="page-container">`; do not add a nested main in a page.
 `PageTitle` supplies its H1, while the home and standalone artwork pages have their own structure.
 Component registration uses `pathPrefix: false`, so check for colliding component basenames.
+Shared SEO contracts live in [types/seo.ts](app/types/seo.ts); use route-qualified page names in the explicitly typed registry and matching `seo.*` messages.
+Every rendered image requires nonempty localized alt text.
 
 Use `<template>`, `<script setup lang="ts">`, then scoped SCSS for page and component SFCs.
 Prefer registered Nuxt auto-imports and explicit imports for shared types, data, utilities and library APIs.
@@ -178,7 +180,8 @@ For a new or substantially changed gallery:
 3. Reuse the gallery shell and components using [gallery-page](.agents/skills/gallery-page/SKILL.md).
    Keep translated images, navigation and metadata reactive rather than taking setup-time snapshots.
 4. Implement localized metadata using [seo](.agents/skills/seo/SKILL.md).
-   Preserve canonical/alternate identity and the keyed gallery touch-icon override while using truthful social-image data.
+   Register the page, verified social image/dimensions and sitemap artwork; add bilingual `seo.*` messages and call `useHead(usePageSeo('pageName'))`.
+   Root I18n head data owns canonical/alternate links and OG locales; app icons remain shared.
 5. Update the matching menu slot and only neighboring links representing the same sequence.
    Pass unprefixed paths to `PageNavigation`, which localizes them internally.
 6. Check the actual image consumer using [artwork-assets](.agents/skills/artwork-assets/SKILL.md), then complete relevant verification.
