@@ -20,7 +20,7 @@ For a review request, inspect and report findings without changing files unless 
 | Messages            | [i18n](../i18n/SKILL.md)                                                               | Owns FR/EN parity, field quality and translated state               |
 | Metadata            | [seo](../seo/SKILL.md)                                                                 | Owns reactive head tags, social images and URL checks               |
 | Artwork delivery    | [artwork-assets](../artwork-assets/SKILL.md)                                           | Owns filenames, direct images and IPX prerendering                  |
-| Menu                | [Menu.vue](../../../app/components/layout/Menu.vue)                                    | Section, technique and category links                               |
+| Menu                | [navigation.ts](../../../app/data/navigation.ts)                                       | Section, technique and category links rendered by the shared menu   |
 | Component contracts | [image.ts](../../../app/types/image.ts), [page.ts](../../../app/types/page.ts)         | `ImageSource`, `Heights` and `PageNavigation`                       |
 
 Existing pages are structural references, not proof that their metadata, reactivity or accessibility is correct.
@@ -101,7 +101,7 @@ Keep page styles scoped and preserve the normal gallery spacing unless the reque
 
 ## Connect Navigation
 
-Update only the matching category URL in `Menu.vue` to the unprefixed page path.
+Update only the matching category path in `app/data/navigation.ts` to the unprefixed page path.
 Preserve its mutable mobile expansion state and existing translated labels.
 Menu entries using `/wip` render as disabled labels; a valid new URL makes that entry navigable.
 `PageNavigation` localizes its own `path` prop, so pass paths without `/fr` or `/en`.

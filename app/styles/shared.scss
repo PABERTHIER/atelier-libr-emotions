@@ -1,0 +1,21 @@
+.icon-button {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  min-width: $control-size;
+  min-height: $control-size;
+  padding: $space-8;
+  border: 1px solid currentColor;
+  border-radius: $radius-control;
+  background: transparent;
+  color: inherit;
+
+  .iconify {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  &:hover {
+    background: rgba($navigation-muted-color, 0.12);
+  }
+}

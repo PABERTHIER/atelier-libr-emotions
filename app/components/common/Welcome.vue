@@ -1,64 +1,116 @@
 <template>
-  <div class="welcome-container" :class="{ hidden: !show }">
-    <div class="welcome">
-      <div class="logo-container">
-        <Logo />
-      </div>
-      <div class="text">
-        <TextTyping :text="appName" />
+  <Transition name="welcome-fade" :css="animateExit">
+    <div v-if="show" class="welcome" aria-hidden="true" inert>
+      <div class="welcome__content">
+        <Logo class="welcome__logo" />
+        <div class="welcome__text">
+          <TextTyping :text="t('app.name')" />
+        </div>
       </div>
     </div>
-  </div>
+  </Transition>
 </template>
 
 <script setup lang="ts">
 const { t } = useI18n()
-const appName = t('app.name')
 
 const show = ref(true)
-function start(): void {
-  setTimeout(() => {
-    show.value = false
-  }, 2000)
+const animateExit = ref(true)
+
+let timer: ReturnType<typeof setTimeout> | undefined
+
+function removeInteractionListeners() {
+  document.removeEventListener('pointerdown', dismiss, true)
+  document.removeEventListener('keydown', dismiss, true)
+  document.removeEventListener('focusin', dismiss, true)
+}
+
+function dismiss(event?: Event) {
+  if (event) {
+    animateExit.value = false
+  }
+
+  show.value = false
+
+  clearTimeout(timer)
+  removeInteractionListeners()
 }
 
 onMounted(() => {
-  start()
+  if (document.activeElement?.matches(':focus-visible')) {
+    animateExit.value = false
+
+    dismiss()
+
+    return
+  }
+
+  timer = setTimeout(() => dismiss(), 2000)
+
+  document.addEventListener('pointerdown', dismiss, {
+    capture: true,
+    passive: true,
+  })
+  document.addEventListener('keydown', dismiss, true)
+  document.addEventListener('focusin', dismiss, true)
+})
+
+onBeforeUnmount(() => {
+  clearTimeout(timer)
+  removeInteractionListeners()
 })
 </script>
 
 <style lang="scss" scoped>
-.welcome-container {
-  height: 100vh;
-  width: 100vw;
+.welcome {
   position: fixed;
+  z-index: $welcome-animation-z-index;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: $welcome-animation-z-index;
-  background-color: $animation-background-color;
+  width: 100%;
+  height: 100dvh;
+  padding: calc(#{$space-16} + env(safe-area-inset-top, 0px))
+    calc(#{$space-16} + env(safe-area-inset-right, 0px))
+    calc(#{$space-16} + env(safe-area-inset-bottom, 0px))
+    calc(#{$space-16} + env(safe-area-inset-left, 0px));
+  background: $animation-background-color;
   color: $primary-color;
+  pointer-events: none;
 
-  .welcome {
+  &__content {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    gap: $space-16;
+    max-width: 100%;
+  }
 
-    .logo-container {
-      margin-right: 15px;
-    }
+  &__logo {
+    flex: none;
+  }
 
-    .text {
-      font-size: 30px;
-    }
+  &__text {
+    min-width: 0;
+    font-size: clamp(1rem, 4.5vw, 1.875rem);
+    line-height: 1.5;
+    text-align: center;
+    overflow-wrap: anywhere;
   }
 }
 
-.hidden {
-  visibility: hidden;
+.welcome-fade-leave-active {
+  transition: opacity $transition-ui;
+}
+
+.welcome-fade-leave-to {
   opacity: 0;
-  transition:
-    visibility 0s 0.2s,
-    opacity 0.2s linear;
+}
+
+@media (scripting: none) {
+  .welcome {
+    display: none;
+  }
 }
 </style>

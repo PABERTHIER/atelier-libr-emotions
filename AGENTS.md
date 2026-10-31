@@ -104,7 +104,7 @@ atelier-libr-emotions/
 │   ├── data/                     # Site identity, page SEO registry and image dimensions
 │   ├── types/                    # TypeScript types (ImageSource, Heights, PageNavigation)
 │   ├── utils/                    # generateImageRoutes for pre-rendering
-│   ├── styles/                   # SCSS variables and keyframes
+│   ├── styles/                   # Tokens, base rules, keyframes and shared classes
 │   ├── layouts/                  # Default layout
 │   └── app.vue                   # Root component
 ├── i18n/locales/                 # Translation files
@@ -122,12 +122,14 @@ atelier-libr-emotions/
 | Concern                          | Owner                                                                                                                                                         | Contract                                                                 |
 | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
 | Routes and authored page content | [app/pages](app/pages/)                                                                                                                                       | Home at `index.vue`; named routes in directories with `index.vue`        |
-| Shared page shell                | [default.vue](app/layouts/default.vue)                                                                                                                        | Welcome, header, main landmark and footer                                |
+| Shared page shell                | [default.vue](app/layouts/default.vue)                                                                                                                        | Welcome intro, skip link, header, focusable main landmark and footer     |
 | Gallery and page components      | [common components](app/components/common/)                                                                                                                   | PageTitle, ImageGrid, ImagePreviewModal, PageNavigation and Image        |
-| Navigation                       | [Menu.vue](app/components/layout/Menu.vue), [LangSwitcher.vue](app/components/common/LangSwitcher.vue)                                                        | Category destinations, mobile state and corresponding locale routes      |
+| Navigation                       | [navigation.ts](app/data/navigation.ts), [Menu.vue](app/components/layout/Menu.vue), [useSiteNavigation.ts](app/composables/useSiteNavigation.ts)             | One ordered catalogue, desktop disclosures and modal mobile accordions   |
 | Shared types                     | [image.ts](app/types/image.ts), [page.ts](app/types/page.ts)                                                                                                  | ImageSource, Heights and PageNavigation                                  |
 | Responsive state                 | [screen-size.ts](app/composables/screen-size.ts)                                                                                                              | Breakpoint refs with a stable SSR fallback                               |
 | Browser integration              | [smooth-scroll.client.ts](app/plugins/smooth-scroll.client.ts)                                                                                                | Existing Lenis instance                                                  |
+| Route continuity                 | [router.options.ts](app/router.options.ts), [navigation-focus.client.ts](app/plugins/navigation-focus.client.ts)                                              | History/anchor scrolling and focus after completed navigation            |
+| Overlay scroll locking           | [overlay-scroll-lock.client.ts](app/plugins/overlay-scroll-lock.client.ts), [useOverlayScrollLock.ts](app/composables/useOverlayScrollLock.ts)                | Per-app leases shared by mobile navigation and the artwork viewer        |
 | Visual rules                     | [variables.scss](app/styles/variables.scss), [default.scss](app/styles/default.scss), [keyframes.scss](app/styles/keyframes.scss) and scoped component styles | Current tokens, base rules, shared motion and local appearance           |
 | Metadata and module setup        | [usePageSeo.ts](app/composables/usePageSeo.ts), [seo.ts](app/data/seo.ts), [app.vue](app/app.vue) and [nuxt.config.ts](nuxt.config.ts)                        | Registry/composable page metadata, root I18n links, origins and indexing |
 | Messages                         | [fr-FR.json](i18n/locales/fr-FR.json), [en-US.json](i18n/locales/en-US.json)                                                                                  | Matching message identities and interpolation                            |
@@ -140,6 +142,38 @@ The layout already supplies `<main id="page-container">`; do not add a nested ma
 Component registration uses `pathPrefix: false`, so check for colliding component basenames.
 Shared SEO contracts live in [types/seo.ts](app/types/seo.ts); use route-qualified page names in the explicitly typed registry and matching `seo.*` messages.
 Every rendered image requires nonempty localized alt text.
+
+The layout is a normal-flow flex shell with `min-height: 100svh`; header and footer grow with their content.
+The header retains its top gutter, measures `--site-header-height` for scrolling and desktop panel bounds, and becomes non-sticky on very short screens.
+Navigation uses the full-screen mobile dialog at widths up to 768px or heights up to 400px, including short landscape desktops.
+Its mode follows the CSS-visible toggle through a cleaned-up ResizeObserver rather than duplicating breakpoints in JavaScript.
+The main landmark stays in the layout, not in every page.
+Do not restore JavaScript viewport-height writers or fixed shell-height subtraction.
+Keep the two-second `Welcome`/`TextTyping` introduction on layout mount.
+Render the Welcome surface in the initial server markup; typing and dismissal timers start after mount.
+Disable the decorative surface and its scrollbar suppression when scripting is disabled.
+It is decorative and inert, dismisses immediately on pointer/keyboard/focus interaction, and never locks scrolling or moves focus.
+Typing respects reduced motion and both components clean up their timers/listeners.
+The custom scrollbar belongs to `default.scss`, with a standard-color fallback and native forced-colors behavior.
+Hide scrollbar presentation while Welcome is visible without acquiring a scroll lock.
+Safe-area insets add to the normal header/main/menu gutters instead of consuming them.
+The footer uses symmetric horizontal safe-area clearance, distributes desktop controls across the available width, centers compact controls and reserves bottom clearance above the home indicator.
+Navigation structure and translation keys live in `app/data/navigation.ts`; `/wip` entries remain non-interactive.
+Keep `MenuLinks` shared between desktop disclosures and the mobile native dialog.
+`useSiteNavigation().closeNavigation()` closes navigation from links, language changes and route changes.
+Use `useOverlayScrollLock()` for an overlay lease rather than manipulating body classes or inline styles independently.
+Release the lease on dismissal/unmount; only the last release restores previous styles, scroll position and Lenis.
+Mark native scrollable overlays with `data-lenis-prevent`; stopped Lenis must not cancel their touch gestures.
+Menu links navigate immediately through normal NuxtLinks; route changes start the mobile closing animation over the destination.
+Only destination focus and viewport scrolling wait for `overlayScroll.whenUnlocked()`; never queue a route behind an exit animation.
+Keep menu button hit areas at 44px while compact visible border frames match the logo size.
+Do not reserve a root scrollbar gutter on pages without a scrollbar; the overlay lock temporarily preserves an existing scrollbar's space.
+
+Stylesheet ownership is explicit: `variables.scss` contains CSS-free Sass tokens, `default.scss` base/reset/focus/motion rules, `keyframes.scss` shared animation definitions, and `shared.scss` reusable classes.
+Nuxt loads the three CSS-emitting sheets once; Vite injects only tokens.
+Keep shell structure scoped in the layout and component appearance scoped beside its owner.
+Group Sass tokens by colors, shadows, fonts, spaces, layout, controls, borders/focus/corners, layers, motion and breakpoints.
+History restoration waits briefly for measured gallery content to reach the saved position and cancels that wait on user input, navigation or unmount.
 
 Use `<template>`, `<script setup lang="ts">`, then scoped SCSS for page and component SFCs.
 Prefer registered Nuxt auto-imports and explicit imports for shared types, data, utilities and library APIs.
@@ -228,7 +262,7 @@ The [.agents index](.agents/README.md) explains evidence levels and maps shared 
 | Accessibility maintenance | [accessibility.md](.agents/docs/accessibility.md)         | Source findings, focus, motion and manual audit coverage    |
 | SEO maintenance           | [SEO.md](.agents/docs/SEO.md)                             | Metadata ownership, origins, indexing and discovery         |
 
-The [style and layout review](STYLE_LAYOUT_REVIEW.md) remains a dated proposal.
+The [style and layout review](STYLE_LAYOUT_REVIEW.md) preserves the historical proposal and records the implemented migration.
 Distinguish source observations, intended behavior and actual verification when changing or reporting the implementation.
 
 ## Available Skills

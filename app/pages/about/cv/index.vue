@@ -96,9 +96,9 @@ useHead(usePageSeo('about_cv'))
 
       .pdf-iframe {
         width: 60vw;
-        height: calc(
-          var(--vh, 1vh) * 100 - #{$header-height-desktop} - #{$footer-height} -
-            40px
+        height: max(
+          20rem,
+          calc(100svh - var(--site-header-height, 88px) - 84px)
         );
         border-radius: 12px;
       }

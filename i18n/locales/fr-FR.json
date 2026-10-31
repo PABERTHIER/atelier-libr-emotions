@@ -98,6 +98,9 @@
     }
   },
   "components": {
+    "layout": {
+      "skip": "Aller au contenu"
+    },
     "header": {
       "logo_link_label": "Accueil"
     },
@@ -106,7 +109,10 @@
     },
     "menu": {
       "open": "Ouvrir le menu",
-      "close": "Fermer le menu"
+      "close": "Fermer le menu",
+      "navigation": "Navigation principale",
+      "close_section": "Fermer la rubrique {section}",
+      "planned": "Les rubriques sans lien sont en préparation."
     },
     "image_preview_modal": {
       "close_label": "Fermer",

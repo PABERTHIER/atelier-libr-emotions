@@ -98,6 +98,9 @@
     }
   },
   "components": {
+    "layout": {
+      "skip": "Skip to content"
+    },
     "header": {
       "logo_link_label": "Homepage"
     },
@@ -106,7 +109,10 @@
     },
     "menu": {
       "open": "Open the menu",
-      "close": "Close the menu"
+      "close": "Close the menu",
+      "navigation": "Main navigation",
+      "close_section": "Close {section} section",
+      "planned": "Categories without links are coming soon."
     },
     "image_preview_modal": {
       "close_label": "Close",

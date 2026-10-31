@@ -17,6 +17,7 @@
 import type { localesType } from '~/types/locales'
 
 const { locale, locales, t } = useI18n()
+const { closeNavigation } = useSiteNavigation()
 
 const switchLocalePath = useSwitchLocalePath()
 const site = useSiteConfig()
@@ -40,6 +41,8 @@ const changeLanguageLabel = computed(() =>
 )
 
 const setLanguagePreference = (code: localesType) => {
+  closeNavigation()
+
   if (code === locale.value) {
     return
   }

@@ -29,7 +29,7 @@ The catalogs do not imply that every listed guide or skill applies to every task
 
 A documented requirement is not evidence that the current site satisfies it.
 Source inspection does not establish browser behavior, accessible contrast, screen reader quality or deployed SEO output.
-The dated [style and layout review](../STYLE_LAYOUT_REVIEW.md) remains a proposal until its changes are implemented and checked.
+The dated [style and layout review](../STYLE_LAYOUT_REVIEW.md) preserves its historical findings and records the current shell migration separately.
 
 ## Reference guides
 
