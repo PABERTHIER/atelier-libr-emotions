@@ -11,17 +11,20 @@ Choose APIs and abstractions from the capabilities installed and used in this re
 
 ## Existing Building Blocks
 
-| Concern                    | Local implementation                                                          | Contract                                                          |
-| -------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| Page shell                 | [default.vue](../../../app/layouts/default.vue)                               | Owns `Welcome`, header, `<main id="page-container">` and footer   |
-| Page introduction          | [PageTitle.vue](../../../app/components/common/PageTitle.vue)                 | `title` and optional `subtitle`; renders the H1                   |
-| Gallery                    | [ImageGrid.vue](../../../app/components/common/ImageGrid.vue)                 | `ImageSource[]` and `Heights`; justified rows and image selection |
-| Artwork viewer             | [ImagePreviewModal.vue](../../../app/components/common/ImagePreviewModal.vue) | `image`, `visible` and `close`; zoom, fit and scroll restoration  |
-| Standalone optimized image | [Image.vue](../../../app/components/common/Image.vue)                         | Required `src` and `sizes`; optional `maxHeight`, `title`, `alt`  |
-| Adjacent pages             | [PageNavigation.vue](../../../app/components/common/PageNavigation.vue)       | Optional `previousPage` and `nextPage`; localizes each path       |
-| Responsive state           | [screen-size.ts](../../../app/composables/screen-size.ts)                     | `useScreenSize()` returns breakpoint refs with `ssrWidth: 1024`   |
-| Smooth scrolling           | [smooth-scroll.client.ts](../../../app/plugins/smooth-scroll.client.ts)       | Provides the existing `$lenis` instance                           |
-| Style tokens               | [variables.scss](../../../app/styles/variables.scss)                          | Colors, layers, dimensions and breakpoints injected through Vite  |
+| Concern                    | Local implementation                                                          | Contract                                                           |
+| -------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| Page shell                 | [default.vue](../../../app/layouts/default.vue)                               | Decorative Welcome, skip link, header, focusable main and footer   |
+| Page introduction          | [PageTitle.vue](../../../app/components/common/PageTitle.vue)                 | `title` and optional `subtitle`; renders the H1                    |
+| Gallery                    | [ImageGrid.vue](../../../app/components/common/ImageGrid.vue)                 | `ImageSource[]` and `Heights`; justified rows and image selection  |
+| Artwork viewer             | [ImagePreviewModal.vue](../../../app/components/common/ImagePreviewModal.vue) | `image`, `visible` and `close`; zoom, fit and scroll restoration   |
+| Standalone optimized image | [Image.vue](../../../app/components/common/Image.vue)                         | Required `src` and `sizes`; optional `maxHeight`, `title`, `alt`   |
+| Adjacent pages             | [PageNavigation.vue](../../../app/components/common/PageNavigation.vue)       | Optional `previousPage` and `nextPage`; localizes each path        |
+| Responsive state           | [screen-size.ts](../../../app/composables/screen-size.ts)                     | `useScreenSize()` returns breakpoint refs with `ssrWidth: 1024`    |
+| Smooth scrolling           | [smooth-scroll.client.ts](../../../app/plugins/smooth-scroll.client.ts)       | Provides the existing `$lenis` instance                            |
+| Style tokens               | [variables.scss](../../../app/styles/variables.scss)                          | Colors, layers, dimensions and breakpoints injected through Vite   |
+| Menu catalogue             | [navigation.ts](../../../app/data/navigation.ts)                              | Ordered translation keys, groups and unprefixed destinations       |
+| Navigation state           | [useSiteNavigation.ts](../../../app/composables/useSiteNavigation.ts)         | Close desktop/mobile navigation from any shared control            |
+| Overlay locking            | [useOverlayScrollLock.ts](../../../app/composables/useOverlayScrollLock.ts)   | Acquire/release an independent scroll lease with automatic cleanup |
 
 ## Components And Types
 
@@ -57,6 +60,16 @@ Remove added listeners, observers, timers and animation loops on unmount.
 Reuse `$lenis` for scroll integration rather than creating a second instance.
 Check client-only availability and coordinate overlays with native scrolling and scroll restoration.
 Respect reduced-motion preferences when changing animations or smooth scrolling.
+Use the shared overlay lease rather than setting body/root styles or restarting Lenis independently.
+Mark native-scroll overlay regions with `data-lenis-prevent` so stopped Lenis leaves their touch and wheel events alone.
+Route/history/anchor scrolling lives in `app/router.options.ts`; completed navigation focus lives in `navigation-focus.client.ts`.
+Keep the CSS-first `100svh` shell and measured header clearance; no viewport resize writer is needed.
+Preserve the two-second `Welcome`/`TextTyping` introduction without blocking interaction or announcing individual letters.
+Its timers/listeners must clean up, typing must respect reduced motion, and any pointer, key or focus interaction dismisses it immediately.
+Menu transitions must retain native modal focus containment and the scroll lease until the mobile exit completes.
+Menu links navigate immediately, with the closing animation running over the destination.
+Route focus and viewport scrolling await the shared overlay's release, not the route itself.
+Modified clicks preserve native behavior; selecting the current page closes the menu, while mode changes and unmount dismiss immediately.
 
 `ImageGrid` loads natural dimensions and computes browser rows after mount.
 Its width-change guard can skip updates when only translated image props change.
@@ -68,6 +81,8 @@ Keep fixes to shared grid behavior within the requested task and report any unre
 Read [design system](../../docs/design-system.md) when changing appearance, tokens or stylesheet ownership.
 Use [UX principles](../../docs/ux-principles.md) when changing page composition, responsive behavior or visitor journeys.
 Use injected tokens from `variables.scss` and shared keyframes without repeating their imports in component styles.
+Global resets, typography, focus and motion belong in `default.scss`; reusable classes belong in `shared.scss`.
+The config loads these CSS-emitting sheets once and injects only tokens.
 Sass built-ins such as `sass:color` still need their own `@use` when used.
 Keep page-specific layout with its page and shared behavior with its component.
 Use existing `$sm`, `$md`, `$lg` and `$xl` breakpoints, checking their actual values instead of copying an old token list.

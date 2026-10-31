@@ -6,20 +6,24 @@ Use [brand-context.md](brand-context.md) for identity and [ux-principles.md](ux-
 
 ## Styling ownership
 
-| Concern                                  | Current source                                    | Maintenance rule                                                |
-| ---------------------------------------- | ------------------------------------------------- | --------------------------------------------------------------- |
-| Sass tokens                              | [variables.scss](../../app/styles/variables.scss) | Reuse actual color, breakpoint, dimension and layer variables   |
-| Shared animations                        | [keyframes.scss](../../app/styles/keyframes.scss) | Preserve animation names used by existing components            |
-| Global anchor defaults                   | [default.scss](../../app/styles/default.scss)     | Loaded once through the Nuxt config's `css` array               |
-| Global typography, reset and scroll lock | [default.vue](../../app/layouts/default.vue)      | Global rules currently live alongside layout selectors          |
-| Sass injection                           | [nuxt.config.ts](../../nuxt.config.ts)            | Injects only variables; shared keyframes load through `css`     |
-| Page and component appearance            | Scoped SCSS beside each Vue component             | Keep local rules local and reuse components for shared behavior |
+| Concern                               | Current source                                                                   | Maintenance rule                                                   |
+| ------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| Sass tokens                           | [variables.scss](../../app/styles/variables.scss)                                | Reuse actual color, breakpoint, dimension and layer variables      |
+| Shared animations                     | [keyframes.scss](../../app/styles/keyframes.scss)                                | Preserve animation names used by existing components               |
+| Global defaults, typography and focus | [default.scss](../../app/styles/default.scss)                                    | Reset, base rules, custom scrollbar and reduced motion loaded once |
+| Reusable control classes              | [shared.scss](../../app/styles/shared.scss)                                      | Shared icon-button sizing and appearance                           |
+| Shell structure                       | [default.vue](../../app/layouts/default.vue)                                     | Scoped content-driven flex shell and focusable main                |
+| Header bypass                         | [Header.vue](../../app/components/layout/Header.vue)                             | Focus-visible skip link positioned over the logo inside the header |
+| Overlay scroll behavior               | [overlay-scroll-lock.client.ts](../../app/plugins/overlay-scroll-lock.client.ts) | Shared leases preserve prior styles, scroll position and Lenis     |
+| Sass injection                        | [nuxt.config.ts](../../nuxt.config.ts)                                           | Injects only variables; shared keyframes load through `css`        |
+| Page and component appearance         | Scoped SCSS beside each Vue component                                            | Keep local rules local and reuse components for shared behavior    |
 
 Use the stylesheets and ownership listed above; introduce another shared file only when demonstrated reuse justifies it.
 Sass built-ins such as `sass:color` still require their own import when used.
+The token sheet groups colors, shadows, fonts, spaces, layout, controls, borders/focus/corners, layers, motion and breakpoints without renaming existing tokens.
 
-Shared defaults and keyframes load once through the Nuxt config's `css` array.
-The existing [style and layout review](../../STYLE_LAYOUT_REVIEW.md) remains a dated proposal for broader global-style consolidation.
+Shared defaults, keyframes and reusable classes load once through the Nuxt config's `css` array.
+The [style and layout review](../../STYLE_LAYOUT_REVIEW.md) retains the historical findings and a migration-status section.
 Inspect all animation consumers and compare compiled output before changing injection or stylesheet ordering.
 
 ## Palette
@@ -47,7 +51,7 @@ Treat any additional palette as a proposal until it is part of the requested des
 
 ## Typography and hierarchy
 
-The default layout declares `Nunito`, `Inter`, `Manrope`, `Poppins`, `Sora`, Arial and sans-serif in that order.
+The `$body-font` token declares `Nunito`, `Inter`, `Manrope`, `Poppins`, `Sora`, Arial and sans-serif in that order; `default.scss` applies it.
 Nuxt Fonts is installed; inspect its generated CSS and the active family declarations when checking font delivery.
 This source configuration does not prove which font resolves in each browser or that all requests are self-hosted.
 Inspect computed styles and network requests before adding a family, removing a request or documenting a font optimization as complete.
@@ -75,30 +79,74 @@ The gallery uses justified rows with typical target heights of `120`, `160`, `22
 Those heights describe layout, not required optimized image widths.
 Use [the artwork-assets skill](../skills/artwork-assets/SKILL.md) for original files and IPX delivery.
 
-The code uses component-local radii and spacing rather than a complete shared spacing/radius scale.
+Pages retain component-local radii and spacing; the shared shell uses a small spacing/control token set.
 Inspect the nearest component before choosing a new value and extract a shared token only when actual reuse justifies it.
 Avoid presenting a proposed token name as an implemented API.
 
 ## Responsive structure and layers
 
-| Token group              | Current values                                                         | Constraint                                                       |
-| ------------------------ | ---------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| Breakpoints              | `$xs: 320px`, `$sm: 640px`, `$md: 768px`, `$lg: 1024px`, `$xl: 1280px` | Reuse the source values and test between them                    |
-| Header/footer dimensions | Desktop header `88px`, mobile header `66px`, footer `44px`             | Existing height assumptions need testing at text enlargement     |
-| Layers                   | Welcome `9999`, modal `100`, menu `50`, header/footer `30`             | Inspect stacking contexts before changing one layer in isolation |
+| Token group        | Current values                                                              | Constraint                                                               |
+| ------------------ | --------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| Breakpoints        | `$xs: 320px`, `$sm: 640px`, `$md: 768px`, `$lg: 1024px`, `$xl: 1280px`      | Reuse the source values and test between them                            |
+| Shell dimensions   | Gutter `20px`, desktop bar minimum `68px`, footer minimum `44px`            | Content may grow; no fixed shell-height subtraction                      |
+| Controls and focus | Target `44px`, outline `3px`, offset `3px`                                  | Focus uses dark blue on light surfaces and light blue in the mobile menu |
+| Layers             | Header `30`, desktop menu `50` within header, viewer `100`, skip link `200` | Native mobile dialog uses the browser top layer                          |
 
-The layout and CV page both consume the JavaScript-maintained `--vh` custom property.
-Do not replace one consumer or remove its writer without checking the others.
+The layout uses `min-height: 100svh` with a growing main and naturally sized header/footer.
+The CV iframe uses a bounded `svh` height; there is no JavaScript `--vh` writer.
+The header retains its 20px top gutter and measures `--site-header-height` with a cleaned-up ResizeObserver.
+This measurement clears navigation destinations and bounds desktop panels; it does not calculate the shell height.
+At viewport heights of 480px or less the header is non-sticky, leaving more room for content.
+The footer remains the white language/copyright row, wrapping at enlarged text.
+Desktop distributes the two controls with `space-between` inside the safe-area gutters instead of clustering them at the center.
+Compact screens retain centered controls with a 24px gap and wrap naturally when needed.
+Header/main/menu safe-area insets add to their normal spacing; footer side padding uses the larger horizontal inset on both sides to remain centered.
+Footer bottom padding adds the home-indicator inset rather than replacing the normal breathing room.
+Desktop menu panels use a responsive grid, independent vertical scrolling and explicit close controls.
+Their close header is outside the scrolling content, so focused links cannot slip underneath it.
+The mobile native dialog separates its persistent close header from scrollable accordion content.
+The dialog is also used at viewport heights up to 400px, even at desktop widths.
+Menu mode follows the actual CSS-visible toggle through ResizeObserver; JavaScript does not duplicate breakpoint values.
+Do not add a page-level overflow mask to conceal a local sizing problem.
 Keep mobile browser toolbars, safe areas and short landscape viewports in the acceptance pass.
 Use [accessibility.md](accessibility.md) for focus, contrast and reduced-motion acceptance.
 
 ## Motion and interaction
 
 Use motion to clarify state or gently support the work; it must not delay essential content or actions.
-The current welcome overlay, floating home artwork, timed image changes and Lenis scrolling require separate reduced-motion checks.
-Do not describe reduced-motion support as implemented solely because this guide requires it for future changes.
+`Welcome` and `TextTyping` preserve the two-second layout-mount introduction and its soft fade.
+The decorative surface is inert and hidden from assistive technology; pointer, keyboard and focus interaction dismiss it immediately without consuming the action.
+It never takes focus or acquires a scroll lock.
+Its surface is present in the server markup so refresh starts with Welcome, not a flash of the loading page.
+Typing and the two-second dismissal timer begin after mount; `scripting: none` hides the decoration and leaves normal scrollbar presentation available without JavaScript.
+The standalone typing component exposes the full text once to assistive technology while visually revealing characters; reduced motion shows the complete string immediately.
+Welcome's logo and text share one flex row, with text allowed to wrap when enlarged rather than clipping.
+Scrollbar presentation is hidden only while the welcome surface exists; document scrolling is not locked.
+Both components clean up timers and listeners on unmount.
+Desktop menu panels fade/slide over 0.2s; the mobile surface slides horizontally over 0.3s.
+The mobile native dialog retains its scroll lease and focus containment until the leave transition finishes.
+Normal menu-link activation navigates immediately; the route change starts the closing animation over the destination.
+The shared overlay release promise coordinates destination focus and scrolling so neither runs against a still-modal or scroll-locked page.
+Modified clicks retain native behavior, current-page links dismiss the menu, and mode changes/unmount close immediately.
+The slide uses an opaque menu surface over a transparent native backdrop.
+Menu border frames match the logo at 25px up to 640px and 30px above that width; compact glyphs are 18px/20px.
+Desktop close controls use a 30px border frame and 20px glyph; link arrows remain 16px.
+The frame and hover treatment are drawn inside the independently usable 44px touch target.
+Global CSS reduces animation/transition duration and iteration count; Lenis and route scrolling check the motion preference.
+The unchanged home artwork rotation is separate page behavior and still needs its own pause/stop review.
 Preserve the viewer's zoom geometry and scroll restoration when changing transitions.
 Keep static presentation in SCSS and allow dynamic styles for measured grid and zoom geometry.
 
 Verify affected pages in both locales, at mobile and desktop widths, with keyboard, touch, enlarged text and reduced motion.
 Use the layout review for scoped structural improvements and record what was actually tested.
+
+## Scrollbar presentation
+
+The global defaults preserve the blue/red gradient thumb and rounded light track.
+The thumb has a dark boundary and 7px width.
+Browsers without WebKit scrollbar selectors receive standard scrollbar colors.
+Forced-colors mode restores native scrollbar presentation.
+The root uses the native automatic gutter, so no blank strip is reserved when a page does not scroll.
+Before an overlay hides an existing scrollbar, the shared lock temporarily reserves that actual gutter to prevent horizontal shifting; the last release restores the previous style.
+The lock also preserves the document's minimum height while fixing the body, so the actual scroll offset remains available to router history.
+This temporary document-height preservation is removed with the last lease; it is not a viewport resize writer or part of the resting layout.

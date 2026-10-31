@@ -12,7 +12,7 @@ Follow its linked i18n, SEO and artwork guidance for those parts of the task.
 Resolve the actual route, picture namespace and public directory using the [artwork naming map](../../.agents/skills/i18n/references/artwork-naming.md).
 Verify supplied filenames and curated order, including grouped collections, before generating image entries.
 Keep translated images and previous/next navigation reactive, with unprefixed paths for `PageNavigation`.
-Update only the matching menu slot and relevant neighboring pages; unrelated `/wip` entries remain outside the task.
+Update only the matching menu slot in `app/data/navigation.ts` and relevant neighboring pages; unrelated `/wip` entries remain outside the task.
 
 Preserve intentional differences in existing pages unless the request includes converting them to a full gallery.
 The standalone oil artwork page is one such difference.

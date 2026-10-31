@@ -6,6 +6,7 @@
         class="modal-backdrop"
         role="dialog"
         aria-modal="true"
+        data-lenis-prevent
         :aria-label="t('components.image_preview_modal.aria_label')"
         @click.self="close"
         @keydown.escape="close">
@@ -118,6 +119,7 @@ const emit = defineEmits<{
 }>()
 
 const { t } = useI18n()
+const { lockScroll, unlockScroll } = useOverlayScrollLock()
 
 const modalContentRef = ref<HTMLElement | null>(null)
 const closeButtonRef = ref<HTMLElement | null>(null)
@@ -132,8 +134,6 @@ const containerSize = ref({ width: 0, height: 0 })
 const imageError = ref(false)
 
 let triggerElement: HTMLElement | null = null
-let scrollLockActive = false
-let bodyScrollY = 0
 // Stores the relative click position so the zoom watch can centre on it
 let pendingClickPosition: { relX: number; relY: number } | null = null
 
@@ -399,49 +399,13 @@ function trapFocus(event: KeyboardEvent) {
   }
 }
 
-// position:fixed on body is the only approach that reliably stops background
-// scroll on both desktop AND iOS Safari (which ignores overflow:hidden on html/body).
-// The current scrollY is saved so the page can be restored to its exact position
-// when the modal closes.
-// NOTE: position:fixed does NOT break overflow:auto scroll containers inside
-//       position:fixed modals on desktop. On iOS, -webkit-overflow-scrolling:touch
-//       on those containers (see CSS) restores momentum scroll.
-function lockBodyScroll() {
-  scrollLockActive = true
-  bodyScrollY = window.scrollY
-  document.documentElement.style.overflow = 'hidden'
-  document.body.classList.add('no-scroll')
-  document.body.style.position = 'fixed'
-  document.body.style.top = `-${bodyScrollY}px`
-  document.body.style.width = '100%'
-}
-
-function unlockBodyScroll() {
-  if (!scrollLockActive) {
-    return
-  }
-
-  scrollLockActive = false
-  document.documentElement.style.overflow = ''
-  document.body.classList.remove('no-scroll')
-  document.body.style.position = ''
-  document.body.style.top = ''
-  document.body.style.width = ''
-
-  const htmlElement = document.documentElement
-  const previousScrollBehavior = htmlElement.style.scrollBehavior
-  htmlElement.style.scrollBehavior = 'auto'
-  window.scrollTo(0, bodyScrollY)
-  htmlElement.style.scrollBehavior = previousScrollBehavior
-}
-
 watch(
   () => props.visible,
   isVisible => {
     if (isVisible) {
       triggerElement = document.activeElement as HTMLElement
       document.addEventListener('keydown', onKeydown)
-      lockBodyScroll()
+      lockScroll()
 
       sliderRaw.value = 0
       naturalWidth.value = 0
@@ -456,7 +420,7 @@ watch(
       })
     } else {
       document.removeEventListener('keydown', onKeydown)
-      unlockBodyScroll()
+      unlockScroll()
 
       if (triggerElement) {
         triggerElement.focus()
@@ -468,7 +432,7 @@ watch(
 
 onBeforeUnmount(() => {
   document.removeEventListener('keydown', onKeydown)
-  unlockBodyScroll()
+  unlockScroll()
 })
 </script>
 

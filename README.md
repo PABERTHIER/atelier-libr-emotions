@@ -26,6 +26,18 @@ The root `/` uses configured language detection; verify the generated/deployed r
 The menu groups collections by domain, technique and category, with planned categories remaining disabled.
 The home gallery action opens acrylic abstracts rather than a separate gallery-overview page.
 
+The shared shell includes a skip link and a focusable main landmark.
+Desktop navigation uses click/keyboard disclosures; mobile navigation keeps grouped accordions in a native modal dialog with focus containment and Escape dismissal.
+Short landscape screens use the same dialog to keep controls reachable.
+The header keeps its top gutter; the footer distributes desktop controls and retains centered compact wrapping.
+The introduction dismisses on interaction; typing and menu transitions honor reduced motion.
+Header/menu gutters include safe-area insets, and the compact footer centers its contents above the home indicator.
+Mobile menu links navigate immediately, with the menu closing over the destination; focus and scrolling are coordinated after the overlay releases.
+Welcome's one-row introduction hides scrollbar presentation without locking scrolling, and resting pages reserve no empty scrollbar gutter.
+Welcome is visible in the first server-rendered frame, with typing starting after mount and a scripting-disabled CSS fallback.
+CSS and route scrolling respect reduced motion.
+These are implementation features, not a full WCAG 2.2 AA conformance claim; see the [accessibility maintenance guide](.agents/docs/accessibility.md) for coverage and remaining page-level work.
+
 ## Develop Locally
 
 Use Node.js 24 and Corepack with the Yarn version pinned in [package.json](package.json).
@@ -102,24 +114,33 @@ Consult `package.json` for versions; this table groups its current direct entrie
 
 ## Project Map
 
-| Location                                                                                                                           | Responsibility                                                     |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| [app/pages](app/pages/)                                                                                                            | Localized home, artwork, artist, CV, contact and placeholder pages |
-| [app/components/common](app/components/common/)                                                                                    | Gallery, viewer, image wrapper, headings and page navigation       |
-| [app/components/layout](app/components/layout/), [default layout](app/layouts/default.vue)                                         | Header, menu, footer and shared main landmark                      |
-| [app/composables](app/composables/), [app/types](app/types/)                                                                       | Page SEO, responsive state and shared TypeScript contracts         |
-| [app/data](app/data/)                                                                                                              | Site identity, page SEO registry and measured image dimensions     |
-| [app/styles](app/styles/)                                                                                                          | Tokens, existing base rules and shared keyframes                   |
-| [smooth-scroll.client.ts](app/plugins/smooth-scroll.client.ts)                                                                     | Lenis integration                                                  |
-| [generateImageRoutes.ts](app/utils/generateImageRoutes.ts)                                                                         | Explicit IPX transform routes used by prerendering                 |
-| [i18n/locales](i18n/locales/)                                                                                                      | French and English content                                         |
-| [public](public/)                                                                                                                  | Original artwork, icons, CV and other published assets             |
-| [nuxt.config.ts](nuxt.config.ts), [app.vue](app/app.vue)                                                                           | Modules, routes, origins, root metadata and application setup      |
-| [package.json](package.json), [.yarnrc.yml](.yarnrc.yml)                                                                           | Commands, direct dependencies and package manager                  |
-| [tsconfig.json](tsconfig.json), [eslint.config.mjs](eslint.config.mjs), [.prettierrc](.prettierrc), [.editorconfig](.editorconfig) | Type, lint, formatting and file conventions                        |
-| [CI workflow](.github/workflows/ci.yml)                                                                                            | Immutable dependency install and lint                              |
+| Location                                                                                                                           | Responsibility                                                            |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| [app/pages](app/pages/)                                                                                                            | Localized home, artwork, artist, CV, contact and placeholder pages        |
+| [app/components/common](app/components/common/)                                                                                    | Gallery, viewer, image wrapper, headings and page navigation              |
+| [app/components/layout](app/components/layout/), [default layout](app/layouts/default.vue)                                         | Header, menu, footer and shared main landmark                             |
+| [app/composables](app/composables/), [app/types](app/types/)                                                                       | Page SEO, responsive state and shared TypeScript contracts                |
+| [app/data](app/data/)                                                                                                              | Site identity, page SEO registry and measured image dimensions            |
+| [app/styles](app/styles/)                                                                                                          | CSS-free tokens, global base rules, shared keyframes and reusable classes |
+| [smooth-scroll.client.ts](app/plugins/smooth-scroll.client.ts)                                                                     | Lenis integration                                                         |
+| [navigation.ts](app/data/navigation.ts), [useSiteNavigation.ts](app/composables/useSiteNavigation.ts)                              | Ordered menu catalogue and shared close state                             |
+| [router.options.ts](app/router.options.ts), [navigation-focus.client.ts](app/plugins/navigation-focus.client.ts)                   | History/anchor scrolling and destination focus                            |
+| [overlay-scroll-lock.client.ts](app/plugins/overlay-scroll-lock.client.ts)                                                         | Shared overlay leases, scroll restoration and Lenis coordination          |
+| [generateImageRoutes.ts](app/utils/generateImageRoutes.ts)                                                                         | Explicit IPX transform routes used by prerendering                        |
+| [i18n/locales](i18n/locales/)                                                                                                      | French and English content                                                |
+| [public](public/)                                                                                                                  | Original artwork, icons, CV and other published assets                    |
+| [nuxt.config.ts](nuxt.config.ts), [app.vue](app/app.vue)                                                                           | Modules, routes, origins, root metadata and application setup             |
+| [package.json](package.json), [.yarnrc.yml](.yarnrc.yml)                                                                           | Commands, direct dependencies and package manager                         |
+| [tsconfig.json](tsconfig.json), [eslint.config.mjs](eslint.config.mjs), [.prettierrc](.prettierrc), [.editorconfig](.editorconfig) | Type, lint, formatting and file conventions                               |
+| [CI workflow](.github/workflows/ci.yml)                                                                                            | Immutable dependency install and lint                                     |
 
 The default layout owns the main landmark, header and footer.
+It uses a content-driven flex shell with `100svh`, not fixed header/footer subtraction or a JavaScript `--vh` writer.
+The header measures its rendered height for anchor clearance and menu bounds, and stops sticking on short landscape screens.
+`default.scss` owns resets, typography, focus and reduced motion; `shared.scss` owns reusable controls.
+Both load once alongside `keyframes.scss`; only `variables.scss` is injected into SCSS.
+Menu destinations and translation keys belong in `app/data/navigation.ts`, not duplicated desktop/mobile templates.
+The mobile menu and artwork viewer acquire independent leases through `useOverlayScrollLock()`; closing one cannot unlock another.
 Most collections use `PageTitle`, `ImageGrid` and `PageNavigation`; the standalone oil artwork page has a different presentation.
 Use the shared skills before adding or restructuring a collection.
 

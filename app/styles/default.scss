@@ -1,4 +1,130 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: $body-font;
+  font-size: 16px;
+  word-spacing: 1px;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: $primary-text-color;
+  background-color: $background-color;
+  scroll-behavior: smooth;
+  scrollbar-color: $dark-red-color #f1f1f1;
+  scroll-padding-top: calc(
+    var(--site-header-height, #{$header-height-desktop}) + #{$space-16}
+  );
+
+  &.lenis {
+    scroll-behavior: auto;
+  }
+}
+
+@media (scripting: enabled) {
+  html:has(.welcome):not(:has(:focus-visible)) {
+    scrollbar-width: none;
+  }
+
+  html:has(.welcome):not(:has(:focus-visible))::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+body:has(:focus-visible) .welcome {
+  visibility: hidden;
+}
+
+@supports selector(::-webkit-scrollbar) {
+  html {
+    scrollbar-color: auto;
+  }
+
+  ::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+
+  ::-webkit-scrollbar-track {
+    border: 1px solid $light-grey-color-2;
+    border-radius: 10px;
+    background: #f1f1f1;
+    box-shadow: inset 0 0 6px rgba($white-color, 0.3);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: 1px solid $dark-grey-blue-color;
+    border-radius: 10px;
+    background: linear-gradient(45deg, $grey-blue-color, $dark-red-color);
+  }
+}
+
+body {
+  margin: 0;
+  background-color: $background-color;
+}
+
+button,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
 a {
   text-decoration: none;
   color: inherit;
+}
+
+:focus-visible {
+  outline: $focus-width solid var(--focus-color, #{$focus-color});
+  outline-offset: $focus-offset;
+}
+
+main:focus-visible {
+  outline-offset: -$focus-width;
+}
+
+@media (forced-colors: active) {
+  * {
+    scrollbar-color: auto;
+  }
+
+  ::-webkit-scrollbar {
+    width: revert;
+    height: revert;
+  }
+
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-thumb {
+    border: revert;
+    border-radius: revert;
+    background: revert;
+    box-shadow: revert;
+  }
+}
+
+@media (max-height: 480px) {
+  html {
+    scroll-padding-top: $space-16;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
