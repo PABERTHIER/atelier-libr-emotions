@@ -67,6 +67,9 @@ Inspect computed styles and network requests before adding a family, removing a 
 Do not introduce a fixed desktop type scale as if it were an existing token contract.
 Check narrow screens, longer English strings and enlarged text before changing sizes or fixed heights.
 
+Desktop header navigation buttons and the Contact link use weight `700`, retaining inherited text sizing below `$xl` (1280px) and increasing to `1.125rem` from that breakpoint.
+Opened-panel links and mobile navigation retain their own typography.
+
 ## Artwork and surfaces
 
 Preserve original aspect ratios and show complete work in galleries and the viewer.

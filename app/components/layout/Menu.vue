@@ -362,7 +362,7 @@ onBeforeUnmount(() => {
     background: transparent;
     color: $primary-text-color;
     font: inherit;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.5;
     text-align: center;
 
@@ -620,6 +620,13 @@ onBeforeUnmount(() => {
   .mobile-menu-enter-active,
   .mobile-menu-leave-active {
     transition: none;
+  }
+}
+
+@media (min-width: $xl) {
+  .desktop-navigation__trigger,
+  .desktop-navigation__contact {
+    font-size: 1.125rem;
   }
 }
 
