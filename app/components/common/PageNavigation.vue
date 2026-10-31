@@ -1,17 +1,20 @@
 <template>
-  <div class="page-navigation">
+  <nav
+    v-if="previousPage || nextPage"
+    class="page-navigation"
+    :aria-label="t('components.page_navigation.label')">
     <NuxtLink
       v-if="previousPage"
       :to="localePath(previousPage.path)"
       class="nav-link prev-link">
-      <Icon name="heroicons:arrow-left" size="20px" />
+      <Icon name="heroicons:arrow-left" aria-hidden="true" />
       <div class="nav-content">
         <span class="nav-title">{{ previousPage.title }}</span>
         <span class="nav-description">{{ previousPage.description }}</span>
       </div>
     </NuxtLink>
 
-    <div v-else class="nav-placeholder" />
+    <div v-else class="nav-placeholder" aria-hidden="true" />
 
     <NuxtLink
       v-if="nextPage"
@@ -21,29 +24,19 @@
         <span class="nav-title">{{ nextPage.title }}</span>
         <span class="nav-description">{{ nextPage.description }}</span>
       </div>
-      <Icon name="heroicons:arrow-right" size="20px" />
+      <Icon name="heroicons:arrow-right" aria-hidden="true" />
     </NuxtLink>
 
-    <div v-else class="nav-placeholder" />
-  </div>
+    <div v-else class="nav-placeholder" aria-hidden="true" />
+  </nav>
 </template>
 
 <script setup lang="ts">
 import type { PageNavigation } from '~/types/page'
 
-defineProps({
-  previousPage: {
-    type: Object as PropType<PageNavigation>,
-    required: false,
-    default: undefined,
-  },
-  nextPage: {
-    type: Object as PropType<PageNavigation>,
-    required: false,
-    default: undefined,
-  },
-})
+defineProps<{ previousPage?: PageNavigation; nextPage?: PageNavigation }>()
 
+const { t } = useI18n()
 const localePath = useLocalePath()
 </script>
 
@@ -51,26 +44,28 @@ const localePath = useLocalePath()
 .page-navigation {
   display: flex;
   justify-content: space-between;
-  gap: 20px;
-  margin: 60px auto 0;
+  gap: $space-20;
+  margin: $space-60 auto 0;
 
   .nav-link {
-    max-width: 400px;
+    min-width: 0;
+    min-height: $control-size;
+    max-width: min($page-navigation-link-width, 100%);
     position: relative;
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 16px 24px;
+    gap: $space-12;
+    padding: $space-16 $space-24;
     background-color: $white-color;
-    border-radius: 12px;
+    border-radius: $radius-panel;
     text-decoration: none;
-    box-shadow: 0 4px 16px $box-shadow-color;
+    box-shadow: 0 $space-4 $space-16 $box-shadow-color;
 
     &::before {
       position: absolute;
       inset: 0;
-      padding: 2px;
-      border-radius: 12px;
+      padding: $space-2;
+      border-radius: $radius-panel;
       background: linear-gradient(
         90deg,
         $light-grey-color-2 0%,
@@ -94,26 +89,30 @@ const localePath = useLocalePath()
       -webkit-mask-composite: xor;
       mask-composite: exclude;
       content: '';
+      pointer-events: none;
     }
 
-    &:hover::before {
+    &:hover::before,
+    &:focus-visible::before {
       background-position: -50% 0;
       opacity: 1;
     }
 
     .nav-content {
+      min-width: 0;
+      overflow-wrap: anywhere;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: $space-4;
 
       .nav-title {
-        font-size: 15px;
+        font-size: 0.9375rem;
         color: $grey-color-2;
         font-weight: 500;
       }
 
       .nav-description {
-        font-size: 14px;
+        font-size: 0.875rem;
         color: $primary-text-color;
       }
     }
@@ -131,13 +130,15 @@ const localePath = useLocalePath()
     }
 
     :deep(.iconify) {
-      color: $gold-color;
+      color: $navigation-accent-color;
       flex-shrink: 0;
+      width: $space-20;
+      height: $space-20;
     }
   }
 
   .nav-placeholder {
-    width: 1px;
+    width: $border-width;
   }
 }
 
@@ -145,8 +146,8 @@ const localePath = useLocalePath()
   .page-navigation {
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
-    gap: 12px;
+    margin-top: $space-50;
+    gap: $space-12;
 
     .nav-link {
       width: 100%;
@@ -167,22 +168,28 @@ const localePath = useLocalePath()
 
 @media (max-width: $sm) {
   .page-navigation {
-    margin-top: 40px;
+    margin-top: $space-40;
 
     .nav-link {
-      padding: 14px 18px;
-      gap: 10px;
+      padding: $space-14 $space-18;
+      gap: $space-10;
 
       .nav-content {
         .nav-title {
-          font-size: 14px;
+          font-size: 0.875rem;
         }
 
         .nav-description {
-          font-size: 13px;
+          font-size: 0.8125rem;
         }
       }
     }
+  }
+}
+
+@media (forced-colors: active) {
+  .page-navigation .nav-link {
+    border: $border-width solid LinkText;
   }
 }
 </style>

@@ -36,6 +36,9 @@ Mobile menu links navigate immediately, with the menu closing over the destinati
 Welcome's one-row introduction hides scrollbar presentation without locking scrolling, and resting pages reserve no empty scrollbar gutter.
 Welcome is visible in the first server-rendered frame, with typing starting after mount and a scripting-disabled CSS fallback.
 CSS and route scrolling respect reduced motion.
+Shared components retain the site's design with typed contracts, native controls, readable accent text and responsive wrapping.
+Artwork opens from keyboard-operable tiles into a native modal viewer with pinch zoom, drag/keyboard/button panning and same-group swipe/previous/next navigation.
+The viewer retains fit/close/zoom, adds a blurred backdrop, exposes loading/error/retry states and restores focus and scrolling.
 These are implementation features, not a full WCAG 2.2 AA conformance claim; see the [accessibility maintenance guide](.agents/docs/accessibility.md) for coverage and remaining page-level work.
 
 ## Develop Locally
@@ -114,25 +117,26 @@ Consult `package.json` for versions; this table groups its current direct entrie
 
 ## Project Map
 
-| Location                                                                                                                           | Responsibility                                                            |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| [app/pages](app/pages/)                                                                                                            | Localized home, artwork, artist, CV, contact and placeholder pages        |
-| [app/components/common](app/components/common/)                                                                                    | Gallery, viewer, image wrapper, headings and page navigation              |
-| [app/components/layout](app/components/layout/), [default layout](app/layouts/default.vue)                                         | Header, menu, footer and shared main landmark                             |
-| [app/composables](app/composables/), [app/types](app/types/)                                                                       | Page SEO, responsive state and shared TypeScript contracts                |
-| [app/data](app/data/)                                                                                                              | Site identity, page SEO registry and measured image dimensions            |
-| [app/styles](app/styles/)                                                                                                          | CSS-free tokens, global base rules, shared keyframes and reusable classes |
-| [smooth-scroll.client.ts](app/plugins/smooth-scroll.client.ts)                                                                     | Lenis integration                                                         |
-| [navigation.ts](app/data/navigation.ts), [useSiteNavigation.ts](app/composables/useSiteNavigation.ts)                              | Ordered menu catalogue and shared close state                             |
-| [router.options.ts](app/router.options.ts), [navigation-focus.client.ts](app/plugins/navigation-focus.client.ts)                   | History/anchor scrolling and destination focus                            |
-| [overlay-scroll-lock.client.ts](app/plugins/overlay-scroll-lock.client.ts)                                                         | Shared overlay leases, scroll restoration and Lenis coordination          |
-| [generateImageRoutes.ts](app/utils/generateImageRoutes.ts)                                                                         | Explicit IPX transform routes used by prerendering                        |
-| [i18n/locales](i18n/locales/)                                                                                                      | French and English content                                                |
-| [public](public/)                                                                                                                  | Original artwork, icons, CV and other published assets                    |
-| [nuxt.config.ts](nuxt.config.ts), [app.vue](app/app.vue)                                                                           | Modules, routes, origins, root metadata and application setup             |
-| [package.json](package.json), [.yarnrc.yml](.yarnrc.yml)                                                                           | Commands, direct dependencies and package manager                         |
-| [tsconfig.json](tsconfig.json), [eslint.config.mjs](eslint.config.mjs), [.prettierrc](.prettierrc), [.editorconfig](.editorconfig) | Type, lint, formatting and file conventions                               |
-| [CI workflow](.github/workflows/ci.yml)                                                                                            | Immutable dependency install and lint                                     |
+| Location                                                                                                                           | Responsibility                                                                                    |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| [app/pages](app/pages/)                                                                                                            | Localized home, artwork, artist, CV, contact and placeholder pages                                |
+| [app/components/common](app/components/common/)                                                                                    | Gallery, viewer, image wrapper, headings and page navigation                                      |
+| [app/components/layout](app/components/layout/), [default layout](app/layouts/default.vue)                                         | Header, menu, footer and shared main landmark                                                     |
+| [app/composables](app/composables/), [app/types](app/types/)                                                                       | Page SEO, responsive state and shared TypeScript contracts                                        |
+| [app/data](app/data/)                                                                                                              | Site identity, page SEO registry and measured image dimensions                                    |
+| [app/styles](app/styles/)                                                                                                          | CSS-free tokens, global base rules, shared keyframes and reusable classes                         |
+| [smooth-scroll.client.ts](app/plugins/smooth-scroll.client.ts)                                                                     | Lenis integration                                                                                 |
+| [navigation.ts](app/data/navigation.ts), [useSiteNavigation.ts](app/composables/useSiteNavigation.ts)                              | Ordered menu catalogue and shared close state                                                     |
+| [router.options.ts](app/router.options.ts), [navigation-focus.client.ts](app/plugins/navigation-focus.client.ts)                   | History/anchor scrolling and destination focus                                                    |
+| [overlay-scroll-lock.client.ts](app/plugins/overlay-scroll-lock.client.ts)                                                         | Shared overlay leases, scroll restoration and Lenis coordination                                  |
+| [useImageViewerGestures.ts](app/composables/useImageViewerGestures.ts)                                                             | Bounded pinch/swipe/pan and click-to-center; the grid passes the viewer's ordered images directly |
+| [generateImageRoutes.ts](app/utils/generateImageRoutes.ts)                                                                         | Explicit IPX transform routes used by prerendering                                                |
+| [i18n/locales](i18n/locales/)                                                                                                      | French and English content                                                                        |
+| [public](public/)                                                                                                                  | Original artwork, icons, CV and other published assets                                            |
+| [nuxt.config.ts](nuxt.config.ts), [app.vue](app/app.vue)                                                                           | Modules, routes, origins, root metadata and application setup                                     |
+| [package.json](package.json), [.yarnrc.yml](.yarnrc.yml)                                                                           | Commands, direct dependencies and package manager                                                 |
+| [tsconfig.json](tsconfig.json), [eslint.config.mjs](eslint.config.mjs), [.prettierrc](.prettierrc), [.editorconfig](.editorconfig) | Type, lint, formatting and file conventions                                                       |
+| [CI workflow](.github/workflows/ci.yml)                                                                                            | Immutable dependency install and lint                                                             |
 
 The default layout owns the main landmark, header and footer.
 It uses a content-driven flex shell with `100svh`, not fixed header/footer subtraction or a JavaScript `--vh` writer.

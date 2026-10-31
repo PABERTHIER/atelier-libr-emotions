@@ -164,6 +164,13 @@ Keep `MenuLinks` shared between desktop disclosures and the mobile native dialog
 Use `useOverlayScrollLock()` for an overlay lease rather than manipulating body classes or inline styles independently.
 Release the lease on dismissal/unmount; only the last release restores previous styles, scroll position and Lenis.
 Mark native scrollable overlays with `data-lenis-prevent`; stopped Lenis must not cancel their touch gestures.
+The artwork viewer uses a native dialog and `useImageViewerGestures()` for bounded zoom/pan/swipe geometry.
+The grid passes its ordered `images` to the viewer and handles `select`; no per-app tile registry is needed.
+Preserve curated order, clean up captures/observers/timers, keep native range arrows and provide click-to-center as a single-pointer alternative to pan dragging.
+Use current-origin public paths for gallery measurement and display; configured SEO/I18n origins must not prefix native asset requests.
+Refresh translated row metadata without changing the established aspect/height/gap/stabilization formulas.
+Language links delegate preference storage to Nuxt I18n; keep compact visual frames separate from transparent 44px hit areas.
+TextBlock/TextSection retain H3 defaults and accept an explicit `headingLevel`; page authors remain responsible for the surrounding outline.
 Menu links navigate immediately through normal NuxtLinks; route changes start the mobile closing animation over the destination.
 Only destination focus and viewport scrolling wait for `overlayScroll.whenUnlocked()`; never queue a route behind an exit animation.
 Keep menu button hit areas at 44px while compact visible border frames match the logo size.

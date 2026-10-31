@@ -1,770 +1,909 @@
 <template>
   <Teleport to="body">
-    <Transition name="modal-fade">
-      <div
+    <Transition
+      name="viewer-fade"
+      :duration="fadeDuration"
+      @after-leave="finishClose">
+      <dialog
         v-if="visible"
-        class="modal-backdrop"
-        role="dialog"
-        aria-modal="true"
+        ref="dialogRef"
+        class="image-preview-modal"
         data-lenis-prevent
-        :aria-label="t('components.image_preview_modal.aria_label')"
-        @click.self="close"
-        @keydown.escape="close">
-        <div ref="modalContentRef" class="modal-content" tabindex="-1">
-          <div class="modal-header">
-            <h2 class="modal-title">{{ displayTitle }}</h2>
+        :aria-labelledby="titleId"
+        @cancel.prevent="requestClose"
+        @pointerdown="onBackdropPointerDown"
+        @click="onBackdropClick"
+        @close="requestClose"
+        @keydown="onDialogKeydown">
+        <div class="image-preview-modal__backdrop" aria-hidden="true" />
+        <div
+          class="image-preview-modal__panel"
+          :style="{ '--viewer-header-height': `${headerHeight}px` }">
+          <header ref="headerRef" class="image-preview-modal__header">
+            <h2 :id="titleId" class="image-preview-modal__title">
+              {{ displayTitle }}
+            </h2>
             <button
               ref="closeButtonRef"
               type="button"
-              class="close-button"
+              class="image-preview-modal__button image-preview-modal__close"
               :aria-label="t('components.image_preview_modal.close_label')"
-              :title="t('components.image_preview_modal.close_label')"
-              @click="close">
-              <span class="close-icon" aria-hidden="true">&times;</span>
+              @click="requestClose">
+              <span aria-hidden="true">&times;</span>
             </button>
-          </div>
+          </header>
 
-          <div class="modal-body">
-            <div class="image-panel">
+          <div
+            ref="imageContainerRef"
+            class="image-preview-modal__stage"
+            :class="{ 'image-preview-modal__stage--zoomed': zoom > 1 }"
+            tabindex="0"
+            role="region"
+            :aria-label="t('components.image_preview_modal.image_region')"
+            :aria-describedby="hintId"
+            :aria-busy="imageState === 'loading'"
+            @wheel="onStageWheel"
+            @pointerdown="onStagePointerDown"
+            @pointermove="onPointerMove"
+            @pointerup="onPointerUp"
+            @pointercancel="onPointerUp"
+            @lostpointercapture="onPointerUp"
+            @click="onStageClick">
+            <div
+              class="image-preview-modal__image-wrapper"
+              :style="wrapperStyle">
+              <img
+                v-if="imageState !== 'error'"
+                :key="`${image.src}-${retryCount}`"
+                ref="imageRef"
+                :src="image.src"
+                :alt="image.alt"
+                class="image-preview-modal__image"
+                :class="{
+                  'image-preview-modal__image--pending':
+                    imageState === 'loading',
+                }"
+                :style="imageStyle"
+                draggable="false"
+                @load="onImageLoad"
+                @error="onImageError" />
               <div
-                ref="imageContainerRef"
-                class="image-container"
-                :class="{ zoomed: isZoomed }"
-                @wheel.prevent="onContainerWheel">
-                <div class="image-centering-wrapper" :style="imageWrapperStyle">
-                  <img
-                    ref="imageRef"
-                    :src="fullImageSrc"
-                    :alt="image.alt ?? ''"
-                    class="preview-image"
-                    :class="{ hidden: imageError }"
-                    :style="imageStyle"
-                    draggable="false"
-                    @load="onImageLoad"
-                    @error="onImageError"
-                    @click="onImageClick" />
-                  <div v-if="imageError" class="image-error-placeholder">
-                    <span class="image-error-icon" aria-hidden="true">🖼️</span>
-                    <span class="image-error-text">
-                      {{
-                        displayTitle ||
-                        image.alt ||
-                        t('components.image_preview_modal.image_unavailable')
-                      }}
-                    </span>
-                  </div>
-                </div>
+                v-if="imageState === 'loading' && showSkeleton"
+                class="image-preview-modal__skeleton"
+                role="status">
+                {{ t('components.image_preview_modal.image_loading') }}
               </div>
-
-              <div class="zoom-controls">
-                <span class="zoom-label">
-                  {{ t('components.image_preview_modal.zoom_label') }}
-                </span>
-                <input
-                  type="range"
-                  class="zoom-slider"
-                  min="0"
-                  max="100"
-                  step="1"
-                  :value="sliderRaw"
-                  :aria-label="t('components.image_preview_modal.zoom_label')"
-                  @input="onZoomSliderInput" />
-                <span class="zoom-value">
-                  {{ Math.round(zoomLevel * 100) }}%
-                </span>
+              <div
+                v-if="imageState === 'error'"
+                class="image-preview-modal__error"
+                @pointerdown.stop
+                @click.stop>
+                <p role="status">
+                  {{ t('components.image_preview_modal.image_unavailable') }}
+                </p>
                 <button
                   type="button"
-                  class="zoom-fit-button"
-                  @click="resetZoom">
-                  {{ t('components.image_preview_modal.zoom_fit') }}
+                  class="image-preview-modal__button"
+                  @click="retryImage">
+                  {{ t('components.image_preview_modal.retry') }}
                 </button>
               </div>
             </div>
-
-            <div class="info-panel">
-              <div v-if="image.title" class="info-row info-title">
-                {{ image.title }}
-              </div>
-
-              <div v-if="image.alt" class="info-row info-description">
-                {{ image.alt }}
-              </div>
-
-              <div v-if="image.dimensions" class="info-row info-dimensions">
-                <span class="info-label">
-                  {{ t('components.image_preview_modal.dimensions_label') }}:
-                </span>
-                <span class="info-value">
-                  {{ image.dimensions }}
-                </span>
-              </div>
-            </div>
           </div>
+
+          <div
+            class="image-preview-modal__toolbar"
+            :class="{
+              'image-preview-modal__toolbar--single': sequence.length < 2,
+            }">
+            <button
+              v-if="sequence.length > 1"
+              type="button"
+              class="image-preview-modal__button"
+              :aria-label="t('components.image_preview_modal.previous')"
+              @click="navigate(-1)">
+              <Icon name="heroicons:arrow-left" aria-hidden="true" />
+            </button>
+            <div
+              class="image-preview-modal__zoom"
+              role="group"
+              :aria-label="t('components.image_preview_modal.zoom_label')">
+              <label :for="zoomId" class="image-preview-modal__sr-only">
+                {{ t('components.image_preview_modal.zoom_label') }}
+              </label>
+              <button
+                type="button"
+                class="image-preview-modal__button"
+                :disabled="imageState !== 'loaded' || zoom <= 1"
+                :aria-label="t('components.image_preview_modal.zoom_out')"
+                @click="setZoom(zoom / 1.25)">
+                <span aria-hidden="true">−</span>
+              </button>
+              <input
+                :id="zoomId"
+                type="range"
+                class="image-preview-modal__slider"
+                min="0"
+                max="100"
+                step="1"
+                :value="sliderRaw"
+                :disabled="imageState !== 'loaded'"
+                :aria-valuetext="`${Math.round(zoom * 100)}%`"
+                @input="onZoomSliderInput" />
+              <button
+                type="button"
+                class="image-preview-modal__button"
+                :disabled="imageState !== 'loaded' || zoom >= maxZoom"
+                :aria-label="t('components.image_preview_modal.zoom_in')"
+                @click="setZoom(zoom * 1.25)">
+                <span aria-hidden="true">+</span>
+              </button>
+              <span class="image-preview-modal__zoom-value" aria-hidden="true">
+                {{ Math.round(zoom * 100) }}%
+              </span>
+              <button
+                type="button"
+                class="image-preview-modal__button image-preview-modal__fit"
+                :aria-label="t('components.image_preview_modal.zoom_fit')"
+                :title="t('components.image_preview_modal.zoom_fit')"
+                @click="reset">
+                <Icon name="heroicons:arrows-pointing-in" aria-hidden="true" />
+              </button>
+            </div>
+            <button
+              v-if="sequence.length > 1"
+              type="button"
+              class="image-preview-modal__button"
+              :aria-label="t('components.image_preview_modal.next')"
+              @click="navigate(1)">
+              <Icon name="heroicons:arrow-right" aria-hidden="true" />
+            </button>
+          </div>
+
+          <div class="image-preview-modal__details">
+            <p>{{ image.alt }}</p>
+            <p v-if="image.dimensions">
+              <strong>
+                {{ t('components.image_preview_modal.dimensions_label') }}:
+              </strong>
+              {{ image.dimensions }}
+            </p>
+          </div>
+          <p :id="hintId" class="image-preview-modal__sr-only">
+            {{ t('components.image_preview_modal.pan_hint') }}
+          </p>
+          <span
+            class="image-preview-modal__sr-only"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true">
+            {{ displayTitle }}
+          </span>
         </div>
-      </div>
+      </dialog>
     </Transition>
   </Teleport>
 </template>
 
 <script setup lang="ts">
+import { usePreferredReducedMotion } from '@vueuse/core'
 import type { ImageSource } from '~/types/image'
 
-const props = defineProps<{
-  image: ImageSource
-  visible: boolean
-}>()
+const props = withDefaults(
+  defineProps<{
+    image: ImageSource
+    visible: boolean
+    images?: readonly ImageSource[]
+    opener?: HTMLElement | null
+  }>(),
+  { images: () => [], opener: null }
+)
 
-const emit = defineEmits<{
-  close: []
-}>()
+const emit = defineEmits<{ close: []; select: [image: ImageSource] }>()
 
 const { t } = useI18n()
 const { lockScroll, unlockScroll } = useOverlayScrollLock()
+const reducedMotion = usePreferredReducedMotion()
 
-const modalContentRef = ref<HTMLElement | null>(null)
-const closeButtonRef = ref<HTMLElement | null>(null)
-const imageContainerRef = ref<HTMLElement | null>(null)
-const imageRef = ref<HTMLImageElement | null>(null)
-
-const sliderRaw = ref(0)
-const maxZoom = 3
-const naturalWidth = ref(0)
-const naturalHeight = ref(0)
-const containerSize = ref({ width: 0, height: 0 })
-const imageError = ref(false)
-
-let triggerElement: HTMLElement | null = null
-// Stores the relative click position so the zoom watch can centre on it
-let pendingClickPosition: { relX: number; relY: number } | null = null
-
-const fullImageSrc = computed(() => props.image.src)
-const displayTitle = computed(
-  () => props.image.title || props.image.mobileTitle || ''
+const fadeDuration = computed(() =>
+  reducedMotion.value === 'reduce' ? 0 : 250
 )
 
-// Logarithmic mapping: slider 0→100 becomes zoom 1→maxZoom
-const zoomLevel = computed(() => {
-  if (sliderRaw.value === 0) {
-    return 1
-  }
+const dialogRef = ref<HTMLDialogElement | null>(null)
+const closeButtonRef = ref<HTMLButtonElement | null>(null)
+const imageContainerRef = ref<HTMLElement | null>(null)
+const imageRef = ref<HTMLImageElement | null>(null)
+const headerRef = ref<HTMLElement | null>(null)
+const headerHeight = ref(0)
+const imageState = ref<'loading' | 'loaded' | 'error'>('loading')
+const showSkeleton = ref(false)
+const retryCount = ref(0)
+const naturalSize = ref({ width: 0, height: 0 })
+const containerSize = ref({ width: 0, height: 0 })
 
-  return Math.exp((sliderRaw.value / 100) * Math.log(maxZoom))
-})
+const titleId = useId()
+const zoomId = useId()
+const hintId = useId()
 
-const isZoomed = computed(() => zoomLevel.value > 1)
+let invokingElement: HTMLElement | null = null
+let openerGallery: Element | null = null
+let openerSource = ''
+let activeDialog: HTMLDialogElement | null = null
+let resizeObserver: ResizeObserver | undefined
+let skeletonTimer: ReturnType<typeof setTimeout> | undefined
+let backdropPointerDown = false
 
-// Pixel dimensions the image occupies at zoom=1 (mirrors object-fit:contain)
-const baseDimensions = computed(() => {
-  if (naturalWidth.value === 0 || containerSize.value.width === 0) {
+const displayTitle = computed(
+  () =>
+    props.image.title ||
+    props.image.mobileTitle ||
+    t('components.image_preview_modal.aria_label')
+)
+
+const sequence = computed(() =>
+  props.images.length ? props.images : [props.image]
+)
+const currentIndex = computed(() =>
+  sequence.value.findIndex(image => image.src === props.image.src)
+)
+
+const baseSize = computed(() => {
+  const { width, height } = naturalSize.value
+
+  if (!width || !height) {
     return { width: 0, height: 0 }
   }
 
-  const cw = containerSize.value.width
-  const ch = containerSize.value.height
-  const imageAspect = naturalWidth.value / naturalHeight.value
-  const containerAspect = cw / ch
+  const scale = Math.min(
+    containerSize.value.width / width,
+    containerSize.value.height / height
+  )
 
-  if (imageAspect > containerAspect) {
-    return { width: cw, height: Math.round(cw / imageAspect) }
-  } else {
-    return { width: Math.round(ch * imageAspect), height: ch }
-  }
+  return { width: width * scale, height: height * scale }
 })
 
-// zoom=1: position:absolute+inset:0 fills the container reliably regardless of
-//         the flex chain — object-fit:contain shows the whole image, centered.
-// zoom>1: explicit px dimensions so scroll range matches the visible scaled size.
-// baseDimensions=0 fallback: max-width/height+object-fit keeps image visible
-//         while the container hasn't been measured yet (brief transient state).
-const imageStyle = computed(() => {
-  if (!isZoomed.value) {
-    return {
-      position: 'absolute' as const,
-      top: '0',
-      right: '0',
-      bottom: '0',
-      left: '0',
-      width: '100%',
-      height: '100%',
-      objectFit: 'contain' as const,
-      cursor: 'zoom-in',
-    }
+const {
+  zoom,
+  maxZoom,
+  setZoom,
+  pan,
+  reset,
+  onPointerDown,
+  onPointerMove,
+  onPointerUp,
+  onImageClick,
+  onWheel,
+} = useImageViewerGestures(imageContainerRef, baseSize, navigate)
+
+const sliderRaw = computed(
+  () => (Math.log(zoom.value) / Math.log(maxZoom)) * 100
+)
+const imageStyle = computed(() => ({
+  width: `${baseSize.value.width * zoom.value}px`,
+  height: `${baseSize.value.height * zoom.value}px`,
+}))
+
+const wrapperStyle = computed(() => ({
+  width: `${Math.max(containerSize.value.width, baseSize.value.width * zoom.value)}px`,
+  height: `${Math.max(containerSize.value.height, baseSize.value.height * zoom.value)}px`,
+}))
+
+function clearSkeletonTimer() {
+  clearTimeout(skeletonTimer)
+
+  skeletonTimer = undefined
+  showSkeleton.value = false
+}
+
+function startImageLoading() {
+  clearSkeletonTimer()
+  reset()
+
+  naturalSize.value = { width: 0, height: 0 }
+  imageState.value = 'loading'
+
+  if (props.visible) {
+    skeletonTimer = setTimeout(() => {
+      showSkeleton.value = imageState.value === 'loading'
+    }, 300)
   }
 
-  if (baseDimensions.value.width === 0) {
-    return {
-      maxWidth: '100%',
-      maxHeight: '100%',
-      objectFit: 'contain' as const,
-      cursor: 'zoom-out',
-    }
-  }
-
-  return {
-    width: `${Math.round(baseDimensions.value.width * zoomLevel.value)}px`,
-    height: `${Math.round(baseDimensions.value.height * zoomLevel.value)}px`,
-    cursor: 'zoom-out',
-  }
-})
-
-const imageWrapperStyle = computed(() => {
-  if (!isZoomed.value || baseDimensions.value.width === 0) {
-    return undefined
-  }
-
-  return {
-    width: `${Math.max(
-      containerSize.value.width,
-      Math.round(baseDimensions.value.width * zoomLevel.value)
-    )}px`,
-    height: `${Math.max(
-      containerSize.value.height,
-      Math.round(baseDimensions.value.height * zoomLevel.value)
-    )}px`,
-  }
-})
+  void nextTick(checkCachedImage)
+}
 
 function measureContainer() {
-  if (!imageContainerRef.value) {
+  const element = imageContainerRef.value
+
+  if (element) {
+    containerSize.value = {
+      width: element.clientWidth,
+      height: element.clientHeight,
+    }
+
+    headerHeight.value = headerRef.value?.offsetHeight ?? 0
+  }
+}
+
+function checkCachedImage() {
+  const image = imageRef.value
+
+  if (image?.complete && image.currentSrc) {
+    if (image.naturalWidth) {
+      onImageLoad()
+    } else {
+      markImageError()
+    }
+  }
+}
+
+function onImageLoad(event?: Event) {
+  const image =
+    event?.target instanceof HTMLImageElement ? event.target : imageRef.value
+
+  if (!image || image !== imageRef.value) {
     return
   }
 
-  const { clientWidth: w, clientHeight: h } = imageContainerRef.value
+  clearSkeletonTimer()
 
-  if (w > 0 && h > 0) {
-    containerSize.value = { width: w, height: h }
+  naturalSize.value = { width: image.naturalWidth, height: image.naturalHeight }
+  imageState.value = 'loaded'
+
+  void nextTick(measureContainer)
+}
+
+function markImageError() {
+  clearSkeletonTimer()
+
+  imageState.value = 'error'
+
+  reset()
+}
+
+function onImageError(event: Event) {
+  if (event.target === imageRef.value) {
+    markImageError()
   }
 }
 
-function onImageLoad() {
-  if (imageRef.value) {
-    naturalWidth.value = imageRef.value.naturalWidth
-    naturalHeight.value = imageRef.value.naturalHeight
-  }
+function retryImage() {
+  imageContainerRef.value?.focus({ preventScroll: true })
+  retryCount.value++
 
-  // nextTick ensures the container has finished layout before measuring
-  nextTick(measureContainer)
+  startImageLoading()
 }
 
-function onImageError() {
-  imageError.value = true
-  // Still measure so zoom controls are sized correctly if the user tries them
-  nextTick(measureContainer)
+function onStageWheel(event: WheelEvent) {
+  if (imageState.value === 'loaded') {
+    onWheel(event)
+  }
+}
+
+function onStagePointerDown(event: PointerEvent) {
+  if (imageState.value === 'loaded') {
+    onPointerDown(event)
+  }
+}
+
+function onStageClick(event: MouseEvent) {
+  if (imageState.value === 'loaded') {
+    onImageClick(event)
+  }
 }
 
 function onZoomSliderInput(event: Event) {
-  const target = event.target as HTMLInputElement
-  sliderRaw.value = parseFloat(target.value)
+  if (event.target instanceof HTMLInputElement) {
+    setZoom(Math.exp((Number(event.target.value) / 100) * Math.log(maxZoom)))
+  }
 }
 
-function setZoomLevel(zoom: number) {
-  sliderRaw.value =
-    zoom <= 1
-      ? 0
-      : Math.round(
-          (Math.log(Math.min(zoom, maxZoom)) / Math.log(maxZoom)) * 100
-        )
-}
-
-// All scroll positioning is handled by the zoomLevel watcher (flush:'post').
-// Here we only record the click position for the watcher to pick up.
-function onImageClick(event: MouseEvent) {
-  if (isZoomed.value) {
-    resetZoom()
+function navigate(direction: -1 | 1) {
+  if (!props.visible || sequence.value.length < 2 || currentIndex.value < 0) {
     return
   }
 
-  const img = imageRef.value
+  const index =
+    (currentIndex.value + direction + sequence.value.length) %
+    sequence.value.length
 
-  if (!img) {
-    setZoomLevel(2)
+  const image = sequence.value[index]
+
+  if (image) {
+    emit('select', image)
+  }
+}
+
+function onDialogKeydown(event: KeyboardEvent) {
+  if (event.key === 'Escape') {
+    event.preventDefault()
+    event.stopPropagation()
+
+    requestClose()
+
     return
   }
 
-  const rect = img.getBoundingClientRect()
-  pendingClickPosition = {
-    relX: Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width)),
-    relY: Math.max(0, Math.min(1, (event.clientY - rect.top) / rect.height)),
+  if (
+    event.altKey ||
+    event.ctrlKey ||
+    event.metaKey ||
+    (event.shiftKey && event.key !== '+') ||
+    event.target instanceof HTMLInputElement
+  ) {
+    return
   }
 
-  setZoomLevel(2)
+  const panKeys: Record<string, readonly [number, number]> = {
+    ArrowLeft: [-80, 0],
+    ArrowRight: [80, 0],
+    ArrowUp: [0, -80],
+    ArrowDown: [0, 80],
+  }
+
+  if (
+    event.target === imageContainerRef.value &&
+    zoom.value > 1 &&
+    panKeys[event.key]
+  ) {
+    const offset = panKeys[event.key]
+
+    if (offset) {
+      event.preventDefault()
+      pan(...offset)
+    }
+  } else if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+    event.preventDefault()
+    navigate(event.key === 'ArrowLeft' ? -1 : 1)
+  } else if (
+    ['+', '=', '-'].includes(event.key) &&
+    imageState.value === 'loaded'
+  ) {
+    event.preventDefault()
+
+    setZoom(event.key === '-' ? zoom.value / 1.25 : zoom.value * 1.25)
+  } else if (event.key === '0') {
+    event.preventDefault()
+    reset()
+  }
 }
 
-// Runs after every DOM update triggered by a zoom change.
-// Three cases: click-zoom (scroll to clicked point), first slider zoom
-// (centre the image), ongoing slider (keep the same visual centre).
-// Uses container.clientWidth/Height (fresh, post-render) for the viewport size
-// so scrollbar width is already accounted for.
+function requestClose() {
+  if (props.visible) {
+    emit('close')
+  }
+}
+
+function onBackdropPointerDown(event: PointerEvent) {
+  backdropPointerDown = event.target === dialogRef.value
+}
+
+function onBackdropClick(event: MouseEvent) {
+  if (backdropPointerDown && event.target === dialogRef.value) {
+    requestClose()
+  }
+
+  backdropPointerDown = false
+}
+
+function finishClose() {
+  clearSkeletonTimer()
+  reset()
+
+  resizeObserver?.disconnect()
+  resizeObserver = undefined
+  activeDialog?.close()
+  activeDialog = null
+
+  unlockScroll()
+
+  const replacement = Array.from(
+    openerGallery?.querySelectorAll<HTMLButtonElement>('[data-artwork-src]') ??
+      []
+  ).find(element => element.dataset.artworkSrc === openerSource)
+
+  const target = invokingElement?.isConnected ? invokingElement : replacement
+
+  if (target?.isConnected) {
+    target.focus({ preventScroll: true })
+  }
+
+  invokingElement = null
+  openerGallery = null
+}
+
+function openDialog() {
+  if (!props.visible || !dialogRef.value || dialogRef.value.open) {
+    return
+  }
+
+  const focused = props.opener?.isConnected
+    ? props.opener
+    : document.activeElement
+
+  invokingElement = focused instanceof HTMLElement ? focused : null
+  openerGallery = invokingElement?.closest('.image-grid') ?? null
+  openerSource = props.image.src
+
+  lockScroll()
+
+  activeDialog = dialogRef.value
+  activeDialog.showModal()
+  closeButtonRef.value?.focus({ preventScroll: true })
+
+  resizeObserver = new ResizeObserver(measureContainer)
+
+  if (imageContainerRef.value) {
+    resizeObserver.observe(imageContainerRef.value)
+  }
+
+  if (headerRef.value) {
+    resizeObserver.observe(headerRef.value)
+  }
+
+  measureContainer()
+  startImageLoading()
+}
+
 watch(
-  zoomLevel,
-  (newZoom, oldZoom) => {
-    if (newZoom <= 1) {
+  [() => props.image.src, () => props.visible],
+  ([source, visible], [previousSource]) => {
+    if (!visible) {
+      clearSkeletonTimer()
+
       return
     }
 
-    const container = imageContainerRef.value
-
-    if (!container || baseDimensions.value.width === 0) {
-      return
+    if (source !== previousSource) {
+      startImageLoading()
     }
 
-    // viewport dimensions post-render (shrunk by any visible scrollbar)
-    const clientWidth = container.clientWidth
-    const clientHeight = container.clientHeight
-    const newWidth = baseDimensions.value.width * newZoom
-    const newHeight = baseDimensions.value.height * newZoom
-
-    if (pendingClickPosition) {
-      const { relX, relY } = pendingClickPosition
-      pendingClickPosition = null
-
-      container.scrollLeft = Math.max(0, relX * newWidth - clientWidth / 2)
-      container.scrollTop = Math.max(0, relY * newHeight - clientHeight / 2)
-    } else if (oldZoom <= 1) {
-      // Transitioning from fit → zoomed: centre the image
-      container.scrollLeft = Math.max(0, (newWidth - clientWidth) / 2)
-      container.scrollTop = Math.max(0, (newHeight - clientHeight) / 2)
-    } else {
-      // Slider adjustment: keep the same point at the centre of the viewport
-      const oldWidth = baseDimensions.value.width * oldZoom
-      const oldHeight = baseDimensions.value.height * oldZoom
-      const cx = (container.scrollLeft + clientWidth / 2) / oldWidth
-      const cy = (container.scrollTop + clientHeight / 2) / oldHeight
-
-      container.scrollLeft = Math.max(0, cx * newWidth - clientWidth / 2)
-      container.scrollTop = Math.max(0, cy * newHeight - clientHeight / 2)
-    }
+    void nextTick(openDialog)
   },
   { flush: 'post' }
 )
 
-function resetZoom() {
-  sliderRaw.value = 0
-}
-
-// Manually handle wheel events so the mouse wheel scrolls the image container
-// instead of bubbling up to the (fixed) body. Shift+wheel scrolls horizontally.
-function onContainerWheel(event: WheelEvent) {
-  const container = imageContainerRef.value
-
-  if (!container) {
-    return
-  }
-
-  if (event.shiftKey) {
-    container.scrollLeft += event.deltaY
-  } else {
-    container.scrollLeft += event.deltaX
-    container.scrollTop += event.deltaY
-  }
-}
-
-function close() {
-  emit('close')
-}
-
-function onKeydown(event: KeyboardEvent) {
-  if (event.key === 'Escape') {
-    close()
-    return
-  }
-
-  if (event.key === 'Tab') {
-    trapFocus(event)
-  }
-}
-
-function trapFocus(event: KeyboardEvent) {
-  if (!modalContentRef.value) {
-    return
-  }
-
-  const focusableElements = modalContentRef.value.querySelectorAll<HTMLElement>(
-    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-  )
-
-  if (focusableElements.length === 0) {
-    return
-  }
-
-  const first = focusableElements[0]
-  const last = focusableElements[focusableElements.length - 1]
-
-  if (event.shiftKey && document.activeElement === first) {
-    event.preventDefault()
-    last?.focus()
-  } else if (!event.shiftKey && document.activeElement === last) {
-    event.preventDefault()
-    first?.focus()
-  }
-}
-
-watch(
-  () => props.visible,
-  isVisible => {
-    if (isVisible) {
-      triggerElement = document.activeElement as HTMLElement
-      document.addEventListener('keydown', onKeydown)
-      lockScroll()
-
-      sliderRaw.value = 0
-      naturalWidth.value = 0
-      naturalHeight.value = 0
-      containerSize.value = { width: 0, height: 0 }
-      imageError.value = false
-      pendingClickPosition = null
-
-      nextTick(() => {
-        closeButtonRef.value?.focus()
-        measureContainer()
-      })
-    } else {
-      document.removeEventListener('keydown', onKeydown)
-      unlockScroll()
-
-      if (triggerElement) {
-        triggerElement.focus()
-        triggerElement = null
-      }
-    }
-  }
-)
-
-onBeforeUnmount(() => {
-  document.removeEventListener('keydown', onKeydown)
-  unlockScroll()
-})
+onMounted(openDialog)
+onBeforeUnmount(finishClose)
 </script>
 
 <style lang="scss" scoped>
-.modal-fade-enter-active,
-.modal-fade-leave-active {
-  transition: opacity 0.25s ease;
+.image-preview-modal {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: calc(#{$space-16} + env(safe-area-inset-top))
+    calc(#{$space-16} + env(safe-area-inset-right))
+    calc(#{$space-16} + env(safe-area-inset-bottom))
+    calc(#{$space-16} + env(safe-area-inset-left));
+  border: 0;
+  background: transparent;
+  color: $primary-text-color;
+
+  &[open] {
+    display: grid;
+    place-items: center;
+  }
+
+  &::backdrop {
+    background: transparent;
+  }
+
+  &__backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    -webkit-backdrop-filter: blur($space-6);
+    backdrop-filter: blur($space-6);
+    pointer-events: none;
+  }
+
+  &__panel {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto minmax($viewer-stage-min-height, 1fr) auto auto;
+    width: min(92vw, $viewer-max-width);
+    max-width: 100%;
+    height: min(90svh, $viewer-max-height);
+    max-height: 100%;
+    min-height: 0;
+    overflow-y: auto;
+    scroll-padding-top: calc(var(--viewer-header-height, 0px) + #{$space-4});
+    scroll-padding-bottom: $space-4;
+    overscroll-behavior: contain;
+    border-radius: $radius-panel;
+    background: $white-color;
+    box-shadow: 0 $space-20 $space-60 rgba(0, 0, 0, 0.4);
+  }
+
+  &__header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: $space-16;
+    padding: $space-16 $space-20;
+    border-bottom: $border-width solid $light-grey-color-2;
+    background: $white-color;
+  }
+
+  &__title {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: $control-size;
+    min-height: $control-size;
+    padding: $space-8;
+    border: $border-width solid $navigation-muted-color;
+    border-radius: $radius-control;
+    background: $warm-beige;
+    color: $primary-text-color;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+
+    &:hover:not(:disabled) {
+      background: $light-grey-color-2;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    :deep(.iconify) {
+      width: $space-20;
+      height: $space-20;
+    }
+  }
+
+  &__close {
+    flex: none;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  &__stage {
+    position: relative;
+    min-width: 0;
+    min-height: 0;
+    margin: $space-4;
+    overflow: auto;
+    overscroll-behavior: contain;
+    background: $cream-color;
+    touch-action: none;
+    scrollbar-width: none;
+    cursor: zoom-in;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &--zoomed {
+      cursor: grab;
+
+      &:active {
+        cursor: grabbing;
+      }
+    }
+  }
+
+  &__image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+  &__image {
+    display: block;
+    flex: none;
+    max-width: none;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+
+    &--pending {
+      visibility: hidden;
+    }
+  }
+
+  &__toolbar {
+    display: grid;
+    grid-template-columns: $control-size minmax(0, 1fr) $control-size;
+    align-items: center;
+    gap: $space-8;
+    padding: $space-8 $space-20;
+    border-top: $border-width solid $light-grey-color-2;
+
+    &--single {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  &__zoom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $space-8;
+    width: 100%;
+    max-width: $viewer-zoom-max-width;
+    margin-inline: auto;
+    min-width: 0;
+  }
+
+  &__slider {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    max-width: $viewer-slider-max-width;
+    height: $control-size;
+    margin: 0;
+    accent-color: $focus-color;
+    cursor: pointer;
+  }
+
+  &__zoom-value {
+    min-width: 4ch;
+    color: $dark-grey-color;
+    font-size: 0.875rem;
+    text-align: center;
+  }
+
+  &__details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: $space-4 $space-16;
+    padding: $space-8 $space-20;
+    border-top: $border-width solid $light-grey-color-2;
+    color: $dark-grey-color;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &__skeleton,
+  &__error {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    gap: $space-10;
+    padding: $space-16;
+    border-radius: $radius-panel;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  &__skeleton {
+    background: linear-gradient(
+      110deg,
+      $viewer-skeleton-base 20%,
+      $viewer-skeleton-highlight 50%,
+      $viewer-skeleton-base 80%
+    );
+    background-size: 200% 100%;
+    color: $viewer-skeleton-text;
+    border-radius: $space-7;
+    font-size: 0.82rem;
+    pointer-events: none;
+  }
+
+  &__error p {
+    margin: 0;
+  }
+
+  &__sr-only {
+    position: absolute;
+    width: $border-width;
+    height: $border-width;
+    padding: 0;
+    clip-path: inset(50%);
+    overflow: hidden;
+    white-space: nowrap;
+  }
 }
 
-.modal-fade-enter-from,
-.modal-fade-leave-to {
+.viewer-fade-enter-active .image-preview-modal__backdrop,
+.viewer-fade-leave-active .image-preview-modal__backdrop,
+.viewer-fade-enter-active .image-preview-modal__panel,
+.viewer-fade-leave-active .image-preview-modal__panel {
+  transition: opacity $transition-viewer;
+}
+
+.viewer-fade-enter-from .image-preview-modal__backdrop,
+.viewer-fade-leave-to .image-preview-modal__backdrop,
+.viewer-fade-enter-from .image-preview-modal__panel,
+.viewer-fade-leave-to .image-preview-modal__panel {
   opacity: 0;
 }
 
-.modal-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: $modal-z-index;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 16px;
-  overscroll-behavior: none;
-
-  .modal-content {
-    display: flex;
-    flex-direction: column;
-    width: 92vw;
-    max-width: 1100px;
-    height: 90vh;
-    background: $white-color;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-    outline: none;
-
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 20px;
-      border-bottom: 1px solid $light-grey-color-2;
-      flex-shrink: 0;
-
-      .modal-title {
-        font-size: 18px;
-        font-weight: 600;
-        color: $primary-text-color;
-        margin: 0;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        flex: 1;
-        padding-right: 16px;
-      }
-
-      .close-button {
-        all: unset;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        cursor: pointer;
-        flex-shrink: 0;
-        transition: background-color 0.2s ease;
-        color: $primary-text-color;
-
-        &:hover,
-        &:focus-visible {
-          background-color: $light-grey-color-2;
-        }
-
-        .close-icon {
-          font-size: 24px;
-          line-height: 1;
-        }
-      }
-    }
-
-    .modal-body {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      overflow: hidden;
-      min-height: 0;
-
-      .image-panel {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        min-height: 0;
-
-        .image-container {
-          flex: 1;
-          overflow: auto;
-          position: relative;
-          min-height: 0;
-          background: $cream-color;
-          overscroll-behavior: contain;
-          -webkit-overflow-scrolling: touch;
-
-          .image-centering-wrapper {
-            min-width: 100%;
-            min-height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-
-          .preview-image {
-            flex-shrink: 0;
-            -webkit-user-drag: none;
-            user-select: none;
-
-            &.hidden {
-              display: none;
-            }
-          }
-
-          .image-error-placeholder {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 24px;
-            color: $grey-color;
-            text-align: center;
-
-            .image-error-icon {
-              font-size: 48px;
-              line-height: 1;
-            }
-
-            .image-error-text {
-              font-size: 15px;
-              font-style: italic;
-              max-width: 260px;
-            }
-          }
-
-          &.zoomed {
-            cursor: grab;
-
-            &:active {
-              cursor: grabbing;
-            }
-          }
-        }
-
-        .zoom-controls {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          padding: 10px 20px;
-          border-top: 1px solid $light-grey-color-2;
-          flex-shrink: 0;
-          background: $white-color;
-
-          .zoom-label {
-            font-size: 13px;
-            font-weight: 500;
-            color: $dark-grey-color;
-            white-space: nowrap;
-          }
-
-          .zoom-slider {
-            flex: 1;
-            height: 4px;
-            appearance: none;
-            background: $light-grey-color-2;
-            border-radius: 2px;
-            outline: none;
-            cursor: pointer;
-            max-width: 200px;
-
-            &::-webkit-slider-thumb {
-              appearance: none;
-              width: 16px;
-              height: 16px;
-              border-radius: 50%;
-              background: $primary-text-color;
-              cursor: pointer;
-            }
-
-            &::-moz-range-thumb {
-              width: 16px;
-              height: 16px;
-              border-radius: 50%;
-              background: $primary-text-color;
-              border: none;
-              cursor: pointer;
-            }
-          }
-
-          .zoom-value {
-            font-size: 13px;
-            font-weight: 500;
-            color: $dark-grey-color;
-            min-width: 42px;
-            text-align: right;
-          }
-
-          .zoom-fit-button {
-            all: unset;
-            font-size: 12px;
-            padding: 4px 10px;
-            border-radius: 4px;
-            background: $warm-beige;
-            color: $primary-text-color;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: background-color 0.2s ease;
-
-            &:hover,
-            &:focus-visible {
-              background: $light-grey-color-2;
-            }
-          }
-        }
-      }
-
-      .info-panel {
-        padding: 14px 20px;
-        border-top: 1px solid $light-grey-color-2;
-        flex-shrink: 0;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px 24px;
-        align-items: baseline;
-        background: $white-color;
-
-        .info-row {
-          font-size: 14px;
-          color: $primary-text-color;
-        }
-
-        .info-title {
-          width: 100%;
-          font-weight: 600;
-          font-size: 15px;
-        }
-
-        .info-description {
-          flex: 1;
-          color: $dark-grey-color;
-          min-width: 150px;
-        }
-
-        .info-dimensions {
-          display: flex;
-          gap: 6px;
-          white-space: nowrap;
-
-          .info-label {
-            font-weight: 500;
-            color: $dark-grey-color;
-          }
-
-          .info-value {
-            color: $grey-color;
-          }
-        }
-      }
-    }
-  }
-}
-
 @media (max-width: $sm) {
-  .modal-backdrop {
-    padding: 8px;
+  .image-preview-modal {
+    padding: calc(#{$space-8} + env(safe-area-inset-top))
+      calc(#{$space-8} + env(safe-area-inset-right))
+      calc(#{$space-8} + env(safe-area-inset-bottom))
+      calc(#{$space-8} + env(safe-area-inset-left));
 
-    .modal-content {
+    &__panel {
       width: 100%;
-      height: 80vh;
-      border-radius: 8px;
+      border-radius: $radius-control;
     }
 
-    .modal-header {
-      padding: 12px 14px;
-
-      .modal-title {
-        font-size: 15px;
-      }
-
-      .close-button {
-        width: 32px;
-        height: 32px;
-      }
+    &__header,
+    &__details {
+      padding: $space-8 $space-12;
     }
 
-    .modal-body {
-      .image-panel {
-        .image-container {
-          min-height: 0;
-        }
-
-        .zoom-controls {
-          padding: 8px 14px;
-          gap: 8px;
-          flex-wrap: wrap;
-
-          .zoom-slider {
-            max-width: none;
-            min-width: 80px;
-          }
-        }
-      }
-
-      .info-panel {
-        padding: 10px 14px;
-        gap: 4px 12px;
-
-        .info-title {
-          font-size: 14px;
-        }
-
-        .info-row {
-          font-size: 13px;
-        }
-      }
+    &__toolbar {
+      padding: $space-8;
     }
   }
 }
 
-@media (max-width: $md) and (min-width: calc($sm + 1px)) {
-  .modal-content {
-    width: 96vw;
-    max-height: 94vh;
+@media (max-width: $viewer-compact-width) {
+  .image-preview-modal__zoom {
+    display: grid;
+    grid-template-columns: $control-size minmax(0, 1fr) $control-size;
+    gap: $space-4;
+  }
+
+  .image-preview-modal__zoom-value {
+    grid-column: 1 / 3;
+  }
+}
+
+@media (max-height: $short-viewport-height) {
+  .image-preview-modal__panel {
+    height: 100%;
+  }
+
+  .image-preview-modal__header {
+    padding-block: $space-4;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .image-preview-modal__button {
+    transition: background-color $transition-ui;
+  }
+
+  .image-preview-modal__skeleton {
+    animation: viewerSkeleton 1.8s ease-in-out infinite;
+  }
+}
+
+@media (forced-colors: active) {
+  .image-preview-modal__panel {
+    border: $border-width solid CanvasText;
+  }
+
+  .image-preview-modal__backdrop {
+    background: Canvas;
   }
 }
 </style>

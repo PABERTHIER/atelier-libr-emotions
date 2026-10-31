@@ -104,7 +104,18 @@ The wait ends when the saved position is reachable and cancels on user input, fu
 The layout's skip link explicitly focuses the shared main.
 `useSiteNavigation()` closes navigation from links, language changes and route changes.
 Mobile navigation and the viewer acquire independent scroll leases, so releasing one does not resume a still-locked page.
-The viewer's `data-lenis-prevent` region allows native vertical and horizontal touch scrolling while the page's Lenis instance is stopped.
+The viewer's `data-lenis-prevent` region leaves native overlay scrolling available while the page's Lenis instance is stopped.
+The viewer now uses a native dialog and a pointer-controlled image stage.
+At fit size, a horizontal swipe changes artwork within the selected grid group; when zoomed, dragging moves only the current image.
+Pinch zoom preserves the image point under the moving midpoint.
+Previous/next and zoom/fit share a single control band; the central zoom controls wrap on small screens.
+Click-to-center replaces directional pan buttons as the single-pointer alternative to dragging.
+The image region supports keyboard panning; the native range keeps its own arrow keys.
+There is no visible counter or large instruction block, only a polite title announcement and short screen-reader pan hint.
+The larger flexible image area has no visible scrollbars; genuinely overflowing panel content still scrolls on short/enlarged screens, with close retained in its header.
+Loading/failure states leave dismissal and artwork navigation available; retry keeps focus inside the viewer.
+The existing gallery owns selection and row layout, passing its ordered images directly and handling the viewer's `select` event.
+Its original sizing and stabilization formulas are preserved; source requests now use the current origin and translations update without changing row dimensions.
 The shared lock owns previous body/root styles and scroll position; only the final overlay release restarts a previously running Lenis instance.
 Route focus and viewport scrolling await `overlayScroll.whenUnlocked()` so the closing modal cannot reject focus or restore the old position after navigation scrolls.
 This does not delay routing or destination rendering.

@@ -1,83 +1,70 @@
 <template>
   <div class="button-container">
-    <button :disabled="isDisabled" class="button" @click="click">
+    <button
+      v-bind="$attrs"
+      type="button"
+      :disabled="isDisabled"
+      class="button"
+      @click="emit('click', $event)">
       {{ name }}
     </button>
   </div>
 </template>
 
 <script setup lang="ts">
-defineProps({
-  name: {
-    type: String,
-    required: true,
-  },
-  isDisabled: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  width: {
-    type: String,
-    required: false,
-    default: '100%',
-  },
-})
+defineOptions({ inheritAttrs: false })
 
-const emit = defineEmits(['click'])
+withDefaults(
+  defineProps<{ name: string; isDisabled?: boolean; width?: string }>(),
+  { isDisabled: false, width: '100%' }
+)
 
-function click(): void {
-  emit('click')
-}
+const emit = defineEmits<{ click: [event: MouseEvent] }>()
 </script>
 
 <style lang="scss" scoped>
-button {
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
+.button-container {
+  min-width: 0;
 }
 
-.button-container {
+.button {
+  position: relative;
+  width: v-bind(width);
+  max-width: 100%;
+  min-height: $control-size;
+  padding: $space-20;
+  border: 0;
+  border-radius: $space-8;
+  background: rgba($white-color, 0.3);
+  color: inherit;
+  font: inherit;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  text-align: center;
+  overflow-wrap: anywhere;
+  -webkit-backdrop-filter: blur($space-10);
+  backdrop-filter: blur($space-10);
   cursor: pointer;
 
-  button:disabled {
+  &:disabled {
     cursor: not-allowed;
+    opacity: 0.65;
   }
 
-  .button {
-    width: v-bind(width);
-    position: relative;
-    padding: 20px;
-    text-align: center;
-    border-radius: 8px;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    font-size: 20px;
-    line-height: 25px;
-
-    @media (max-width: $md) {
-      padding: 10px;
-    }
-  }
-
-  .button::before {
-    width: 100%;
+  &::before {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 2px;
-    border-radius: 8px;
+    inset: 0;
+    padding: $space-2;
+    border-radius: $space-8;
+    background: linear-gradient(
+      90deg,
+      $light-grey-color-2 0%,
+      $light-grey-color-2 25%,
+      $grey-blue-color 50%,
+      $dark-red-color 75%,
+      $grey-blue-color 100%
+    );
     background-size: 400% auto;
-    transition:
-      background-position 0.3s ease-in-out,
-      opacity 0.2s ease-in-out;
     -webkit-mask:
       linear-gradient($white-color 0 0) content-box,
       linear-gradient($white-color 0 0);
@@ -86,27 +73,35 @@ button {
       linear-gradient($white-color 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
+    pointer-events: none;
     content: '';
   }
 
-  .button:hover::before {
+  &:not(:disabled):hover::before,
+  &:focus-visible::before {
     background-position: -50% 0;
-    opacity: 1;
   }
 }
 
-.button {
-  background-color: rgba(255, 255, 255, 0.3);
+@media (max-width: $md) {
+  .button {
+    padding: $space-10;
+  }
 }
 
-.button::before {
-  background: linear-gradient(
-    90deg,
-    $light-grey-color-2 0%,
-    $light-grey-color-2 25%,
-    $grey-blue-color 50%,
-    $dark-red-color 75%,
-    $grey-blue-color 100%
-  );
+@media (prefers-reduced-motion: no-preference) {
+  .button::before {
+    transition: background-position $transition-ui;
+  }
+}
+
+@media (forced-colors: active) {
+  .button {
+    border: $border-width solid ButtonText;
+
+    &::before {
+      display: none;
+    }
+  }
 }
 </style>

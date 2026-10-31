@@ -12,6 +12,8 @@ Read the nearest implementation before choosing a new abstraction or treating an
 
 - Keep the SFC order `<template>`, `<script setup lang="ts">`, then scoped SCSS.
   Prefer Nuxt auto-imports for registered composables and components; import shared types and unregistered utilities or library APIs explicitly.
+- Use braces for conditional statements and blank lines between guards, state changes, derived values and returns.
+  Group declarations and helpers by responsibility; do not compress control flow into unbraced statements or complex template guards.
 - The default layout already supplies the main landmark, header and footer.
   Reuse `PageTitle` for its H1 and avoid a nested main or a second page H1.
   Preserve its skip link and focusable `page-container` destination.

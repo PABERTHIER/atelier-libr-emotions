@@ -1,7 +1,12 @@
 <template>
   <div class="image">
-    <NuxtLink :to="link">
+    <a
+      :href="src"
+      :aria-label="
+        t('components.image.open_original', { title: title || alt })
+      ">
       <NuxtImg
+        :key="src"
         :src="src"
         :sizes="sizes"
         :title="title"
@@ -9,8 +14,13 @@
         densities="x1 x2"
         loading="lazy"
         placeholder
-        :style="{ maxHeight }" />
-    </NuxtLink>
+        :style="{ maxHeight }"
+        :class="{ 'image-unavailable': imageError }"
+        v-on="imageEvents" />
+      <span v-if="imageError" role="status" class="image-error">
+        {{ t('components.image_preview_modal.image_unavailable') }}
+      </span>
+    </a>
   </div>
 </template>
 
@@ -41,9 +51,33 @@ const props = defineProps({
   },
 })
 
-const runtimeConfig = useRuntimeConfig()
-const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
-const link = ref(baseUrl.value + props.src)
+const { t } = useI18n()
+
+const imageError = ref(false)
+
+const imageEvents = computed(() => {
+  const source = props.src
+
+  return {
+    load: () => {
+      if (props.src === source) {
+        imageError.value = false
+      }
+    },
+    error: () => {
+      if (props.src === source) {
+        imageError.value = true
+      }
+    },
+  }
+})
+
+watch(
+  () => props.src,
+  () => {
+    imageError.value = false
+  }
+)
 </script>
 
 <style lang="scss" scoped>
@@ -51,6 +85,16 @@ const link = ref(baseUrl.value + props.src)
   :deep(a) {
     display: block;
     line-height: 0;
+  }
+
+  :deep(.image-unavailable) {
+    display: none;
+  }
+
+  .image-error {
+    display: block;
+    line-height: 1.5;
+    color: $dark-grey-color;
   }
 }
 </style>

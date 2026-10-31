@@ -13,14 +13,14 @@ For social metadata or sitemap discovery, use [SEO maintenance](../../docs/SEO.m
 
 ## Delivery Map
 
-| Consumer                   | Source                                                                        | Delivery                                             | Prerender implication                                          |
-| -------------------------- | ----------------------------------------------------------------------------- | ---------------------------------------------------- | -------------------------------------------------------------- |
-| Gallery tiles              | [ImageGridItem.vue](../../../app/components/common/ImageGridItem.vue)         | Native `<img>` using `ImageSource.src`               | Original public file; no resized IPX variant                   |
-| Gallery aspect measurement | [ImageGrid.vue](../../../app/components/common/ImageGrid.vue)                 | Browser `Image()` using configured origin plus `src` | Original must load; no inferred IPX sizes                      |
-| Enlarged artwork           | [ImagePreviewModal.vue](../../../app/components/common/ImagePreviewModal.vue) | Native `<img>` using `image.src`                     | Original public file                                           |
-| Standalone `Image`         | [Image.vue](../../../app/components/common/Image.vue)                         | `NuxtImg` with sizes, densities and placeholder      | Verify emitted IPX `src`, `srcset` and placeholder requests    |
-| Direct social image        | `pageSeo.image` and `imageDimensions`                                         | Absolute URL to original artwork                     | Verify public file and its real MIME type and pixel dimensions |
-| Explicit image routes      | [generateImageRoutes.ts](../../../app/utils/generateImageRoutes.ts)           | Enumerates IPX transforms                            | Consumed by `nitro.prerender.routes` in `nuxt.config.ts`       |
+| Consumer                   | Source                                                                        | Delivery                                                             | Prerender implication                                          |
+| -------------------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------- |
+| Gallery tiles              | [ImageGridItem.vue](../../../app/components/common/ImageGridItem.vue)         | Native `<img>` using `ImageSource.src`                               | Original public file; no resized IPX variant                   |
+| Gallery aspect measurement | [ImageGrid.vue](../../../app/components/common/ImageGrid.vue)                 | Browser `window.Image()` using the tile's same source/current origin | Original must load; no inferred IPX sizes                      |
+| Enlarged artwork           | [ImagePreviewModal.vue](../../../app/components/common/ImagePreviewModal.vue) | Native `<img>` using `image.src`                                     | Original public file                                           |
+| Standalone `Image`         | [Image.vue](../../../app/components/common/Image.vue)                         | `NuxtImg` with sizes, densities and placeholder                      | Verify emitted IPX `src`, `srcset` and placeholder requests    |
+| Direct social image        | `pageSeo.image` and `imageDimensions`                                         | Absolute URL to original artwork                                     | Verify public file and its real MIME type and pixel dimensions |
+| Explicit image routes      | [generateImageRoutes.ts](../../../app/utils/generateImageRoutes.ts)           | Enumerates IPX transforms                                            | Consumed by `nitro.prerender.routes` in `nuxt.config.ts`       |
 
 ## File Handling
 
@@ -63,6 +63,8 @@ Choose sizes from the consumer's responsive image requests, not an old generic s
 Avoid broad helper changes unless the task concerns image delivery or the change is necessary to deliver the requested image.
 
 Native gallery images need original-file checks; a successful IPX request does not validate those paths.
+Do not prefix those requests with `runtimeConfig.public.i18n.baseUrl`; a production/canonical URL is not a LAN or preview asset origin.
+The optimized wrapper remounts NuxtImg per source and ignores stale source-specific callbacks; failed full-resolution preloads must not be treated as successful compressed placeholders.
 Conversely, an original file returning 200 does not prove its transformed `srcset` and placeholder variants exist in a static deployment.
 Do not rely on an on-demand IPX server when the deployment serves only prerendered files.
 

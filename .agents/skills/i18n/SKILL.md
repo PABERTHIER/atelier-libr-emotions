@@ -90,7 +90,8 @@ Browser-language detection at `/` uses the `i18n_redirected` cookie.
 `LangSwitcher.vue` uses corresponding-route links from `useSwitchLocalePath()` and closes shared navigation before following a locale link.
 I18n owns root language detection and root head data owns HTML language/direction.
 The existing FR/EN link controls preserve the corresponding route and strip fragment-dependent destinations.
-When changing language behavior, test the URL, cookie and stored preference together; directly changing `locale` is not proof that the URL changed.
+The component does not maintain a separate localStorage value or write its own locale cookie; Nuxt I18n owns preference handling.
+When changing language behavior, test the URL, HTML language and module cookie together; directly changing `locale` is not proof that the URL changed.
 Keep `/` detection separate from the French `x-default` metadata convention.
 
 ## Verification

@@ -6,55 +6,58 @@
       </div>
 
       <div
-        v-if="type === 'objective' || type === 'professional-objective'"
+        v-if="
+          (type === 'objective' && objectiveNumber) ||
+          type === 'professional-objective'
+        "
         class="objective-number">
+        <span v-if="type === 'professional-objective'" aria-hidden="true">
+          ♥
+        </span>
         <span v-if="objectiveNumber">{{ objectiveNumber }}</span>
       </div>
 
-      <h3 v-if="title" class="block-title">{{ title }}</h3>
-      <p class="block-text">{{ textContent }}</p>
+      <component :is="`h${headingLevel}`" v-if="title" class="block-title">
+        {{ title }}
+      </component>
+      <blockquote v-if="type === 'quote'" class="block-quotation">
+        <span class="quote-mark opening" aria-hidden="true">"</span>
+        <p class="block-text">{{ textContent }}</p>
+        <span class="quote-mark closing" aria-hidden="true">"</span>
+      </blockquote>
+      <p v-else class="block-text">{{ textContent }}</p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  textContent: {
-    type: String,
-    required: true,
-  },
-  title: {
-    type: String,
-    required: false,
-    default: '',
-  },
-  type: {
-    type: String,
-    required: false,
-    default: 'default',
-    validator: (value: string): boolean =>
-      [
-        'default',
-        'highlight',
-        'emphasis',
-        'quote',
-        'master-word',
-        'axis',
-        'objective',
-        'professional-objective',
-      ].includes(value),
-  },
-  axisNumber: {
-    type: Number,
-    required: false,
-    default: 0,
-  },
-  objectiveNumber: {
-    type: Number,
-    required: false,
-    default: 0,
-  },
-})
+type BlockType =
+  | 'default'
+  | 'highlight'
+  | 'emphasis'
+  | 'quote'
+  | 'master-word'
+  | 'axis'
+  | 'objective'
+  | 'professional-objective'
+
+const props = withDefaults(
+  defineProps<{
+    textContent: string
+    title?: string
+    type?: BlockType
+    headingLevel?: 2 | 3 | 4 | 5 | 6
+    axisNumber?: number
+    objectiveNumber?: number
+  }>(),
+  {
+    type: 'default',
+    headingLevel: 3,
+    title: '',
+    axisNumber: 0,
+    objectiveNumber: 0,
+  }
+)
 
 const blockClass = computed(() => {
   const classes = [`block-${props.type}`]
@@ -71,74 +74,81 @@ const blockClass = computed(() => {
 @use 'sass:color';
 
 .text-block {
+  min-width: 0;
+  overflow-wrap: anywhere;
+
   .block-content {
     position: relative;
-    padding: 30px;
-    border-radius: 12px;
+    padding: $space-30;
+    border-radius: $radius-panel;
     background: $white-color;
-    box-shadow: 0 6px 24px $box-shadow-color;
-    transition: all 0.3s ease;
+    box-shadow: 0 $space-6 $space-24 $box-shadow-color;
+    transition:
+      transform $transition-ui,
+      box-shadow $transition-ui;
 
     &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+      transform: translateY(-$space-2);
+      box-shadow: 0 $space-8 $space-32 rgba(0, 0, 0, 0.12);
     }
 
     .block-title {
-      margin-bottom: 15px;
+      margin-top: 0;
+      margin-bottom: $space-15;
       color: $primary-text-color;
-      font-size: 20px;
+      font-size: 1.25rem;
     }
 
     .block-text {
       margin: 0;
-      text-align: justify;
+      text-align: start;
       color: $primary-text-color;
-      font-size: 17px;
+      font-size: 1.0625rem;
       line-height: 1.6;
     }
 
     .axis-number,
     .objective-number {
-      width: 35px;
-      height: 35px;
+      min-width: $space-35;
+      min-height: $space-35;
+      padding: $space-4;
       display: flex;
       align-items: center;
       justify-content: center;
       position: absolute;
-      top: -15px;
-      left: 20px;
+      top: -$space-15;
+      left: $space-20;
       border-radius: 50%;
-      color: $white-color;
+      color: $primary-text-color;
       font-weight: 700;
-      font-size: 16px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      font-size: 1rem;
+      box-shadow: 0 $focus-width $space-10 rgba(0, 0, 0, 0.2);
     }
   }
 
   @media (max-width: $md) {
     .block-content {
-      padding: 20px;
+      padding: $space-20;
 
       .block-title {
-        font-size: 17px;
+        font-size: 1.0625rem;
       }
 
       .block-text {
         text-align: left;
-        font-size: 15px;
+        font-size: 0.9375rem;
       }
     }
   }
 
   &.block-default .block-content {
-    border-left: 4px solid $grey-blue-color;
+    border-left: $space-4 solid $grey-blue-color;
   }
 
   &.block-highlight .block-content {
-    padding-top: 20px;
-    border-left: 4px solid $gold-color;
-    border-top: 2px solid rgba(212, 175, 55, 0.3);
+    padding-top: $space-20;
+    border-left: $space-4 solid $gold-color;
+    border-top: $space-2 solid rgba($gold-color, 0.3);
     background: linear-gradient(
       135deg,
       $light-creativity-orange 0%,
@@ -146,12 +156,12 @@ const blockClass = computed(() => {
     );
 
     .block-title {
-      color: $gold-color;
+      color: $gold-text-color;
     }
   }
 
   &.block-emphasis .block-content {
-    border-left: 4px solid $creativity-orange;
+    border-left: $space-4 solid $creativity-orange;
     background: linear-gradient(
       135deg,
       $light-creativity-orange 0%,
@@ -165,57 +175,56 @@ const blockClass = computed(() => {
 
   &.block-quote .block-content {
     position: relative;
-    padding: 50px;
+    padding: $space-50;
     text-align: center;
-    border-left: 4px solid $inspiration-purple;
-    border-radius: 20px;
+    border-left: $space-4 solid $inspiration-purple;
+    border-radius: $radius-pill;
     background: linear-gradient(
       135deg,
       $light-inspiration-purple 0%,
       $white-color 100%
     );
 
-    &::before,
-    &::after {
+    .quote-mark {
       position: absolute;
       color: $inspiration-purple;
-      font-size: 50px;
+      font-size: 3.125rem;
       opacity: 0.3;
-      content: '"';
     }
 
-    &::before {
-      top: 10px;
-      left: 20px;
+    .opening {
+      top: $space-10;
+      left: $space-20;
     }
 
-    &::after {
-      bottom: 10px;
-      right: 20px;
+    .closing {
+      bottom: $space-10;
+      right: $space-20;
       transform: rotate(180deg);
     }
 
     .block-text {
       font-style: italic;
-      font-size: 16px;
+      font-size: 1rem;
     }
   }
 
   &.block-master-word .block-content {
-    margin-bottom: 35px;
-    padding-top: 10px;
-    border-left: 4px solid $dark-red-color;
+    margin-bottom: $space-35;
+    padding-top: $space-10;
+    border-left: $space-4 solid $dark-red-color;
 
     .block-title {
+      position: relative;
       text-align: center;
-      font-size: 27px;
+      font-size: 1.6875rem;
       color: $dark-red-color;
 
       &::after {
         width: 80%;
-        height: 3px;
+        height: $focus-width;
         position: absolute;
-        bottom: -8px;
+        bottom: -$space-8;
         left: 50%;
         transform: translateX(-50%);
         background: linear-gradient(
@@ -230,29 +239,29 @@ const blockClass = computed(() => {
     }
 
     .block-text {
-      font-size: 16px;
+      font-size: 1rem;
       line-height: 1.7;
     }
   }
 
   @media (max-width: $md) {
     &.block-master-word .block-content {
-      margin-bottom: 30px;
-      padding-top: 1px;
+      margin-bottom: $space-30;
+      padding-top: $border-width;
 
       .block-title {
-        font-size: 22px;
+        font-size: 1.375rem;
       }
 
       .block-text {
-        font-size: 14px;
+        font-size: 0.875rem;
       }
     }
   }
 
   &.block-axis .block-content {
-    padding-top: 35px;
-    border-left: 5px solid;
+    padding-top: $space-35;
+    border-left: $space-5 solid;
 
     .block-title {
       margin-top: 0;
@@ -297,8 +306,8 @@ const blockClass = computed(() => {
 
   &.block-objective .block-content,
   &.block-professional-objective .block-content {
-    padding-top: 35px;
-    border-left: 3px solid;
+    padding-top: $space-35;
+    border-left: $focus-width solid;
   }
 
   &.block-objective .block-content {
@@ -317,17 +326,23 @@ const blockClass = computed(() => {
     border-left-color: $dark-red-color;
 
     .objective-number {
+      color: $white-color;
       background: linear-gradient(
         135deg,
         $dark-red-color,
         color.adjust($dark-red-color, $lightness: 15%)
       );
-
-      &::before {
-        content: '♥';
-        font-size: 20px;
-      }
     }
+  }
+}
+
+.block-quotation {
+  margin: 0;
+}
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .text-block .block-content:hover {
+    transform: none;
   }
 }
 </style>
