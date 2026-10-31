@@ -4,8 +4,6 @@
       src="logo.svg"
       :title="logoTitle"
       :alt="logoAlt"
-      :width="200"
-      :height="200"
       sizes="xs:20px, sm:30px, md:35px, lg:40px"
       densities="x1 x2" />
   </div>
