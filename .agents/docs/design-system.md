@@ -140,6 +140,39 @@ The unchanged home artwork rotation is separate page behavior and still needs it
 Preserve the viewer's zoom geometry and scroll restoration when changing transitions.
 Keep static presentation in SCSS and allow dynamic styles for measured grid and zoom geometry.
 
+## Common-component maintenance
+
+Common controls retain the current palette, gradient borders, pill language switcher and white artwork-viewer surface.
+The update is not a dropdown, tooltip, theme or page redesign.
+Component props and events are typed; heading components preserve their existing defaults while allowing explicit hierarchy in future page work.
+Static appearance stays in scoped SCSS; gesture geometry belongs in [useImageViewerGestures.ts](../../app/composables/useImageViewerGestures.ts), not in template expressions or global shell styles.
+Transitions name the properties they animate instead of using `transition: all`.
+Noninteractive card hover movement is disabled for touch and reduced motion.
+Text uses rem-based sizing, normal flow, minimum-width guards and long-word wrapping.
+Original gold/copper ornament and badge surfaces are retained.
+Text accents use hue-specific `$gold-text-color` and `$copper-text-color`, rather than replacing both with a generic navigation brown.
+The copper date badge keeps its original background with darker contrasting text.
+Dark text is retained on light gold/orange/purple badges, while dark-red badges use white text.
+Focus is never removed by a generic button/range reset.
+Artwork triggers draw a 4px-per-color inset white/dark-blue ring so gallery clipping cannot hide it.
+Mobile/coarse-pointer captions sit below the image with no overlay; desktop captions use a shallow feathered gradient only on hover/focus.
+Artwork hover scale is 1.04, with a 0.65s cubic-bezier transition; reduced motion removes it.
+The native width binding remains an HTML image width attribute, not an IPX transform.
+Fixed image frames use the existing row-height CSS variable while captions grow in natural button flow; the engine's mathematical output is unchanged.
+Interface arrows and quotation/ornament decoration are hidden from assistive technology.
+The viewer's native dialog occupies the browser top layer; its child scrim and panel share the fade while the native backdrop stays transparent.
+Header, flexible image stage, previous/zoom/next toolbar and concise information share one grid panel.
+The image stage hides scrollbar presentation and supports drag, click-to-center and keyboard pan; ordinary content does not require a panel scrollbar.
+Only short or enlarged content falls back to one panel scroll region with a sticky close header.
+The loader intentionally uses a scoped plum gradient and the separate `viewerSkeleton` keyframe; it does not replace or reuse the gallery skeleton.
+The stage preserves complete contain geometry at fit size; zoom dimensions are measured and bounded rather than inferred from viewport writers.
+Native range presentation keeps its focus outline and a 44px interaction height.
+The language switcher retains compact pill framing, with its transparent native hit areas sized separately from that visible frame.
+Use component-qualified block/element classes for new internal structure, shallow intentional relationships, blank lines between visual areas and existing spacing/border/motion tokens.
+Retain established public class/variant contracts when cleanup alone does not justify renaming them.
+System-color keywords in forced-colors rules are valid CSS and must not be replaced with fixed palette values to silence an editor decoration.
+See [accessibility maintenance](accessibility.md#common-component-contracts) for behavior, exclusions and audit boundaries.
+
 Verify affected pages in both locales, at mobile and desktop widths, with keyboard, touch, enlarged text and reduced motion.
 Use the layout review for scoped structural improvements and record what was actually tested.
 

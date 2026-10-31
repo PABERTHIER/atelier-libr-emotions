@@ -107,6 +107,15 @@
     "lang_switcher": {
       "change_language_label": "Changer de langue"
     },
+    "page_navigation": {
+      "label": "Pages précédente et suivante"
+    },
+    "image": {
+      "open_original": "Voir l'image originale : {title}"
+    },
+    "image_grid_item": {
+      "open": "Voir l'œuvre : {title}"
+    },
     "menu": {
       "open": "Ouvrir le menu",
       "close": "Fermer le menu",
@@ -120,7 +129,15 @@
       "zoom_fit": "Ajuster",
       "dimensions_label": "Dimensions",
       "aria_label": "Aperçu de l'image",
-      "image_unavailable": "Image non disponible"
+      "image_unavailable": "Image non disponible",
+      "image_loading": "Chargement de l'image…",
+      "retry": "Réessayer",
+      "previous": "Œuvre précédente",
+      "next": "Œuvre suivante",
+      "zoom_in": "Agrandir",
+      "zoom_out": "Réduire",
+      "image_region": "Zone de l'image",
+      "pan_hint": "Une fois l'image agrandie, cliquez sur un détail pour le centrer ou utilisez les flèches du clavier."
     }
   },
   "pages": {

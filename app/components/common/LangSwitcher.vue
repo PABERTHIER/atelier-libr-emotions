@@ -1,90 +1,104 @@
 <template>
-  <div class="lang-switcher">
+  <nav class="lang-switcher" :aria-label="changeLanguageLabel">
     <NuxtLink
       v-for="availableLocale in availableLocales"
       :key="availableLocale.code"
-      :class="['btn', { active: availableLocale.code === locale }]"
+      class="lang-switcher__link"
+      :class="{
+        'lang-switcher__link--active': availableLocale.code === locale,
+      }"
       :to="availableLocale.path"
-      :aria-label="changeLanguageLabel + ' ' + availableLocale.name"
-      :aria-current="availableLocale.code === locale ? 'true' : 'false'"
-      @click="setLanguagePreference(availableLocale.code)">
-      {{ availableLocale.code.toUpperCase() }}
+      :lang="availableLocale.language"
+      :hreflang="availableLocale.language"
+      :aria-label="availableLocale.name"
+      :aria-current="availableLocale.code === locale ? 'true' : undefined"
+      @click="closeNavigation">
+      <span class="lang-switcher__label" aria-hidden="true">
+        {{ availableLocale.code.toUpperCase() }}
+      </span>
     </NuxtLink>
-  </div>
+  </nav>
 </template>
 
 <script setup lang="ts">
-import type { localesType } from '~/types/locales'
-
 const { locale, locales, t } = useI18n()
 const { closeNavigation } = useSiteNavigation()
-
 const switchLocalePath = useSwitchLocalePath()
-const site = useSiteConfig()
 
 const availableLocales = computed(() =>
-  (locales.value as Array<{ code: localesType; name: string }>).map(
-    localeInfo => {
-      const target = new URL(switchLocalePath(localeInfo.code), site.url)
-      target.hash = ''
-
-      return {
-        code: localeInfo.code,
-        name: localeInfo.name,
-        path: `${target.pathname}${target.search}`,
-      }
-    }
-  )
+  locales.value.map(localeInfo => ({
+    code: localeInfo.code,
+    name: localeInfo.name,
+    language: localeInfo.language,
+    path: switchLocalePath(localeInfo.code).replace(/#.*$/, ''),
+  }))
 )
+
 const changeLanguageLabel = computed(() =>
   t('components.lang_switcher.change_language_label')
 )
-
-const setLanguagePreference = (code: localesType) => {
-  closeNavigation()
-
-  if (code === locale.value) {
-    return
-  }
-
-  localStorage.setItem('preferredLanguage', code)
-}
 </script>
 
 <style lang="scss" scoped>
+@use 'sass:color';
+
 .lang-switcher {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
-  padding: 0.2rem;
-  border-radius: 20px;
-  border: 1px solid rgba($gold-color, 0.35);
-  background: rgba($warm-beige, 0.5);
 
-  .btn {
-    display: inline-block;
+  &::before {
+    position: absolute;
+    inset-block: calc((100% - #{$lang-switcher-frame-height}) / 2);
+    inset-inline: $space-2;
+    border: $border-width solid rgba($gold-color, 0.35);
+    border-radius: $radius-pill;
+    background: rgba($warm-beige, 0.5);
+    pointer-events: none;
+    content: '';
+  }
+
+  &__link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: $control-size;
+    min-height: $control-size;
+    color: $navigation-muted-color;
+    border-radius: $radius-pill;
     text-decoration: none;
-    color: rgba($primary-text-color, 0.6);
-    padding: 0.35rem 0.7rem;
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.05em;
-    border-radius: 20px;
     cursor: pointer;
-    transition:
-      color 0.2s ease,
-      background 0.2s ease;
+    transition: color $transition-ui;
 
     &:hover {
       color: $primary-text-color;
     }
+  }
 
-    &.active {
+  &__label {
+    padding: $space-5 $space-10;
+    border-radius: $radius-pill;
+  }
+
+  &__link--active,
+  &__link--active:hover {
+    color: color.adjust($primary-text-color, $lightness: -5%);
+    cursor: default;
+
+    .lang-switcher__label {
       background: linear-gradient(120deg, $gold-color, $copper-color);
-      color: $white-color;
-      box-shadow: 0 2px 12px rgba($gold-color, 0.3);
-      cursor: default;
+      box-shadow: 0 $space-2 $space-12 rgba($gold-color, 0.3);
     }
+  }
+}
+
+@media (forced-colors: active) {
+  .lang-switcher__link--active .lang-switcher__label {
+    border: $border-width solid Highlight;
   }
 }
 </style>

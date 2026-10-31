@@ -1,23 +1,19 @@
 <template>
   <div ref="root" class="image-grid">
     <template v-if="rows.length > 0">
-      <div
-        v-for="(row, rIdx) in rows"
-        :key="`row-${rIdx}`"
-        class="image-row"
-        aria-hidden="false">
+      <div v-for="(row, rIdx) in rows" :key="`row-${rIdx}`" class="image-row">
         <div
           v-for="(item, iIdx) in row.items"
           :key="`item-${rIdx}-${iIdx}`"
           :class="item.isOnError ? 'image-cell-error' : 'image-cell'"
           :style="{
             width: `${Math.round(item.renderWidth)}px`,
-            height: `${Math.round(row.rowHeight)}px`,
+            '--artwork-height': `${Math.round(row.rowHeight)}px`,
           }">
           <ImageGridItem
             :item="item"
             :is-mobile="device.isMediumOrBelowScreen.value"
-            @select="selectedImage = item.imageSource" />
+            @select="openViewer(item.imageSource, $event)" />
         </div>
       </div>
     </template>
@@ -25,8 +21,11 @@
 
     <ImagePreviewModal
       :image="selectedImage ?? fallbackImage"
+      :images="props.images"
+      :opener="viewerOpener"
       :visible="selectedImage !== null"
-      @close="selectedImage = null" />
+      @select="selectedImage = $event"
+      @close="closeViewer" />
   </div>
 </template>
 
@@ -50,10 +49,8 @@ const device = useScreenSize()
 const root = ref<HTMLElement | null>(null)
 const rows = ref<Row[]>([])
 const internalItems = ref<ItemInternal[]>([])
-const runtimeConfig = useRuntimeConfig()
-const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
-
 const selectedImage = ref<ImageSource | null>(null)
+const viewerOpener = shallowRef<HTMLButtonElement | null>(null)
 const fallbackImage = computed<ImageSource>(() => ({
   src: '',
   alt: t('components.image_preview_modal.image_unavailable'),
@@ -68,13 +65,28 @@ let resizeTimer: ReturnType<typeof setTimeout> | null = null
 let lastContainerWidth = 0
 let lastRowsSnapshot: Row[] | null = null
 
+function openViewer(image: ImageSource, event: MouseEvent) {
+  viewerOpener.value =
+    event.currentTarget instanceof HTMLButtonElement
+      ? event.currentTarget
+      : null
+  selectedImage.value = image
+}
+
+function closeViewer() {
+  selectedImage.value = null
+  viewerOpener.value = null
+}
+
 function pickTargetHeightPx(containerWidth: number): number {
   if (containerWidth <= 480) {
     return props.heights.xs
   }
+
   if (containerWidth <= 768) {
     return props.heights.sm
   }
+
   if (containerWidth <= 1024) {
     return props.heights.md
   }
@@ -91,15 +103,22 @@ async function ensureAspects(): Promise<void> {
   }))
 
   const promises: Promise<void>[] = []
+
   for (const item of internalItems.value) {
     const promise = new Promise<void>(resolve => {
-      const image = new Image()
-      image.src = baseUrl.value + item.imageSource.src
+      const image = new window.Image()
+      image.src = item.imageSource.src
 
       if (image.complete) {
-        const width = image.naturalWidth || 1
-        const height = image.naturalHeight || 1
-        item.aspect = Math.max(0.01, width / height)
+        if (image.naturalWidth > 0) {
+          const width = image.naturalWidth
+          const height = image.naturalHeight || 1
+
+          item.aspect = Math.max(0.01, width / height)
+        } else {
+          item.aspect = 1
+          item.isOnError = true
+        }
         resolve()
       } else {
         image.onload = () => {
@@ -112,6 +131,7 @@ async function ensureAspects(): Promise<void> {
           // Fallback safe square
           item.aspect = 1
           item.isOnError = true
+
           resolve()
         }
       }
@@ -119,12 +139,14 @@ async function ensureAspects(): Promise<void> {
 
     promises.push(promise)
   }
+
   await Promise.all(promises)
 }
 
 function buildRows(containerWidth: number, targetRowHeight: number): Row[] {
   const rowsLocal: Row[] = []
   const items = internalItems.value.slice()
+
   let idx = 0
 
   while (idx < items.length) {
@@ -164,6 +186,7 @@ function buildRows(containerWidth: number, targetRowHeight: number): Row[] {
     // For the last row that didn't reach width, keep the targetRowHeight to avoid overstretching
     const projectedWidthAtTarget =
       sumAspect * targetRowHeight + GAP_PX * (rowItems.length - 1)
+
     const finalHeight =
       isLastRow && projectedWidthAtTarget < containerWidth
         ? targetRowHeight
@@ -190,6 +213,7 @@ function findBestMatchingPrevRow(
   }
 
   const newSrcs = new Set(newRow.items.map(it => it.imageSource.src))
+
   let bestMatch: Row | null = null
   let bestOverlap = 0
 
@@ -219,6 +243,7 @@ function findBestMatchingPrevRow(
   }
 
   const overlapRatio = bestOverlap / smallerLength
+
   return overlapRatio >= 0.5 ? bestMatch : null
 }
 
@@ -237,6 +262,7 @@ async function computeLayout(): Promise<void> {
   }
 
   await ensureAspects()
+
   const targetHeight = pickTargetHeightPx(containerWidth)
   const newRows = buildRows(containerWidth, targetHeight)
 
@@ -248,9 +274,11 @@ async function computeLayout(): Promise<void> {
   ) {
     for (const newRow of newRows) {
       const matchedPrev = findBestMatchingPrevRow(newRow, lastRowsSnapshot)
+
       if (matchedPrev) {
         if (newRow.items.length > matchedPrev.items.length) {
           lastContainerWidth = containerWidth
+
           return
         }
       }
@@ -266,15 +294,18 @@ async function computeLayout(): Promise<void> {
 
     if (newRows.length > 0 && matchedCount < Math.floor(newRows.length / 2)) {
       lastContainerWidth = containerWidth
+
       return
     }
   }
 
   rows.value = newRows
+
   lastRowsSnapshot = newRows.map(row => ({
     rowHeight: row.rowHeight,
     items: row.items.map(item => ({ ...item })),
   }))
+
   lastContainerWidth = containerWidth
 }
 
@@ -312,27 +343,63 @@ onBeforeUnmount(() => {
 
 watch(
   () => props.images,
-  async () => {
+  async images => {
+    const items = rows.value.flatMap(row => row.items)
+    const sameSources =
+      items.length === images.length &&
+      items.every((item, index) => item.imageSource.src === images[index]?.src)
+
+    if (sameSources) {
+      const updateSources = (entries: ItemInternal[]) => {
+        entries.forEach((item, index) => {
+          const source = images[index]
+
+          if (source) {
+            item.imageSource = source
+          }
+        })
+      }
+
+      updateSources(items)
+      updateSources(internalItems.value)
+
+      if (lastRowsSnapshot) {
+        updateSources(lastRowsSnapshot.flatMap(row => row.items))
+      }
+
+      if (selectedImage.value) {
+        selectedImage.value =
+          images.find(image => image.src === selectedImage.value?.src) ?? null
+      }
+
+      return
+    }
+
+    lastContainerWidth = 0
+    lastRowsSnapshot = null
+
     await computeLayout()
   },
   { deep: true }
 )
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @use 'sass:color';
 
 .image-grid {
   width: 100%;
   box-sizing: border-box;
 
-  :deep(.image-cell) {
-    animation: fadeInUpBlock 0.8s ease-out;
-    animation-fill-mode: both;
+  @media (prefers-reduced-motion: no-preference) {
+    :deep(.image-cell) {
+      animation: fadeInUpBlock 0.8s ease-out;
+      animation-fill-mode: both;
 
-    @for $i from 1 through 15 {
-      &:nth-child(#{$i}) {
-        animation-delay: #{$i * 0.1}s;
+      @for $i from 1 through 15 {
+        &:nth-child(#{$i}) {
+          animation-delay: #{$i * 0.1}s;
+        }
       }
     }
   }
@@ -342,30 +409,18 @@ watch(
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 24px; // Must match GAP_PX constant
-    margin-bottom: 24px;
+    gap: $space-24; // Must match GAP_PX constant
+    margin-bottom: $space-24;
 
     .image-cell {
       position: relative;
-      border-radius: 12px;
+      border-radius: $radius-panel;
       box-shadow: 0 4px 16px $box-shadow-color;
       background-color: transparent;
     }
 
     .image-cell-error {
       position: relative;
-
-      :deep(.grid-item) {
-        .img {
-          border-radius: 12px;
-        }
-
-        .image-title-overlay {
-          text-align: center;
-          font-size: 15px;
-          text-wrap: wrap;
-        }
-      }
     }
   }
 
@@ -373,83 +428,29 @@ watch(
     .image-row {
       .image-cell {
         overflow: hidden;
+      }
 
-        // Base state: title hidden below the image, revealed on hover
-        :deep(.image-title-overlay) {
-          position: absolute;
-          bottom: -10px;
-          left: 0;
-          right: 0;
-          padding: 16px 12px 12px;
-          font-size: 14px;
-          font-weight: 500;
-          line-height: 1.3;
-          opacity: 0;
-          transform: translateY(10px);
-          transition: all 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
-          pointer-events: none;
-          color: $white-color;
-          background: linear-gradient(
-            to top,
-            rgba(44, 24, 16, 0.9) 0%,
-            rgba(44, 24, 16, 0.7) 60%,
-            transparent 100%
-          );
+      @media (prefers-reduced-motion: no-preference) {
+        .image-cell :deep(.grid-item__button:focus-visible .grid-item__image) {
+          transform: scale($artwork-hover-scale);
         }
-      }
 
-      // Error cells: title always visible at the bottom of the cell
-      .image-cell-error {
-        :deep(.image-title-overlay) {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          padding: 8px 12px;
-          font-size: 13px;
-          font-weight: 500;
-          line-height: 1.3;
-          opacity: 1;
-          color: $white-color;
-          text-align: center;
-          text-wrap: wrap;
-          background: linear-gradient(
-            to top,
-            rgba(44, 24, 16, 0.9) 0%,
-            rgba(44, 24, 16, 0.7) 60%,
-            transparent 100%
-          );
+        @media (pointer: fine) {
+          .image-cell:hover :deep(.grid-item__image) {
+            transform: scale($artwork-hover-scale);
+          }
         }
-      }
-
-      .image-cell:hover :deep(.img),
-      .image-cell:focus-within :deep(.img) {
-        transform: scale(1.12);
-      }
-
-      .image-cell:hover :deep(.image-title-overlay),
-      .image-cell:focus-within :deep(.image-title-overlay) {
-        opacity: 1;
-        transform: translateY(0);
       }
     }
   }
 
   // Mobile: show title on tap/touch or small screens
-  @media ((hover: none) or (max-width: calc($md - 1px))) {
+  @media (hover: none), (pointer: coarse), (max-width: calc($md - 1px)) {
     .image-row {
-      margin-bottom: 40px;
+      margin-bottom: $space-20;
 
       .image-cell {
         overflow: visible;
-      }
-
-      .image-cell-error {
-        :deep(.grid-item) {
-          .image-title-overlay {
-            font-size: 12px;
-          }
-        }
       }
     }
 
@@ -462,7 +463,7 @@ watch(
 .image-grid-skeleton {
   width: 100%;
   min-height: 300px;
-  border-radius: 12px;
+  border-radius: $radius-panel;
   background: linear-gradient(
     90deg,
     $warm-beige 25%,

@@ -21,7 +21,7 @@ For an audit request, report findings without changing files unless fixes are re
 | Appearance or motion   | Actual contrast, text enlargement, short viewports and CSS/JavaScript reduced motion         |
 
 Use the maintenance guide to distinguish implemented behavior from acceptance criteria.
-Do not copy click-only containers as the pattern for new controls or assume the existing implementation has passed an audit.
+Reuse native artwork buttons instead of click-only containers; source improvements do not establish a completed conformance audit.
 
 ## Semantics And Interaction
 
@@ -47,8 +47,10 @@ Keep the close button visible and reachable on short mobile screens and at brows
 Test Escape from every focusable dialog control, not just the outer container.
 Prevent background interaction while a modal is active and restore body scrolling and the previous position on close or unmount.
 
-The current viewer supports one selected image with zoom and fit controls, not a previous/next artwork sequence.
-Do not require arrow-key artwork navigation unless that feature is requested.
+The viewer receives the grid's ordered images and emits selection while the grid retains selection ownership.
+Check previous/next buttons, fit-size swipes and zoomed drag/pinch pan independently.
+Preserve range-input arrows; image-region arrows pan when zoomed and do not navigate.
+Keep visible zoom/fit and previous/next controls, and verify click-to-center as a single-pointer alternative to pan dragging.
 When changing menus, expose toggle state with `aria-expanded` and an appropriate controlled-region relationship.
 Check close behavior on navigation and Escape, and keep disabled `/wip` menu entries non-interactive.
 

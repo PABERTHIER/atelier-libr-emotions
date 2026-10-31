@@ -19,8 +19,10 @@ An instruction's presence does not require an unrelated site-wide audit or prove
 | Navigation            | Logical reading order, one main landmark, page H1 and useful focus/viewport behavior after navigation         |
 | Appearance and motion | Readable contrast and text enlargement, comfortable touch targets, and CSS/JavaScript reduced-motion behavior |
 
-Do not copy the current click-only gallery container as the pattern for a new control.
-Preserve the viewer's existing zoom range keyboard behavior; it has no previous/next artwork sequence.
+Reuse the native artwork button and the viewer's native modal dialog rather than introducing click-only containers or a competing focus trap.
+Preserve native zoom range arrows, same-group previous/next artwork navigation and the image region's distinct zoomed keyboard-pan behavior.
+Every drag/pinch/swipe action needs a single-pointer alternative.
+The viewer uses zoom/fit and previous/next buttons plus click-to-center panning, without a separate pan toolbar.
 Check shared menu/modal scroll locking and cleanup when changing overlays.
 Use [i18n](../../.agents/skills/i18n/SKILL.md) for FR/EN labels and avoid tooltip-only or hover-only explanations of essential actions.
 For new-tab destinations, use `rel="noopener noreferrer"` alongside `target="_blank"` and verify the rendered link.

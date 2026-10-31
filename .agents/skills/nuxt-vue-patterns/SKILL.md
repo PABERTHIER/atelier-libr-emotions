@@ -11,20 +11,20 @@ Choose APIs and abstractions from the capabilities installed and used in this re
 
 ## Existing Building Blocks
 
-| Concern                    | Local implementation                                                          | Contract                                                           |
-| -------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| Page shell                 | [default.vue](../../../app/layouts/default.vue)                               | Decorative Welcome, skip link, header, focusable main and footer   |
-| Page introduction          | [PageTitle.vue](../../../app/components/common/PageTitle.vue)                 | `title` and optional `subtitle`; renders the H1                    |
-| Gallery                    | [ImageGrid.vue](../../../app/components/common/ImageGrid.vue)                 | `ImageSource[]` and `Heights`; justified rows and image selection  |
-| Artwork viewer             | [ImagePreviewModal.vue](../../../app/components/common/ImagePreviewModal.vue) | `image`, `visible` and `close`; zoom, fit and scroll restoration   |
-| Standalone optimized image | [Image.vue](../../../app/components/common/Image.vue)                         | Required `src` and `sizes`; optional `maxHeight`, `title`, `alt`   |
-| Adjacent pages             | [PageNavigation.vue](../../../app/components/common/PageNavigation.vue)       | Optional `previousPage` and `nextPage`; localizes each path        |
-| Responsive state           | [screen-size.ts](../../../app/composables/screen-size.ts)                     | `useScreenSize()` returns breakpoint refs with `ssrWidth: 1024`    |
-| Smooth scrolling           | [smooth-scroll.client.ts](../../../app/plugins/smooth-scroll.client.ts)       | Provides the existing `$lenis` instance                            |
-| Style tokens               | [variables.scss](../../../app/styles/variables.scss)                          | Colors, layers, dimensions and breakpoints injected through Vite   |
-| Menu catalogue             | [navigation.ts](../../../app/data/navigation.ts)                              | Ordered translation keys, groups and unprefixed destinations       |
-| Navigation state           | [useSiteNavigation.ts](../../../app/composables/useSiteNavigation.ts)         | Close desktop/mobile navigation from any shared control            |
-| Overlay locking            | [useOverlayScrollLock.ts](../../../app/composables/useOverlayScrollLock.ts)   | Acquire/release an independent scroll lease with automatic cleanup |
+| Concern                    | Local implementation                                                          | Contract                                                                                              |
+| -------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Page shell                 | [default.vue](../../../app/layouts/default.vue)                               | Decorative Welcome, skip link, header, focusable main and footer                                      |
+| Page introduction          | [PageTitle.vue](../../../app/components/common/PageTitle.vue)                 | `title` and optional `subtitle`; renders the H1                                                       |
+| Gallery                    | [ImageGrid.vue](../../../app/components/common/ImageGrid.vue)                 | `ImageSource[]` and `Heights`; justified rows and image selection                                     |
+| Artwork viewer             | [ImagePreviewModal.vue](../../../app/components/common/ImagePreviewModal.vue) | `image`, `visible` and `close`; native dialog, zoom/pan, same-group navigation and scroll restoration |
+| Standalone optimized image | [Image.vue](../../../app/components/common/Image.vue)                         | Required `src` and `sizes`; optional `maxHeight`, `title`, `alt`                                      |
+| Adjacent pages             | [PageNavigation.vue](../../../app/components/common/PageNavigation.vue)       | Optional `previousPage` and `nextPage`; localizes each path                                           |
+| Responsive state           | [screen-size.ts](../../../app/composables/screen-size.ts)                     | `useScreenSize()` returns breakpoint refs with `ssrWidth: 1024`                                       |
+| Smooth scrolling           | [smooth-scroll.client.ts](../../../app/plugins/smooth-scroll.client.ts)       | Provides the existing `$lenis` instance                                                               |
+| Style tokens               | [variables.scss](../../../app/styles/variables.scss)                          | Colors, layers, dimensions and breakpoints injected through Vite                                      |
+| Menu catalogue             | [navigation.ts](../../../app/data/navigation.ts)                              | Ordered translation keys, groups and unprefixed destinations                                          |
+| Navigation state           | [useSiteNavigation.ts](../../../app/composables/useSiteNavigation.ts)         | Close desktop/mobile navigation from any shared control                                               |
+| Overlay locking            | [useOverlayScrollLock.ts](../../../app/composables/useOverlayScrollLock.ts)   | Acquire/release an independent scroll lease with automatic cleanup                                    |
 
 ## Components And Types
 
@@ -72,7 +72,7 @@ Route focus and viewport scrolling await the shared overlay's release, not the r
 Modified clicks preserve native behavior; selecting the current page closes the menu, while mode changes and unmount dismiss immediately.
 
 `ImageGrid` loads natural dimensions and computes browser rows after mount.
-Its width-change guard can skip updates when only translated image props change.
+Translations refresh row/item/snapshot metadata independently of the width-change sizing guard.
 When changing captions or translated image arrays, verify a locale switch at an unchanged viewport; computed page data alone does not establish that the grid updated.
 Keep fixes to shared grid behavior within the requested task and report any unresolved limitation.
 
@@ -89,7 +89,11 @@ Use existing `$sm`, `$md`, `$lg` and `$xl` breakpoints, checking their actual va
 Inline dynamic measurements are appropriate for grid and zoom geometry; prefer scoped SCSS for static presentation.
 
 Use [artwork-assets](../artwork-assets/SKILL.md) for image consumer selection and static delivery.
-`ImageGridItem` and the preview modal currently use native `<img>`; the standalone `Image` wrapper uses `NuxtImg` and forces lazy loading.
+`ImageGridItem` and the preview modal use native `<img>`; the standalone `Image` wrapper retains `NuxtImg` and lazy loading.
+The grid passes its ordered `images` directly to the viewer and handles `select`; there is no tile registry.
+Aspect measurement uses explicit `window.Image` with the same current-origin source as tiles.
+Preserve the established row-size functions and constants when fixing source delivery or metadata synchronization.
+Keep measured zoom/pinch/pan geometry in `useImageViewerGestures`; cancel pending positioning and captures when an image or dialog changes.
 Do not assume arbitrary attributes such as `loading="eager"` reach its nested image without checking its implementation.
 Custom icons use the `ale-icon:` collection; interface icons also use the installed Heroicons or Lucide sets.
 Keep an icon decorative when adjacent text already names the action.

@@ -10,10 +10,10 @@ Implementation details and scoped browser checks do not certify full-site confor
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Landmarks and bypass    | [default.vue](../../app/layouts/default.vue), [Header.vue](../../app/components/layout/Header.vue)                                                           | One focusable main landmark and a localized, focus-visible skip link positioned over the header logo                                                           |
 | Headings                | [PageTitle.vue](../../app/components/common/PageTitle.vue) and individual pages                                                                              | `PageTitle` supplies an H1; check pages that use a different shell separately                                                                                  |
-| Gallery trigger         | [ImageGridItem.vue](../../app/components/common/ImageGridItem.vue)                                                                                           | Artwork opens from a clickable `div` without native button keyboard behavior                                                                                   |
-| Viewer                  | [ImagePreviewModal.vue](../../app/components/common/ImagePreviewModal.vue)                                                                                   | Has a named dialog, Escape handling, a focus trap, initial close-button focus and focus-return logic; actual return depends on an operable invoking control    |
+| Gallery trigger         | [ImageGridItem.vue](../../app/components/common/ImageGridItem.vue)                                                                                           | Native named button with Enter/Space, dialog intent, an inset two-color focus indicator and visible failure feedback                                           |
+| Viewer                  | [ImagePreviewModal.vue](../../app/components/common/ImagePreviewModal.vue)                                                                                   | Native modal dialog with focus containment, close-button entry, Escape, trigger return, zoom/pan controls and same-group artwork navigation                    |
 | Menu                    | [Menu.vue](../../app/components/layout/Menu.vue), [MenuLinks.vue](../../app/components/layout/MenuLinks.vue)                                                 | Native disclosure buttons with expanded/controls relationships, desktop Escape/outside/focus-leave dismissal and a native mobile modal with accordion sections |
-| Language                | [LangSwitcher.vue](../../app/components/common/LangSwitcher.vue)                                                                                             | Named locale links and current-language indication exist; URL, locale, cookie and stored preference need joint testing                                         |
+| Language                | [LangSwitcher.vue](../../app/components/common/LangSwitcher.vue)                                                                                             | Compact named locale links delegate preference handling to Nuxt I18n; no custom localStorage or cookie writes                                                  |
 | Navigation continuity   | [navigation-focus.client.ts](../../app/plugins/navigation-focus.client.ts), [router.options.ts](../../app/router.options.ts)                                 | Completed route/hash navigation focuses its destination; scrolling restores history and clears the measured sticky header                                      |
 | Motion                  | [Lenis plugin](../../app/plugins/smooth-scroll.client.ts), [default.scss](../../app/styles/default.scss)                                                     | CSS motion and wheel/route scrolling respect reduced motion; the unchanged home rotation still needs a separate pause/stop review                              |
 | Entry and timed artwork | [Welcome.vue](../../app/components/common/Welcome.vue), [TextTyping.vue](../../app/components/common/TextTyping.vue), [home page](../../app/pages/index.vue) | Two-second decorative intro dismisses on interaction without taking focus; typing respects reduced motion; home artwork still rotates on its existing timer    |
@@ -48,8 +48,76 @@ Native scrollable overlays use `data-lenis-prevent` so stopped Lenis does not ca
 Menu links render through normal NuxtLinks, with no route queue or capture-phase interception.
 Menu border frames match the logo at 727px (30px) while the transparent action target remains 44px.
 The root reserves no idle scrollbar gutter; overlays temporarily preserve only space occupied by a real scrollbar.
-Language-switcher design, tooltip and theme work are deferred; the locale links only gained shared navigation-close integration.
-The gallery trigger and viewer findings above remain separate page/component work, not silently included in this migration.
+The corrected language switcher preserves compact FR/EN pill frames inside 44px transparent hit areas.
+Language attributes, current-locale indication and contrast remain; Nuxt I18n owns its own preference cookie without parallel component storage.
+
+## Common-component contracts
+
+| Component                     | Accessible contract                                                                                                                                                  |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Button`                      | Native `type="button"`, forwarded control attributes, disabled state, 44px minimum height, wrapping and visible focus without resetting outlines                     |
+| `LangSwitcher`                | Compact visual frames inside native 44px locale-link targets; current-language state, `lang`/`hreflang`; no component persistence logic                              |
+| `PageNavigation`              | Named navigation only when a neighbor exists; decorative arrows, wrapping text and localized destinations                                                            |
+| `PageTitle`                   | One H1 with a paragraph subtitle, fluid rem-based type and long-word wrapping                                                                                        |
+| `TextBlock` / `TextSection`   | Typed variants/props; optional `headingLevel` from 2 to 6, defaulting to the existing H3; semantic blockquotes, hidden quotation decoration and readable accent text |
+| `TextSection`                 | Tab-focusable sections with instance-specific heading IDs and visible focus; date badges stay in reading flow; original copper badge surfaces are retained           |
+| `Logo` / `PageHeaderOrnament` | Localized logo alternative, square intrinsic dimensions and proportional sizing; ornament hidden from assistive technology                                           |
+| `Image` / `ImageGridItem`     | Nonempty authored image alternatives, localized action names and visible image-failure states                                                                        |
+
+Heading defaults preserve existing consumers; page authors still own the surrounding outline.
+This component task does not certify existing page heading sequences or authored alternatives.
+Mobile artwork action names include the visible compact identifier as well as the full title.
+Captions sit below the artwork on narrow/coarse-pointer screens, without a tinted overlay.
+Desktop captions use a restrained feathered gradient, appearing on hover or keyboard focus.
+The image enlarges only to 1.04 on fine-pointer hover or keyboard focus, with the 0.65s easing and reduced-motion gate owned by the gallery/tile.
+The inset white/dark focus ring is 4px per color and remains inside the image's clipping boundary.
+The frame receives the existing rounded row height through `--artwork-height`; captions remain in natural flow inside the same native button.
+This preserves image dimensions, keeps caption taps operable and allows enlarged or multiline labels to grow without overlapping the next row.
+
+### Artwork viewer
+
+The browser-native dialog supplies background inertness and Tab/Shift+Tab containment; there is no competing custom focus trap or document key listener.
+Close receives initial focus; Escape works from controls and the image region.
+The title wraps rather than adding a second scrolling heading.
+The panel uses header / flexible image / toolbar / details rows; normal viewports need no panel scrollbar.
+Only content that genuinely exceeds a short or text-enlarged viewport uses the panel's single native scroll region, with close retained in a sticky header.
+Gutters include safe-area insets; the backdrop retains its dark surface and adds blur without replacing the existing white viewer design.
+Blur belongs to a child scrim inside the same fading dialog as the panel; the native `::backdrop` is transparent so blur cannot lead or trail the visible transition.
+The scroll lease remains held through the leave transition and releases on dismissal or unmount without unlocking another overlay.
+Focus returns with `preventScroll` to the original artwork, including a replacement trigger if gallery resizing remounted it.
+The grid supplies the actual activating button as `opener`, rather than assuming touch browsers focus a button on tap.
+
+The grid passes its ordered `images` directly to the viewer.
+The viewer emits `select`, and the grid retains selection ownership; there is no per-app tile registry or plugin.
+Previous/next buttons, Left/Right outside the range/image-pan context and horizontal swipes at fit size cycle within the same group.
+Only the current title is politely announced; there is no visible artwork counter or instruction paragraph.
+Standalone viewers without an image sequence retain single-image behavior.
+
+Zoom remains 100–300%, with the existing logarithmic native range and fit action.
+Zoom-in/out buttons, wheel zoom around the pointer, `+`/`-` and `0` are alternatives; browser Ctrl/Meta-wheel zoom remains native.
+Previous, zoom/range/fit and next share one responsive control band; the central zoom group uses two rows on narrow screens.
+There is no directional pan toolbar.
+Above fit size, clicking a detail centers it without changing zoom, providing a single-pointer alternative to dragging; arrow keys and pointer-captured dragging also pan.
+The native stage scrollbar presentation is hidden, not its scrolling behavior; click-to-center and keyboard access prevent dependence on hidden scrollbar dragging.
+A short screen-reader hint describes click-to-center; fit remains a named button.
+Two-contact gestures zoom around a stable image anchor while translating the pinch midpoint.
+One-contact fit-size swipes require at least 50px horizontal travel, 1.5× horizontal dominance and less than 800ms; zoomed drags never navigate.
+Gesture ownership is confined to the image stage (`touch-action: none`); browser zoom remains available elsewhere.
+Cancellation, source changes, dismissal and unmount reset captures and invalidate pending zoom work.
+A separate trailing-click guard survives source resets after a swipe; a fresh pointer gesture clears it so the next real tap still zooms.
+The stage uses measured contain geometry and a cleaned-up ResizeObserver.
+
+Loading is announced after 300ms with a dedicated plum shimmer (110deg, 20/50/80% stops, 200% background, 1.8s ease-in-out).
+This loader is confined to the viewer; the grid's existing skeleton and animation are unchanged.
+Image errors are exposed as status text, and zoom is disabled until an image loads.
+Retry remounts the same source and keeps focus in the image region.
+Stale image events are ignored by element identity; close and previous/next remain available during failure.
+Gallery aspect measurement now uses `window.Image` and the same source/origin as native tiles.
+Never prefix public artwork with the configured SEO/I18n origin: localhost is not the visitor's server when testing on another device, and production is not a preview origin.
+At an unchanged width, translated metadata is refreshed in rows and snapshots without rerunning size calculations.
+Changing source identities invalidates the input cache; row heights, aspect-based sizing, gaps and stabilization formulas remain unchanged.
+Native tiles check cached images and ignore stale events by image identity.
+The optimized `Image` wrapper remounts NuxtImg on source changes and scopes emitted load/error callbacks to that source; a failed full-resolution preload is not reported as a successful compressed image.
 
 ## Layout verification
 
@@ -95,9 +163,8 @@ Follow [content-direction.md](content-direction.md) for wording and [the i18n sk
 | Navigation       | Route, locale and anchor changes leave focus and the viewport at a useful location                              |
 | Cleanup          | Unmounting or changing routes removes listeners and restores scrolling without unlocking another active overlay |
 
-The current viewer handles one selected image, not a previous/next artwork sequence.
-Do not require or claim arrow-key artwork navigation unless that feature is added within the requested scope.
-Preserve native arrow-key behavior for the zoom range input.
+The viewer adds same-group artwork navigation without changing the grid's selection contract.
+Preserve native arrow-key behavior for the zoom range; arrows inside a zoomed image region pan instead of changing artwork.
 Check background interaction as well as focus containment; `aria-modal="true"` alone does not implement either.
 
 ## Readability, contrast and motion

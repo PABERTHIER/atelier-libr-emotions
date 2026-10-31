@@ -1,5 +1,5 @@
 <template>
-  <div class="header-ornament-container">
+  <div class="header-ornament-container" aria-hidden="true">
     <div class="page-header-ornament">
       <div class="ornament-left" />
       <div class="ornament-center">
@@ -18,12 +18,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 25px 0px;
+    margin: $space-25 0;
 
     .ornament-left,
     .ornament-right {
-      width: 60px;
-      height: 1px;
+      width: $space-60;
+      height: $border-width;
       background: linear-gradient(
         90deg,
         transparent,
@@ -33,17 +33,17 @@
     }
 
     .ornament-center {
-      width: 20px;
-      height: 20px;
+      width: $space-20;
+      height: $space-20;
       position: relative;
-      margin: 0 32px;
-      border: 2px solid $gold-color;
+      margin: 0 $space-32;
+      border: $space-2 solid $gold-color;
       border-radius: 50%;
       background: $cream-color;
 
       .center-diamond {
-        width: 8px;
-        height: 8px;
+        width: $space-8;
+        height: $space-8;
         position: absolute;
         top: 50%;
         left: 50%;

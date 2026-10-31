@@ -1,26 +1,31 @@
 // colors
-$primary-text-color: #2C1810;
-$white-color: #FFFFFF;
-$red-color: #FF0000;
-$dark-red-color: #A00000;
+$primary-text-color: #2c1810;
+$white-color: #ffffff;
+$red-color: #ff0000;
+$dark-red-color: #a00000;
 $green-color: #008000;
-$light-grey-color: #CBD5E0;
-$light-grey-color-2: #E2E2E2;
+$light-grey-color: #cbd5e0;
+$light-grey-color-2: #e2e2e2;
 $grey-color: #808080;
-$grey-color-2: #5A6C7D;
-$dark-grey-color: #4A5568;
-$dark-grey-blue-color: #2C3E50;
-$grey-blue-color: #7A9FF0;
-$light-blue-color: #63B3ED;
-$gold-color: #D4AF37;
-$copper-color: #B87333;
-$cream-color: #FAF8F3;
-$warm-beige: #F5F1E8;
-$soft-bronze: #CD7F32;
-$creativity-orange: #E17B47;
-$light-creativity-orange: #FDFAF3;
-$inspiration-purple: #8E7CC3;
-$light-inspiration-purple: #F8F5FF;
+$grey-color-2: #5a6c7d;
+$dark-grey-color: #4a5568;
+$dark-grey-blue-color: #2c3e50;
+$grey-blue-color: #7a9ff0;
+$light-blue-color: #63b3ed;
+$gold-color: #d4af37;
+$copper-color: #b87333;
+$cream-color: #faf8f3;
+$warm-beige: #f5f1e8;
+$soft-bronze: #cd7f32;
+$creativity-orange: #e17b47;
+$light-creativity-orange: #fdfaf3;
+$inspiration-purple: #8e7cc3;
+$light-inspiration-purple: #f8f5ff;
+$gold-text-color: #8a6c12;
+$copper-text-color: #9c5b27;
+$viewer-skeleton-base: #302137;
+$viewer-skeleton-highlight: #493047;
+$viewer-skeleton-text: #fff3ec;
 
 $background: linear-gradient(
   45deg,
@@ -28,18 +33,18 @@ $background: linear-gradient(
   $dark-red-color 50%,
   $grey-blue-color 100%
 );
-$background-color: #F7F5F2;
+$background-color: #f7f5f2;
 $white-background-color: $white-color;
-$animation-background-color: #53647A;
-$mobile-menu-background-color: #2D3748;
+$animation-background-color: #53647a;
+$mobile-menu-background-color: #2d3748;
 $primary-color: rgb(245, 245, 247);
 $secondary-color: rgb(1, 42, 53);
 $footer-background-color: $white-color;
 $navigation-accent-color: #805126;
-$navigation-muted-color: #6D655F;
-$navigation-border-color: #D8CFC3;
+$navigation-muted-color: #6d655f;
+$navigation-border-color: #d8cfc3;
 $mobile-menu-border-color: $dark-grey-color;
-$focus-color: #1D3461;
+$focus-color: #1d3461;
 
 // shadows
 $box-shadow-color: rgba(0, 0, 0, 0.1);
@@ -52,13 +57,28 @@ $shadow-panel: 0 12px 32px rgba($primary-text-color, 0.16);
 $body-font: 'Nunito', 'Inter', 'Manrope', 'Poppins', 'Sora', Arial, sans-serif;
 
 // spaces
+$space-2: 2px;
 $space-4: 4px;
+$space-5: 5px;
+$space-6: 6px;
+$space-7: 7px;
 $space-8: 8px;
+$space-10: 10px;
 $space-12: 12px;
+$space-14: 14px;
+$space-15: 15px;
 $space-16: 16px;
+$space-18: 18px;
 $space-20: 20px;
+$space-22: 22px;
 $space-24: 24px;
+$space-25: 25px;
+$space-30: 30px;
 $space-32: 32px;
+$space-35: 35px;
+$space-40: 40px;
+$space-50: 50px;
+$space-60: 60px;
 
 // layout
 $shell-gutter: $space-20;
@@ -74,12 +94,26 @@ $menu-icon-size: 20px;
 $menu-icon-size-mobile: 20px;
 $menu-icon-size-small: 18px;
 $menu-link-icon-size: 16px;
+$lang-switcher-frame-height: $space-32;
+$viewer-max-width: 1100px;
+$viewer-max-height: 850px;
+$viewer-stage-min-height: 120px;
+$viewer-zoom-max-width: 500px;
+$viewer-slider-max-width: 200px;
+$viewer-compact-width: 480px;
+$short-viewport-height: 480px;
+$logo-size-desktop: 47px;
+$page-navigation-link-width: 400px;
+$page-title-ornament-width: 80px;
 
 // borders, focus and corners
 $focus-width: 3px;
 $focus-offset: 3px;
 $radius-control: 6px;
 $radius-panel: 12px;
+$radius-pill: 20px;
+$border-width: 1px;
+$artwork-focus-width: 4px;
 
 // z-index
 $header-z-index: 30;
@@ -91,6 +125,9 @@ $skip-link-z-index: 200;
 
 // motion
 $transition-ui: 0.2s ease;
+$transition-artwork: 0.65s cubic-bezier(0.2, 0.7, 0.2, 1);
+$artwork-hover-scale: 1.04;
+$transition-viewer: 0.25s ease;
 
 // breakpoints
 $xs: 320px;
