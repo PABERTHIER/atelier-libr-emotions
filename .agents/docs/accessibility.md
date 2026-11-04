@@ -15,14 +15,14 @@ Implementation details and scoped browser checks do not certify full-site confor
 | Menu                    | [Menu.vue](../../app/components/layout/Menu.vue), [MenuLinks.vue](../../app/components/layout/MenuLinks.vue)                                                 | Native disclosure buttons with expanded/controls relationships, desktop Escape/outside/focus-leave dismissal and a native mobile modal with accordion sections |
 | Language                | [LangSwitcher.vue](../../app/components/common/LangSwitcher.vue)                                                                                             | Compact named locale links delegate preference handling to Nuxt I18n; no custom localStorage or cookie writes                                                  |
 | Navigation continuity   | [navigation-focus.client.ts](../../app/plugins/navigation-focus.client.ts), [router.options.ts](../../app/router.options.ts)                                 | Completed route/hash navigation focuses its destination; scrolling restores history and clears the measured sticky header                                      |
-| Motion                  | [Lenis plugin](../../app/plugins/smooth-scroll.client.ts), [default.scss](../../app/styles/default.scss)                                                     | CSS motion and wheel/route scrolling respect reduced motion; the unchanged home rotation still needs a separate pause/stop review                              |
-| Entry and timed artwork | [Welcome.vue](../../app/components/common/Welcome.vue), [TextTyping.vue](../../app/components/common/TextTyping.vue), [home page](../../app/pages/index.vue) | Two-second decorative intro dismisses on interaction without taking focus; typing respects reduced motion; home artwork still rotates on its existing timer    |
+| Motion                  | [Lenis plugin](../../app/plugins/smooth-scroll.client.ts), [default.scss](../../app/styles/default.scss), [home page](../../app/pages/index.vue)             | CSS/JavaScript reduced motion, carousel controls, static contact particles and motion-preference-driven WIP GIF/still selection                                |
+| Entry and timed artwork | [Welcome.vue](../../app/components/common/Welcome.vue), [TextTyping.vue](../../app/components/common/TextTyping.vue), [home page](../../app/pages/index.vue) | Two-second decorative intro; five-second artwork rotation pauses on hover/focus, hidden documents, explicit pause and reduced motion                           |
 | Scroll locking          | [overlay-scroll-lock.client.ts](../../app/plugins/overlay-scroll-lock.client.ts), [useOverlayScrollLock.ts](../../app/composables/useOverlayScrollLock.ts)   | Independent menu/viewer leases preserve previous inline styles and scroll position; the last release restores Lenis                                            |
-| CV                      | [CV page](../../app/pages/about/cv/index.vue)                                                                                                                | Desktop iframe has a translated title; touch devices receive image previews and a download link                                                                |
+| CV                      | [CV page](../../app/pages/about/cv/index.vue)                                                                                                                | Titled bounded iframe, touch previews, native download/open actions and complete expandable bilingual text                                                     |
 
 These observations identify areas to inspect when working on the relevant component.
 They are not a complete inventory of defects, and they do not establish that every page has the same heading, focus or contrast behavior.
-See [the style and layout review](../../STYLE_LAYOUT_REVIEW.md) for historical findings and the implemented migration.
+Page contracts below supplement the shared shell and component contracts.
 
 ## Shared layout contract
 
@@ -53,19 +53,19 @@ Language attributes, current-locale indication and contrast remain; Nuxt I18n ow
 
 ## Common-component contracts
 
-| Component                     | Accessible contract                                                                                                                                                  |
-| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Button`                      | Native `type="button"`, forwarded control attributes, disabled state, 44px minimum height, wrapping and visible focus without resetting outlines                     |
-| `LangSwitcher`                | Compact visual frames inside native 44px locale-link targets; current-language state, `lang`/`hreflang`; no component persistence logic                              |
-| `PageNavigation`              | Named navigation only when a neighbor exists; decorative arrows, wrapping text and localized destinations                                                            |
-| `PageTitle`                   | One H1 with a paragraph subtitle, fluid rem-based type and long-word wrapping                                                                                        |
-| `TextBlock` / `TextSection`   | Typed variants/props; optional `headingLevel` from 2 to 6, defaulting to the existing H3; semantic blockquotes, hidden quotation decoration and readable accent text |
-| `TextSection`                 | Tab-focusable sections with instance-specific heading IDs and visible focus; date badges stay in reading flow; original copper badge surfaces are retained           |
-| `Logo` / `PageHeaderOrnament` | Localized logo alternative, square intrinsic dimensions and proportional sizing; ornament hidden from assistive technology                                           |
-| `Image` / `ImageGridItem`     | Nonempty authored image alternatives, localized action names and visible image-failure states                                                                        |
+| Component                     | Accessible contract                                                                                                                                                      |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `Button`                      | Native `type="button"`, forwarded control attributes, disabled state, 44px minimum height, wrapping and visible focus without resetting outlines                         |
+| `LangSwitcher`                | Compact frames inside 44px locale-link targets; names start with the visible FR/EN code and include the language name; current state, `lang`/`hreflang` and no storage   |
+| `PageNavigation`              | Named navigation only when a neighbor exists; decorative arrows, wrapping text and localized destinations                                                                |
+| `PageTitle`                   | One H1 with a paragraph subtitle, fluid rem-based type and long-word wrapping                                                                                            |
+| `TextBlock` / `TextSection`   | Typed variants/props, heading levels 2–6, Tab-focusable reading surfaces and unique heading IDs; blockquotes, hidden quotation decoration and readable accents           |
+| `TextSection`                 | Focusable sections with unique heading IDs; dates follow headings in reading order, with reserved grid columns, 10px top/right clearance and white-on-darker-copper text |
+| `Logo` / `PageHeaderOrnament` | Localized logo alternative, square intrinsic dimensions and proportional sizing; ornament hidden from assistive technology                                               |
+| `Image` / `ImageGridItem`     | Nonempty authored image alternatives, localized action names and visible image-failure states                                                                            |
 
-Heading defaults preserve existing consumers; page authors still own the surrounding outline.
-This component task does not certify existing page heading sequences or authored alternatives.
+Heading levels default to H3, preserving existing consumers; page authors still own the surrounding outline.
+Component contracts alone do not certify page heading sequences or authored alternatives.
 Mobile artwork action names include the visible compact identifier as well as the full title.
 Captions sit below the artwork on narrow/coarse-pointer screens, without a tinted overlay.
 Desktop captions use a restrained feathered gradient, appearing on hover or keyboard focus.
@@ -108,16 +108,42 @@ A separate trailing-click guard survives source resets after a swipe; a fresh po
 The stage uses measured contain geometry and a cleaned-up ResizeObserver.
 
 Loading is announced after 300ms with a dedicated plum shimmer (110deg, 20/50/80% stops, 200% background, 1.8s ease-in-out).
-This loader is confined to the viewer; the grid's existing skeleton and animation are unchanged.
+This loader is confined to the viewer; the grid retains its own skeleton.
 Image errors are exposed as status text, and zoom is disabled until an image loads.
 Retry remounts the same source and keeps focus in the image region.
 Stale image events are ignored by element identity; close and previous/next remain available during failure.
-Gallery aspect measurement now uses `window.Image` and the same source/origin as native tiles.
+The grid exposes `aria-busy` while rows are unavailable and a skeleton `role="status"` with localized loading text through `.sr-only`.
+Its row, cell/error and skeleton classes are qualified under `image-grid`; error cells retain visible, shadow-free feedback.
+Gallery aspect measurement uses `window.Image` and the same source/origin as native tiles.
 Never prefix public artwork with the configured SEO/I18n origin: localhost is not the visitor's server when testing on another device, and production is not a preview origin.
 At an unchanged width, translated metadata is refreshed in rows and snapshots without rerunning size calculations.
 Changing source identities invalidates the input cache; row heights, aspect-based sizing, gaps and stabilization formulas remain unchanged.
 Native tiles check cached images and ignore stale events by image identity.
-The optimized `Image` wrapper remounts NuxtImg on source changes and scopes emitted load/error callbacks to that source; a failed full-resolution preload is not reported as a successful compressed image.
+The optimized `Image` wrapper remounts NuxtImg for source, size hints or active image-breakpoint changes and ignores obsolete load/error callbacks.
+A new generation clears errors and retries loading; even a successfully loaded image may briefly show its normal placeholder after a breakpoint remount.
+A failed full-resolution preload is not reported as a successful compressed image.
+
+## Page verification
+
+The table below preserves Copilot's recorded audit of the reference worktree in VS Code Chromium, before the migration corrections.
+It is historical evidence, not a fresh run against the current project or a formal WCAG certificate; WIP controls, carousel state/geometry, focus completion, grid fit, date badges and warm action colors now differ.
+That reference-source inspection covered authored application/configuration/documentation text and an asset inventory, excluding dependencies, generated trees, credentials and binary-content comparison.
+
+| Coverage                   | Recorded result                                                                                                                                                                                        |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| All routes and locales     | All page sources plus localized 404s; one main and one H1                                                                                                                                              |
+| Responsive reflow          | 374 FR/EN normal/enlarged-text cases: 320x568, 375, 430, 768, 1024, 1280, 667x320 and 1280x360; 200% text at 320/768/1280; strict document scrollWidth/clientWidth checks passed                       |
+| Text spacing               | 68 FR/EN checks at 320/1280 with 1.5 line height, 0.12em letter spacing, 0.16em word spacing and 2em paragraph spacing; no horizontal overflow or clipped prose                                        |
+| Automated WCAG checks      | 68 whole-application WCAG A/AA-tagged axe checks at 320/1280; no violations after image loading and visible-label corrections                                                                          |
+| Reading focus              | 140 Tab steps across the 23 approach cards and 12 development sections, both locales, normal motion and reduced-motion enlarged text; 10 normal-motion artwork triggers retained opaque, visible focus |
+| Carousel                   | 88 curated-frame geometry cases; auto rotation, hover/focus/visibility pause, persistent pause, manual navigation, resume, reduced motion, soft transitions and manual-only announcements checked      |
+| Image cancellation/failure | Rapid breakpoint changes recovered to loaded full-resolution images; forced failures in both locales at 200% text remained contained and their link names included the visible error message           |
+| Menu/viewer continuity     | All four desktop disclosures; short mobile dialog focus containment and Escape return; artwork zoom/range/fit/next, contained focus, Escape return and unchanged-width locale metadata updates         |
+| Touch emulation            | Chromium CDP touch input with emulated touch capability: FR/EN CV previews and transcript, WIP start/stop, viewer/menu controls; not real iOS/Android browser coverage                                 |
+| Contrast                   | Warm control text darkened within the existing hue family; minimum approximately 5:1 at the copper gradient endpoint; secondary/page and gold/copper text accents measured at 4.67:1 or greater        |
+| Source/documentation       | 33 Markdown files, 432 local links/anchors, 934 matching bilingual leaves and 61 exact-case literal page image references validated; no retired-report references                                      |
+| Tooling                    | Formatting, type checking and lint passed; each shared keyframe appears once in the active production stylesheets                                                                                      |
+| Production SSR             | Production SSR built and hydrated FR/EN routes without errors using in-memory exclusion of prerender routes; no repository configuration was changed for that check                                    |
 
 ## Layout verification
 

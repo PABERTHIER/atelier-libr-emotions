@@ -84,6 +84,7 @@
   "error": {
     "code": "Error {code}",
     "skip": "Skip to content",
+    "navigation": "Find your way back to the site",
     "home": "Back to home",
     "gallery": "Explore the paintings",
     "not_found": {
@@ -112,6 +113,9 @@
     },
     "image": {
       "open_original": "View the original image: {title}"
+    },
+    "image_grid": {
+      "loading": "Loading artworks…"
     },
     "image_grid_item": {
       "open": "View artwork: {title}"
@@ -148,7 +152,19 @@
       "buttons": {
         "view_gallery": "View Gallery",
         "about": "About the Artist"
+      },
+      "carousel": {
+        "title": "Preview of paintings, ceramics and the studio",
+        "description": "Three image selections change every five seconds. Rotation stops while you hover over the carousel or use the keyboard within it. Use the controls to pause rotation or browse the images. The slideshow does not rotate automatically when reduced motion is enabled.",
+        "previous": "Previous images",
+        "next": "Next images",
+        "pause": "Pause slideshow",
+        "resume": "Resume slideshow"
       }
+    },
+    "gallery": {
+      "collection_title": "Artworks in this collection",
+      "instructions": "Select an artwork to enlarge it. In the preview, use the controls to browse the collection, zoom or fit the image. Press Escape to close the preview and return to the artwork."
     },
     "painting": {
       "acrylic": {
@@ -215,6 +231,7 @@
       "tab_name": "My artistic approach",
       "title": "My artistic approach",
       "subtitle": "An intuitive approach to art",
+      "practice_title": "My artistic practice and workshops",
       "intro": "In painting, in drawing, as in clay, I start from a spontaneous mark and then, at my own pace, I set off on an Adventure.",
       "intuitive_work": "I work intuitively, without preconceived ideas or particular expectations. Only the desire, the pleasure of creating, and the acceptance of what is happening, in the present moment, matter to me.",
       "creative_process_title": "My Creative Process",
@@ -284,9 +301,63 @@
       "download_label": "Download the CV in PDF format",
       "download_filename": "CV_Berthier_Véronique.pdf",
       "page_1_title": "CV page 1",
-      "page_1_alt": "CV page 1",
+      "page_1_alt": "First CV page: introduction, professional experience, qualifications and training. A complete text version is available below the document.",
       "page_2_title": "CV page 2",
-      "page_2_alt": "CV page 2"
+      "page_2_alt": "Second CV page: exhibitions and events since 2011. A complete text version is available below the document.",
+      "document_title": "Artistic CV: document and download",
+      "document_language": "The original CV is in French.",
+      "document_description": "View it, download it or read its complete text version below without using the PDF viewer.",
+      "open_pdf": "Open PDF",
+      "text_version": "CV text version",
+      "read_text": "Read the CV text version",
+      "text": {
+        "role": "Visual artist and ceramicist",
+        "introduction": "I lead visual arts, oil painting, mixed technique and ceramics workshops. I also work alone in my studio.",
+        "motto": "My preference: intuitive work!",
+        "process": "I start from a spontaneous mark, explore and test the material, sensing it rather than guessing at it. A dialogue develops between it and me. I observe what is emerging before my eyes and move at my own pace, guided by the present moment and the instinct of the instant.",
+        "invitation": "I dare the Adventure!",
+        "phone": "06 31 95 87 84",
+        "phone_uri": "+33631958784",
+        "experience": {
+          "title": "Professional experience",
+          "entries": [
+            "Since 2019 — Painting and ceramics workshop leader.",
+            "2017-2018 — Research work in my studio; mural.",
+            "2015-2016 — Visual arts workshop leader in three residential care homes: Fontenay-sous-Bois, Bry-sur-Marne and Vincennes (94).",
+            "2013-2014 — Trainer in pictorial expression and personal development, Greta d'Aulnay-sous-Bois (93), with exhibition; visual arts workshop leader, Hôpital Chenevier, Neurology department, Créteil (94), with exhibition.",
+            "2010-2013 — Artistic workshop leader, “Peinture & Mouvement”, Hôpital Chenevier (Neurology, Psychiatry, Physical Medicine), Hôpital des Murets in La Queue-en-Brie (94), and mutual support groups GEM Servon (77), with exhibition; introductory workshops in letting go, Lésigny sociocultural centre (77), with exhibition.",
+            "2005-2009 — Primary school teacher.",
+            "2001-2003 — Analyst-writer, Ministry of Defence, Paris."
+          ]
+        },
+        "training": {
+          "title": "Qualifications and training",
+          "entries": [
+            "2025 — Watercolour and letting-go course, MF. Ingels (54); abstract acrylic course, Nadine Nett (68).",
+            "2022 — Three-dimensional visual arts course, Pascale Lelièvre (54).",
+            "2019-2023 — Ceramics training, MClaude Meuley (54); watercolour courses, Catherine Mithouard and Pascale Lelièvre.",
+            "2019 — Yoga-Terre, grounding and Qi Gong-Terre courses, B. Boulanger (88).",
+            "2016 — Hauschka painting course, Christiane Dhorne, Paris 15th arrondissement.",
+            "2007-2012 — Mixed media course, Marie-Hélène Lecuyer, Nogent-sur-Marne (94); clay workshop, Combs-la-Ville (77); oil painting, Alain Marie, Lésigny (77); life drawing workshop, Saint-Maur (94); oil glazing, Blandine Mulliez, Lésigny (77).",
+            "1995 — Primary school teaching examination and training courses.",
+            "1988-1994 — Scientific studies: maîtrise in cellular biology and plant physiology, Strasbourg (67)."
+          ]
+        },
+        "exhibitions": {
+          "title": "Exhibitions and events",
+          "entries": [
+            "Since 2023 — Solo painting exhibition, shopping gallery space, Houdemont (54); solo exhibition for Journée de la Terre, Bulligny (54); Semaine internationale de l'Arbre et de la Forêt, Bulligny (54); Salon Hal'Art, Grenier des Halles, Vézelise; Marché de Potiers, Nancy; Journée Européenne des Métiers d'Art, Les Portes du Feu exhibition, Abbaye d'Écurey (55); Terroir et Talents, L'Été des Créateurs, Arc Héré, Sundays in Nancy; five-artist exhibition “Voyages”, Neufchâteau (88); painting exhibition with my students, Château de Mme de Graffigny, Villers-lès-Nancy (54); “De Terre, de Fer et de Feu” exhibition, Vézelise; Artothèque Vandœuvre (54); exhibitions in Saint-Max (54), Heillecourt (54) and Artothèque Vandœuvre (54); OUAA, Nancy, Atelier de Pascale Lelièvre; pop-up shop, Toul (54); Artisanat d'Art exhibition, Moulin de Givrauval (55); Fête du Potager, Wesserling (68); Fête des Vendanges, Villers (54); competition, Liverdun (54); painting performances, Nancy (54), musical production, Artothèque; monthly local craft markets, P'tits Marchés du Saintois and Vézelise; Christmas markets, Houdemont, Sion and Vézelise (54); ceramics courses, Villers-lès-Nancy.",
+            "2022 — Heillecourt (54), Fléville (54), Moulin de Givrauval (55), Nancy (54), Expo-Vente-Concours Liverdun (54), Artstom Nancy (54), Biennale des Arts Saint-Max (54), Heillecourt (54), Artistes du Grand-Couronné Dommartin-sous-Amance (54), Artothèque Vandœuvre (54), Pop up Boutique éphémère Liverdun (54).",
+            "2021 — Expo Vente et défi céramique, Liverdun (54); third jury prize, Céramique Praye (54); Salon d'Automne international, Lunéville (54); Pop up Céramique, Liverdun (54).",
+            "2020 — Solo exhibition, Galerie 9 and “l'Arbre d'amour”, Nancy (54); Salon de Printemps, Dombasle-sur-Meurthe (54); “NATURE”, solo exhibition, Restaurant Le Grémillon, Saint-Max (54); painting demonstration, Forum des Associations, Villers-lès-Nancy (54).",
+            "2019 — ART'STOM Nancy (54); Arts Maxois, Château Saint-Max (54); Salon GAV, Saint-Dié-des-Vosges (88); Les Z'aprèms à la campagne, Gélaucourt (54); “Du Figuratif à l'Abstrait”, solo exhibition, Tarquimpol (57); Salon des Arts, Salines Royales de Dieuze (57); “Céracines”, solo ceramics and painting exhibition, Tarquimpol (57).",
+            "2018 — “Peintophoture”, Brie-Comte-Robert (77); Salon de Printemps, Lésigny (77); “La Maison du Citoyen et de la Vie Associative fête ses 20 ans”, Fontenay-sous-Bois (94); “L'origine du monde et son devenir”, Ungersheim (68); Rencontres Artistiques, Villecresnes (94); painting, Heillecourt (54); Christmas market, Liverdun (54).",
+            "2017 — Salon de Printemps, Lésigny (77), “Arbre 3”, municipal council prize; “Abstrait-Figuratif en face à face”, Fontenay-sous-Bois (94); Photos Servon; painting, “Brévi'Art”, Saint-Brévin (44); Rencontres Artistiques, Villecresnes (94); Salon des Artistes, Servon (77), “Combin'Art”, fourth jury prize and third public prize; Christmas market, Lésigny (77).",
+            "2016 — Salon de Printemps, Lésigny (77); “Projections” and “Petites Histoires”, solo exhibition, Centre Culturel “La Rue”, Mandres-les-Roses (94), with a Govrache concert; Rencontres Artistiques, Villecresnes (94); Salon des Artistes, Servon (77); painting, sculpture and photography, Roissy-en-Brie (77); Marchés de Créateurs, Lésigny (77); Noël au Village, Lésigny (77).",
+            "2011-2015 — “Projections”, solo exhibition, Champigny-sur-Marne (94); Salon de Printemps, Lésigny (77), “L'Envol”, jury prize; Salon des Artistes, Servon (77); “Déclinaisons”, solo exhibition, Lésigny (77), illustration of a music and poetry CD booklet, article in “La République” and the local newspaper; “Mise en Mouvement”, solo exhibition, Lésigny (77); local artists' exhibition, Férolles-Attilly (77); “Quand Peinture et Écriture s'en mêlent”, Lésigny (77); “À visages découverts”, solo exhibition, La Bicyclette art bar, Paris 19th arrondissement; “Vibrations”, solo exhibition, Lésigny (77)."
+          ]
+        }
+      }
     },
     "contact": {
       "tab_name": "Contact",
@@ -294,12 +365,13 @@
       "subtitle": "Gestures, colours, shapes and textures, it's an adventure! I invite you to share your feelings.",
       "image": {
         "title": "Some creations...",
-        "alt": "Some creations..."
+        "alt": "Inside a studio with colourful paintings and ceramics displayed on shelves."
       },
       "connect_me": "Connect with me",
       "ready": "Ready to bring art into your space?",
       "contact_me": "Contact me",
-      "contact_me_by_mail": "Contact me by email"
+      "contact_me_by_mail": "Contact me by email",
+      "by_email": "by email"
     }
   },
   "about": {
@@ -1427,6 +1499,7 @@
     "instagram": "Instagram",
     "follow_on_facebook": "Follow on Facebook",
     "follow_on_instagram": "Follow on Instagram",
+    "opens_new_tab": "Opens in a new tab",
     "2006": "2006",
     "2008": "2008",
     "2011_2019": "2011 - 2019",
@@ -1435,10 +1508,12 @@
     "2023_2025": "2023 - 2025"
   },
   "wip": {
+    "title": "Work in progress",
+    "description": "This page is a work in progress. Explore the collections that are already available in the gallery.",
     "image_alt": "Page under construction",
-    "previous_page_name": "WIP",
-    "next_page_name": "WIP",
-    "previous_page_description": "WIP",
-    "next_page_description": "WIP"
+    "previous_page_name": "Previous collection",
+    "next_page_name": "Next collection",
+    "previous_page_description": "Work in progress",
+    "next_page_description": "Work in progress"
   }
 }

@@ -9,7 +9,9 @@
             :id="`menu-trigger-${section.id}`"
             type="button"
             class="desktop-navigation__trigger"
-            :class="{ 'is-current': isCurrentSection(section) }"
+            :class="{
+              'desktop-navigation__trigger--current': isCurrentSection(section),
+            }"
             :aria-expanded="desktopSection === section.id"
             :aria-controls="`menu-panel-${section.id}`"
             @click="toggleSection(section.id)"
@@ -26,12 +28,14 @@
               :inert="desktopSection !== section.id"
               data-lenis-prevent>
               <div class="desktop-navigation__panel-header">
-                <h2 :id="`menu-heading-${section.id}`">
+                <h2
+                  :id="`menu-heading-${section.id}`"
+                  class="desktop-navigation__panel-title">
                   {{ t(section.label) }}
                 </h2>
                 <button
                   type="button"
-                  class="icon-button"
+                  class="site-menu__control icon-button"
                   :aria-label="
                     t('components.menu.close_section', {
                       section: t(section.label),
@@ -69,7 +73,7 @@
     <button
       ref="menuToggle"
       type="button"
-      class="mobile-menu-toggle icon-button"
+      class="site-menu__toggle site-menu__control icon-button"
       :aria-label="t('components.menu.open')"
       :aria-expanded="mobileMenuOpen"
       aria-controls="mobile-navigation"
@@ -94,7 +98,7 @@
               <span>{{ t('components.menu.navigation') }}</span>
               <button
                 type="button"
-                class="icon-button"
+                class="site-menu__control icon-button"
                 autofocus
                 :aria-label="t('components.menu.close')"
                 @click="closeNavigation">
@@ -111,7 +115,7 @@
                 v-for="section in navigationSections"
                 :key="section.id"
                 class="mobile-navigation__section">
-                <h2>
+                <h2 class="mobile-navigation__section-title">
                   <button
                     type="button"
                     class="mobile-navigation__trigger"
@@ -371,11 +375,11 @@ onBeforeUnmount(() => {
       background: $warm-beige;
     }
 
-    &.is-current,
+    &.desktop-navigation__trigger--current,
     &[aria-current='page'] {
       text-decoration: underline;
       text-decoration-color: $navigation-accent-color;
-      text-decoration-thickness: 2px;
+      text-decoration-thickness: $space-2;
       text-underline-offset: 0.4em;
     }
 
@@ -402,8 +406,8 @@ onBeforeUnmount(() => {
     );
     overflow: hidden;
     padding-inline: $space-24;
-    border: 1px solid $navigation-border-color;
-    border-top: 3px solid $navigation-accent-color;
+    border: $border-width solid $navigation-border-color;
+    border-top: $focus-width solid $navigation-accent-color;
     border-radius: 0 0 $radius-panel $radius-panel;
     background: $white-color;
     box-shadow: $shadow-panel;
@@ -417,11 +421,11 @@ onBeforeUnmount(() => {
     gap: $space-16;
     padding-block: $space-12;
     background: $white-color;
+  }
 
-    h2 {
-      margin: 0;
-      font-size: 1.25rem;
-    }
+  &__panel-title {
+    margin: 0;
+    font-size: 1.25rem;
   }
 
   &__panel-content {
@@ -440,11 +444,11 @@ onBeforeUnmount(() => {
   }
 }
 
-.mobile-menu-toggle {
+.site-menu__toggle {
   display: none;
 }
 
-.icon-button {
+.site-menu__control {
   --menu-frame-size: #{$menu-control-size};
   position: relative;
   padding: 0;
@@ -457,7 +461,7 @@ onBeforeUnmount(() => {
     left: 50%;
     width: var(--menu-frame-size);
     height: var(--menu-frame-size);
-    border: 1px solid currentColor;
+    border: $border-width solid currentColor;
     border-radius: $radius-control;
     transform: translate(-50%, -50%);
     pointer-events: none;
@@ -540,10 +544,10 @@ onBeforeUnmount(() => {
     align-items: center;
     justify-content: space-between;
     gap: $space-16;
-    padding: calc(#{$space-12} + env(safe-area-inset-top, 0px))
-      calc(#{$space-20} + env(safe-area-inset-right, 0px)) $space-12
-      calc(#{$space-20} + env(safe-area-inset-left, 0px));
-    border-bottom: 1px solid $mobile-menu-border-color;
+    padding: calc(#{$space-12} + env(safe-area-inset-top, 0))
+      calc(#{$space-20} + env(safe-area-inset-right, 0)) $space-12
+      calc(#{$space-20} + env(safe-area-inset-left, 0));
+    border-bottom: $border-width solid $mobile-menu-border-color;
     font-weight: 700;
   }
 
@@ -551,9 +555,9 @@ onBeforeUnmount(() => {
     min-height: 0;
     overflow-y: auto;
     overscroll-behavior: contain;
-    padding: $space-16 calc(#{$space-20} + env(safe-area-inset-right, 0px))
-      calc(#{$space-24} + env(safe-area-inset-bottom, 0px))
-      calc(#{$space-20} + env(safe-area-inset-left, 0px));
+    padding: $space-16 calc(#{$space-20} + env(safe-area-inset-right, 0))
+      calc(#{$space-24} + env(safe-area-inset-bottom, 0))
+      calc(#{$space-20} + env(safe-area-inset-left, 0));
     scroll-padding-block: $space-12;
   }
 
@@ -565,12 +569,12 @@ onBeforeUnmount(() => {
   }
 
   &__section {
-    border-bottom: 1px solid $mobile-menu-border-color;
+    border-bottom: $border-width solid $mobile-menu-border-color;
+  }
 
-    h2 {
-      margin: 0;
-      font-size: 1.25rem;
-    }
+  &__section-title {
+    margin: 0;
+    font-size: 1.25rem;
   }
 
   &__trigger,
@@ -609,7 +613,7 @@ onBeforeUnmount(() => {
   }
 
   &__contact {
-    border-bottom: 1px solid $mobile-menu-border-color;
+    border-bottom: $border-width solid $mobile-menu-border-color;
     font-size: 1.25rem;
   }
 }
@@ -639,18 +643,18 @@ onBeforeUnmount(() => {
     display: none;
   }
 
-  .mobile-menu-toggle {
+  .site-menu__toggle {
     display: inline-grid;
   }
 
-  .icon-button .iconify {
+  .site-menu__control .iconify {
     width: $menu-icon-size-mobile;
     height: $menu-icon-size-mobile;
   }
 }
 
 @media (max-width: $sm) {
-  .icon-button {
+  .site-menu__control {
     --menu-frame-size: #{$menu-control-size-small};
 
     .iconify {

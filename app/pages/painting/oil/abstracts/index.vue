@@ -1,18 +1,23 @@
 <template>
-  <div class="oil-abstracts">
-    <div class="abstract-autumn-container">
+  <article class="oil-artwork-page">
+    <h1 class="sr-only">{{ abstractAutumnPaintingTitle }}</h1>
+    <figure class="oil-artwork-page__artwork">
       <Image
         src="/paintings/abstract-autumn.webp"
         sizes="sm:150px, md:250px, lg:350px"
-        max-height="400px"
+        max-height="25rem"
         :title="abstractAutumnPaintingTitle"
         :alt="abstractAutumnPaintingAlt" />
-      <div class="description">
-        {{ t('pictures.paintings.abstract_autumn.description') }}
-      </div>
-      <div>{{ t('pictures.paintings.abstract_autumn.meta') }}</div>
-    </div>
-  </div>
+      <figcaption>
+        <p class="oil-artwork-page__description">
+          {{ t('pictures.paintings.abstract_autumn.description') }}
+        </p>
+        <p class="oil-artwork-page__summary">
+          {{ t('pictures.paintings.abstract_autumn.meta') }}
+        </p>
+      </figcaption>
+    </figure>
+  </article>
 </template>
 
 <script setup lang="ts">
@@ -29,20 +34,37 @@ useHead(usePageSeo('painting_oil_abstracts'))
 </script>
 
 <style lang="scss" scoped>
-.oil-abstracts {
-  height: 100%;
+.oil-artwork-page {
   width: 100%;
+  min-width: 0;
+  max-width: 56.25rem;
 
-  .abstract-autumn-container {
+  &__artwork {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     color: $primary-text-color;
+    margin: 0;
+    min-width: 0;
+    overflow-wrap: anywhere;
 
-    .description {
-      margin: 10px 0px;
+    :deep(img) {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
     }
+  }
+
+  &__description {
+    margin: $space-10 0;
+    line-height: 1.6;
+  }
+
+  &__summary {
+    margin: $space-10 0 0;
+    line-height: 1.6;
   }
 }
 </style>

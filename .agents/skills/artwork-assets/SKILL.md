@@ -64,7 +64,12 @@ Avoid broad helper changes unless the task concerns image delivery or the change
 
 Native gallery images need original-file checks; a successful IPX request does not validate those paths.
 Do not prefix those requests with `runtimeConfig.public.i18n.baseUrl`; a production/canonical URL is not a LAN or preview asset origin.
-The optimized wrapper remounts NuxtImg per source and ignores stale source-specific callbacks; failed full-resolution preloads must not be treated as successful compressed placeholders.
+The optimized wrapper retains NuxtImg and its placeholder, remounting per source/size-hint/active-image-breakpoint generation.
+It uses Nuxt Image's screen registry with the shared SSR fallback and ignores callbacks from obsolete generations, including responsive preload cancellations.
+A breakpoint change remounts successful images too, so the normal placeholder can briefly reappear; a new generation resets errors and retries loading.
+Genuine failures remain explicit and named, with wrapping status text included in the original-file link name; failed full-resolution preloads must not be treated as successful compressed placeholders.
+WIP keeps the original GIF and a 640×266 still WebP; its still-image dimensions and explicit transform routes must stay aligned with the consumer.
+Initial markup uses the still; mounted motion-preference changes select GIF or still automatically.
 Conversely, an original file returning 200 does not prove its transformed `srcset` and placeholder variants exist in a static deployment.
 Do not rely on an on-demand IPX server when the deployment serves only prerendered files.
 

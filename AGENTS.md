@@ -269,7 +269,7 @@ The [.agents index](.agents/README.md) explains evidence levels and maps shared 
 | Accessibility maintenance | [accessibility.md](.agents/docs/accessibility.md)         | Source findings, focus, motion and manual audit coverage    |
 | SEO maintenance           | [SEO.md](.agents/docs/SEO.md)                             | Metadata ownership, origins, indexing and discovery         |
 
-The [style and layout review](STYLE_LAYOUT_REVIEW.md) preserves the historical proposal and records the implemented migration.
+Current style ownership and page conventions live in the design, UX and accessibility guides above.
 Distinguish source observations, intended behavior and actual verification when changing or reporting the implementation.
 
 ## Available Skills
@@ -334,6 +334,7 @@ The [.agents index](.agents/README.md) is navigational, not a separate automatic
 | UI, styles or interaction                  | Mobile acceptance, keyboard/touch journeys, overlays, enlarged text and reduced motion                           |
 
 CI installs dependencies immutably and runs lint; its build-named job does not run the production build or static generation.
+Run type checking and lint sequentially in the same workspace: Nuxt regenerates the ESLint configuration imported by the lint command.
 Check the installed Yarn version if reproducing CI: the workflow has an explicit Corepack preparation version separate from `packageManager`.
 Production-mode validation uses the configured production-origin fallback locally; development and Vercel previews disable indexing.
 Keep `NUXT_SITE_URL` overrides scoped to production and read [SEO maintenance](.agents/docs/SEO.md#origins-and-indexing) before interpreting generated URLs.

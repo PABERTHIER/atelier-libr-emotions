@@ -50,27 +50,36 @@ Preserve this shell for new galleries:
 
 ```vue
 <template>
-  <div class="gallery-page">
-    <div class="page-header">
+  <article class="gallery-page">
+    <header class="gallery-page__header">
       <PageHeaderOrnament />
       <PageTitle
         :title="t(`${pageKey}.title`)"
         :subtitle="t(`${pageKey}.subtitle`)" />
-    </div>
+    </header>
 
-    <div class="gallery-container">
+    <section
+      class="gallery-page__collection"
+      aria-labelledby="collection-title">
+      <h2 id="collection-title" class="sr-only">
+        {{ t('pages.gallery.collection_title') }}
+      </h2>
+      <p class="sr-only">{{ t('pages.gallery.instructions') }}</p>
       <ImageGrid
         :images="images"
         :heights="{ xs: 120, sm: 160, md: 220, lg: 300 }" />
-    </div>
+    </section>
 
     <PageNavigation :previous-page="previousPage" :next-page="nextPage" />
-  </div>
+  </article>
 </template>
 ```
 
 Define `pageKey` as the verified `pages.*` namespace in `<script setup lang="ts">`.
-For multiple groups, add translated H2 headings and one grid per group while keeping a single `PageTitle` H1.
+An existing visible collection H2 also names a single collection; the hidden generic H2 is for collections without an authored heading.
+For multiple groups, use named `gallery-page__collection` sections with visible translated H2s and one grid per group, keeping a single `PageTitle` H1.
+Include the shared hidden viewer instructions once; do not add duplicate hidden group headings alongside visible H2s.
+The standalone oil page keeps its hidden H1, figure/caption and native original-image link; viewer-specific instructions apply only to grid pages.
 The default layout already owns `<main>`, the header and the footer.
 
 Keep `useI18n()` for page content and use `useHead(usePageSeo('pageName'))` for metadata.
@@ -92,9 +101,14 @@ Keep page styles scoped and preserve the normal gallery spacing unless the reque
 .gallery-page {
   position: relative;
   width: 100%;
+  min-width: 0;
 
-  .page-header {
-    margin-bottom: 50px;
+  &__header {
+    margin-bottom: $space-50;
+  }
+
+  &__collection {
+    min-width: 0;
   }
 }
 ```
@@ -109,6 +123,7 @@ Menu entries using `/wip` render as disabled labels; a valid new URL makes that 
 Determine adjacent pages from the existing sequence and the requested category.
 Update neighboring links only when they represent that slot; do not replace every `/wip` occurrence or impose a new ordering.
 Use `/wip` with the existing `wip.previous_page_*` or `wip.next_page_*` messages for unavailable neighbors.
+Match previous/next fallback label keys to their direction; vases-and-pots uses `wip.previous_page_name` for its previous neighbor.
 Either navigation prop may be omitted when that direction is unnecessary.
 
 ## Verification And Review

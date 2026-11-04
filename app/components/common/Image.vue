@@ -1,12 +1,8 @@
 <template>
   <div class="image">
-    <a
-      :href="src"
-      :aria-label="
-        t('components.image.open_original', { title: title || alt })
-      ">
+    <a :href="src" :aria-label="imageLabel">
       <NuxtImg
-        :key="src"
+        :key="imageKey"
         :src="src"
         :sizes="sizes"
         :title="title"
@@ -25,6 +21,8 @@
 </template>
 
 <script setup lang="ts">
+import { useBreakpoints } from '@vueuse/core'
+
 const props = defineProps({
   src: {
     type: String,
@@ -53,31 +51,45 @@ const props = defineProps({
 
 const { t } = useI18n()
 
+const imageBreakpoint = useBreakpoints(useImage().options.screens, {
+  ssrWidth: 1024,
+}).active()
+
+const imageKey = computed(
+  () => `${props.src}:${props.sizes}:${imageBreakpoint.value}`
+)
+
 const imageError = ref(false)
+const imageLabel = computed(() => {
+  const originalLabel = t('components.image.open_original', {
+    title: props.title || props.alt,
+  })
+
+  return imageError.value
+    ? `${t('components.image_preview_modal.image_unavailable')}. ${originalLabel}`
+    : originalLabel
+})
 
 const imageEvents = computed(() => {
-  const source = props.src
+  const key = imageKey.value
 
   return {
     load: () => {
-      if (props.src === source) {
+      if (imageKey.value === key) {
         imageError.value = false
       }
     },
     error: () => {
-      if (props.src === source) {
+      if (imageKey.value === key) {
         imageError.value = true
       }
     },
   }
 })
 
-watch(
-  () => props.src,
-  () => {
-    imageError.value = false
-  }
-)
+watch(imageKey, () => {
+  imageError.value = false
+})
 </script>
 
 <style lang="scss" scoped>
@@ -95,6 +107,7 @@ watch(
     display: block;
     line-height: 1.5;
     color: $dark-grey-color;
+    overflow-wrap: anywhere;
   }
 }
 </style>
