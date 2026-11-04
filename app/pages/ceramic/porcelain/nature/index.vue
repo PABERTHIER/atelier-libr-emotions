@@ -1,31 +1,35 @@
 <template>
-  <div class="gallery-page">
-    <div class="page-header">
+  <article class="gallery-page">
+    <header class="gallery-page__header">
       <PageHeaderOrnament />
       <PageTitle
         :title="t('pages.ceramic.porcelain.nature.title')"
         :subtitle="t('pages.ceramic.porcelain.nature.subtitle')" />
-    </div>
+    </header>
 
-    <h2>{{ subtitle1 }}</h2>
-    <div class="gallery-container">
+    <p class="sr-only">{{ t('pages.gallery.instructions') }}</p>
+    <section class="gallery-page__collection" aria-labelledby="flowers-title">
+      <h2 id="flowers-title" class="gallery-page__collection-title">
+        {{ flowersTitle }}
+      </h2>
       <ImageGrid
         :images="images"
         :heights="{ xs: 120, sm: 160, md: 220, lg: 300 }" />
-    </div>
+    </section>
 
     <PageNavigation :previous-page="previousPage" :next-page="nextPage" />
-  </div>
+  </article>
 </template>
 
 <script setup lang="ts">
 import type { ImageSource } from '~/types/image'
+import type { PageNavigation } from '~/types/page'
 
 const { t } = useI18n()
 
-const subtitle1 = computed(() => t('miscellaneous.flowers'))
+const flowersTitle = computed(() => t('miscellaneous.flowers'))
 
-const images: ImageSource[] = [
+const images = computed<ImageSource[]>(() => [
   {
     src: '/ceramics/porcelain/nature/flowers/FP1.webp',
     title: t('pictures.ceramics.porcelain.nature.fp1.title'),
@@ -116,19 +120,19 @@ const images: ImageSource[] = [
     mobileTitle: t('pictures.ceramics.porcelain.nature.fp15.mobile_title'),
     alt: t('pictures.ceramics.porcelain.nature.fp15.alt'),
   },
-]
+])
 
-const previousPage = {
+const previousPage = computed<PageNavigation>(() => ({
   path: '/wip',
   title: t('wip.previous_page_name'),
   description: t('wip.previous_page_description'),
-}
+}))
 
-const nextPage = {
+const nextPage = computed<PageNavigation>(() => ({
   path: '/wip',
   title: t('wip.next_page_name'),
   description: t('wip.next_page_description'),
-}
+}))
 
 useHead(usePageSeo('ceramic_porcelain_nature'))
 </script>
@@ -137,9 +141,20 @@ useHead(usePageSeo('ceramic_porcelain_nature'))
 .gallery-page {
   position: relative;
   width: 100%;
+  min-width: 0;
 
-  .page-header {
-    margin-bottom: 50px;
+  &__header {
+    margin-bottom: $space-50;
+  }
+
+  &__collection {
+    min-width: 0;
+  }
+
+  &__collection-title {
+    margin: $space-40 0 $space-20;
+    font-size: 1.5rem;
+    overflow-wrap: anywhere;
   }
 }
 </style>

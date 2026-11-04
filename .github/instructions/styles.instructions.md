@@ -29,8 +29,10 @@ Allow dynamic styles for measured gallery and zoom geometry; keep static present
 For style-only cleanup, preserve existing class names, appearance and interaction states.
 Group rules by meaningful visual areas; nest descendants only when the ancestor relationship is intentional, since scoped styles retain selector dependencies and specificity.
 Avoid mechanical class renaming, fixed nesting-depth rules or wholesale breakpoint conversion.
-New internal component structure uses component-qualified block/element/modifier names.
+New internal component structure and page-owned classes use qualified BEM block/element/modifier names.
+Use the page conventions in [design system](../../.agents/docs/design-system.md#page-conventions); retain shared public component classes and Vue transition state names.
 Use spacing, control, border and motion tokens for static dimensions, with blank lines between nested visual groups.
+Keep typography scalable and the browser's preferred root text size intact; pixel image sizes and measured gallery geometry are deliberate delivery/layout inputs.
 Keep component-owned media overrides at the correct scope; do not nest them inside unrelated variants.
 
 ## Responsive Acceptance

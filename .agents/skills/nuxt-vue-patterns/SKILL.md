@@ -11,20 +11,20 @@ Choose APIs and abstractions from the capabilities installed and used in this re
 
 ## Existing Building Blocks
 
-| Concern                    | Local implementation                                                          | Contract                                                                                              |
-| -------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| Page shell                 | [default.vue](../../../app/layouts/default.vue)                               | Decorative Welcome, skip link, header, focusable main and footer                                      |
-| Page introduction          | [PageTitle.vue](../../../app/components/common/PageTitle.vue)                 | `title` and optional `subtitle`; renders the H1                                                       |
-| Gallery                    | [ImageGrid.vue](../../../app/components/common/ImageGrid.vue)                 | `ImageSource[]` and `Heights`; justified rows and image selection                                     |
-| Artwork viewer             | [ImagePreviewModal.vue](../../../app/components/common/ImagePreviewModal.vue) | `image`, `visible` and `close`; native dialog, zoom/pan, same-group navigation and scroll restoration |
-| Standalone optimized image | [Image.vue](../../../app/components/common/Image.vue)                         | Required `src` and `sizes`; optional `maxHeight`, `title`, `alt`                                      |
-| Adjacent pages             | [PageNavigation.vue](../../../app/components/common/PageNavigation.vue)       | Optional `previousPage` and `nextPage`; localizes each path                                           |
-| Responsive state           | [screen-size.ts](../../../app/composables/screen-size.ts)                     | `useScreenSize()` returns breakpoint refs with `ssrWidth: 1024`                                       |
-| Smooth scrolling           | [smooth-scroll.client.ts](../../../app/plugins/smooth-scroll.client.ts)       | Provides the existing `$lenis` instance                                                               |
-| Style tokens               | [variables.scss](../../../app/styles/variables.scss)                          | Colors, layers, dimensions and breakpoints injected through Vite                                      |
-| Menu catalogue             | [navigation.ts](../../../app/data/navigation.ts)                              | Ordered translation keys, groups and unprefixed destinations                                          |
-| Navigation state           | [useSiteNavigation.ts](../../../app/composables/useSiteNavigation.ts)         | Close desktop/mobile navigation from any shared control                                               |
-| Overlay locking            | [useOverlayScrollLock.ts](../../../app/composables/useOverlayScrollLock.ts)   | Acquire/release an independent scroll lease with automatic cleanup                                    |
+| Concern                    | Local implementation                                                          | Contract                                                                                                       |
+| -------------------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Page shell                 | [default.vue](../../../app/layouts/default.vue)                               | Decorative Welcome, skip link, header, focusable main and footer                                               |
+| Page introduction          | [PageTitle.vue](../../../app/components/common/PageTitle.vue)                 | `title` and optional `subtitle`; renders the H1                                                                |
+| Gallery                    | [ImageGrid.vue](../../../app/components/common/ImageGrid.vue)                 | `ImageSource[]` and `Heights`; justified rows and image selection                                              |
+| Artwork viewer             | [ImagePreviewModal.vue](../../../app/components/common/ImagePreviewModal.vue) | `image`, optional ordered `images`/`opener`, `visible`, `select`/`close`; native dialog and scroll restoration |
+| Standalone optimized image | [Image.vue](../../../app/components/common/Image.vue)                         | Required `src`, `sizes` and nonempty `alt`; optional `maxHeight` and `title`                                   |
+| Adjacent pages             | [PageNavigation.vue](../../../app/components/common/PageNavigation.vue)       | Optional `previousPage` and `nextPage`; localizes each path                                                    |
+| Responsive state           | [screen-size.ts](../../../app/composables/screen-size.ts)                     | `useScreenSize()` returns breakpoint refs with `ssrWidth: 1024`                                                |
+| Smooth scrolling           | [smooth-scroll.client.ts](../../../app/plugins/smooth-scroll.client.ts)       | Provides the existing `$lenis` instance                                                                        |
+| Style tokens               | [variables.scss](../../../app/styles/variables.scss)                          | Colors, layers, dimensions and breakpoints injected through Vite                                               |
+| Menu catalogue             | [navigation.ts](../../../app/data/navigation.ts)                              | Ordered translation keys, groups and unprefixed destinations                                                   |
+| Navigation state           | [useSiteNavigation.ts](../../../app/composables/useSiteNavigation.ts)         | Close desktop/mobile navigation from any shared control                                                        |
+| Overlay locking            | [useOverlayScrollLock.ts](../../../app/composables/useOverlayScrollLock.ts)   | Acquire/release an independent scroll lease with automatic cleanup                                             |
 
 ## Components And Types
 
@@ -42,6 +42,9 @@ Follow PascalCase component names and the existing `index.vue` route-directory c
 
 Do not add a nested `<main>` inside pages using the default layout.
 Reuse `PageTitle` rather than introducing a second H1.
+Use page-owned BEM classes, named sections and the shared `.sr-only` utility for useful hidden context.
+Keep the intentional image-led oil/WIP H1s hidden without hiding useful actions or ordinary page content.
+Approach/development cards are deliberately Tab-focusable; their heading outline and authored order belong to the pages.
 For gallery creation, use [gallery-page](../gallery-page/SKILL.md); retain intentional differences in existing pages such as the standalone oil artwork page.
 
 ## State, Localization And SSR
@@ -55,6 +58,7 @@ Render stable initial markup on the server and client; prefer CSS over viewport-
 Preserve the SSR breakpoint fallback when changing `useScreenSize()`.
 Do not hide entire pages behind `ClientOnly` to mask hydration problems.
 Avoid mutable module-level visitor state that can leak between requests.
+The homepage keeps only carousel indices and persistent pause in named Nuxt `useState` values so locale remounts and return navigation preserve them; timers and transient browser state remain page-owned.
 
 Remove added listeners, observers, timers and animation loops on unmount.
 Reuse `$lenis` for scroll integration rather than creating a second instance.
@@ -75,6 +79,8 @@ Modified clicks preserve native behavior; selecting the current page closes the 
 Translations refresh row/item/snapshot metadata independently of the width-change sizing guard.
 When changing captions or translated image arrays, verify a locale switch at an unchanged viewport; computed page data alone does not establish that the grid updated.
 Keep fixes to shared grid behavior within the requested task and report any unresolved limitation.
+Grid cells and the animated approach/development/contact surfaces finish only their existing `fadeInUpBlock` on `focusin`.
+Preserve that animation object; removing it with `:focus-within { animation: none; }` makes it replay after focus leaves.
 
 ## Styling, Images And Controls
 

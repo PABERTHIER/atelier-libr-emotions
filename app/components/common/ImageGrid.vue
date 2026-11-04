@@ -1,15 +1,20 @@
 <template>
-  <div ref="root" class="image-grid">
+  <div ref="root" class="image-grid" :aria-busy="rows.length === 0">
     <template v-if="rows.length > 0">
-      <div v-for="(row, rIdx) in rows" :key="`row-${rIdx}`" class="image-row">
+      <div
+        v-for="(row, rIdx) in rows"
+        :key="`row-${rIdx}`"
+        class="image-grid__row">
         <div
           v-for="(item, iIdx) in row.items"
           :key="`item-${rIdx}-${iIdx}`"
-          :class="item.isOnError ? 'image-cell-error' : 'image-cell'"
+          class="image-grid__cell"
+          :class="{ 'image-grid__cell--error': item.isOnError }"
           :style="{
             width: `${Math.round(item.renderWidth)}px`,
             '--artwork-height': `${Math.round(row.rowHeight)}px`,
-          }">
+          }"
+          @focusin="finishEntranceAnimation">
           <ImageGridItem
             :item="item"
             :is-mobile="device.isMediumOrBelowScreen.value"
@@ -17,7 +22,9 @@
         </div>
       </div>
     </template>
-    <div v-else class="image-grid-skeleton" />
+    <div v-else class="image-grid__skeleton" role="status">
+      <span class="sr-only">{{ t('components.image_grid.loading') }}</span>
+    </div>
 
     <ImagePreviewModal
       :image="selectedImage ?? fallbackImage"
@@ -64,6 +71,21 @@ let resizeObserver: ResizeObserver | null = null
 let resizeTimer: ReturnType<typeof setTimeout> | null = null
 let lastContainerWidth = 0
 let lastRowsSnapshot: Row[] | null = null
+
+function finishEntranceAnimation(event: FocusEvent) {
+  if (!(event.currentTarget instanceof HTMLElement)) {
+    return
+  }
+
+  for (const animation of event.currentTarget.getAnimations()) {
+    if (
+      animation instanceof CSSAnimation &&
+      animation.animationName === 'fadeInUpBlock'
+    ) {
+      animation.finish()
+    }
+  }
+}
 
 function openViewer(image: ImageSource, event: MouseEvent) {
   viewerOpener.value =
@@ -389,10 +411,10 @@ watch(
 
 .image-grid {
   width: 100%;
-  box-sizing: border-box;
+  min-width: 0;
 
   @media (prefers-reduced-motion: no-preference) {
-    :deep(.image-cell) {
+    &__cell:not(.image-grid__cell--error) {
       animation: fadeInUpBlock 0.8s ease-out;
       animation-fill-mode: both;
 
@@ -404,39 +426,41 @@ watch(
     }
   }
 
-  .image-row {
+  &__row {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
     gap: $space-24; // Must match GAP_PX constant
     margin-bottom: $space-24;
+  }
 
-    .image-cell {
-      position: relative;
-      border-radius: $radius-panel;
-      box-shadow: 0 4px 16px $box-shadow-color;
-      background-color: transparent;
-    }
+  &__cell {
+    position: relative;
+    min-width: 0;
+    border-radius: $radius-panel;
+    box-shadow: 0 $space-4 $space-16 $box-shadow-color;
+    background-color: transparent;
 
-    .image-cell-error {
-      position: relative;
+    &--error {
+      box-shadow: none;
     }
   }
 
   @media ((min-width: $md) and (hover: hover)) {
-    .image-row {
-      .image-cell {
+    &__row {
+      .image-grid__cell:not(.image-grid__cell--error) {
         overflow: hidden;
       }
 
       @media (prefers-reduced-motion: no-preference) {
-        .image-cell :deep(.grid-item__button:focus-visible .grid-item__image) {
+        .image-grid__cell
+          :deep(.grid-item__button:focus-visible .grid-item__image) {
           transform: scale($artwork-hover-scale);
         }
 
         @media (pointer: fine) {
-          .image-cell:hover :deep(.grid-item__image) {
+          .image-grid__cell:hover :deep(.grid-item__image) {
             transform: scale($artwork-hover-scale);
           }
         }
@@ -445,24 +469,26 @@ watch(
   }
 
   // Mobile: show title on tap/touch or small screens
-  @media (hover: none), (pointer: coarse), (max-width: calc($md - 1px)) {
-    .image-row {
+  @media (hover: none),
+    (pointer: coarse),
+    (max-width: calc($md - $border-width)) {
+    &__row {
       margin-bottom: $space-20;
 
-      .image-cell {
+      .image-grid__cell {
         overflow: visible;
       }
     }
 
-    .image-row .image-cell-error {
+    .image-grid__cell--error {
       overflow: visible;
     }
   }
 }
 
-.image-grid-skeleton {
+.image-grid__skeleton {
   width: 100%;
-  min-height: 300px;
+  min-height: 18.75rem;
   border-radius: $radius-panel;
   background: linear-gradient(
     90deg,

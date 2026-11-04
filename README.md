@@ -37,9 +37,9 @@ Welcome's one-row introduction hides scrollbar presentation without locking scro
 Welcome is visible in the first server-rendered frame, with typing starting after mount and a scripting-disabled CSS fallback.
 CSS and route scrolling respect reduced motion.
 Shared components retain the site's design with typed contracts, native controls, readable accent text and responsive wrapping.
-Artwork opens from keyboard-operable tiles into a native modal viewer with pinch zoom, drag/keyboard/button panning and same-group swipe/previous/next navigation.
+Artwork opens from keyboard-operable tiles into a native modal viewer with pinch zoom, drag/keyboard/click-to-center panning and same-group swipe/previous/next navigation.
 The viewer retains fit/close/zoom, adds a blurred backdrop, exposes loading/error/retry states and restores focus and scrolling.
-These are implementation features, not a full WCAG 2.2 AA conformance claim; see the [accessibility maintenance guide](.agents/docs/accessibility.md) for coverage and remaining page-level work.
+These are implementation features, not a full WCAG 2.2 AA conformance claim; see the [accessibility maintenance guide](.agents/docs/accessibility.md) for recorded coverage and remaining manual checks.
 
 ## Develop Locally
 
@@ -141,7 +141,7 @@ Consult `package.json` for versions; this table groups its current direct entrie
 The default layout owns the main landmark, header and footer.
 It uses a content-driven flex shell with `100svh`, not fixed header/footer subtraction or a JavaScript `--vh` writer.
 The header measures its rendered height for anchor clearance and menu bounds, and stops sticking on short landscape screens.
-`default.scss` owns resets, typography, focus and reduced motion; `shared.scss` owns reusable controls.
+`default.scss` owns resets, typography, focus and reduced motion; `shared.scss` owns reusable controls and the `.sr-only` utility.
 Both load once alongside `keyframes.scss`; only `variables.scss` is injected into SCSS.
 Menu destinations and translation keys belong in `app/data/navigation.ts`, not duplicated desktop/mobile templates.
 The mobile menu and artwork viewer acquire independent leases through `useOverlayScrollLock()`; closing one cannot unlock another.
@@ -206,7 +206,6 @@ Accessibility is maintained against a WCAG 2.2 AA review target; source findings
 | [UX principles](.agents/docs/ux-principles.md)             | Responsive journeys and mobile acceptance                              |
 | [Accessibility maintenance](.agents/docs/accessibility.md) | Observed source limitations and manual audit coverage                  |
 | [SEO maintenance](.agents/docs/SEO.md)                     | Metadata, origins, indexing and image discovery                        |
-| [STYLE_LAYOUT_REVIEW.md](STYLE_LAYOUT_REVIEW.md)           | Dated layout and CSS proposals                                         |
 
 Use the [skill catalog](AGENTS.md#available-skills) for workflows and the [scoped instruction map](AGENTS.md#tool-integration-and-scoped-instructions) for affected files.
 Read only the context needed for the task and distinguish intended behavior from verified implementation.

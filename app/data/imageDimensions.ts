@@ -253,5 +253,6 @@ export const imageDimensions: Record<string, ImageDimensions> = {
   '/paintings/mixed_technique/nature/TMn8.webp': [2355, 3264],
   '/paintings/mixed_technique/nature/TMn9.webp': [2429, 3264],
   '/paintings/some-paintings.webp': [3024, 4032],
+  '/wip-still.webp': [640, 266],
   '/wip.gif': [640, 266],
 }

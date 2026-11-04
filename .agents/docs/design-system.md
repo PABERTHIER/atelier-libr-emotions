@@ -11,7 +11,7 @@ Use [brand-context.md](brand-context.md) for identity and [ux-principles.md](ux-
 | Sass tokens                           | [variables.scss](../../app/styles/variables.scss)                                | Reuse actual color, breakpoint, dimension and layer variables      |
 | Shared animations                     | [keyframes.scss](../../app/styles/keyframes.scss)                                | Preserve animation names used by existing components               |
 | Global defaults, typography and focus | [default.scss](../../app/styles/default.scss)                                    | Reset, base rules, custom scrollbar and reduced motion loaded once |
-| Reusable control classes              | [shared.scss](../../app/styles/shared.scss)                                      | Shared icon-button sizing and appearance                           |
+| Reusable control classes              | [shared.scss](../../app/styles/shared.scss)                                      | Shared icon-button sizing/appearance and `.sr-only`                |
 | Shell structure                       | [default.vue](../../app/layouts/default.vue)                                     | Scoped content-driven flex shell and focusable main                |
 | Header bypass                         | [Header.vue](../../app/components/layout/Header.vue)                             | Focus-visible skip link positioned over the logo inside the header |
 | Overlay scroll behavior               | [overlay-scroll-lock.client.ts](../../app/plugins/overlay-scroll-lock.client.ts) | Shared leases preserve prior styles, scroll position and Lenis     |
@@ -23,7 +23,6 @@ Sass built-ins such as `sass:color` still require their own import when used.
 The token sheet groups colors, shadows, fonts, spaces, layout, controls, borders/focus/corners, layers, motion and breakpoints without renaming existing tokens.
 
 Shared defaults, keyframes and reusable classes load once through the Nuxt config's `css` array.
-The [style and layout review](../../STYLE_LAYOUT_REVIEW.md) retains the historical findings and a migration-status section.
 Inspect all animation consumers and compare compiled output before changing injection or stylesheet ordering.
 
 ## Palette
@@ -96,6 +95,7 @@ Avoid presenting a proposed token name as an implemented API.
 | Layers             | Header `30`, desktop menu `50` within header, viewer `100`, skip link `200` | Native mobile dialog uses the browser top layer                          |
 
 The layout uses `min-height: 100svh` with a growing main and naturally sized header/footer.
+The single default layout remains separate from the root's metadata ownership; merging those files is not a page-compliance requirement.
 The CV iframe uses a bounded `svh` height; there is no JavaScript `--vh` writer.
 The header retains its 20px top gutter and measures `--site-header-height` with a cleaned-up ResizeObserver.
 This measurement clears navigation destinations and bounds desktop panels; it does not calculate the shell height.
@@ -126,6 +126,7 @@ The standalone typing component exposes the full text once to assistive technolo
 Welcome's logo and text share one flex row, with text allowed to wrap when enlarged rather than clipping.
 Scrollbar presentation is hidden only while the welcome surface exists; document scrolling is not locked.
 Both components clean up timers and listeners on unmount.
+TextTyping uses the shared `.sr-only` utility for its complete alternative rather than owning another clipping rule.
 Desktop menu panels fade/slide over 0.2s; the mobile surface slides horizontally over 0.3s.
 The mobile native dialog retains its scroll lease and focus containment until the leave transition finishes.
 Normal menu-link activation navigates immediately; the route change starts the closing animation over the destination.
@@ -135,10 +136,20 @@ The slide uses an opaque menu surface over a transparent native backdrop.
 Menu border frames match the logo at 25px up to 640px and 30px above that width; compact glyphs are 18px/20px.
 Desktop close controls use a 30px border frame and 20px glyph; link arrows remain 16px.
 The frame and hover treatment are drawn inside the independently usable 44px touch target.
+Menu structure uses `site-menu__toggle`/`site-menu__control`, `desktop-navigation__trigger--current` and explicit desktop/mobile title classes.
 Global CSS reduces animation/transition duration and iteration count; Lenis and route scrolling check the motion preference.
-The unchanged home artwork rotation is separate page behavior and still needs its own pause/stop review.
+The home owns its three curated artwork tracks, five-second rotation, persistent pause/resume control and previous/next controls.
+Artwork hover, carousel focus, a hidden document and persistent pause stop rotation and floating; manual selection pauses the timer.
+Reduced motion stops automatic rotation/floating and omits the rotation control, retaining previous/next; explicit resume can restart while its control keeps focus.
+The complete keyed frame fades on image changes while its floating wrapper stays mounted, preserving outgoing dimensions and animation continuity without replacing `Image` or NuxtImg.
+The contact page retains static particles instead of unbounded decorative motion.
+The work-in-progress illustration uses a still for SSR/initial markup and reduced motion; after mount it plays the original GIF automatically when motion is allowed.
+Its cleaned-up media-query listener switches both ways on preference changes; there is no animation toggle.
 Preserve the viewer's zoom geometry and scroll restoration when changing transitions.
 Keep static presentation in SCSS and allow dynamic styles for measured grid and zoom geometry.
+Gallery images retain tile-owned `object-fit: fill`; a parent contain override creates strips around independently rounded row/cell dimensions.
+Grid cells and approach/development/contact reveal surfaces finish only their existing `fadeInUpBlock` animation on `focusin`, leaving it finished after focus leaves.
+Do not remove the animation with a focus-within rule, which would recreate it after blur; development entrances apply at desktop and mobile widths under the reduced-motion gate.
 
 ## Common-component maintenance
 
@@ -149,9 +160,11 @@ Static appearance stays in scoped SCSS; gesture geometry belongs in [useImageVie
 Transitions name the properties they animate instead of using `transition: all`.
 Noninteractive card hover movement is disabled for touch and reduced motion.
 Text uses rem-based sizing, normal flow, minimum-width guards and long-word wrapping.
-Original gold/copper ornament and badge surfaces are retained.
+Original gold/copper ornaments and other badge surfaces remain, with the milestone-date treatment described below.
 Text accents use hue-specific `$gold-text-color` and `$copper-text-color`, rather than replacing both with a generic navigation brown.
-The copper date badge keeps its original background with darker contrasting text.
+Milestone dates use white text on `$copper-text-color` (`#9c5b27`), with 10px top/right clearance.
+The `section-content--dated` grid reserves heading/date columns and spans prose below them, preventing overlaps while keeping the date after the heading in reading order.
+TextBlock owns variant padding; the current master-word card uses 10px top padding at desktop and mobile sizes.
 Dark text is retained on light gold/orange/purple badges, while dark-red badges use white text.
 Focus is never removed by a generic button/range reset.
 Artwork triggers draw a 4px-per-color inset white/dark-blue ring so gallery clipping cannot hide it.
@@ -168,13 +181,51 @@ The loader intentionally uses a scoped plum gradient and the separate `viewerSke
 The stage preserves complete contain geometry at fit size; zoom dimensions are measured and bounded rather than inferred from viewport writers.
 Native range presentation keeps its focus outline and a 44px interaction height.
 The language switcher retains compact pill framing, with its transparent native hit areas sized separately from that visible frame.
+Accessible locale-link names include the visible FR/EN code before the full language name, without changing those frames or locale preference handling.
 Use component-qualified block/element classes for new internal structure, shallow intentional relationships, blank lines between visual areas and existing spacing/border/motion tokens.
 Retain established public class/variant contracts when cleanup alone does not justify renaming them.
 System-color keywords in forced-colors rules are valid CSS and must not be replaced with fixed palette values to silence an editor decoration.
 See [accessibility maintenance](accessibility.md#common-component-contracts) for behavior, exclusions and audit boundaries.
 
 Verify affected pages in both locales, at mobile and desktop widths, with keyboard, touch, enlarged text and reduced motion.
-Use the layout review for scoped structural improvements and record what was actually tested.
+Record the relevant structural and interaction checks actually performed.
+
+## Page conventions
+
+Page-owned classes use BEM blocks such as `home-page`, `about-page`, `development-page`, `cv-page`, `contact-page`, `gallery-page`, `oil-artwork-page` and `wip-page`.
+Use `&__element` and `&--modifier` for local structure, with shallow intentional descendant selectors and blank lines between visual groups.
+Preserve shared component public classes and typed variant props; do not rename them from a page's scoped stylesheet.
+Vue-generated transition state classes are a framework contract, not BEM elements.
+Static spacing, borders and controls use existing tokens; typography and content bounds use rem or fluid units.
+Pixels remain appropriate for image-delivery sizes, intrinsic image attributes, measured gallery geometry, breakpoint thresholds and the one-pixel screen-reader clipping box.
+Do not mechanically convert browser/image layout inputs to rem or create a token for each isolated value.
+The root `font-size: 100%` follows the browser default rather than fixing the visitor's preferred text size.
+
+The main landmark stays in the default layout; each page supplies one H1, with logical named sections below it.
+Use the shared `.sr-only` utility only for useful hidden context or headings that would duplicate the visual artwork treatment.
+Gallery collections retain authored visible H2s where present; otherwise use a hidden generic H2, with viewer instructions once per grid page.
+The standalone oil page retains its image-led design with a hidden artwork H1 and semantic figure/caption.
+Home exploration actions are real locale-aware links, with one CSS-driven responsive action group instead of viewport-dependent duplicated buttons.
+The intro retains left-aligned copy, responsive title sizing and its red/blue accent; native action links retain the original gradient-border masks, backdrop and focus feedback.
+Desktop content columns distribute spare space with `space-around` above 1024px; stacked copy grows from 500px toward 600px near the tablet boundary.
+Through 1024px, compact controls sit centered below the artwork; at 420–1024px the actions form a compact centered group beneath them, and below 420px they wrap centered.
+Desktop controls occupy the lower-right artwork space; actions retain their separate 500px bound and alignment with the copy.
+Frames derive proportional widths from `imageDimensions` within pixel-based width/height caps, reserving final geometry through placeholder loading and text enlargement.
+Their white surround is 10px, reducing to 5px through 640px; the ceramic left edge is anchored and clamped inside the collage.
+Tablet/mobile collage widths are 450px/360px, capped by available space.
+Below 320px, only `home-page__artworks-viewport` scrolls horizontally around a 280px-minimum canvas; the page itself stays within the viewport and controls remain below it.
+Contact uses a figure/caption, native social/mail links and named contact sections; decorative layers never take pointer or keyboard input.
+The caption wraps within its image-driven frame using inline-size containment and a 150px loading contribution, with an 8px gap, 1.5 line height and 15px/14px rem-based desktop/mobile type.
+Frame bottom clearance is 16px desktop and 12px mobile; image delivery remains owned by `Image`.
+Fine-pointer hover and keyboard focus zoom only the contact image to 1.02 over 0.6s inside its link, leaving the frame/focus outline visible.
+Contact social controls restore sliding overlays, 1.05 scale and a 2px lift; email and CV download actions use the same overlay and 2px lift with warm shadow.
+Those warm actions retain white text on text-safe gold/copper gradients, lightened by 1.5 percentage points at rest and using the base text-safe tokens on hover/focus.
+The darker Instagram palette and forced-colors control borders remain; movement respects reduced motion and hover movement requires a fine pointer.
+CV embeds are width-bounded and use `clamp(20rem, 70svh, 60rem)` without shell-height subtraction.
+The centered CV notice uses separate language/description paragraphs, both referenced by the iframe description.
+The page-qualified iframe rule retains `pointer-events: auto`, overriding Lenis pointer suppression so the PDF can scroll during outer-page inertia.
+The full text alternative is an expandable native details/summary, independent of PDF-reader accessibility.
+Reading-card Tab focus is an intentional approach/development feature, not a requirement to make all page prose tabbable.
 
 ## Scrollbar presentation
 

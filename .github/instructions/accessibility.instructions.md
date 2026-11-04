@@ -20,6 +20,12 @@ An instruction's presence does not require an unrelated site-wide audit or prove
 | Appearance and motion | Readable contrast and text enlargement, comfortable touch targets, and CSS/JavaScript reduced-motion behavior |
 
 Reuse the native artwork button and the viewer's native modal dialog rather than introducing click-only containers or a competing focus trap.
+Use the shared `.sr-only` helper only for useful hidden headings or instructions; named sections still need a logical page outline.
+Keep the approach/development reading cards intentionally Tab-focusable, without extending that behavior to unrelated static prose.
+An embedded PDF or image preview needs an independent complete text alternative; keep the CV transcript synchronized with the supplied document.
+Timed carousels need persistent pause and manual controls, focus/hover/visibility handling and reduced-motion cleanup.
+WIP uses a still in initial markup and under reduced motion, otherwise playing the GIF automatically after mount and following live preference changes; it has no animation button.
+For reveal-animated reading cards, gallery cells and contact artwork, finish the existing entrance animation on focus rather than removing and replaying it after blur.
 Preserve native zoom range arrows, same-group previous/next artwork navigation and the image region's distinct zoomed keyboard-pan behavior.
 Every drag/pinch/swipe action needs a single-pointer alternative.
 The viewer uses zoom/fit and previous/next buttons plus click-to-center panning, without a separate pan toolbar.

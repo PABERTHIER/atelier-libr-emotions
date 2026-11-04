@@ -28,7 +28,13 @@
         </div>
       </div>
 
-      <div v-else class="section-content" :class="props.customSectionClass">
+      <div
+        v-else
+        class="section-content"
+        :class="[
+          props.customSectionClass,
+          { 'section-content--dated': props.date },
+        ]">
         <component
           :is="`h${props.headingLevel}`"
           v-if="props.title"
@@ -89,8 +95,6 @@ const titleId = useId()
 </script>
 
 <style lang="scss" scoped>
-@use 'sass:color';
-
 .text-section-container {
   width: 100%;
   min-width: 0;
@@ -262,15 +266,34 @@ const titleId = useId()
       }
 
       .milestone-date {
-        display: table;
-        margin-bottom: $space-12;
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: end;
+        margin-top: -$space-20;
+        margin-right: -$space-20;
         padding: $space-5 $space-15;
-        background: $copper-color;
-        color: color.adjust($primary-text-color, $lightness: -5%);
+        background: $copper-text-color;
+        color: $white-color;
         border-radius: $space-15;
         font-size: 0.875rem;
         font-weight: 600;
         box-shadow: 0 $space-2 $space-8 rgba($copper-color, 0.3);
+      }
+
+      &--dated {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: start;
+        column-gap: $space-12;
+
+        .title {
+          justify-self: start;
+        }
+
+        .text-content,
+        .highlight-quotation {
+          grid-column: 1 / -1;
+        }
       }
     }
 
@@ -295,7 +318,8 @@ const titleId = useId()
         }
 
         .milestone-date {
-          display: inline-block;
+          margin-top: -$space-10;
+          margin-right: -$space-10;
         }
       }
     }

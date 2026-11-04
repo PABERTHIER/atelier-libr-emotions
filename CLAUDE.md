@@ -13,7 +13,6 @@ Load guide and skill bodies only when the task needs them.
 | [AGENTS.md](AGENTS.md)                                                 | Shared constraints, architecture, commands, scope selection and verification |
 | [.agents/README.md](.agents/README.md)                                 | Guidance ownership, evidence levels and catalogs                             |
 | [README.md](README.md)                                                 | Site overview, local development and image/deployment workflow               |
-| [STYLE_LAYOUT_REVIEW.md](STYLE_LAYOUT_REVIEW.md)                       | Dated structural proposals, not proof of completed changes                   |
 | [copilot-instructions.md](.github/copilot-instructions.md)             | Copilot's entry point to the same shared catalogs                            |
 | [Artwork naming map](.agents/skills/i18n/references/artwork-naming.md) | Route, translation-key, filename and group-directory mappings                |
 

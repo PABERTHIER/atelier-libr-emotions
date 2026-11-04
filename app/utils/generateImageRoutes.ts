@@ -162,6 +162,10 @@ const imagesConfig = [
     sizes: [300, 450, 600, 900, 1200],
   },
   {
+    imagePath: '/wip-still.webp',
+    sizes: [400, 700, 800, 1000, 1400, 2000],
+  },
+  {
     imagePath: '/wip.gif',
     sizes: [400, 700, 800, 1000, 1400, 2000],
   },

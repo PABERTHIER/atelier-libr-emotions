@@ -1,5 +1,11 @@
 <template>
-  <div class="text-block" :class="blockClass">
+  <component
+    :is="title ? 'section' : 'div'"
+    class="text-block"
+    :class="blockClass"
+    tabindex="0"
+    :aria-labelledby="title ? titleId : undefined"
+    :aria-describedby="textId">
     <div class="block-content">
       <div v-if="type === 'axis' && axisNumber" class="axis-number">
         {{ axisNumber }}
@@ -17,17 +23,21 @@
         <span v-if="objectiveNumber">{{ objectiveNumber }}</span>
       </div>
 
-      <component :is="`h${headingLevel}`" v-if="title" class="block-title">
+      <component
+        :is="`h${headingLevel}`"
+        v-if="title"
+        :id="titleId"
+        class="block-title">
         {{ title }}
       </component>
       <blockquote v-if="type === 'quote'" class="block-quotation">
         <span class="quote-mark opening" aria-hidden="true">"</span>
-        <p class="block-text">{{ textContent }}</p>
+        <p :id="textId" class="block-text">{{ textContent }}</p>
         <span class="quote-mark closing" aria-hidden="true">"</span>
       </blockquote>
-      <p v-else class="block-text">{{ textContent }}</p>
+      <p v-else :id="textId" class="block-text">{{ textContent }}</p>
     </div>
-  </div>
+  </component>
 </template>
 
 <script setup lang="ts">
@@ -59,6 +69,9 @@ const props = withDefaults(
   }
 )
 
+const titleId = useId()
+const textId = useId()
+
 const blockClass = computed(() => {
   const classes = [`block-${props.type}`]
 
@@ -76,6 +89,11 @@ const blockClass = computed(() => {
 .text-block {
   min-width: 0;
   overflow-wrap: anywhere;
+
+  &:focus-visible .block-content {
+    transform: none;
+    box-shadow: 0 $space-8 $space-32 rgba(0, 0, 0, 0.12);
+  }
 
   .block-content {
     position: relative;
@@ -247,7 +265,6 @@ const blockClass = computed(() => {
   @media (max-width: $md) {
     &.block-master-word .block-content {
       margin-bottom: $space-30;
-      padding-top: $border-width;
 
       .block-title {
         font-size: 1.375rem;

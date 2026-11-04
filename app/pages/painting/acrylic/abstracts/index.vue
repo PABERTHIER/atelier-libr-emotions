@@ -1,28 +1,35 @@
 <template>
-  <div class="gallery-page">
-    <div class="page-header">
+  <article class="gallery-page">
+    <header class="gallery-page__header">
       <PageHeaderOrnament />
       <PageTitle
         :title="t('pages.painting.acrylic.abstracts.title')"
         :subtitle="t('pages.painting.acrylic.abstracts.subtitle')" />
-    </div>
+    </header>
 
-    <div class="gallery-container">
+    <section
+      class="gallery-page__collection"
+      aria-labelledby="collection-title">
+      <h2 id="collection-title" class="sr-only">
+        {{ t('pages.gallery.collection_title') }}
+      </h2>
+      <p class="sr-only">{{ t('pages.gallery.instructions') }}</p>
       <ImageGrid
         :images="images"
         :heights="{ xs: 120, sm: 160, md: 220, lg: 300 }" />
-    </div>
+    </section>
 
     <PageNavigation :next-page="nextPage" />
-  </div>
+  </article>
 </template>
 
 <script setup lang="ts">
 import type { ImageSource } from '~/types/image'
+import type { PageNavigation } from '~/types/page'
 
 const { t } = useI18n()
 
-const images: ImageSource[] = [
+const images = computed<ImageSource[]>(() => [
   {
     src: '/paintings/acrylic/abstracts/AutomaticPainting1.webp',
     title: t('pictures.paintings.acrylic.abstracts.automatic_painting_1.title'),
@@ -135,13 +142,13 @@ const images: ImageSource[] = [
       'pictures.paintings.acrylic.abstracts.automatic_painting_10.dimensions'
     ),
   },
-]
+])
 
-const nextPage = {
+const nextPage = computed<PageNavigation>(() => ({
   path: '/wip',
   title: t('wip.next_page_name'),
   description: t('wip.next_page_description'),
-}
+}))
 
 useHead(usePageSeo('painting_acrylic_abstracts'))
 </script>
@@ -150,9 +157,14 @@ useHead(usePageSeo('painting_acrylic_abstracts'))
 .gallery-page {
   position: relative;
   width: 100%;
+  min-width: 0;
 
-  .page-header {
-    margin-bottom: 50px;
+  &__header {
+    margin-bottom: $space-50;
+  }
+
+  &__collection {
+    min-width: 0;
   }
 }
 </style>

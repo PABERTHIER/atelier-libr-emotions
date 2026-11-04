@@ -35,6 +35,7 @@ Each panel has its own close control and scrollable grid; planned categories are
 On mobile, a native modal dialog retains the accordion hierarchy, contains focus and makes the underlying document inert.
 Its close header remains reachable while the content scrolls, including on short screens.
 Closing a mobile dialog restores its invoking control; route navigation then focuses the destination main.
+Locale-link names contain their visible FR/EN code as well as the language name, supporting speech activation without changing the compact design.
 The horizontal mobile enter/leave transition keeps background interaction blocked until dismissal finishes.
 Desktop panels use a short fade/slide and become inert as soon as closing starts.
 Normal mobile menu-link activation navigates immediately, with the menu sliding away over the destination without an extra background tint.
@@ -70,11 +71,10 @@ Recompose content for available space rather than simply shrinking desktop typog
 | Dialog      | Visible close and fit controls, reachable zoom, contained focus and restored scroll position    |
 | Reading     | Comfortable FR/EN wrapping at narrow widths and usable text at 200% enlargement                 |
 | Viewport    | Browser toolbars, safe areas and sticky elements do not cover controls or document content      |
-| CV          | Touch previews and download work without requiring the desktop PDF embed                        |
+| CV          | Touch previews, open/download actions and full text work without the desktop PDF embed          |
 | Language    | Page URL and translated labels, captions and metadata stay in agreement                         |
 
 Check at 320x568, 375, 430, 768, 1024 and 1280px or wider, including intermediate widths and landscape when relevant.
-The [style and layout review](../../STYLE_LAYOUT_REVIEW.md) preserves historical concerns and records the shell migration separately.
 
 ## Loading, motion and failure
 
@@ -86,11 +86,38 @@ When scripting is disabled, CSS hides the decorative surface and keeps native sc
 It is decorative, does not take focus or lock scrolling, and dismisses instantly on pointer, keyboard or focus interaction without swallowing that action.
 Reduced motion shows the full intro text without typing and removes the fade.
 Welcome keeps its logo beside the text and temporarily hides the scrollbar's presentation without locking the document.
-Home artwork indices change on a five-second timer; review pause and reduced-motion behavior if that interaction is changed.
+Home artwork indices change on a five-second timer, preserving the three curated sequences.
+Previous/next controls offer manual browsing; a pause/resume action with a changing localized name persistently controls automatic rotation.
+Artwork hover, keyboard focus within the carousel, a hidden document and persistent pause stop its timer and floating.
+An explicit resume can restart while that control keeps focus; reduced motion keeps previous/next and hides the automatic-rotation control.
+Selected indices and persistent pause survive language changes and return navigation through named Nuxt state, while timers/listeners remain page-owned and clean up on unmount.
+Manual browsing pauses automatic changes and politely announces the selected titles; automatic rotation has no live announcement.
+Soft opacity transitions avoid abrupt swaps and disappear under reduced motion.
+Proportional frames reserve intrinsic image geometry through placeholders, keep complete artwork and use 10px white surrounds, reduced to 5px through 640px.
+The ceramic frame keeps its clamped left edge across image changes.
+Controls sit in the lower-right artwork space on desktop and centered beneath it through 1024px; compact tablet actions group underneath, with centered wrapping below 420px.
+Below 320px, a native local horizontal viewport preserves the collage; the rest of the page still fits without document-level horizontal overflow.
+Contact particles remain static.
+WIP initially renders a still, then automatically plays the original GIF only when the mounted browser reports no reduced-motion preference; live changes switch both ways without an animation button.
 
-`ImageGrid` initially renders a skeleton and measures artwork in the browser.
+Approach/development cards are deliberately Tab-focusable so visitors can follow the artist's text section by section.
+Keep their focus visible, preserve the authored order and name titled sections with instance-specific heading IDs.
+Use native lists for the approach's axes and objectives, while retaining the existing numbered badges.
+Early focus finishes the existing card/cell/artwork entrance animation so content stays visible after Tab instead of replaying from transparency.
+The CV retains its actual French PDF and touch previews alongside a complete expandable FR/EN text version.
+The text version and independent open/download actions must remain usable even when an embedded PDF reader is unsupported.
+Synchronize the transcript with the supplied document; do not invent career updates or use image alternatives as substitutes for all CV text.
+Its notice presents the document language and available reading choices in two centered paragraphs.
+Keep the PDF iframe interactive during Lenis inertia with the page-owned pointer-events override.
+Contact social links announce new-tab behavior, and both visible email and contact call-to-action are native email links.
+The image-driven caption frame and pointer/keyboard artwork/control feedback follow the [page conventions](design-system.md#page-conventions), including reduced-motion handling.
+
+`ImageGrid` initially renders a skeleton and measures artwork in the browser, exposing `aria-busy` and translated loading status.
 SSR HTML alone does not establish that a gallery is usable, that all images loaded or that captions update after language switching.
 Check loading failures and a slow connection when changing image behavior, using [the artwork-assets skill](../skills/artwork-assets/SKILL.md).
+The optimized wrapper keeps NuxtImg and its placeholder; responsive-generation keys reject stale preload errors after a breakpoint changes.
+Breakpoint changes remount loaded images too, so a normal placeholder can briefly reappear.
+Failure text wraps within narrow frames and is included in the original-file link's name.
 Describe unavailable content clearly and offer an existing recovery destination rather than a dead end or a fictional retry action.
 
 ## Focus and scroll continuity

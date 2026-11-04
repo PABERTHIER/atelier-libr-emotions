@@ -84,6 +84,7 @@
   "error": {
     "code": "Erreur {code}",
     "skip": "Aller au contenu",
+    "navigation": "Retrouver les pages du site",
     "home": "Retour à l'accueil",
     "gallery": "Voir les peintures",
     "not_found": {
@@ -112,6 +113,9 @@
     },
     "image": {
       "open_original": "Voir l'image originale : {title}"
+    },
+    "image_grid": {
+      "loading": "Chargement des œuvres…"
     },
     "image_grid_item": {
       "open": "Voir l'œuvre : {title}"
@@ -148,7 +152,19 @@
       "buttons": {
         "view_gallery": "Voir la Galerie",
         "about": "À propos de l'Artiste"
+      },
+      "carousel": {
+        "title": "Aperçu des peintures, céramiques et de l'atelier",
+        "description": "Trois sélections d'images changent toutes les cinq secondes. La rotation s'arrête pendant le survol ou la navigation au clavier. Utilisez les commandes pour la mettre en pause ou parcourir les images. Le défilement automatique est désactivé si vous préférez réduire les animations.",
+        "previous": "Images précédentes",
+        "next": "Images suivantes",
+        "pause": "Pause du diaporama",
+        "resume": "Reprendre le diaporama"
       }
+    },
+    "gallery": {
+      "collection_title": "Œuvres de la collection",
+      "instructions": "Sélectionnez une œuvre pour l'agrandir. Dans l'aperçu, utilisez les commandes pour parcourir la collection, zoomer ou ajuster l'image. La touche Échap ferme l'aperçu et vous ramène à l'œuvre."
     },
     "painting": {
       "acrylic": {
@@ -215,6 +231,7 @@
       "tab_name": "Ma démarche artistique",
       "title": "Ma démarche artistique",
       "subtitle": "Une approche intuitive de l'art",
+      "practice_title": "Ma pratique artistique et mes ateliers",
       "intro": "En peinture, en dessin, comme en terre, je pars d'une trace spontanée puis, à mon rythme, je pars à l'Aventure.",
       "intuitive_work": "Je travaille de manière intuitive, sans idée préconçue, sans attente particulière. Seuls l'envie, le plaisir de créer et l'acceptation de ce qui se passe, au moment présent, m'importent.",
       "creative_process_title": "Mon Processus Créatif",
@@ -284,9 +301,63 @@
       "download_label": "Télécharger le CV au format PDF",
       "download_filename": "CV_Berthier_Véronique.pdf",
       "page_1_title": "CV page 1",
-      "page_1_alt": "CV page 1",
+      "page_1_alt": "Première page du CV : présentation, expériences professionnelles, diplômes et formations. Une version texte complète est disponible sous le document.",
       "page_2_title": "CV page 2",
-      "page_2_alt": "CV page 2"
+      "page_2_alt": "Deuxième page du CV : expositions et événements depuis 2011. Une version texte complète est disponible sous le document.",
+      "document_title": "CV artistique : document et téléchargement",
+      "document_language": "Le CV original est en français.",
+      "document_description": "Vous pouvez le consulter, le télécharger ou lire sa version texte complète ci-dessous, sans utiliser le lecteur PDF.",
+      "open_pdf": "Ouvrir le PDF",
+      "text_version": "Version texte du CV",
+      "read_text": "Lire la version texte du CV",
+      "text": {
+        "role": "Plasticienne et céramiste",
+        "introduction": "Animatrice d'ateliers d'Arts plastiques, de Peinture à l'huile et Technique mixte, d'ateliers de Céramique, je travaille également seule, dans mon atelier.",
+        "motto": "Ma préférence : le travail intuitif !",
+        "process": "Je pars d'une trace spontanée, j'explore et je teste la matière, je la sens plus que je ne la devine, un dialogue s'installe entre elle et moi, j'observe ce qui est en train de naître sous mes yeux, j'avance à mon rythme et en fonction du moment présent, dans l'instinct de l'instant.",
+        "invitation": "J'ose l'Aventure !",
+        "phone": "06 31 95 87 84",
+        "phone_uri": "+33631958784",
+        "experience": {
+          "title": "Expériences professionnelles",
+          "entries": [
+            "Depuis 2019 — Animatrice Peinture et Céramique.",
+            "2017-2018 — Travaux de recherche dans mon atelier, fresque.",
+            "2015-2016 — Animatrice d'Arts plastiques dans 3 EHPADs : Fontenay-sous-Bois, Bry-sur-Marne, Vincennes (94).",
+            "2013-2014 — Formatrice en expression picturale et développement personnel, Greta d'Aulnay-sous-Bois (93), avec exposition ; animatrice plasticienne, Hôpital Chenevier, service Neurologie, Créteil (94), avec exposition.",
+            "2010-2013 — Animatrice artistique « Peinture & Mouvement », Hôpital Chenevier (Neurologie, Psychiatrie, Médecine physique), Hôpital des Murets à La Queue-en-Brie (94), Groupes d'Entraide Mutuelle GEM Servon (77), avec exposition ; ateliers d'initiation au lâcher-prise, Centre socioculturel Lésigny (77), avec exposition.",
+            "2005-2009 — Enseignante en école primaire.",
+            "2001-2003 — Analyste-rédactrice, Ministère de la Défense, Paris."
+          ]
+        },
+        "training": {
+          "title": "Diplômes et formations",
+          "entries": [
+            "2025 — Stage Aquarelle Lâcher prise, MF. Ingels (54) ; stage Acrylique Abstrait, Nadine Nett (68).",
+            "2022 — Stage Arts Plastiques Objet 3D, Pascale Lelièvre (54).",
+            "2019-2023 — Formation Céramique, MClaude Meuley (54) ; stages Aquarelle, Catherine Mithouard et Pascale Lelièvre.",
+            "2019 — Stages Yoga-Terre, Ancrage et Qi Gong-Terre, B. Boulanger (88).",
+            "2016 — Stage Peinture Hauschka, Christiane Dhorne, Paris 15ème.",
+            "2007-2012 — Stage Mixed média, Marie-Hélène Lecuyer, Nogent-sur-Marne (94) ; Atelier Terre, Combs-la-Ville (77) ; Peinture à l'huile, Alain Marie, Lésigny (77) ; Atelier de Modèles Vivants, Saint-Maur (94) ; Glacis à l'huile, Blandine Mulliez, Lésigny (77).",
+            "1995 — Concours Professeur des Écoles et stages.",
+            "1988-1994 — Cursus scientifique, maîtrise de biologie cellulaire et physiologie végétale, Strasbourg (67)."
+          ]
+        },
+        "exhibitions": {
+          "title": "Expositions et événements",
+          "entries": [
+            "Depuis 2023 — Exposition personnelle de peinture, espace galerie commerciale Houdemont (54) ; exposition personnelle Journée de la Terre, Bulligny (54) ; Semaine internationale de l'Arbre et de la Forêt, Bulligny (54) ; Salon Hal'Art, Grenier des Halles, Vézelise ; Marché de Potiers, Nancy ; Journée Européenne des Métiers d'Art, exposition Les Portes du Feu, Abbaye d'Écurey (55) ; Terroir et Talents, L'Été des Créateurs, Arc Héré, les dimanches à Nancy ; exposition à 5 artistes « Voyages », Neufchâteau (88) ; exposition de peinture avec mes élèves, Château de Mme de Graffigny, Villers-lès-Nancy (54) ; exposition « De Terre, de Fer et de Feu », Vézelise ; Artothèque Vandœuvre (54) ; expositions Saint-Max (54), Heillecourt (54), Artothèque Vandœuvre (54) ; OUAA, Nancy, Atelier de Pascale Lelièvre ; boutique éphémère, Toul (54) ; exposition Artisanat d'Art, Moulin de Givrauval (55) ; Fête du Potager, Wesserling (68) ; Fête des Vendanges, Villers (54) ; concours, Liverdun (54) ; performances peinture, Nancy (54), pièce musicale, Artothèque ; marchés artisanaux locaux mensuels, P'tits Marchés du Saintois et Vézelise ; marchés de Noël, Houdemont, Sion, Vézelise (54) ; stages Céramique, Villers-lès-Nancy.",
+            "2022 — Heillecourt (54), Fléville (54), Moulin de Givrauval (55), Nancy (54), Expo-Vente-Concours Liverdun (54), Artstom Nancy (54), Biennale des Arts Saint-Max (54), Heillecourt (54), Artistes du Grand-Couronné Dommartin-sous-Amance (54), Artothèque Vandœuvre (54), Pop up Boutique éphémère Liverdun (54).",
+            "2021 — Expo Vente et défi céramique, Liverdun (54) ; 3ème Prix du Jury, Céramique Praye (54) ; Salon d'Automne international, Lunéville (54) ; Pop up Céramique, Liverdun (54).",
+            "2020 — Exposition personnelle, Galerie 9 et « l'Arbre d'amour », Nancy (54) ; Salon de Printemps, Dombasle-sur-Meurthe (54) ; « NATURE », exposition personnelle, restaurant Le Grémillon, Saint-Max (54) ; démonstration Peinture, Forum des Associations, Villers-lès-Nancy (54).",
+            "2019 — ART'STOM Nancy (54) ; Arts Maxois, Château Saint-Max (54) ; Salon GAV, Saint-Dié-des-Vosges (88) ; Les Z'aprèms à la campagne, Gélaucourt (54) ; « Du Figuratif à l'Abstrait », exposition personnelle, Tarquimpol (57) ; Salon des Arts, Salines Royales de Dieuze (57) ; « Céracines », exposition personnelle, Céramique et Peinture, Tarquimpol (57).",
+            "2018 — « Peintophoture », Brie-Comte-Robert (77) ; Salon de Printemps, Lésigny (77) ; « La Maison du Citoyen et de la Vie Associative fête ses 20 ans », Fontenay-sous-Bois (94) ; « L'origine du monde et son devenir », Ungersheim (68) ; Rencontres Artistiques, Villecresnes (94) ; Peinture, Heillecourt (54) ; Marché de Noël, Liverdun (54).",
+            "2017 — Salon de Printemps, Lésigny (77), « Arbre 3 », prix du Conseil Municipal ; « Abstrait-Figuratif en face à face », Fontenay-sous-Bois (94) ; Photos Servon ; Peinture « Brévi'Art », Saint-Brévin (44) ; Rencontres Artistiques, Villecresnes (94) ; Salon des Artistes, Servon (77), « Combin'Art », 4ème prix du Jury et 3ème prix du public ; Marché de Noël, Lésigny (77).",
+            "2016 — Salon de Printemps, Lésigny (77) ; « Projections » et « Petites Histoires », exposition personnelle, Centre Culturel « La Rue », Mandres-les-Roses (94), avec concert de Govrache ; Rencontres Artistiques, Villecresnes (94) ; Salon des Artistes, Servon (77) ; Peinture, Sculpture et Photographie, Roissy-en-Brie (77) ; Marchés de Créateurs, Lésigny (77) ; Noël au Village, Lésigny (77).",
+            "2011 à 2015 — « Projections », exposition personnelle, Champigny-sur-Marne (94) ; Salon de Printemps, Lésigny (77), « L'Envol », prix du jury ; Salon des Artistes, Servon (77) ; « Déclinaisons », exposition personnelle, Lésigny (77), illustration du livret d'un CD musique et poésie, article dans « La République » et le journal local ; « Mise en Mouvement », exposition personnelle, Lésigny (77) ; exposition des créateurs férolais, Férolles-Attilly (77) ; « Quand Peinture et Écriture s'en mêlent », Lésigny (77) ; « À visages découverts », exposition personnelle, La Bicyclette, bar artistique, Paris 19ème ; « Vibrations », exposition personnelle, Lésigny (77)."
+          ]
+        }
+      }
     },
     "contact": {
       "tab_name": "Contact",
@@ -294,12 +365,13 @@
       "subtitle": "Gestuelles, couleurs, formes et textures, c'est l'aventure ! Je vous invite à partager vos ressentis.",
       "image": {
         "title": "Quelques créations...",
-        "alt": "Quelques créations..."
+        "alt": "Intérieur d'un atelier, avec des tableaux colorés et des céramiques exposées sur des étagères."
       },
       "connect_me": "Connectez-vous avec moi",
       "ready": "Prêt à faire entrer l'art dans votre espace ?",
       "contact_me": "Contactez-moi",
-      "contact_me_by_mail": "Contactez-moi par mail"
+      "contact_me_by_mail": "Contactez-moi par mail",
+      "by_email": "par e-mail"
     }
   },
   "about": {
@@ -1427,6 +1499,7 @@
     "instagram": "Instagram",
     "follow_on_facebook": "Suivez-moi sur Facebook",
     "follow_on_instagram": "Suivez-moi sur Instagram",
+    "opens_new_tab": "S'ouvre dans un nouvel onglet",
     "2006": "2006",
     "2008": "2008",
     "2011_2019": "2011 - 2019",
@@ -1435,10 +1508,12 @@
     "2023_2025": "2023 - 2025"
   },
   "wip": {
+    "title": "En cours de création",
+    "description": "Cette page est en cours de création. Les collections déjà disponibles vous attendent dans la galerie.",
     "image_alt": "Page en cours de création",
-    "previous_page_name": "WIP",
-    "next_page_name": "WIP",
-    "previous_page_description": "WIP",
-    "next_page_description": "WIP"
+    "previous_page_name": "Collection précédente",
+    "next_page_name": "Collection suivante",
+    "previous_page_description": "En cours de création",
+    "next_page_description": "En cours de création"
   }
 }
