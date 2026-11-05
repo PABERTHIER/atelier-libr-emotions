@@ -93,10 +93,30 @@ onBeforeUnmount(() => {
 
   &__text {
     min-width: 0;
-    font-size: clamp(1rem, 4.5vw, 1.875rem);
-    line-height: 1.5;
+    font-size: 1.875rem;
+    line-height: 1;
+    text-box: trim-both cap alphabetic;
     text-align: center;
     overflow-wrap: anywhere;
+  }
+}
+
+// Follow Logo's breakpoints so the text keeps the same proportion to the badge
+@media (max-width: $lg) {
+  .welcome__text {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: $md) {
+  .welcome__text {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: $sm) {
+  .welcome__text {
+    font-size: 1rem;
   }
 }
 
