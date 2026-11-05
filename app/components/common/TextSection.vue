@@ -119,7 +119,7 @@ const titleId = useId()
         height: $space-16;
         position: relative;
         z-index: 3;
-        background: $white-color;
+        background: var(--color-surface);
         border: $focus-width solid $grey-blue-color;
         border-radius: 50%;
         transition:
@@ -144,7 +144,7 @@ const titleId = useId()
         width: $space-20;
         height: $space-20;
         border-color: $gold-color;
-        background: $cream-color;
+        background: var(--color-surface-soft);
         box-shadow: 0 0 $space-15 $box-shadow-warm;
 
         &::after {
@@ -158,7 +158,7 @@ const titleId = useId()
         width: $space-18;
         height: $space-18;
         border-color: $copper-color;
-        background: $white-color;
+        background: var(--color-surface);
         box-shadow: 0 $space-4 $space-12 rgba($copper-color, 0.3);
 
         &::after {
@@ -171,8 +171,8 @@ const titleId = useId()
       .final-dot {
         width: $space-22;
         height: $space-22;
-        border-color: $dark-red-color;
-        background: $cream-color;
+        border-color: var(--color-red-text);
+        background: var(--color-surface-soft);
         box-shadow: 0 0 $space-20 rgba($dark-red-color, 0.3);
 
         &::after {
@@ -211,7 +211,7 @@ const titleId = useId()
       flex: 1;
       border-radius: $radius-panel;
       border-left: $space-4 solid $grey-blue-color;
-      background: $white-color;
+      background: var(--color-surface);
       box-shadow: 0 $space-8 $space-32 $box-shadow-color;
       transition:
         transform $transition-ui,
@@ -230,21 +230,21 @@ const titleId = useId()
         top: $space-30;
         border-top: $space-8 solid transparent;
         border-bottom: $space-8 solid transparent;
-        border-right: $space-8 solid $white-color;
+        border-right: $space-8 solid var(--color-surface);
         content: '';
       }
 
       .title {
         margin-top: 0;
         margin-bottom: $space-15;
-        color: $primary-text-color;
+        color: var(--color-text);
         font-size: 1.25rem;
       }
 
       .text-content {
         margin: 0;
         text-align: start;
-        color: $primary-text-color;
+        color: var(--color-text);
         font-size: 1.0625rem;
         line-height: 1.7;
       }
@@ -252,7 +252,7 @@ const titleId = useId()
       .milestone-title {
         position: relative;
         display: inline-block;
-        color: $copper-text-color;
+        color: var(--color-copper-text);
 
         &::after {
           position: absolute;
@@ -326,12 +326,20 @@ const titleId = useId()
 
     .intro-section {
       border-left-color: $grey-blue-color;
-      background: linear-gradient(135deg, $white-color, $cream-color);
+      background: linear-gradient(
+        135deg,
+        var(--color-surface),
+        var(--color-surface-soft)
+      );
     }
 
     .highlight-section {
       border-left-color: $gold-color;
-      background: linear-gradient(135deg, $cream-color, $white-color);
+      background: linear-gradient(
+        135deg,
+        var(--color-surface-soft),
+        var(--color-surface)
+      );
 
       .highlight-quotation {
         margin: 0;
@@ -358,7 +366,7 @@ const titleId = useId()
 
         .characteristic-text {
           margin: $space-15 0;
-          color: $primary-text-color;
+          color: var(--color-text);
           font-size: 1.25rem;
           font-style: italic;
           font-weight: 500;
@@ -371,12 +379,12 @@ const titleId = useId()
         .highlight-title {
           margin-top: 0;
           margin-bottom: $space-10;
-          color: $gold-text-color;
+          color: var(--color-gold-text);
           font-size: 1.375rem;
         }
 
         .highlight-text {
-          color: $copper-text-color;
+          color: var(--color-copper-text);
           font-size: 1.0625rem;
           font-style: italic;
           font-weight: 500;
@@ -389,8 +397,12 @@ const titleId = useId()
     }
 
     .final-section {
-      border-left-color: $dark-red-color;
-      background: linear-gradient(135deg, $white-color, $warm-beige);
+      border-left-color: var(--color-red-text);
+      background: linear-gradient(
+        135deg,
+        var(--color-surface),
+        var(--color-surface-warm)
+      );
 
       .final-text {
         font-weight: 500;

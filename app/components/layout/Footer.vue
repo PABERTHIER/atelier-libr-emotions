@@ -1,6 +1,9 @@
 <template>
   <footer class="site-footer">
-    <LangSwitcher />
+    <div class="site-footer__preferences">
+      <LangSwitcher />
+      <ThemeToggle />
+    </div>
     <p class="site-footer__copyright">{{ t('about.author') }} © {{ year }}</p>
   </footer>
 </template>
@@ -25,10 +28,18 @@ const year = new Date().getFullYear()
       max(env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px))
   );
   padding-bottom: calc(#{$space-4} + env(safe-area-inset-bottom, 0px));
-  border-top: 1px solid rgba($primary-text-color, 0.05);
-  background: $footer-background-color;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
   box-shadow: 0 -2px 8px rgba($primary-text-color, 0.08);
   text-align: center;
+
+  &__preferences {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: $space-8 $space-16;
+  }
 
   &__copyright {
     margin: 0;

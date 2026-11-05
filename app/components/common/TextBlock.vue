@@ -99,7 +99,7 @@ const blockClass = computed(() => {
     position: relative;
     padding: $space-30;
     border-radius: $radius-panel;
-    background: $white-color;
+    background: var(--color-surface);
     box-shadow: 0 $space-6 $space-24 $box-shadow-color;
     transition:
       transform $transition-ui,
@@ -113,14 +113,14 @@ const blockClass = computed(() => {
     .block-title {
       margin-top: 0;
       margin-bottom: $space-15;
-      color: $primary-text-color;
+      color: var(--color-text);
       font-size: 1.25rem;
     }
 
     .block-text {
       margin: 0;
       text-align: start;
-      color: $primary-text-color;
+      color: var(--color-text);
       font-size: 1.0625rem;
       line-height: 1.6;
     }
@@ -169,12 +169,12 @@ const blockClass = computed(() => {
     border-top: $space-2 solid rgba($gold-color, 0.3);
     background: linear-gradient(
       135deg,
-      $light-creativity-orange 0%,
-      $white-color 100%
+      var(--color-surface-orange) 0%,
+      var(--color-surface) 100%
     );
 
     .block-title {
-      color: $gold-text-color;
+      color: var(--color-gold-text);
     }
   }
 
@@ -182,8 +182,8 @@ const blockClass = computed(() => {
     border-left: $space-4 solid $creativity-orange;
     background: linear-gradient(
       135deg,
-      $light-creativity-orange 0%,
-      $white-color 100%
+      var(--color-surface-orange) 0%,
+      var(--color-surface) 100%
     );
 
     .block-text {
@@ -199,8 +199,8 @@ const blockClass = computed(() => {
     border-radius: $radius-pill;
     background: linear-gradient(
       135deg,
-      $light-inspiration-purple 0%,
-      $white-color 100%
+      var(--color-surface-purple) 0%,
+      var(--color-surface) 100%
     );
 
     .quote-mark {
@@ -236,7 +236,7 @@ const blockClass = computed(() => {
       position: relative;
       text-align: center;
       font-size: 1.6875rem;
-      color: $dark-red-color;
+      color: var(--color-red-text);
 
       &::after {
         width: 80%;
@@ -340,7 +340,7 @@ const blockClass = computed(() => {
   }
 
   &.block-professional-objective .block-content {
-    border-left-color: $dark-red-color;
+    border-left-color: var(--color-red-text);
 
     .objective-number {
       color: $white-color;

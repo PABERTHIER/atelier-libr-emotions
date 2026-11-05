@@ -186,8 +186,8 @@ onMounted(() => {
     display: grid;
     place-items: center;
     padding: $space-8;
-    background: $cream-color;
-    color: $dark-grey-color;
+    background: var(--color-surface-soft);
+    color: var(--color-subtle);
     :deep(.iconify) {
       width: $space-24;
       height: $space-24;
@@ -197,7 +197,7 @@ onMounted(() => {
   &__error-message {
     display: block;
     margin-top: $space-4;
-    color: $dark-grey-color;
+    color: var(--color-subtle);
     font-size: 0.8125rem;
     line-height: 1.4;
     text-align: center;
@@ -210,7 +210,7 @@ onMounted(() => {
     margin-top: $space-4;
     padding: 0;
     background: none;
-    color: $primary-text-color;
+    color: var(--color-text);
     text-align: center;
     text-shadow: none;
     opacity: 1;
@@ -230,7 +230,7 @@ onMounted(() => {
     margin-top: $space-4;
     padding: 0;
     background: none;
-    color: $primary-text-color;
+    color: var(--color-text);
     font-size: 0.8125rem;
     text-align: center;
     text-shadow: none;

@@ -228,7 +228,7 @@ useHead(usePageSeo('about'))
   &__section-title {
     position: relative;
     margin: $space-50 0;
-    color: $primary-text-color;
+    color: var(--color-text);
     font-size: clamp(1.5rem, 1.25rem + 1vw, 1.875rem);
     font-weight: 600;
     text-align: center;
@@ -246,7 +246,7 @@ useHead(usePageSeo('about'))
     }
 
     &--professional {
-      color: $dark-red-color;
+      color: var(--color-red-text);
 
       &::after {
         background: linear-gradient(

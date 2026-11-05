@@ -28,6 +28,6 @@
   }
 
   &:hover {
-    background: rgba($navigation-muted-color, 0.12);
+    background: var(--color-control-hover);
   }
 }

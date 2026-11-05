@@ -364,7 +364,7 @@ onBeforeUnmount(() => {
     border: 0;
     border-radius: $radius-control;
     background: transparent;
-    color: $primary-text-color;
+    color: var(--color-text);
     font: inherit;
     font-weight: 700;
     line-height: 1.5;
@@ -372,13 +372,13 @@ onBeforeUnmount(() => {
 
     &:hover,
     &[aria-expanded='true'] {
-      background: $warm-beige;
+      background: var(--color-surface-warm);
     }
 
     &.desktop-navigation__trigger--current,
     &[aria-current='page'] {
       text-decoration: underline;
-      text-decoration-color: $navigation-accent-color;
+      text-decoration-color: var(--color-accent);
       text-decoration-thickness: $space-2;
       text-underline-offset: 0.4em;
     }
@@ -406,10 +406,10 @@ onBeforeUnmount(() => {
     );
     overflow: hidden;
     padding-inline: $space-24;
-    border: $border-width solid $navigation-border-color;
-    border-top: $focus-width solid $navigation-accent-color;
+    border: $border-width solid var(--color-border);
+    border-top: $focus-width solid var(--color-accent);
     border-radius: 0 0 $radius-panel $radius-panel;
-    background: $white-color;
+    background: var(--color-surface);
     box-shadow: $shadow-panel;
   }
 
@@ -420,7 +420,7 @@ onBeforeUnmount(() => {
     justify-content: space-between;
     gap: $space-16;
     padding-block: $space-12;
-    background: $white-color;
+    background: var(--color-surface);
   }
 
   &__panel-title {
@@ -438,7 +438,7 @@ onBeforeUnmount(() => {
 
   &__note {
     margin: 0 0 $space-24;
-    color: $navigation-muted-color;
+    color: var(--color-navigation-muted);
     font-size: 0.875rem;
     line-height: 1.5;
   }
@@ -473,7 +473,7 @@ onBeforeUnmount(() => {
   }
 
   &:hover::before {
-    background: rgba($navigation-muted-color, 0.12);
+    background: var(--color-control-hover);
   }
 
   .iconify {

@@ -48,7 +48,7 @@ const localePath = useLocalePath()
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
   gap: $space-24;
-  color: $primary-text-color;
+  color: var(--color-text);
 
   &__group {
     min-width: 0;
@@ -57,7 +57,7 @@ const localePath = useLocalePath()
   &__heading {
     margin: 0 0 $space-8;
     padding-bottom: $space-8;
-    border-bottom: 1px solid $navigation-border-color;
+    border-bottom: 1px solid var(--color-border);
     font-size: 1rem;
     line-height: 1.5;
     overflow-wrap: anywhere;
@@ -91,18 +91,18 @@ const localePath = useLocalePath()
 
     &:hover,
     &[aria-current='page'] {
-      background: $warm-beige;
+      background: var(--color-surface-warm);
     }
 
     &[aria-current='page'] {
-      box-shadow: inset 3px 0 $navigation-accent-color;
+      box-shadow: inset 3px 0 var(--color-accent);
     }
   }
 
   &__planned {
     display: block;
     padding: $space-8;
-    color: $navigation-muted-color;
+    color: var(--color-navigation-muted);
     font-size: 0.875rem;
     line-height: 1.5;
     overflow-wrap: anywhere;

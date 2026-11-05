@@ -56,7 +56,7 @@ const localePath = useLocalePath()
     align-items: center;
     gap: $space-12;
     padding: $space-16 $space-24;
-    background-color: $white-color;
+    background-color: var(--color-surface);
     border-radius: $radius-panel;
     text-decoration: none;
     box-shadow: 0 $space-4 $space-16 $box-shadow-color;
@@ -107,13 +107,13 @@ const localePath = useLocalePath()
 
       .nav-title {
         font-size: 0.9375rem;
-        color: $grey-color-2;
+        color: var(--color-muted);
         font-weight: 500;
       }
 
       .nav-description {
         font-size: 0.875rem;
-        color: $primary-text-color;
+        color: var(--color-text);
       }
     }
 
@@ -130,7 +130,7 @@ const localePath = useLocalePath()
     }
 
     :deep(.iconify) {
-      color: $navigation-accent-color;
+      color: var(--color-accent);
       flex-shrink: 0;
       width: $space-20;
       height: $space-20;

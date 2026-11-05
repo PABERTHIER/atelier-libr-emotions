@@ -72,7 +72,6 @@ export default defineNuxtConfig({
           name: 'apple-mobile-web-app-title',
           content: siteName,
         },
-        { name: 'theme-color', content: '#F7F5F2' },
       ],
       templateParams: {
         separator: '-',
@@ -124,7 +123,9 @@ export default defineNuxtConfig({
       },
     },
   },
-  ui: {},
+  ui: {
+    colorMode: false,
+  },
   icon: {
     clientBundle: {
       includeCustomCollections: true,

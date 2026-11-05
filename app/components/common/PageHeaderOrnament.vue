@@ -39,7 +39,7 @@
       margin: 0 $space-32;
       border: $space-2 solid $gold-color;
       border-radius: 50%;
-      background: $cream-color;
+      background: var(--color-surface-soft);
 
       .center-diamond {
         width: $space-8;

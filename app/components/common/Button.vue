@@ -35,7 +35,7 @@ const emit = defineEmits<{ click: [event: MouseEvent] }>()
   padding: $space-20;
   border: 0;
   border-radius: $space-8;
-  background: rgba($white-color, 0.3);
+  background: var(--color-control-glass);
   color: inherit;
   font: inherit;
   font-size: 1.25rem;
