@@ -86,11 +86,16 @@ const changeLanguageLabel = computed(() =>
 
   &__link--active,
   &__link--active:hover {
-    color: color.adjust($primary-text-color, $lightness: -5%);
+    color: $white-color;
     cursor: default;
 
     .lang-switcher__label {
-      background: linear-gradient(120deg, $gold-color, $copper-color);
+      // Keep white text above 4.5:1 for a11y
+      background: linear-gradient(
+        120deg,
+        color.mix($gold-color, $gold-text-color, 8%),
+        color.mix($copper-color, $copper-text-color, 40%)
+      );
       box-shadow: 0 $space-2 $space-12 rgba($gold-color, 0.3);
     }
   }
