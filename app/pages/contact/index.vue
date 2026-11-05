@@ -194,10 +194,10 @@ useHead(usePageSeo('contact'))
     margin: 0 0 $space-50;
     padding: $space-32 $space-32 $space-16;
     border-radius: $space-4;
-    background: $white-color;
+    background: var(--color-surface);
     box-shadow:
       0 $space-10 $space-40 $box-shadow-deep,
-      inset 0 $border-width 0 rgba($white-color, 0.9);
+      inset 0 $border-width 0 var(--color-inset-highlight);
   }
 
   &__frame {
@@ -223,7 +223,7 @@ useHead(usePageSeo('contact'))
     contain: inline-size;
     contain-intrinsic-inline-size: 150px;
     margin: $space-8 0 0;
-    color: $grey-color-2;
+    color: var(--color-muted);
     font-size: 0.9375rem;
     line-height: 1.5;
     font-style: italic;
@@ -387,7 +387,7 @@ useHead(usePageSeo('contact'))
       flex: none;
       width: 1.25rem;
       height: 1.25rem;
-      color: $gold-text-color;
+      color: var(--color-gold-text);
     }
   }
 

@@ -1,3 +1,84 @@
+@use 'sass:color';
+
+// Runtime colors share the existing Sass palette
+// Artwork and colors on fixed decorative backgrounds keep their original values
+:root {
+  color-scheme: light;
+  --color-page: #{$background-color};
+  --color-surface: #{$white-color};
+  --color-surface-soft: #{$cream-color};
+  --color-surface-warm: #{$warm-beige};
+  --color-surface-orange: #{$light-creativity-orange};
+  --color-surface-purple: #{$light-inspiration-purple};
+  --color-text: #{$primary-text-color};
+  --color-heading: #{$dark-grey-blue-color};
+  --color-muted: #{$grey-color-2};
+  --color-subtle: #{$dark-grey-color};
+  --color-accent: #{$navigation-accent-color};
+  --color-navigation-muted: #{$navigation-muted-color};
+  --color-border: #{$navigation-border-color};
+  --color-line: #{$light-grey-color-2};
+  --color-hover: #{$warm-beige};
+  --color-control-hover: #{rgba($navigation-muted-color, 0.12)};
+  --color-control-glass: #{rgba($white-color, 0.3)};
+  --color-floating-control: #{rgba($white-color, 0.9)};
+  --color-inset-highlight: #{rgba($white-color, 0.9)};
+  --color-gold-text: #{$gold-text-color};
+  --color-copper-text: #{$copper-text-color};
+  --color-red-text: #{$dark-red-color};
+  --color-hero-accent: #{color.adjust($grey-blue-color, $lightness: -8%)};
+  --color-skeleton-highlight: #{color.adjust($warm-beige, $lightness: 4%)};
+  --color-scrollbar-track: #f1f1f1;
+  --color-scrollbar-thumb: #{$dark-red-color};
+  --focus-color: #{$focus-color};
+  --theme-moon-visibility: visible;
+  --theme-sun-visibility: hidden;
+}
+
+@mixin dark-colors {
+  color-scheme: dark;
+  --color-page: #1c1917;
+  --color-surface: #292420;
+  --color-surface-soft: #24201d;
+  --color-surface-warm: #332b25;
+  --color-surface-orange: #362a20;
+  --color-surface-purple: #2e2636;
+  --color-text: #f3eae1;
+  --color-heading: #e5e4ee;
+  --color-muted: #c4b9ae;
+  --color-subtle: #c4b9ae;
+  --color-accent: #dfb985;
+  --color-navigation-muted: #c4b9ae;
+  --color-border: #796b5e;
+  --color-line: #65584d;
+  --color-hover: #3b322a;
+  --color-control-hover: #3b322a;
+  --color-control-glass: #292420;
+  --color-floating-control: #292420;
+  --color-inset-highlight: rgba(255, 255, 255, 0.08);
+  --color-gold-text: #e4c66d;
+  --color-copper-text: #e5b184;
+  --color-red-text: #efaaa0;
+  --color-hero-accent: #a9bff4;
+  --color-skeleton-highlight: #493d33;
+  --color-scrollbar-track: #292420;
+  --color-scrollbar-thumb: #dcb08d;
+  --focus-color: #b8ceff;
+  --theme-moon-visibility: hidden;
+  --theme-sun-visibility: visible;
+}
+
+:root[data-theme='dark'] {
+  @include dark-colors;
+}
+
+// Also respect the OS preference before scripting and when JS is disabled
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    @include dark-colors;
+  }
+}
+
 *,
 *::before,
 *::after {
@@ -11,8 +92,8 @@ html {
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  color: $primary-text-color;
-  background-color: $background-color;
+  color: var(--color-text);
+  background-color: var(--color-page);
   scroll-behavior: smooth;
   scroll-padding-top: calc(
     var(--site-header-height, #{$header-height-desktop}) + #{$space-16}
@@ -41,7 +122,7 @@ body:has(:focus-visible) .welcome {
 
 @media (hover: hover) and (pointer: fine) {
   html {
-    scrollbar-color: $dark-red-color #f1f1f1;
+    scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track);
   }
 
   @supports selector(::-webkit-scrollbar) {
@@ -55,23 +136,27 @@ body:has(:focus-visible) .welcome {
     }
 
     ::-webkit-scrollbar-track {
-      border: 1px solid $light-grey-color-2;
+      border: 1px solid var(--color-line);
       border-radius: 10px;
-      background: #f1f1f1;
+      background: var(--color-scrollbar-track);
       box-shadow: inset 0 0 6px rgba($white-color, 0.3);
     }
 
     ::-webkit-scrollbar-thumb {
-      border: 1px solid $dark-grey-blue-color;
+      border: 1px solid var(--color-subtle);
       border-radius: 10px;
-      background: linear-gradient(45deg, $grey-blue-color, $dark-red-color);
+      background: linear-gradient(
+        45deg,
+        $grey-blue-color,
+        var(--color-scrollbar-thumb)
+      );
     }
   }
 }
 
 body {
   margin: 0;
-  background-color: $background-color;
+  background-color: var(--color-page);
 }
 
 button,

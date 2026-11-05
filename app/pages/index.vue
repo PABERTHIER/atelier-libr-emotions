@@ -299,8 +299,6 @@ useHead(usePageSeo('home'))
 </script>
 
 <style lang="scss" scoped>
-@use 'sass:color';
-
 .home-page {
   width: 100%;
   min-width: 0;
@@ -333,15 +331,15 @@ useHead(usePageSeo('home'))
 
   &__title-line {
     display: block;
-    color: $dark-grey-blue-color;
+    color: var(--color-heading);
     font-size: clamp(3rem, 8vw, 5rem);
     letter-spacing: -0.125rem;
 
     &--accent {
       background: linear-gradient(
         135deg,
-        $dark-red-color,
-        color.adjust($grey-blue-color, $lightness: -8%)
+        var(--color-red-text),
+        var(--color-hero-accent)
       );
       background-clip: text;
       -webkit-background-clip: text;
@@ -354,7 +352,7 @@ useHead(usePageSeo('home'))
   &__description {
     margin: 0;
     max-width: 31.25rem;
-    color: $grey-color-2;
+    color: var(--color-muted);
     font-size: 1.125rem;
     line-height: 1.6;
   }
@@ -415,7 +413,7 @@ useHead(usePageSeo('home'))
     );
     padding: var(--artwork-padding);
     border-radius: $radius-panel;
-    background: $white-color;
+    background: var(--color-surface);
     box-shadow: 0 $space-20 $space-40 $box-shadow-color;
     overflow-wrap: anywhere;
 
@@ -435,9 +433,9 @@ useHead(usePageSeo('home'))
     bottom: $space-25;
     display: flex;
     padding: $space-2;
-    border: $border-width solid $navigation-border-color;
+    border: $border-width solid var(--color-border);
     border-radius: $radius-pill;
-    background: rgba($white-color, 0.9);
+    background: var(--color-floating-control);
     box-shadow: 0 $space-4 $space-12 $box-shadow-color;
   }
 
@@ -452,7 +450,7 @@ useHead(usePageSeo('home'))
     border: 0;
     border-radius: $radius-pill;
     background: transparent;
-    color: $primary-text-color;
+    color: var(--color-text);
 
     .iconify {
       flex: none;
@@ -461,7 +459,7 @@ useHead(usePageSeo('home'))
     }
 
     &:hover {
-      background: $warm-beige;
+      background: var(--color-surface-warm);
     }
 
     &:focus-visible {
@@ -488,7 +486,7 @@ useHead(usePageSeo('home'))
     max-width: 100%;
     padding: $space-20;
     border-radius: $space-8;
-    background: rgba($white-color, 0.3);
+    background: var(--color-control-glass);
     color: inherit;
     font-size: 1.25rem;
     line-height: 1.25;

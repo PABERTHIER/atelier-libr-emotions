@@ -149,7 +149,7 @@ useHead(usePageSeo('about_cv'))
 
   &__notice {
     margin: 0 0 $space-20;
-    color: $grey-color-2;
+    color: var(--color-muted);
     line-height: 1.6;
     text-align: center;
 
@@ -163,7 +163,7 @@ useHead(usePageSeo('about_cv'))
     margin-bottom: $space-30;
     padding: $space-20;
     border-radius: $radius-panel;
-    background: $white-color;
+    background: var(--color-surface);
     box-shadow: 0 $space-8 $space-32 $box-shadow-color;
   }
 
@@ -263,9 +263,9 @@ useHead(usePageSeo('about_cv'))
 
   &__transcript {
     padding: $space-16 $space-20;
-    border: $border-width solid $navigation-muted-color;
+    border: $border-width solid var(--color-navigation-muted);
     border-radius: $radius-panel;
-    background: $white-color;
+    background: var(--color-surface);
     line-height: 1.7;
   }
 

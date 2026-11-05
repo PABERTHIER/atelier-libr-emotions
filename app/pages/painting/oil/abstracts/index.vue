@@ -44,7 +44,7 @@ useHead(usePageSeo('painting_oil_abstracts'))
     flex-direction: column;
     align-items: center;
     text-align: center;
-    color: $primary-text-color;
+    color: var(--color-text);
     margin: 0;
     min-width: 0;
     overflow-wrap: anywhere;

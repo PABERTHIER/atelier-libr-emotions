@@ -59,7 +59,7 @@ onBeforeUnmount(() => {
   padding: calc(#{$shell-gutter} + env(safe-area-inset-top, 0px))
     calc(#{$shell-gutter} + env(safe-area-inset-right, 0px)) 0
     calc(#{$shell-gutter} + env(safe-area-inset-left, 0px));
-  background: $background-color;
+  background: var(--color-page);
 
   &__inner {
     position: relative;
@@ -68,7 +68,7 @@ onBeforeUnmount(() => {
     gap: $space-16;
     min-height: $header-bar-min-height;
     padding: $space-8 $space-16;
-    background: $white-color;
+    background: var(--color-surface);
     box-shadow: $shadow-header;
   }
 
@@ -93,10 +93,10 @@ onBeforeUnmount(() => {
   min-height: calc(100% - #{$space-16});
   max-width: calc(100% - #{$space-32});
   padding: $space-12 $space-16;
-  border: 2px solid $primary-text-color;
+  border: 2px solid var(--color-text);
   border-radius: $radius-control;
-  background: $white-color;
-  color: $primary-text-color;
+  background: var(--color-surface);
+  color: var(--color-text);
   font-weight: 700;
   clip-path: inset(50%);
   pointer-events: none;

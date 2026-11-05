@@ -64,6 +64,9 @@ const localePath = useLocalePath()
 const site = useSiteConfig()
 const route = useRoute()
 const content = useTemplateRef('content')
+const { theme } = useSiteTheme()
+
+useThemeHead()
 
 const statusCode = computed(() => props.error.status || 500)
 const errorKind = computed(() =>
@@ -106,6 +109,7 @@ useHead(() => ({
   htmlAttrs: {
     lang: localeProperties.value.language,
     dir: localeProperties.value.dir || 'ltr',
+    'data-theme': theme.value ?? undefined,
   },
 }))
 
@@ -138,14 +142,14 @@ async function recover(event: MouseEvent, path: string) {
     calc(#{$space-20} + env(safe-area-inset-right, 0))
     calc(#{$space-32} + env(safe-area-inset-bottom, 0))
     calc(#{$space-20} + env(safe-area-inset-left, 0));
-  background: $background-color;
-  color: $primary-text-color;
+  background: var(--color-page);
+  color: var(--color-text);
   font-family: $body-font;
   line-height: 1.6;
   overflow-wrap: anywhere;
 
   a:focus-visible {
-    outline: $focus-width solid $focus-color;
+    outline: $focus-width solid var(--focus-color);
     outline-offset: $space-4;
   }
 
@@ -162,7 +166,7 @@ async function recover(event: MouseEvent, path: string) {
         )
     );
     padding: $space-12;
-    background: $white-color;
+    background: var(--color-surface);
     transform: translateY(-200%);
 
     &:focus {
@@ -203,7 +207,7 @@ async function recover(event: MouseEvent, path: string) {
   }
 
   &__code {
-    color: $grey-color-2;
+    color: var(--color-muted);
   }
 
   &__description {

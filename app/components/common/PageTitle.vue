@@ -23,7 +23,7 @@ const props = defineProps<{ title: string; subtitle?: string }>()
     position: relative;
     margin-top: 0;
     margin-bottom: $space-25;
-    color: $primary-text-color;
+    color: var(--color-text);
     font-size: clamp(2rem, 1.5rem + 2vw, 4rem);
     line-height: 1.2;
     font-weight: 300;
@@ -44,7 +44,7 @@ const props = defineProps<{ title: string; subtitle?: string }>()
     margin: 0;
     font-size: 1.125rem;
     line-height: 1.6;
-    color: $grey-color-2;
+    color: var(--color-muted);
     font-style: italic;
     font-weight: 300;
   }

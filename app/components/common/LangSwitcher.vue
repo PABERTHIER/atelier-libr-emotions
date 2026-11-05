@@ -53,7 +53,7 @@ const changeLanguageLabel = computed(() =>
     inset-inline: $space-2;
     border: $border-width solid rgba($gold-color, 0.35);
     border-radius: $radius-pill;
-    background: rgba($warm-beige, 0.5);
+    background: var(--color-surface-warm);
     pointer-events: none;
     content: '';
   }
@@ -65,7 +65,7 @@ const changeLanguageLabel = computed(() =>
     justify-content: center;
     min-width: $control-size;
     min-height: $control-size;
-    color: $navigation-muted-color;
+    color: var(--color-navigation-muted);
     border-radius: $radius-pill;
     text-decoration: none;
     font-size: 0.75rem;
@@ -75,7 +75,7 @@ const changeLanguageLabel = computed(() =>
     transition: color $transition-ui;
 
     &:hover {
-      color: $primary-text-color;
+      color: var(--color-text);
     }
   }
 

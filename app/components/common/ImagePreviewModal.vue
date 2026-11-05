@@ -581,7 +581,7 @@ onBeforeUnmount(finishClose)
     calc(#{$space-16} + env(safe-area-inset-left));
   border: 0;
   background: transparent;
-  color: $primary-text-color;
+  color: var(--color-text);
 
   &[open] {
     display: grid;
@@ -615,7 +615,7 @@ onBeforeUnmount(finishClose)
     scroll-padding-bottom: $space-4;
     overscroll-behavior: contain;
     border-radius: $radius-panel;
-    background: $white-color;
+    background: var(--color-surface);
     box-shadow: 0 $space-20 $space-60 rgba(0, 0, 0, 0.4);
   }
 
@@ -627,8 +627,8 @@ onBeforeUnmount(finishClose)
     align-items: flex-start;
     gap: $space-16;
     padding: $space-16 $space-20;
-    border-bottom: $border-width solid $light-grey-color-2;
-    background: $white-color;
+    border-bottom: $border-width solid var(--color-line);
+    background: var(--color-surface);
   }
 
   &__title {
@@ -648,15 +648,15 @@ onBeforeUnmount(finishClose)
     min-width: $control-size;
     min-height: $control-size;
     padding: $space-8;
-    border: $border-width solid $navigation-muted-color;
+    border: $border-width solid var(--color-navigation-muted);
     border-radius: $radius-control;
-    background: $warm-beige;
-    color: $primary-text-color;
+    background: var(--color-surface-warm);
+    color: var(--color-text);
     font-size: 0.9375rem;
     line-height: 1.4;
 
     &:hover:not(:disabled) {
-      background: $light-grey-color-2;
+      background: var(--color-hover);
     }
 
     &:disabled {
@@ -686,7 +686,7 @@ onBeforeUnmount(finishClose)
     margin: $space-4;
     overflow: auto;
     overscroll-behavior: contain;
-    background: $cream-color;
+    background: var(--color-surface-soft);
     touch-action: none;
     scrollbar-width: none;
     cursor: zoom-in;
@@ -731,7 +731,7 @@ onBeforeUnmount(finishClose)
     align-items: center;
     gap: $space-8;
     padding: $space-8 $space-20;
-    border-top: $border-width solid $light-grey-color-2;
+    border-top: $border-width solid var(--color-line);
 
     &--single {
       grid-template-columns: minmax(0, 1fr);
@@ -756,13 +756,13 @@ onBeforeUnmount(finishClose)
     max-width: $viewer-slider-max-width;
     height: $control-size;
     margin: 0;
-    accent-color: $focus-color;
+    accent-color: var(--focus-color);
     cursor: pointer;
   }
 
   &__zoom-value {
     min-width: 4ch;
-    color: $dark-grey-color;
+    color: var(--color-subtle);
     font-size: 0.875rem;
     text-align: center;
   }
@@ -773,8 +773,8 @@ onBeforeUnmount(finishClose)
     justify-content: space-between;
     gap: $space-4 $space-16;
     padding: $space-8 $space-20;
-    border-top: $border-width solid $light-grey-color-2;
-    color: $dark-grey-color;
+    border-top: $border-width solid var(--color-line);
+    color: var(--color-subtle);
     font-size: 0.875rem;
     line-height: 1.6;
     overflow-wrap: anywhere;

@@ -106,7 +106,7 @@ watch(imageKey, () => {
   .image-error {
     display: block;
     line-height: 1.5;
-    color: $dark-grey-color;
+    color: var(--color-subtle);
     overflow-wrap: anywhere;
   }
 }

@@ -407,8 +407,6 @@ watch(
 </script>
 
 <style lang="scss" scoped>
-@use 'sass:color';
-
 .image-grid {
   width: 100%;
   min-width: 0;
@@ -492,9 +490,9 @@ watch(
   border-radius: $radius-panel;
   background: linear-gradient(
     90deg,
-    $warm-beige 25%,
-    color.adjust($warm-beige, $lightness: 4%) 50%,
-    $warm-beige 75%
+    var(--color-surface-warm) 25%,
+    var(--color-skeleton-highlight) 50%,
+    var(--color-surface-warm) 75%
   );
   background-size: 200% 100%;
   animation: skeletonShimmer 1.5s ease-in-out infinite;
