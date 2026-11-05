@@ -179,6 +179,15 @@ a {
   color: inherit;
 }
 
+// Keep native selection colors in forced-colors mode
+@media (forced-colors: none) {
+  ::selection {
+    background-color: $gold-color;
+    color: $primary-text-color;
+    text-shadow: none;
+  }
+}
+
 :focus-visible {
   outline: $focus-width solid var(--focus-color, #{$focus-color});
   outline-offset: $focus-offset;
