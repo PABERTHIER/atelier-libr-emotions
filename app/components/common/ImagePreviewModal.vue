@@ -18,6 +18,7 @@
         <div class="image-preview-modal__backdrop" aria-hidden="true" />
         <div
           class="image-preview-modal__panel"
+          data-tooltip-boundary
           :style="{ '--viewer-header-height': `${headerHeight}px` }">
           <header ref="headerRef" class="image-preview-modal__header">
             <h2 :id="titleId" class="image-preview-modal__title">
@@ -28,6 +29,7 @@
               type="button"
               class="image-preview-modal__button image-preview-modal__close"
               :aria-label="t('components.image_preview_modal.close_label')"
+              :data-tooltip="t('components.image_preview_modal.close_label')"
               @click="requestClose">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -101,6 +103,7 @@
               type="button"
               class="image-preview-modal__button"
               :aria-label="t('components.image_preview_modal.previous')"
+              :data-tooltip="t('components.image_preview_modal.previous')"
               @click="navigate(-1)">
               <Icon name="heroicons:arrow-left" aria-hidden="true" />
             </button>
@@ -116,6 +119,7 @@
                 class="image-preview-modal__button"
                 :disabled="imageState !== 'loaded' || zoom <= 1"
                 :aria-label="t('components.image_preview_modal.zoom_out')"
+                :data-tooltip="t('components.image_preview_modal.zoom_out')"
                 @click="setZoom(zoom / 1.25)">
                 <span aria-hidden="true">−</span>
               </button>
@@ -135,6 +139,7 @@
                 class="image-preview-modal__button"
                 :disabled="imageState !== 'loaded' || zoom >= maxZoom"
                 :aria-label="t('components.image_preview_modal.zoom_in')"
+                :data-tooltip="t('components.image_preview_modal.zoom_in')"
                 @click="setZoom(zoom * 1.25)">
                 <span aria-hidden="true">+</span>
               </button>
@@ -145,7 +150,7 @@
                 type="button"
                 class="image-preview-modal__button image-preview-modal__fit"
                 :aria-label="t('components.image_preview_modal.zoom_fit')"
-                :title="t('components.image_preview_modal.zoom_fit')"
+                :data-tooltip="t('components.image_preview_modal.zoom_fit')"
                 @click="reset">
                 <Icon name="heroicons:arrows-pointing-in" aria-hidden="true" />
               </button>
@@ -155,6 +160,7 @@
               type="button"
               class="image-preview-modal__button"
               :aria-label="t('components.image_preview_modal.next')"
+              :data-tooltip="t('components.image_preview_modal.next')"
               @click="navigate(1)">
               <Icon name="heroicons:arrow-right" aria-hidden="true" />
             </button>

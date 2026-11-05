@@ -8,6 +8,7 @@
       </div>
     </main>
     <Footer />
+    <SiteTooltip />
   </div>
 </template>
 

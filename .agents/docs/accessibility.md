@@ -171,6 +171,8 @@ Maintain one page H1 and logical group headings, and provide a meaningful bypass
 Give controls translated names that describe the action or destination.
 Keep useful visible labels rather than substituting hidden text or tooltip-only instructions.
 Icon-only controls need accessible names; icons accompanying a complete text label can be decorative.
+The layout's `SiteTooltip` supplements control labels using localized `data-tooltip` text, with mouse hover, deliberate keyboard focus and Escape dismissal.
+Hints remain hoverable and render inside an active native dialog; essential actions remain understandable on touch without them.
 Every rendered image must have informative nonempty localized alt text, including logos and unavailable-image placeholders.
 Use CSS backgrounds or `aria-hidden` interface icons for decoration, not empty-alt images.
 Do not infer artwork details solely from filenames or repeat entire page descriptions in every image alternative.

@@ -1,18 +1,16 @@
 <template>
-  <button class="theme-toggle" type="button" @click="toggleTheme">
+  <button
+    class="theme-toggle"
+    type="button"
+    :data-tooltip="themeLabel"
+    @click="toggleTheme">
     <span class="theme-toggle__frame">
       <span class="theme-toggle__icons" aria-hidden="true">
         <Icon class="theme-toggle__moon" name="lucide:moon" mode="svg" />
         <Icon class="theme-toggle__sun" name="lucide:sun" mode="svg" />
       </span>
       <span>
-        {{
-          t(
-            isDark
-              ? 'components.theme_toggle.light'
-              : 'components.theme_toggle.dark'
-          )
-        }}
+        {{ themeLabel }}
       </span>
     </span>
   </button>
@@ -27,6 +25,14 @@ const systemDark = ref(false)
 
 const isDark = computed(
   () => theme.value === 'dark' || (theme.value === null && systemDark.value)
+)
+
+const themeLabel = computed(() =>
+  t(
+    isDark.value
+      ? 'components.theme_toggle.light'
+      : 'components.theme_toggle.dark'
+  )
 )
 
 let colorScheme: MediaQueryList | undefined

@@ -41,6 +41,11 @@
                       section: t(section.label),
                     })
                   "
+                  :data-tooltip="
+                    t('components.menu.close_section', {
+                      section: t(section.label),
+                    })
+                  "
                   @click="closeDesktop(true)">
                   <Icon name="lucide:x" aria-hidden="true" />
                 </button>
@@ -75,6 +80,7 @@
       type="button"
       class="site-menu__toggle site-menu__control icon-button"
       :aria-label="t('components.menu.open')"
+      :data-tooltip="t('components.menu.open')"
       :aria-expanded="mobileMenuOpen"
       aria-controls="mobile-navigation"
       aria-haspopup="dialog"
@@ -101,6 +107,7 @@
                 class="site-menu__control icon-button"
                 autofocus
                 :aria-label="t('components.menu.close')"
+                :data-tooltip="t('components.menu.close')"
                 @click="closeNavigation">
                 <Icon name="lucide:x" aria-hidden="true" />
               </button>

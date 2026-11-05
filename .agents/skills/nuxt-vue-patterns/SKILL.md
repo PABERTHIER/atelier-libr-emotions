@@ -13,7 +13,7 @@ Choose APIs and abstractions from the capabilities installed and used in this re
 
 | Concern                    | Local implementation                                                          | Contract                                                                                                       |
 | -------------------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| Page shell                 | [default.vue](../../../app/layouts/default.vue)                               | Decorative Welcome, skip link, header, focusable main and footer                                               |
+| Page shell                 | [default.vue](../../../app/layouts/default.vue)                               | Decorative Welcome, skip link, header, focusable main, footer and SiteTooltip                                  |
 | Page introduction          | [PageTitle.vue](../../../app/components/common/PageTitle.vue)                 | `title` and optional `subtitle`; renders the H1                                                                |
 | Gallery                    | [ImageGrid.vue](../../../app/components/common/ImageGrid.vue)                 | `ImageSource[]` and `Heights`; justified rows and image selection                                              |
 | Artwork viewer             | [ImagePreviewModal.vue](../../../app/components/common/ImagePreviewModal.vue) | `image`, optional ordered `images`/`opener`, `visible`, `select`/`close`; native dialog and scroll restoration |
@@ -103,6 +103,9 @@ Keep measured zoom/pinch/pan geometry in `useImageViewerGestures`; cancel pendin
 Do not assume arbitrary attributes such as `loading="eager"` reach its nested image without checking its implementation.
 Custom icons use the `ale-icon:` collection; interface icons also use the installed Heroicons or Lucide sets.
 Keep an icon decorative when adjacent text already names the action.
+`SiteTooltip` reads localized `data-tooltip` text from controls on mouse hover or deliberate keyboard focus, including controls inside native dialogs.
+Inside a native dialog, mark a smaller visible panel with `data-tooltip-boundary` to keep its hints within that panel.
+Use it for helpful supplemental hints, retaining accessible names and clear touch actions without hover.
 
 Use [accessibility](../accessibility/SKILL.md) for interactive semantics, focus, dialogs and motion changes.
 Do not copy existing click-only containers as the pattern for new controls.

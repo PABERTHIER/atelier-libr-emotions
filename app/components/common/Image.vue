@@ -1,11 +1,10 @@
 <template>
   <div class="image">
-    <a :href="src" :aria-label="imageLabel">
+    <a :href="src" :aria-label="imageLabel" :data-tooltip="title || undefined">
       <NuxtImg
         :key="imageKey"
         :src="src"
         :sizes="sizes"
-        :title="title"
         :alt="alt"
         densities="x1 x2"
         loading="lazy"

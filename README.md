@@ -138,7 +138,8 @@ Consult `package.json` for versions; this table groups its current direct entrie
 | [tsconfig.json](tsconfig.json), [eslint.config.mjs](eslint.config.mjs), [.prettierrc](.prettierrc), [.editorconfig](.editorconfig) | Type, lint, formatting and file conventions                                                       |
 | [CI workflow](.github/workflows/ci.yml)                                                                                            | Immutable dependency install and lint                                                             |
 
-The default layout owns the main landmark, header and footer.
+The default layout owns the main landmark, header, footer and `SiteTooltip`.
+The tooltip reads localized `data-tooltip` text on mouse hover or deliberate keyboard focus; controls remain understandable on touch without it.
 It uses a content-driven flex shell with `100svh`, not fixed header/footer subtraction or a JavaScript `--vh` writer.
 The header measures its rendered height for anchor clearance and menu bounds, and stops sticking on short landscape screens.
 `default.scss` owns resets, typography, focus and reduced motion; `shared.scss` owns reusable controls and the `.sr-only` utility.
