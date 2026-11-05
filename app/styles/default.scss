@@ -97,6 +97,18 @@ main:focus-visible {
   outline-offset: -$focus-width;
 }
 
+// WebKit can indicate focus on native dialog entry after a tap, then carry it into subsequent scripted focus
+// Keep focus itself and editable-field feedback
+// https://bugs.webkit.org/show_bug.cgi?id=247416
+html[data-pointer-input] {
+  --focus-ring-opacity: 0;
+
+  :focus-visible:not(:read-write) {
+    // One shared override also covers component-owned outline styles
+    outline: none !important;
+  }
+}
+
 @media (forced-colors: active) {
   * {
     scrollbar-color: auto;

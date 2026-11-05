@@ -124,6 +124,7 @@ onMounted(() => {
         border: $artwork-focus-width solid $focus-color;
         outline: $artwork-focus-width solid $white-color;
         border-radius: $radius-panel;
+        opacity: var(--focus-ring-opacity, 1);
         pointer-events: none;
         content: '';
       }
