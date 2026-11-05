@@ -14,7 +14,6 @@ html {
   color: $primary-text-color;
   background-color: $background-color;
   scroll-behavior: smooth;
-  scrollbar-color: $dark-red-color #f1f1f1;
   scroll-padding-top: calc(
     var(--site-header-height, #{$header-height-desktop}) + #{$space-16}
   );
@@ -24,7 +23,9 @@ html {
   }
 }
 
-@media (scripting: enabled) {
+// Keep touch scroll indicators native, including while Welcome is mounted
+// Avoid switching mobile viewport indicators between hidden and custom modes
+@media (scripting: enabled) and (hover: hover) and (pointer: fine) {
   html:has(.welcome):not(:has(:focus-visible)) {
     scrollbar-width: none;
   }
@@ -38,27 +39,33 @@ body:has(:focus-visible) .welcome {
   visibility: hidden;
 }
 
-@supports selector(::-webkit-scrollbar) {
+@media (hover: hover) and (pointer: fine) {
   html {
-    scrollbar-color: auto;
+    scrollbar-color: $dark-red-color #f1f1f1;
   }
 
-  ::-webkit-scrollbar {
-    width: 7px;
-    height: 7px;
-  }
+  @supports selector(::-webkit-scrollbar) {
+    html {
+      scrollbar-color: auto;
+    }
 
-  ::-webkit-scrollbar-track {
-    border: 1px solid $light-grey-color-2;
-    border-radius: 10px;
-    background: #f1f1f1;
-    box-shadow: inset 0 0 6px rgba($white-color, 0.3);
-  }
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
 
-  ::-webkit-scrollbar-thumb {
-    border: 1px solid $dark-grey-blue-color;
-    border-radius: 10px;
-    background: linear-gradient(45deg, $grey-blue-color, $dark-red-color);
+    ::-webkit-scrollbar-track {
+      border: 1px solid $light-grey-color-2;
+      border-radius: 10px;
+      background: #f1f1f1;
+      box-shadow: inset 0 0 6px rgba($white-color, 0.3);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      border: 1px solid $dark-grey-blue-color;
+      border-radius: 10px;
+      background: linear-gradient(45deg, $grey-blue-color, $dark-red-color);
+    }
   }
 }
 
