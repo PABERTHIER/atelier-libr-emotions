@@ -11,6 +11,7 @@
       :lang="availableLocale.language"
       :hreflang="availableLocale.language"
       :aria-label="`${availableLocale.code.toUpperCase()} — ${availableLocale.name}`"
+      :data-tooltip="`${availableLocale.code.toUpperCase()} — ${availableLocale.name}`"
       :aria-current="availableLocale.code === locale ? 'true' : undefined"
       @click="closeNavigation">
       <span class="lang-switcher__label" aria-hidden="true">

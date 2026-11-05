@@ -8,6 +8,7 @@
         :to="localePath('/')"
         class="site-header__home"
         :aria-label="t('components.header.logo_link_label')"
+        :data-tooltip="t('pages.main.tab_name')"
         @click="closeNavigation">
         <Logo aria-hidden="true" />
       </NuxtLink>

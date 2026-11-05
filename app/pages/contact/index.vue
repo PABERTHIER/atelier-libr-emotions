@@ -49,7 +49,7 @@
         <li v-for="link in socialLinks" :key="link.id">
           <a
             :href="link.href"
-            :title="link.title"
+            :data-tooltip="link.title"
             aria-describedby="social-new-tab"
             class="contact-page__social-link"
             :class="`contact-page__social-link--${link.id}`"

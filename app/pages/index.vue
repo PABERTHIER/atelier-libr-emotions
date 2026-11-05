@@ -62,7 +62,7 @@
             class="home-page__carousel-control"
             aria-controls="home-artworks"
             :aria-label="t('pages.main.carousel.previous')"
-            :title="t('pages.main.carousel.previous')"
+            :data-tooltip="t('pages.main.carousel.previous')"
             @click="changeArtworks(-1)">
             <Icon name="lucide:chevron-left" aria-hidden="true" />
           </button>
@@ -72,7 +72,7 @@
             class="home-page__carousel-control home-page__carousel-control--rotation"
             aria-controls="home-artworks"
             :aria-label="rotationLabel"
-            :title="rotationLabel"
+            :data-tooltip="rotationLabel"
             @click="toggleRotation">
             <Icon
               :name="isPaused ? 'lucide:play' : 'lucide:pause'"
@@ -83,7 +83,7 @@
             class="home-page__carousel-control"
             aria-controls="home-artworks"
             :aria-label="t('pages.main.carousel.next')"
-            :title="t('pages.main.carousel.next')"
+            :data-tooltip="t('pages.main.carousel.next')"
             @click="changeArtworks(1)">
             <Icon name="lucide:chevron-right" aria-hidden="true" />
           </button>

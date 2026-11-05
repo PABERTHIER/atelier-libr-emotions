@@ -33,6 +33,7 @@ Use [artwork naming](references/artwork-naming.md) when resolving gallery route 
 | `wip.*`                                       | Placeholder page and previous/next fallback labels                              |
 
 Search existing namespaces before adding a shared message.
+Keep authored tooltips and accessible names in locale JSON; reuse existing control messages for `data-tooltip` hints where appropriate.
 SEO page IDs are route-qualified, such as `painting_inks_nature` and `ceramic_porcelain_nature`, and match `PageName` in `app/types/seo.ts`.
 Keep `tab_name` for page navigation; do not retain superseded metadata/profile keys as unused translations.
 Use snake_case for new multiword keys and preserve existing identities unless a rename is requested.

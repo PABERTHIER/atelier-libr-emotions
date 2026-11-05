@@ -2,7 +2,6 @@
   <div class="logo">
     <NuxtImg
       src="logo.svg"
-      :title="logoTitle"
       :alt="logoAlt"
       sizes="xs:20px, sm:30px, md:35px, lg:40px"
       densities="x1 x2" />
@@ -12,7 +11,6 @@
 <script setup lang="ts">
 const { t } = useI18n()
 
-const logoTitle = computed(() => t('pages.main.tab_name'))
 const logoAlt = computed(() => t('app.logo_alt'))
 </script>
 

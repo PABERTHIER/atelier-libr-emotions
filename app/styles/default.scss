@@ -30,6 +30,9 @@
   --color-skeleton-highlight: #{color.adjust($warm-beige, $lightness: 4%)};
   --color-scrollbar-track: #f1f1f1;
   --color-scrollbar-thumb: #{$dark-red-color};
+  --color-tooltip-background: #{$primary-text-color};
+  --color-tooltip-text: #{$cream-color};
+  --color-tooltip-border: #{$gold-color};
   --focus-color: #{$focus-color};
   --theme-moon-visibility: visible;
   --theme-sun-visibility: hidden;
@@ -63,6 +66,9 @@
   --color-skeleton-highlight: #493d33;
   --color-scrollbar-track: #292420;
   --color-scrollbar-thumb: #dcb08d;
+  --color-tooltip-background: #{$cream-color};
+  --color-tooltip-text: #{$primary-text-color};
+  --color-tooltip-border: #{$copper-color};
   --focus-color: #b8ceff;
   --theme-moon-visibility: hidden;
   --theme-sun-visibility: visible;

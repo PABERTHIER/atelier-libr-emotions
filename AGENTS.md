@@ -138,6 +138,8 @@ atelier-libr-emotions/
 | Tooling and CI                   | [package.json](package.json), [CI workflow](.github/workflows/ci.yml), [eslint.config.mjs](eslint.config.mjs)                                                 | Available scripts, immutable install and lint                            |
 
 The layout already supplies `<main id="page-container">`; do not add a nested main in a page.
+The default layout mounts `SiteTooltip`; use localized `data-tooltip` text on controls that benefit from supplemental mouse-hover and keyboard-focus hints.
+Keep accessible names and essential actions understandable on touch without tooltips; avoid adding hints to already clear text links or artwork tiles.
 `PageTitle` supplies its H1, while the home and standalone artwork pages have their own structure.
 Component registration uses `pathPrefix: false`, so check for colliding component basenames.
 Shared SEO contracts live in [types/seo.ts](app/types/seo.ts); use route-qualified page names in the explicitly typed registry and matching `seo.*` messages.
@@ -236,7 +238,7 @@ For a new or substantially changed gallery:
 | Public directory         | `public/paintings`           | `public/ceramics`          |
 
 Use the [naming map](.agents/skills/i18n/references/artwork-naming.md) for technique exceptions, picture keys and group subdirectories.
-Keep authored copy, image alternatives and control names in the locale files.
+Keep authored copy, image alternatives, tooltips and control names in the locale files.
 Use `localePath()` for internal pages, preserving raw public-asset and external URLs.
 Use natural English and preserve official names, artist-authored titles and supplied identifiers.
 Inspect message syntax for `|` and `@` rather than treating them as ordinary punctuation in Vue I18n.
