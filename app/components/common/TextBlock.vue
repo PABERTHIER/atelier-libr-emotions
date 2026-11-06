@@ -17,9 +17,10 @@
           type === 'professional-objective'
         "
         class="objective-number">
-        <span v-if="type === 'professional-objective'" aria-hidden="true">
-          ♥
-        </span>
+        <Icon
+          v-if="type === 'professional-objective'"
+          name="lucide:heart"
+          aria-hidden="true" />
         <span v-if="objectiveNumber">{{ objectiveNumber }}</span>
       </div>
 
@@ -141,6 +142,12 @@ const blockClass = computed(() => {
       font-weight: 700;
       font-size: 1rem;
       box-shadow: 0 $focus-width $space-10 rgba(0, 0, 0, 0.2);
+
+      :deep(.iconify) {
+        flex: none;
+        width: 1em;
+        height: 1em;
+      }
     }
   }
 

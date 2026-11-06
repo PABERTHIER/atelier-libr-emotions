@@ -31,7 +31,7 @@
               :aria-label="t('components.image_preview_modal.close_label')"
               :data-tooltip="t('components.image_preview_modal.close_label')"
               @click="requestClose">
-              <span aria-hidden="true">&times;</span>
+              <Icon name="lucide:x" aria-hidden="true" />
             </button>
           </header>
 
@@ -105,7 +105,7 @@
               :aria-label="t('components.image_preview_modal.previous')"
               :data-tooltip="t('components.image_preview_modal.previous')"
               @click="navigate(-1)">
-              <Icon name="heroicons:arrow-left" aria-hidden="true" />
+              <Icon name="lucide:arrow-left" aria-hidden="true" />
             </button>
             <div
               class="image-preview-modal__zoom"
@@ -121,7 +121,7 @@
                 :aria-label="t('components.image_preview_modal.zoom_out')"
                 :data-tooltip="t('components.image_preview_modal.zoom_out')"
                 @click="setZoom(zoom / 1.25)">
-                <span aria-hidden="true">−</span>
+                <Icon name="lucide:minus" aria-hidden="true" />
               </button>
               <input
                 :id="zoomId"
@@ -141,7 +141,7 @@
                 :aria-label="t('components.image_preview_modal.zoom_in')"
                 :data-tooltip="t('components.image_preview_modal.zoom_in')"
                 @click="setZoom(zoom * 1.25)">
-                <span aria-hidden="true">+</span>
+                <Icon name="lucide:plus" aria-hidden="true" />
               </button>
               <span class="image-preview-modal__zoom-value" aria-hidden="true">
                 {{ Math.round(zoom * 100) }}%
@@ -152,7 +152,7 @@
                 :aria-label="t('components.image_preview_modal.zoom_fit')"
                 :data-tooltip="t('components.image_preview_modal.zoom_fit')"
                 @click="reset">
-                <Icon name="heroicons:arrows-pointing-in" aria-hidden="true" />
+                <Icon name="lucide:shrink" aria-hidden="true" />
               </button>
             </div>
             <button
@@ -162,7 +162,7 @@
               :aria-label="t('components.image_preview_modal.next')"
               :data-tooltip="t('components.image_preview_modal.next')"
               @click="navigate(1)">
-              <Icon name="heroicons:arrow-right" aria-hidden="true" />
+              <Icon name="lucide:arrow-right" aria-hidden="true" />
             </button>
           </div>
 
@@ -681,8 +681,6 @@ onBeforeUnmount(finishClose)
     border: 0;
     border-radius: 50%;
     background: transparent;
-    font-size: 1.5rem;
-    line-height: 1;
   }
 
   &__stage {

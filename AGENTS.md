@@ -60,20 +60,20 @@ See [README.md](README.md) for the human-facing setup and dependency map.
 
 Consult `package.json` for versions; this table groups its current direct entries.
 
-| Dependencies                                                                             | Purpose or current status                                                                     |
-| ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `nuxt`                                                                                   | Routing, Vue application build, SSR and prerendering                                          |
-| `@nuxtjs/i18n`                                                                           | French/English messages and prefixed routes                                                   |
-| `@nuxtjs/seo`                                                                            | Site metadata, sitemap and structured-data modules                                            |
-| `@nuxt/image`                                                                            | NuxtImg and IPX transforms for optimized-image consumers                                      |
-| `@nuxt/icon`, `@iconify-json/heroicons`, `@iconify-json/lucide`                          | Standalone Icon module with explicitly bundled interface icons and the custom SVG collection  |
-| `@nuxt/fonts`                                                                            | Font integration; inspect source and browser output for actual requests and resolved families |
-| `lenis`                                                                                  | Client smooth-scroll integration                                                              |
-| `@vueuse/core`                                                                           | Responsive breakpoint utilities used by `useScreenSize()`                                     |
-| `rolldown`                                                                               | Build tooling satisfying Nuxt's Rolldown peer dependency                                      |
-| `@nuxt/eslint`, `eslint`, `eslint-config-prettier`, `eslint-plugin-prettier`, `prettier` | Linting and formatting configuration/tooling                                                  |
-| `typescript`, `vue-tsc`, `@types/node`                                                   | Nuxt, Vue and Node type checking                                                              |
-| `sass`                                                                                   | SCSS compilation                                                                              |
+| Dependencies                                                                             | Purpose or current status                                                                           |
+| ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `nuxt`                                                                                   | Routing, Vue application build, SSR and prerendering                                                |
+| `@nuxtjs/i18n`                                                                           | French/English messages and prefixed routes                                                         |
+| `@nuxtjs/seo`                                                                            | Site metadata, sitemap and structured-data modules                                                  |
+| `@nuxt/image`                                                                            | NuxtImg and IPX transforms for optimized-image consumers                                            |
+| `@nuxt/icon`, `@iconify-json/lucide`                                                     | Standalone Icon module with explicitly bundled Lucide interface icons and the custom SVG collection |
+| `@nuxt/fonts`                                                                            | Font integration; inspect source and browser output for actual requests and resolved families       |
+| `lenis`                                                                                  | Client smooth-scroll integration                                                                    |
+| `@vueuse/core`                                                                           | Responsive breakpoint utilities used by `useScreenSize()`                                           |
+| `rolldown`                                                                               | Build tooling satisfying Nuxt's Rolldown peer dependency                                            |
+| `@nuxt/eslint`, `eslint`, `eslint-config-prettier`, `eslint-plugin-prettier`, `prettier` | Linting and formatting configuration/tooling                                                        |
+| `typescript`, `vue-tsc`, `@types/node`                                                   | Nuxt, Vue and Node type checking                                                                    |
+| `sass`                                                                                   | SCSS compilation                                                                                    |
 
 Interface icons are bundled explicitly through `icon.clientBundle.icons` in `nuxt.config.ts`.
 Keep that list synchronized with authored `<Icon>` names, including conditional values and error-page icons; retain custom SVG collection inclusion separately.
