@@ -106,7 +106,7 @@ Consult `package.json` for versions; this table groups its current direct entrie
 | `@nuxtjs/i18n`                                                                           | French/English messages and prefixed routes                                                   |
 | `@nuxtjs/seo`                                                                            | Site metadata, sitemap and structured-data modules                                            |
 | `@nuxt/image`                                                                            | NuxtImg and IPX transforms for optimized-image consumers                                      |
-| `@nuxt/ui`, `@iconify-json/heroicons`, `@iconify-json/lucide`                            | UI/icon integration and installed icon sets                                                   |
+| `@nuxt/icon`, `@iconify-json/heroicons`, `@iconify-json/lucide`                          | Standalone Icon module with explicitly bundled interface icons and the custom SVG collection  |
 | `@nuxt/fonts`                                                                            | Font integration; inspect source and browser output for actual requests and resolved families |
 | `lenis`                                                                                  | Client smooth-scroll integration                                                              |
 | `@vueuse/core`                                                                           | Responsive breakpoint utilities used by `useScreenSize()`                                     |
@@ -114,6 +114,10 @@ Consult `package.json` for versions; this table groups its current direct entrie
 | `@nuxt/eslint`, `eslint`, `eslint-config-prettier`, `eslint-plugin-prettier`, `prettier` | Linting and formatting configuration/tooling                                                  |
 | `typescript`, `vue-tsc`, `@types/node`                                                   | Nuxt, Vue and Node type checking                                                              |
 | `sass`                                                                                   | SCSS compilation                                                                              |
+
+Interface icons are explicitly bundled in `nuxt.config.ts` through `icon.clientBundle.icons`.
+When adding or removing an icon, update that list as well, including conditional icon names and icons used by the error page.
+Custom SVGs retain their separate `ale-icon` collection and client-bundle inclusion.
 
 ## Project Map
 

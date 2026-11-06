@@ -106,9 +106,9 @@ export default defineNuxtConfig({
   },
   modules: [
     '@nuxt/image',
+    '@nuxt/icon',
     '@nuxtjs/i18n',
     '@nuxtjs/seo',
-    '@nuxt/ui',
     '@nuxt/fonts',
     '@nuxt/eslint',
   ],
@@ -123,11 +123,36 @@ export default defineNuxtConfig({
       },
     },
   },
-  ui: {
-    colorMode: false,
+  fonts: {
+    defaults: {
+      weights: [400, 500, 600, 700],
+    },
   },
   icon: {
+    cssLayer: 'base',
     clientBundle: {
+      // Include conditional and error-page icons without a runtime API request
+      icons: [
+        'heroicons:arrow-down-tray',
+        'heroicons:arrow-left',
+        'heroicons:arrow-right',
+        'heroicons:arrows-pointing-in',
+        'heroicons:envelope',
+        'heroicons:map-pin',
+        'heroicons:photo',
+        'lucide:arrow-left',
+        'lucide:arrow-right',
+        'lucide:arrow-up-right',
+        'lucide:chevron-down',
+        'lucide:chevron-left',
+        'lucide:chevron-right',
+        'lucide:menu',
+        'lucide:moon',
+        'lucide:pause',
+        'lucide:play',
+        'lucide:sun',
+        'lucide:x',
+      ],
       includeCustomCollections: true,
     },
     customCollections: [
