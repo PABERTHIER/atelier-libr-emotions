@@ -12,12 +12,11 @@
 
     <figure class="contact-page__artwork">
       <div class="contact-page__frame">
-        <Image
-          src="/misc/contact.webp"
-          sizes="xs:150px, sm:200px, md:250px, lg:300px, xl:400px"
-          max-height="37.5rem"
-          :title="t('pages.contact.image.title')"
-          :alt="t('pages.contact.image.alt')" />
+        <ImagePreviewButton
+          class="contact-page__image"
+          :image="previewImage"
+          loading="eager"
+          @select="openViewer(0, $event)" />
       </div>
       <figcaption class="contact-page__caption">
         {{ t('pages.contact.image.title') }}
@@ -72,6 +71,12 @@
         </p>
       </address>
     </section>
+    <ImagePreviewModal
+      v-if="viewerImage"
+      :image="viewerImage"
+      :visible="viewerVisible"
+      :opener="viewerOpener"
+      @close="closeViewer" />
 
     <div class="contact-page__separator" aria-hidden="true">
       <span class="contact-page__separator-line" />
@@ -98,8 +103,18 @@
 
 <script setup lang="ts">
 import { externalLinks } from '~/data/site'
+import type { ImageSource } from '~/types/image'
 
 const { t } = useI18n()
+
+const previewImage = computed<ImageSource>(() => ({
+  src: '/misc/contact.webp',
+  title: t('pages.contact.image.title'),
+  alt: t('pages.contact.image.alt'),
+}))
+
+const { viewerImage, viewerVisible, viewerOpener, openViewer, closeViewer } =
+  useImagePreview(() => [previewImage.value])
 
 const mailHref = computed(() => `mailto:${t('about.mail_address')}`)
 const socialLinks = computed(() => [
@@ -203,20 +218,31 @@ useHead(usePageSeo('contact'))
   &__frame {
     border: $focus-width solid $gold-color;
     border-radius: $space-2;
+    // Match the border behind fractional pixels clipped during live resizing
+    background-color: $gold-color;
     box-shadow:
       inset 0 0 $space-20 rgba($gold-color, 0.1),
       0 0 0 $border-width rgba($gold-color, 0.3);
 
-    :deep(a) {
+    :deep(button) {
       overflow: hidden;
+    }
+
+    :deep(.image-preview-button__error) {
+      background-color: var(--color-surface);
     }
 
     :deep(img) {
       display: block;
+      width: 100%;
       max-width: 100%;
       height: auto;
       object-fit: contain;
     }
+  }
+
+  &__image {
+    width: 150px;
   }
 
   &__caption {
@@ -475,6 +501,30 @@ useHead(usePageSeo('contact'))
   }
 }
 
+@media (min-width: $sm) {
+  .contact-page__image {
+    width: 200px;
+  }
+}
+
+@media (min-width: $md) {
+  .contact-page__image {
+    width: 250px;
+  }
+}
+
+@media (min-width: $lg) {
+  .contact-page__image {
+    width: 300px;
+  }
+}
+
+@media (min-width: $xl) {
+  .contact-page__image {
+    width: 400px;
+  }
+}
+
 @media (max-width: $md) {
   .contact-page {
     &__artwork {
@@ -508,7 +558,7 @@ useHead(usePageSeo('contact'))
       transition: transform 0.6s ease;
     }
 
-    &__frame :deep(a:focus-visible img) {
+    &__frame :deep(button:focus-visible img) {
       transform: scale(1.02);
     }
 
@@ -534,7 +584,7 @@ useHead(usePageSeo('contact'))
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .contact-page__frame :deep(a:hover img) {
+    .contact-page__frame :deep(button:hover img) {
       transform: scale(1.02);
     }
 

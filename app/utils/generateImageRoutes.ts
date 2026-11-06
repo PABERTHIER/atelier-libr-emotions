@@ -145,24 +145,4 @@ const imagesConfig = [
       80, 100, 125, 130, 150, 160, 175, 180, 200, 250, 260, 300, 350, 360, 400,
     ],
   },
-  {
-    imagePath: '/misc/contact.webp',
-    sizes: [150, 200, 250, 300, 400, 500, 600, 800],
-  },
-  {
-    imagePath: '/cv/page_1.webp',
-    sizes: [300, 450, 600, 900, 1200],
-  },
-  {
-    imagePath: '/cv/page_2.webp',
-    sizes: [300, 450, 600, 900, 1200],
-  },
-  {
-    imagePath: '/wip-still.webp',
-    sizes: [400, 700, 800, 1000, 1400, 2000],
-  },
-  {
-    imagePath: '/wip.gif',
-    sizes: [400, 700, 800, 1000, 1400, 2000],
-  },
 ]

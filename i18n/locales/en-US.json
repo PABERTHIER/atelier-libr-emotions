@@ -116,7 +116,8 @@
       "label": "Previous and next pages"
     },
     "image": {
-      "open_original": "View the original image: {title}"
+      "open_original": "View the original image: {title}",
+      "preview": "Enlarge image: {title}"
     },
     "image_grid": {
       "loading": "Loading artworks…"
