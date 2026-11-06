@@ -20,7 +20,7 @@
           @error="onImageError"
           @load="onImageLoad" />
         <span v-if="imageError" class="grid-item__error" aria-hidden="true">
-          <Icon name="heroicons:photo" aria-hidden="true" />
+          <Icon name="lucide:image-off" aria-hidden="true" />
         </span>
       </span>
       <span v-if="caption" class="grid-item__caption" aria-hidden="true">

@@ -7,7 +7,7 @@
       v-if="previousPage"
       :to="localePath(previousPage.path)"
       class="nav-link prev-link">
-      <Icon name="heroicons:arrow-left" aria-hidden="true" />
+      <Icon name="lucide:arrow-left" aria-hidden="true" />
       <div class="nav-content">
         <span class="nav-title">{{ previousPage.title }}</span>
         <span class="nav-description">{{ previousPage.description }}</span>
@@ -24,7 +24,7 @@
         <span class="nav-title">{{ nextPage.title }}</span>
         <span class="nav-description">{{ nextPage.description }}</span>
       </div>
-      <Icon name="heroicons:arrow-right" aria-hidden="true" />
+      <Icon name="lucide:arrow-right" aria-hidden="true" />
     </NuxtLink>
 
     <div v-else class="nav-placeholder" aria-hidden="true" />

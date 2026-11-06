@@ -39,7 +39,7 @@
           :href="pdfPath"
           :download="t('pages.cv.download_filename')"
           class="cv-page__download">
-          <Icon name="heroicons:arrow-down-tray" aria-hidden="true" />
+          <Icon name="lucide:download" aria-hidden="true" />
           {{ t('pages.cv.download_button') }}
           <span class="sr-only">— PDF</span>
         </a>

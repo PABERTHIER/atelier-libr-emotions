@@ -101,7 +101,7 @@ Aspect measurement uses explicit `window.Image` with the same current-origin sou
 Preserve the established row-size functions and constants when fixing source delivery or metadata synchronization.
 Keep measured zoom/pinch/pan geometry in `useImageViewerGestures`; cancel pending positioning and captures when an image or dialog changes.
 Do not assume arbitrary attributes such as `loading="eager"` reach its nested image without checking its implementation.
-Custom icons use the `ale-icon:` collection; interface icons also use the installed Heroicons or Lucide sets.
+Custom icons use the `ale-icon:` collection; interface icons use the installed Lucide set and explicit client bundle list in `nuxt.config.ts`.
 Keep an icon decorative when adjacent text already names the action.
 `SiteTooltip` reads localized `data-tooltip` text from controls on mouse hover or deliberate keyboard focus, including controls inside native dialogs.
 Inside a native dialog, mark a smaller visible panel with `data-tooltip-boundary` to keep its hints within that panel.

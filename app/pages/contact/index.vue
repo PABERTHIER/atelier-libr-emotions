@@ -63,11 +63,11 @@
 
       <address class="contact-page__details">
         <a :href="mailHref" class="contact-page__detail contact-page__email">
-          <Icon name="heroicons:envelope" aria-hidden="true" />
+          <Icon name="lucide:mail" aria-hidden="true" />
           <span>{{ t('about.mail_address') }}</span>
         </a>
         <p class="contact-page__detail">
-          <Icon name="heroicons:map-pin" aria-hidden="true" />
+          <Icon name="lucide:map-pin" aria-hidden="true" />
           <span>{{ t('about.location') }}</span>
         </p>
       </address>

@@ -454,8 +454,8 @@ useHead(usePageSeo('home'))
 
     .iconify {
       flex: none;
-      width: 1.125rem;
-      height: 1.125rem;
+      width: 1.5rem;
+      height: 1.5rem;
     }
 
     &:hover {
