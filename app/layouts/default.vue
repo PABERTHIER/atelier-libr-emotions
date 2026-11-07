@@ -1,6 +1,6 @@
 <template>
   <div class="site-layout">
-    <Welcome />
+    <Welcome v-if="showWelcome" />
     <Header @skip="focusMain" />
     <main id="page-container" ref="main" class="site-main" tabindex="-1">
       <div class="page-content">
@@ -13,7 +13,19 @@
 </template>
 
 <script setup lang="ts">
+const route = useRoute()
+const getRouteBaseName = useRouteBaseName()
 const main = useTemplateRef('main')
+
+// Only introduce an initial homepage visit; never replay after navigation
+const showWelcome = ref(getRouteBaseName(route) === 'index')
+
+watch(
+  () => route.path,
+  () => {
+    showWelcome.value = false
+  }
+)
 
 function focusMain() {
   main.value?.focus({ preventScroll: true })
