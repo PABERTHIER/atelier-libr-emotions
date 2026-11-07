@@ -260,7 +260,7 @@ useHead(usePageSeo('about'))
   }
 }
 
-@media (max-width: $md) {
+@media (max-width: $breakpoint-tablet) {
   .about-page__text-block {
     margin-bottom: $space-25;
   }

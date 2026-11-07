@@ -91,7 +91,7 @@ Global resets, typography, focus and motion belong in `default.scss`; reusable c
 The config loads these CSS-emitting sheets once and injects only tokens.
 Sass built-ins such as `sass:color` still need their own `@use` when used.
 Keep page-specific layout with its page and shared behavior with its component.
-Use existing `$sm`, `$md`, `$lg` and `$xl` breakpoints, checking their actual values instead of copying an old token list.
+Use existing `$breakpoint-compact`, `$breakpoint-small`, `$breakpoint-mobile`, `$breakpoint-tablet`, `$breakpoint-laptop` and `$breakpoint-desktop` breakpoints, checking their actual values instead of copying an old token list.
 Inline dynamic measurements are appropriate for grid and zoom geometry; prefer scoped SCSS for static presentation.
 
 Use [artwork-assets](../artwork-assets/SKILL.md) for image consumer selection and static delivery.

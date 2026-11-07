@@ -66,7 +66,7 @@ Inspect computed styles and network requests before adding a family, removing a 
 Do not introduce a fixed desktop type scale as if it were an existing token contract.
 Check narrow screens, longer English strings and enlarged text before changing sizes or fixed heights.
 
-Desktop header navigation buttons and the Contact link use weight `700`, retaining inherited text sizing below `$xl` (1280px) and increasing to `1.125rem` from that breakpoint.
+Desktop header navigation buttons and the Contact link use weight `700`, retaining inherited text sizing below `$breakpoint-desktop` (1280px) and increasing to `1.125rem` from that breakpoint.
 Opened-panel links and mobile navigation retain their own typography.
 
 ## Artwork and surfaces
@@ -89,12 +89,12 @@ Avoid presenting a proposed token name as an implemented API.
 
 ## Responsive structure and layers
 
-| Token group        | Current values                                                              | Constraint                                                               |
-| ------------------ | --------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| Breakpoints        | `$xs: 320px`, `$sm: 640px`, `$md: 768px`, `$lg: 1024px`, `$xl: 1280px`      | Reuse the source values and test between them                            |
-| Shell dimensions   | Gutter `20px`, desktop bar minimum `68px`, footer minimum `44px`            | Content may grow; no fixed shell-height subtraction                      |
-| Controls and focus | Target `44px`, outline `3px`, offset `3px`                                  | Focus uses dark blue on light surfaces and light blue in the mobile menu |
-| Layers             | Header `30`, desktop menu `50` within header, viewer `100`, skip link `200` | Native mobile dialog uses the browser top layer                          |
+| Token group        | Current values                                                                                                                                                                  | Constraint                                                               |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| Breakpoints        | `$breakpoint-compact: 320px`, `$breakpoint-small: 420px`, `$breakpoint-mobile: 640px`, `$breakpoint-tablet: 768px`, `$breakpoint-laptop: 1024px`, `$breakpoint-desktop: 1280px` | Reuse the source values and test between them                            |
+| Shell dimensions   | Gutter `20px`, desktop bar minimum `68px`, footer minimum `44px`                                                                                                                | Content may grow; no fixed shell-height subtraction                      |
+| Controls and focus | Target `44px`, outline `3px`, offset `3px`                                                                                                                                      | Focus uses dark blue on light surfaces and light blue in the mobile menu |
+| Layers             | Header `30`, desktop menu `50` within header, viewer `100`, skip link `200`                                                                                                     | Native mobile dialog uses the browser top layer                          |
 
 The layout uses `min-height: 100svh` with a growing main and naturally sized header/footer.
 The single default layout remains separate from the root's metadata ownership; merging those files is not a page-compliance requirement.

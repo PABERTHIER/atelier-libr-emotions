@@ -151,7 +151,7 @@ const blockClass = computed(() => {
     }
   }
 
-  @media (max-width: $md) {
+  @media (max-width: $breakpoint-tablet) {
     .block-content {
       padding: $space-20;
 
@@ -269,7 +269,7 @@ const blockClass = computed(() => {
     }
   }
 
-  @media (max-width: $md) {
+  @media (max-width: $breakpoint-tablet) {
     &.block-master-word .block-content {
       margin-bottom: $space-30;
 

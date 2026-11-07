@@ -48,7 +48,8 @@ const year = new Date().getFullYear()
   }
 }
 
-@media (max-width: $md), (max-height: $navigation-compact-height) {
+@media (max-width: $breakpoint-tablet),
+  (max-height: $navigation-compact-height) {
   .site-footer {
     justify-content: space-around;
     column-gap: $space-24;

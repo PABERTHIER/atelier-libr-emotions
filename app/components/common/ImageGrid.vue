@@ -445,7 +445,7 @@ watch(
     }
   }
 
-  @media ((min-width: $md) and (hover: hover)) {
+  @media ((min-width: $breakpoint-tablet) and (hover: hover)) {
     &__row {
       .image-grid__cell:not(.image-grid__cell--error) {
         overflow: hidden;
@@ -469,7 +469,7 @@ watch(
   // Mobile: show title on tap/touch or small screens
   @media (hover: none),
     (pointer: coarse),
-    (max-width: calc($md - $border-width)) {
+    (max-width: calc($breakpoint-tablet - $border-width)) {
     &__row {
       margin-bottom: $space-20;
 

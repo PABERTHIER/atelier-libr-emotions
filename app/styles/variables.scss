@@ -131,9 +131,10 @@ $artwork-hover-scale: 1.04;
 $transition-viewer: 0.25s ease;
 
 // breakpoints
-$xs: 320px;
-$sm: 640px;
-$md: 768px;
-$lg: 1024px;
-$xl: 1280px;
+$breakpoint-compact: 320px;
+$breakpoint-small: 420px;
+$breakpoint-mobile: 640px;
+$breakpoint-tablet: 768px;
+$breakpoint-laptop: 1024px;
+$breakpoint-desktop: 1280px;
 $navigation-compact-height: 400px;

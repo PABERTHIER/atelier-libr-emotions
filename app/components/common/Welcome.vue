@@ -102,19 +102,19 @@ onBeforeUnmount(() => {
 }
 
 // Follow Logo's breakpoints so the text keeps the same proportion to the badge
-@media (max-width: $lg) {
+@media (max-width: $breakpoint-laptop) {
   .welcome__text {
     font-size: 1.6rem;
   }
 }
 
-@media (max-width: $md) {
+@media (max-width: $breakpoint-tablet) {
   .welcome__text {
     font-size: 1.2rem;
   }
 }
 
-@media (max-width: $sm) {
+@media (max-width: $breakpoint-mobile) {
   .welcome__text {
     font-size: 1rem;
   }

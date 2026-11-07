@@ -142,7 +142,7 @@ const localePath = useLocalePath()
   }
 }
 
-@media (max-width: $md) {
+@media (max-width: $breakpoint-tablet) {
   .page-navigation {
     flex-direction: column;
     align-items: center;
@@ -166,7 +166,7 @@ const localePath = useLocalePath()
   }
 }
 
-@media (max-width: $sm) {
+@media (max-width: $breakpoint-mobile) {
   .page-navigation {
     margin-top: $space-40;
 

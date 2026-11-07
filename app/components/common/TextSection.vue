@@ -190,13 +190,13 @@ const titleId = useId()
       }
     }
 
-    @media (max-width: $lg) {
+    @media (max-width: $breakpoint-laptop) {
       .section-marker {
         width: $space-30;
       }
     }
 
-    @media (max-width: $md) {
+    @media (max-width: $breakpoint-tablet) {
       .section-marker {
         width: $space-20;
         margin-right: $space-15;
@@ -297,7 +297,7 @@ const titleId = useId()
       }
     }
 
-    @media (max-width: $md) {
+    @media (max-width: $breakpoint-tablet) {
       .section-content {
         padding: $space-20;
 
@@ -410,7 +410,7 @@ const titleId = useId()
     }
   }
 
-  @media (max-width: $md) {
+  @media (max-width: $breakpoint-tablet) {
     .text-section {
       margin-bottom: $space-25;
     }

@@ -551,7 +551,7 @@ onBeforeUnmount(() => {
   }
 }
 
-@media (max-width: $xl) {
+@media (max-width: $breakpoint-desktop) {
   .carousel {
     width: 500px;
 
@@ -583,7 +583,7 @@ onBeforeUnmount(() => {
   }
 }
 
-@media (max-width: $lg) {
+@media (max-width: $breakpoint-laptop) {
   .carousel {
     width: 450px;
 
@@ -621,7 +621,7 @@ onBeforeUnmount(() => {
   }
 }
 
-@media (max-width: $sm) {
+@media (max-width: $breakpoint-mobile) {
   .carousel {
     --artwork-padding: #{$space-5};
     width: 450px;
@@ -652,7 +652,7 @@ onBeforeUnmount(() => {
   }
 }
 
-@media (width < 420px) {
+@media (width < $breakpoint-small) {
   .carousel {
     width: 360px;
 
@@ -686,7 +686,7 @@ onBeforeUnmount(() => {
   }
 }
 
-@media (max-width: $xs) {
+@media (max-width: $breakpoint-compact) {
   .carousel {
     &__artworks {
       min-width: 280px;
@@ -703,7 +703,7 @@ onBeforeUnmount(() => {
   }
 }
 
-@media (max-width: calc($xs - $border-width)) {
+@media (max-width: calc($breakpoint-compact - $border-width)) {
   .carousel__artworks-viewport {
     overflow-x: auto;
     overscroll-behavior-x: contain;

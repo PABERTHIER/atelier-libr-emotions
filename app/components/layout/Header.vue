@@ -121,7 +121,8 @@ onBeforeUnmount(() => {
   }
 }
 
-@media (max-width: $md), (max-height: $navigation-compact-height) {
+@media (max-width: $breakpoint-tablet),
+  (max-height: $navigation-compact-height) {
   .site-header__inner {
     justify-content: space-between;
     min-height: $control-size;

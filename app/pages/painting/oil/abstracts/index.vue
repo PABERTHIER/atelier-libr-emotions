@@ -89,13 +89,13 @@ useHead(usePageSeo('painting_oil_abstracts'))
   }
 }
 
-@media (min-width: $md) {
+@media (min-width: $breakpoint-tablet) {
   .oil-artwork-page__image {
     max-width: min(100%, 250px);
   }
 }
 
-@media (min-width: $lg) {
+@media (min-width: $breakpoint-laptop) {
   .oil-artwork-page__image {
     max-width: min(100%, 350px);
   }

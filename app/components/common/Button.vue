@@ -83,7 +83,7 @@ const emit = defineEmits<{ click: [event: MouseEvent] }>()
   }
 }
 
-@media (max-width: $md) {
+@media (max-width: $breakpoint-tablet) {
   .button {
     padding: $space-10;
   }
