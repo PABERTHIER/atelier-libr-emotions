@@ -68,7 +68,6 @@ Consult `package.json` for versions; this table groups its current direct entrie
 | `@nuxt/icon`, `@iconify-json/lucide`                                                     | Standalone Icon module with explicitly bundled Lucide interface icons and the custom SVG collection |
 | `@nuxt/fonts`                                                                            | Font integration; inspect source and browser output for actual requests and resolved families       |
 | `lenis`                                                                                  | Client smooth-scroll integration                                                                    |
-| `@vueuse/core`                                                                           | Gallery breakpoint utilities and the viewer's reduced-motion preference                             |
 | `rolldown`                                                                               | Build tooling satisfying Nuxt's Rolldown peer dependency                                            |
 | `@nuxt/eslint`, `eslint`, `eslint-config-prettier`, `eslint-plugin-prettier`, `prettier` | Linting and formatting configuration/tooling                                                        |
 | `typescript`, `vue-tsc`, `@types/node`                                                   | Nuxt, Vue and Node type checking                                                                    |
@@ -102,7 +101,7 @@ atelier-libr-emotions/
 │   │       ├── PageTitle.vue     # Page heading
 │   │       ├── PageHeaderOrnament.vue
 │   │       └── PageNavigation.vue # Previous/Next navigation
-│   ├── composables/              # screen-size, shared logic
+│   ├── composables/              # useScreenSize, shared logic
 │   ├── data/                     # Site identity, page SEO registry and image dimensions
 │   ├── types/                    # TypeScript types (ImageSource, Heights, PageNavigation)
 │   ├── styles/                   # Tokens, base rules, keyframes and shared classes
@@ -127,7 +126,7 @@ atelier-libr-emotions/
 | Gallery and page components      | [common components](app/components/common/)                                                                                                                   | PageTitle, ImageGrid, ImagePreviewModal, PageNavigation and Image        |
 | Navigation                       | [navigation.ts](app/data/navigation.ts), [Menu.vue](app/components/layout/Menu.vue), [useSiteNavigation.ts](app/composables/useSiteNavigation.ts)             | One ordered catalogue, desktop disclosures and modal mobile accordions   |
 | Shared types                     | [image.ts](app/types/image.ts), [page.ts](app/types/page.ts)                                                                                                  | ImageSource, Heights and PageNavigation                                  |
-| Responsive state                 | [screen-size.ts](app/composables/screen-size.ts)                                                                                                              | Breakpoint refs with a stable SSR fallback                               |
+| Responsive state                 | [useScreenSize.ts](app/composables/useScreenSize.ts)                                                                                                          | Breakpoint refs with a stable SSR fallback                               |
 | Browser integration              | [smooth-scroll.client.ts](app/plugins/smooth-scroll.client.ts)                                                                                                | Existing Lenis instance                                                  |
 | Route continuity                 | [router.options.ts](app/router.options.ts), [navigation-focus.client.ts](app/plugins/navigation-focus.client.ts)                                              | History/anchor scrolling and focus after completed navigation            |
 | Overlay scroll locking           | [overlay-scroll-lock.client.ts](app/plugins/overlay-scroll-lock.client.ts), [useOverlayScrollLock.ts](app/composables/useOverlayScrollLock.ts)                | Per-app leases shared by mobile navigation and the artwork viewer        |

@@ -180,7 +180,6 @@ export default defineNuxtConfig({
     optimizeDeps: {
       include: [
         '@unhead/schema-org/vue',
-        '@vueuse/core',
         '@vue/devtools-core',
         '@vue/devtools-kit',
         'lenis',

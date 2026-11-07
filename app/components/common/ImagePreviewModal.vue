@@ -192,7 +192,6 @@
 </template>
 
 <script setup lang="ts">
-import { usePreferredReducedMotion } from '@vueuse/core'
 import type { ImageSource } from '~/types/image'
 
 const props = withDefaults(
@@ -209,11 +208,12 @@ const emit = defineEmits<{ close: []; select: [image: ImageSource] }>()
 
 const { t } = useI18n()
 const { lockScroll, unlockScroll } = useOverlayScrollLock()
-const reducedMotion = usePreferredReducedMotion()
-
-const fadeDuration = computed(() =>
-  reducedMotion.value === 'reduce' ? 0 : 250
+const reducedMotion = useNativeMediaQuery(
+  '(prefers-reduced-motion: reduce)',
+  false
 )
+
+const fadeDuration = computed(() => (reducedMotion.value ? 0 : 250))
 
 const dialogRef = ref<HTMLDialogElement | null>(null)
 const closeButtonRef = ref<HTMLButtonElement | null>(null)
