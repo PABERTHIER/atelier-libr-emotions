@@ -1,17 +1,15 @@
 <template>
   <div class="logo">
-    <NuxtImg
-      src="logo.svg"
-      :alt="logoAlt"
-      sizes="xs:20px, sm:30px, md:35px, lg:40px"
-      densities="x1 x2" />
+    <Image
+      :skeleton="false"
+      src="/logo.svg"
+      :alt="t('app.logo_alt')"
+      loading="eager" />
   </div>
 </template>
 
 <script setup lang="ts">
 const { t } = useI18n()
-
-const logoAlt = computed(() => t('app.logo_alt'))
 </script>
 
 <style lang="scss" scoped>

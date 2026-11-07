@@ -78,8 +78,10 @@ Social platforms may crop sharing previews; that does not justify cropping the s
 
 Reuse the existing gallery and viewer contracts rather than creating a second image system.
 The gallery uses justified rows with typical target heights of `120`, `160`, `220` and `300` pixels.
-Those heights describe layout, not required optimized image widths.
-Use [the artwork-assets skill](../skills/artwork-assets/SKILL.md) for original files and IPX delivery.
+Those heights describe layout and do not require resized duplicate files.
+Use [the artwork-assets skill](../skills/artwork-assets/SKILL.md) for original files and native delivery.
+`Image` is a native image with intrinsic dimensions and an optional delayed skeleton; consumers own display size, frames and loading priority.
+`ImagePreviewButton` adds preview semantics and failure feedback around standalone images.
 
 Pages retain component-local radii and spacing; the shared shell uses a small spacing/control token set.
 Inspect the nearest component before choosing a new value and extract a shared token only when actual reuse justifies it.
@@ -138,10 +140,11 @@ Desktop close controls use a 30px border frame and 20px glyph; link arrows remai
 The frame and hover treatment are drawn inside the independently usable 44px touch target.
 Menu structure uses `site-menu__toggle`/`site-menu__control`, `desktop-navigation__trigger--current` and explicit desktop/mobile title classes.
 Global CSS reduces animation/transition duration and iteration count; Lenis and route scrolling check the motion preference.
-The home owns its three curated artwork tracks, five-second rotation, persistent pause/resume control and previous/next controls.
+`Carousel` owns the home's three curated artwork tracks, five-second rotation, persistent pause/resume control and previous/next controls.
 Artwork hover, carousel focus, a hidden document and persistent pause stop rotation and floating; manual selection pauses the timer.
 Reduced motion stops automatic rotation/floating and omits the rotation control, retaining previous/next; explicit resume can restart while its control keeps focus.
-The complete keyed frame fades on image changes while its floating wrapper stays mounted, preserving outgoing dimensions and animation continuity without replacing `Image` or NuxtImg.
+The complete keyed frame fades on carousel changes while its floating wrapper and preview button stay mounted, preserving outgoing dimensions and animation continuity.
+Its modal browses the clicked group independently, leaving the three displayed frames unchanged and restoring focus to the same preview button.
 The contact page retains static particles instead of unbounded decorative motion.
 The work-in-progress illustration uses a still for SSR/initial markup and reduced motion; after mount it plays the original GIF automatically when motion is allowed.
 Its cleaned-up media-query listener switches both ways on preference changes; there is no animation toggle.
@@ -170,7 +173,7 @@ Focus is never removed by a generic button/range reset.
 Artwork triggers draw a 4px-per-color inset white/dark-blue ring so gallery clipping cannot hide it.
 Mobile/coarse-pointer captions sit below the image with no overlay; desktop captions use a shallow feathered gradient only on hover/focus.
 Artwork hover scale is 1.04, with a 0.65s cubic-bezier transition; reduced motion removes it.
-The native width binding remains an HTML image width attribute, not an IPX transform.
+The native width binding supplies an HTML image width attribute; CSS determines its display size.
 Fixed image frames use the existing row-height CSS variable while captions grow in natural button flow; the engine's mathematical output is unchanged.
 Interface arrows and quotation/ornament decoration are hidden from assistive technology.
 The viewer's native dialog occupies the browser top layer; its child scrim and panel share the fade while the native backdrop stays transparent.

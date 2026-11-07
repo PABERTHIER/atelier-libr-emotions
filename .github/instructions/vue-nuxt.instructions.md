@@ -26,19 +26,20 @@ Read the nearest implementation before choosing a new abstraction or treating an
 - Use `useLocalePath()` for internal page destinations and `useSwitchLocalePath()` for locale changes.
   Public assets and external URLs do not receive a locale prefix.
 - Reuse the existing Lenis integration and image/viewer components according to their actual contracts.
-  Native gallery images and the standalone `NuxtImg` wrapper have different delivery and prerender requirements.
+  `Image`, gallery tiles and the viewer use original public files; CSS owns display sizing.
+  Preview actions and failure feedback belong to `ImagePreviewButton` or the owning gallery/carousel, not the native `Image`.
   Route scrolling belongs to `app/router.options.ts`; destination focus belongs to `navigation-focus.client.ts`.
   Overlays use `useOverlayScrollLock()` leases, not independent body-style mutations.
 
 ## Select Additional Guidance
 
-| Concern in the task                                     | Guidance                                                                                                                    |
-| ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Gallery collection or navigation sequence               | [gallery-page](../../.agents/skills/gallery-page/SKILL.md)                                                                  |
-| Locale messages or translated consumers                 | [i18n](../../.agents/skills/i18n/SKILL.md)                                                                                  |
-| Page metadata, origins or indexing                      | [seo](../../.agents/skills/seo/SKILL.md) and [SEO maintenance](../../.agents/docs/SEO.md)                                   |
-| Artwork paths, optimized images or prerender transforms | [artwork-assets](../../.agents/skills/artwork-assets/SKILL.md)                                                              |
-| Appearance, responsive layout or interaction            | [styling instructions](styles.instructions.md) and [accessibility instructions](accessibility.instructions.md), as relevant |
+| Concern in the task                                   | Guidance                                                                                                                    |
+| ----------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Gallery collection or navigation sequence             | [gallery-page](../../.agents/skills/gallery-page/SKILL.md)                                                                  |
+| Locale messages or translated consumers               | [i18n](../../.agents/skills/i18n/SKILL.md)                                                                                  |
+| Page metadata, origins or indexing                    | [seo](../../.agents/skills/seo/SKILL.md) and [SEO maintenance](../../.agents/docs/SEO.md)                                   |
+| Artwork paths, native images or static asset delivery | [artwork-assets](../../.agents/skills/artwork-assets/SKILL.md)                                                              |
+| Appearance, responsive layout or interaction          | [styling instructions](styles.instructions.md) and [accessibility instructions](accessibility.instructions.md), as relevant |
 
 Load only the guidance needed for the change.
 Use [AGENTS.md verification](../../AGENTS.md#verification) for the relevant lint, build, generation and browser checks.

@@ -1,112 +1,94 @@
 <template>
-  <div class="image">
-    <a :href="src" :aria-label="imageLabel" :data-tooltip="title || undefined">
-      <NuxtImg
-        :key="imageKey"
-        :src="src"
-        :sizes="sizes"
-        :alt="alt"
-        densities="x1 x2"
-        loading="lazy"
-        placeholder
-        :style="{ maxHeight }"
-        :class="{ 'image-unavailable': imageError }"
-        v-on="imageEvents" />
-      <span v-if="imageError" role="status" class="image-error">
-        {{ t('components.image_preview_modal.image_unavailable') }}
-      </span>
-    </a>
-  </div>
+  <img
+    :key="src"
+    ref="image"
+    class="image"
+    :class="{ 'image--loading': skeleton && pending }"
+    :src="src"
+    :alt="alt"
+    :width="width ?? dimensions?.[0]"
+    :height="height ?? dimensions?.[1]"
+    :loading="loading"
+    decoding="async"
+    @load="settle"
+    @error="settle" />
 </template>
 
 <script setup lang="ts">
-import { useBreakpoints } from '@vueuse/core'
+import { imageDimensions } from '~/data/imageDimensions'
 
-const props = defineProps({
-  src: {
-    type: String,
-    required: true,
-  },
-  sizes: {
-    type: String,
-    required: true,
-  },
-  maxHeight: {
-    type: String,
-    required: false,
-    default: '200px',
-  },
-  title: {
-    type: String,
-    required: false,
-    default: '',
-  },
-  alt: {
-    type: String,
-    required: true,
-    validator: (value: string) => value.trim().length > 0,
-  },
-})
+const {
+  src,
+  alt,
+  width = undefined,
+  height = undefined,
+  loading = 'lazy',
+  skeleton = true,
+} = defineProps<{
+  src: string
+  alt: string
+  width?: number | string
+  height?: number | string
+  loading?: 'lazy' | 'eager'
+  skeleton?: boolean
+}>()
 
-const { t } = useI18n()
+const dimensions = computed(() => imageDimensions[src])
 
-const imageBreakpoint = useBreakpoints(useImage().options.screens, {
-  ssrWidth: 1024,
-}).active()
+const image = ref<HTMLImageElement | null>(null)
+const pending = ref(false)
 
-const imageKey = computed(
-  () => `${props.src}:${props.sizes}:${imageBreakpoint.value}`
-)
+let placeholderTimer: ReturnType<typeof setTimeout> | undefined
 
-const imageError = ref(false)
-const imageLabel = computed(() => {
-  const originalLabel = t('components.image.open_original', {
-    title: props.title || props.alt,
-  })
+function settle() {
+  clearTimeout(placeholderTimer)
+  pending.value = false
+}
 
-  return imageError.value
-    ? `${t('components.image_preview_modal.image_unavailable')}. ${originalLabel}`
-    : originalLabel
-})
+function trackLoading() {
+  settle()
 
-const imageEvents = computed(() => {
-  const key = imageKey.value
-
-  return {
-    load: () => {
-      if (imageKey.value === key) {
-        imageError.value = false
-      }
-    },
-    error: () => {
-      if (imageKey.value === key) {
-        imageError.value = true
-      }
-    },
+  if (!skeleton || image.value?.complete) {
+    return
   }
-})
 
-watch(imageKey, () => {
-  imageError.value = false
-})
+  // Avoid a placeholder flash for cached and quickly loaded images
+  // Keep the native image visible for progressive loading and no-JS use
+  placeholderTimer = setTimeout(() => {
+    pending.value = !image.value?.complete
+  }, 150)
+}
+
+onMounted(trackLoading)
+
+watch([() => src, () => skeleton], trackLoading, { flush: 'post' })
+
+onBeforeUnmount(settle)
 </script>
 
 <style lang="scss" scoped>
 .image {
-  :deep(a) {
-    display: block;
-    line-height: 0;
-  }
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
 
-  :deep(.image-unavailable) {
-    display: none;
+  &--loading {
+    background: linear-gradient(
+      110deg,
+      var(--color-surface-warm) 20%,
+      var(--color-skeleton-highlight) 50%,
+      var(--color-surface-warm) 80%
+    );
+    background-size: 200% 100%;
+    border-radius: $radius-control;
   }
+}
 
-  .image-error {
-    display: block;
-    line-height: 1.5;
-    color: var(--color-subtle);
-    overflow-wrap: anywhere;
+@media screen and (prefers-reduced-motion: no-preference) {
+  .image--loading {
+    animation: skeletonShimmer 1.8s ease-in-out infinite;
   }
 }
 </style>

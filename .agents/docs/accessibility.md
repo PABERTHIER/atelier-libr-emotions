@@ -119,9 +119,12 @@ Never prefix public artwork with the configured SEO/I18n origin: localhost is no
 At an unchanged width, translated metadata is refreshed in rows and snapshots without rerunning size calculations.
 Changing source identities invalidates the input cache; row heights, aspect-based sizing, gaps and stabilization formulas remain unchanged.
 Native tiles check cached images and ignore stale events by image identity.
-The optimized `Image` wrapper remounts NuxtImg for source, size hints or active image-breakpoint changes and ignores obsolete load/error callbacks.
-A new generation clears errors and retries loading; even a successfully loaded image may briefly show its normal placeholder after a breakpoint remount.
-A failed full-resolution preload is not reported as a successful compressed image.
+`Image` uses a native image with intrinsic dimensions and localized alt text; CSS resize does not remount a successful image.
+Its optional delayed skeleton keeps the image visible, handles cached completion and clears its timer on source changes and unmount.
+`ImagePreviewButton` supplies a named native button with dialog intent and visible localized failure feedback, rejecting stale events by element identity.
+Standalone pages use `useImagePreview()` and the existing modal to preserve the actual invoking control and focus return.
+Home carousel buttons stay mounted while frames change; viewer navigation stays within the clicked group without updating the background collage or its persistent pause setting.
+The collage remains paused throughout preview opening and closing, then retains its normal focus/hover/motion pause behavior.
 
 ## Page verification
 

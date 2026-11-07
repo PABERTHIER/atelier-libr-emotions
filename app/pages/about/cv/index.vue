@@ -23,14 +23,13 @@
           aria-describedby="cv-document-description"
           class="cv-page__iframe" />
         <div v-else class="cv-page__previews">
-          <Image
-            v-for="number in 2"
-            :key="number"
-            :src="`/cv/page_${number}.webp`"
-            sizes="sm:300px, md:450px, lg:600px"
-            max-height="93.75rem"
-            :title="t(`pages.cv.page_${number}_title`)"
-            :alt="t(`pages.cv.page_${number}_alt`)" />
+          <ImagePreviewButton
+            v-for="(image, index) in previewImages"
+            :key="image.src"
+            class="cv-page__preview"
+            :image="image"
+            loading="eager"
+            @select="openViewer(index, $event)" />
         </div>
       </div>
 
@@ -53,6 +52,14 @@
         </a>
       </div>
     </section>
+    <ImagePreviewModal
+      v-if="viewerImage"
+      :image="viewerImage"
+      :images="previewImages"
+      :visible="viewerVisible"
+      :opener="viewerOpener"
+      @select="selectImage"
+      @close="closeViewer" />
 
     <section class="cv-page__text-version" aria-labelledby="cv-text-title">
       <h2 id="cv-text-title" class="sr-only">
@@ -105,11 +112,30 @@
 </template>
 
 <script setup lang="ts">
+import type { ImageSource } from '~/types/image'
+
 const { t } = useI18n()
 
 const pdfPath = '/documents/CV_Berthier_Véronique.pdf'
 
 const isTouchDevice = ref(false)
+
+const previewImages = computed<ImageSource[]>(() =>
+  [1, 2].map(number => ({
+    src: `/cv/page_${number}.webp`,
+    title: t(`pages.cv.page_${number}_title`),
+    alt: t(`pages.cv.page_${number}_alt`),
+  }))
+)
+
+const {
+  viewerImage,
+  viewerVisible,
+  viewerOpener,
+  openViewer,
+  selectImage,
+  closeViewer,
+} = useImagePreview(() => previewImages.value)
 
 const transcriptGroups = [
   { id: 'experience', count: 7 },
@@ -178,16 +204,23 @@ useHead(usePageSeo('about_cv'))
 
   &__previews {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: $space-20;
     min-width: 0;
 
     :deep(img) {
       display: block;
+      width: 100%;
       max-width: 100%;
       height: auto;
       margin-inline: auto;
       object-fit: contain;
     }
+  }
+
+  &__preview {
+    width: 300px;
+    margin-inline: auto;
   }
 
   &__actions {
@@ -307,6 +340,18 @@ useHead(usePageSeo('about_cv'))
     li + li {
       margin-top: $space-15;
     }
+  }
+}
+
+@media (min-width: $md) {
+  .cv-page__preview {
+    width: 450px;
+  }
+}
+
+@media (min-width: $lg) {
+  .cv-page__preview {
+    width: 600px;
   }
 }
 

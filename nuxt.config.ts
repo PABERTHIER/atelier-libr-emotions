@@ -2,7 +2,6 @@
 import { pageSeo, robotsContent } from './app/data/seo'
 import type { PageSeoDefinition } from './app/types/seo'
 import { artistName, externalLinks, siteName } from './app/data/site'
-import { generateImageRoutes } from './app/utils/generateImageRoutes'
 
 // Production can override the Vercel fallback with NUXT_SITE_URL at build time
 const prodUrl = (
@@ -79,24 +78,12 @@ export default defineNuxtConfig({
     },
   },
   ssr: true,
-  nitro: {
-    prerender: {
-      routes: generateImageRoutes(),
-    },
-  },
   components: [
     {
       path: '~/components',
       pathPrefix: false,
     },
   ],
-  image: {
-    provider: 'ipx',
-    format: ['webp', 'jpg', 'jpeg', 'png'],
-    screens: {
-      xs: 320,
-    },
-  },
   plugins: [],
   build: {
     transpile: [],
@@ -105,7 +92,6 @@ export default defineNuxtConfig({
     strict: true,
   },
   modules: [
-    '@nuxt/image',
     '@nuxt/icon',
     '@nuxtjs/i18n',
     '@nuxtjs/seo',

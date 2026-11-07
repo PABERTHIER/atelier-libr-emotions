@@ -65,11 +65,10 @@ Consult `package.json` for versions; this table groups its current direct entrie
 | `nuxt`                                                                                   | Routing, Vue application build, SSR and prerendering                                                |
 | `@nuxtjs/i18n`                                                                           | French/English messages and prefixed routes                                                         |
 | `@nuxtjs/seo`                                                                            | Site metadata, sitemap and structured-data modules                                                  |
-| `@nuxt/image`                                                                            | NuxtImg and IPX transforms for optimized-image consumers                                            |
 | `@nuxt/icon`, `@iconify-json/lucide`                                                     | Standalone Icon module with explicitly bundled Lucide interface icons and the custom SVG collection |
 | `@nuxt/fonts`                                                                            | Font integration; inspect source and browser output for actual requests and resolved families       |
 | `lenis`                                                                                  | Client smooth-scroll integration                                                                    |
-| `@vueuse/core`                                                                           | Responsive breakpoint utilities used by `useScreenSize()`                                           |
+| `@vueuse/core`                                                                           | Gallery breakpoint utilities and the viewer's reduced-motion preference                             |
 | `rolldown`                                                                               | Build tooling satisfying Nuxt's Rolldown peer dependency                                            |
 | `@nuxt/eslint`, `eslint`, `eslint-config-prettier`, `eslint-plugin-prettier`, `prettier` | Linting and formatting configuration/tooling                                                        |
 | `typescript`, `vue-tsc`, `@types/node`                                                   | Nuxt, Vue and Node type checking                                                                    |
@@ -99,14 +98,13 @@ atelier-libr-emotions/
 │   │   ├── layout/               # Header, Menu, Footer
 │   │   └── common/              # Shared gallery and page components
 │   │       ├── ImageGrid.vue     # Responsive justified gallery rows
-│   │       ├── Image.vue         # NuxtImg wrapper
+│   │       ├── Image.vue         # Native image with intrinsic dimensions and optional skeleton
 │   │       ├── PageTitle.vue     # Page heading
 │   │       ├── PageHeaderOrnament.vue
 │   │       └── PageNavigation.vue # Previous/Next navigation
 │   ├── composables/              # screen-size, shared logic
 │   ├── data/                     # Site identity, page SEO registry and image dimensions
 │   ├── types/                    # TypeScript types (ImageSource, Heights, PageNavigation)
-│   ├── utils/                    # generateImageRoutes for pre-rendering
 │   ├── styles/                   # Tokens, base rules, keyframes and shared classes
 │   ├── layouts/                  # Default layout
 │   └── app.vue                   # Root component
@@ -137,7 +135,6 @@ atelier-libr-emotions/
 | Metadata and module setup        | [usePageSeo.ts](app/composables/usePageSeo.ts), [seo.ts](app/data/seo.ts), [app.vue](app/app.vue) and [nuxt.config.ts](nuxt.config.ts)                        | Registry/composable page metadata, root I18n links, origins and indexing |
 | Messages                         | [fr-FR.json](i18n/locales/fr-FR.json), [en-US.json](i18n/locales/en-US.json)                                                                                  | Matching message identities and interpolation                            |
 | Published assets                 | [public](public/)                                                                                                                                             | Original painting, ceramic, CV and other public files                    |
-| Explicit IPX coverage            | [generateImageRoutes.ts](app/utils/generateImageRoutes.ts)                                                                                                    | Transformed routes consumed by Nitro prerendering                        |
 | Tooling and CI                   | [package.json](package.json), [CI workflow](.github/workflows/ci.yml), [eslint.config.mjs](eslint.config.mjs)                                                 | Available scripts, immutable install and lint                            |
 
 The layout already supplies `<main id="page-container">`; do not add a nested main in a page.
@@ -248,9 +245,12 @@ Inspect message syntax for `|` and `@` rather than treating them as ordinary pun
 
 New gallery artwork uses supplied WebP files with exact filename casing.
 Keep existing JPEG, GIF, SVG and document consumers intact when still used.
-Gallery tiles and the viewer use native images, while the standalone `Image` component uses `NuxtImg` with sizes, densities and a placeholder.
-Gallery row heights are layout inputs, not a list of IPX widths.
-Add explicit transformed routes when the consumer requires them; original-file availability does not prove static variant coverage.
+Gallery tiles, the viewer and the standalone `Image` component serve original public files through native images.
+`Image` requires localized `alt` and `src`, supplies intrinsic dimensions from the catalog and accepts optional `width`, `height`, `loading` and `skeleton` props.
+Its default is lazy loading; the delayed skeleton leaves the native image visible, and CSS owns display sizes and proportions.
+`ImagePreviewButton` owns preview semantics and visible failure feedback; `useImagePreview()` supplies selection state and the actual opener to `ImagePreviewModal`.
+`Carousel` owns home sequences, frames, controls and rotation; preview navigation stays within the clicked group without changing the background collage.
+Gallery row heights are layout inputs, without derivative files or a custom image-route configuration.
 
 ## Mobile Experience Acceptance Criteria
 
@@ -287,7 +287,7 @@ Use the skill relevant to the task and read linked references only when needed.
 | Gallery pages        | [gallery-page](.agents/skills/gallery-page/SKILL.md)           | Create, extend or review collections and their navigation |
 | Internationalization | [i18n](.agents/skills/i18n/SKILL.md)                           | FR/EN keys, reactive copy and localized destinations      |
 | Nuxt and Vue         | [nuxt-vue-patterns](.agents/skills/nuxt-vue-patterns/SKILL.md) | Components, TypeScript, SSR and client lifecycle          |
-| Artwork assets       | [artwork-assets](.agents/skills/artwork-assets/SKILL.md)       | Exact paths, original images and IPX prerendering         |
+| Artwork assets       | [artwork-assets](.agents/skills/artwork-assets/SKILL.md)       | Exact paths, native images and original-file delivery     |
 | Accessibility        | [accessibility](.agents/skills/accessibility/SKILL.md)         | Scoped audits, semantics, controls, focus and motion      |
 | SEO                  | [seo](.agents/skills/seo/SKILL.md)                             | Reactive page metadata, alternates and social artwork     |
 

@@ -19,7 +19,6 @@ The registry is explicitly typed as `Record<PageName, PageSeoDefinition>`; route
 | Origins, indexability, app icons, sitemap and Person identity                      | [nuxt.config.ts](../../nuxt.config.ts)                                          |
 | Standalone localized errors and recovery                                           | [error.vue](../../app/error.vue), `error.*` messages                            |
 | Authored crawler policy                                                            | [public/_robots.txt](../../public/_robots.txt)                                  |
-| Existing optimized-image prerender routes                                          | [generateImageRoutes.ts](../../app/utils/generateImageRoutes.ts)                |
 
 ## Page Metadata And Images
 
@@ -188,10 +187,10 @@ There is no AI Markdown publishing policy or shared old-asset storage to support
 With AI Ready disabled, no new `Content-Signal` directive is added; the existing content-use preference remains.
 Generated-image signing secrets are unnecessary while the OG image service is disabled.
 
-Server builds retain explicit IPX prerender routes, without a whole-site root crawl.
+Server builds use Nuxt's standard output without custom image-prerender routes or an image provider.
 `yarn generate` additionally crawls localized pages for static validation.
-Native gallery images need original-file availability; the optimized `Image` wrapper also needs its actual transforms and placeholders.
-Use [artwork assets](../skills/artwork-assets/SKILL.md) rather than inferring IPX sizes from gallery row heights.
+All native image consumers need original-file availability, including images revealed by carousel or viewer navigation.
+Use [artwork assets](../skills/artwork-assets/SKILL.md) to verify original paths, measured dimensions and static delivery.
 The existing Nuxt Fonts integration and stylesheet ownership are unchanged.
 On a Windows network with an organizational certificate chain, Node 24's `--use-system-ca` can provide trusted system certificates; do not disable TLS verification to build.
 
@@ -210,7 +209,7 @@ CI installs locked dependencies and runs lint; it does not replace production va
 - Verify language redirects, unknown-route 404s, generic errors, no canonical/hreflang on errors and recovery in both languages.
 - Exercise the error shell at 320x568, desktop and short landscape widths, 200% text enlargement, keyboard/touch and reduced motion.
 - Check console warnings and hydration, distinguishing intentional Twitter-card validation warnings from application defects.
-- Inspect generated localized HTML and actual original/IPX image responses; static deployment of `/` requires a language-redirect strategy outside prerendered content.
+- Inspect generated localized HTML and actual original-image responses; static deployment of `/` requires a language-redirect strategy outside prerendered content.
 
 After deployment, inspect public robots/sitemaps/assets and social cards, validate sample JSON-LD with Schema.org Validator and Google's Rich Results Test, and submit the sitemap index through the actual search-console accounts.
 Valid structured data does not guarantee a rich result.
