@@ -88,8 +88,11 @@ Reduced motion shows the full intro text without typing and removes the fade.
 Welcome keeps its logo beside the text and temporarily hides the scrollbar's presentation without locking the document.
 Home artwork indices change on a five-second timer, preserving the three curated sequences.
 Previous/next controls offer manual browsing; a pause/resume action with a changing localized name persistently controls automatic rotation.
-Artwork hover, keyboard focus within the carousel, a hidden document and persistent pause stop its timer and floating.
-An explicit resume can restart while that control keeps focus; reduced motion keeps previous/next and hides the automatic-rotation control.
+Mouse hover and visible keyboard focus within the artwork area temporarily stop its timer and floating; hovering or focusing the controls does not.
+Pointer preview dismissal restores focus without introducing a keyboard pause; keyboard preview dismissal retains the artwork's focus pause.
+The rotation icon and localized action follow the effective rotation state, including temporary pauses.
+An explicit resume takes precedence over artwork hover/focus pauses; hidden documents, open/closing previews and persistent pause still stop rotation.
+Reduced motion keeps previous/next and hides the automatic-rotation control.
 Selected indices and persistent pause survive language changes and return navigation through named Nuxt state, while `Carousel` owns and cleans up timers/listeners on unmount.
 Manual browsing pauses automatic changes and politely announces the selected titles; automatic rotation has no live announcement.
 Soft opacity transitions avoid abrupt swaps and disappear under reduced motion.

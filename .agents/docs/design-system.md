@@ -141,8 +141,9 @@ The frame and hover treatment are drawn inside the independently usable 44px tou
 Menu structure uses `site-menu__toggle`/`site-menu__control`, `desktop-navigation__trigger--current` and explicit desktop/mobile title classes.
 Global CSS reduces animation/transition duration and iteration count; Lenis and route scrolling check the motion preference.
 `Carousel` owns the home's three curated artwork tracks, five-second rotation, persistent pause/resume control and previous/next controls.
-Artwork hover, carousel focus, a hidden document and persistent pause stop rotation and floating; manual selection pauses the timer.
-Reduced motion stops automatic rotation/floating and omits the rotation control, retaining previous/next; explicit resume can restart while its control keeps focus.
+Mouse hover and visible keyboard focus within the artwork area temporarily stop rotation and floating; control hover/focus does not, and manual selection pauses the timer.
+The rotation icon and localized action follow effective rotation; explicit resume takes precedence over artwork hover/focus pauses while document visibility, previews and persistent pause retain their stops.
+Reduced motion stops automatic rotation/floating and omits the rotation control, retaining previous/next.
 The complete keyed frame fades on carousel changes while its floating wrapper and preview button stay mounted, preserving outgoing dimensions and animation continuity.
 Its modal browses the clicked group independently, leaving the three displayed frames unchanged and restoring focus to the same preview button.
 The contact page retains static particles instead of unbounded decorative motion.
