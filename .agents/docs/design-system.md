@@ -144,7 +144,8 @@ Global CSS reduces animation/transition duration and iteration count; Lenis and 
 Mouse hover and visible keyboard focus within the artwork area temporarily stop rotation and floating; control hover/focus does not, and manual selection pauses the timer.
 The rotation icon and localized action follow effective rotation; explicit resume takes precedence over artwork hover/focus pauses while document visibility, previews and persistent pause retain their stops.
 Reduced motion stops automatic rotation/floating and omits the rotation control, retaining previous/next.
-The complete keyed frame fades on carousel changes while its floating wrapper and preview button stay mounted, preserving outgoing dimensions and animation continuity.
+The white carousel frames, shadows, floating wrappers and preview buttons stay mounted while only the keyed images overlap and fade on changes.
+Frame width and height resize smoothly to each artwork's complete proportions; outgoing images are hidden from assistive technology during their brief overlap, and reduced motion removes the transitions.
 Its modal browses the clicked group independently, leaving the three displayed frames unchanged and restoring focus to the same preview button.
 The contact page retains static particles instead of unbounded decorative motion.
 The work-in-progress illustration uses a still for SSR/initial markup and reduced motion; after mount it plays the original GIF automatically when motion is allowed.

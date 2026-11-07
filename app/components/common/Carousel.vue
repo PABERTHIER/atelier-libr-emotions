@@ -35,15 +35,19 @@
             @click="openArtwork(index, $event)"
             @load.capture="updateImageState(index, $event)"
             @error.capture="updateImageState(index, $event)">
-            <Transition
-              name="artwork-change"
-              mode="out-in"
-              @after-enter="updateImageState(index)">
-              <span
-                :key="artwork.src"
-                class="carousel__frame"
-                :style="{ '--artwork-aspect': artwork.aspect }">
+            <span
+              class="carousel__frame"
+              :class="{
+                'carousel__frame--unavailable': imageFailures.has(artwork.src),
+              }"
+              :style="{ '--artwork-aspect': artwork.aspect }">
+              <Transition
+                name="artwork-change"
+                @before-enter="showEnteringImage"
+                @before-leave="hideLeavingImage"
+                @after-enter="updateImageState(index)">
                 <Image
+                  :key="artwork.src"
                   :src="artwork.src"
                   :alt="artwork.alt"
                   loading="eager"
@@ -52,14 +56,14 @@
                       artwork.src
                     ),
                   }" />
-                <span
-                  v-if="imageFailures.has(artwork.src)"
-                  role="status"
-                  class="carousel__error">
-                  {{ t('components.image_preview_modal.image_unavailable') }}
-                </span>
+              </Transition>
+              <span
+                v-if="imageFailures.has(artwork.src)"
+                role="status"
+                class="carousel__error">
+                {{ t('components.image_preview_modal.image_unavailable') }}
               </span>
-            </Transition>
+            </span>
           </button>
         </div>
       </div>
@@ -357,11 +361,22 @@ function imageLabel(image: ImageSource) {
     : label
 }
 
+function showEnteringImage(element: Element) {
+  element.removeAttribute('aria-hidden')
+}
+
+function hideLeavingImage(element: Element) {
+  element.setAttribute('aria-hidden', 'true')
+}
+
 function updateImageState(index: number, event?: Event) {
   const artwork = currentArtworks.value[index]!
-  const image = carousel.value?.querySelector<HTMLImageElement>(
-    `[data-carousel-track="${artwork.id}"] img`
-  )
+  const image =
+    event?.target instanceof HTMLImageElement
+      ? event.target
+      : carousel.value?.querySelector<HTMLImageElement>(
+          `[data-carousel-track="${artwork.id}"] img:not([aria-hidden="true"])`
+        )
 
   if (
     !image ||
@@ -464,24 +479,33 @@ onBeforeUnmount(() => {
   }
 
   &__frame {
-    display: block;
-    box-sizing: content-box;
-    width: min(
+    --artwork-width: min(
       var(--artwork-max-width),
       calc(var(--artwork-max-height) * var(--artwork-aspect))
     );
+    position: relative;
+    display: block;
+    box-sizing: content-box;
+    width: var(--artwork-width);
+    height: calc(var(--artwork-width) / var(--artwork-aspect));
     padding: var(--artwork-padding);
     border-radius: $radius-panel;
     background: var(--color-surface);
     box-shadow: 0 $space-20 $space-40 $box-shadow-color;
     overflow-wrap: anywhere;
 
-    :deep(img) {
-      display: block;
-      width: 100%;
-      max-width: 100%;
+    &--unavailable {
       height: auto;
-      aspect-ratio: var(--artwork-aspect);
+    }
+
+    :deep(img) {
+      position: absolute;
+      top: var(--artwork-padding);
+      left: var(--artwork-padding);
+      display: block;
+      width: calc(100% - 2 * var(--artwork-padding));
+      max-width: none;
+      height: calc(100% - 2 * var(--artwork-padding));
       object-fit: contain;
     }
   }
@@ -730,9 +754,18 @@ onBeforeUnmount(() => {
     transition: opacity $transition-viewer;
   }
 
-  .artwork-change-enter-from,
-  .artwork-change-leave-to {
+  .artwork-change-enter-active {
+    z-index: 1;
+  }
+
+  .artwork-change-enter-from {
     opacity: 0;
+  }
+
+  .carousel__frame {
+    transition:
+      width $transition-viewer,
+      height $transition-viewer;
   }
 }
 

@@ -95,7 +95,8 @@ An explicit resume takes precedence over artwork hover/focus pauses; hidden docu
 Reduced motion keeps previous/next and hides the automatic-rotation control.
 Selected indices and persistent pause survive language changes and return navigation through named Nuxt state, while `Carousel` owns and cleans up timers/listeners on unmount.
 Manual browsing pauses automatic changes and politely announces the selected titles; automatic rotation has no live announcement.
-Soft opacity transitions avoid abrupt swaps and disappear under reduced motion.
+Only the pictures transition inside persistent carousel frames, keeping their white surrounds and shadows visible while the frames resize to the new artwork proportions.
+Soft opacity and size transitions disappear under reduced motion.
 Proportional frames reserve intrinsic image geometry through placeholders, keep complete artwork and use 10px white surrounds, reduced to 5px through 640px.
 The ceramic frame keeps its clamped left edge across image changes.
 Controls sit in the lower-right artwork space on desktop and centered beneath it through 1024px; compact tablet actions group underneath, with centered wrapping below 420px.
