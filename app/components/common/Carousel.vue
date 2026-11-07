@@ -4,9 +4,7 @@
     class="carousel"
     :class="{ 'carousel--paused': !isRotating }"
     :aria-labelledby="titleId"
-    :aria-describedby="descriptionId"
-    @focusin="isFocused = true"
-    @focusout="handleCarouselFocusOut">
+    :aria-describedby="descriptionId">
     <h2 :id="titleId" class="sr-only">{{ t('pages.main.carousel.title') }}</h2>
     <p :id="descriptionId" class="sr-only">
       {{ t('pages.main.carousel.description') }}
@@ -14,10 +12,14 @@
     <div class="carousel__artworks-viewport">
       <div
         :id="artworksId"
+        ref="artworks"
         class="carousel__artworks"
         aria-live="off"
-        @mouseenter="isHovered = true"
-        @mouseleave="isHovered = false">
+        @pointerenter="handleArtworkPointerEnter"
+        @pointerleave="isHovered = false"
+        @pointerdown="isFocused = false"
+        @focusin="handleArtworkFocusIn"
+        @focusout="handleArtworkFocusOut">
         <div
           v-for="(artwork, index) in currentArtworks"
           :key="artwork.id"
@@ -33,15 +35,19 @@
             @click="openArtwork(index, $event)"
             @load.capture="updateImageState(index, $event)"
             @error.capture="updateImageState(index, $event)">
-            <Transition
-              name="artwork-change"
-              mode="out-in"
-              @after-enter="updateImageState(index)">
-              <span
-                :key="artwork.src"
-                class="carousel__frame"
-                :style="{ '--artwork-aspect': artwork.aspect }">
+            <span
+              class="carousel__frame"
+              :class="{
+                'carousel__frame--unavailable': imageFailures.has(artwork.src),
+              }"
+              :style="{ '--artwork-aspect': artwork.aspect }">
+              <Transition
+                name="artwork-change"
+                @before-enter="showEnteringImage"
+                @before-leave="hideLeavingImage"
+                @after-enter="updateImageState(index)">
                 <Image
+                  :key="artwork.src"
                   :src="artwork.src"
                   :alt="artwork.alt"
                   loading="eager"
@@ -50,14 +56,14 @@
                       artwork.src
                     ),
                   }" />
-                <span
-                  v-if="imageFailures.has(artwork.src)"
-                  role="status"
-                  class="carousel__error">
-                  {{ t('components.image_preview_modal.image_unavailable') }}
-                </span>
+              </Transition>
+              <span
+                v-if="imageFailures.has(artwork.src)"
+                role="status"
+                class="carousel__error">
+                {{ t('components.image_preview_modal.image_unavailable') }}
               </span>
-            </Transition>
+            </span>
           </button>
         </div>
       </div>
@@ -81,7 +87,7 @@
         :data-tooltip="rotationLabel"
         @click="toggleRotation">
         <Icon
-          :name="isPaused ? 'lucide:play' : 'lucide:pause'"
+          :name="isRotating ? 'lucide:pause' : 'lucide:play'"
           aria-hidden="true" />
       </button>
       <button
@@ -113,6 +119,7 @@ import type { ImageSource } from '~/types/image'
 const { t } = useI18n()
 const nuxtApp = useNuxtApp()
 const carousel = useTemplateRef('carousel')
+const artworks = useTemplateRef('artworks')
 const carouselId = useId()
 
 const titleId = `${carouselId}-title`
@@ -184,6 +191,7 @@ const isPaused = useState('home-carousel-paused', () => false)
 
 const isHovered = ref(false)
 const isFocused = ref(false)
+const isPlaybackRequested = ref(false)
 const isPageVisible = ref(true)
 const prefersReducedMotion = ref(false)
 const hasManualSelection = ref(false)
@@ -229,20 +237,24 @@ const artworkAnnouncement = computed(() =>
 const isRotating = computed(
   () =>
     !isPaused.value &&
-    !isHovered.value &&
-    !isFocused.value &&
+    (isPlaybackRequested.value || (!isHovered.value && !isFocused.value)) &&
     isPageVisible.value &&
     !prefersReducedMotion.value &&
     !viewerVisible.value &&
     !isViewerClosing.value
 )
 const rotationLabel = computed(() =>
-  t(isPaused.value ? 'pages.main.carousel.resume' : 'pages.main.carousel.pause')
+  t(
+    isRotating.value
+      ? 'pages.main.carousel.pause'
+      : 'pages.main.carousel.resume'
+  )
 )
 
 let rotationTimer: ReturnType<typeof setInterval> | undefined
 let motionPreference: MediaQueryList | undefined
 let disposed = false
+let viewerOpenedWithKeyboard = false
 
 function stopRotation() {
   clearInterval(rotationTimer)
@@ -264,12 +276,8 @@ function changeArtworks(direction: -1 | 1) {
 }
 
 function toggleRotation() {
-  isPaused.value = !isPaused.value
-
-  if (!isPaused.value) {
-    // An explicit restart can run while this control retains keyboard focus
-    isFocused.value = false
-  }
+  isPaused.value = isRotating.value
+  isPlaybackRequested.value = !isPaused.value
 }
 
 function syncRotation() {
@@ -281,16 +289,23 @@ function syncRotation() {
   }
 }
 
-function handleCarouselFocusOut(event: FocusEvent) {
-  if (
-    event.currentTarget instanceof HTMLElement &&
-    event.relatedTarget instanceof Node &&
-    event.currentTarget.contains(event.relatedTarget)
-  ) {
-    return
-  }
+function handleArtworkPointerEnter(event: PointerEvent) {
+  isHovered.value = event.pointerType === 'mouse'
+}
 
-  isFocused.value = false
+function handleArtworkFocusIn(event: FocusEvent) {
+  isFocused.value =
+    event.target instanceof HTMLElement &&
+    event.target.matches(':focus-visible')
+}
+
+function handleArtworkFocusOut(event: FocusEvent) {
+  const next = event.relatedTarget
+
+  isFocused.value =
+    next instanceof HTMLElement &&
+    artworks.value?.contains(next) === true &&
+    next.matches(':focus-visible')
 }
 
 function syncVisibility() {
@@ -311,6 +326,9 @@ function openArtwork(index: number, event: MouseEvent) {
   }
 
   viewerTrack.value = index
+  viewerOpenedWithKeyboard = event.detail === 0
+  isHovered.value = false
+
   openViewer(currentIndices.value[index]!, event)
 }
 
@@ -322,6 +340,13 @@ async function closeArtworkViewer() {
   await nuxtApp.$overlayScroll.whenUnlocked()
 
   if (!disposed) {
+    // Modal focus return must not turn a pointer preview into a keyboard pause
+    isFocused.value =
+      viewerOpenedWithKeyboard &&
+      document.activeElement instanceof HTMLElement &&
+      artworks.value?.contains(document.activeElement) === true &&
+      document.activeElement.matches(':focus-visible')
+
     isViewerClosing.value = false
   }
 }
@@ -336,11 +361,22 @@ function imageLabel(image: ImageSource) {
     : label
 }
 
+function showEnteringImage(element: Element) {
+  element.removeAttribute('aria-hidden')
+}
+
+function hideLeavingImage(element: Element) {
+  element.setAttribute('aria-hidden', 'true')
+}
+
 function updateImageState(index: number, event?: Event) {
   const artwork = currentArtworks.value[index]!
-  const image = carousel.value?.querySelector<HTMLImageElement>(
-    `[data-carousel-track="${artwork.id}"] img`
-  )
+  const image =
+    event?.target instanceof HTMLImageElement
+      ? event.target
+      : carousel.value?.querySelector<HTMLImageElement>(
+          `[data-carousel-track="${artwork.id}"] img:not([aria-hidden="true"])`
+        )
 
   if (
     !image ||
@@ -443,24 +479,33 @@ onBeforeUnmount(() => {
   }
 
   &__frame {
-    display: block;
-    box-sizing: content-box;
-    width: min(
+    --artwork-width: min(
       var(--artwork-max-width),
       calc(var(--artwork-max-height) * var(--artwork-aspect))
     );
+    position: relative;
+    display: block;
+    box-sizing: content-box;
+    width: var(--artwork-width);
+    height: calc(var(--artwork-width) / var(--artwork-aspect));
     padding: var(--artwork-padding);
     border-radius: $radius-panel;
     background: var(--color-surface);
     box-shadow: 0 $space-20 $space-40 $box-shadow-color;
     overflow-wrap: anywhere;
 
-    :deep(img) {
-      display: block;
-      width: 100%;
-      max-width: 100%;
+    &--unavailable {
       height: auto;
-      aspect-ratio: var(--artwork-aspect);
+    }
+
+    :deep(img) {
+      position: absolute;
+      top: var(--artwork-padding);
+      left: var(--artwork-padding);
+      display: block;
+      width: calc(100% - 2 * var(--artwork-padding));
+      max-width: none;
+      height: calc(100% - 2 * var(--artwork-padding));
       object-fit: contain;
     }
   }
@@ -558,7 +603,6 @@ onBeforeUnmount(() => {
       --artwork-max-width: 150px;
       --artwork-max-height: 240px;
       top: $space-20;
-      left: 2.5%;
     }
 
     &__artwork--ceramics {
@@ -569,10 +613,10 @@ onBeforeUnmount(() => {
     }
 
     &__artwork--studio {
-      --artwork-max-width: 100px;
-      --artwork-max-height: 150px;
+      --artwork-max-width: 130px;
+      --artwork-max-height: 135px;
       top: 41.7%;
-      left: 31.25%;
+      left: 30.25%;
     }
   }
 }
@@ -580,14 +624,40 @@ onBeforeUnmount(() => {
 @media (max-width: $sm) {
   .carousel {
     --artwork-padding: #{$space-5};
-    width: 360px;
+    width: 450px;
 
     &__artworks {
-      height: 250px;
+      height: 320px;
     }
 
     &__frame {
       border-radius: $space-5;
+    }
+
+    &__artwork--paintings {
+      // Grow between 420px and 570px, then retain tablet sizes
+      --artwork-max-width: clamp(120px, calc(20vw + 36px), 150px);
+      left: 3.3%;
+    }
+
+    &__artwork--ceramics {
+      --artwork-max-width: clamp(100px, calc(20vw + 16px), 130px);
+      --artwork-left: 70%;
+      top: 20%;
+    }
+
+    &__artwork--studio {
+      --artwork-max-width: clamp(100px, calc(20vw + 16px), 130px);
+    }
+  }
+}
+
+@media (width < 420px) {
+  .carousel {
+    width: 360px;
+
+    &__artworks {
+      height: 250px;
     }
 
     &__controls {
@@ -684,9 +754,18 @@ onBeforeUnmount(() => {
     transition: opacity $transition-viewer;
   }
 
-  .artwork-change-enter-from,
-  .artwork-change-leave-to {
+  .artwork-change-enter-active {
+    z-index: 1;
+  }
+
+  .artwork-change-enter-from {
     opacity: 0;
+  }
+
+  .carousel__frame {
+    transition:
+      width $transition-viewer,
+      height $transition-viewer;
   }
 }
 

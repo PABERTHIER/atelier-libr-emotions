@@ -159,7 +159,7 @@
       },
       "carousel": {
         "title": "Preview of paintings, ceramics and the studio",
-        "description": "Three image selections change every five seconds. Rotation stops while you hover over the carousel or use the keyboard within it. Use the controls to pause rotation or browse the images. The slideshow does not rotate automatically when reduced motion is enabled.",
+        "description": "Three image selections change every five seconds. Rotation pauses while you hover over the images or focus them with the keyboard. Use the controls to browse the images, pause the slideshow or resume it, even while hovering or using the keyboard. The slideshow does not rotate automatically when reduced motion is enabled.",
         "previous": "Previous images",
         "next": "Next images",
         "pause": "Pause slideshow",

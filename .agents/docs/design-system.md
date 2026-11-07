@@ -141,9 +141,11 @@ The frame and hover treatment are drawn inside the independently usable 44px tou
 Menu structure uses `site-menu__toggle`/`site-menu__control`, `desktop-navigation__trigger--current` and explicit desktop/mobile title classes.
 Global CSS reduces animation/transition duration and iteration count; Lenis and route scrolling check the motion preference.
 `Carousel` owns the home's three curated artwork tracks, five-second rotation, persistent pause/resume control and previous/next controls.
-Artwork hover, carousel focus, a hidden document and persistent pause stop rotation and floating; manual selection pauses the timer.
-Reduced motion stops automatic rotation/floating and omits the rotation control, retaining previous/next; explicit resume can restart while its control keeps focus.
-The complete keyed frame fades on carousel changes while its floating wrapper and preview button stay mounted, preserving outgoing dimensions and animation continuity.
+Mouse hover and visible keyboard focus within the artwork area temporarily stop rotation and floating; control hover/focus does not, and manual selection pauses the timer.
+The rotation icon and localized action follow effective rotation; explicit resume takes precedence over artwork hover/focus pauses while document visibility, previews and persistent pause retain their stops.
+Reduced motion stops automatic rotation/floating and omits the rotation control, retaining previous/next.
+The white carousel frames, shadows, floating wrappers and preview buttons stay mounted while only the keyed images overlap and fade on changes.
+Frame width and height resize smoothly to each artwork's complete proportions; outgoing images are hidden from assistive technology during their brief overlap, and reduced motion removes the transitions.
 Its modal browses the clicked group independently, leaving the three displayed frames unchanged and restoring focus to the same preview button.
 The contact page retains static particles instead of unbounded decorative motion.
 The work-in-progress illustration uses a still for SSR/initial markup and reduced motion; after mount it plays the original GIF automatically when motion is allowed.
@@ -215,7 +217,8 @@ Through 1024px, compact controls sit centered below the artwork; at 420–1024px
 Desktop controls occupy the lower-right artwork space; actions retain their separate 500px bound and alignment with the copy.
 Frames derive proportional widths from `imageDimensions` within pixel-based width/height caps, reserving final geometry through placeholder loading and text enlargement.
 Their white surround is 10px, reducing to 5px through 640px; the ceramic left edge is anchored and clamped inside the collage.
-Tablet/mobile collage widths are 450px/360px, capped by available space.
+The collage is capped at 450px from 420px through tablet widths and 360px below 420px, always within available space.
+From 420px through 640px, painting/ceramic/studio width caps grow from 120px/100px to 150px/130px; with a 320px artwork area keeping frames clear of the controls.
 Below 320px, only `home-page__artworks-viewport` scrolls horizontally around a 280px-minimum canvas; the page itself stays within the viewport and controls remain below it.
 Contact uses a figure/caption, native social/mail links and named contact sections; decorative layers never take pointer or keyboard input.
 The caption wraps within its image-driven frame using inline-size containment and a 150px loading contribution, with an 8px gap, 1.5 line height and 15px/14px rem-based desktop/mobile type.
