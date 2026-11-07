@@ -590,7 +590,7 @@ onBeforeUnmount(() => {
 
     &__artwork--studio {
       --artwork-max-width: 130px;
-      --artwork-max-height: 150px;
+      --artwork-max-height: 135px;
       top: 41.7%;
       left: 30.25%;
     }
