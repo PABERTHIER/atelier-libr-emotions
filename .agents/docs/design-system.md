@@ -216,7 +216,8 @@ Through 1024px, compact controls sit centered below the artwork; at 420–1024px
 Desktop controls occupy the lower-right artwork space; actions retain their separate 500px bound and alignment with the copy.
 Frames derive proportional widths from `imageDimensions` within pixel-based width/height caps, reserving final geometry through placeholder loading and text enlargement.
 Their white surround is 10px, reducing to 5px through 640px; the ceramic left edge is anchored and clamped inside the collage.
-Tablet/mobile collage widths are 450px/360px, capped by available space.
+The collage is capped at 450px from 420px through tablet widths and 360px below 420px, always within available space.
+From 420px through 640px, painting/ceramic/studio width caps grow from 120px/100px to 150px/130px; with a 320px artwork area keeping frames clear of the controls.
 Below 320px, only `home-page__artworks-viewport` scrolls horizontally around a 280px-minimum canvas; the page itself stays within the viewport and controls remain below it.
 Contact uses a figure/caption, native social/mail links and named contact sections; decorative layers never take pointer or keyboard input.
 The caption wraps within its image-driven frame using inline-size containment and a 150px loading contribution, with an 8px gap, 1.5 line height and 15px/14px rem-based desktop/mobile type.

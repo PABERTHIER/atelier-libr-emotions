@@ -579,7 +579,6 @@ onBeforeUnmount(() => {
       --artwork-max-width: 150px;
       --artwork-max-height: 240px;
       top: $space-20;
-      left: 2.5%;
     }
 
     &__artwork--ceramics {
@@ -590,10 +589,10 @@ onBeforeUnmount(() => {
     }
 
     &__artwork--studio {
-      --artwork-max-width: 100px;
+      --artwork-max-width: 130px;
       --artwork-max-height: 150px;
       top: 41.7%;
-      left: 31.25%;
+      left: 30.25%;
     }
   }
 }
@@ -601,14 +600,40 @@ onBeforeUnmount(() => {
 @media (max-width: $sm) {
   .carousel {
     --artwork-padding: #{$space-5};
-    width: 360px;
+    width: 450px;
 
     &__artworks {
-      height: 250px;
+      height: 320px;
     }
 
     &__frame {
       border-radius: $space-5;
+    }
+
+    &__artwork--paintings {
+      // Grow between 420px and 570px, then retain tablet sizes
+      --artwork-max-width: clamp(120px, calc(20vw + 36px), 150px);
+      left: 3.3%;
+    }
+
+    &__artwork--ceramics {
+      --artwork-max-width: clamp(100px, calc(20vw + 16px), 130px);
+      --artwork-left: 70%;
+      top: 20%;
+    }
+
+    &__artwork--studio {
+      --artwork-max-width: clamp(100px, calc(20vw + 16px), 130px);
+    }
+  }
+}
+
+@media (width < 420px) {
+  .carousel {
+    width: 360px;
+
+    &__artworks {
+      height: 250px;
     }
 
     &__controls {
