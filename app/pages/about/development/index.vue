@@ -146,13 +146,13 @@ useHead(usePageSeo('about_development'))
     scroll-margin-block: $space-24;
   }
 
-  @media (max-width: $lg) {
+  @media (max-width: $breakpoint-laptop) {
     &__timeline::before {
       left: $space-14;
     }
   }
 
-  @media (max-width: $md) {
+  @media (max-width: $breakpoint-tablet) {
     &__timeline::before {
       left: calc(#{$space-10} - #{$border-width});
     }

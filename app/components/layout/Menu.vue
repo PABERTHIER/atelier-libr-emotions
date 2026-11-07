@@ -634,14 +634,15 @@ onBeforeUnmount(() => {
   }
 }
 
-@media (min-width: $xl) {
+@media (min-width: $breakpoint-desktop) {
   .desktop-navigation__trigger,
   .desktop-navigation__contact {
     font-size: 1.125rem;
   }
 }
 
-@media (max-width: $md), (max-height: $navigation-compact-height) {
+@media (max-width: $breakpoint-tablet),
+  (max-height: $navigation-compact-height) {
   .site-menu {
     flex: none;
   }
@@ -660,7 +661,7 @@ onBeforeUnmount(() => {
   }
 }
 
-@media (max-width: $sm) {
+@media (max-width: $breakpoint-mobile) {
   .site-menu__control {
     --menu-frame-size: #{$menu-control-size-small};
 

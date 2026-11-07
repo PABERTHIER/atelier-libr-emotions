@@ -501,31 +501,31 @@ useHead(usePageSeo('contact'))
   }
 }
 
-@media (min-width: $sm) {
+@media (min-width: $breakpoint-mobile) {
   .contact-page__image {
     width: 200px;
   }
 }
 
-@media (min-width: $md) {
+@media (min-width: $breakpoint-tablet) {
   .contact-page__image {
     width: 250px;
   }
 }
 
-@media (min-width: $lg) {
+@media (min-width: $breakpoint-laptop) {
   .contact-page__image {
     width: 300px;
   }
 }
 
-@media (min-width: $xl) {
+@media (min-width: $breakpoint-desktop) {
   .contact-page__image {
     width: 400px;
   }
 }
 
-@media (max-width: $md) {
+@media (max-width: $breakpoint-tablet) {
   .contact-page {
     &__artwork {
       padding: $space-20 $space-20 $space-12;

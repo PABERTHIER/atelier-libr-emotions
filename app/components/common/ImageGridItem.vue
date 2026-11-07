@@ -223,7 +223,9 @@ onMounted(() => {
   }
 }
 
-@media (hover: none), (pointer: coarse), (max-width: calc($md - 1px)) {
+@media (hover: none),
+  (pointer: coarse),
+  (max-width: calc($breakpoint-tablet - 1px)) {
   .grid-item__caption {
     position: static;
     display: block;

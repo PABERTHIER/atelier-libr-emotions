@@ -160,7 +160,7 @@ useHead(usePageSeo('home'))
   }
 }
 
-@media (min-width: calc($lg + $border-width)) {
+@media (min-width: calc($breakpoint-laptop + $border-width)) {
   .home-page {
     &__hero {
       grid-template-areas: 'intro carousel' 'actions carousel';
@@ -182,7 +182,7 @@ useHead(usePageSeo('home'))
   }
 }
 
-@media (max-width: $xl) {
+@media (max-width: $breakpoint-desktop) {
   .home-page {
     &__hero {
       column-gap: $space-20;
@@ -198,7 +198,7 @@ useHead(usePageSeo('home'))
   }
 }
 
-@media (max-width: $lg) {
+@media (max-width: $breakpoint-laptop) {
   .home-page {
     --home-copy-width: clamp(31.25rem, 60vw, 37.5rem);
 
@@ -220,13 +220,13 @@ useHead(usePageSeo('home'))
   }
 }
 
-@media (min-width: calc($lg + $border-width)) and (max-width: $xl) {
+@media (min-width: calc($breakpoint-laptop + $border-width)) and (max-width: $breakpoint-desktop) {
   .home-page__hero {
     grid-template-columns: min(40rem, 54%) minmax(0, 500px);
   }
 }
 
-@media (min-width: 420px) and (max-width: $lg) {
+@media (min-width: $breakpoint-small) and (max-width: $breakpoint-laptop) {
   .home-page__actions {
     width: max-content;
     max-width: 100%;
@@ -239,13 +239,13 @@ useHead(usePageSeo('home'))
   }
 }
 
-@media (max-width: $md) {
+@media (max-width: $breakpoint-tablet) {
   .home-page__action {
     padding: $space-10;
   }
 }
 
-@media (max-width: $xs) {
+@media (max-width: $breakpoint-compact) {
   .home-page {
     &__title-line {
       font-size: clamp(2rem, 14vw, 3rem);
@@ -257,7 +257,7 @@ useHead(usePageSeo('home'))
   }
 }
 
-@media (width < 420px) {
+@media (width < $breakpoint-small) {
   .home-page__actions {
     justify-content: center;
   }

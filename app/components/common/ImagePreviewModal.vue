@@ -846,7 +846,7 @@ onBeforeUnmount(finishClose)
   opacity: 0;
 }
 
-@media (max-width: $sm) {
+@media (max-width: $breakpoint-mobile) {
   .image-preview-modal {
     padding: calc(#{$space-8} + env(safe-area-inset-top))
       calc(#{$space-8} + env(safe-area-inset-right))

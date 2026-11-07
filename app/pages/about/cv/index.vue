@@ -343,19 +343,19 @@ useHead(usePageSeo('about_cv'))
   }
 }
 
-@media (min-width: $md) {
+@media (min-width: $breakpoint-tablet) {
   .cv-page__preview {
     width: 450px;
   }
 }
 
-@media (min-width: $lg) {
+@media (min-width: $breakpoint-laptop) {
   .cv-page__preview {
     width: 600px;
   }
 }
 
-@media (max-width: $md) {
+@media (max-width: $breakpoint-tablet) {
   .cv-page__viewer {
     padding: $space-10;
   }

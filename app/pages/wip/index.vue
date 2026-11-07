@@ -93,13 +93,13 @@ useHead(usePageSeo('wip'))
   }
 }
 
-@media (min-width: $md) {
+@media (min-width: $breakpoint-tablet) {
   .wip-page__image {
     width: 400px;
   }
 }
 
-@media (min-width: $lg) {
+@media (min-width: $breakpoint-laptop) {
   .wip-page__image {
     width: 500px;
   }

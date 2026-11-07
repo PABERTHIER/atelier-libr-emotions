@@ -23,7 +23,7 @@ const { t } = useI18n()
   max-height: $logo-size-desktop;
 }
 
-@media (max-width: $lg) {
+@media (max-width: $breakpoint-laptop) {
   .logo {
     max-height: $space-40;
   }
@@ -33,7 +33,7 @@ const { t } = useI18n()
   }
 }
 
-@media (max-width: $md) {
+@media (max-width: $breakpoint-tablet) {
   .logo {
     max-height: $space-30;
   }
@@ -43,7 +43,7 @@ const { t } = useI18n()
   }
 }
 
-@media (max-width: $sm) {
+@media (max-width: $breakpoint-mobile) {
   .logo {
     max-height: $space-25;
   }
