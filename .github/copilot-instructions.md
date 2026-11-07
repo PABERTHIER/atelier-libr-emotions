@@ -34,7 +34,7 @@ Use [.agents/README.md](../.agents/README.md) for guidance ownership and evidenc
 | Gallery pages        | [gallery-page](../.agents/skills/gallery-page/SKILL.md)           | Create, extend or review collections and their navigation |
 | Internationalization | [i18n](../.agents/skills/i18n/SKILL.md)                           | FR/EN keys, reactive copy and localized destinations      |
 | Nuxt and Vue         | [nuxt-vue-patterns](../.agents/skills/nuxt-vue-patterns/SKILL.md) | Components, TypeScript, SSR and client lifecycle          |
-| Artwork assets       | [artwork-assets](../.agents/skills/artwork-assets/SKILL.md)       | Exact paths, original images and IPX prerendering         |
+| Artwork assets       | [artwork-assets](../.agents/skills/artwork-assets/SKILL.md)       | Exact paths, native images and original-file delivery     |
 | Accessibility        | [accessibility](../.agents/skills/accessibility/SKILL.md)         | Scoped audits, semantics, controls, focus and motion      |
 | SEO                  | [seo](../.agents/skills/seo/SKILL.md)                             | Reactive page metadata, alternates and social artwork     |
 

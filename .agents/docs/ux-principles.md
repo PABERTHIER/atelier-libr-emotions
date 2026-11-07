@@ -90,7 +90,7 @@ Home artwork indices change on a five-second timer, preserving the three curated
 Previous/next controls offer manual browsing; a pause/resume action with a changing localized name persistently controls automatic rotation.
 Artwork hover, keyboard focus within the carousel, a hidden document and persistent pause stop its timer and floating.
 An explicit resume can restart while that control keeps focus; reduced motion keeps previous/next and hides the automatic-rotation control.
-Selected indices and persistent pause survive language changes and return navigation through named Nuxt state, while timers/listeners remain page-owned and clean up on unmount.
+Selected indices and persistent pause survive language changes and return navigation through named Nuxt state, while `Carousel` owns and cleans up timers/listeners on unmount.
 Manual browsing pauses automatic changes and politely announces the selected titles; automatic rotation has no live announcement.
 Soft opacity transitions avoid abrupt swaps and disappear under reduced motion.
 Proportional frames reserve intrinsic image geometry through placeholders, keep complete artwork and use 10px white surrounds, reduced to 5px through 640px.
@@ -115,9 +115,9 @@ The image-driven caption frame and pointer/keyboard artwork/control feedback fol
 `ImageGrid` initially renders a skeleton and measures artwork in the browser, exposing `aria-busy` and translated loading status.
 SSR HTML alone does not establish that a gallery is usable, that all images loaded or that captions update after language switching.
 Check loading failures and a slow connection when changing image behavior, using [the artwork-assets skill](../skills/artwork-assets/SKILL.md).
-The optimized wrapper keeps NuxtImg and its placeholder; responsive-generation keys reject stale preload errors after a breakpoint changes.
-Breakpoint changes remount loaded images too, so a normal placeholder can briefly reappear.
-Failure text wraps within narrow frames and is included in the original-file link's name.
+`Image` serves original files through a native image with intrinsic dimensions and an optional delayed skeleton.
+Responsive CSS resizes a loaded image without remounting it or requesting another generated width.
+`ImagePreviewButton` owns standalone preview semantics; failure text wraps within narrow frames and is included in the button's accessible name.
 Describe unavailable content clearly and offer an existing recovery destination rather than a dead end or a fictional retry action.
 
 ## Focus and scroll continuity

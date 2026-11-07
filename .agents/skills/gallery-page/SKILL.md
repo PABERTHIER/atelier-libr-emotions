@@ -19,7 +19,7 @@ For a review request, inspect and report findings without changing files unless 
 | Naming              | [artwork naming](../i18n/references/artwork-naming.md)                                 | Resolve route, page key, picture key and asset directory separately |
 | Messages            | [i18n](../i18n/SKILL.md)                                                               | Owns FR/EN parity, field quality and translated state               |
 | Metadata            | [seo](../seo/SKILL.md)                                                                 | Owns reactive head tags, social images and URL checks               |
-| Artwork delivery    | [artwork-assets](../artwork-assets/SKILL.md)                                           | Owns filenames, direct images and IPX prerendering                  |
+| Artwork delivery    | [artwork-assets](../artwork-assets/SKILL.md)                                           | Owns filenames, native images and original-file delivery            |
 | Menu                | [navigation.ts](../../../app/data/navigation.ts)                                       | Section, technique and category links rendered by the shared menu   |
 | Component contracts | [image.ts](../../../app/types/image.ts), [page.ts](../../../app/types/page.ts)         | `ImageSource`, `Heights` and `PageNavigation`                       |
 
@@ -93,7 +93,7 @@ Add matching page and picture entries to both locale files using the i18n skill.
 Implement metadata through the SEO skill: register the page, measured social image and sitemap artwork, then add bilingual `seo.*` messages.
 Preserve the selected representative artwork and register relevant existing topic-label keys as `keywordKeys` for semantic structured data.
 App icons remain shared; do not override the touch icon with gallery artwork.
-Check whether the chosen image consumer needs an entry in `generateImageRoutes.ts` using the artwork-assets skill.
+Verify the original public file, its measured dimensions and its native consumer using the artwork-assets skill.
 
 Keep page styles scoped and preserve the normal gallery spacing unless the requested layout requires an adjustment:
 

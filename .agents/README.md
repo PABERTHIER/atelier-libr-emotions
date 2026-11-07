@@ -49,7 +49,7 @@ Current shell, component and page contracts belong to the design, UX and accessi
 | [gallery-page](skills/gallery-page/SKILL.md)           | Create, extend or review a gallery with its translations, artwork and navigation |
 | [i18n](skills/i18n/SKILL.md)                           | FR/EN message parity, artwork keys, reactive copy and localized routes           |
 | [nuxt-vue-patterns](skills/nuxt-vue-patterns/SKILL.md) | Nuxt/Vue structure, TypeScript, SSR, lifecycle and component behavior            |
-| [artwork-assets](skills/artwork-assets/SKILL.md)       | Exact asset paths, native images, optimized variants and IPX prerendering        |
+| [artwork-assets](skills/artwork-assets/SKILL.md)       | Exact asset paths, native images and original-file delivery                      |
 | [accessibility](skills/accessibility/SKILL.md)         | Scoped accessibility audits and implementation                                   |
 | [seo](skills/seo/SKILL.md)                             | Reactive page metadata, canonical/alternate URLs and social artwork              |
 
@@ -71,7 +71,7 @@ Automatic attachment of `applyTo` rules depends on the tool; it is not a substit
 
 ## Maintenance
 
-Keep examples and paths grounded in Atelier's two locales, gallery components and native/IPX image delivery.
+Keep examples and paths grounded in Atelier's two locales, gallery components and native image delivery.
 Update catalogs when adding or removing guides, skills or instruction files.
 Use focused tables, one sentence per source line in prose, UTF-8 and LF line endings.
 Check local links, anchors, frontmatter, formatting and source accuracy after documentation changes.

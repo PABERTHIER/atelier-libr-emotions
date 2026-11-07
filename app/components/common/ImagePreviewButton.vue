@@ -7,7 +7,7 @@
     :aria-label="imageLabel"
     :data-tooltip="image.title || undefined"
     @click="emit('select', $event)">
-    <ImageV2
+    <Image
       :src="image.src"
       :alt="image.alt"
       :loading="loading"

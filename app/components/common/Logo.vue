@@ -1,6 +1,6 @@
 <template>
   <div class="logo">
-    <ImageV2
+    <Image
       :skeleton="false"
       src="/logo.svg"
       :alt="t('app.logo_alt')"

@@ -11,20 +11,20 @@ Choose APIs and abstractions from the capabilities installed and used in this re
 
 ## Existing Building Blocks
 
-| Concern                    | Local implementation                                                          | Contract                                                                                                       |
-| -------------------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| Page shell                 | [default.vue](../../../app/layouts/default.vue)                               | Decorative Welcome, skip link, header, focusable main, footer and SiteTooltip                                  |
-| Page introduction          | [PageTitle.vue](../../../app/components/common/PageTitle.vue)                 | `title` and optional `subtitle`; renders the H1                                                                |
-| Gallery                    | [ImageGrid.vue](../../../app/components/common/ImageGrid.vue)                 | `ImageSource[]` and `Heights`; justified rows and image selection                                              |
-| Artwork viewer             | [ImagePreviewModal.vue](../../../app/components/common/ImagePreviewModal.vue) | `image`, optional ordered `images`/`opener`, `visible`, `select`/`close`; native dialog and scroll restoration |
-| Standalone optimized image | [Image.vue](../../../app/components/common/Image.vue)                         | Required `src`, `sizes` and nonempty `alt`; optional `maxHeight` and `title`                                   |
-| Adjacent pages             | [PageNavigation.vue](../../../app/components/common/PageNavigation.vue)       | Optional `previousPage` and `nextPage`; localizes each path                                                    |
-| Responsive state           | [screen-size.ts](../../../app/composables/screen-size.ts)                     | `useScreenSize()` returns breakpoint refs with `ssrWidth: 1024`                                                |
-| Smooth scrolling           | [smooth-scroll.client.ts](../../../app/plugins/smooth-scroll.client.ts)       | Provides the existing `$lenis` instance                                                                        |
-| Style tokens               | [variables.scss](../../../app/styles/variables.scss)                          | Colors, layers, dimensions and breakpoints injected through Vite                                               |
-| Menu catalogue             | [navigation.ts](../../../app/data/navigation.ts)                              | Ordered translation keys, groups and unprefixed destinations                                                   |
-| Navigation state           | [useSiteNavigation.ts](../../../app/composables/useSiteNavigation.ts)         | Close desktop/mobile navigation from any shared control                                                        |
-| Overlay locking            | [useOverlayScrollLock.ts](../../../app/composables/useOverlayScrollLock.ts)   | Acquire/release an independent scroll lease with automatic cleanup                                             |
+| Concern                 | Local implementation                                                          | Contract                                                                                                       |
+| ----------------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Page shell              | [default.vue](../../../app/layouts/default.vue)                               | Decorative Welcome, skip link, header, focusable main, footer and SiteTooltip                                  |
+| Page introduction       | [PageTitle.vue](../../../app/components/common/PageTitle.vue)                 | `title` and optional `subtitle`; renders the H1                                                                |
+| Gallery                 | [ImageGrid.vue](../../../app/components/common/ImageGrid.vue)                 | `ImageSource[]` and `Heights`; justified rows and image selection                                              |
+| Artwork viewer          | [ImagePreviewModal.vue](../../../app/components/common/ImagePreviewModal.vue) | `image`, optional ordered `images`/`opener`, `visible`, `select`/`close`; native dialog and scroll restoration |
+| Standalone native image | [Image.vue](../../../app/components/common/Image.vue)                         | Required `src` and nonempty `alt`; optional `width`, `height`, `loading` and `skeleton`                        |
+| Adjacent pages          | [PageNavigation.vue](../../../app/components/common/PageNavigation.vue)       | Optional `previousPage` and `nextPage`; localizes each path                                                    |
+| Responsive state        | [screen-size.ts](../../../app/composables/screen-size.ts)                     | `useScreenSize()` returns breakpoint refs with `ssrWidth: 1024`                                                |
+| Smooth scrolling        | [smooth-scroll.client.ts](../../../app/plugins/smooth-scroll.client.ts)       | Provides the existing `$lenis` instance                                                                        |
+| Style tokens            | [variables.scss](../../../app/styles/variables.scss)                          | Colors, layers, dimensions and breakpoints injected through Vite                                               |
+| Menu catalogue          | [navigation.ts](../../../app/data/navigation.ts)                              | Ordered translation keys, groups and unprefixed destinations                                                   |
+| Navigation state        | [useSiteNavigation.ts](../../../app/composables/useSiteNavigation.ts)         | Close desktop/mobile navigation from any shared control                                                        |
+| Overlay locking         | [useOverlayScrollLock.ts](../../../app/composables/useOverlayScrollLock.ts)   | Acquire/release an independent scroll lease with automatic cleanup                                             |
 
 ## Components And Types
 
@@ -58,7 +58,7 @@ Render stable initial markup on the server and client; prefer CSS over viewport-
 Preserve the SSR breakpoint fallback when changing `useScreenSize()`.
 Do not hide entire pages behind `ClientOnly` to mask hydration problems.
 Avoid mutable module-level visitor state that can leak between requests.
-The homepage keeps only carousel indices and persistent pause in named Nuxt `useState` values so locale remounts and return navigation preserve them; timers and transient browser state remain page-owned.
+`Carousel` keeps only home indices and persistent pause in named Nuxt `useState` values so locale remounts and return navigation preserve them; timers and transient browser state remain component-owned.
 
 Remove added listeners, observers, timers and animation loops on unmount.
 Reuse `$lenis` for scroll integration rather than creating a second instance.
@@ -95,7 +95,11 @@ Use existing `$sm`, `$md`, `$lg` and `$xl` breakpoints, checking their actual va
 Inline dynamic measurements are appropriate for grid and zoom geometry; prefer scoped SCSS for static presentation.
 
 Use [artwork-assets](../artwork-assets/SKILL.md) for image consumer selection and static delivery.
-`ImageGridItem` and the preview modal use native `<img>`; the standalone `Image` wrapper retains `NuxtImg` and lazy loading.
+`ImageGridItem`, the preview modal and `Image` use native images pointing to original public files.
+`Image` supplies intrinsic dimensions from `imageDimensions`, defaults to lazy loading and optionally shows a delayed skeleton without hiding the native image.
+Keep display sizing in the consumer's CSS; no image provider, derivative generator or custom image-route configuration is needed.
+`ImagePreviewButton` supplies localized button semantics, tooltip and failure feedback; pages use `useImagePreview()` with the existing modal for selection and focus return.
+Home preview navigation stays within the clicked carousel group and never changes the images displayed behind the dialog.
 The grid passes its ordered `images` directly to the viewer and handles `select`; there is no tile registry.
 Aspect measurement uses explicit `window.Image` with the same current-origin source as tiles.
 Preserve the established row-size functions and constants when fixing source delivery or metadata synchronization.

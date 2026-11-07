@@ -41,7 +41,7 @@
                 :key="artwork.src"
                 class="carousel__frame"
                 :style="{ '--artwork-aspect': artwork.aspect }">
-                <ImageV2
+                <Image
                   :src="artwork.src"
                   :alt="artwork.alt"
                   loading="eager"

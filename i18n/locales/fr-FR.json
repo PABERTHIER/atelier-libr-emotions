@@ -116,7 +116,6 @@
       "label": "Pages précédente et suivante"
     },
     "image": {
-      "open_original": "Voir l'image originale : {title}",
       "preview": "Agrandir l'image : {title}"
     },
     "image_grid": {

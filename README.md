@@ -84,7 +84,7 @@ yarn preview
 | `yarn lint`         | Run ESLint with the repository's Prettier integration              |
 | `yarn lint:fix`     | Apply lint fixes; review affected files                            |
 | `yarn build`        | Build production Nuxt output                                       |
-| `yarn generate`     | Generate static pages and prerendered image routes                 |
+| `yarn generate`     | Generate static pages and copy original public assets              |
 | `yarn preview`      | Preview the corresponding build output                             |
 | `yarn postinstall`  | Prepare Nuxt generated types; also runs after installation         |
 | `yarn profile`      | Profile a production build                                         |
@@ -105,11 +105,10 @@ Consult `package.json` for versions; this table groups its current direct entrie
 | `nuxt`                                                                                   | Routing, Vue application build, SSR and prerendering                                                |
 | `@nuxtjs/i18n`                                                                           | French/English messages and prefixed routes                                                         |
 | `@nuxtjs/seo`                                                                            | Site metadata, sitemap and structured-data modules                                                  |
-| `@nuxt/image`                                                                            | NuxtImg and IPX transforms for optimized-image consumers                                            |
 | `@nuxt/icon`, `@iconify-json/lucide`                                                     | Standalone Icon module with explicitly bundled Lucide interface icons and the custom SVG collection |
 | `@nuxt/fonts`                                                                            | Font integration; inspect source and browser output for actual requests and resolved families       |
 | `lenis`                                                                                  | Client smooth-scroll integration                                                                    |
-| `@vueuse/core`                                                                           | Responsive breakpoint utilities used by `useScreenSize()`                                           |
+| `@vueuse/core`                                                                           | Gallery breakpoint utilities and the viewer's reduced-motion preference                             |
 | `rolldown`                                                                               | Build tooling satisfying Nuxt's Rolldown peer dependency                                            |
 | `@nuxt/eslint`, `eslint`, `eslint-config-prettier`, `eslint-plugin-prettier`, `prettier` | Linting and formatting configuration/tooling                                                        |
 | `typescript`, `vue-tsc`, `@types/node`                                                   | Nuxt, Vue and Node type checking                                                                    |
@@ -134,7 +133,6 @@ Custom SVGs retain their separate `ale-icon` collection and client-bundle inclus
 | [router.options.ts](app/router.options.ts), [navigation-focus.client.ts](app/plugins/navigation-focus.client.ts)                   | History/anchor scrolling and destination focus                                                    |
 | [overlay-scroll-lock.client.ts](app/plugins/overlay-scroll-lock.client.ts)                                                         | Shared overlay leases, scroll restoration and Lenis coordination                                  |
 | [useImageViewerGestures.ts](app/composables/useImageViewerGestures.ts)                                                             | Bounded pinch/swipe/pan and click-to-center; the grid passes the viewer's ordered images directly |
-| [generateImageRoutes.ts](app/utils/generateImageRoutes.ts)                                                                         | Explicit IPX transform routes used by prerendering                                                |
 | [i18n/locales](i18n/locales/)                                                                                                      | French and English content                                                                        |
 | [public](public/)                                                                                                                  | Original artwork, icons, CV and other published assets                                            |
 | [nuxt.config.ts](nuxt.config.ts), [app.vue](app/app.vue)                                                                           | Modules, routes, origins, root metadata and application setup                                     |
@@ -158,12 +156,12 @@ Use the shared skills before adding or restructuring a collection.
 | Consumer                       | Delivery                                                    | What to check                                                            |
 | ------------------------------ | ----------------------------------------------------------- | ------------------------------------------------------------------------ |
 | Gallery tiles and image viewer | Native `img` loading original public files                  | Exact paths, aspect ratios, translated descriptions and complete artwork |
-| Standalone `Image` component   | NuxtImg with sizes, densities and a placeholder             | Original plus emitted IPX `srcset` and placeholder coverage              |
+| Standalone `Image` component   | Native `img`, intrinsic dimensions and a delayed skeleton   | Original URL, loading priority, aspect ratio and cached/error completion |
 | Social previews                | Public artwork referenced by page metadata                  | Absolute URL, actual MIME type and measured raster dimensions            |
 | Custom icons                   | SVG build inputs under `app/assets/svg/`, using `ale-icon:` | Existing viewBox, meaningful control names and decorative icon semantics |
 
 Preserve supplied filenames, casing and artwork order.
-Gallery layout heights do not define IPX image widths.
+Display sizes belong in CSS; gallery row heights are layout inputs and do not create resized files.
 Use [artwork-assets](.agents/skills/artwork-assets/SKILL.md) and the [naming map](.agents/skills/i18n/references/artwork-naming.md) for grouped collections and delivery details.
 Physical painting measurements are authored content, separate from raster pixel dimensions.
 All public source images are registered in the typed [dimension catalog](app/data/imageDimensions.ts).
@@ -172,7 +170,7 @@ Every rendered image requires nonempty localized alt text.
 ## Deploy On Vercel
 
 Use the Nuxt preset, `yarn install --immutable` and `yarn build` with Node.js 24 and the pinned Yarn version.
-Leave the Output Directory override disabled so Nuxt/Nitro controls deployment output.
+Leave the Output Directory override disabled so Nuxt controls deployment output.
 Use `yarn generate` for a static-delivery check, not as the Vercel SSR build target.
 
 The production origin defaults to `https://atelierlibremotions.vercel.app`.
@@ -191,9 +189,9 @@ Each page calls `useHead(usePageSeo('pageName'))`; [usePageSeo.ts](app/composabl
 Full titles and descriptions live in bilingual `seo.*` messages, while root I18n head data owns canonical links, language alternates and OG locales.
 [error.vue](app/error.vue) provides a simple localized, noindex error shell with home and painting-gallery recovery.
 The config loads shared defaults/keyframes once and injects Sass variables into component styles.
-Native galleries serve original artwork; optimized image consumers retain IPX and explicit static transform routes.
+All image consumers serve original public files directly, without an image provider or custom image-route prerender configuration.
 
-For route or image-delivery changes, inspect generated pages and actual original/transformed image requests.
+For route or image-delivery changes, inspect generated pages and actual original-image requests.
 For UI changes, exercise both locales, mobile and desktop layouts, keyboard focus, menus, the viewer and reduced motion.
 Accessibility is maintained against a WCAG 2.2 AA review target; source findings and outstanding manual coverage are recorded in its guide.
 
