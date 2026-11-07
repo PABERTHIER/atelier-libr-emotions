@@ -4063,7 +4063,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vueuse/core@npm:15.0.0, @vueuse/core@npm:^15.0.0":
+"@vueuse/core@npm:^15.0.0":
   version: 15.0.0
   resolution: "@vueuse/core@npm:15.0.0"
   dependencies:
@@ -4323,7 +4323,6 @@ __metadata:
     "@nuxtjs/i18n": "npm:^10.6.0"
     "@nuxtjs/seo": "npm:^6.0.1"
     "@types/node": "npm:^26.6.5"
-    "@vueuse/core": "npm:15.0.0"
     eslint: "npm:^10.13.0"
     eslint-config-prettier: "npm:^10.1.8"
     eslint-plugin-prettier: "npm:^5.5.7"
