@@ -55,13 +55,13 @@ Nuxt Fonts is installed; inspect its generated CSS and the active family declara
 This source configuration does not prove which font resolves in each browser or that all requests are self-hosted.
 Inspect computed styles and network requests before adding a family, removing a request or documenting a font optimization as complete.
 
-| Role                  | Current example                                                                      | Extension rule                                                               |
-| --------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
-| Page H1               | [PageTitle.vue](../../app/components/common/PageTitle.vue), using fluid sizing       | Reuse the page-title hierarchy without adding a second H1                    |
-| Artistic subtitle     | `PageTitle` subtitle with a quieter treatment                                        | Preserve artist wording and readable wrapping                                |
-| Collection groups     | H2 headings above the relevant grids                                                 | Keep a logical outline and distinguish groups without oversized decoration   |
-| Captions and metadata | Gallery titles, mobile identifiers and viewer information                            | Keep identifiers legible instead of shrinking them to force a desktop layout |
-| Controls              | [Button.vue](../../app/components/common/Button.vue), navigation and viewer controls | Preserve a clear action label and visible keyboard focus                     |
+| Role                  | Current example                                                                                                                 | Extension rule                                                               |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Page H1               | [PageTitle.vue](../../app/components/common/PageTitle.vue), using fluid sizing                                                  | Reuse the page-title hierarchy without adding a second H1                    |
+| Artistic subtitle     | `PageTitle` subtitle with a quieter treatment                                                                                   | Preserve artist wording and readable wrapping                                |
+| Collection groups     | H2 headings above the relevant grids                                                                                            | Keep a logical outline and distinguish groups without oversized decoration   |
+| Captions and metadata | Gallery titles, mobile identifiers and viewer information                                                                       | Keep identifiers legible instead of shrinking them to force a desktop layout |
+| Controls              | [Menu.vue](../../app/components/layout/Menu.vue) and [ImagePreviewModal.vue](../../app/components/common/ImagePreviewModal.vue) | Preserve a clear action label and visible keyboard focus                     |
 
 Do not introduce a fixed desktop type scale as if it were an existing token contract.
 Check narrow screens, longer English strings and enlarged text before changing sizes or fixed heights.
