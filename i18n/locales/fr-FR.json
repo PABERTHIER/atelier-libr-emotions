@@ -159,7 +159,7 @@
       },
       "carousel": {
         "title": "Aperçu des peintures, céramiques et de l'atelier",
-        "description": "Trois sélections d'images changent toutes les cinq secondes. La rotation s'arrête pendant le survol ou la navigation au clavier. Utilisez les commandes pour la mettre en pause ou parcourir les images. Le défilement automatique est désactivé si vous préférez réduire les animations.",
+        "description": "Trois sélections d'images changent toutes les cinq secondes. La rotation s'arrête pendant le survol des images ou leur navigation au clavier. Les commandes permettent de parcourir les images, de mettre le diaporama en pause ou de le relancer, même pendant le survol ou la navigation au clavier. Le défilement automatique est désactivé si vous préférez réduire les animations.",
         "previous": "Images précédentes",
         "next": "Images suivantes",
         "pause": "Pause du diaporama",

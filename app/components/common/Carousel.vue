@@ -4,9 +4,7 @@
     class="carousel"
     :class="{ 'carousel--paused': !isRotating }"
     :aria-labelledby="titleId"
-    :aria-describedby="descriptionId"
-    @focusin="isFocused = true"
-    @focusout="handleCarouselFocusOut">
+    :aria-describedby="descriptionId">
     <h2 :id="titleId" class="sr-only">{{ t('pages.main.carousel.title') }}</h2>
     <p :id="descriptionId" class="sr-only">
       {{ t('pages.main.carousel.description') }}
@@ -14,10 +12,14 @@
     <div class="carousel__artworks-viewport">
       <div
         :id="artworksId"
+        ref="artworks"
         class="carousel__artworks"
         aria-live="off"
-        @mouseenter="isHovered = true"
-        @mouseleave="isHovered = false">
+        @pointerenter="handleArtworkPointerEnter"
+        @pointerleave="isHovered = false"
+        @pointerdown="isFocused = false"
+        @focusin="handleArtworkFocusIn"
+        @focusout="handleArtworkFocusOut">
         <div
           v-for="(artwork, index) in currentArtworks"
           :key="artwork.id"
@@ -81,7 +83,7 @@
         :data-tooltip="rotationLabel"
         @click="toggleRotation">
         <Icon
-          :name="isPaused ? 'lucide:play' : 'lucide:pause'"
+          :name="isRotating ? 'lucide:pause' : 'lucide:play'"
           aria-hidden="true" />
       </button>
       <button
@@ -113,6 +115,7 @@ import type { ImageSource } from '~/types/image'
 const { t } = useI18n()
 const nuxtApp = useNuxtApp()
 const carousel = useTemplateRef('carousel')
+const artworks = useTemplateRef('artworks')
 const carouselId = useId()
 
 const titleId = `${carouselId}-title`
@@ -184,6 +187,7 @@ const isPaused = useState('home-carousel-paused', () => false)
 
 const isHovered = ref(false)
 const isFocused = ref(false)
+const isPlaybackRequested = ref(false)
 const isPageVisible = ref(true)
 const prefersReducedMotion = ref(false)
 const hasManualSelection = ref(false)
@@ -229,20 +233,24 @@ const artworkAnnouncement = computed(() =>
 const isRotating = computed(
   () =>
     !isPaused.value &&
-    !isHovered.value &&
-    !isFocused.value &&
+    (isPlaybackRequested.value || (!isHovered.value && !isFocused.value)) &&
     isPageVisible.value &&
     !prefersReducedMotion.value &&
     !viewerVisible.value &&
     !isViewerClosing.value
 )
 const rotationLabel = computed(() =>
-  t(isPaused.value ? 'pages.main.carousel.resume' : 'pages.main.carousel.pause')
+  t(
+    isRotating.value
+      ? 'pages.main.carousel.pause'
+      : 'pages.main.carousel.resume'
+  )
 )
 
 let rotationTimer: ReturnType<typeof setInterval> | undefined
 let motionPreference: MediaQueryList | undefined
 let disposed = false
+let viewerOpenedWithKeyboard = false
 
 function stopRotation() {
   clearInterval(rotationTimer)
@@ -264,12 +272,8 @@ function changeArtworks(direction: -1 | 1) {
 }
 
 function toggleRotation() {
-  isPaused.value = !isPaused.value
-
-  if (!isPaused.value) {
-    // An explicit restart can run while this control retains keyboard focus
-    isFocused.value = false
-  }
+  isPaused.value = isRotating.value
+  isPlaybackRequested.value = !isPaused.value
 }
 
 function syncRotation() {
@@ -281,16 +285,23 @@ function syncRotation() {
   }
 }
 
-function handleCarouselFocusOut(event: FocusEvent) {
-  if (
-    event.currentTarget instanceof HTMLElement &&
-    event.relatedTarget instanceof Node &&
-    event.currentTarget.contains(event.relatedTarget)
-  ) {
-    return
-  }
+function handleArtworkPointerEnter(event: PointerEvent) {
+  isHovered.value = event.pointerType === 'mouse'
+}
 
-  isFocused.value = false
+function handleArtworkFocusIn(event: FocusEvent) {
+  isFocused.value =
+    event.target instanceof HTMLElement &&
+    event.target.matches(':focus-visible')
+}
+
+function handleArtworkFocusOut(event: FocusEvent) {
+  const next = event.relatedTarget
+
+  isFocused.value =
+    next instanceof HTMLElement &&
+    artworks.value?.contains(next) === true &&
+    next.matches(':focus-visible')
 }
 
 function syncVisibility() {
@@ -311,6 +322,9 @@ function openArtwork(index: number, event: MouseEvent) {
   }
 
   viewerTrack.value = index
+  viewerOpenedWithKeyboard = event.detail === 0
+  isHovered.value = false
+
   openViewer(currentIndices.value[index]!, event)
 }
 
@@ -322,6 +336,13 @@ async function closeArtworkViewer() {
   await nuxtApp.$overlayScroll.whenUnlocked()
 
   if (!disposed) {
+    // Modal focus return must not turn a pointer preview into a keyboard pause
+    isFocused.value =
+      viewerOpenedWithKeyboard &&
+      document.activeElement instanceof HTMLElement &&
+      artworks.value?.contains(document.activeElement) === true &&
+      document.activeElement.matches(':focus-visible')
+
     isViewerClosing.value = false
   }
 }
@@ -558,7 +579,6 @@ onBeforeUnmount(() => {
       --artwork-max-width: 150px;
       --artwork-max-height: 240px;
       top: $space-20;
-      left: 2.5%;
     }
 
     &__artwork--ceramics {
@@ -569,10 +589,10 @@ onBeforeUnmount(() => {
     }
 
     &__artwork--studio {
-      --artwork-max-width: 100px;
+      --artwork-max-width: 130px;
       --artwork-max-height: 150px;
       top: 41.7%;
-      left: 31.25%;
+      left: 30.25%;
     }
   }
 }
@@ -580,14 +600,40 @@ onBeforeUnmount(() => {
 @media (max-width: $sm) {
   .carousel {
     --artwork-padding: #{$space-5};
-    width: 360px;
+    width: 450px;
 
     &__artworks {
-      height: 250px;
+      height: 320px;
     }
 
     &__frame {
       border-radius: $space-5;
+    }
+
+    &__artwork--paintings {
+      // Grow between 420px and 570px, then retain tablet sizes
+      --artwork-max-width: clamp(120px, calc(20vw + 36px), 150px);
+      left: 3.3%;
+    }
+
+    &__artwork--ceramics {
+      --artwork-max-width: clamp(100px, calc(20vw + 16px), 130px);
+      --artwork-left: 70%;
+      top: 20%;
+    }
+
+    &__artwork--studio {
+      --artwork-max-width: clamp(100px, calc(20vw + 16px), 130px);
+    }
+  }
+}
+
+@media (width < 420px) {
+  .carousel {
+    width: 360px;
+
+    &__artworks {
+      height: 250px;
     }
 
     &__controls {
