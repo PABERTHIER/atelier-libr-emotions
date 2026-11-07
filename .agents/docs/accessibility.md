@@ -55,7 +55,6 @@ Language attributes, current-locale indication and contrast remain; Nuxt I18n ow
 
 | Component                     | Accessible contract                                                                                                                                                      |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `Button`                      | Native `type="button"`, forwarded control attributes, disabled state, 44px minimum height, wrapping and visible focus without resetting outlines                         |
 | `LangSwitcher`                | Compact frames inside 44px locale-link targets; names start with the visible FR/EN code and include the language name; current state, `lang`/`hreflang` and no storage   |
 | `PageNavigation`              | Named navigation only when a neighbor exists; decorative arrows, wrapping text and localized destinations                                                                |
 | `PageTitle`                   | One H1 with a paragraph subtitle, fluid rem-based type and long-word wrapping                                                                                            |
