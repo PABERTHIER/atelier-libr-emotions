@@ -1,336 +1,280 @@
 <template>
-  <div class="about">
-    <div class="page-header">
+  <article class="about-page" @focusin="finishEntranceAnimation">
+    <header class="about-page__header">
       <PageHeaderOrnament />
       <PageTitle
         :title="t('pages.about.title')"
         :subtitle="t('pages.about.subtitle')" />
-    </div>
+    </header>
 
-    <div class="content-container">
-      <TextBlock :text-content="t('pages.about.intro')" class="text-block" />
-
+    <section class="about-page__section" aria-labelledby="practice-title">
+      <h2 id="practice-title" class="sr-only">
+        {{ t('pages.about.practice_title') }}
+      </h2>
       <TextBlock
-        :text-content="t('pages.about.intuitive_work')"
-        class="text-block" />
+        v-for="block in practiceBlocks"
+        :key="block.key"
+        :title="block.title"
+        :text-content="block.text"
+        :type="block.type"
+        :heading-level="3"
+        class="about-page__text-block" />
+    </section>
 
-      <TextBlock
-        :title="t('pages.about.creative_process_title')"
-        :text-content="t('pages.about.creative_process')"
-        type="highlight"
-        class="text-block" />
+    <section class="about-page__section" aria-labelledby="axes-title">
+      <h2 id="axes-title" class="about-page__section-title">
+        {{ t('pages.about.activity_axes_title') }}
+      </h2>
+      <ol class="about-page__list" role="list">
+        <li v-for="axis in activityAxes" :key="axis.number">
+          <TextBlock
+            :title="axis.title"
+            :text-content="axis.text"
+            :heading-level="3"
+            type="axis"
+            :axis-number="axis.number"
+            class="about-page__text-block" />
+        </li>
+      </ol>
+    </section>
 
-      <TextBlock
-        :text-content="t('pages.about.realization')"
-        type="emphasis"
-        class="text-block" />
+    <section class="about-page__section" aria-labelledby="objectives-title">
+      <h2 id="objectives-title" class="about-page__section-title">
+        {{ t('pages.about.general_objectives_title') }}
+      </h2>
+      <ol class="about-page__list" role="list">
+        <li v-for="objective in generalObjectives" :key="objective.number">
+          <TextBlock
+            :text-content="objective.text"
+            type="objective"
+            :objective-number="objective.number"
+            class="about-page__text-block" />
+        </li>
+      </ol>
+    </section>
 
-      <TextBlock
-        :text-content="t('pages.about.evolution')"
-        type="quote"
-        class="text-block" />
-
-      <TextBlock
-        :text-content="t('pages.about.wellbeing')"
-        class="text-block" />
-
-      <TextBlock
-        :text-content="t('pages.about.emotional_expression')"
-        class="text-block" />
-
-      <TextBlock
-        :text-content="t('pages.about.technique_philosophy')"
-        type="emphasis"
-        class="text-block" />
-
-      <TextBlock
-        :title="t('pages.about.benefits_title')"
-        :text-content="t('pages.about.benefits')"
-        type="highlight"
-        class="text-block" />
-
-      <TextBlock
-        :text-content="t('pages.about.external_views')"
-        class="text-block" />
-
-      <TextBlock
-        :title="t('pages.about.dare')"
-        :text-content="t('pages.about.master_word')"
-        type="master-word"
-        class="text-block" />
-
-      <TextBlock
-        :text-content="t('pages.about.workshop_philosophy')"
-        type="emphasis"
-        class="text-block" />
-
-      <TextBlock
-        :text-content="t('pages.about.final_quote')"
-        type="quote"
-        class="text-block" />
-
-      <div class="axes-section">
-        <h2 class="section-title">
-          {{ t('pages.about.activity_axes_title') }}
-        </h2>
-
-        <TextBlock
-          :title="t('pages.about.axis_1_title')"
-          :text-content="t('pages.about.axis_1_content')"
-          type="axis"
-          :axis-number="1"
-          class="text-block" />
-
-        <TextBlock
-          :title="t('pages.about.axis_2_title')"
-          :text-content="t('pages.about.axis_2_content')"
-          type="axis"
-          :axis-number="2"
-          class="text-block" />
-
-        <TextBlock
-          :title="t('pages.about.axis_3_title')"
-          :text-content="t('pages.about.axis_3_content')"
-          type="axis"
-          :axis-number="3"
-          class="text-block" />
-      </div>
-
-      <div class="objectives-section">
-        <h2 class="section-title">
-          {{ t('pages.about.general_objectives_title') }}
-        </h2>
-
-        <TextBlock
-          :text-content="t('pages.about.objective_1')"
-          type="objective"
-          :objective-number="1"
-          class="text-block" />
-
-        <TextBlock
-          :text-content="t('pages.about.objective_2')"
-          type="objective"
-          :objective-number="2"
-          class="text-block" />
-
-        <TextBlock
-          :text-content="t('pages.about.objective_3')"
-          type="objective"
-          :objective-number="3"
-          class="text-block" />
-
-        <TextBlock
-          :text-content="t('pages.about.objective_4')"
-          type="objective"
-          :objective-number="4"
-          class="text-block" />
-
-        <TextBlock
-          :text-content="t('pages.about.objective_5')"
-          type="objective"
-          :objective-number="5"
-          class="text-block" />
-
-        <h2 class="section-title professional-title">
-          {{ t('pages.about.professional_objectives_title') }}
-        </h2>
-
-        <TextBlock
-          :text-content="t('pages.about.professional_objective_1')"
-          type="professional-objective"
-          class="text-block" />
-
-        <TextBlock
-          :text-content="t('pages.about.professional_objective_2')"
-          type="professional-objective"
-          class="text-block" />
-      </div>
-    </div>
-  </div>
+    <section class="about-page__section" aria-labelledby="professional-title">
+      <h2
+        id="professional-title"
+        class="about-page__section-title about-page__section-title--professional">
+        {{ t('pages.about.professional_objectives_title') }}
+      </h2>
+      <ul class="about-page__list" role="list">
+        <li v-for="objective in professionalObjectives" :key="objective.number">
+          <TextBlock
+            :text-content="objective.text"
+            type="professional-objective"
+            class="about-page__text-block" />
+        </li>
+      </ul>
+    </section>
+  </article>
 </template>
 
 <script setup lang="ts">
 const { t } = useI18n()
-const runtimeConfig = useRuntimeConfig()
-const route = useRoute()
 
-const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
-const urlEndPath = 'about'
-const ogImageEndPath = 'og-images/my_artistic_approach.webp'
+const practiceBlocks = computed(() => [
+  {
+    key: 'personal_quote',
+    title: '',
+    text: t('pages.about.personal_quote'),
+    type: 'quote' as const,
+  },
+  {
+    key: 'intro',
+    title: '',
+    text: t('pages.about.intro'),
+    type: 'default' as const,
+  },
+  {
+    key: 'intuitive_work',
+    title: '',
+    text: t('pages.about.intuitive_work'),
+    type: 'default' as const,
+  },
+  {
+    key: 'creative_process',
+    title: t('pages.about.creative_process_title'),
+    text: t('pages.about.creative_process'),
+    type: 'highlight' as const,
+  },
+  {
+    key: 'realization',
+    title: '',
+    text: t('pages.about.realization'),
+    type: 'emphasis' as const,
+  },
+  {
+    key: 'evolution',
+    title: '',
+    text: t('pages.about.evolution'),
+    type: 'quote' as const,
+  },
+  {
+    key: 'wellbeing',
+    title: '',
+    text: t('pages.about.wellbeing'),
+    type: 'default' as const,
+  },
+  {
+    key: 'emotional_expression',
+    title: '',
+    text: t('pages.about.emotional_expression'),
+    type: 'default' as const,
+  },
+  {
+    key: 'technique_philosophy',
+    title: '',
+    text: t('pages.about.technique_philosophy'),
+    type: 'emphasis' as const,
+  },
+  {
+    key: 'benefits',
+    title: t('pages.about.benefits_title'),
+    text: t('pages.about.benefits'),
+    type: 'highlight' as const,
+  },
+  {
+    key: 'external_views',
+    title: '',
+    text: t('pages.about.external_views'),
+    type: 'default' as const,
+  },
+  {
+    key: 'master_word',
+    title: t('pages.about.dare'),
+    text: t('pages.about.master_word'),
+    type: 'master-word' as const,
+  },
+  {
+    key: 'workshop_philosophy',
+    title: '',
+    text: t('pages.about.workshop_philosophy'),
+    type: 'emphasis' as const,
+  },
+  {
+    key: 'final_quote',
+    title: '',
+    text: t('pages.about.final_quote'),
+    type: 'quote' as const,
+  },
+])
 
-const canonicalUrl = computed(() => `${baseUrl.value}${route.path}`)
+const activityAxes = computed(() =>
+  Array.from({ length: 3 }, (_, index) => {
+    const number = index + 1
 
-useHead({
-  title: computed(() => t('pages.about.tab_name')),
-  meta: [
-    {
-      name: 'description',
-      content: computed(() => t('pages.about.meta.content')),
-    },
-    {
-      name: 'keywords',
-      content: `${computed(() => t('miscellaneous.art')).value},
-        ${computed(() => t('miscellaneous.my_artistic_approach')).value},
-        ${computed(() => t('miscellaneous.creation')).value},
-        ${computed(() => t('miscellaneous.activity_leader')).value},
-        ${computed(() => t('miscellaneous.artist')).value},
-        ${computed(() => t('miscellaneous.painting')).value},
-        ${computed(() => t('miscellaneous.painter')).value},
-        ${computed(() => t('miscellaneous.ceramic')).value},
-        ${computed(() => t('miscellaneous.ceramicist')).value},
-        ${computed(() => t('miscellaneous.pottery')).value},
-        ${computed(() => t('miscellaneous.emotions')).value},
-        ${computed(() => t('about.author')).value},
-        ${computed(() => t('app.name')).value},
-      `,
-    },
-  ],
-  link: [
-    { rel: 'canonical', href: canonicalUrl.value },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/en/${urlEndPath}`),
-      hreflang: 'en-US',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
-      hreflang: 'fr-FR',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
-      hreflang: 'x-default',
-    },
-    {
-      rel: 'apple-touch-icon',
-      sizes: '180x180',
-      href: `/${ogImageEndPath}`,
-      key: 'apple-touch-icon',
-    },
-  ],
-})
+    return {
+      number,
+      title: t(`pages.about.axis_${number}_title`),
+      text: t(`pages.about.axis_${number}_content`),
+    }
+  })
+)
+const generalObjectives = computed(() =>
+  Array.from({ length: 5 }, (_, index) => ({
+    number: index + 1,
+    text: t(`pages.about.objective_${index + 1}`),
+  }))
+)
+const professionalObjectives = computed(() =>
+  Array.from({ length: 2 }, (_, index) => ({
+    number: index + 1,
+    text: t(`pages.about.professional_objective_${index + 1}`),
+  }))
+)
 
-useSeoMeta({
-  ogTitle: '%s %separator %siteName',
-  description: computed(() => t('pages.about.meta.content')),
-  ogDescription: computed(() => t('pages.about.meta.content')),
-  ogImage: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageSecureUrl: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageAlt: computed(() => t('pages.about.meta.content')),
-  ogImageType: 'image/jpeg',
-  ogImageWidth: '1200',
-  ogImageHeight: '600',
-  ogUrl: canonicalUrl.value,
-  ogType: 'article',
-  articleTag: [
-    computed(() => t('miscellaneous.my_artistic_approach')).value,
-    computed(() => t('miscellaneous.creation')).value,
-    computed(() => t('miscellaneous.activity_leader')).value,
-    computed(() => t('miscellaneous.art')).value,
-    computed(() => t('miscellaneous.artist')).value,
-    computed(() => t('miscellaneous.painting')).value,
-    computed(() => t('miscellaneous.painter')).value,
-    computed(() => t('miscellaneous.ceramic')).value,
-    computed(() => t('miscellaneous.ceramicist')).value,
-    computed(() => t('miscellaneous.pottery')).value,
-    computed(() => t('miscellaneous.emotions')).value,
-    computed(() => t('about.author')).value,
-    computed(() => t('app.name')).value,
-  ],
-  appleMobileWebAppTitle: '%s %separator %siteName',
-  msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
-})
+function finishEntranceAnimation(event: FocusEvent) {
+  if (!(event.target instanceof HTMLElement)) {
+    return
+  }
+
+  const block = event.target.closest('.about-page__text-block')
+
+  for (const animation of block?.getAnimations() ?? []) {
+    if (
+      animation instanceof CSSAnimation &&
+      animation.animationName === 'fadeInUpBlock'
+    ) {
+      animation.finish()
+    }
+  }
+}
+
+useHead(usePageSeo('about'))
 </script>
 
 <style lang="scss" scoped>
-.about {
+.about-page {
   position: relative;
+  width: 100%;
+  min-width: 0;
+  max-width: 56.25rem;
 
-  .page-header {
-    margin-bottom: 50px;
+  &__header {
+    margin-bottom: $space-50;
   }
 
-  .content-container {
-    max-width: 900px;
+  &__section {
+    min-width: 0;
+  }
 
-    .text-block {
-      margin-bottom: 30px;
-      animation: fadeInUpBlock 0.8s ease-out;
-      animation-fill-mode: both;
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
 
-      @for $i from 1 through 15 {
-        &:nth-child(#{$i}) {
-          animation-delay: #{$i * 0.1}s;
-        }
-      }
+  &__text-block {
+    margin-bottom: $space-30;
+    scroll-margin-block: $space-24;
+  }
 
-      &:last-child {
-        margin-bottom: 25px;
-      }
+  &__section-title {
+    position: relative;
+    margin: $space-50 0;
+    color: var(--color-text);
+    font-size: clamp(1.5rem, 1.25rem + 1vw, 1.875rem);
+    font-weight: 600;
+    text-align: center;
+    overflow-wrap: anywhere;
+
+    &::after {
+      position: absolute;
+      bottom: -$space-8;
+      left: 50%;
+      width: $page-title-ornament-width;
+      height: $space-2;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, transparent, $gold-color, transparent);
+      content: '';
     }
 
-    @media (max-width: $md) {
-      .text-block {
-        margin-bottom: 25px;
+    &--professional {
+      color: var(--color-red-text);
 
-        &:last-child {
-          margin-bottom: 0px;
-        }
+      &::after {
+        background: linear-gradient(
+          90deg,
+          transparent,
+          $dark-red-color,
+          transparent
+        );
       }
     }
+  }
+}
 
-    .axes-section,
-    .objectives-section {
-      .section-title {
-        position: relative;
-        margin: 50px 0px;
-        text-align: center;
-        color: $primary-text-color;
-        font-size: 30px;
-        font-weight: 600;
+@media (max-width: $breakpoint-tablet) {
+  .about-page__text-block {
+    margin-bottom: $space-25;
+  }
+}
 
-        &::after {
-          width: 80px;
-          height: 2px;
-          position: absolute;
-          bottom: -8px;
-          left: 50%;
-          transform: translateX(-50%);
-          background: linear-gradient(
-            90deg,
-            transparent,
-            $gold-color,
-            transparent
-          );
-          content: '';
-        }
-
-        &.professional-title {
-          color: $dark-red-color;
-
-          &::after {
-            background: linear-gradient(
-              90deg,
-              transparent,
-              $dark-red-color,
-              transparent
-            );
-          }
-        }
-      }
-    }
-
-    @media (max-width: $md) {
-      .axes-section,
-      .objectives-section {
-        margin: 40px 0px 0px 0px;
-
-        .section-title {
-          font-size: 24px;
-        }
-      }
-    }
+@media (prefers-reduced-motion: no-preference) {
+  .about-page__text-block {
+    animation: fadeInUpBlock 0.8s ease-out both;
   }
 }
 </style>

@@ -1,33 +1,36 @@
 <template>
-  <div class="development">
-    <div class="page-header">
+  <article class="development-page" @focusin="finishEntranceAnimation">
+    <header class="development-page__header">
       <PageHeaderOrnament />
       <PageTitle
         :title="t('pages.development.title')"
         :subtitle="t('pages.development.subtitle')" />
-    </div>
+    </header>
 
-    <div class="content-container">
+    <section class="development-page__timeline" aria-labelledby="journey-title">
+      <h2 id="journey-title" class="sr-only">
+        {{ t('miscellaneous.artistic_journey') }}
+      </h2>
       <TextSection
-        class="text-section"
+        class="development-page__text-section"
         :text-content="t('pages.development.intro')"
         :custom-section-class="'intro-section'" />
       <TextSection
-        class="text-section"
+        class="development-page__text-section"
         :text-content="t('pages.development.characteristic')"
         :custom-dot-class="'highlight-dot'"
         :custom-section-class="'highlight-section'"
         :is-highlight-quotation="true" />
       <TextSection
-        class="text-section"
+        class="development-page__text-section"
         :title="t('pages.development.early_life_title')"
         :text-content="t('pages.development.early_life')" />
       <TextSection
-        class="text-section"
+        class="development-page__text-section"
         :title="t('pages.development.scientific_career_title')"
         :text-content="t('pages.development.scientific_career')" />
       <TextSection
-        class="text-section"
+        class="development-page__text-section"
         :title="t('pages.development.artistic_discovery_title')"
         :text-content="t('pages.development.artistic_discovery')"
         :date="t('miscellaneous.2006')"
@@ -35,7 +38,7 @@
         :custom-section-class="'milestone-section'"
         :custom-title-class="'milestone-title'" />
       <TextSection
-        class="text-section"
+        class="development-page__text-section"
         :title="t('pages.development.solo_journey_title')"
         :text-content="t('pages.development.solo_journey')"
         :date="t('miscellaneous.2008')"
@@ -43,33 +46,33 @@
         :custom-section-class="'milestone-section'"
         :custom-title-class="'milestone-title'" />
       <TextSection
-        class="text-section"
+        class="development-page__text-section"
         :title="t('pages.development.learning_title')"
         :text-content="t('pages.development.learning')" />
       <TextSection
-        class="text-section"
+        class="development-page__text-section"
         :title="t('pages.development.current_practice_title')"
         :text-content="t('pages.development.current_practice')" />
       <TextSection
-        class="text-section"
+        class="development-page__text-section"
         :title="t('pages.development.teaching_title')"
         :text-content="t('pages.development.teaching')" />
       <TextSection
-        class="text-section"
+        class="development-page__text-section"
         :title="t('pages.development.workshop_title')"
         :text-content="t('pages.development.workshop_name')"
         :custom-dot-class="'highlight-dot'"
         :custom-section-class="'highlight-section'"
         :is-highlight-section="true" />
       <TextSection
-        class="text-section"
+        class="development-page__text-section"
         :title="t('pages.development.ceramics_title')"
         :text-content="t('pages.development.ceramics_journey')"
         :custom-dot-class="'milestone-dot'"
         :custom-section-class="'milestone-section'"
         :custom-title-class="'milestone-title'" />
       <TextSection
-        class="text-section"
+        class="development-page__text-section"
         :title="t('pages.development.current_ceramics_title')"
         :text-content="t('pages.development.current_ceramics')"
         :date="t('miscellaneous.2023')"
@@ -77,119 +80,51 @@
         :custom-section-class="'final-section'"
         :custom-title-class="'milestone-title'"
         :custom-text-class="'final-text'" />
-    </div>
-  </div>
+    </section>
+  </article>
 </template>
 
 <script setup lang="ts">
 const { t } = useI18n()
-const runtimeConfig = useRuntimeConfig()
-const route = useRoute()
 
-const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
-const urlEndPath = 'about/development'
-const ogImageEndPath = 'og-images/my_development.webp'
+function finishEntranceAnimation(event: FocusEvent) {
+  if (!(event.target instanceof HTMLElement)) {
+    return
+  }
 
-const canonicalUrl = computed(() => `${baseUrl.value}${route.path}`)
+  const section = event.target.closest('.development-page__text-section')
 
-useHead({
-  title: computed(() => t('pages.development.tab_name')),
-  meta: [
-    {
-      name: 'description',
-      content: computed(() => t('pages.development.meta.content')),
-    },
-    {
-      name: 'keywords',
-      content: `${computed(() => t('miscellaneous.art')).value},
-        ${computed(() => t('miscellaneous.my_development')).value},
-        ${computed(() => t('miscellaneous.development')).value},
-        ${computed(() => t('miscellaneous.artistic_journey')).value},
-        ${computed(() => t('miscellaneous.artist')).value},
-        ${computed(() => t('miscellaneous.painting')).value},
-        ${computed(() => t('miscellaneous.painter')).value},
-        ${computed(() => t('miscellaneous.ceramic')).value},
-        ${computed(() => t('miscellaneous.ceramicist')).value},
-        ${computed(() => t('miscellaneous.pottery')).value},
-        ${computed(() => t('miscellaneous.emotions')).value},
-        ${computed(() => t('about.author')).value},
-        ${computed(() => t('app.name')).value},
-      `,
-    },
-  ],
-  link: [
-    { rel: 'canonical', href: canonicalUrl.value },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/en/${urlEndPath}`),
-      hreflang: 'en-US',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
-      hreflang: 'fr-FR',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
-      hreflang: 'x-default',
-    },
-    {
-      rel: 'apple-touch-icon',
-      sizes: '180x180',
-      href: `/${ogImageEndPath}`,
-      key: 'apple-touch-icon',
-    },
-  ],
-})
+  for (const animation of section?.getAnimations() ?? []) {
+    if (
+      animation instanceof CSSAnimation &&
+      animation.animationName === 'fadeInUpBlock'
+    ) {
+      animation.finish()
+    }
+  }
+}
 
-useSeoMeta({
-  ogTitle: '%s %separator %siteName',
-  description: computed(() => t('pages.development.meta.content')),
-  ogDescription: computed(() => t('pages.development.meta.content')),
-  ogImage: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageSecureUrl: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageAlt: computed(() => t('pages.development.meta.content')),
-  ogImageType: 'image/jpeg',
-  ogImageWidth: '1200',
-  ogImageHeight: '600',
-  ogUrl: canonicalUrl.value,
-  articleTag: [
-    computed(() => t('miscellaneous.my_development')).value,
-    computed(() => t('miscellaneous.development')).value,
-    computed(() => t('miscellaneous.artistic_journey')).value,
-    computed(() => t('miscellaneous.art')).value,
-    computed(() => t('miscellaneous.artist')).value,
-    computed(() => t('miscellaneous.painting')).value,
-    computed(() => t('miscellaneous.painter')).value,
-    computed(() => t('miscellaneous.ceramic')).value,
-    computed(() => t('miscellaneous.ceramicist')).value,
-    computed(() => t('miscellaneous.pottery')).value,
-    computed(() => t('miscellaneous.emotions')).value,
-    computed(() => t('about.author')).value,
-    computed(() => t('app.name')).value,
-  ],
-  appleMobileWebAppTitle: '%s %separator %siteName',
-  msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
-})
+useHead(usePageSeo('about_development'))
 </script>
 
 <style lang="scss" scoped>
-.development {
+.development-page {
   position: relative;
+  width: 100%;
+  min-width: 0;
+  max-width: 56.25rem;
 
-  .page-header {
-    margin-bottom: 50px;
+  &__header {
+    margin-bottom: $space-50;
   }
 
-  .content-container {
-    max-width: 900px;
+  &__timeline {
     position: relative;
 
     &::before {
-      width: 2px;
+      width: $space-2;
       position: absolute;
-      left: 29px;
+      left: calc(#{$space-30} - #{$border-width});
       top: 0;
       bottom: 0;
       z-index: 1;
@@ -203,31 +138,30 @@ useSeoMeta({
       );
       content: '';
     }
+  }
 
-    .text-section {
-      position: relative;
-      z-index: 2;
-      animation: fadeInUpBlock 0.8s ease-out;
-      animation-fill-mode: both;
+  &__text-section {
+    position: relative;
+    z-index: 2;
+    scroll-margin-block: $space-24;
+  }
 
-      @for $i from 1 through 15 {
-        &:nth-child(#{$i}) {
-          animation-delay: #{$i * 0.1}s;
-        }
-      }
+  @media (max-width: $breakpoint-laptop) {
+    &__timeline::before {
+      left: $space-14;
     }
   }
 
-  @media (max-width: $lg) {
-    .content-container::before {
-      left: 14px;
+  @media (max-width: $breakpoint-tablet) {
+    &__timeline::before {
+      left: calc(#{$space-10} - #{$border-width});
     }
   }
+}
 
-  @media (max-width: $md) {
-    .content-container::before {
-      left: 9px;
-    }
+@media (prefers-reduced-motion: no-preference) {
+  .development-page__text-section {
+    animation: fadeInUpBlock 0.8s ease-out both;
   }
 }
 </style>

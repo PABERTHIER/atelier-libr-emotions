@@ -1,117 +1,37 @@
 <template>
-  <div class="gallery-page">
-    <div class="page-header">
+  <article class="gallery-page">
+    <header class="gallery-page__header">
       <PageHeaderOrnament />
       <PageTitle
         :title="t('pages.ceramic.porcelain.nature.title')"
         :subtitle="t('pages.ceramic.porcelain.nature.subtitle')" />
-    </div>
+      <GalleryArtistNote
+        :text="t('pages.ceramic.porcelain.nature.description')" />
+    </header>
 
-    <h2>{{ subtitle1 }}</h2>
-    <div class="gallery-container">
+    <p class="sr-only">{{ t('pages.gallery.instructions') }}</p>
+    <section class="gallery-page__collection" aria-labelledby="flowers-title">
+      <h2 id="flowers-title" class="gallery-page__collection-title">
+        {{ flowersTitle }}
+      </h2>
       <ImageGrid
         :images="images"
         :heights="{ xs: 120, sm: 160, md: 220, lg: 300 }" />
-    </div>
+    </section>
 
     <PageNavigation :previous-page="previousPage" :next-page="nextPage" />
-  </div>
+  </article>
 </template>
 
 <script setup lang="ts">
 import type { ImageSource } from '~/types/image'
+import type { PageNavigation } from '~/types/page'
 
 const { t } = useI18n()
-const runtimeConfig = useRuntimeConfig()
-const route = useRoute()
 
-const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
-const urlEndPath = 'ceramic/porcelain/nature'
-const ogImageEndPath = 'ceramics/porcelain/nature/flowers/FP13.webp'
+const flowersTitle = computed(() => t('miscellaneous.flowers'))
 
-const canonicalUrl = computed(() => `${baseUrl.value}${route.path}`)
-
-useHead({
-  title: computed(() => t('pages.ceramic.porcelain.nature.tab_name')),
-  meta: [
-    {
-      name: 'description',
-      content: computed(() => t('pages.ceramic.porcelain.nature.meta.content')),
-    },
-    {
-      name: 'keywords',
-      content: `${computed(() => t('miscellaneous.ceramic')).value},
-        ${computed(() => t('miscellaneous.ceramicist')).value},
-        ${computed(() => t('miscellaneous.porcelain')).value},
-        ${computed(() => t('miscellaneous.nature')).value},
-        ${computed(() => t('miscellaneous.flowers')).value},
-        ${computed(() => t('miscellaneous.art')).value},
-        ${computed(() => t('miscellaneous.artist')).value},
-        ${computed(() => t('miscellaneous.emotions')).value},
-        ${computed(() => t('about.author')).value},
-        ${computed(() => t('app.name')).value},
-      `,
-    },
-  ],
-  link: [
-    { rel: 'canonical', href: canonicalUrl.value },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/en/${urlEndPath}`),
-      hreflang: 'en-US',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
-      hreflang: 'fr-FR',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
-      hreflang: 'x-default',
-    },
-    {
-      rel: 'apple-touch-icon',
-      sizes: '180x180',
-      href: `/${ogImageEndPath}`,
-      key: 'apple-touch-icon',
-    },
-  ],
-})
-
-useSeoMeta({
-  ogTitle: '%s %separator %siteName',
-  description: computed(() => t('pages.ceramic.porcelain.nature.meta.content')),
-  ogDescription: computed(() =>
-    t('pages.ceramic.porcelain.nature.meta.content')
-  ),
-  ogImage: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageSecureUrl: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageAlt: computed(() => t('pages.ceramic.porcelain.nature.meta.content')),
-  ogImageType: 'image/jpeg',
-  ogImageWidth: '1200',
-  ogImageHeight: '600',
-  ogUrl: canonicalUrl.value,
-  ogType: 'article',
-  articleTag: [
-    computed(() => t('miscellaneous.ceramic')).value,
-    computed(() => t('miscellaneous.ceramicist')).value,
-    computed(() => t('miscellaneous.porcelain')).value,
-    computed(() => t('miscellaneous.nature')).value,
-    computed(() => t('miscellaneous.flowers')).value,
-    computed(() => t('miscellaneous.art')).value,
-    computed(() => t('miscellaneous.artist')).value,
-    computed(() => t('miscellaneous.emotions')).value,
-    computed(() => t('about.author')).value,
-    computed(() => t('app.name')).value,
-  ],
-  appleMobileWebAppTitle: '%s %separator %siteName',
-  msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
-})
-
-const subtitle1 = computed(() => t('miscellaneous.flowers'))
-
-const images: ImageSource[] = [
+const images = computed<ImageSource[]>(() => [
   {
     src: '/ceramics/porcelain/nature/flowers/FP1.webp',
     title: t('pictures.ceramics.porcelain.nature.fp1.title'),
@@ -202,28 +122,41 @@ const images: ImageSource[] = [
     mobileTitle: t('pictures.ceramics.porcelain.nature.fp15.mobile_title'),
     alt: t('pictures.ceramics.porcelain.nature.fp15.alt'),
   },
-]
+])
 
-const previousPage = {
+const previousPage = computed<PageNavigation>(() => ({
   path: '/wip',
   title: t('wip.previous_page_name'),
   description: t('wip.previous_page_description'),
-}
+}))
 
-const nextPage = {
+const nextPage = computed<PageNavigation>(() => ({
   path: '/wip',
   title: t('wip.next_page_name'),
   description: t('wip.next_page_description'),
-}
+}))
+
+useHead(usePageSeo('ceramic_porcelain_nature'))
 </script>
 
 <style lang="scss" scoped>
 .gallery-page {
   position: relative;
   width: 100%;
+  min-width: 0;
 
-  .page-header {
-    margin-bottom: 50px;
+  &__header {
+    margin-bottom: $space-50;
+  }
+
+  &__collection {
+    min-width: 0;
+  }
+
+  &__collection-title {
+    margin: $space-40 0 $space-20;
+    font-size: 1.5rem;
+    overflow-wrap: anywhere;
   }
 }
 </style>

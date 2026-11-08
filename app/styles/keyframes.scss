@@ -42,3 +42,12 @@
     background-position: -200% 0;
   }
 }
+
+@keyframes viewerSkeleton {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}

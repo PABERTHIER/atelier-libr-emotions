@@ -1,56 +1,94 @@
 <template>
-  <div class="image">
-    <NuxtLink :to="link">
-      <NuxtImg
-        :src="src"
-        :sizes="sizes"
-        :title="title"
-        :alt="alt"
-        densities="x1 x2"
-        loading="lazy"
-        placeholder
-        :style="{ maxHeight }" />
-    </NuxtLink>
-  </div>
+  <img
+    :key="src"
+    ref="image"
+    class="image"
+    :class="{ 'image--loading': skeleton && pending }"
+    :src="src"
+    :alt="alt"
+    :width="width ?? dimensions?.[0]"
+    :height="height ?? dimensions?.[1]"
+    :loading="loading"
+    decoding="async"
+    @load="settle"
+    @error="settle" />
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  src: {
-    type: String,
-    required: true,
-  },
-  sizes: {
-    type: String,
-    required: true,
-  },
-  maxHeight: {
-    type: String,
-    required: false,
-    default: '200px',
-  },
-  title: {
-    type: String,
-    required: false,
-    default: '',
-  },
-  alt: {
-    type: String,
-    required: false,
-    default: '',
-  },
-})
+import { imageDimensions } from '~/data/imageDimensions'
 
-const runtimeConfig = useRuntimeConfig()
-const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
-const link = ref(baseUrl.value + props.src)
+const {
+  src,
+  alt,
+  width = undefined,
+  height = undefined,
+  loading = 'lazy',
+  skeleton = true,
+} = defineProps<{
+  src: string
+  alt: string
+  width?: number | string
+  height?: number | string
+  loading?: 'lazy' | 'eager'
+  skeleton?: boolean
+}>()
+
+const dimensions = computed(() => imageDimensions[src])
+
+const image = ref<HTMLImageElement | null>(null)
+const pending = ref(false)
+
+let placeholderTimer: ReturnType<typeof setTimeout> | undefined
+
+function settle() {
+  clearTimeout(placeholderTimer)
+  pending.value = false
+}
+
+function trackLoading() {
+  settle()
+
+  if (!skeleton || image.value?.complete) {
+    return
+  }
+
+  // Avoid a placeholder flash for cached and quickly loaded images
+  // Keep the native image visible for progressive loading and no-JS use
+  placeholderTimer = setTimeout(() => {
+    pending.value = !image.value?.complete
+  }, 150)
+}
+
+onMounted(trackLoading)
+
+watch([() => src, () => skeleton], trackLoading, { flush: 'post' })
+
+onBeforeUnmount(settle)
 </script>
 
 <style lang="scss" scoped>
 .image {
-  :deep(a) {
-    display: block;
-    line-height: 0;
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+
+  &--loading {
+    background: linear-gradient(
+      110deg,
+      var(--color-surface-warm) 20%,
+      var(--color-skeleton-highlight) 50%,
+      var(--color-surface-warm) 80%
+    );
+    background-size: 200% 100%;
+    border-radius: $radius-control;
+  }
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  .image--loading {
+    animation: skeletonShimmer 1.8s ease-in-out infinite;
   }
 }
 </style>

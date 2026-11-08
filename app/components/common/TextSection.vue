@@ -1,7 +1,11 @@
 <template>
   <div class="text-section-container">
-    <section class="text-section">
-      <div class="section-marker">
+    <component
+      :is="props.title ? 'section' : 'div'"
+      class="text-section"
+      tabindex="0"
+      :aria-labelledby="props.title ? titleId : undefined">
+      <div class="section-marker" aria-hidden="true">
         <div class="marker-dot" :class="props.customDotClass" />
         <div class="marker-line" />
       </div>
@@ -11,244 +15,249 @@
         class="section-content"
         :class="props.customSectionClass">
         <div class="section-highlight">
-          <h3 class="highlight-title">
+          <component
+            :is="`h${props.headingLevel}`"
+            v-if="props.title"
+            :id="titleId"
+            class="highlight-title">
             {{ props.title }}
-          </h3>
+          </component>
           <p class="highlight-text">
             {{ props.textContent }}
           </p>
         </div>
       </div>
 
-      <div v-else class="section-content" :class="props.customSectionClass">
-        <h3 v-if="props.title" class="title" :class="props.customTitleClass">
+      <div
+        v-else
+        class="section-content"
+        :class="[
+          props.customSectionClass,
+          { 'section-content--dated': props.date },
+        ]">
+        <component
+          :is="`h${props.headingLevel}`"
+          v-if="props.title"
+          :id="titleId"
+          class="title"
+          :class="props.customTitleClass">
           {{ props.title }}
-        </h3>
+        </component>
 
         <div v-if="props.date" class="milestone-date">{{ props.date }}</div>
 
-        <div v-if="props.isHighlightQuotation" class="highlight-quotation">
-          <div class="quote-mark">"</div>
+        <blockquote
+          v-if="props.isHighlightQuotation"
+          class="highlight-quotation">
+          <div class="quote-mark" aria-hidden="true">"</div>
           <p class="characteristic-text">
             {{ props.textContent }}
           </p>
-          <div class="quote-mark closing">"</div>
-        </div>
+          <div class="quote-mark closing" aria-hidden="true">"</div>
+        </blockquote>
 
         <p v-else class="text-content" :class="props.customTextClass">
           {{ props.textContent }}
         </p>
       </div>
-    </section>
+    </component>
   </div>
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  textContent: {
-    type: String,
-    required: true,
-  },
-  title: {
-    type: String,
-    required: false,
-    default: '',
-  },
-  date: {
-    type: String,
-    required: false,
-    default: '',
-  },
-  customDotClass: {
-    type: String,
-    required: false,
-    default: '',
-  },
-  customSectionClass: {
-    type: String,
-    required: false,
-    default: '',
-  },
-  customTitleClass: {
-    type: String,
-    required: false,
-    default: '',
-  },
-  customTextClass: {
-    type: String,
-    required: false,
-    default: '',
-  },
-  isHighlightSection: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  isHighlightQuotation: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-})
+const props = withDefaults(
+  defineProps<{
+    textContent: string
+    title?: string
+    headingLevel?: 2 | 3 | 4 | 5 | 6
+    date?: string
+    customDotClass?: string
+    customSectionClass?: string
+    customTitleClass?: string
+    customTextClass?: string
+    isHighlightSection?: boolean
+    isHighlightQuotation?: boolean
+  }>(),
+  {
+    headingLevel: 3,
+    title: '',
+    date: '',
+    customDotClass: '',
+    customSectionClass: '',
+    customTitleClass: '',
+    customTextClass: '',
+    isHighlightSection: false,
+    isHighlightQuotation: false,
+  }
+)
+
+const titleId = useId()
 </script>
 
 <style lang="scss" scoped>
 .text-section-container {
   width: 100%;
-  height: 100%;
+  min-width: 0;
 
   .text-section {
     position: relative;
     display: flex;
     align-items: flex-start;
-    margin-bottom: 50px;
+    margin-bottom: $space-50;
     z-index: 2;
 
     .section-marker {
-      width: 60px;
+      width: $space-60;
       display: flex;
       flex-direction: column;
       align-items: center;
       flex-shrink: 0;
-      margin-right: 30px;
+      margin-right: $space-30;
 
       .marker-dot {
-        width: 16px;
-        height: 16px;
+        width: $space-16;
+        height: $space-16;
         position: relative;
         z-index: 3;
-        background: $white-color;
-        border: 3px solid $grey-blue-color;
+        background: var(--color-surface);
+        border: $focus-width solid $grey-blue-color;
         border-radius: 50%;
-        transition: all 0.3s ease;
+        transition:
+          border-color $transition-ui,
+          background-color $transition-ui;
 
         &::after {
           position: absolute;
-          width: 6px;
-          height: 6px;
+          width: $space-6;
+          height: $space-6;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
           background: $grey-blue-color;
           border-radius: 50%;
-          transition: all 0.3s ease;
+          transition: background-color $transition-ui;
           content: '';
         }
       }
 
       .highlight-dot {
-        width: 20px;
-        height: 20px;
+        width: $space-20;
+        height: $space-20;
         border-color: $gold-color;
-        background: $cream-color;
-        box-shadow: 0 0 15px $box-shadow-warm;
+        background: var(--color-surface-soft);
+        box-shadow: 0 0 $space-15 $box-shadow-warm;
 
         &::after {
-          width: 8px;
-          height: 8px;
+          width: $space-8;
+          height: $space-8;
           background: $gold-color;
         }
       }
 
       .milestone-dot {
-        width: 18px;
-        height: 18px;
+        width: $space-18;
+        height: $space-18;
         border-color: $copper-color;
-        background: $white-color;
-        box-shadow: 0 4px 12px rgba(184, 115, 51, 0.3);
+        background: var(--color-surface);
+        box-shadow: 0 $space-4 $space-12 rgba($copper-color, 0.3);
 
         &::after {
-          width: 7px;
-          height: 7px;
+          width: $space-7;
+          height: $space-7;
           background: $copper-color;
         }
       }
 
       .final-dot {
-        width: 22px;
-        height: 22px;
-        border-color: $dark-red-color;
-        background: $cream-color;
-        box-shadow: 0 0 20px rgba(160, 0, 0, 0.3);
+        width: $space-22;
+        height: $space-22;
+        border-color: var(--color-red-text);
+        background: var(--color-surface-soft);
+        box-shadow: 0 0 $space-20 rgba($dark-red-color, 0.3);
 
         &::after {
-          width: 10px;
-          height: 10px;
+          width: $space-10;
+          height: $space-10;
           background: $dark-red-color;
         }
       }
 
       .marker-line {
-        width: 1px;
-        height: 40px;
-        margin-top: 8px;
+        width: $border-width;
+        height: $space-40;
+        margin-top: $space-8;
         background: transparent;
       }
     }
 
-    @media (max-width: $lg) {
+    @media (max-width: $breakpoint-laptop) {
       .section-marker {
-        width: 30px;
+        width: $space-30;
       }
     }
 
-    @media (max-width: $md) {
+    @media (max-width: $breakpoint-tablet) {
       .section-marker {
-        width: 20px;
-        margin-right: 15px;
+        width: $space-20;
+        margin-right: $space-15;
       }
     }
 
     .section-content {
+      min-width: 0;
+      overflow-wrap: anywhere;
       position: relative;
-      padding: 30px;
+      padding: $space-30;
       flex: 1;
-      border-radius: 12px;
-      border-left: 4px solid $grey-blue-color;
-      background: $white-color;
-      box-shadow: 0 8px 32px $box-shadow-color;
-      transition: all 0.3s ease;
+      border-radius: $radius-panel;
+      border-left: $space-4 solid $grey-blue-color;
+      background: var(--color-surface);
+      box-shadow: 0 $space-8 $space-32 $box-shadow-color;
+      transition:
+        transform $transition-ui,
+        box-shadow $transition-ui;
 
       &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        transform: translateY(-$space-2);
+        box-shadow: 0 $space-12 $space-40 rgba(0, 0, 0, 0.15);
       }
 
       &::before {
         position: absolute;
         width: 0;
         height: 0;
-        left: -8px;
-        top: 30px;
-        border-top: 8px solid transparent;
-        border-bottom: 8px solid transparent;
-        border-right: 8px solid $white-color;
+        left: -$space-8;
+        top: $space-30;
+        border-top: $space-8 solid transparent;
+        border-bottom: $space-8 solid transparent;
+        border-right: $space-8 solid var(--color-surface);
         content: '';
       }
 
       .title {
-        margin-bottom: 15px;
-        color: $primary-text-color;
-        font-size: 20px;
+        margin-top: 0;
+        margin-bottom: $space-15;
+        color: var(--color-text);
+        font-size: 1.25rem;
       }
 
       .text-content {
         margin: 0;
-        text-align: justify;
-        color: $primary-text-color;
-        font-size: 17px;
+        text-align: start;
+        color: var(--color-text);
+        font-size: 1.0625rem;
         line-height: 1.7;
       }
 
       .milestone-title {
         position: relative;
         display: inline-block;
-        color: $copper-color;
+        color: var(--color-copper-text);
 
         &::after {
           position: absolute;
-          height: 2px;
-          bottom: -4px;
+          height: $space-2;
+          bottom: -$space-4;
           left: 0;
           right: 0;
           background: linear-gradient(90deg, $copper-color, transparent);
@@ -257,72 +266,97 @@ const props = defineProps({
       }
 
       .milestone-date {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        padding: 5px 15px;
-        background: $copper-color;
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: end;
+        margin-top: -$space-20;
+        margin-right: -$space-20;
+        padding: $space-5 $space-15;
+        background: $copper-text-color;
         color: $white-color;
-        border-radius: 15px;
-        font-size: 14px;
+        border-radius: $space-15;
+        font-size: 0.875rem;
         font-weight: 600;
-        box-shadow: 0 2px 8px rgba(184, 115, 51, 0.3);
+        box-shadow: 0 $space-2 $space-8 rgba($copper-color, 0.3);
+      }
+
+      &--dated {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: start;
+        column-gap: $space-12;
+
+        .title {
+          justify-self: start;
+        }
+
+        .text-content,
+        .highlight-quotation {
+          grid-column: 1 / -1;
+        }
       }
     }
 
-    @media (max-width: $md) {
+    @media (max-width: $breakpoint-tablet) {
       .section-content {
-        padding: 20px;
+        padding: $space-20;
 
         &::before {
-          left: -6px;
-          border-right-width: 6px;
-          border-top-width: 6px;
-          border-bottom-width: 6px;
+          left: -$space-6;
+          border-right-width: $space-6;
+          border-top-width: $space-6;
+          border-bottom-width: $space-6;
         }
 
         .title {
-          font-size: 18px;
+          font-size: 1.125rem;
         }
 
         .text-content {
           text-align: left;
-          font-size: 15px;
+          font-size: 0.9375rem;
         }
 
         .milestone-date {
-          position: absolute;
-          display: inline-block;
-          top: 10px;
-          right: 10px;
+          margin-top: -$space-10;
+          margin-right: -$space-10;
         }
       }
     }
 
     .intro-section {
       border-left-color: $grey-blue-color;
-      background: linear-gradient(135deg, $white-color, $cream-color);
+      background: linear-gradient(
+        135deg,
+        var(--color-surface),
+        var(--color-surface-soft)
+      );
     }
 
     .highlight-section {
       border-left-color: $gold-color;
-      background: linear-gradient(135deg, $cream-color, $white-color);
+      background: linear-gradient(
+        135deg,
+        var(--color-surface-soft),
+        var(--color-surface)
+      );
 
       .highlight-quotation {
+        margin: 0;
         position: relative;
         text-align: center;
-        padding: 15px;
+        padding: $space-15;
 
         .quote-mark {
           position: absolute;
-          top: -15px;
+          top: -$space-15;
           left: 0;
           color: $gold-color;
-          font-size: 65px;
+          font-size: 4rem;
           opacity: 0.6;
 
           &.closing {
-            bottom: -15px;
+            bottom: -$space-15;
             right: 0;
             top: auto;
             left: auto;
@@ -331,9 +365,9 @@ const props = defineProps({
         }
 
         .characteristic-text {
-          margin: 15px 0;
-          color: $primary-text-color;
-          font-size: 20px;
+          margin: $space-15 0;
+          color: var(--color-text);
+          font-size: 1.25rem;
           font-style: italic;
           font-weight: 500;
         }
@@ -343,14 +377,15 @@ const props = defineProps({
         text-align: center;
 
         .highlight-title {
-          margin-bottom: 10px;
-          color: $gold-color;
-          font-size: 22px;
+          margin-top: 0;
+          margin-bottom: $space-10;
+          color: var(--color-gold-text);
+          font-size: 1.375rem;
         }
 
         .highlight-text {
-          color: $copper-color;
-          font-size: 17px;
+          color: var(--color-copper-text);
+          font-size: 1.0625rem;
           font-style: italic;
           font-weight: 500;
         }
@@ -362,8 +397,12 @@ const props = defineProps({
     }
 
     .final-section {
-      border-left-color: $dark-red-color;
-      background: linear-gradient(135deg, $white-color, $warm-beige);
+      border-left-color: var(--color-red-text);
+      background: linear-gradient(
+        135deg,
+        var(--color-surface),
+        var(--color-surface-warm)
+      );
 
       .final-text {
         font-weight: 500;
@@ -371,10 +410,15 @@ const props = defineProps({
     }
   }
 
-  @media (max-width: $md) {
+  @media (max-width: $breakpoint-tablet) {
     .text-section {
-      margin-bottom: 25px;
+      margin-bottom: $space-25;
     }
+  }
+}
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .text-section-container .text-section .section-content:hover {
+    transform: none;
   }
 }
 </style>

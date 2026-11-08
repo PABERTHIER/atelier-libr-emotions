@@ -1,585 +1,287 @@
 <template>
-  <div class="homepage">
-    <section class="hero-section">
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1 class="hero-title">
-            <span class="title-line">
-              {{ t('app.name') }}
-            </span>
-            <span class="title-line accent">
-              {{ t('pages.main.hero_title') }}
-            </span>
-          </h1>
-          <div class="hero-description">
-            {{ t('pages.main.hero_description') }}
-          </div>
-          <div v-show="device.isComputer.value" class="hero-buttons-desktop">
-            <Button
-              :name="t('pages.main.buttons.view_gallery')"
-              @click="navigateTo(localPath(galleryLink))" />
-            <Button
-              :name="t('pages.main.buttons.about')"
-              @click="navigateTo(localPath(aboutLink))" />
-          </div>
-        </div>
-        <div class="hero-image">
-          <div class="floating-artwork">
-            <div class="artwork-frame first-picture">
-              <Image
-                :src="
-                  linksConfigFirstPicture[currentFirstPictureIndex]!.filePath
-                "
-                sizes="xs:100px, sm:150px, md:150px, lg:175px, xl:200px"
-                max-height="300px"
-                :title="
-                  linksConfigFirstPicture[currentFirstPictureIndex]!.title
-                "
-                :alt="linksConfigFirstPicture[currentFirstPictureIndex]!.alt" />
-            </div>
-            <div class="artwork-frame second-picture">
-              <Image
-                :src="
-                  linksConfigSecondPicture[currentSecondPictureIndex]!.filePath
-                "
-                sizes="xs:80px, sm:130px, md:130px, lg:150px, xl:180px"
-                max-height="180px"
-                :title="
-                  linksConfigSecondPicture[currentSecondPictureIndex]!.title
-                "
-                :alt="
-                  linksConfigSecondPicture[currentSecondPictureIndex]!.alt
-                " />
-            </div>
-            <div class="artwork-frame third-picture">
-              <Image
-                :src="
-                  linksConfigThirdPicture[currentThirdPictureIndex]!.filePath
-                "
-                sizes="xs:80px, sm:100px, md:100px, lg:125px, xl:150px"
-                max-height="250px"
-                :title="
-                  linksConfigThirdPicture[currentThirdPictureIndex]!.title
-                "
-                :alt="linksConfigThirdPicture[currentThirdPictureIndex]!.alt" />
-            </div>
-          </div>
-        </div>
-        <div v-show="!device.isComputer.value" class="hero-buttons-mobile">
-          <Button
-            :name="t('pages.main.buttons.view_gallery')"
-            @click="navigateTo(localPath(galleryLink))" />
-          <Button
-            :name="t('pages.main.buttons.about')"
-            @click="navigateTo(localPath(aboutLink))" />
-        </div>
+  <div class="home-page">
+    <section class="home-page__hero" aria-labelledby="home-title">
+      <div class="home-page__intro">
+        <h1 id="home-title" class="home-page__title">
+          <span class="home-page__title-line">{{ t('app.name') }}</span>
+          <span class="home-page__title-line home-page__title-line--accent">
+            {{ t('pages.main.hero_title') }}
+          </span>
+        </h1>
+        <p class="home-page__description">
+          {{ t('pages.main.hero_description') }}
+        </p>
+      </div>
+
+      <Carousel class="home-page__carousel" />
+
+      <div class="home-page__actions">
+        <NuxtLink
+          :to="localePath('/painting/acrylic/abstracts')"
+          class="home-page__action">
+          {{ t('pages.main.buttons.view_gallery') }}
+        </NuxtLink>
+        <NuxtLink :to="localePath('/about')" class="home-page__action">
+          {{ t('pages.main.buttons.about') }}
+        </NuxtLink>
       </div>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
-const { t, locale } = useI18n()
-const localPath = useLocalePath()
-const runtimeConfig = useRuntimeConfig()
-const device = useScreenSize()
+const { t } = useI18n()
+const localePath = useLocalePath()
 
-const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
-const ogImageEndPath = 'paintings/celestial-collision.jpg'
-
-const canonicalUrl = computed(() => `${baseUrl.value}/${locale.value}`)
-
-useHead({
-  title: computed(() => t('pages.main.tab_name')),
-  meta: [
-    { name: 'description', content: computed(() => t('app.meta.description')) },
-    {
-      name: 'keywords',
-      content: `${computed(() => t('miscellaneous.art')).value},
-        ${computed(() => t('miscellaneous.artist')).value},
-        ${computed(() => t('miscellaneous.painting')).value},
-        ${computed(() => t('miscellaneous.painter')).value},
-        ${computed(() => t('miscellaneous.ceramic')).value},
-        ${computed(() => t('miscellaneous.ceramicist')).value},
-        ${computed(() => t('miscellaneous.pottery')).value},
-        ${computed(() => t('miscellaneous.emotions')).value},
-        ${computed(() => t('about.author')).value},
-        ${computed(() => t('app.name')).value},
-      `,
-    },
-  ],
-  link: [
-    { rel: 'canonical', href: canonicalUrl.value },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/en`),
-      hreflang: 'en-US',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/fr`),
-      hreflang: 'fr-FR',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}`),
-      hreflang: 'x-default',
-    },
-  ],
-})
-
-useSeoMeta({
-  ogTitle: '%s %separator %siteName',
-  description: computed(() => t('app.meta.description')),
-  ogDescription: computed(() => t('app.meta.description')),
-  ogImage: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageSecureUrl: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageAlt: computed(() => t('app.meta.description')),
-  ogImageType: 'image/jpeg',
-  ogImageWidth: '1200',
-  ogImageHeight: '600',
-  ogUrl: canonicalUrl.value,
-  articleTag: computed(() => [
-    computed(() => t('pages.main.tab_name')).value,
-    computed(() => t('miscellaneous.art')).value,
-    computed(() => t('miscellaneous.artist')).value,
-    computed(() => t('miscellaneous.painting')).value,
-    computed(() => t('miscellaneous.painter')).value,
-    computed(() => t('miscellaneous.ceramic')).value,
-    computed(() => t('miscellaneous.ceramicist')).value,
-    computed(() => t('miscellaneous.pottery')).value,
-    computed(() => t('miscellaneous.emotions')).value,
-    computed(() => t('about.author')).value,
-    computed(() => t('app.name')).value,
-  ]),
-  appleMobileWebAppTitle: '%s %separator %siteName',
-  msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
-})
-
-const linksConfigFirstPicture = ref([
-  {
-    filePath: '/paintings/celestial-collision.webp',
-    title: computed(() => t('pictures.carousel.celestial_collision.title')),
-    alt: computed(() => t('pictures.carousel.celestial_collision.alt')),
-  },
-  {
-    filePath: '/paintings/abstract-autumn.webp',
-    title: computed(() => t('pictures.carousel.abstract_autumn.title')),
-    alt: computed(() => t('pictures.carousel.abstract_autumn.alt')),
-  },
-  {
-    filePath: '/paintings/acrylic/abstracts/AutomaticPainting2.webp',
-    title: computed(() => t('pictures.carousel.automatic_painting_2.title')),
-    alt: computed(() => t('pictures.carousel.automatic_painting_2.alt')),
-  },
-  {
-    filePath: '/paintings/inks/nature/EC10.webp',
-    title: computed(() => t('pictures.carousel.ec10.title')),
-    alt: computed(() => t('pictures.carousel.ec10.alt')),
-  },
-  {
-    filePath: '/paintings/mixed_technique/nature/TMn9.webp',
-    title: computed(() => t('pictures.carousel.tmn9.title')),
-    alt: computed(() => t('pictures.carousel.tmn9.alt')),
-  },
-])
-
-const linksConfigSecondPicture = ref([
-  {
-    filePath: '/ceramics/electric_kiln/animals/cats/Cats14.webp',
-    title: computed(() => t('pictures.carousel.cats14.title')),
-    alt: computed(() => t('pictures.carousel.cats14.alt')),
-  },
-  {
-    filePath: '/ceramics/electric_kiln/animals/snails/Snails5.webp',
-    title: computed(() => t('pictures.carousel.snails5.title')),
-    alt: computed(() => t('pictures.carousel.snails5.alt')),
-  },
-  {
-    filePath: '/ceramics/electric_kiln/animals/birds/Birds5.webp',
-    title: computed(() => t('pictures.carousel.birds5.title')),
-    alt: computed(() => t('pictures.carousel.birds5.alt')),
-  },
-  {
-    filePath: '/ceramics/electric_kiln/animals/tortoises/Tortoises8.webp',
-    title: computed(() => t('pictures.carousel.tortoises8.title')),
-    alt: computed(() => t('pictures.carousel.tortoises8.alt')),
-  },
-  {
-    filePath: '/ceramics/electric_kiln/nature/flowers/F7.webp',
-    title: computed(() => t('pictures.carousel.f7.title')),
-    alt: computed(() => t('pictures.carousel.f7.alt')),
-  },
-  {
-    filePath: '/ceramics/electric_kiln/nature/leaves/Feuilles8.webp',
-    title: computed(() => t('pictures.carousel.feuilles8.title')),
-    alt: computed(() => t('pictures.carousel.feuilles8.alt')),
-  },
-  {
-    filePath: '/ceramics/electric_kiln/various_objects/boxes/Sgraffitto4.webp',
-    title: computed(() => t('pictures.carousel.sgraffitto4.title')),
-    alt: computed(() => t('pictures.carousel.sgraffitto4.alt')),
-  },
-  {
-    filePath:
-      '/ceramics/electric_kiln/vases_and_pots/intuitive_pots/PotsIntuitifs7.webp',
-    title: computed(() => t('pictures.carousel.pots_intuitifs7.title')),
-    alt: computed(() => t('pictures.carousel.pots_intuitifs7.alt')),
-  },
-  {
-    filePath:
-      '/ceramics/electric_kiln/vases_and_pots/single_flower_vases/Soliflores10.webp',
-    title: computed(() => t('pictures.carousel.soliflores10.title')),
-    alt: computed(() => t('pictures.carousel.soliflores10.alt')),
-  },
-  {
-    filePath:
-      '/ceramics/electric_kiln/vases_and_pots/round_vases/VasesRonds4.webp',
-    title: computed(() => t('pictures.carousel.vases_ronds4.title')),
-    alt: computed(() => t('pictures.carousel.vases_ronds4.alt')),
-  },
-  {
-    filePath: '/ceramics/porcelain/nature/flowers/FP13.webp',
-    title: computed(() => t('pictures.carousel.fp13.title')),
-    alt: computed(() => t('pictures.carousel.fp13.alt')),
-  },
-])
-
-const linksConfigThirdPicture = ref([
-  {
-    filePath: '/ceramics/CeramicInProgress.webp',
-    title: computed(() => t('pictures.carousel.ceramic_wip.title')),
-    alt: computed(() => t('pictures.carousel.ceramic_wip.alt')),
-  },
-  {
-    filePath: '/og-images/contact.webp',
-    title: computed(() => t('pictures.carousel.creations.title')),
-    alt: computed(() => t('pictures.carousel.creations.alt')),
-  },
-  {
-    filePath: '/og-images/cv.webp',
-    title: computed(() => t('pictures.carousel.nature.title')),
-    alt: computed(() => t('pictures.carousel.nature.alt')),
-  },
-  {
-    filePath: '/og-images/my_artistic_approach.webp',
-    title: computed(() => t('pictures.carousel.my_artistic_approach.title')),
-    alt: computed(() => t('pictures.carousel.my_artistic_approach.alt')),
-  },
-  {
-    filePath: '/og-images/my_development.webp',
-    title: computed(() => t('pictures.carousel.my_development.title')),
-    alt: computed(() => t('pictures.carousel.my_development.alt')),
-  },
-])
-
-const galleryLink = ref('/painting/acrylic/abstracts')
-const aboutLink = ref('/about')
-
-const currentFirstPictureIndex = ref(0)
-const currentSecondPictureIndex = ref(0)
-const currentThirdPictureIndex = ref(0)
-const timer = ref<NodeJS.Timeout | undefined>(undefined)
-
-const next = () => {
-  currentFirstPictureIndex.value =
-    (currentFirstPictureIndex.value + 1) % linksConfigFirstPicture.value.length
-  currentSecondPictureIndex.value =
-    (currentSecondPictureIndex.value + 1) %
-    linksConfigSecondPicture.value.length
-  currentThirdPictureIndex.value =
-    (currentThirdPictureIndex.value + 1) % linksConfigThirdPicture.value.length
-}
-
-onMounted(() => {
-  timer.value = setInterval(next, 5000)
-})
-
-onBeforeUnmount(() => {
-  clearInterval(timer.value)
-})
+useHead(usePageSeo('home'))
 </script>
 
 <style lang="scss" scoped>
-.homepage {
+.home-page {
   width: 100%;
-  height: 100%;
+  min-width: 0;
 
-  .hero-section {
-    height: 100%;
+  &__hero {
+    display: grid;
+    grid-template-areas: 'intro' 'carousel' 'actions';
+    grid-template-columns: minmax(0, 1fr);
+    align-items: center;
+    justify-items: center;
+    gap: $space-30;
+    max-width: 1664px;
+    margin-inline: auto;
+  }
+
+  &__intro {
+    grid-area: intro;
     width: 100%;
+    min-width: 0;
+    max-width: 45rem;
+    text-align: start;
+    overflow-wrap: anywhere;
+  }
 
-    .hero-content {
-      height: 100%;
-      width: 100%;
-      display: flex;
-      align-items: center;
+  &__title {
+    margin: 0 0 $space-30;
+    font-weight: 300;
+    line-height: 1.1;
+  }
+
+  &__title-line {
+    display: block;
+    color: var(--color-heading);
+    font-size: clamp(3rem, 8vw, 5rem);
+    letter-spacing: -0.125rem;
+
+    &--accent {
+      background: linear-gradient(
+        135deg,
+        var(--color-red-text),
+        var(--color-hero-accent)
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      font-size: clamp(3rem, 3vw, 4rem);
+      font-weight: 500;
+    }
+  }
+
+  &__description {
+    margin: 0;
+    max-width: 31.25rem;
+    color: var(--color-muted);
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+
+  &__carousel {
+    grid-area: carousel;
+  }
+
+  &__actions {
+    grid-area: actions;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: $space-15 $space-10;
+    width: 100%;
+    max-width: 31.25rem;
+  }
+
+  &__action {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: $control-size;
+    max-width: 100%;
+    padding: $space-20;
+    border-radius: $space-8;
+    background: var(--color-control-glass);
+    color: inherit;
+    font-size: 1.25rem;
+    line-height: 1.25;
+    text-align: center;
+    overflow-wrap: anywhere;
+    -webkit-backdrop-filter: blur($space-10);
+    backdrop-filter: blur($space-10);
+
+    &::before {
+      position: absolute;
+      inset: 0;
+      padding: $space-2;
+      border-radius: inherit;
+      background: linear-gradient(
+        90deg,
+        $light-grey-color-2 0%,
+        $light-grey-color-2 25%,
+        $grey-blue-color 50%,
+        $dark-red-color 75%,
+        $grey-blue-color 100%
+      );
+      background-size: 400% auto;
+      -webkit-mask:
+        linear-gradient($white-color 0 0) content-box,
+        linear-gradient($white-color 0 0);
+      mask:
+        linear-gradient($white-color 0 0) content-box,
+        linear-gradient($white-color 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      content: '';
+    }
+
+    &:hover::before,
+    &:focus-visible::before {
+      background-position: -50% 0;
+    }
+  }
+}
+
+@media (min-width: calc($breakpoint-laptop + $border-width)) {
+  .home-page {
+    &__hero {
+      grid-template-areas: 'intro carousel' 'actions carousel';
+      grid-template-columns: min(45rem, 54%) minmax(0, 650px);
       justify-content: space-around;
+      gap: $space-50 $space-40;
+    }
 
-      @media (max-width: $lg) {
-        height: auto;
-        display: flex;
-        flex-direction: column;
+    &__intro {
+      align-self: end;
+      justify-self: start;
+      max-width: none;
+    }
+
+    &__actions {
+      align-self: start;
+      justify-self: start;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-desktop) {
+  .home-page {
+    &__hero {
+      column-gap: $space-20;
+    }
+
+    &__title-line {
+      font-size: clamp(3rem, 5vw, 4rem);
+
+      &--accent {
+        font-size: clamp(2rem, 3vw, 4rem);
       }
+    }
+  }
+}
 
-      .hero-text {
-        .hero-title {
-          margin-bottom: 30px;
+@media (max-width: $breakpoint-laptop) {
+  .home-page {
+    --home-copy-width: clamp(31.25rem, 60vw, 37.5rem);
 
-          .title-line {
-            display: block;
-            font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 300;
-            line-height: 1.1;
-            letter-spacing: -2px;
-            color: $dark-grey-blue-color;
+    &__intro {
+      max-width: var(--home-copy-width);
+    }
 
-            @media (max-width: $xl) {
-              font-size: clamp(3rem, 5vw, 4rem);
-            }
+    &__description {
+      max-width: var(--home-copy-width);
+    }
 
-            @media (max-width: $lg) {
-              font-size: clamp(3rem, 6vw, 4rem);
-            }
+    &__title-line {
+      font-size: clamp(3rem, 6vw, 4rem);
 
-            &.accent {
-              background: linear-gradient(
-                135deg,
-                $dark-red-color,
-                $grey-blue-color
-              );
-              background-clip: text;
-              -webkit-background-clip: text;
-              font-weight: 500;
-              color: transparent;
-              font-size: clamp(3rem, 3vw, 4rem);
-
-              @media (max-width: $xl) {
-                font-size: clamp(2rem, 3vw, 4rem);
-              }
-
-              @media (max-width: $lg) {
-                font-size: clamp(2rem, 3vw, 3rem);
-              }
-            }
-          }
-        }
-
-        .hero-description {
-          max-width: 500px;
-          margin-bottom: 50px;
-          font-size: 18px;
-          line-height: 1.6;
-          color: $grey-color-2;
-
-          @media (max-width: $xl) {
-            max-width: 430px;
-          }
-
-          @media (max-width: $lg) {
-            max-width: 500px;
-            margin-bottom: 30px;
-          }
-        }
-
-        .hero-buttons-desktop {
-          max-width: 475px;
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: space-between;
-        }
+      &--accent {
+        font-size: clamp(2rem, 3vw, 3rem);
       }
+    }
+  }
+}
 
-      .hero-image {
-        height: 500px;
-        width: 650px;
-        position: relative;
+@media (min-width: calc($breakpoint-laptop + $border-width)) and (max-width: $breakpoint-desktop) {
+  .home-page__hero {
+    grid-template-columns: min(40rem, 54%) minmax(0, 500px);
+  }
+}
 
-        .floating-artwork {
-          width: 100%;
-          height: 500px;
-          position: relative;
+@media (min-width: $breakpoint-small) and (max-width: $breakpoint-laptop) {
+  .home-page__actions {
+    width: max-content;
+    max-width: 100%;
+    margin-top: -$space-10;
+    column-gap: $space-20;
+  }
 
-          .artwork-frame {
-            position: absolute;
-            padding: 15px;
-            background: $white-color;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px $box-shadow-color;
-            transition: transform 0.3s ease;
+  .home-page__action {
+    margin-inline: auto;
+  }
+}
 
-            &.first-picture {
-              top: 50px;
-              left: 50px;
-              animation: floatBlock 6s ease-in-out infinite;
-            }
+@media (max-width: $breakpoint-tablet) {
+  .home-page__action {
+    padding: $space-10;
+  }
+}
 
-            &.second-picture {
-              top: 150px;
-              left: 420px;
-              animation: floatBlock 6s ease-in-out infinite 2s;
-            }
+@media (max-width: $breakpoint-compact) {
+  .home-page {
+    &__title-line {
+      font-size: clamp(2rem, 14vw, 3rem);
 
-            &.third-picture {
-              top: 200px;
-              left: 200px;
-              animation: floatBlock 6s ease-in-out infinite 4s;
-            }
-          }
-        }
+      &--accent {
+        font-size: 2rem;
       }
+    }
+  }
+}
 
-      @media (max-width: $xl) {
-        .hero-image {
-          height: 450px;
-          width: 500px;
+@media (width < $breakpoint-small) {
+  .home-page__actions {
+    justify-content: center;
+  }
+}
 
-          .floating-artwork {
-            height: 450px;
+@media (prefers-reduced-motion: no-preference) {
+  .home-page {
+    &__action::before {
+      transition: background-position 0.3s ease-in-out;
+    }
+  }
+}
 
-            .artwork-frame {
-              padding: 10px;
+@media (forced-colors: active) {
+  .home-page__title-line--accent {
+    background: none;
+    color: CanvasText;
+  }
 
-              &.first-picture {
-                top: 80px;
-                left: 10px;
-                animation: floatBlock 8s ease-in-out infinite;
-              }
+  .home-page__action {
+    border: $border-width solid LinkText;
 
-              &.second-picture {
-                top: 175px;
-                left: 330px;
-                animation: floatBlock 8s ease-in-out infinite 2s;
-              }
-
-              &.third-picture {
-                top: 225px;
-                left: 140px;
-                animation: floatBlock 8s ease-in-out infinite 4s;
-              }
-            }
-          }
-        }
-      }
-
-      @media (max-width: $lg) {
-        .hero-image {
-          height: 300px;
-          width: 400px;
-
-          .floating-artwork {
-            height: 300px;
-
-            .artwork-frame {
-              padding: 10px;
-
-              &.first-picture {
-                top: 0px;
-                left: 10px;
-                animation: floatBlock 8s ease-in-out infinite;
-              }
-
-              &.second-picture {
-                top: 75px;
-                left: 275px;
-                animation: floatBlock 8s ease-in-out infinite 2s;
-              }
-
-              &.third-picture {
-                top: 125px;
-                left: 125px;
-                animation: floatBlock 8s ease-in-out infinite 4s;
-              }
-            }
-          }
-        }
-      }
-
-      @media (max-width: $sm) {
-        .hero-image {
-          height: 250px;
-          width: 300px;
-
-          .floating-artwork {
-            height: 250px;
-
-            .artwork-frame {
-              padding: 10px;
-              border-radius: 5px;
-
-              &.first-picture {
-                top: 0px;
-                left: 10px;
-                animation: floatBlock 10s ease-in-out infinite;
-              }
-
-              &.second-picture {
-                top: 50px;
-                left: 210px;
-                animation: floatBlock 10s ease-in-out infinite 2s;
-              }
-
-              &.third-picture {
-                top: 100px;
-                left: 90px;
-                animation: floatBlock 10s ease-in-out infinite 4s;
-              }
-            }
-          }
-        }
-      }
-
-      @media (max-width: $xs) {
-        .hero-image {
-          height: 250px;
-          width: 250px;
-          font-size: 14px;
-
-          .floating-artwork {
-            height: 150px;
-
-            .artwork-frame {
-              padding: 5px;
-
-              &.first-picture {
-                top: 0px;
-                left: 0px;
-                animation: floatBlock 15s ease-in-out infinite;
-              }
-
-              &.second-picture {
-                top: 50px;
-                left: 175px;
-                animation: floatBlock 15s ease-in-out infinite 2s;
-              }
-
-              &.third-picture {
-                top: 70px;
-                left: 70px;
-                animation: floatBlock 15s ease-in-out infinite 4s;
-              }
-            }
-          }
-        }
-      }
-
-      .hero-buttons-mobile {
-        width: 100%;
-        max-width: 475px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        margin-top: 30px;
-        gap: 10px;
-
-        @media (max-width: '395px') {
-          justify-content: center;
-        }
-
-        .button-container {
-          margin-bottom: 5px;
-        }
-      }
+    &::before {
+      display: none;
     }
   }
 }

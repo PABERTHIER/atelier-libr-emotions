@@ -1,136 +1,60 @@
 <template>
-  <div class="gallery-page">
-    <div class="page-header">
+  <article class="gallery-page">
+    <header class="gallery-page__header">
       <PageHeaderOrnament />
       <PageTitle
         :title="t('pages.ceramic.electric_kiln.animals.title')"
         :subtitle="t('pages.ceramic.electric_kiln.animals.subtitle')" />
-    </div>
+      <GalleryArtistNote
+        :text="t('pages.ceramic.electric_kiln.animals.description')" />
+    </header>
 
-    <h2>{{ catsTitle }}</h2>
-    <div class="gallery-container">
+    <p class="sr-only">{{ t('pages.gallery.instructions') }}</p>
+    <section class="gallery-page__collection" aria-labelledby="cats-title">
+      <h2 id="cats-title" class="gallery-page__collection-title">
+        {{ catsTitle }}
+      </h2>
       <ImageGrid
         :images="catsImages"
         :heights="{ xs: 120, sm: 160, md: 220, lg: 300 }" />
-    </div>
+    </section>
 
-    <h2>{{ snailsTitle }}</h2>
-    <div class="gallery-container">
+    <section class="gallery-page__collection" aria-labelledby="snails-title">
+      <h2 id="snails-title" class="gallery-page__collection-title">
+        {{ snailsTitle }}
+      </h2>
       <ImageGrid
         :images="snailsImages"
         :heights="{ xs: 120, sm: 160, md: 220, lg: 300 }" />
-    </div>
+    </section>
 
-    <h2>{{ birdsTitle }}</h2>
-    <div class="gallery-container">
+    <section class="gallery-page__collection" aria-labelledby="birds-title">
+      <h2 id="birds-title" class="gallery-page__collection-title">
+        {{ birdsTitle }}
+      </h2>
       <ImageGrid
         :images="birdsImages"
         :heights="{ xs: 120, sm: 160, md: 220, lg: 300 }" />
-    </div>
+    </section>
 
-    <h2>{{ tortoisesTitle }}</h2>
-    <div class="gallery-container">
+    <section class="gallery-page__collection" aria-labelledby="tortoises-title">
+      <h2 id="tortoises-title" class="gallery-page__collection-title">
+        {{ tortoisesTitle }}
+      </h2>
       <ImageGrid
         :images="tortoisesImages"
         :heights="{ xs: 120, sm: 160, md: 220, lg: 300 }" />
-    </div>
+    </section>
 
     <PageNavigation :previous-page="previousPage" :next-page="nextPage" />
-  </div>
+  </article>
 </template>
 
 <script setup lang="ts">
 import type { ImageSource } from '~/types/image'
+import type { PageNavigation } from '~/types/page'
 
 const { t } = useI18n()
-const runtimeConfig = useRuntimeConfig()
-const route = useRoute()
-
-const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
-const urlEndPath = 'ceramic/electric-kiln/animals'
-const ogImageEndPath =
-  'ceramics/electric_kiln/animals/tortoises/Tortoises8.webp'
-const canonicalUrl = computed(() => `${baseUrl.value}${route.path}`)
-
-const keywords = [
-  'miscellaneous.ceramic',
-  'miscellaneous.ceramicist',
-  'miscellaneous.electric_kiln',
-  'miscellaneous.animals',
-  'miscellaneous.cats',
-  'miscellaneous.snails',
-  'miscellaneous.birds',
-  'miscellaneous.tortoises',
-  'miscellaneous.art',
-  'miscellaneous.artist',
-  'miscellaneous.emotions',
-  'about.author',
-  'app.name',
-]
-const keywordValues = computed(() => keywords.map(keyword => t(keyword)))
-
-useHead({
-  title: computed(() => t('pages.ceramic.electric_kiln.animals.tab_name')),
-  meta: [
-    {
-      name: 'description',
-      content: computed(() =>
-        t('pages.ceramic.electric_kiln.animals.meta.content')
-      ),
-    },
-    {
-      name: 'keywords',
-      content: computed(() => keywordValues.value.join(', ')),
-    },
-  ],
-  link: [
-    { rel: 'canonical', href: canonicalUrl.value },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/en/${urlEndPath}`),
-      hreflang: 'en-US',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
-      hreflang: 'fr-FR',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
-      hreflang: 'x-default',
-    },
-    {
-      rel: 'apple-touch-icon',
-      sizes: '180x180',
-      href: `/${ogImageEndPath}`,
-      key: 'apple-touch-icon',
-    },
-  ],
-})
-
-useSeoMeta({
-  ogTitle: '%s %separator %siteName',
-  description: computed(() =>
-    t('pages.ceramic.electric_kiln.animals.meta.content')
-  ),
-  ogDescription: computed(() =>
-    t('pages.ceramic.electric_kiln.animals.meta.content')
-  ),
-  ogImage: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageSecureUrl: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageAlt: computed(() =>
-    t('pages.ceramic.electric_kiln.animals.meta.content')
-  ),
-  ogImageType: 'image/jpeg',
-  ogImageWidth: '1200',
-  ogImageHeight: '600',
-  ogUrl: canonicalUrl.value,
-  ogType: 'article',
-  articleTag: keywordValues.value,
-  appleMobileWebAppTitle: '%s %separator %siteName',
-  msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
-})
 
 const catsTitle = computed(() => t('miscellaneous.cats'))
 const snailsTitle = computed(() => t('miscellaneous.snails'))
@@ -158,49 +82,59 @@ const createImages = (
 const createEntries = (prefix: string, count: number) =>
   Array.from({ length: count }, (_, index) => {
     const number = index + 1
+
     return [
       `${prefix}${number}.webp`,
       `${prefix.toLowerCase()}${number}`,
     ] as const
   })
 
-const catsImages = createImages(createEntries('Cats', 15), 'cats', 'cats')
-const snailsImages = createImages(
-  createEntries('Snails', 8),
-  'snails',
-  'snails'
+const catsImages = computed(() =>
+  createImages(createEntries('Cats', 15), 'cats', 'cats')
 )
-const birdsImages = createImages(createEntries('Birds', 14), 'birds', 'birds')
-const tortoisesImages = createImages(
-  createEntries('Tortoises', 8),
-  'tortoises',
-  'tortoises'
+const snailsImages = computed(() =>
+  createImages(createEntries('Snails', 8), 'snails', 'snails')
+)
+const birdsImages = computed(() =>
+  createImages(createEntries('Birds', 14), 'birds', 'birds')
+)
+const tortoisesImages = computed(() =>
+  createImages(createEntries('Tortoises', 8), 'tortoises', 'tortoises')
 )
 
-const previousPage = {
+const previousPage = computed<PageNavigation>(() => ({
   path: '/ceramic/electric-kiln/nature',
   title: t('pages.ceramic.electric_kiln.nature.tab_name'),
   description: t('pages.ceramic.electric_kiln.nature.subtitle'),
-}
+}))
 
-const nextPage = {
+const nextPage = computed<PageNavigation>(() => ({
   path: '/wip',
   title: t('wip.next_page_name'),
   description: t('wip.next_page_description'),
-}
+}))
+
+useHead(usePageSeo('ceramic_electric_kiln_animals'))
 </script>
 
 <style lang="scss" scoped>
 .gallery-page {
   position: relative;
   width: 100%;
+  min-width: 0;
 
-  .page-header {
-    margin-bottom: 50px;
+  &__header {
+    margin-bottom: $space-50;
   }
 
-  h2 {
-    margin: 40px 0 20px;
+  &__collection {
+    min-width: 0;
+  }
+
+  &__collection-title {
+    margin: $space-40 0 $space-20;
+    font-size: 1.5rem;
+    overflow-wrap: anywhere;
   }
 }
 </style>

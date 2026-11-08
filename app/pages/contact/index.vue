@@ -1,601 +1,607 @@
 <template>
-  <div class="contact">
-    <div class="particles-container">
-      <div v-for="n in 20" :key="n" class="particle" />
+  <article class="contact-page" @focusin="finishEntranceAnimation">
+    <div class="contact-page__particles" aria-hidden="true">
+      <span v-for="number in 20" :key="number" class="contact-page__particle" />
     </div>
 
-    <div class="content-wrapper">
-      <div class="intro-section">
-        <PageTitle
-          :title="t('pages.contact.title')"
-          :subtitle="t('pages.contact.subtitle')" />
+    <header class="contact-page__header">
+      <PageTitle
+        :title="t('pages.contact.title')"
+        :subtitle="t('pages.contact.subtitle')" />
+    </header>
+
+    <figure class="contact-page__artwork">
+      <div class="contact-page__frame">
+        <ImagePreviewButton
+          class="contact-page__image"
+          :image="previewImage"
+          loading="eager"
+          @select="openViewer(0, $event)" />
       </div>
+      <figcaption class="contact-page__caption">
+        {{ t('pages.contact.image.title') }}
+      </figcaption>
+      <span
+        class="contact-page__corner contact-page__corner--top-left"
+        aria-hidden="true" />
+      <span
+        class="contact-page__corner contact-page__corner--top-right"
+        aria-hidden="true" />
+      <span
+        class="contact-page__corner contact-page__corner--bottom-left"
+        aria-hidden="true" />
+      <span
+        class="contact-page__corner contact-page__corner--bottom-right"
+        aria-hidden="true" />
+    </figure>
 
-      <div class="artwork-container">
-        <div class="artwork-frame">
-          <div class="frame-inner">
-            <Image
-              src="/misc/contact.webp"
-              sizes="xs:150px, sm:200px, md:250px, lg:300px, xl:400px"
-              max-height="600px"
-              class="featured-image"
-              :title="somePaintingsTitle"
-              :alt="somePaintingsAlt" />
-          </div>
-          <div class="image-caption">
-            <span class="caption-text">{{ somePaintingsTitle }}</span>
-          </div>
-          <div class="corner corner-tl" />
-          <div class="corner corner-tr" />
-          <div class="corner corner-bl" />
-          <div class="corner corner-br" />
-        </div>
-      </div>
+    <section
+      class="contact-page__connections"
+      aria-labelledby="connections-title">
+      <h2 id="connections-title" class="contact-page__section-title">
+        {{ t('pages.contact.connect_me') }}
+      </h2>
+      <p id="social-new-tab" class="sr-only">
+        {{ t('miscellaneous.opens_new_tab') }}
+      </p>
+      <ul class="contact-page__social-links" role="list">
+        <li v-for="link in socialLinks" :key="link.id">
+          <a
+            :href="link.href"
+            :data-tooltip="link.title"
+            aria-describedby="social-new-tab"
+            class="contact-page__social-link"
+            :class="`contact-page__social-link--${link.id}`"
+            target="_blank"
+            rel="noopener noreferrer">
+            <Icon :name="link.icon" mode="svg" aria-hidden="true" />
+            <span>{{ link.label }}</span>
+          </a>
+        </li>
+      </ul>
 
-      <div class="contact-section">
-        <h2 class="section-title">
-          {{ t('pages.contact.connect_me') }}
-        </h2>
-
-        <div class="social-links">
-          <NuxtLink
-            :to="facebookLink"
-            :aria-label="facebook"
-            :title="facebookLinkTitle"
-            class="social-link facebook"
-            target="_blank">
-            <div class="link-background" />
-            <Icon
-              name="ale-icon:facebook"
-              size="32px"
-              mode="svg"
-              class="social-icon"
-              aria-hidden="true" />
-            <span class="link-text">{{ t('miscellaneous.facebook') }}</span>
-            <div class="hover-overlay" />
-          </NuxtLink>
-
-          <NuxtLink
-            :to="instagramLink"
-            :aria-label="instagram"
-            :title="instagramLinkTitle"
-            class="social-link instagram"
-            target="_blank">
-            <div class="link-background" />
-            <Icon
-              name="ale-icon:instagram"
-              size="32px"
-              mode="svg"
-              class="social-icon"
-              aria-hidden="true" />
-            <span class="link-text">{{ t('miscellaneous.instagram') }}</span>
-            <div class="hover-overlay" />
-          </NuxtLink>
-        </div>
-
-        <div class="contact-info">
-          <div class="info-item">
-            <Icon name="heroicons:envelope" size="20px" class="info-icon" />
-            <span>{{ t('about.mail_address') }}</span>
-          </div>
-          <div class="info-item">
-            <Icon name="heroicons:map-pin" size="20px" class="info-icon" />
-            <span>{{ t('about.location') }}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="separator">
-        <div class="separator-line"></div>
-        <div class="separator-ornament">
-          <div class="ornament-circle"></div>
-          <div class="ornament-diamond"></div>
-        </div>
-        <div class="separator-line"></div>
-      </div>
-
-      <div class="cta-section">
-        <div class="cta-text">
-          {{ t('pages.contact.ready') }}
-        </div>
-        <a :href="`mailto:${mailAddress}`">
-          <button
-            :title="contactLinkTitle"
-            :aria-label="contact"
-            class="cta-button">
-            {{ t('pages.contact.contact_me') }}
-          </button>
+      <address class="contact-page__details">
+        <a :href="mailHref" class="contact-page__detail contact-page__email">
+          <Icon name="lucide:mail" aria-hidden="true" />
+          <span>{{ t('about.mail_address') }}</span>
         </a>
-      </div>
+        <p class="contact-page__detail">
+          <Icon name="lucide:map-pin" aria-hidden="true" />
+          <span>{{ t('about.location') }}</span>
+        </p>
+      </address>
+    </section>
+    <ImagePreviewModal
+      v-if="viewerImage"
+      :image="viewerImage"
+      :visible="viewerVisible"
+      :opener="viewerOpener"
+      @close="closeViewer" />
+
+    <div class="contact-page__separator" aria-hidden="true">
+      <span class="contact-page__separator-line" />
+      <span class="contact-page__separator-ornament" />
+      <span class="contact-page__separator-line" />
     </div>
-  </div>
+
+    <section
+      class="contact-page__invitation"
+      aria-labelledby="invitation-title">
+      <h2 id="invitation-title" class="sr-only">
+        {{ t('pages.contact.contact_me_by_mail') }}
+      </h2>
+      <p class="contact-page__invitation-text">
+        {{ t('pages.contact.ready') }}
+      </p>
+      <a :href="mailHref" class="contact-page__email-action">
+        {{ t('pages.contact.contact_me') }}
+        <span class="sr-only">— {{ t('pages.contact.by_email') }}</span>
+      </a>
+    </section>
+  </article>
 </template>
 
 <script setup lang="ts">
+import { externalLinks } from '~/data/site'
+import type { ImageSource } from '~/types/image'
+
 const { t } = useI18n()
-const runtimeConfig = useRuntimeConfig()
-const route = useRoute()
 
-const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
-const urlEndPath = 'contact'
-const ogImageEndPath = 'og-images/contact.webp'
+const previewImage = computed<ImageSource>(() => ({
+  src: '/misc/contact.webp',
+  title: t('pages.contact.image.title'),
+  alt: t('pages.contact.image.alt'),
+}))
 
-const canonicalUrl = computed(() => `${baseUrl.value}${route.path}`)
+const { viewerImage, viewerVisible, viewerOpener, openViewer, closeViewer } =
+  useImagePreview(() => [previewImage.value])
 
-useHead({
-  title: computed(() => t('pages.contact.tab_name')),
-  meta: [
-    {
-      name: 'description',
-      content: computed(() => t('pages.contact.meta.content')),
-    },
-    {
-      name: 'keywords',
-      content: `${computed(() => t('miscellaneous.art')).value},
-        ${computed(() => t('miscellaneous.contact')).value},
-        ${computed(() => t('miscellaneous.artist')).value},
-        ${computed(() => t('miscellaneous.painting')).value},
-        ${computed(() => t('miscellaneous.painter')).value},
-        ${computed(() => t('miscellaneous.ceramic')).value},
-        ${computed(() => t('miscellaneous.ceramicist')).value},
-        ${computed(() => t('miscellaneous.pottery')).value},
-        ${computed(() => t('miscellaneous.emotions')).value},
-        ${computed(() => t('about.author')).value},
-        ${computed(() => t('app.name')).value},
-        ${computed(() => t('app.meta.alt_name_1')).value},
-        ${computed(() => t('app.meta.alt_name_2')).value},
-        ${computed(() => t('app.meta.alt_name_3')).value},
-        ${computed(() => t('app.meta.alt_name_4')).value},
-        ${computed(() => t('app.meta.alt_name_5')).value},
-        ${computed(() => t('app.meta.alt_name_6')).value},
-        ${computed(() => t('app.meta.alt_name_7')).value},
-      `,
-    },
-  ],
-  link: [
-    { rel: 'canonical', href: canonicalUrl.value },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/en/${urlEndPath}`),
-      hreflang: 'en-US',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
-      hreflang: 'fr-FR',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
-      hreflang: 'x-default',
-    },
-    {
-      rel: 'apple-touch-icon',
-      sizes: '180x180',
-      href: `/${ogImageEndPath}`,
-      key: 'apple-touch-icon',
-    },
-  ],
-})
+const mailHref = computed(() => `mailto:${t('about.mail_address')}`)
+const socialLinks = computed(() => [
+  {
+    id: 'facebook',
+    href: externalLinks.facebook,
+    icon: 'ale-icon:facebook',
+    label: t('miscellaneous.facebook'),
+    title: t('miscellaneous.follow_on_facebook'),
+  },
+  {
+    id: 'instagram',
+    href: externalLinks.instagram,
+    icon: 'ale-icon:instagram',
+    label: t('miscellaneous.instagram'),
+    title: t('miscellaneous.follow_on_instagram'),
+  },
+])
 
-useSeoMeta({
-  ogTitle: '%s %separator %siteName',
-  description: computed(() => t('pages.contact.meta.content')),
-  ogDescription: computed(() => t('pages.contact.meta.content')),
-  ogImage: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageSecureUrl: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageAlt: computed(() => t('pages.contact.meta.content')),
-  ogImageType: 'image/jpeg',
-  ogImageWidth: '1200',
-  ogImageHeight: '600',
-  ogUrl: canonicalUrl.value,
-  ogType: 'article',
-  articleTag: [
-    computed(() => t('miscellaneous.contact')).value,
-    computed(() => t('miscellaneous.art')).value,
-    computed(() => t('miscellaneous.artist')).value,
-    computed(() => t('miscellaneous.painting')).value,
-    computed(() => t('miscellaneous.painter')).value,
-    computed(() => t('miscellaneous.ceramic')).value,
-    computed(() => t('miscellaneous.ceramicist')).value,
-    computed(() => t('miscellaneous.pottery')).value,
-    computed(() => t('miscellaneous.emotions')).value,
-    computed(() => t('about.author')).value,
-    computed(() => t('app.name')).value,
-    computed(() => t('app.meta.alt_name_1')).value,
-    computed(() => t('app.meta.alt_name_2')).value,
-    computed(() => t('app.meta.alt_name_3')).value,
-    computed(() => t('app.meta.alt_name_4')).value,
-    computed(() => t('app.meta.alt_name_5')).value,
-    computed(() => t('app.meta.alt_name_6')).value,
-    computed(() => t('app.meta.alt_name_7')).value,
-  ],
-  appleMobileWebAppTitle: '%s %separator %siteName',
-  msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
-})
+function finishEntranceAnimation(event: FocusEvent) {
+  if (!(event.target instanceof HTMLElement)) {
+    return
+  }
 
-const somePaintingsTitle = computed(() => t('pages.contact.image.title'))
-const somePaintingsAlt = computed(() => t('pages.contact.image.alt'))
-const mailAddress = computed(() => t('about.mail_address'))
-const facebook = computed(() => t('miscellaneous.facebook'))
-const facebookLinkTitle = computed(() => t('miscellaneous.follow_on_facebook'))
-const instagram = computed(() => t('miscellaneous.instagram'))
-const instagramLinkTitle = computed(() =>
-  t('miscellaneous.follow_on_instagram')
-)
-const contact = computed(() => t('miscellaneous.contact'))
-const contactLinkTitle = computed(() => t('pages.contact.contact_me_by_mail'))
+  const artwork = event.target.closest('.contact-page__artwork')
 
-const facebookLink =
-  'https://www.facebook.com/people/Atelier-LibrEmotions/100063484446329/'
-const instagramLink = 'https://www.instagram.com/atelier_libremotions'
+  for (const animation of artwork?.getAnimations() ?? []) {
+    if (
+      animation instanceof CSSAnimation &&
+      animation.animationName === 'fadeInUpBlock'
+    ) {
+      animation.finish()
+    }
+  }
+}
+
+useHead(usePageSeo('contact'))
 </script>
 
 <style lang="scss" scoped>
-@use 'sass:math';
 @use 'sass:color';
 
-.contact {
-  height: 100%;
-  width: 100%;
+.contact-page {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  max-width: 65rem;
+  isolation: isolate;
 
-  .particles-container {
+  &__particles {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
+    z-index: -1;
     pointer-events: none;
-    z-index: 1;
+  }
 
-    .particle {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: $gold-color;
-      border-radius: 50%;
-      opacity: 0.6;
-      animation: floatParticle 15s infinite linear;
+  &__particle {
+    position: absolute;
+    width: $space-4;
+    height: $space-4;
+    border-radius: 50%;
+    background: $gold-color;
+    opacity: 0.6;
 
-      &:nth-child(odd) {
-        background: $copper-color;
-        animation-duration: 20s;
-        animation-delay: -5s;
-      }
+    &:nth-child(odd) {
+      background: $copper-color;
+    }
 
-      &:nth-child(3n) {
-        width: 2px;
-        height: 2px;
-        animation-duration: 25s;
-        animation-delay: -10s;
-      }
+    &:nth-child(3n) {
+      width: $space-2;
+      height: $space-2;
+    }
 
-      @for $i from 1 through 20 {
-        &:nth-child(#{$i}) {
-          left: math.random(100) * 1%;
-          top: math.random(100) * 1%;
-          animation-delay: math.random(20) * -1s;
-        }
+    @for $i from 1 through 20 {
+      &:nth-child(#{$i}) {
+        left: ($i * 37 % 97) * 1%;
+        top: ($i * 23 % 97) * 1%;
       }
     }
   }
 
-  .content-wrapper {
+  &__header {
+    margin-bottom: $space-25;
+  }
+
+  &__artwork {
+    position: relative;
+    max-width: 100%;
+    margin: 0 0 $space-50;
+    padding: $space-32 $space-32 $space-16;
+    border-radius: $space-4;
+    background: var(--color-surface);
+    box-shadow:
+      0 $space-10 $space-40 $box-shadow-deep,
+      inset 0 $border-width 0 var(--color-inset-highlight);
+  }
+
+  &__frame {
+    border: $focus-width solid $gold-color;
+    border-radius: $space-2;
+    // Match the border behind fractional pixels clipped during live resizing
+    background-color: $gold-color;
+    box-shadow:
+      inset 0 0 $space-20 rgba($gold-color, 0.1),
+      0 0 0 $border-width rgba($gold-color, 0.3);
+
+    :deep(button) {
+      overflow: hidden;
+    }
+
+    :deep(.image-preview-button__error) {
+      background-color: var(--color-surface);
+    }
+
+    :deep(img) {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+
+  &__image {
+    width: 150px;
+  }
+
+  &__caption {
+    contain: inline-size;
+    contain-intrinsic-inline-size: 150px;
+    margin: $space-8 0 0;
+    color: var(--color-muted);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    font-style: italic;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  &__corner {
+    position: absolute;
+    width: $space-20;
+    height: $space-20;
+    border: $space-2 solid $gold-color;
+    pointer-events: none;
+
+    &--top-left {
+      top: $space-10;
+      left: $space-10;
+      border-right: 0;
+      border-bottom: 0;
+    }
+
+    &--top-right {
+      top: $space-10;
+      right: $space-10;
+      border-left: 0;
+      border-bottom: 0;
+    }
+
+    &--bottom-left {
+      bottom: $space-10;
+      left: $space-10;
+      border-right: 0;
+      border-top: 0;
+    }
+
+    &--bottom-right {
+      bottom: $space-10;
+      right: $space-10;
+      border-left: 0;
+      border-top: 0;
+    }
+  }
+
+  &__connections {
+    width: 100%;
+    min-width: 0;
+    text-align: center;
+  }
+
+  &__section-title {
+    margin: 0 0 $space-30;
+    font-size: 1.5625rem;
+    font-weight: 300;
+    overflow-wrap: anywhere;
+  }
+
+  &__social-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $space-30;
+    margin: 0 0 $space-30;
+    padding: 0;
+    list-style: none;
+
+    li {
+      min-width: 0;
+      max-width: 100%;
+    }
+  }
+
+  &__social-link {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: $space-15;
+    min-width: 8.75rem;
+    min-height: $control-size;
+    max-width: 100%;
+    padding: $space-16 $space-24;
+    border-radius: 3.125rem;
+    color: $white-color;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+
+    .iconify {
+      flex: none;
+      width: 2rem;
+      height: 2rem;
+    }
+
+    &--facebook {
+      --contact-hover-background: linear-gradient(135deg, #365899, #2d4373);
+      background: linear-gradient(135deg, #4267b2, #365899);
+    }
+
+    &--instagram {
+      --contact-hover-background: linear-gradient(
+        135deg,
+        #a32c70,
+        #833ab4,
+        #bd2445
+      );
+      background: linear-gradient(135deg, #bd2445, #833ab4, #a32c70);
+    }
+
+    &:hover,
+    &:focus-visible {
+      box-shadow: 0 $space-15 $space-35 rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &__social-link,
+  &__email-action {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    &::before {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: var(--contact-hover-background);
+      transform: translateX(-100%);
+      pointer-events: none;
+      content: '';
+    }
+
+    &:hover::before,
+    &:focus-visible::before {
+      transform: translateX(0);
+    }
+  }
+
+  &__details {
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 2;
+    gap: $space-15;
+    font-style: normal;
   }
 
-  .intro-section {
-    margin-bottom: 25px;
-  }
-
-  .artwork-container {
-    position: relative;
-    z-index: 1;
-    animation: fadeInUpBlock 0.8s ease-out;
-    animation-fill-mode: both;
-    animation-delay: 0.1s;
-
-    .artwork-frame {
-      position: relative;
-      margin-bottom: 50px;
-      padding: 32px 32px 7px 32px;
-      background-color: $white-background-color;
-      border-radius: 4px;
-      box-shadow:
-        0 10px 40px $box-shadow-deep,
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
-
-      @media (max-width: $md) {
-        padding: 20px 20px 5px 20px;
-        margin-bottom: 0;
-      }
-
-      .frame-inner {
-        position: relative;
-        border: 3px solid $gold-color;
-        border-radius: 2px;
-        overflow: hidden;
-        box-shadow:
-          inset 0 0 20px rgba(212, 175, 55, 0.1),
-          0 0 0 1px rgba(212, 175, 55, 0.3);
-
-        .featured-image {
-          width: 100%;
-          height: auto;
-          display: block;
-          transition: transform 0.6s ease;
-
-          &:hover {
-            transform: scale(1.02);
-          }
-        }
-      }
-
-      .image-caption {
-        text-align: center;
-        margin-top: 7px;
-
-        @media (max-width: $md) {
-          margin-top: 0px;
-        }
-
-        .caption-text {
-          font-size: 15px;
-          font-style: italic;
-          opacity: 0.8;
-
-          @media (max-width: $md) {
-            font-size: 12px;
-          }
-        }
-      }
-
-      .corner {
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        border: 2px solid $gold-color;
-
-        &.corner-tl {
-          top: 10px;
-          left: 10px;
-          border-right: none;
-          border-bottom: none;
-        }
-
-        &.corner-tr {
-          top: 10px;
-          right: 10px;
-          border-left: none;
-          border-bottom: none;
-        }
-
-        &.corner-bl {
-          bottom: 10px;
-          left: 10px;
-          border-right: none;
-          border-top: none;
-        }
-
-        &.corner-br {
-          bottom: 10px;
-          right: 10px;
-          border-left: none;
-          border-top: none;
-        }
-      }
-    }
-  }
-
-  .contact-section {
-    width: 100%;
-    text-align: center;
-
-    .section-title {
-      margin-bottom: 30px;
-      font-size: 25px;
-      font-weight: 300;
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 30px;
-
-      @media (min-width: $md) {
-        gap: 30px;
-      }
-
-      @media (max-width: $md) {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-      }
-
-      .social-link {
-        min-width: 140px;
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 16px 24px;
-        gap: 15px;
-        text-decoration: none;
-        border-radius: 50px;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        overflow: hidden;
-
-        @media (max-width: $md) {
-          width: 175px;
-        }
-
-        .link-background {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          z-index: 1;
-          transition: all 0.4s ease;
-        }
-
-        .social-icon,
-        .link-text {
-          position: relative;
-          z-index: 2;
-          transition: all 0.4s ease;
-        }
-
-        .link-text {
-          font-weight: 500;
-          font-size: 16px;
-        }
-
-        .hover-overlay {
-          position: absolute;
-          top: 0;
-          left: -100%;
-          right: 0;
-          bottom: 0;
-          z-index: 1;
-          transition: left 0.4s ease;
-        }
-
-        &.facebook {
-          .link-background {
-            background: linear-gradient(135deg, #4267b2, #365899);
-          }
-
-          .social-icon,
-          .link-text {
-            color: white;
-          }
-
-          .hover-overlay {
-            background: linear-gradient(135deg, #365899, #2d4373);
-          }
-
-          &:hover .hover-overlay {
-            left: 0;
-          }
-        }
-
-        &.instagram {
-          .link-background {
-            background: linear-gradient(135deg, #e4405f, #833ab4, #c13584);
-          }
-
-          .social-icon,
-          .link-text {
-            color: white;
-          }
-
-          .hover-overlay {
-            background: linear-gradient(135deg, #c13584, #833ab4, #e4405f);
-          }
-
-          &:hover .hover-overlay {
-            left: 0;
-          }
-        }
-
-        &:hover {
-          transform: translateY(-3px) scale(1.05);
-          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-        }
-      }
-    }
-
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-
-      .info-item {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        font-size: 15px;
-        opacity: 0.9;
-
-        .info-icon {
-          color: $gold-color;
-        }
-      }
-    }
-  }
-
-  .separator {
-    width: 100%;
+  &__detail {
     display: flex;
     align-items: center;
-    margin: 40px 0;
+    justify-content: center;
+    gap: $space-15;
+    max-width: 100%;
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.5;
 
-    .separator-line {
-      height: 1px;
-      flex: 1;
-      background: linear-gradient(90deg, transparent, $gold-color, transparent);
+    span {
+      min-width: 0;
+      overflow-wrap: anywhere;
     }
 
-    .separator-ornament {
-      position: relative;
-      margin: 0 30px;
-
-      .ornament-circle {
-        width: 12px;
-        height: 12px;
-        border: 2px solid $gold-color;
-        border-radius: 50%;
-      }
-
-      .ornament-diamond {
-        width: 6px;
-        height: 6px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotate(45deg);
-        background: $gold-color;
-      }
+    .iconify {
+      flex: none;
+      width: 1.25rem;
+      height: 1.25rem;
+      color: var(--color-gold-text);
     }
   }
 
-  .cta-section {
+  &__email {
+    min-height: $control-size;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  &__separator {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: $space-40 0;
+  }
+
+  &__separator-line {
+    flex: 1;
+    height: $border-width;
+    background: linear-gradient(90deg, transparent, $gold-color, transparent);
+  }
+
+  &__separator-ornament {
+    position: relative;
+    width: $space-12;
+    height: $space-12;
+    margin-inline: $space-30;
+    border: $space-2 solid $gold-color;
+    border-radius: 50%;
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: $space-6;
+      height: $space-6;
+      transform: translate(-50%, -50%) rotate(45deg);
+      background: $gold-color;
+      content: '';
+    }
+  }
+
+  &__invitation {
+    max-width: 100%;
     text-align: center;
+  }
 
-    .cta-text {
-      margin-bottom: 25px;
-      font-size: 16px;
-      font-style: italic;
+  &__invitation-text {
+    margin: 0 0 $space-25;
+    font-size: 1rem;
+    line-height: 1.6;
+    font-style: italic;
+    overflow-wrap: anywhere;
+  }
+
+  &__email-action {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: $control-size;
+    max-width: 100%;
+    padding: $space-16 $space-32;
+    border-radius: 3.125rem;
+    --contact-hover-background: linear-gradient(
+      135deg,
+      #{$gold-text-color},
+      #{$copper-text-color}
+    );
+    background: linear-gradient(
+      135deg,
+      color.adjust($gold-text-color, $lightness: 1.5%),
+      color.adjust($copper-text-color, $lightness: 1.5%)
+    );
+    color: $white-color;
+    box-shadow: 0 $space-4 $space-15 $box-shadow-warm;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+
+    &:hover,
+    &:focus-visible {
+      box-shadow: 0 $space-8 $space-25 $box-shadow-warm;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-mobile) {
+  .contact-page__image {
+    width: 200px;
+  }
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .contact-page__image {
+    width: 250px;
+  }
+}
+
+@media (min-width: $breakpoint-laptop) {
+  .contact-page__image {
+    width: 300px;
+  }
+}
+
+@media (min-width: $breakpoint-desktop) {
+  .contact-page__image {
+    width: 400px;
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .contact-page {
+    &__artwork {
+      padding: $space-20 $space-20 $space-12;
+      margin-bottom: $space-30;
     }
 
-    .cta-button {
-      padding: 16px 32px;
-      background: linear-gradient(135deg, $gold-color, $copper-color);
-      color: $white-color;
-      border: none;
-      font-size: 16px;
-      font-weight: 500;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.4s ease;
-      box-shadow: 0 4px 15px $box-shadow-warm;
-
-      &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px $box-shadow-warm;
-        background: linear-gradient(
-          135deg,
-          color.adjust($gold-color, $lightness: 5%),
-          color.adjust($copper-color, $lightness: 5%)
-        );
-      }
+    &__caption {
+      font-size: 0.875rem;
     }
+
+    &__social-links {
+      flex-direction: column;
+      align-items: center;
+      gap: $space-15;
+    }
+
+    &__social-link {
+      width: 11rem;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .contact-page {
+    &__artwork {
+      animation: fadeInUpBlock 0.8s ease-out both;
+    }
+
+    &__frame :deep(img) {
+      transition: transform 0.6s ease;
+    }
+
+    &__frame :deep(button:focus-visible img) {
+      transform: scale(1.02);
+    }
+
+    &__social-link:focus-visible {
+      transform: translateY(-$space-2) scale(1.05);
+    }
+
+    &__email-action:focus-visible {
+      transform: translateY(-$space-2);
+    }
+
+    &__social-link::before,
+    &__email-action::before {
+      transition: transform 0.4s ease;
+    }
+
+    &__social-link,
+    &__email-action {
+      transition:
+        transform $transition-ui,
+        box-shadow $transition-ui;
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .contact-page__frame :deep(button:hover img) {
+      transform: scale(1.02);
+    }
+
+    .contact-page__social-link:hover {
+      transform: translateY(-$space-2) scale(1.05);
+    }
+
+    .contact-page__email-action:hover {
+      transform: translateY(-$space-2);
+    }
+  }
+}
+
+@media (forced-colors: active) {
+  .contact-page__social-link,
+  .contact-page__email-action {
+    border: $border-width solid LinkText;
   }
 }
 </style>

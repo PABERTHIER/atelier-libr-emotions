@@ -1,8 +1,10 @@
+export type ImageDimensions = readonly [width: number, height: number]
+
 export type ImageSource = {
   src: string
   title?: string
   mobileTitle?: string
-  alt?: string
+  alt: string
   dimensions?: string
 }
 

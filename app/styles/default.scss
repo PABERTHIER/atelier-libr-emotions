@@ -1,4 +1,249 @@
+@use 'sass:color';
+
+// Runtime colors share the existing Sass palette
+// Artwork and colors on fixed decorative backgrounds keep their original values
+:root {
+  color-scheme: light;
+  --color-page: #{$background-color};
+  --color-surface: #{$white-color};
+  --color-surface-soft: #{$cream-color};
+  --color-surface-warm: #{$warm-beige};
+  --color-surface-orange: #{$light-creativity-orange};
+  --color-surface-purple: #{$light-inspiration-purple};
+  --color-text: #{$primary-text-color};
+  --color-heading: #{$dark-grey-blue-color};
+  --color-muted: #{$grey-color-2};
+  --color-subtle: #{$dark-grey-color};
+  --color-accent: #{$navigation-accent-color};
+  --color-navigation-muted: #{$navigation-muted-color};
+  --color-border: #{$navigation-border-color};
+  --color-line: #{$light-grey-color-2};
+  --color-hover: #{$warm-beige};
+  --color-control-hover: #{rgba($navigation-muted-color, 0.12)};
+  --color-control-glass: #{rgba($white-color, 0.3)};
+  --color-floating-control: #{rgba($white-color, 0.9)};
+  --color-inset-highlight: #{rgba($white-color, 0.9)};
+  --color-gold-text: #{$gold-text-color};
+  --color-copper-text: #{$copper-text-color};
+  --color-red-text: #{$dark-red-color};
+  --color-hero-accent: #{color.adjust($grey-blue-color, $lightness: -8%)};
+  --color-skeleton-highlight: #{color.adjust($warm-beige, $lightness: 4%)};
+  --color-scrollbar-track: #f1f1f1;
+  --color-scrollbar-thumb: #{$dark-red-color};
+  --color-tooltip-background: #{$primary-text-color};
+  --color-tooltip-text: #{$cream-color};
+  --color-tooltip-border: #{$gold-color};
+  --focus-color: #{$focus-color};
+  --theme-moon-visibility: visible;
+  --theme-sun-visibility: hidden;
+}
+
+@mixin dark-colors {
+  color-scheme: dark;
+  --color-page: #1c1917;
+  --color-surface: #292420;
+  --color-surface-soft: #24201d;
+  --color-surface-warm: #332b25;
+  --color-surface-orange: #362a20;
+  --color-surface-purple: #2e2636;
+  --color-text: #f3eae1;
+  --color-heading: #e5e4ee;
+  --color-muted: #c4b9ae;
+  --color-subtle: #c4b9ae;
+  --color-accent: #dfb985;
+  --color-navigation-muted: #c4b9ae;
+  --color-border: #796b5e;
+  --color-line: #65584d;
+  --color-hover: #3b322a;
+  --color-control-hover: #3b322a;
+  --color-control-glass: #292420;
+  --color-floating-control: #292420;
+  --color-inset-highlight: rgba(255, 255, 255, 0.08);
+  --color-gold-text: #e4c66d;
+  --color-copper-text: #e5b184;
+  --color-red-text: #efaaa0;
+  --color-hero-accent: #a9bff4;
+  --color-skeleton-highlight: #493d33;
+  --color-scrollbar-track: #292420;
+  --color-scrollbar-thumb: #dcb08d;
+  --color-tooltip-background: #{$cream-color};
+  --color-tooltip-text: #{$primary-text-color};
+  --color-tooltip-border: #{$copper-color};
+  --focus-color: #b8ceff;
+  --theme-moon-visibility: hidden;
+  --theme-sun-visibility: visible;
+}
+
+:root[data-theme='dark'] {
+  @include dark-colors;
+}
+
+// Also respect the OS preference before scripting and when JS is disabled
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    @include dark-colors;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: $body-font;
+  font-size: 100%;
+  word-spacing: 1px;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: var(--color-text);
+  background-color: var(--color-page);
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(
+    var(--site-header-height, #{$header-height-desktop}) + #{$space-16}
+  );
+
+  &.lenis {
+    scroll-behavior: auto;
+  }
+}
+
+// Keep touch scroll indicators native, including while Welcome is mounted
+// Avoid switching mobile viewport indicators between hidden and custom modes
+@media (scripting: enabled) and (hover: hover) and (pointer: fine) {
+  html:has(.welcome):not(:has(:focus-visible)) {
+    scrollbar-width: none;
+  }
+
+  html:has(.welcome):not(:has(:focus-visible))::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+body:has(:focus-visible) .welcome {
+  visibility: hidden;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html {
+    scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track);
+  }
+
+  @supports selector(::-webkit-scrollbar) {
+    html {
+      scrollbar-color: auto;
+    }
+
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+
+    ::-webkit-scrollbar-track {
+      border: 1px solid var(--color-line);
+      border-radius: 10px;
+      background: var(--color-scrollbar-track);
+      box-shadow: inset 0 0 6px rgba($white-color, 0.3);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      border: 1px solid var(--color-subtle);
+      border-radius: 10px;
+      background: linear-gradient(
+        45deg,
+        $grey-blue-color,
+        var(--color-scrollbar-thumb)
+      );
+    }
+  }
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-page);
+}
+
+button,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
 a {
   text-decoration: none;
   color: inherit;
+}
+
+// Keep native selection colors in forced-colors mode
+@media (forced-colors: none) {
+  ::selection {
+    background-color: $gold-color;
+    color: $primary-text-color;
+    text-shadow: none;
+  }
+}
+
+:focus-visible {
+  outline: $focus-width solid var(--focus-color, #{$focus-color});
+  outline-offset: $focus-offset;
+}
+
+main:focus-visible {
+  outline-offset: -$focus-width;
+}
+
+// WebKit can indicate focus on native dialog entry after a tap, then carry it into subsequent scripted focus
+// Keep focus itself and editable-field feedback
+// https://bugs.webkit.org/show_bug.cgi?id=247416
+html[data-pointer-input] {
+  --focus-ring-opacity: 0;
+
+  :focus-visible:not(:read-write) {
+    // One shared override also covers component-owned outline styles
+    outline: none !important;
+  }
+}
+
+@media (forced-colors: active) {
+  * {
+    scrollbar-color: auto;
+  }
+
+  ::-webkit-scrollbar {
+    width: revert;
+    height: revert;
+  }
+
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-thumb {
+    border: revert;
+    border-radius: revert;
+    background: revert;
+    box-shadow: revert;
+  }
+}
+
+@media (max-height: 480px) {
+  html {
+    scroll-padding-top: $space-16;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

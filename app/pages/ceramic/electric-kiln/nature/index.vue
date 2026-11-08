@@ -1,123 +1,45 @@
 <template>
-  <div class="gallery-page">
-    <div class="page-header">
+  <article class="gallery-page">
+    <header class="gallery-page__header">
       <PageHeaderOrnament />
       <PageTitle
         :title="t('pages.ceramic.electric_kiln.nature.title')"
         :subtitle="t('pages.ceramic.electric_kiln.nature.subtitle')" />
-    </div>
+      <GalleryArtistNote
+        :text="t('pages.ceramic.electric_kiln.nature.description')" />
+    </header>
 
-    <h2>{{ flowersTitle }}</h2>
-    <div class="gallery-container">
+    <p class="sr-only">{{ t('pages.gallery.instructions') }}</p>
+    <section class="gallery-page__collection" aria-labelledby="flowers-title">
+      <h2 id="flowers-title" class="gallery-page__collection-title">
+        {{ flowersTitle }}
+      </h2>
       <ImageGrid
         :images="flowersImages"
         :heights="{ xs: 120, sm: 160, md: 220, lg: 300 }" />
-    </div>
+    </section>
 
-    <h2>{{ leavesSubtitle }}</h2>
-    <div class="gallery-container">
+    <section class="gallery-page__collection" aria-labelledby="leaves-title">
+      <h2 id="leaves-title" class="gallery-page__collection-title">
+        {{ leavesTitle }}
+      </h2>
       <ImageGrid
         :images="leavesImages"
         :heights="{ xs: 120, sm: 160, md: 220, lg: 300 }" />
-    </div>
+    </section>
 
     <PageNavigation :previous-page="previousPage" :next-page="nextPage" />
-  </div>
+  </article>
 </template>
 
 <script setup lang="ts">
 import type { ImageSource } from '~/types/image'
+import type { PageNavigation } from '~/types/page'
 
 const { t } = useI18n()
-const runtimeConfig = useRuntimeConfig()
-const route = useRoute()
-
-const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
-const urlEndPath = 'ceramic/electric-kiln/nature'
-const ogImageEndPath = 'ceramics/electric_kiln/nature/flowers/F8.webp'
-
-const canonicalUrl = computed(() => `${baseUrl.value}${route.path}`)
-
-const keywords = [
-  'miscellaneous.ceramic',
-  'miscellaneous.ceramicist',
-  'miscellaneous.electric_kiln',
-  'miscellaneous.nature',
-  'miscellaneous.flowers',
-  'miscellaneous.leaves',
-  'miscellaneous.art',
-  'miscellaneous.artist',
-  'miscellaneous.emotions',
-  'about.author',
-  'app.name',
-]
-const keywordValues = computed(() => keywords.map(keyword => t(keyword)))
-
-useHead({
-  title: computed(() => t('pages.ceramic.electric_kiln.nature.tab_name')),
-  meta: [
-    {
-      name: 'description',
-      content: computed(() =>
-        t('pages.ceramic.electric_kiln.nature.meta.content')
-      ),
-    },
-    {
-      name: 'keywords',
-      content: computed(() => keywordValues.value.join(', ')),
-    },
-  ],
-  link: [
-    { rel: 'canonical', href: canonicalUrl.value },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/en/${urlEndPath}`),
-      hreflang: 'en-US',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
-      hreflang: 'fr-FR',
-    },
-    {
-      rel: 'alternate',
-      href: computed(() => `${baseUrl.value}/fr/${urlEndPath}`),
-      hreflang: 'x-default',
-    },
-    {
-      rel: 'apple-touch-icon',
-      sizes: '180x180',
-      href: `/${ogImageEndPath}`,
-      key: 'apple-touch-icon',
-    },
-  ],
-})
-
-useSeoMeta({
-  ogTitle: '%s %separator %siteName',
-  description: computed(() =>
-    t('pages.ceramic.electric_kiln.nature.meta.content')
-  ),
-  ogDescription: computed(() =>
-    t('pages.ceramic.electric_kiln.nature.meta.content')
-  ),
-  ogImage: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageSecureUrl: `${baseUrl.value}/${ogImageEndPath}`,
-  ogImageAlt: computed(() =>
-    t('pages.ceramic.electric_kiln.nature.meta.content')
-  ),
-  ogImageType: 'image/jpeg',
-  ogImageWidth: '1200',
-  ogImageHeight: '600',
-  ogUrl: canonicalUrl.value,
-  ogType: 'article',
-  articleTag: keywordValues.value,
-  appleMobileWebAppTitle: '%s %separator %siteName',
-  msapplicationTileImage: `${baseUrl.value}/${ogImageEndPath}`,
-})
 
 const flowersTitle = computed(() => t('miscellaneous.flowers'))
-const leavesSubtitle = computed(() => t('miscellaneous.leaves'))
+const leavesTitle = computed(() => t('miscellaneous.leaves'))
 
 const createImages = (
   entries: readonly (readonly [string, string])[],
@@ -140,45 +62,61 @@ const createImages = (
 const flowersEntries = [
   ...Array.from({ length: 10 }, (_, index) => {
     const number = index + 1
+
     return [`F${number}.webp`, `f${number}`] as const
   }),
   ...Array.from({ length: 7 }, (_, index) => {
     const number = index + 1
+
     return [`GF${number}.webp`, `gf${number}`] as const
   }),
 ]
 const leavesEntries = Array.from({ length: 11 }, (_, index) => {
   const number = index + 1
+
   return [`Feuilles${number}.webp`, `feuilles${number}`] as const
 })
 
-const flowersImages = createImages(flowersEntries, 'flowers', 'flowers')
-const leavesImages = createImages(leavesEntries, 'leaves', 'leaves')
+const flowersImages = computed(() =>
+  createImages(flowersEntries, 'flowers', 'flowers')
+)
+const leavesImages = computed(() =>
+  createImages(leavesEntries, 'leaves', 'leaves')
+)
 
-const previousPage = {
+const previousPage = computed<PageNavigation>(() => ({
   path: '/wip',
   title: t('wip.previous_page_name'),
   description: t('wip.previous_page_description'),
-}
+}))
 
-const nextPage = {
+const nextPage = computed<PageNavigation>(() => ({
   path: '/ceramic/electric-kiln/animals',
   title: t('pages.ceramic.electric_kiln.animals.tab_name'),
   description: t('pages.ceramic.electric_kiln.animals.subtitle'),
-}
+}))
+
+useHead(usePageSeo('ceramic_electric_kiln_nature'))
 </script>
 
 <style lang="scss" scoped>
 .gallery-page {
   position: relative;
   width: 100%;
+  min-width: 0;
 
-  .page-header {
-    margin-bottom: 50px;
+  &__header {
+    margin-bottom: $space-50;
   }
 
-  h2 {
-    margin: 40px 0 20px;
+  &__collection {
+    min-width: 0;
+  }
+
+  &__collection-title {
+    margin: $space-40 0 $space-20;
+    font-size: 1.5rem;
+    overflow-wrap: anywhere;
   }
 }
 </style>

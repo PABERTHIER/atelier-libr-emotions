@@ -1,57 +1,55 @@
 <template>
   <div class="logo">
-    <NuxtImg
-      src="logo.svg"
-      :title="logoTitle"
-      :alt="logoAlt"
-      sizes="xs:20px, sm:30px, md:35px, lg:40px"
-      densities="x1 x2" />
+    <Image
+      :skeleton="false"
+      src="/logo.svg"
+      :alt="t('app.logo_alt')"
+      loading="eager" />
   </div>
 </template>
 
 <script setup lang="ts">
 const { t } = useI18n()
-
-const logoTitle = computed(() => t('pages.main.tab_name'))
-const logoAlt = computed(() => t('app.logo_alt'))
 </script>
 
 <style lang="scss" scoped>
 .logo {
-  max-height: 47px;
+  max-height: $logo-size-desktop;
 }
 
-.logo img {
-  max-height: 47px;
+.logo :deep(img) {
+  display: block;
+  width: auto;
+  max-height: $logo-size-desktop;
 }
 
-@media (max-width: $lg) {
+@media (max-width: $breakpoint-laptop) {
   .logo {
-    max-height: 40px;
+    max-height: $space-40;
   }
 
-  .logo img {
-    max-height: 40px;
-  }
-}
-
-@media (max-width: $md) {
-  .logo {
-    max-height: 30px;
-  }
-
-  .logo img {
-    max-height: 30px;
+  .logo :deep(img) {
+    max-height: $space-40;
   }
 }
 
-@media (max-width: $sm) {
+@media (max-width: $breakpoint-tablet) {
   .logo {
-    max-height: 25px;
+    max-height: $space-30;
   }
 
-  .logo img {
-    max-height: 25px;
+  .logo :deep(img) {
+    max-height: $space-30;
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .logo {
+    max-height: $space-25;
+  }
+
+  .logo :deep(img) {
+    max-height: $space-25;
   }
 }
 </style>

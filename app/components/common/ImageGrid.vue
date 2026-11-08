@@ -1,37 +1,47 @@
 <template>
-  <div ref="root" class="image-grid">
+  <div ref="root" class="image-grid" :aria-busy="rows.length === 0">
     <template v-if="rows.length > 0">
       <div
         v-for="(row, rIdx) in rows"
         :key="`row-${rIdx}`"
-        class="image-row"
-        aria-hidden="false">
+        class="image-grid__row">
         <div
           v-for="(item, iIdx) in row.items"
           :key="`item-${rIdx}-${iIdx}`"
-          :class="item.isOnError ? 'image-cell-error' : 'image-cell'"
+          class="image-grid__cell"
+          :class="{ 'image-grid__cell--error': item.isOnError }"
           :style="{
             width: `${Math.round(item.renderWidth)}px`,
-            height: `${Math.round(row.rowHeight)}px`,
-          }">
+            '--artwork-height': `${Math.round(row.rowHeight)}px`,
+          }"
+          @focusin="finishEntranceAnimation">
           <ImageGridItem
             :item="item"
+            :load="shouldLoadImages"
             :is-mobile="device.isMediumOrBelowScreen.value"
-            @select="selectedImage = item.imageSource" />
+            @load="updateAspect(item, $event)"
+            @error="markImageError(item)"
+            @select="openViewer(item.imageSource, $event)" />
         </div>
       </div>
     </template>
-    <div v-else class="image-grid-skeleton" />
+    <div v-else class="image-grid__skeleton" role="status">
+      <span class="sr-only">{{ t('components.image_grid.loading') }}</span>
+    </div>
 
     <ImagePreviewModal
       :image="selectedImage ?? fallbackImage"
+      :images="props.images"
+      :opener="viewerOpener"
       :visible="selectedImage !== null"
-      @close="selectedImage = null" />
+      @select="selectedImage = $event"
+      @close="closeViewer" />
   </div>
 </template>
 
 <script setup lang="ts">
 import type { Heights, ImageSource, ItemInternal, Row } from '~/types/image'
+import { imageDimensions } from '~/data/imageDimensions'
 
 const props = defineProps({
   images: {
@@ -44,33 +54,70 @@ const props = defineProps({
   },
 })
 
+const { t } = useI18n()
 const device = useScreenSize()
 
 const root = ref<HTMLElement | null>(null)
 const rows = ref<Row[]>([])
-const internalItems = ref<ItemInternal[]>([])
-const runtimeConfig = useRuntimeConfig()
-const baseUrl = ref(runtimeConfig.public.i18n.baseUrl)
-
+const internalItems = ref<ItemInternal[]>(createItems())
+const shouldLoadImages = ref(false)
 const selectedImage = ref<ImageSource | null>(null)
-const fallbackImage: ImageSource = { src: '' }
+const viewerOpener = shallowRef<HTMLButtonElement | null>(null)
+const fallbackImage = computed<ImageSource>(() => ({
+  src: '',
+  alt: t('components.image_preview_modal.image_unavailable'),
+}))
 
 const GAP_PX = 24
 const TOLERANCE_WIDTH_PX = 20 // Small tolerance for "almost same" width
 const TOLERANCE_SCROLLBAR_WIDTH_PX = 10
 
 let resizeObserver: ResizeObserver | null = null
+let visibilityObserver: IntersectionObserver | null = null
 let resizeTimer: ReturnType<typeof setTimeout> | null = null
 let lastContainerWidth = 0
 let lastRowsSnapshot: Row[] | null = null
+
+function finishEntranceAnimation(event: FocusEvent) {
+  // Keyboard users can reach a tile before the observer callback runs
+  activateImages()
+
+  if (!(event.currentTarget instanceof HTMLElement)) {
+    return
+  }
+
+  for (const animation of event.currentTarget.getAnimations()) {
+    if (
+      animation instanceof CSSAnimation &&
+      animation.animationName === 'fadeInUpBlock'
+    ) {
+      animation.finish()
+    }
+  }
+}
+
+function openViewer(image: ImageSource, event: MouseEvent) {
+  viewerOpener.value =
+    event.currentTarget instanceof HTMLButtonElement
+      ? event.currentTarget
+      : null
+  selectedImage.value = image
+}
+
+function closeViewer() {
+  selectedImage.value = null
+  viewerOpener.value = null
+}
 
 function pickTargetHeightPx(containerWidth: number): number {
   if (containerWidth <= 480) {
     return props.heights.xs
   }
+
   if (containerWidth <= 768) {
     return props.heights.sm
   }
+
   if (containerWidth <= 1024) {
     return props.heights.md
   }
@@ -78,49 +125,65 @@ function pickTargetHeightPx(containerWidth: number): number {
   return props.heights.lg
 }
 
-async function ensureAspects(): Promise<void> {
-  internalItems.value = props.images.map(img => ({
-    imageSource: img,
-    aspect: 0,
-    renderWidth: 0,
-    isOnError: false,
-  }))
+function activateImages() {
+  shouldLoadImages.value = true
+  visibilityObserver?.disconnect()
+  visibilityObserver = null
+}
 
-  const promises: Promise<void>[] = []
-  for (const item of internalItems.value) {
-    const promise = new Promise<void>(resolve => {
-      const image = new Image()
-      image.src = baseUrl.value + item.imageSource.src
+function createItems(): ItemInternal[] {
+  // Reserve every row without downloading artwork, including offscreen grids
+  return props.images.map(imageSource => {
+    const dimensions = imageDimensions[imageSource.src]
 
-      if (image.complete) {
-        const width = image.naturalWidth || 1
-        const height = image.naturalHeight || 1
-        item.aspect = Math.max(0.01, width / height)
-        resolve()
-      } else {
-        image.onload = () => {
-          const width = image.naturalWidth || 1
-          const height = image.naturalHeight || 1
-          item.aspect = Math.max(0.01, width / height)
-          resolve()
-        }
-        image.onerror = () => {
-          // Fallback safe square
-          item.aspect = 1
-          item.isOnError = true
-          resolve()
-        }
-      }
-    })
+    return {
+      imageSource,
+      aspect: dimensions ? Math.max(0.01, dimensions[0] / dimensions[1]) : 1,
+      renderWidth: 0,
+      isOnError: false,
+    }
+  })
+}
 
-    promises.push(promise)
+function updateAspect(item: ItemInternal, aspect: number) {
+  const internalItem = internalItems.value.find(
+    entry => entry.imageSource.src === item.imageSource.src
+  )
+
+  item.isOnError = false
+
+  if (!internalItem) {
+    return
   }
-  await Promise.all(promises)
+
+  internalItem.isOnError = false
+
+  // An uncatalogued image can still correct its square placeholder on load
+  if (
+    !imageDimensions[item.imageSource.src] &&
+    internalItem.aspect !== aspect
+  ) {
+    internalItem.aspect = aspect
+    computeLayout(true)
+  }
+}
+
+function markImageError(item: ItemInternal) {
+  const internalItem = internalItems.value.find(
+    entry => entry.imageSource.src === item.imageSource.src
+  )
+
+  item.isOnError = true
+
+  if (internalItem) {
+    internalItem.isOnError = true
+  }
 }
 
 function buildRows(containerWidth: number, targetRowHeight: number): Row[] {
   const rowsLocal: Row[] = []
   const items = internalItems.value.slice()
+
   let idx = 0
 
   while (idx < items.length) {
@@ -160,6 +223,7 @@ function buildRows(containerWidth: number, targetRowHeight: number): Row[] {
     // For the last row that didn't reach width, keep the targetRowHeight to avoid overstretching
     const projectedWidthAtTarget =
       sumAspect * targetRowHeight + GAP_PX * (rowItems.length - 1)
+
     const finalHeight =
       isLastRow && projectedWidthAtTarget < containerWidth
         ? targetRowHeight
@@ -186,6 +250,7 @@ function findBestMatchingPrevRow(
   }
 
   const newSrcs = new Set(newRow.items.map(it => it.imageSource.src))
+
   let bestMatch: Row | null = null
   let bestOverlap = 0
 
@@ -215,10 +280,11 @@ function findBestMatchingPrevRow(
   }
 
   const overlapRatio = bestOverlap / smallerLength
+
   return overlapRatio >= 0.5 ? bestMatch : null
 }
 
-async function computeLayout(): Promise<void> {
+function computeLayout(force = false): void {
   if (!root.value) {
     return
   }
@@ -228,25 +294,27 @@ async function computeLayout(): Promise<void> {
 
   // Skip exact same width to avoid redundant recompute
   // Or skip with a tolerance when scrollbar can appear on the screen
-  if (delta === 0 || delta < TOLERANCE_SCROLLBAR_WIDTH_PX) {
+  if (!force && (delta === 0 || delta < TOLERANCE_SCROLLBAR_WIDTH_PX)) {
     return
   }
 
-  await ensureAspects()
   const targetHeight = pickTargetHeightPx(containerWidth)
   const newRows = buildRows(containerWidth, targetHeight)
 
   // Security to prevent layout flickering when being between two rows length choices
   // Prefer the layout with fewer images
   if (
+    !force &&
     lastRowsSnapshot &&
     Math.abs(containerWidth - lastContainerWidth) <= TOLERANCE_WIDTH_PX
   ) {
     for (const newRow of newRows) {
       const matchedPrev = findBestMatchingPrevRow(newRow, lastRowsSnapshot)
+
       if (matchedPrev) {
         if (newRow.items.length > matchedPrev.items.length) {
           lastContainerWidth = containerWidth
+
           return
         }
       }
@@ -262,30 +330,48 @@ async function computeLayout(): Promise<void> {
 
     if (newRows.length > 0 && matchedCount < Math.floor(newRows.length / 2)) {
       lastContainerWidth = containerWidth
+
       return
     }
   }
 
   rows.value = newRows
+
   lastRowsSnapshot = newRows.map(row => ({
     rowHeight: row.rowHeight,
     items: row.items.map(item => ({ ...item })),
   }))
+
   lastContainerWidth = containerWidth
 }
 
-onMounted(async () => {
-  await computeLayout()
+onMounted(() => {
+  computeLayout()
 
   if (root.value) {
+    if ('IntersectionObserver' in window) {
+      visibilityObserver = new IntersectionObserver(
+        entries => {
+          if (entries.some(entry => entry.isIntersecting)) {
+            activateImages()
+          }
+        },
+        { rootMargin: '300px 0px' }
+      )
+
+      visibilityObserver.observe(root.value)
+    } else {
+      activateImages()
+    }
+
     resizeObserver = new ResizeObserver(() => {
       // Debounce rapid resize
       if (resizeTimer) {
         clearTimeout(resizeTimer)
       }
 
-      resizeTimer = setTimeout(async () => {
-        await computeLayout()
+      resizeTimer = setTimeout(() => {
+        computeLayout()
       }, 80)
     })
 
@@ -294,6 +380,9 @@ onMounted(async () => {
 })
 
 onBeforeUnmount(() => {
+  visibilityObserver?.disconnect()
+  visibilityObserver = null
+
   if (resizeObserver && root.value) {
     resizeObserver.unobserve(root.value)
     resizeObserver.disconnect()
@@ -308,162 +397,136 @@ onBeforeUnmount(() => {
 
 watch(
   () => props.images,
-  async () => {
-    await computeLayout()
+  images => {
+    const items = rows.value.flatMap(row => row.items)
+    const sameSources =
+      items.length === images.length &&
+      items.every((item, index) => item.imageSource.src === images[index]?.src)
+
+    if (sameSources) {
+      const updateSources = (entries: ItemInternal[]) => {
+        entries.forEach((item, index) => {
+          const source = images[index]
+
+          if (source) {
+            item.imageSource = source
+          }
+        })
+      }
+
+      updateSources(items)
+      updateSources(internalItems.value)
+
+      if (lastRowsSnapshot) {
+        updateSources(lastRowsSnapshot.flatMap(row => row.items))
+      }
+
+      if (selectedImage.value) {
+        selectedImage.value =
+          images.find(image => image.src === selectedImage.value?.src) ?? null
+      }
+
+      return
+    }
+
+    lastContainerWidth = 0
+    lastRowsSnapshot = null
+    internalItems.value = createItems()
+
+    computeLayout()
   },
   { deep: true }
 )
 </script>
 
-<style scoped lang="scss">
-@use 'sass:color';
-
+<style lang="scss" scoped>
 .image-grid {
   width: 100%;
-  box-sizing: border-box;
+  min-width: 0;
 
-  :deep(.image-cell) {
-    animation: fadeInUpBlock 0.8s ease-out;
-    animation-fill-mode: both;
+  @media (prefers-reduced-motion: no-preference) {
+    &__cell:not(.image-grid__cell--error) {
+      animation: fadeInUpBlock 0.8s ease-out;
+      // Release the entrance transform after it ends so lazy images paint normally
+      animation-fill-mode: backwards;
 
-    @for $i from 1 through 15 {
-      &:nth-child(#{$i}) {
-        animation-delay: #{$i * 0.1}s;
+      @for $i from 1 through 15 {
+        &:nth-child(#{$i}) {
+          animation-delay: #{$i * 0.1}s;
+        }
       }
     }
   }
 
-  .image-row {
+  &__row {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 24px; // Must match GAP_PX constant
-    margin-bottom: 24px;
+    gap: $space-24; // Must match GAP_PX constant
+    margin-bottom: $space-24;
+  }
 
-    .image-cell {
-      position: relative;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px $box-shadow-color;
-      background-color: transparent;
-    }
+  &__cell {
+    position: relative;
+    min-width: 0;
+    border-radius: $radius-panel;
+    box-shadow: 0 $space-4 $space-16 $box-shadow-color;
+    background-color: transparent;
 
-    .image-cell-error {
-      position: relative;
-
-      :deep(.grid-item) {
-        .img {
-          border-radius: 12px;
-        }
-
-        .image-title-overlay {
-          text-align: center;
-          font-size: 15px;
-          text-wrap: wrap;
-        }
-      }
+    &--error {
+      box-shadow: none;
     }
   }
 
-  @media ((min-width: $md) and (hover: hover)) {
-    .image-row {
-      .image-cell {
+  @media ((min-width: $breakpoint-tablet) and (hover: hover)) {
+    &__row {
+      .image-grid__cell:not(.image-grid__cell--error) {
         overflow: hidden;
+      }
 
-        // Base state: title hidden below the image, revealed on hover
-        :deep(.image-title-overlay) {
-          position: absolute;
-          bottom: -10px;
-          left: 0;
-          right: 0;
-          padding: 16px 12px 12px;
-          font-size: 14px;
-          font-weight: 500;
-          line-height: 1.3;
-          opacity: 0;
-          transform: translateY(10px);
-          transition: all 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
-          pointer-events: none;
-          color: $white-color;
-          background: linear-gradient(
-            to top,
-            rgba(44, 24, 16, 0.9) 0%,
-            rgba(44, 24, 16, 0.7) 60%,
-            transparent 100%
-          );
+      @media (prefers-reduced-motion: no-preference) {
+        .image-grid__cell
+          :deep(.grid-item__button:focus-visible .grid-item__image) {
+          transform: scale($artwork-hover-scale);
         }
-      }
 
-      // Error cells: title always visible at the bottom of the cell
-      .image-cell-error {
-        :deep(.image-title-overlay) {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          padding: 8px 12px;
-          font-size: 13px;
-          font-weight: 500;
-          line-height: 1.3;
-          opacity: 1;
-          color: $white-color;
-          text-align: center;
-          text-wrap: wrap;
-          background: linear-gradient(
-            to top,
-            rgba(44, 24, 16, 0.9) 0%,
-            rgba(44, 24, 16, 0.7) 60%,
-            transparent 100%
-          );
+        @media (pointer: fine) {
+          .image-grid__cell:hover :deep(.grid-item__image) {
+            transform: scale($artwork-hover-scale);
+          }
         }
-      }
-
-      .image-cell:hover :deep(.img),
-      .image-cell:focus-within :deep(.img) {
-        transform: scale(1.12);
-      }
-
-      .image-cell:hover :deep(.image-title-overlay),
-      .image-cell:focus-within :deep(.image-title-overlay) {
-        opacity: 1;
-        transform: translateY(0);
       }
     }
   }
 
   // Mobile: show title on tap/touch or small screens
-  @media ((hover: none) or (max-width: calc($md - 1px))) {
-    .image-row {
-      margin-bottom: 40px;
+  @media (hover: none),
+    (pointer: coarse),
+    (max-width: calc($breakpoint-tablet - $border-width)) {
+    &__row {
+      margin-bottom: $space-20;
 
-      .image-cell {
+      .image-grid__cell {
         overflow: visible;
-      }
-
-      .image-cell-error {
-        :deep(.grid-item) {
-          .image-title-overlay {
-            font-size: 12px;
-          }
-        }
       }
     }
 
-    .image-row .image-cell-error {
+    .image-grid__cell--error {
       overflow: visible;
     }
   }
 }
 
-.image-grid-skeleton {
+.image-grid__skeleton {
   width: 100%;
-  min-height: 300px;
-  border-radius: 12px;
+  min-height: 18.75rem;
+  border-radius: $radius-panel;
   background: linear-gradient(
     90deg,
-    $warm-beige 25%,
-    color.adjust($warm-beige, $lightness: 4%) 50%,
-    $warm-beige 75%
+    var(--color-surface-warm) 25%,
+    var(--color-skeleton-highlight) 50%,
+    var(--color-surface-warm) 75%
   );
   background-size: 200% 100%;
   animation: skeletonShimmer 1.5s ease-in-out infinite;
