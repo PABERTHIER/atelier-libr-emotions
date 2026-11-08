@@ -5,6 +5,8 @@
       <PageTitle
         :title="t('pages.ceramic.raku_and_smouldering.nature.title')"
         :subtitle="t('pages.ceramic.raku_and_smouldering.nature.subtitle')" />
+      <GalleryArtistNote
+        :text="t('pages.ceramic.raku_and_smouldering.nature.description')" />
     </header>
 
     <section

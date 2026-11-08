@@ -32,7 +32,8 @@ For layout changes or a gallery journey review, use [UX principles](../../docs/u
 
 Resolve the domain, technique, category, artwork order and any groups from the request and existing files.
 Keep the supplied French artistic subtitle and adapt it naturally into English.
-Rewrite an optional artist description into concise page metadata rather than pasting the entire text.
+Preserve any supplied French artist description verbatim and provide its English translation for the optional visible note described below.
+Adapt that description separately into concise page metadata rather than pasting the entire text into metadata.
 Ask only for unresolved information that affects the result, such as an ambiguous collection or an unavailable artist-authored subtitle.
 Continue independent preparation while waiting for required facts.
 
@@ -76,6 +77,16 @@ Preserve this shell for new galleries:
 ```
 
 Define `pageKey` as the verified `pages.*` namespace in `<script setup lang="ts">`.
+When a separate artist description is supplied, add the optional `GalleryArtistNote` immediately after `PageTitle` inside `gallery-page__header`:
+
+```vue
+<GalleryArtistNote :text="t(`${pageKey}.description`)" />
+```
+
+Add matching `pages.*.description` messages in both locales, preserving the supplied French wording and translating it naturally into English.
+Omit the component and description keys when no description is provided or the supplied text is already displayed in the subtitle.
+Keep short descriptions in the subtitle when appropriate instead of duplicating them in a note.
+
 An existing visible collection H2 also names a single collection; the hidden generic H2 is for collections without an authored heading.
 For multiple groups, use named `gallery-page__collection` sections with visible translated H2s and one grid per group, keeping a single `PageTitle` H1.
 Include the shared hidden viewer instructions once; do not add duplicate hidden group headings alongside visible H2s.

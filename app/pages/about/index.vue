@@ -76,6 +76,12 @@ const { t } = useI18n()
 
 const practiceBlocks = computed(() => [
   {
+    key: 'personal_quote',
+    title: '',
+    text: t('pages.about.personal_quote'),
+    type: 'quote' as const,
+  },
+  {
     key: 'intro',
     title: '',
     text: t('pages.about.intro'),
