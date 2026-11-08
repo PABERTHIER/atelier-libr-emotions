@@ -220,6 +220,8 @@ For a new or substantially changed gallery:
 2. Add affected page, picture and shared-label messages in both locale files.
    Preserve the supplied French subtitle and use confirmed optional painting dimensions.
 3. Reuse the gallery shell and components using [gallery-page](.agents/skills/gallery-page/SKILL.md).
+   When a separate artist description is supplied, add the optional `GalleryArtistNote` after `PageTitle`, backed by matching FR/EN `pages.*.description` messages.
+   Omit it when no description is provided or the text is already displayed in the subtitle; preserve the supplied French wording.
    Keep translated images, navigation and metadata reactive rather than taking setup-time snapshots.
 4. Implement localized metadata using [seo](.agents/skills/seo/SKILL.md).
    Register the page, verified social image/dimensions and sitemap artwork; add bilingual `seo.*` messages and call `useHead(usePageSeo('pageName'))`.

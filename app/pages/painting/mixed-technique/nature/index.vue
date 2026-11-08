@@ -5,6 +5,8 @@
       <PageTitle
         :title="t('pages.painting.mixed_technique.nature.title')"
         :subtitle="t('pages.painting.mixed_technique.nature.subtitle')" />
+      <GalleryArtistNote
+        :text="t('pages.painting.mixed_technique.nature.description')" />
     </header>
 
     <section

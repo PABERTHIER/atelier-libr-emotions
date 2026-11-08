@@ -5,6 +5,8 @@
       <PageTitle
         :title="t('pages.ceramic.electric_kiln.nature.title')"
         :subtitle="t('pages.ceramic.electric_kiln.nature.subtitle')" />
+      <GalleryArtistNote
+        :text="t('pages.ceramic.electric_kiln.nature.description')" />
     </header>
 
     <p class="sr-only">{{ t('pages.gallery.instructions') }}</p>

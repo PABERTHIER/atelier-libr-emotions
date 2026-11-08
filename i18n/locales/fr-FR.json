@@ -168,6 +168,7 @@
     },
     "gallery": {
       "collection_title": "Œuvres de la collection",
+      "artist_note": "Les mots de l'artiste",
       "instructions": "Sélectionnez une œuvre pour l'agrandir. Dans l'aperçu, utilisez les commandes pour parcourir la collection, zoomer ou ajuster l'image. La touche Échap ferme l'aperçu et vous ramène à l'œuvre."
     },
     "painting": {
@@ -182,14 +183,15 @@
         "nature": {
           "tab_name": "Encres - Nature",
           "title": "Encres - Nature",
-          "subtitle": "Expressions inspirées par la nature"
+          "subtitle": "Collection d'encres inspirées par la nature : paysages, éléments naturels et atmosphères"
         }
       },
       "mixed_technique": {
         "nature": {
           "tab_name": "Technique mixte - Nature",
           "title": "Technique mixte - Nature",
-          "subtitle": "L'expression de la nature prend forme grâce aux mélanges de divers médiums et matériaux"
+          "subtitle": "L'expression de la nature prend forme grâce aux mélanges de divers médiums et matériaux",
+          "description": "L'expression de la nature prend forme grâce aux mélanges de médiums (peinture acrylique, encres,  pastel, ...) et de matériaux (ficelle, feuilles séchées, sable, papier de soie, ...), qui permettent de créer divers effets de reliefs, de mouvements et diverses ambiances, la mettant ainsi en valeur. Le spectateur peut ainsi se promener dans le tableau et s'évader."
         }
       }
     },
@@ -198,36 +200,42 @@
         "nature": {
           "tab_name": "Grès - four électrique - Nature",
           "title": "Grès - four électrique - Nature",
-          "subtitle": "Fleurs décoratives, pour intérieur et/ou extérieur"
+          "subtitle": "Fleurs décoratives, pour intérieur et/ou extérieur",
+          "description": "Mes pièces sont en terre grès blanche, noire ou ocre. Elles sont cuites à basse ou à haute température. Je choisis de les laisser nature, ou de les peindre avec des engobes, ou de les émailler."
         },
         "animals": {
           "tab_name": "Grès - four électrique - Animaux",
           "title": "Grès - four électrique - Animaux",
-          "subtitle": "Des animaux apportant une touche de poésie et d'élégance"
+          "subtitle": "Des animaux apportant une touche de poésie et d'élégance",
+          "description": "Des animaux en céramique, réalistes ou stylisés, simples objets de décoration ou véritables pièces de collection, apportent une touche de poésie et d'élégance à la décoration intérieure."
         },
         "vases_and_pots": {
           "tab_name": "Grès - four électrique - Vases et pots",
           "title": "Grès - four électrique - Vases et pots",
-          "subtitle": "Pots et des vases en céramiques, pour intérieur et jardin"
+          "subtitle": "Pots et des vases en céramiques, pour intérieur et jardin",
+          "description": "Des pots et des vases en céramique, objets à la fois pratiques, décoratifs et esthétiques. Qu'ils soient bruts ou émaillés, ils subliment nos intérieurs et nos jardins."
         },
         "various_objects": {
           "tab_name": "Grès - four électrique - Objets divers",
           "title": "Grès - four électrique - Objets divers",
-          "subtitle": "Objets de décoration, créés avec des terres de différentes couleurs"
+          "subtitle": "Objets de décoration, créés avec des terres de différentes couleurs",
+          "description": "Objets de décoration, créés avec des terres de différentes couleurs, décorés avec différentes techniques et souvent associés à des éléments naturels."
         }
       },
       "porcelain": {
         "nature": {
           "tab_name": "Porcelaine - Nature",
           "title": "Porcelaine - Nature",
-          "subtitle": "Pièces pour décoration murale ou sur meuble, seules ou associées à un autre élément (céramique, bois, métal)"
+          "subtitle": "Pièces pour décoration murale ou sur meuble, seules ou associées à un autre élément (céramique, bois, métal)",
+          "description": "Fleurs dentelées et délicates. Elles peuvent servir de simple décoration sur un meuble, ou accrochées au mur. Elles peuvent également être associées à un élément naturel tel que le bois. Je peux présenter une fleur seule, mais j'aime aussi beaucoup associer une fleur avec une autre pièce en céramique."
         }
       },
       "raku_and_smouldering": {
         "nature": {
           "tab_name": "Raku et enfumage - Nature",
           "title": "Raku et enfumage - Nature",
-          "subtitle": "Céramiques pour décoration intérieure"
+          "subtitle": "Céramiques pour décoration intérieure",
+          "description": "Après une première cuisson biscuit, la pièce est émaillée, puis cuite dans un four à gaz. À la sortie du four (1000°C environ), elle subit un choc thermique et sera enfumée pour laisser apparaître de jolies fissures noires dans l'émail blanc brillant."
         }
       }
     },
@@ -235,6 +243,7 @@
       "tab_name": "Ma démarche artistique",
       "title": "Ma démarche artistique",
       "subtitle": "Une approche intuitive de l'art",
+      "personal_quote": "Ma peinture et moi...lâcher prise, ressenti, émotions, expression : thérapie.",
       "practice_title": "Ma pratique artistique et mes ateliers",
       "intro": "En peinture, en dessin, comme en terre, je pars d'une trace spontanée puis, à mon rythme, je pars à l'Aventure.",
       "intuitive_work": "Je travaille de manière intuitive, sans idée préconçue, sans attente particulière. Seuls l'envie, le plaisir de créer et l'acceptation de ce qui se passe, au moment présent, m'importent.",
