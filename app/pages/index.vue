@@ -266,7 +266,7 @@ useHead(usePageSeo('home'))
 @media (prefers-reduced-motion: no-preference) {
   .home-page {
     &__action::before {
-      transition: background-position $transition-ui;
+      transition: background-position 0.3s ease-in-out;
     }
   }
 }
