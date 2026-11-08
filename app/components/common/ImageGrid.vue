@@ -447,7 +447,8 @@ watch(
   @media (prefers-reduced-motion: no-preference) {
     &__cell:not(.image-grid__cell--error) {
       animation: fadeInUpBlock 0.8s ease-out;
-      animation-fill-mode: both;
+      // Release the entrance transform after it ends so lazy images paint normally
+      animation-fill-mode: backwards;
 
       @for $i from 1 through 15 {
         &:nth-child(#{$i}) {
