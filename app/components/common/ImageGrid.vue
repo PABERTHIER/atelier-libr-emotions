@@ -17,7 +17,10 @@
           @focusin="finishEntranceAnimation">
           <ImageGridItem
             :item="item"
+            :load="shouldLoadImages"
             :is-mobile="device.isMediumOrBelowScreen.value"
+            @load="updateAspect(item, $event)"
+            @error="markImageError(item)"
             @select="openViewer(item.imageSource, $event)" />
         </div>
       </div>
@@ -38,6 +41,7 @@
 
 <script setup lang="ts">
 import type { Heights, ImageSource, ItemInternal, Row } from '~/types/image'
+import { imageDimensions } from '~/data/imageDimensions'
 
 const props = defineProps({
   images: {
@@ -55,7 +59,8 @@ const device = useScreenSize()
 
 const root = ref<HTMLElement | null>(null)
 const rows = ref<Row[]>([])
-const internalItems = ref<ItemInternal[]>([])
+const internalItems = ref<ItemInternal[]>(createItems())
+const shouldLoadImages = ref(false)
 const selectedImage = ref<ImageSource | null>(null)
 const viewerOpener = shallowRef<HTMLButtonElement | null>(null)
 const fallbackImage = computed<ImageSource>(() => ({
@@ -68,11 +73,15 @@ const TOLERANCE_WIDTH_PX = 20 // Small tolerance for "almost same" width
 const TOLERANCE_SCROLLBAR_WIDTH_PX = 10
 
 let resizeObserver: ResizeObserver | null = null
+let visibilityObserver: IntersectionObserver | null = null
 let resizeTimer: ReturnType<typeof setTimeout> | null = null
 let lastContainerWidth = 0
 let lastRowsSnapshot: Row[] | null = null
 
 function finishEntranceAnimation(event: FocusEvent) {
+  // Keyboard users can reach a tile before the observer callback runs
+  activateImages()
+
   if (!(event.currentTarget instanceof HTMLElement)) {
     return
   }
@@ -116,53 +125,59 @@ function pickTargetHeightPx(containerWidth: number): number {
   return props.heights.lg
 }
 
-async function ensureAspects(): Promise<void> {
-  internalItems.value = props.images.map(img => ({
-    imageSource: img,
-    aspect: 0,
-    renderWidth: 0,
-    isOnError: false,
-  }))
+function activateImages() {
+  shouldLoadImages.value = true
+  visibilityObserver?.disconnect()
+  visibilityObserver = null
+}
 
-  const promises: Promise<void>[] = []
+function createItems(): ItemInternal[] {
+  // Reserve every row without downloading artwork, including offscreen grids
+  return props.images.map(imageSource => {
+    const dimensions = imageDimensions[imageSource.src]
 
-  for (const item of internalItems.value) {
-    const promise = new Promise<void>(resolve => {
-      const image = new window.Image()
-      image.src = item.imageSource.src
+    return {
+      imageSource,
+      aspect: dimensions ? Math.max(0.01, dimensions[0] / dimensions[1]) : 1,
+      renderWidth: 0,
+      isOnError: false,
+    }
+  })
+}
 
-      if (image.complete) {
-        if (image.naturalWidth > 0) {
-          const width = image.naturalWidth
-          const height = image.naturalHeight || 1
+function updateAspect(item: ItemInternal, aspect: number) {
+  const internalItem = internalItems.value.find(
+    entry => entry.imageSource.src === item.imageSource.src
+  )
 
-          item.aspect = Math.max(0.01, width / height)
-        } else {
-          item.aspect = 1
-          item.isOnError = true
-        }
-        resolve()
-      } else {
-        image.onload = () => {
-          const width = image.naturalWidth || 1
-          const height = image.naturalHeight || 1
-          item.aspect = Math.max(0.01, width / height)
-          resolve()
-        }
-        image.onerror = () => {
-          // Fallback safe square
-          item.aspect = 1
-          item.isOnError = true
+  item.isOnError = false
 
-          resolve()
-        }
-      }
-    })
-
-    promises.push(promise)
+  if (!internalItem) {
+    return
   }
 
-  await Promise.all(promises)
+  internalItem.isOnError = false
+
+  // An uncatalogued image can still correct its square placeholder on load
+  if (
+    !imageDimensions[item.imageSource.src] &&
+    internalItem.aspect !== aspect
+  ) {
+    internalItem.aspect = aspect
+    computeLayout(true)
+  }
+}
+
+function markImageError(item: ItemInternal) {
+  const internalItem = internalItems.value.find(
+    entry => entry.imageSource.src === item.imageSource.src
+  )
+
+  item.isOnError = true
+
+  if (internalItem) {
+    internalItem.isOnError = true
+  }
 }
 
 function buildRows(containerWidth: number, targetRowHeight: number): Row[] {
@@ -269,7 +284,7 @@ function findBestMatchingPrevRow(
   return overlapRatio >= 0.5 ? bestMatch : null
 }
 
-async function computeLayout(): Promise<void> {
+function computeLayout(force = false): void {
   if (!root.value) {
     return
   }
@@ -279,11 +294,9 @@ async function computeLayout(): Promise<void> {
 
   // Skip exact same width to avoid redundant recompute
   // Or skip with a tolerance when scrollbar can appear on the screen
-  if (delta === 0 || delta < TOLERANCE_SCROLLBAR_WIDTH_PX) {
+  if (!force && (delta === 0 || delta < TOLERANCE_SCROLLBAR_WIDTH_PX)) {
     return
   }
-
-  await ensureAspects()
 
   const targetHeight = pickTargetHeightPx(containerWidth)
   const newRows = buildRows(containerWidth, targetHeight)
@@ -291,6 +304,7 @@ async function computeLayout(): Promise<void> {
   // Security to prevent layout flickering when being between two rows length choices
   // Prefer the layout with fewer images
   if (
+    !force &&
     lastRowsSnapshot &&
     Math.abs(containerWidth - lastContainerWidth) <= TOLERANCE_WIDTH_PX
   ) {
@@ -331,18 +345,33 @@ async function computeLayout(): Promise<void> {
   lastContainerWidth = containerWidth
 }
 
-onMounted(async () => {
-  await computeLayout()
+onMounted(() => {
+  computeLayout()
 
   if (root.value) {
+    if ('IntersectionObserver' in window) {
+      visibilityObserver = new IntersectionObserver(
+        entries => {
+          if (entries.some(entry => entry.isIntersecting)) {
+            activateImages()
+          }
+        },
+        { rootMargin: '300px 0px' }
+      )
+
+      visibilityObserver.observe(root.value)
+    } else {
+      activateImages()
+    }
+
     resizeObserver = new ResizeObserver(() => {
       // Debounce rapid resize
       if (resizeTimer) {
         clearTimeout(resizeTimer)
       }
 
-      resizeTimer = setTimeout(async () => {
-        await computeLayout()
+      resizeTimer = setTimeout(() => {
+        computeLayout()
       }, 80)
     })
 
@@ -351,6 +380,9 @@ onMounted(async () => {
 })
 
 onBeforeUnmount(() => {
+  visibilityObserver?.disconnect()
+  visibilityObserver = null
+
   if (resizeObserver && root.value) {
     resizeObserver.unobserve(root.value)
     resizeObserver.disconnect()
@@ -365,7 +397,7 @@ onBeforeUnmount(() => {
 
 watch(
   () => props.images,
-  async images => {
+  images => {
     const items = rows.value.flatMap(row => row.items)
     const sameSources =
       items.length === images.length &&
@@ -399,8 +431,9 @@ watch(
 
     lastContainerWidth = 0
     lastRowsSnapshot = null
+    internalItems.value = createItems()
 
-    await computeLayout()
+    computeLayout()
   },
   { deep: true }
 )

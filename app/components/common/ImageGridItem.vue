@@ -7,13 +7,19 @@
       aria-haspopup="dialog"
       :aria-label="t('components.image_grid_item.open', { title: artworkName })"
       @click="emit('select', $event)">
-      <span class="grid-item__frame">
+      <span
+        class="grid-item__frame"
+        :class="{
+          'grid-item__frame--loading': load && !imageLoaded && !imageError,
+        }">
         <img
+          v-if="load"
           :key="item.imageSource.src"
           ref="imageRef"
           :src="item.imageSource.src"
           :alt="item.imageSource.alt"
           loading="lazy"
+          decoding="async"
           v-bind="imageWidthBinding"
           class="grid-item__image"
           :class="{ 'grid-item__image--unavailable': imageError }"
@@ -36,14 +42,23 @@
 <script setup lang="ts">
 import type { ItemInternal } from '~/types/image'
 
-const props = defineProps<{ item: ItemInternal; isMobile: boolean }>()
+const props = defineProps<{
+  item: ItemInternal
+  isMobile: boolean
+  load: boolean
+}>()
 
-const emit = defineEmits<{ select: [event: MouseEvent] }>()
+const emit = defineEmits<{
+  select: [event: MouseEvent]
+  load: [aspect: number]
+  error: []
+}>()
 
 const { t } = useI18n()
 
 const imageRef = ref<HTMLImageElement | null>(null)
 const imageError = ref(props.item.isOnError)
+const imageLoaded = ref(false)
 
 const imageWidthBinding = computed(() => ({
   width: Math.max(1, Math.round(props.item.renderWidth)),
@@ -68,19 +83,33 @@ function checkLoadedImage() {
   const image = imageRef.value
 
   if (image?.complete && image.currentSrc) {
-    imageError.value = image.naturalWidth === 0
+    if (image.naturalWidth > 0) {
+      onImageLoad()
+    } else {
+      imageError.value = true
+      emit('error')
+    }
   }
 }
 
-function onImageLoad(event: Event) {
-  if (event.target === imageRef.value) {
-    imageError.value = false
+function onImageLoad(event?: Event) {
+  const image = imageRef.value
+
+  if (!image || (event && event.target !== image)) {
+    return
   }
+
+  imageError.value = false
+  imageLoaded.value = true
+
+  emit('load', Math.max(0.01, image.naturalWidth / (image.naturalHeight || 1)))
 }
 
 function onImageError(event: Event) {
   if (event.target === imageRef.value) {
     imageError.value = true
+
+    emit('error')
   }
 }
 
@@ -88,14 +117,12 @@ watch(
   () => props.item.imageSource.src,
   () => {
     imageError.value = props.item.isOnError
-    checkLoadedImage()
-  },
-  { flush: 'post' }
+    imageLoaded.value = false
+  }
 )
 
-onMounted(() => {
-  checkLoadedImage()
-})
+// Also handles cached images when a previously offscreen grid is activated
+watch(imageRef, checkLoadedImage, { flush: 'post' })
 </script>
 
 <style lang="scss" scoped>
@@ -137,6 +164,17 @@ onMounted(() => {
     height: var(--artwork-height, 100%);
     overflow: hidden;
     border-radius: $radius-panel;
+    background: var(--color-surface-warm);
+
+    &--loading {
+      background: linear-gradient(
+        110deg,
+        var(--color-surface-warm) 20%,
+        var(--color-skeleton-highlight) 50%,
+        var(--color-surface-warm) 80%
+      );
+      background-size: 200% 100%;
+    }
   }
 
   &__image {
@@ -241,6 +279,10 @@ onMounted(() => {
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  .grid-item__frame--loading {
+    animation: skeletonShimmer 1.8s ease-in-out infinite;
+  }
+
   .grid-item__image {
     transition: transform $transition-artwork;
   }
