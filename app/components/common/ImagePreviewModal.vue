@@ -335,18 +335,28 @@ function checkCachedImage() {
 
   if (image?.complete && image.currentSrc) {
     if (image.naturalWidth) {
-      onImageLoad()
+      void onImageLoad()
     } else {
       markImageError()
     }
   }
 }
 
-function onImageLoad(event?: Event) {
+async function onImageLoad(event?: Event) {
   const image =
     event?.target instanceof HTMLImageElement ? event.target : imageRef.value
 
   if (!image || image !== imageRef.value) {
+    return
+  }
+
+  try {
+    await image.decode()
+  } catch {
+    // A successful load can still be displayed when decode() is unavailable
+  }
+
+  if (!props.visible || image !== imageRef.value) {
     return
   }
 
@@ -564,8 +574,7 @@ watch(
     }
 
     void nextTick(openDialog)
-  },
-  { flush: 'post' }
+  }
 )
 
 onMounted(openDialog)
@@ -725,7 +734,7 @@ onBeforeUnmount(finishClose)
     -webkit-user-drag: none;
 
     &--pending {
-      visibility: hidden;
+      opacity: 0;
     }
   }
 
@@ -870,44 +879,60 @@ onBeforeUnmount(finishClose)
 }
 
 @media (max-width: $viewer-compact-width) {
-  .image-preview-modal__zoom {
-    display: grid;
-    grid-template-columns: $control-size minmax(0, 1fr) $control-size;
-    gap: $space-4;
-  }
+  .image-preview-modal {
+    &__zoom {
+      display: grid;
+      grid-template-columns: $control-size minmax(0, 1fr) $control-size;
+      gap: $space-4;
+    }
 
-  .image-preview-modal__zoom-value {
-    grid-column: 1 / 3;
+    &__zoom-value {
+      grid-column: 1 / 3;
+    }
   }
 }
 
 @media (max-height: $short-viewport-height) {
-  .image-preview-modal__panel {
-    height: 100%;
-  }
+  .image-preview-modal {
+    &__panel {
+      height: 100%;
+    }
 
-  .image-preview-modal__header {
-    padding-block: $space-4;
+    &__header {
+      padding-block: $space-4;
+    }
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .image-preview-modal__button {
-    transition: background-color $transition-ui;
-  }
+  .image-preview-modal {
+    &__image {
+      transition: opacity $transition-viewer;
 
-  .image-preview-modal__skeleton {
-    animation: viewerSkeleton 1.8s ease-in-out infinite;
+      @starting-style {
+        opacity: 0;
+      }
+    }
+
+    &__button {
+      transition: background-color $transition-ui;
+    }
+
+    &__skeleton {
+      animation: viewerSkeleton 1.8s ease-in-out infinite;
+    }
   }
 }
 
 @media (forced-colors: active) {
-  .image-preview-modal__panel {
-    border: $border-width solid CanvasText;
-  }
+  .image-preview-modal {
+    &__panel {
+      border: $border-width solid CanvasText;
+    }
 
-  .image-preview-modal__backdrop {
-    background: Canvas;
+    &__backdrop {
+      background: Canvas;
+    }
   }
 }
 </style>
