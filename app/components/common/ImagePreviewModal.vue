@@ -879,52 +879,60 @@ onBeforeUnmount(finishClose)
 }
 
 @media (max-width: $viewer-compact-width) {
-  .image-preview-modal__zoom {
-    display: grid;
-    grid-template-columns: $control-size minmax(0, 1fr) $control-size;
-    gap: $space-4;
-  }
+  .image-preview-modal {
+    &__zoom {
+      display: grid;
+      grid-template-columns: $control-size minmax(0, 1fr) $control-size;
+      gap: $space-4;
+    }
 
-  .image-preview-modal__zoom-value {
-    grid-column: 1 / 3;
+    &__zoom-value {
+      grid-column: 1 / 3;
+    }
   }
 }
 
 @media (max-height: $short-viewport-height) {
-  .image-preview-modal__panel {
-    height: 100%;
-  }
+  .image-preview-modal {
+    &__panel {
+      height: 100%;
+    }
 
-  .image-preview-modal__header {
-    padding-block: $space-4;
+    &__header {
+      padding-block: $space-4;
+    }
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .image-preview-modal__image {
-    transition: opacity $transition-viewer;
+  .image-preview-modal {
+    &__image {
+      transition: opacity $transition-viewer;
 
-    @starting-style {
-      opacity: 0;
+      @starting-style {
+        opacity: 0;
+      }
     }
-  }
 
-  .image-preview-modal__button {
-    transition: background-color $transition-ui;
-  }
+    &__button {
+      transition: background-color $transition-ui;
+    }
 
-  .image-preview-modal__skeleton {
-    animation: viewerSkeleton 1.8s ease-in-out infinite;
+    &__skeleton {
+      animation: viewerSkeleton 1.8s ease-in-out infinite;
+    }
   }
 }
 
 @media (forced-colors: active) {
-  .image-preview-modal__panel {
-    border: $border-width solid CanvasText;
-  }
+  .image-preview-modal {
+    &__panel {
+      border: $border-width solid CanvasText;
+    }
 
-  .image-preview-modal__backdrop {
-    background: Canvas;
+    &__backdrop {
+      background: Canvas;
+    }
   }
 }
 </style>
