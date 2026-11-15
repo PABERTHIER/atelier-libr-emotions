@@ -335,18 +335,28 @@ function checkCachedImage() {
 
   if (image?.complete && image.currentSrc) {
     if (image.naturalWidth) {
-      onImageLoad()
+      void onImageLoad()
     } else {
       markImageError()
     }
   }
 }
 
-function onImageLoad(event?: Event) {
+async function onImageLoad(event?: Event) {
   const image =
     event?.target instanceof HTMLImageElement ? event.target : imageRef.value
 
   if (!image || image !== imageRef.value) {
+    return
+  }
+
+  try {
+    await image.decode()
+  } catch {
+    // A successful load can still be displayed when decode() is unavailable
+  }
+
+  if (!props.visible || image !== imageRef.value) {
     return
   }
 
@@ -564,8 +574,7 @@ watch(
     }
 
     void nextTick(openDialog)
-  },
-  { flush: 'post' }
+  }
 )
 
 onMounted(openDialog)
@@ -725,7 +734,7 @@ onBeforeUnmount(finishClose)
     -webkit-user-drag: none;
 
     &--pending {
-      visibility: hidden;
+      opacity: 0;
     }
   }
 
@@ -892,6 +901,14 @@ onBeforeUnmount(finishClose)
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  .image-preview-modal__image {
+    transition: opacity $transition-viewer;
+
+    @starting-style {
+      opacity: 0;
+    }
+  }
+
   .image-preview-modal__button {
     transition: background-color $transition-ui;
   }
